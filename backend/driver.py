@@ -6,6 +6,7 @@
 ##
 ################################################################################
 
+from ast import Lambda
 import sys
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -18,6 +19,7 @@ from PySide2.QtWidgets import *
 
 from ui_launcher import Ui_MainWindow
 from ui_dashoboard import Ui_dashboard
+
 
 ## ==> GLOBALS
 GLOBAL_STATE = 0
@@ -34,6 +36,17 @@ class MainWindow(QMainWindow):
         self.ui.btn_close.clicked.connect(self.close)
         self.ui.btn_minimize.clicked.connect(self.showMinimized)
         self.ui.btn_maximize.clicked.connect(self.maximize_restore)
+
+        self.ui.btn_home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home))
+        self.ui.btn_search.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.search))
+        self.ui.btn_camera.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.camera))
+        self.ui.btn_database.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.database))
+        self.ui.btn_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.report))
+        self.ui.btn_settings.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
+
+
+        for w in self.ui.frame.findChildren(QPushButton):
+            w.clicked.connect(self.applyStyle)
 
          ## ==> CREATE SIZE GRIP TO RESIZE WINDOW
         # self.sizegrip = QSizeGrip(self.ui.centralwidget)
@@ -71,6 +84,16 @@ class MainWindow(QMainWindow):
         delta = QPoint(event.globalPos() - self.oldPosition)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPosition = event.globalPos()
+    
+    def applyStyle(self):
+        for w in self.ui.frame.findChildren(QPushButton):
+            if w.objectName()!= self.sender().objectName():
+                defaultStyle = w.styleSheet().replace("border-left:3px solid rgb(35, 35, 35) ;","")
+                w.setStyleSheet(defaultStyle)
+        newStytle = self.sender().styleSheet()+("border-left:3px solid rgb(255, 255, 255);")
+        self.sender().setStyleSheet(newStytle)
+        return
+
         
 
 class Splash_screen(QMainWindow):
