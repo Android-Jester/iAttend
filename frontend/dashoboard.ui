@@ -1065,7 +1065,7 @@ QPushButton:pressed{
 }</string>
                        </property>
                        <property name="text">
-                        <string>Coledge</string>
+                        <string>College</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1312,7 +1312,7 @@ QPushButton:pressed{
                          <x>20</x>
                          <y>10</y>
                          <width>471</width>
-                         <height>41</height>
+                         <height>51</height>
                         </rect>
                        </property>
                        <property name="styleSheet">
@@ -1351,7 +1351,7 @@ QPushButton:pressed{
                             <normaloff>:/icons/asset/user-check.svg</normaloff>:/icons/asset/user-check.svg</iconset>
                           </property>
                           <property name="checked">
-                           <bool>false</bool>
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -1403,7 +1403,7 @@ QPushButton:pressed{
                             <normaloff>:/icons/asset/user-check.svg</normaloff>:/icons/asset/user-check.svg</iconset>
                           </property>
                           <property name="checked">
-                           <bool>true</bool>
+                           <bool>false</bool>
                           </property>
                          </widget>
                         </item>
@@ -1413,7 +1413,7 @@ QPushButton:pressed{
                        <property name="geometry">
                         <rect>
                          <x>30</x>
-                         <y>90</y>
+                         <y>110</y>
                          <width>451</width>
                          <height>51</height>
                         </rect>
@@ -1450,7 +1450,7 @@ QLineEdit:focus{
                        <property name="geometry">
                         <rect>
                          <x>30</x>
-                         <y>150</y>
+                         <y>180</y>
                          <width>131</width>
                          <height>41</height>
                         </rect>
@@ -1497,7 +1497,7 @@ QPushButton:pressed{
                        <property name="geometry">
                         <rect>
                          <x>40</x>
-                         <y>100</y>
+                         <y>120</y>
                          <width>41</width>
                          <height>31</height>
                         </rect>
@@ -1513,7 +1513,7 @@ QPushButton:pressed{
                        <property name="geometry">
                         <rect>
                          <x>170</x>
-                         <y>150</y>
+                         <y>180</y>
                          <width>141</width>
                          <height>41</height>
                         </rect>
@@ -1560,7 +1560,7 @@ QPushButton:pressed{
                        <property name="geometry">
                         <rect>
                          <x>320</x>
-                         <y>150</y>
+                         <y>180</y>
                          <width>161</width>
                          <height>38</height>
                         </rect>
@@ -1595,7 +1595,32 @@ QPushButton:pressed{
                        </property>
                        <item>
                         <property name="text">
-                         <string>New Item</string>
+                         <string>0</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>1</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>2</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>3</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>4</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>5</string>
                         </property>
                        </item>
                       </widget>
@@ -1603,9 +1628,9 @@ QPushButton:pressed{
                        <property name="geometry">
                         <rect>
                          <x>20</x>
-                         <y>60</y>
+                         <y>80</y>
                          <width>471</width>
-                         <height>141</height>
+                         <height>161</height>
                         </rect>
                        </property>
                        <property name="font">
@@ -1635,9 +1660,9 @@ QPushButton:pressed{
                        <property name="geometry">
                         <rect>
                          <x>20</x>
-                         <y>210</y>
+                         <y>260</y>
                          <width>471</width>
-                         <height>141</height>
+                         <height>81</height>
                         </rect>
                        </property>
                        <property name="font">
@@ -1657,18 +1682,18 @@ QPushButton:pressed{
 }</string>
                        </property>
                        <property name="text">
-                        <string>Exit camera</string>
+                        <string/>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                        </property>
                       </widget>
-                      <widget class="QPushButton" name="btn_exit_cam_disconect">
+                      <widget class="QPushButton" name="btn_open_exit_camera_ui">
                        <property name="geometry">
                         <rect>
-                         <x>170</x>
-                         <y>300</y>
-                         <width>141</width>
+                         <x>30</x>
+                         <y>280</y>
+                         <width>201</width>
                          <height>41</height>
                         </rect>
                        </property>
@@ -1694,11 +1719,11 @@ QPushButton:pressed{
 }</string>
                        </property>
                        <property name="text">
-                        <string>Disconnect</string>
+                        <string>Open frame</string>
                        </property>
                        <property name="icon">
                         <iconset resource="../resource/asset.qrc">
-                         <normaloff>:/icons/asset/video-off.svg</normaloff>:/icons/asset/video-off.svg</iconset>
+                         <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -1710,108 +1735,12 @@ QPushButton:pressed{
                         <bool>true</bool>
                        </property>
                       </widget>
-                      <widget class="QLineEdit" name="btn_exit_cam_ip">
+                      <widget class="QPushButton" name="btn_clear_label">
                        <property name="geometry">
                         <rect>
-                         <x>30</x>
-                         <y>240</y>
-                         <width>451</width>
-                         <height>51</height>
-                        </rect>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-                       </property>
-                       <property name="placeholderText">
-                        <string>Camera Id/IP ?</string>
-                       </property>
-                       <property name="clearButtonEnabled">
-                        <bool>true</bool>
-                       </property>
-                      </widget>
-                      <widget class="QComboBox" name="exit_comboBox">
-                       <property name="geometry">
-                        <rect>
-                         <x>320</x>
-                         <y>300</y>
-                         <width>161</width>
-                         <height>38</height>
-                        </rect>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>38</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>38</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <pointsize>10</pointsize>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 5px;
-}</string>
-                       </property>
-                       <property name="frame">
-                        <bool>false</bool>
-                       </property>
-                       <item>
-                        <property name="text">
-                         <string>New Item</string>
-                        </property>
-                       </item>
-                      </widget>
-                      <widget class="QLabel" name="label_28">
-                       <property name="geometry">
-                        <rect>
-                         <x>40</x>
-                         <y>250</y>
-                         <width>41</width>
-                         <height>31</height>
-                        </rect>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
-                       </property>
-                      </widget>
-                      <widget class="QPushButton" name="btn_exit_cam_connect">
-                       <property name="geometry">
-                        <rect>
-                         <x>30</x>
-                         <y>300</y>
-                         <width>131</width>
+                         <x>280</x>
+                         <y>280</y>
+                         <width>201</width>
                          <height>41</height>
                         </rect>
                        </property>
@@ -1837,11 +1766,11 @@ QPushButton:pressed{
 }</string>
                        </property>
                        <property name="text">
-                        <string>Connect</string>
+                        <string>Reset</string>
                        </property>
                        <property name="icon">
                         <iconset resource="../resource/asset.qrc">
-                         <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
+                         <normaloff>:/icons/asset/delete.svg</normaloff>:/icons/asset/delete.svg</iconset>
                        </property>
                        <property name="iconSize">
                         <size>
@@ -1862,11 +1791,8 @@ QPushButton:pressed{
                       <zorder>btn_disconnect</zorder>
                       <zorder>comboBox</zorder>
                       <zorder>firstname_24</zorder>
-                      <zorder>btn_exit_cam_disconect</zorder>
-                      <zorder>btn_exit_cam_ip</zorder>
-                      <zorder>exit_comboBox</zorder>
-                      <zorder>label_28</zorder>
-                      <zorder>btn_exit_cam_connect</zorder>
+                      <zorder>btn_open_exit_camera_ui</zorder>
+                      <zorder>btn_clear_label</zorder>
                      </widget>
                     </item>
                    </layout>
@@ -1953,10 +1879,19 @@ QPushButton:pressed{
 }</string>
                          </property>
                          <property name="text">
-                          <string>Image</string>
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                         <property name="buddy">
+                          <cstring></cstring>
                          </property>
                         </widget>
                        </item>
@@ -2024,21 +1959,168 @@ QPushButton:pressed{
                              <enum>QFrame::Raised</enum>
                             </property>
                             <layout class="QGridLayout" name="gridLayout_2">
-                             <property name="leftMargin">
-                              <number>6</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>3</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                             <item row="1" column="0">
+                             <item row="3" column="1">
+                              <widget class="QSlider" name="erosion">
+                               <property name="maximum">
+                                <number>500</number>
+                               </property>
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="4" column="2">
+                              <widget class="QLabel" name="thresh_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="5" column="2">
+                              <widget class="QLabel" name="hsv_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="2">
+                              <widget class="QLabel" name="dilation_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="5" column="0">
+                              <widget class="QLabel" name="entry_unimp_label">
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>HSV</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="5" column="1">
+                              <widget class="QSlider" name="hsv">
+                               <property name="maximum">
+                                <number>500</number>
+                               </property>
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
                               <widget class="QLabel" name="entry_dilation_label">
                                <property name="font">
                                 <font>
                                  <family>Arial</family>
-                                 <pointsize>8</pointsize>
+                                 <pointsize>10</pointsize>
                                  <weight>50</weight>
                                  <bold>false</bold>
                                 </font>
@@ -2058,25 +2140,12 @@ QPushButton:pressed{
                                </property>
                               </widget>
                              </item>
-                             <item row="1" column="1">
-                              <widget class="QSlider" name="dilation">
-                               <property name="toolTip">
-                                <string/>
-                               </property>
-                               <property name="maximum">
-                                <number>500</number>
-                               </property>
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="2" column="0">
+                             <item row="3" column="0">
                               <widget class="QLabel" name="entry_erosion_label">
                                <property name="font">
                                 <font>
                                  <family>Arial</family>
-                                 <pointsize>8</pointsize>
+                                 <pointsize>10</pointsize>
                                  <weight>50</weight>
                                  <bold>false</bold>
                                 </font>
@@ -2096,22 +2165,24 @@ QPushButton:pressed{
                                </property>
                               </widget>
                              </item>
-                             <item row="2" column="1">
-                              <widget class="QSlider" name="erosion">
-                               <property name="maximum">
-                                <number>500</number>
+                             <item row="3" column="2">
+                              <widget class="QLabel" name="erosion_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
                                </property>
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
                                </property>
-                              </widget>
-                             </item>
-                             <item row="3" column="0">
-                              <widget class="QLabel" name="entry_blur_label">
                                <property name="font">
                                 <font>
                                  <family>Arial</family>
-                                 <pointsize>8</pointsize>
+                                 <pointsize>10</pointsize>
                                  <weight>50</weight>
                                  <bold>false</bold>
                                 </font>
@@ -2124,15 +2195,15 @@ QPushButton:pressed{
 }</string>
                                </property>
                                <property name="text">
-                                <string>Blur</string>
+                                <string>0</string>
                                </property>
                                <property name="alignment">
                                 <set>Qt::AlignCenter</set>
                                </property>
                               </widget>
                              </item>
-                             <item row="3" column="1">
-                              <widget class="QSlider" name="blur">
+                             <item row="4" column="1">
+                              <widget class="QSlider" name="threshold">
                                <property name="maximum">
                                 <number>500</number>
                                </property>
@@ -2142,11 +2213,11 @@ QPushButton:pressed{
                               </widget>
                              </item>
                              <item row="4" column="0">
-                              <widget class="QLabel" name="entry_unimp_label">
+                              <widget class="QLabel" name="entry_blur_label">
                                <property name="font">
                                 <font>
                                  <family>Arial</family>
-                                 <pointsize>8</pointsize>
+                                 <pointsize>10</pointsize>
                                  <weight>50</weight>
                                  <bold>false</bold>
                                 </font>
@@ -2159,15 +2230,18 @@ QPushButton:pressed{
 }</string>
                                </property>
                                <property name="text">
-                                <string>Blur</string>
+                                <string>Thresh</string>
                                </property>
                                <property name="alignment">
                                 <set>Qt::AlignCenter</set>
                                </property>
                               </widget>
                              </item>
-                             <item row="4" column="1">
-                              <widget class="QSlider" name="horizontalSlider_4">
+                             <item row="2" column="1">
+                              <widget class="QSlider" name="dilation">
+                               <property name="toolTip">
+                                <string/>
+                               </property>
                                <property name="maximum">
                                 <number>500</number>
                                </property>
@@ -2176,7 +2250,7 @@ QPushButton:pressed{
                                </property>
                               </widget>
                              </item>
-                             <item row="0" column="1">
+                             <item row="1" column="0" colspan="3">
                               <widget class="QLabel" name="label_14">
                                <property name="minimumSize">
                                 <size>
@@ -2226,155 +2300,6 @@ QPushButton:pressed{
                              <enum>QFrame::Raised</enum>
                             </property>
                             <layout class="QGridLayout" name="gridLayout">
-                             <property name="topMargin">
-                              <number>3</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                             <item row="1" column="0">
-                              <widget class="QLabel" name="exit_dilation_label">
-                               <property name="font">
-                                <font>
-                                 <family>Arial</family>
-                                 <pointsize>8</pointsize>
-                                 <weight>50</weight>
-                                 <bold>false</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-}</string>
-                               </property>
-                               <property name="text">
-                                <string>Dilation</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="1" column="1">
-                              <widget class="QSlider" name="exit_cam_dilation">
-                               <property name="toolTip">
-                                <string/>
-                               </property>
-                               <property name="maximum">
-                                <number>500</number>
-                               </property>
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="2" column="0">
-                              <widget class="QLabel" name="exit_erosion_label">
-                               <property name="font">
-                                <font>
-                                 <family>Arial</family>
-                                 <pointsize>8</pointsize>
-                                 <weight>50</weight>
-                                 <bold>false</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-}</string>
-                               </property>
-                               <property name="text">
-                                <string>Erosion</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="2" column="1">
-                              <widget class="QSlider" name="exit_cam_erosion">
-                               <property name="maximum">
-                                <number>500</number>
-                               </property>
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="3" column="0">
-                              <widget class="QLabel" name="exit_blur_label">
-                               <property name="font">
-                                <font>
-                                 <family>Arial</family>
-                                 <pointsize>8</pointsize>
-                                 <weight>50</weight>
-                                 <bold>false</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-}</string>
-                               </property>
-                               <property name="text">
-                                <string>Blur</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="3" column="1">
-                              <widget class="QSlider" name="exit_cam_blur">
-                               <property name="maximum">
-                                <number>500</number>
-                               </property>
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="4" column="0">
-                              <widget class="QLabel" name="exit_umimpl">
-                               <property name="font">
-                                <font>
-                                 <family>Arial</family>
-                                 <pointsize>8</pointsize>
-                                 <weight>50</weight>
-                                 <bold>false</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-}</string>
-                               </property>
-                               <property name="text">
-                                <string>Blur</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                               </property>
-                              </widget>
-                             </item>
-                             <item row="4" column="1">
-                              <widget class="QSlider" name="horizontalSlider_5">
-                               <property name="maximum">
-                                <number>500</number>
-                               </property>
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                              </widget>
-                             </item>
                              <item row="0" column="1">
                               <widget class="QLabel" name="label_18">
                                <property name="minimumSize">
@@ -2399,7 +2324,298 @@ QPushButton:pressed{
                                 <string notr="true"/>
                                </property>
                                <property name="text">
-                                <string>Exit camera image processing enhancement</string>
+                                <string>Bluring Methods</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="0">
+                              <widget class="QLabel" name="exit_dilation_label">
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>AVG</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QSlider" name="average_blur">
+                               <property name="toolTip">
+                                <string/>
+                               </property>
+                               <property name="maximum">
+                                <number>500</number>
+                               </property>
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="1" column="2">
+                              <widget class="QLabel" name="avg_blur_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="0">
+                              <widget class="QLabel" name="exit_erosion_label">
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>GB</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="1">
+                              <widget class="QSlider" name="guassian_blur">
+                               <property name="maximum">
+                                <number>500</number>
+                               </property>
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="2" column="2">
+                              <widget class="QLabel" name="gb_blur_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="0">
+                              <widget class="QLabel" name="exit_blur_label">
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>BB</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="1">
+                              <widget class="QSlider" name="bilateral_blur">
+                               <property name="maximum">
+                                <number>500</number>
+                               </property>
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="3" column="2">
+                              <widget class="QLabel" name="bb_blur_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="4" column="0">
+                              <widget class="QLabel" name="exit_umimpl">
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>Kernel</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="4" column="1">
+                              <widget class="QSlider" name="kernel">
+                               <property name="maximum">
+                                <number>500</number>
+                               </property>
+                               <property name="orientation">
+                                <enum>Qt::Horizontal</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item row="4" column="2">
+                              <widget class="QLabel" name="kernel_value">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>50</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Arial</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+}</string>
+                               </property>
+                               <property name="text">
+                                <string>0</string>
                                </property>
                                <property name="alignment">
                                 <set>Qt::AlignCenter</set>
@@ -3492,307 +3708,13 @@ QPushButton:pressed{
                    <property name="frameShadow">
                     <enum>QFrame::Plain</enum>
                    </property>
-                   <widget class="QPushButton" name="btn_cast">
-                    <property name="geometry">
-                     <rect>
-                      <x>20</x>
-                      <y>690</y>
-                      <width>131</width>
-                      <height>41</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Cast</string>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../resource/asset.qrc">
-                      <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                   <widget class="QPushButton" name="btn_capture">
-                    <property name="geometry">
-                     <rect>
-                      <x>300</x>
-                      <y>690</y>
-                      <width>141</width>
-                      <height>41</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Capture</string>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../resource/asset.qrc">
-                      <normaloff>:/icons/asset/image.svg</normaloff>:/icons/asset/image.svg</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                   <widget class="QPushButton" name="btn_cast_all">
-                    <property name="geometry">
-                     <rect>
-                      <x>160</x>
-                      <y>690</y>
-                      <width>131</width>
-                      <height>41</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Cast all</string>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../resource/asset.qrc">
-                      <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                   <widget class="QLineEdit" name="image_file_name">
-                    <property name="geometry">
-                     <rect>
-                      <x>20</x>
-                      <y>630</y>
-                      <width>201</width>
-                      <height>51</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>Image file name?</string>
-                    </property>
-                    <property name="clearButtonEnabled">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                   <widget class="QLabel" name="label_4">
-                    <property name="geometry">
-                     <rect>
-                      <x>30</x>
-                      <y>640</y>
-                      <width>31</width>
-                      <height>31</height>
-                     </rect>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap resource="../resource/asset.qrc">:/icons/asset/file.svg</pixmap>
-                    </property>
-                   </widget>
-                   <widget class="QLineEdit" name="video_file_name">
-                    <property name="geometry">
-                     <rect>
-                      <x>240</x>
-                      <y>630</y>
-                      <width>201</width>
-                      <height>51</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-                    </property>
-                    <property name="placeholderText">
-                     <string>Video file name?</string>
-                    </property>
-                    <property name="clearButtonEnabled">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                   <widget class="QLabel" name="label_15">
-                    <property name="geometry">
-                     <rect>
-                      <x>250</x>
-                      <y>640</y>
-                      <width>31</width>
-                      <height>31</height>
-                     </rect>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap resource="../resource/asset.qrc">:/icons/asset/file.svg</pixmap>
-                    </property>
-                   </widget>
-                   <widget class="QPushButton" name="btn_capture_video">
-                    <property name="geometry">
-                     <rect>
-                      <x>20</x>
-                      <y>740</y>
-                      <width>131</width>
-                      <height>41</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Capture</string>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="../resource/asset.qrc">
-                      <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                    <property name="flat">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
                    <widget class="QLabel" name="firstname_25">
                     <property name="geometry">
                      <rect>
                       <x>10</x>
                       <y>10</y>
                       <width>441</width>
-                      <height>141</height>
+                      <height>171</height>
                      </rect>
                     </property>
                     <property name="font">
@@ -3809,6 +3731,7 @@ QPushButton:pressed{
 	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
 	padding-left:10px;
+	padding-top:5px;
 }</string>
                     </property>
                     <property name="text">
@@ -3822,7 +3745,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>100</y>
+                      <y>120</y>
                       <width>131</width>
                       <height>41</height>
                      </rect>
@@ -3869,7 +3792,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>160</x>
-                      <y>100</y>
+                      <y>120</y>
                       <width>141</width>
                       <height>41</height>
                      </rect>
@@ -3915,22 +3838,22 @@ QPushButton:pressed{
                    <widget class="QComboBox" name="camera_one_comboBox">
                     <property name="geometry">
                      <rect>
-                      <x>310</x>
-                      <y>100</y>
-                      <width>131</width>
-                      <height>38</height>
+                      <x>330</x>
+                      <y>50</y>
+                      <width>111</width>
+                      <height>50</height>
                      </rect>
                     </property>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>38</height>
+                      <height>50</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
                       <width>16777215</width>
-                      <height>38</height>
+                      <height>50</height>
                      </size>
                     </property>
                     <property name="font">
@@ -3943,7 +3866,7 @@ QPushButton:pressed{
 	color: rgb(255, 255, 255);
 	border: 2px solid rgb(45, 45, 45);
 	padding-left:10px;
-	border-radius: 5px;
+	border-radius: 10px;
 }</string>
                     </property>
                     <property name="frame">
@@ -3951,7 +3874,32 @@ QPushButton:pressed{
                     </property>
                     <item>
                      <property name="text">
-                      <string>New Item</string>
+                      <string>0</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>2</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>3</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>4</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>5</string>
                      </property>
                     </item>
                    </widget>
@@ -3959,8 +3907,8 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>40</y>
-                      <width>421</width>
+                      <y>50</y>
+                      <width>301</width>
                       <height>51</height>
                      </rect>
                     </property>
@@ -3996,7 +3944,7 @@ QLineEdit:focus{
                     <property name="geometry">
                      <rect>
                       <x>30</x>
-                      <y>50</y>
+                      <y>60</y>
                       <width>41</width>
                       <height>31</height>
                      </rect>
@@ -4012,7 +3960,7 @@ QLineEdit:focus{
                     <property name="geometry">
                      <rect>
                       <x>160</x>
-                      <y>250</y>
+                      <y>330</y>
                       <width>141</width>
                       <height>41</height>
                      </rect>
@@ -4055,55 +4003,12 @@ QPushButton:pressed{
                      <bool>true</bool>
                     </property>
                    </widget>
-                   <widget class="QComboBox" name="camera_two_comboBox">
-                    <property name="geometry">
-                     <rect>
-                      <x>310</x>
-                      <y>250</y>
-                      <width>131</width>
-                      <height>38</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 5px;
-}</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>New Item</string>
-                     </property>
-                    </item>
-                   </widget>
                    <widget class="QLineEdit" name="camera_two_id_ip">
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>190</y>
-                      <width>421</width>
+                      <y>260</y>
+                      <width>301</width>
                       <height>51</height>
                      </rect>
                     </property>
@@ -4139,7 +4044,7 @@ QLineEdit:focus{
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>250</y>
+                      <y>330</y>
                       <width>131</width>
                       <height>41</height>
                      </rect>
@@ -4186,9 +4091,9 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>160</y>
+                      <y>220</y>
                       <width>441</width>
-                      <height>141</height>
+                      <height>171</height>
                      </rect>
                     </property>
                     <property name="font">
@@ -4205,6 +4110,7 @@ QPushButton:pressed{
 	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
 	padding-left:10px;
+	padding-top:5px;
 }</string>
                     </property>
                     <property name="text">
@@ -4218,7 +4124,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>30</x>
-                      <y>200</y>
+                      <y>270</y>
                       <width>41</width>
                       <height>31</height>
                      </rect>
@@ -4234,7 +4140,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>160</x>
-                      <y>400</y>
+                      <y>540</y>
                       <width>141</width>
                       <height>41</height>
                      </rect>
@@ -4277,55 +4183,12 @@ QPushButton:pressed{
                      <bool>true</bool>
                     </property>
                    </widget>
-                   <widget class="QComboBox" name="camera_three_comboBox">
-                    <property name="geometry">
-                     <rect>
-                      <x>310</x>
-                      <y>400</y>
-                      <width>131</width>
-                      <height>38</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 5px;
-}</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>New Item</string>
-                     </property>
-                    </item>
-                   </widget>
                    <widget class="QLineEdit" name="camera_three_id_ip">
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>340</y>
-                      <width>421</width>
+                      <y>470</y>
+                      <width>301</width>
                       <height>51</height>
                      </rect>
                     </property>
@@ -4361,7 +4224,7 @@ QLineEdit:focus{
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>400</y>
+                      <y>540</y>
                       <width>131</width>
                       <height>41</height>
                      </rect>
@@ -4408,9 +4271,9 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>310</y>
+                      <y>430</y>
                       <width>441</width>
-                      <height>141</height>
+                      <height>171</height>
                      </rect>
                     </property>
                     <property name="font">
@@ -4427,6 +4290,7 @@ QPushButton:pressed{
 	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
 	padding-left:10px;
+	padding-top:5px;
 }</string>
                     </property>
                     <property name="text">
@@ -4440,7 +4304,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>30</x>
-                      <y>350</y>
+                      <y>480</y>
                       <width>41</width>
                       <height>31</height>
                      </rect>
@@ -4456,7 +4320,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>160</x>
-                      <y>550</y>
+                      <y>750</y>
                       <width>141</width>
                       <height>41</height>
                      </rect>
@@ -4499,55 +4363,12 @@ QPushButton:pressed{
                      <bool>true</bool>
                     </property>
                    </widget>
-                   <widget class="QComboBox" name="camera_four_comboBox">
-                    <property name="geometry">
-                     <rect>
-                      <x>310</x>
-                      <y>550</y>
-                      <width>131</width>
-                      <height>38</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 5px;
-}</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>New Item</string>
-                     </property>
-                    </item>
-                   </widget>
                    <widget class="QLineEdit" name="camera_four_id_ip">
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>490</y>
-                      <width>421</width>
+                      <y>680</y>
+                      <width>301</width>
                       <height>51</height>
                      </rect>
                     </property>
@@ -4583,7 +4404,7 @@ QLineEdit:focus{
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>550</y>
+                      <y>750</y>
                       <width>131</width>
                       <height>41</height>
                      </rect>
@@ -4630,55 +4451,7 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>460</y>
-                      <width>441</width>
-                      <height>141</height>
-                     </rect>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>Arial</family>
-                      <pointsize>10</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-	padding-left:10px;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Camera four</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                    </property>
-                   </widget>
-                   <widget class="QLabel" name="label_34">
-                    <property name="geometry">
-                     <rect>
-                      <x>30</x>
-                      <y>500</y>
-                      <width>41</width>
-                      <height>31</height>
-                     </rect>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="pixmap">
-                     <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
-                    </property>
-                   </widget>
-                   <widget class="QLabel" name="firstname_29">
-                    <property name="geometry">
-                     <rect>
-                      <x>10</x>
-                      <y>620</y>
+                      <y>640</y>
                       <width>441</width>
                       <height>171</height>
                      </rect>
@@ -4697,22 +4470,39 @@ QPushButton:pressed{
 	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
 	padding-left:10px;
+	padding-top:5px;
 }</string>
+                    </property>
+                    <property name="text">
+                     <string>Camera four</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_34">
+                    <property name="geometry">
+                     <rect>
+                      <x>30</x>
+                      <y>690</y>
+                      <width>41</width>
+                      <height>31</height>
+                     </rect>
                     </property>
                     <property name="text">
                      <string/>
                     </property>
-                    <property name="alignment">
-                     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                    <property name="pixmap">
+                     <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
                     </property>
                    </widget>
                    <widget class="QLabel" name="notification">
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>810</y>
+                      <y>840</y>
                       <width>441</width>
-                      <height>131</height>
+                      <height>101</height>
                      </rect>
                     </property>
                     <property name="font">
@@ -4738,69 +4528,11 @@ QPushButton:pressed{
                      <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
-                   <widget class="QComboBox" name="camera_four_comboBox_2">
+                   <widget class="QPushButton" name="btn_cast_cam_one">
                     <property name="geometry">
                      <rect>
-                      <x>300</x>
-                      <y>740</y>
-                      <width>141</width>
-                      <height>38</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>38</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 5px;
-}</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <item>
-                     <property name="text">
-                      <string>1</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>2</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>3</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>4</string>
-                     </property>
-                    </item>
-                   </widget>
-                   <widget class="QPushButton" name="btn_capture_video_2">
-                    <property name="geometry">
-                     <rect>
-                      <x>160</x>
-                      <y>740</y>
+                      <x>310</x>
+                      <y>120</y>
                       <width>131</width>
                       <height>41</height>
                      </rect>
@@ -4827,11 +4559,11 @@ QPushButton:pressed{
 }</string>
                     </property>
                     <property name="text">
-                     <string>Close all</string>
+                     <string>Cast</string>
                     </property>
                     <property name="icon">
                      <iconset resource="../resource/asset.qrc">
-                      <normaloff>:/icons/asset/video-off.svg</normaloff>:/icons/asset/video-off.svg</iconset>
+                      <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -4843,18 +4575,354 @@ QPushButton:pressed{
                      <bool>true</bool>
                     </property>
                    </widget>
-                   <zorder>firstname_29</zorder>
+                   <widget class="QComboBox" name="camera_two_comboBox">
+                    <property name="geometry">
+                     <rect>
+                      <x>330</x>
+                      <y>260</y>
+                      <width>111</width>
+                      <height>50</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}</string>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>0</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>2</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>3</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>4</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>5</string>
+                     </property>
+                    </item>
+                   </widget>
+                   <widget class="QPushButton" name="btn_cast_cam_one_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>310</x>
+                      <y>330</y>
+                      <width>131</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Cast</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resource/asset.qrc">
+                      <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QComboBox" name="camera_three_comboBox">
+                    <property name="geometry">
+                     <rect>
+                      <x>330</x>
+                      <y>470</y>
+                      <width>111</width>
+                      <height>50</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}</string>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>0</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>2</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>3</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>4</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>5</string>
+                     </property>
+                    </item>
+                   </widget>
+                   <widget class="QPushButton" name="btn_cast_cam_three">
+                    <property name="geometry">
+                     <rect>
+                      <x>310</x>
+                      <y>540</y>
+                      <width>131</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Cast</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resource/asset.qrc">
+                      <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                   <widget class="QComboBox" name="camera_four_comboBox">
+                    <property name="geometry">
+                     <rect>
+                      <x>330</x>
+                      <y>680</y>
+                      <width>111</width>
+                      <height>50</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>50</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}</string>
+                    </property>
+                    <property name="frame">
+                     <bool>false</bool>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>0</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>1</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>2</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>3</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>4</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>5</string>
+                     </property>
+                    </item>
+                   </widget>
+                   <widget class="QPushButton" name="btn_cast_cam_four">
+                    <property name="geometry">
+                     <rect>
+                      <x>310</x>
+                      <y>750</y>
+                      <width>131</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Cast</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resource/asset.qrc">
+                      <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>30</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
                    <zorder>firstname_28</zorder>
                    <zorder>firstname_27</zorder>
                    <zorder>firstname_26</zorder>
-                   <zorder>btn_cast</zorder>
-                   <zorder>btn_capture</zorder>
-                   <zorder>btn_cast_all</zorder>
-                   <zorder>image_file_name</zorder>
-                   <zorder>label_4</zorder>
-                   <zorder>video_file_name</zorder>
-                   <zorder>label_15</zorder>
-                   <zorder>btn_capture_video</zorder>
                    <zorder>firstname_25</zorder>
                    <zorder>btn_camera_one_connect</zorder>
                    <zorder>btn_camera_one_disconnect</zorder>
@@ -4862,23 +4930,25 @@ QPushButton:pressed{
                    <zorder>camera_one_id_ip</zorder>
                    <zorder>label_31</zorder>
                    <zorder>btn_camera_two_disconnect</zorder>
-                   <zorder>camera_two_comboBox</zorder>
                    <zorder>camera_two_id_ip</zorder>
                    <zorder>btn_camera_two_connect</zorder>
                    <zorder>label_32</zorder>
                    <zorder>btn_camera_three_disconnect</zorder>
-                   <zorder>camera_three_comboBox</zorder>
                    <zorder>camera_three_id_ip</zorder>
                    <zorder>btn_camera_three_connect</zorder>
                    <zorder>label_33</zorder>
                    <zorder>btn_camera_four_disconnect</zorder>
-                   <zorder>camera_four_comboBox</zorder>
                    <zorder>camera_four_id_ip</zorder>
                    <zorder>btn_camera_four_connect</zorder>
                    <zorder>label_34</zorder>
                    <zorder>notification</zorder>
-                   <zorder>camera_four_comboBox_2</zorder>
-                   <zorder>btn_capture_video_2</zorder>
+                   <zorder>btn_cast_cam_one</zorder>
+                   <zorder>camera_two_comboBox</zorder>
+                   <zorder>btn_cast_cam_one_2</zorder>
+                   <zorder>camera_three_comboBox</zorder>
+                   <zorder>btn_cast_cam_three</zorder>
+                   <zorder>camera_four_comboBox</zorder>
+                   <zorder>btn_cast_cam_four</zorder>
                   </widget>
                  </item>
                  <item>
@@ -4932,7 +5002,10 @@ QPushButton:pressed{
 }</string>
                          </property>
                          <property name="text">
-                          <string>Camera_1</string>
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
@@ -4957,7 +5030,10 @@ QPushButton:pressed{
 }</string>
                          </property>
                          <property name="text">
-                          <string>Camera_2</string>
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
@@ -4994,7 +5070,10 @@ QPushButton:pressed{
 }</string>
                          </property>
                          <property name="text">
-                          <string>Camera_3</string>
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
@@ -5019,7 +5098,10 @@ QPushButton:pressed{
 }</string>
                          </property>
                          <property name="text">
-                          <string>Camera_4</string>
+                          <string/>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
@@ -7775,9 +7857,9 @@ QPushButton:pressed{
                     <property name="geometry">
                      <rect>
                       <x>0</x>
-                      <y>20</y>
+                      <y>10</y>
                       <width>701</width>
-                      <height>191</height>
+                      <height>201</height>
                      </rect>
                     </property>
                     <property name="font">
