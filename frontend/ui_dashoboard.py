@@ -1,25 +1,30 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardYnEAIx.ui'
+## Form generated from reading UI file 'dashoboard.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.1
+## Created by: Qt User Interface Compiler version 6.3.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
-from PySide2.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QCalendarWidget, QComboBox, QFrame,
+    QGridLayout, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QRadioButton,
+    QSizePolicy, QSlider, QStackedWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 import asset_rc
 
 class Ui_dashboard(object):
     def setupUi(self, dashboard):
-        if dashboard.objectName():
+        if not dashboard.objectName():
             dashboard.setObjectName(u"dashboard")
         dashboard.resize(1500, 1000)
         dashboard.setMinimumSize(QSize(1500, 1000))
@@ -73,10 +78,9 @@ class Ui_dashboard(object):
         self.label = QLabel(self.logo)
         self.label.setObjectName(u"label")
         font = QFont()
-        font.setFamily(u"Times New Roman")
+        font.setFamilies([u"Times New Roman"])
         font.setPointSize(14)
         font.setBold(True)
-        font.setWeight(75)
         self.label.setFont(font)
         self.label.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "padding-left:5px;")
@@ -381,10 +385,9 @@ class Ui_dashboard(object):
         self.image.setObjectName(u"image")
         self.image.setGeometry(QRect(20, 20, 261, 291))
         font1 = QFont()
-        font1.setFamily(u"Arial")
+        font1.setFamilies([u"Arial"])
         font1.setPointSize(14)
         font1.setBold(False)
-        font1.setWeight(50)
         self.image.setFont(font1)
         self.image.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -396,10 +399,9 @@ class Ui_dashboard(object):
         self.firstname.setObjectName(u"firstname")
         self.firstname.setGeometry(QRect(290, 20, 201, 41))
         font2 = QFont()
-        font2.setFamily(u"Arial")
+        font2.setFamilies([u"Arial"])
         font2.setPointSize(11)
         font2.setBold(False)
-        font2.setWeight(50)
         self.firstname.setFont(font2)
         self.firstname.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -547,10 +549,9 @@ class Ui_dashboard(object):
         self.label_notification.setObjectName(u"label_notification")
         self.label_notification.setGeometry(QRect(20, 360, 471, 101))
         font3 = QFont()
-        font3.setFamily(u"Arial")
+        font3.setFamilies([u"Arial"])
         font3.setPointSize(11)
         font3.setBold(True)
-        font3.setWeight(75)
         self.label_notification.setFont(font3)
         self.label_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -573,7 +574,7 @@ class Ui_dashboard(object):
         self.face_auth = QRadioButton(self.date_frame_2)
         self.face_auth.setObjectName(u"face_auth")
         font4 = QFont()
-        font4.setFamily(u"Arial")
+        font4.setFamilies([u"Arial"])
         font4.setPointSize(10)
         self.face_auth.setFont(font4)
         self.face_auth.setStyleSheet(u"QRadioButton{\n"
@@ -700,10 +701,9 @@ class Ui_dashboard(object):
         self.firstname_23.setObjectName(u"firstname_23")
         self.firstname_23.setGeometry(QRect(20, 60, 471, 141))
         font6 = QFont()
-        font6.setFamily(u"Arial")
+        font6.setFamilies([u"Arial"])
         font6.setPointSize(10)
         font6.setBold(False)
-        font6.setWeight(50)
         self.firstname_23.setFont(font6)
         self.firstname_23.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -887,10 +887,9 @@ class Ui_dashboard(object):
         self.entry_dilation_label = QLabel(self.frame_4)
         self.entry_dilation_label.setObjectName(u"entry_dilation_label")
         font7 = QFont()
-        font7.setFamily(u"Arial")
+        font7.setFamilies([u"Arial"])
         font7.setPointSize(8)
         font7.setBold(False)
-        font7.setWeight(50)
         self.entry_dilation_label.setFont(font7)
         self.entry_dilation_label.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2134,10 +2133,9 @@ class Ui_dashboard(object):
         self.camera_1 = QLabel(self.camera_down)
         self.camera_1.setObjectName(u"camera_1")
         font8 = QFont()
-        font8.setFamily(u"Arial")
+        font8.setFamilies([u"Arial"])
         font8.setPointSize(20)
         font8.setBold(True)
-        font8.setWeight(75)
         self.camera_1.setFont(font8)
         self.camera_1.setStyleSheet(u"QLabel{\n"
 "	background-color: rgb(35, 35, 35);\n"
@@ -2216,10 +2214,9 @@ class Ui_dashboard(object):
         self.reg_image.setObjectName(u"reg_image")
         self.reg_image.setGeometry(QRect(40, 130, 291, 291))
         font9 = QFont()
-        font9.setFamily(u"Arial")
+        font9.setFamilies([u"Arial"])
         font9.setPointSize(14)
         font9.setBold(True)
-        font9.setWeight(75)
         self.reg_image.setFont(font9)
         self.reg_image.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2964,10 +2961,9 @@ class Ui_dashboard(object):
         self.reg_show_biometric_data.setObjectName(u"reg_show_biometric_data")
         self.reg_show_biometric_data.setGeometry(QRect(10, 10, 201, 211))
         font10 = QFont()
-        font10.setFamily(u"Arial")
+        font10.setFamilies([u"Arial"])
         font10.setPointSize(10)
         font10.setBold(True)
-        font10.setWeight(75)
         self.reg_show_biometric_data.setFont(font10)
         self.reg_show_biometric_data.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"

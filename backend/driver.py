@@ -7,6 +7,7 @@
 ################################################################################
 
 from ast import Lambda
+from opcode import stack_effect
 import sys
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -19,6 +20,7 @@ from PySide2.QtWidgets import *
 
 from ui_launcher import Ui_MainWindow
 from ui_dashoboard import Ui_dashboard
+from pages import *
 
 
 ## ==> GLOBALS
@@ -37,13 +39,17 @@ class MainWindow(QMainWindow):
         self.ui.btn_minimize.clicked.connect(self.showMinimized)
         self.ui.btn_maximize.clicked.connect(self.maximize_restore)
 
+        qtRectangle = self.frameGeometry()
+        centerPoint =QDesktopWidget().availableGeometry().center()
+        qtRectangle.moveCenter(centerPoint)
+        self.move(qtRectangle.topLeft())
+
         self.ui.btn_home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home))
         self.ui.btn_search.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.search))
         self.ui.btn_camera.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.camera))
         self.ui.btn_database.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.database))
         self.ui.btn_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.report))
-        self.ui.btn_settings.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
-
+        self.ui.btn_help.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
 
         for w in self.ui.frame.findChildren(QPushButton):
             w.clicked.connect(self.applyStyle)
