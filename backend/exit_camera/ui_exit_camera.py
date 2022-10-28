@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'exit_cameraVRqFQF.ui'
+## Form generated from reading UI file 'exit_cameraFMxOxx.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,9 +21,9 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(1098, 880)
-        Dialog.setMinimumSize(QSize(1098, 819))
-        Dialog.setMaximumSize(QSize(1098, 880))
+        Dialog.resize(1098, 900)
+        Dialog.setMinimumSize(QSize(1098, 900))
+        Dialog.setMaximumSize(QSize(1098, 900))
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame = QFrame(Dialog)
@@ -133,6 +133,7 @@ class Ui_Dialog(object):
 
         self.frame_4 = QFrame(self.frame_2)
         self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMaximumSize(QSize(16777215, 600))
         self.frame_4.setFrameShape(QFrame.NoFrame)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame_4)
@@ -140,6 +141,8 @@ class Ui_Dialog(object):
         self.verticalLayout_3.setContentsMargins(9, 0, 9, 0)
         self.camera_view = QFrame(self.frame_4)
         self.camera_view.setObjectName(u"camera_view")
+        self.camera_view.setMinimumSize(QSize(0, 600))
+        self.camera_view.setMaximumSize(QSize(16777215, 600))
         self.camera_view.setStyleSheet(u"QFrame{\n"
 "	border-radius:10px;\n"
 "	background-color: rgb(45, 45, 45);\n"
@@ -152,6 +155,8 @@ class Ui_Dialog(object):
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.camera_feeds = QLabel(self.camera_view)
         self.camera_feeds.setObjectName(u"camera_feeds")
+        self.camera_feeds.setMinimumSize(QSize(0, 600))
+        self.camera_feeds.setMaximumSize(QSize(16777215, 600))
         font1 = QFont()
         font1.setFamily(u"Arial")
         font1.setPointSize(12)
@@ -174,13 +179,14 @@ class Ui_Dialog(object):
 
         self.frame_5 = QFrame(self.frame_2)
         self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMaximumSize(QSize(16777215, 200))
+        self.frame_5.setMaximumSize(QSize(16777215, 250))
         self.frame_5.setFrameShape(QFrame.NoFrame)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.frame_6 = QFrame(self.frame_5)
         self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setMaximumSize(QSize(535, 16777215))
         self.frame_6.setStyleSheet(u"\n"
 "QFrame{\n"
 "	background-color: rgb(45, 45, 45);\n"
@@ -190,7 +196,7 @@ class Ui_Dialog(object):
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.btn_exit_cam_connect = QPushButton(self.frame_6)
         self.btn_exit_cam_connect.setObjectName(u"btn_exit_cam_connect")
-        self.btn_exit_cam_connect.setGeometry(QRect(10, 130, 141, 41))
+        self.btn_exit_cam_connect.setGeometry(QRect(10, 70, 141, 41))
         font2 = QFont()
         font2.setPointSize(10)
         self.btn_exit_cam_connect.setFont(font2)
@@ -215,7 +221,7 @@ class Ui_Dialog(object):
         self.btn_exit_cam_connect.setFlat(True)
         self.btn_exit_cam_disconect = QPushButton(self.frame_6)
         self.btn_exit_cam_disconect.setObjectName(u"btn_exit_cam_disconect")
-        self.btn_exit_cam_disconect.setGeometry(QRect(170, 130, 151, 41))
+        self.btn_exit_cam_disconect.setGeometry(QRect(170, 70, 151, 41))
         self.btn_exit_cam_disconect.setFont(font2)
         self.btn_exit_cam_disconect.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -244,7 +250,7 @@ class Ui_Dialog(object):
         self.exit_comboBox.addItem("")
         self.exit_comboBox.addItem("")
         self.exit_comboBox.setObjectName(u"exit_comboBox")
-        self.exit_comboBox.setGeometry(QRect(340, 130, 181, 41))
+        self.exit_comboBox.setGeometry(QRect(340, 70, 181, 41))
         self.exit_comboBox.setMinimumSize(QSize(0, 41))
         self.exit_comboBox.setMaximumSize(QSize(16777215, 41))
         self.exit_comboBox.setFont(font2)
@@ -258,12 +264,12 @@ class Ui_Dialog(object):
         self.exit_comboBox.setFrame(False)
         self.label_28 = QLabel(self.frame_6)
         self.label_28.setObjectName(u"label_28")
-        self.label_28.setGeometry(QRect(20, 80, 41, 31))
+        self.label_28.setGeometry(QRect(20, 20, 41, 31))
         self.label_28.setStyleSheet(u"background-color: rgb(35,35,35);")
         self.label_28.setPixmap(QPixmap(u":/icons/asset/video.svg"))
         self.exit_cam_ip = QLineEdit(self.frame_6)
         self.exit_cam_ip.setObjectName(u"exit_cam_ip")
-        self.exit_cam_ip.setGeometry(QRect(10, 70, 511, 51))
+        self.exit_cam_ip.setGeometry(QRect(10, 10, 511, 51))
         self.exit_cam_ip.setFont(font2)
         self.exit_cam_ip.setStyleSheet(u"QLineEdit{\n"
 "    background-color: rgb(35,35,35);\n"
@@ -281,64 +287,27 @@ class Ui_Dialog(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.exit_cam_ip.setClearButtonEnabled(True)
-        self.date_frame_2 = QFrame(self.frame_6)
-        self.date_frame_2.setObjectName(u"date_frame_2")
-        self.date_frame_2.setGeometry(QRect(10, 20, 505, 41))
-        self.date_frame_2.setMinimumSize(QSize(505, 0))
-        self.date_frame_2.setMaximumSize(QSize(450, 16777215))
-        self.date_frame_2.setStyleSheet(u"QFrame{\n"
+        self.label_notification = QLabel(self.frame_6)
+        self.label_notification.setObjectName(u"label_notification")
+        self.label_notification.setGeometry(QRect(10, 120, 511, 71))
+        font3 = QFont()
+        font3.setFamily(u"Arial")
+        font3.setPointSize(11)
+        font3.setBold(True)
+        font3.setWeight(75)
+        self.label_notification.setFont(font3)
+        self.label_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(35, 35, 35);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.date_frame_2.setFrameShape(QFrame.StyledPanel)
-        self.date_frame_2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_13 = QHBoxLayout(self.date_frame_2)
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.face_auth = QRadioButton(self.date_frame_2)
-        self.face_auth.setObjectName(u"face_auth")
-        self.face_auth.setFont(font)
-        self.face_auth.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	color: rgb(255, 255, 255);\n"
-"}")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/asset/user-check.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.face_auth.setIcon(icon2)
-        self.face_auth.setChecked(True)
-
-        self.horizontalLayout_13.addWidget(self.face_auth)
-
-        self.qr_code_auth = QRadioButton(self.date_frame_2)
-        self.qr_code_auth.setObjectName(u"qr_code_auth")
-        self.qr_code_auth.setFont(font)
-        self.qr_code_auth.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	color: rgb(255, 255, 255);\n"
-"}")
-        self.qr_code_auth.setIcon(icon2)
-        self.qr_code_auth.setChecked(False)
-
-        self.horizontalLayout_13.addWidget(self.qr_code_auth)
-
-        self.biometric_auth = QRadioButton(self.date_frame_2)
-        self.biometric_auth.setObjectName(u"biometric_auth")
-        self.biometric_auth.setFont(font)
-        self.biometric_auth.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	color: rgb(255, 255, 255);\n"
-"}")
-        self.biometric_auth.setIcon(icon2)
-        self.biometric_auth.setChecked(False)
-
-        self.horizontalLayout_13.addWidget(self.biometric_auth)
-
+        self.label_notification.setAlignment(Qt.AlignCenter)
         self.btn_exit_cam_connect.raise_()
         self.btn_exit_cam_disconect.raise_()
         self.exit_comboBox.raise_()
         self.exit_cam_ip.raise_()
         self.label_28.raise_()
-        self.date_frame_2.raise_()
+        self.label_notification.raise_()
 
         self.horizontalLayout_2.addWidget(self.frame_6)
 
@@ -353,6 +322,65 @@ class Ui_Dialog(object):
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(self.frame_7)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setVerticalSpacing(9)
+        self.entry_blur_label = QLabel(self.frame_7)
+        self.entry_blur_label.setObjectName(u"entry_blur_label")
+        font4 = QFont()
+        font4.setFamily(u"Arial")
+        font4.setPointSize(10)
+        font4.setBold(False)
+        font4.setWeight(50)
+        self.entry_blur_label.setFont(font4)
+        self.entry_blur_label.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border-radius: 10px;\n"
+"}")
+        self.entry_blur_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.entry_blur_label, 3, 0, 1, 1)
+
+        self.contrast = QSlider(self.frame_7)
+        self.contrast.setObjectName(u"contrast")
+        self.contrast.setMaximum(100)
+        self.contrast.setValue(60)
+        self.contrast.setOrientation(Qt.Horizontal)
+
+        self.gridLayout.addWidget(self.contrast, 3, 1, 1, 1)
+
+        self.sharpness_value = QLabel(self.frame_7)
+        self.sharpness_value.setObjectName(u"sharpness_value")
+        self.sharpness_value.setMinimumSize(QSize(50, 0))
+        self.sharpness_value.setFont(font4)
+        self.sharpness_value.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border-radius: 10px;\n"
+"}")
+        self.sharpness_value.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.sharpness_value, 2, 2, 1, 1)
+
+        self.entry_dilation_label = QLabel(self.frame_7)
+        self.entry_dilation_label.setObjectName(u"entry_dilation_label")
+        self.entry_dilation_label.setFont(font4)
+        self.entry_dilation_label.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border-radius: 10px;\n"
+"}")
+        self.entry_dilation_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.entry_dilation_label, 1, 0, 1, 1)
+
+        self.sharpness = QSlider(self.frame_7)
+        self.sharpness.setObjectName(u"sharpness")
+        self.sharpness.setMaximum(100)
+        self.sharpness.setValue(50)
+        self.sharpness.setOrientation(Qt.Horizontal)
+
+        self.gridLayout.addWidget(self.sharpness, 2, 1, 1, 1)
+
         self.label_14 = QLabel(self.frame_7)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setMinimumSize(QSize(0, 20))
@@ -363,46 +391,43 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.label_14, 0, 0, 1, 2)
 
-        self.entry_dilation_label = QLabel(self.frame_7)
-        self.entry_dilation_label.setObjectName(u"entry_dilation_label")
-        font3 = QFont()
-        font3.setFamily(u"Arial")
-        font3.setPointSize(10)
-        font3.setBold(False)
-        font3.setWeight(50)
-        self.entry_dilation_label.setFont(font3)
-        self.entry_dilation_label.setStyleSheet(u"QLabel{\n"
+        self.brigthness = QSlider(self.frame_7)
+        self.brigthness.setObjectName(u"brigthness")
+        self.brigthness.setMaximum(100)
+        self.brigthness.setValue(30)
+        self.brigthness.setOrientation(Qt.Horizontal)
+
+        self.gridLayout.addWidget(self.brigthness, 1, 1, 1, 1)
+
+        self.brigthness_value = QLabel(self.frame_7)
+        self.brigthness_value.setObjectName(u"brigthness_value")
+        self.brigthness_value.setMinimumSize(QSize(50, 0))
+        self.brigthness_value.setFont(font4)
+        self.brigthness_value.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.entry_dilation_label.setAlignment(Qt.AlignCenter)
+        self.brigthness_value.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.entry_dilation_label, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.brigthness_value, 1, 2, 1, 1)
 
-        self.dilation = QSlider(self.frame_7)
-        self.dilation.setObjectName(u"dilation")
-        self.dilation.setMaximum(500)
-        self.dilation.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.dilation, 1, 1, 1, 1)
-
-        self.dilation_value = QLabel(self.frame_7)
-        self.dilation_value.setObjectName(u"dilation_value")
-        self.dilation_value.setMinimumSize(QSize(50, 0))
-        self.dilation_value.setFont(font3)
-        self.dilation_value.setStyleSheet(u"QLabel{\n"
+        self.contrast_value = QLabel(self.frame_7)
+        self.contrast_value.setObjectName(u"contrast_value")
+        self.contrast_value.setMinimumSize(QSize(50, 0))
+        self.contrast_value.setFont(font4)
+        self.contrast_value.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.dilation_value.setAlignment(Qt.AlignCenter)
+        self.contrast_value.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.dilation_value, 1, 2, 1, 1)
+        self.gridLayout.addWidget(self.contrast_value, 3, 2, 1, 1)
 
         self.entry_erosion_label = QLabel(self.frame_7)
         self.entry_erosion_label.setObjectName(u"entry_erosion_label")
-        self.entry_erosion_label.setFont(font3)
+        self.entry_erosion_label.setFont(font4)
         self.entry_erosion_label.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
@@ -411,90 +436,6 @@ class Ui_Dialog(object):
         self.entry_erosion_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.entry_erosion_label, 2, 0, 1, 1)
-
-        self.erosion = QSlider(self.frame_7)
-        self.erosion.setObjectName(u"erosion")
-        self.erosion.setMaximum(500)
-        self.erosion.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.erosion, 2, 1, 1, 1)
-
-        self.erosion_value = QLabel(self.frame_7)
-        self.erosion_value.setObjectName(u"erosion_value")
-        self.erosion_value.setMinimumSize(QSize(50, 0))
-        self.erosion_value.setFont(font3)
-        self.erosion_value.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.erosion_value.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.erosion_value, 2, 2, 1, 1)
-
-        self.entry_blur_label = QLabel(self.frame_7)
-        self.entry_blur_label.setObjectName(u"entry_blur_label")
-        self.entry_blur_label.setFont(font3)
-        self.entry_blur_label.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.entry_blur_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.entry_blur_label, 3, 0, 1, 1)
-
-        self.blur = QSlider(self.frame_7)
-        self.blur.setObjectName(u"blur")
-        self.blur.setMaximum(500)
-        self.blur.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.blur, 3, 1, 1, 1)
-
-        self.blur_value = QLabel(self.frame_7)
-        self.blur_value.setObjectName(u"blur_value")
-        self.blur_value.setMinimumSize(QSize(50, 0))
-        self.blur_value.setFont(font3)
-        self.blur_value.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.blur_value.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.blur_value, 3, 2, 1, 1)
-
-        self.entry_unimp_label = QLabel(self.frame_7)
-        self.entry_unimp_label.setObjectName(u"entry_unimp_label")
-        self.entry_unimp_label.setFont(font3)
-        self.entry_unimp_label.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.entry_unimp_label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.entry_unimp_label, 4, 0, 1, 1)
-
-        self.hsv = QSlider(self.frame_7)
-        self.hsv.setObjectName(u"hsv")
-        self.hsv.setMaximum(500)
-        self.hsv.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.hsv, 4, 1, 1, 1)
-
-        self.hsv_value = QLabel(self.frame_7)
-        self.hsv_value.setObjectName(u"hsv_value")
-        self.hsv_value.setMinimumSize(QSize(50, 0))
-        self.hsv_value.setFont(font3)
-        self.hsv_value.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.hsv_value.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.hsv_value, 4, 2, 1, 1)
 
 
         self.horizontalLayout_2.addWidget(self.frame_7)
@@ -533,20 +474,16 @@ class Ui_Dialog(object):
 
         self.label_28.setText("")
         self.exit_cam_ip.setPlaceholderText(QCoreApplication.translate("Dialog", u"Camera Id/IP ?", None))
-        self.face_auth.setText(QCoreApplication.translate("Dialog", u"Face Authentication", None))
-        self.qr_code_auth.setText(QCoreApplication.translate("Dialog", u"QR Code", None))
-        self.biometric_auth.setText(QCoreApplication.translate("Dialog", u"Biometric ", None))
-        self.label_14.setText(QCoreApplication.translate("Dialog", u"Entry camera image processing enhancement", None))
-        self.entry_dilation_label.setText(QCoreApplication.translate("Dialog", u"Dilation", None))
+        self.label_notification.setText(QCoreApplication.translate("Dialog", u"Notification", None))
+        self.entry_blur_label.setText(QCoreApplication.translate("Dialog", u"Contrast", None))
+        self.sharpness_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.entry_dilation_label.setText(QCoreApplication.translate("Dialog", u"Brigthness", None))
+        self.label_14.setText(QCoreApplication.translate("Dialog", u"Image enhancement", None))
 #if QT_CONFIG(tooltip)
-        self.dilation.setToolTip("")
+        self.brigthness.setToolTip("")
 #endif // QT_CONFIG(tooltip)
-        self.dilation_value.setText(QCoreApplication.translate("Dialog", u"0", None))
-        self.entry_erosion_label.setText(QCoreApplication.translate("Dialog", u"Erosion", None))
-        self.erosion_value.setText(QCoreApplication.translate("Dialog", u"0", None))
-        self.entry_blur_label.setText(QCoreApplication.translate("Dialog", u"Blur", None))
-        self.blur_value.setText(QCoreApplication.translate("Dialog", u"0", None))
-        self.entry_unimp_label.setText(QCoreApplication.translate("Dialog", u"HSV", None))
-        self.hsv_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.brigthness_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.contrast_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.entry_erosion_label.setText(QCoreApplication.translate("Dialog", u"Sharpness", None))
     # retranslateUi
 

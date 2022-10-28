@@ -26,6 +26,9 @@
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
    <item>
     <widget class="QFrame" name="frame">
      <property name="styleSheet">
@@ -671,39 +674,17 @@ padding-left:5px;</string>
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QGridLayout" name="gridLayout">
-               <item row="0" column="0" colspan="2">
-                <widget class="QLabel" name="label_14">
+               <property name="verticalSpacing">
+                <number>20</number>
+               </property>
+               <item row="2" column="2">
+                <widget class="QLabel" name="sharpness_value">
                  <property name="minimumSize">
                   <size>
-                   <width>0</width>
-                   <height>20</height>
+                   <width>50</width>
+                   <height>0</height>
                   </size>
                  </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color: rgb(255, 255, 255);</string>
-                 </property>
-                 <property name="text">
-                  <string>Entry camera image processing enhancement</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QLabel" name="entry_dilation_label">
                  <property name="font">
                   <font>
                    <family>Arial</family>
@@ -720,28 +701,44 @@ padding-left:5px;</string>
 }</string>
                  </property>
                  <property name="text">
-                  <string>Dilation</string>
+                  <string>0</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="1">
-                <widget class="QSlider" name="dilation">
-                 <property name="toolTip">
-                  <string/>
-                 </property>
+               <item row="2" column="1">
+                <widget class="QSlider" name="sharpness">
                  <property name="maximum">
-                  <number>500</number>
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>50</number>
                  </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="2">
-                <widget class="QLabel" name="dilation_value">
+               <item row="1" column="1">
+                <widget class="QSlider" name="brigthness">
+                 <property name="toolTip">
+                  <string/>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>30</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QLabel" name="contrast_value">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -789,25 +786,28 @@ padding-left:5px;</string>
 }</string>
                  </property>
                  <property name="text">
-                  <string>Erosion</string>
+                  <string>Sharpness</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="1">
-                <widget class="QSlider" name="erosion">
+               <item row="3" column="1">
+                <widget class="QSlider" name="contrast">
                  <property name="maximum">
-                  <number>500</number>
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
                  </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="2">
-                <widget class="QLabel" name="erosion_value">
+               <item row="1" column="2">
+                <widget class="QLabel" name="brightness_value">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -831,6 +831,62 @@ padding-left:5px;</string>
                  </property>
                  <property name="text">
                   <string>0</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="entry_dilation_label">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Brigthness</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" colspan="2">
+                <widget class="QLabel" name="label_14">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Image Enhancement</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -855,114 +911,7 @@ padding-left:5px;</string>
 }</string>
                  </property>
                  <property name="text">
-                  <string>Blur</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QSlider" name="blur">
-                 <property name="maximum">
-                  <number>500</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="QLabel" name="blur_value">
-                 <property name="minimumSize">
-                  <size>
-                   <width>50</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>0</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="entry_unimp_label">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>HSV</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QSlider" name="hsv">
-                 <property name="maximum">
-                  <number>500</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="QLabel" name="hsv_value">
-                 <property name="minimumSize">
-                  <size>
-                   <width>50</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>0</string>
+                  <string>Contrast</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>

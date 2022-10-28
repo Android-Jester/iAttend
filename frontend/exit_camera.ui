@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>1098</width>
-    <height>880</height>
+    <height>900</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>1098</width>
-    <height>819</height>
+    <height>900</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>1098</width>
-    <height>880</height>
+    <height>900</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -249,6 +249,12 @@ QPushButton:hover{
          </item>
          <item>
           <widget class="QFrame" name="frame_4">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>600</height>
+            </size>
+           </property>
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
@@ -270,6 +276,18 @@ QPushButton:hover{
             </property>
             <item>
              <widget class="QFrame" name="camera_view">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>600</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>600</height>
+               </size>
+              </property>
               <property name="styleSheet">
                <string notr="true">QFrame{
 	border-radius:10px;
@@ -300,6 +318,18 @@ QPushButton:hover{
                </property>
                <item>
                 <widget class="QLabel" name="camera_feeds">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>600</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>600</height>
+                  </size>
+                 </property>
                  <property name="font">
                   <font>
                    <family>Arial</family>
@@ -335,7 +365,7 @@ QPushButton:hover{
            <property name="maximumSize">
             <size>
              <width>16777215</width>
-             <height>200</height>
+             <height>250</height>
             </size>
            </property>
            <property name="frameShape">
@@ -347,6 +377,12 @@ QPushButton:hover{
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QFrame" name="frame_6">
+              <property name="maximumSize">
+               <size>
+                <width>535</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="styleSheet">
                <string notr="true">
 QFrame{
@@ -364,7 +400,7 @@ QFrame{
                <property name="geometry">
                 <rect>
                  <x>10</x>
-                 <y>130</y>
+                 <y>70</y>
                  <width>141</width>
                  <height>41</height>
                 </rect>
@@ -411,7 +447,7 @@ QPushButton:pressed{
                <property name="geometry">
                 <rect>
                  <x>170</x>
-                 <y>130</y>
+                 <y>70</y>
                  <width>151</width>
                  <height>41</height>
                 </rect>
@@ -458,7 +494,7 @@ QPushButton:pressed{
                <property name="geometry">
                 <rect>
                  <x>340</x>
-                 <y>130</y>
+                 <y>70</y>
                  <width>181</width>
                  <height>41</height>
                 </rect>
@@ -527,7 +563,7 @@ QPushButton:pressed{
                <property name="geometry">
                 <rect>
                  <x>20</x>
-                 <y>80</y>
+                 <y>20</y>
                  <width>41</width>
                  <height>31</height>
                 </rect>
@@ -546,7 +582,7 @@ QPushButton:pressed{
                <property name="geometry">
                 <rect>
                  <x>10</x>
-                 <y>70</y>
+                 <y>10</y>
                  <width>511</width>
                  <height>51</height>
                 </rect>
@@ -580,127 +616,43 @@ QLineEdit:focus{
                 <bool>true</bool>
                </property>
               </widget>
-              <widget class="QFrame" name="date_frame_2">
+              <widget class="QLabel" name="label_notification">
                <property name="geometry">
                 <rect>
                  <x>10</x>
-                 <y>20</y>
-                 <width>505</width>
-                 <height>41</height>
+                 <y>120</y>
+                 <width>511</width>
+                 <height>71</height>
                 </rect>
                </property>
-               <property name="minimumSize">
-                <size>
-                 <width>505</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>450</width>
-                 <height>16777215</height>
-                </size>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">QFrame{
+                <string notr="true">QLabel{
 	color: rgb(255, 255, 255);
 	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
 }</string>
                </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
+               <property name="text">
+                <string>Notification</string>
                </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_13">
-                <item>
-                 <widget class="QRadioButton" name="face_auth">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QRadioButton{
-	background-color: rgb(35, 35, 35);
-	color: rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Face Authentication</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/user-check.svg</normaloff>:/icons/asset/user-check.svg</iconset>
-                  </property>
-                  <property name="checked">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="qr_code_auth">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QRadioButton{
-	background-color: rgb(35, 35, 35);
-	color: rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>QR Code</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/user-check.svg</normaloff>:/icons/asset/user-check.svg</iconset>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QRadioButton" name="biometric_auth">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QRadioButton{
-	background-color: rgb(35, 35, 35);
-	color: rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Biometric </string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/user-check.svg</normaloff>:/icons/asset/user-check.svg</iconset>
-                  </property>
-                  <property name="checked">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
               </widget>
               <zorder>btn_exit_cam_connect</zorder>
               <zorder>btn_exit_cam_disconect</zorder>
               <zorder>exit_comboBox</zorder>
               <zorder>exit_cam_ip</zorder>
               <zorder>label_28</zorder>
-              <zorder>date_frame_2</zorder>
+              <zorder>label_notification</zorder>
              </widget>
             </item>
             <item>
@@ -724,31 +676,72 @@ QLineEdit:focus{
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QGridLayout" name="gridLayout">
-               <item row="0" column="0" colspan="2">
-                <widget class="QLabel" name="label_14">
+               <property name="verticalSpacing">
+                <number>9</number>
+               </property>
+               <item row="3" column="0">
+                <widget class="QLabel" name="entry_blur_label">
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Contrast</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QSlider" name="contrast">
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>60</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QLabel" name="sharpness_value">
                  <property name="minimumSize">
                   <size>
-                   <width>0</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>20</height>
+                   <width>50</width>
+                   <height>0</height>
                   </size>
                  </property>
                  <property name="font">
                   <font>
                    <family>Arial</family>
                    <pointsize>10</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
                   </font>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">color: rgb(255, 255, 255);</string>
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+}</string>
                  </property>
                  <property name="text">
-                  <string>Entry camera image processing enhancement</string>
+                  <string>0</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -773,7 +766,51 @@ QLineEdit:focus{
 }</string>
                  </property>
                  <property name="text">
-                  <string>Dilation</string>
+                  <string>Brigthness</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QSlider" name="sharpness">
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>50</number>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0" colspan="2">
+                <widget class="QLabel" name="label_14">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Image enhancement</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -781,12 +818,15 @@ QLineEdit:focus{
                 </widget>
                </item>
                <item row="1" column="1">
-                <widget class="QSlider" name="dilation">
+                <widget class="QSlider" name="brigthness">
                  <property name="toolTip">
                   <string/>
                  </property>
                  <property name="maximum">
-                  <number>500</number>
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>30</number>
                  </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
@@ -794,7 +834,38 @@ QLineEdit:focus{
                 </widget>
                </item>
                <item row="1" column="2">
-                <widget class="QLabel" name="dilation_value">
+                <widget class="QLabel" name="brigthness_value">
+                 <property name="minimumSize">
+                  <size>
+                   <width>50</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Arial</family>
+                   <pointsize>10</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>0</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QLabel" name="contrast_value">
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
@@ -842,180 +913,7 @@ QLineEdit:focus{
 }</string>
                  </property>
                  <property name="text">
-                  <string>Erosion</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QSlider" name="erosion">
-                 <property name="maximum">
-                  <number>500</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="2">
-                <widget class="QLabel" name="erosion_value">
-                 <property name="minimumSize">
-                  <size>
-                   <width>50</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>0</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QLabel" name="entry_blur_label">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>Blur</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="1">
-                <widget class="QSlider" name="blur">
-                 <property name="maximum">
-                  <number>500</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="2">
-                <widget class="QLabel" name="blur_value">
-                 <property name="minimumSize">
-                  <size>
-                   <width>50</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>0</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="0">
-                <widget class="QLabel" name="entry_unimp_label">
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>HSV</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="1">
-                <widget class="QSlider" name="hsv">
-                 <property name="maximum">
-                  <number>500</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="4" column="2">
-                <widget class="QLabel" name="hsv_value">
-                 <property name="minimumSize">
-                  <size>
-                   <width>50</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <family>Arial</family>
-                   <pointsize>10</pointsize>
-                   <weight>50</weight>
-                   <bold>false</bold>
-                  </font>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>0</string>
+                  <string>Sharpness</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>

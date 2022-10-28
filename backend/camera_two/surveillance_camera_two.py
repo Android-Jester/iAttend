@@ -1,4 +1,8 @@
 import cv2
+import time
+import datetime
+import numpy as np
+import pyshine as ps
 from cv2 import VideoCapture
 
 from PySide2 import QtCore, QtWidgets
@@ -21,16 +25,19 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.surveillance_two.btn_minimize.clicked.connect(self.showMinimized)
 
         ###################################################################################
-        self.surveillance_two.btn_exit_cam_connect.clicked.connect(self.start_webcam_cam_one)
-        self.surveillance_two.btn_exit_cam_disconect.clicked.connect(self.stop_webcam_cam_one)
+        self.surveillance_two.btn_exit_cam_connect.clicked.connect(self.start_webcam)
+        self.surveillance_two.btn_exit_cam_disconect.clicked.connect(self.stop_webcam)
         # self.surveillance_two.exit_comboBox.addItems(return_active_cameras(3)) 
         ###################################################################################
 
         ############################################################################################
-        self.surveillance_two.dilation.valueChanged.connect(self.update_dilation)
-        self.surveillance_two.erosion.valueChanged.connect(self.update_erosion)
-        self.surveillance_two.hsv.valueChanged.connect(self.update_hsv)
-        self.surveillance_two.blur.valueChanged.connect(self.update_average_blurring)
+        self.surveillance_two.brightness.valueChanged.connect(self.update_brightness)
+        self.surveillance_two.sharpness.valueChanged.connect(self.update_sharpness)
+        self.surveillance_two.contrast.valueChanged.connect(self.update_contrast)
+
+        self.surveillance_two.brigthness_value.setText(str(self.surveillance_two.brightness.value()))
+        self.surveillance_two.sharpness_value.setText(str(self.surveillance_two.sharpness.value()))
+        self.surveillance_two.contrast_value.setText(str(self.surveillance_two.contrast.value()))
         ###########################################################################################
 
         self.surveillance_two.frame.mouseMoveEvent = self.MoveWindow
@@ -58,22 +65,20 @@ class Surveilliance_Two(QtWidgets.QDialog):
     ###################################################################################
 
     ###################################################################################
-    def update_dilation(self, value):
-        self.surveillance_two.dilation_value.setText(str(value))
+    def update_brightness(self, value):
+        self.surveillance_two.brigthness_value.setText(str(value))
     
-    def update_erosion(self, value):
-        self.surveillance_two.erosion_value.setText(str(value))
+    def update_sharpness(self, value):
+        self.surveillance_two.sharpness_value.setText(str(value))
         
-    def update_hsv(self, value):
-        self.surveillance_two.hsv_value.setText(str(value))
+    def update_contrast(self, value):
+        self.surveillance_two.contrast_value.setText(str(value))
 
-    def update_average_blurring(self, value):
-        self.surveillance_two.blur_value.setText(str(value))
     ###################################################################################
 
 
     ####################################################################################
-    def start_webcam_cam_one(self):
+    def start_webcam(self):
         self.show_alert = AlertDialog()
         self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
         self.show_alert.show()
@@ -84,7 +89,7 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.network_capture = VideoCapture(ip_address)
         if ip_address:
             if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam_cam_one
+                self.stop_webcam
                 self.show_alert = AlertDialog()
                 self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
                 self.show_alert.show()
@@ -93,7 +98,7 @@ class Surveilliance_Two(QtWidgets.QDialog):
                 
         elif system_attached_camera:
             if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam_cam_one
+                self.stop_webcam
                 self.show_alert = AlertDialog()
                 self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
                 self.show_alert.show()
@@ -101,7 +106,7 @@ class Surveilliance_Two(QtWidgets.QDialog):
                 self.capture = VideoCapture(camera_id) 
                         
         elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam_cam_one
+                self.stop_webcam
                 self.show_alert = AlertDialog()
                 self.show_alert.content() 
                 self.show_alert.show()
@@ -109,15 +114,27 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
         self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame_cam_one)
+        self.timer.timeout.connect(self.update_frame)
         self.timer.start(3) 
     
-    def update_frame_cam_one(self):  
+    def update_frame(self):  
         ret,self.frame = self.capture.read()
         self.frame = cv2.flip(self.frame,1)
-        self.display_feed_cam_one(self.frame,window=1)
+        self.beta = int(self.surveillance_two.brigthness_value.text())
+        self.apha = int(self.surveillance_two.contrast_value.text())*0.01
+        self.kernel = (int(self.surveillance_two.sharpness_value.text())*0.01, int(self.surveillance_two.sharpness_value.text())*0.01)
+        self.frame = cv2.filter2D(self.frame,-1, self.kernel)
+        self.result = cv2.addWeighted(self.frame,self.apha, np.zeros(self.frame.shape, self.frame.dtype), 0, self.beta)
+        self.text = str(time.strftime("%H:%M %p"))
+        ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-90,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
+            background_RGB=(228,20,222),text_RGB=(255,255,255))
+        self.date = datetime.datetime.now() 
+        self.date = self.date.strftime("%a, %b %d, %Y")
+        ps.putBText(self.result,self.date,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
+            background_RGB=(10,20,222),text_RGB=(255,255,255))
+        self.display_feed(self.result,1)
         
-    def display_feed_cam_one(self, image, window=1):
+    def display_feed(self, image, window=1):
         qformate = QImage.Format_Indexed8
         if len(image.shape) == 3:
             if image.shape[2] == 4:
@@ -130,7 +147,7 @@ class Surveilliance_Two(QtWidgets.QDialog):
             self.surveillance_two.camera_feeds.setPixmap(QPixmap.fromImage(self.procesedImage))
             self.surveillance_two.camera_feeds.setScaledContents(True)
     
-    def stop_webcam_cam_one(self):    
+    def stop_webcam(self):    
         self.show_alert = AlertDialog()
         self.show_alert.content("Hey! wait a second while system\release camera")  
         self.show_alert.show()

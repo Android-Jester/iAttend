@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'surveillance_cam_fourXfjSJg.ui'
+## Form generated from reading UI file 'surveillance_cam_fourQZqNUx.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -315,23 +315,34 @@ class Ui_Dialog(object):
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(self.frame_7)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.label_14 = QLabel(self.frame_7)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setMinimumSize(QSize(0, 20))
-        self.label_14.setMaximumSize(QSize(16777215, 20))
-        self.label_14.setFont(font)
-        self.label_14.setStyleSheet(u"color: rgb(255, 255, 255);")
-        self.label_14.setAlignment(Qt.AlignCenter)
+        self.gridLayout.setVerticalSpacing(20)
+        self.brightness = QSlider(self.frame_7)
+        self.brightness.setObjectName(u"brightness")
+        self.brightness.setMaximum(100)
+        self.brightness.setValue(30)
+        self.brightness.setOrientation(Qt.Horizontal)
 
-        self.gridLayout.addWidget(self.label_14, 0, 0, 1, 2)
+        self.gridLayout.addWidget(self.brightness, 1, 1, 1, 1)
 
-        self.entry_dilation_label = QLabel(self.frame_7)
-        self.entry_dilation_label.setObjectName(u"entry_dilation_label")
+        self.entry_blur_label = QLabel(self.frame_7)
+        self.entry_blur_label.setObjectName(u"entry_blur_label")
         font3 = QFont()
         font3.setFamily(u"Arial")
         font3.setPointSize(10)
         font3.setBold(False)
         font3.setWeight(50)
+        self.entry_blur_label.setFont(font3)
+        self.entry_blur_label.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border-radius: 10px;\n"
+"}")
+        self.entry_blur_label.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.entry_blur_label, 3, 0, 1, 1)
+
+        self.entry_dilation_label = QLabel(self.frame_7)
+        self.entry_dilation_label.setObjectName(u"entry_dilation_label")
         self.entry_dilation_label.setFont(font3)
         self.entry_dilation_label.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -341,26 +352,6 @@ class Ui_Dialog(object):
         self.entry_dilation_label.setAlignment(Qt.AlignCenter)
 
         self.gridLayout.addWidget(self.entry_dilation_label, 1, 0, 1, 1)
-
-        self.dilation = QSlider(self.frame_7)
-        self.dilation.setObjectName(u"dilation")
-        self.dilation.setMaximum(500)
-        self.dilation.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.dilation, 1, 1, 1, 1)
-
-        self.dilation_value = QLabel(self.frame_7)
-        self.dilation_value.setObjectName(u"dilation_value")
-        self.dilation_value.setMinimumSize(QSize(50, 0))
-        self.dilation_value.setFont(font3)
-        self.dilation_value.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.dilation_value.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.dilation_value, 1, 2, 1, 1)
 
         self.entry_erosion_label = QLabel(self.frame_7)
         self.entry_erosion_label.setObjectName(u"entry_erosion_label")
@@ -374,89 +365,70 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.entry_erosion_label, 2, 0, 1, 1)
 
-        self.erosion = QSlider(self.frame_7)
-        self.erosion.setObjectName(u"erosion")
-        self.erosion.setMaximum(500)
-        self.erosion.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.erosion, 2, 1, 1, 1)
-
-        self.erosion_value = QLabel(self.frame_7)
-        self.erosion_value.setObjectName(u"erosion_value")
-        self.erosion_value.setMinimumSize(QSize(50, 0))
-        self.erosion_value.setFont(font3)
-        self.erosion_value.setStyleSheet(u"QLabel{\n"
+        self.contrast_value = QLabel(self.frame_7)
+        self.contrast_value.setObjectName(u"contrast_value")
+        self.contrast_value.setMinimumSize(QSize(50, 0))
+        self.contrast_value.setFont(font3)
+        self.contrast_value.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.erosion_value.setAlignment(Qt.AlignCenter)
+        self.contrast_value.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.erosion_value, 2, 2, 1, 1)
+        self.gridLayout.addWidget(self.contrast_value, 3, 2, 1, 1)
 
-        self.entry_blur_label = QLabel(self.frame_7)
-        self.entry_blur_label.setObjectName(u"entry_blur_label")
-        self.entry_blur_label.setFont(font3)
-        self.entry_blur_label.setStyleSheet(u"QLabel{\n"
+        self.label_14 = QLabel(self.frame_7)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setMinimumSize(QSize(0, 20))
+        self.label_14.setMaximumSize(QSize(16777215, 20))
+        self.label_14.setFont(font)
+        self.label_14.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.label_14.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout.addWidget(self.label_14, 0, 0, 1, 2)
+
+        self.brightness_value = QLabel(self.frame_7)
+        self.brightness_value.setObjectName(u"brightness_value")
+        self.brightness_value.setMinimumSize(QSize(50, 0))
+        self.brightness_value.setFont(font3)
+        self.brightness_value.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.entry_blur_label.setAlignment(Qt.AlignCenter)
+        self.brightness_value.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.entry_blur_label, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.brightness_value, 1, 2, 1, 1)
 
-        self.blur = QSlider(self.frame_7)
-        self.blur.setObjectName(u"blur")
-        self.blur.setMaximum(500)
-        self.blur.setOrientation(Qt.Horizontal)
-
-        self.gridLayout.addWidget(self.blur, 3, 1, 1, 1)
-
-        self.blur_value = QLabel(self.frame_7)
-        self.blur_value.setObjectName(u"blur_value")
-        self.blur_value.setMinimumSize(QSize(50, 0))
-        self.blur_value.setFont(font3)
-        self.blur_value.setStyleSheet(u"QLabel{\n"
+        self.sharpness_value = QLabel(self.frame_7)
+        self.sharpness_value.setObjectName(u"sharpness_value")
+        self.sharpness_value.setMinimumSize(QSize(50, 0))
+        self.sharpness_value.setFont(font3)
+        self.sharpness_value.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.blur_value.setAlignment(Qt.AlignCenter)
+        self.sharpness_value.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout.addWidget(self.blur_value, 3, 2, 1, 1)
+        self.gridLayout.addWidget(self.sharpness_value, 2, 2, 1, 1)
 
-        self.entry_unimp_label = QLabel(self.frame_7)
-        self.entry_unimp_label.setObjectName(u"entry_unimp_label")
-        self.entry_unimp_label.setFont(font3)
-        self.entry_unimp_label.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.entry_unimp_label.setAlignment(Qt.AlignCenter)
+        self.sharpness = QSlider(self.frame_7)
+        self.sharpness.setObjectName(u"sharpness")
+        self.sharpness.setMaximum(100)
+        self.sharpness.setValue(50)
+        self.sharpness.setOrientation(Qt.Horizontal)
 
-        self.gridLayout.addWidget(self.entry_unimp_label, 4, 0, 1, 1)
+        self.gridLayout.addWidget(self.sharpness, 2, 1, 1, 1)
 
-        self.hsv = QSlider(self.frame_7)
-        self.hsv.setObjectName(u"hsv")
-        self.hsv.setMaximum(500)
-        self.hsv.setOrientation(Qt.Horizontal)
+        self.contrast = QSlider(self.frame_7)
+        self.contrast.setObjectName(u"contrast")
+        self.contrast.setMaximum(100)
+        self.contrast.setValue(60)
+        self.contrast.setOrientation(Qt.Horizontal)
 
-        self.gridLayout.addWidget(self.hsv, 4, 1, 1, 1)
-
-        self.hsv_value = QLabel(self.frame_7)
-        self.hsv_value.setObjectName(u"hsv_value")
-        self.hsv_value.setMinimumSize(QSize(50, 0))
-        self.hsv_value.setFont(font3)
-        self.hsv_value.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.hsv_value.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout.addWidget(self.hsv_value, 4, 2, 1, 1)
+        self.gridLayout.addWidget(self.contrast, 3, 1, 1, 1)
 
 
         self.horizontalLayout_2.addWidget(self.frame_7)
@@ -496,17 +468,15 @@ class Ui_Dialog(object):
 
         self.btn_exit_cam_disconect.setText(QCoreApplication.translate("Dialog", u"Disconnect", None))
         self.label_15.setText(QCoreApplication.translate("Dialog", u"Camera ", None))
-        self.label_14.setText(QCoreApplication.translate("Dialog", u"Entry camera image processing enhancement", None))
-        self.entry_dilation_label.setText(QCoreApplication.translate("Dialog", u"Dilation", None))
 #if QT_CONFIG(tooltip)
-        self.dilation.setToolTip("")
+        self.brightness.setToolTip("")
 #endif // QT_CONFIG(tooltip)
-        self.dilation_value.setText(QCoreApplication.translate("Dialog", u"0", None))
-        self.entry_erosion_label.setText(QCoreApplication.translate("Dialog", u"Erosion", None))
-        self.erosion_value.setText(QCoreApplication.translate("Dialog", u"0", None))
-        self.entry_blur_label.setText(QCoreApplication.translate("Dialog", u"Blur", None))
-        self.blur_value.setText(QCoreApplication.translate("Dialog", u"0", None))
-        self.entry_unimp_label.setText(QCoreApplication.translate("Dialog", u"HSV", None))
-        self.hsv_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.entry_blur_label.setText(QCoreApplication.translate("Dialog", u"Contrast", None))
+        self.entry_dilation_label.setText(QCoreApplication.translate("Dialog", u"Brightness", None))
+        self.entry_erosion_label.setText(QCoreApplication.translate("Dialog", u"Sharpness", None))
+        self.contrast_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.label_14.setText(QCoreApplication.translate("Dialog", u"Image Enhancement", None))
+        self.brightness_value.setText(QCoreApplication.translate("Dialog", u"0", None))
+        self.sharpness_value.setText(QCoreApplication.translate("Dialog", u"0", None))
     # retranslateUi
 
