@@ -24,13 +24,9 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.surveillance_two.btn_close.clicked.connect(self.close)
         self.surveillance_two.btn_minimize.clicked.connect(self.showMinimized)
 
-        ###################################################################################
         self.surveillance_two.btn_exit_cam_connect.clicked.connect(self.start_webcam)
         self.surveillance_two.btn_exit_cam_disconect.clicked.connect(self.stop_webcam)
-        # self.surveillance_two.exit_comboBox.addItems(return_active_cameras(3)) 
-        ###################################################################################
-
-        ############################################################################################
+     
         self.surveillance_two.brightness.valueChanged.connect(self.update_brightness)
         self.surveillance_two.sharpness.valueChanged.connect(self.update_sharpness)
         self.surveillance_two.contrast.valueChanged.connect(self.update_contrast)
@@ -38,20 +34,19 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.surveillance_two.brigthness_value.setText(str(self.surveillance_two.brightness.value()))
         self.surveillance_two.sharpness_value.setText(str(self.surveillance_two.sharpness.value()))
         self.surveillance_two.contrast_value.setText(str(self.surveillance_two.contrast.value()))
-        ###########################################################################################
 
         self.surveillance_two.frame.mouseMoveEvent = self.MoveWindow
 
-        ##########################################################################################
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(144, 144, 144, 40))
         self.surveillance_two.frame.setGraphicsEffect(self.shadow)
-        ##########################################################################################
-        
-    #################################################################################
+
+    def set_combo_items(self,active_cameras:list):
+        self.surveillance_two.exit_comboBox.addItems(active_cameras)
+   
     def MoveWindow(self, event):
         if self.isMaximized() == False:
             self.move(self.pos() + event.globalPos() - self.clickPosition)
@@ -62,9 +57,7 @@ class Surveilliance_Two(QtWidgets.QDialog):
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
         pass
-    ###################################################################################
-
-    ###################################################################################
+  
     def update_brightness(self, value):
         self.surveillance_two.brigthness_value.setText(str(value))
     
@@ -74,10 +67,6 @@ class Surveilliance_Two(QtWidgets.QDialog):
     def update_contrast(self, value):
         self.surveillance_two.contrast_value.setText(str(value))
 
-    ###################################################################################
-
-
-    ####################################################################################
     def start_webcam(self):
         self.show_alert = AlertDialog()
         self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
@@ -125,13 +114,13 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.kernel = (int(self.surveillance_two.sharpness_value.text())*0.01, int(self.surveillance_two.sharpness_value.text())*0.01)
         self.frame = cv2.filter2D(self.frame,-1, self.kernel)
         self.result = cv2.addWeighted(self.frame,self.apha, np.zeros(self.frame.shape, self.frame.dtype), 0, self.beta)
-        self.text = str(time.strftime("%H:%M %p"))
-        ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-90,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
-            background_RGB=(228,20,222),text_RGB=(255,255,255))
+        self.text = str(time.strftime("%I:%M:%S %p"))
+        ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
+            background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
         self.date = datetime.datetime.now() 
         self.date = self.date.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.date,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
-            background_RGB=(10,20,222),text_RGB=(255,255,255))
+            background_RGB=(10,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
         self.display_feed(self.result,1)
         
     def display_feed(self, image, window=1):
@@ -155,6 +144,5 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.surveillance_two.camera_feeds.setAlignment(Qt.AlignCenter)
         self.timer.stop() 
                 
-    ####################################################################################
 
     

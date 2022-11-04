@@ -30,11 +30,9 @@ class AlertDialog(QtWidgets.QDialog):
             self.move(self.pos() + event.globalPos() - self.clickPosition)
             self.clickPosition = event.globalPos()
             event.accept()
-            pass
 
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
-        pass
 
     def content(self, content: str):
         return self.ui_alert.content.setText(content)

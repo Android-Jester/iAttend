@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'surveillance_cam_fourQZqNUx.ui'
+## Form generated from reading UI file 'surveillance_cam_fourETsQKH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -244,12 +244,6 @@ class Ui_Dialog(object):
 "}")
         self.exit_cam_ip.setClearButtonEnabled(True)
         self.exit_comboBox = QComboBox(self.frame_6)
-        self.exit_comboBox.addItem("")
-        self.exit_comboBox.addItem("")
-        self.exit_comboBox.addItem("")
-        self.exit_comboBox.addItem("")
-        self.exit_comboBox.addItem("")
-        self.exit_comboBox.addItem("")
         self.exit_comboBox.setObjectName(u"exit_comboBox")
         self.exit_comboBox.setGeometry(QRect(340, 110, 171, 41))
         self.exit_comboBox.setMinimumSize(QSize(0, 41))
@@ -451,7 +445,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.label.setText("")
-        self.label_2.setText(QCoreApplication.translate("Dialog", u"Surveilliance camera four", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"Open view four", None))
         self.btn_minimize.setText("")
         self.btn_maximize.setText("")
         self.btn_close.setText("")
@@ -459,13 +453,6 @@ class Ui_Dialog(object):
         self.label_28.setText("")
         self.btn_exit_cam_connect.setText(QCoreApplication.translate("Dialog", u"Connect", None))
         self.exit_cam_ip.setPlaceholderText(QCoreApplication.translate("Dialog", u"Camera Id/IP ?", None))
-        self.exit_comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"0", None))
-        self.exit_comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"1", None))
-        self.exit_comboBox.setItemText(2, QCoreApplication.translate("Dialog", u"2", None))
-        self.exit_comboBox.setItemText(3, QCoreApplication.translate("Dialog", u"3", None))
-        self.exit_comboBox.setItemText(4, QCoreApplication.translate("Dialog", u"4", None))
-        self.exit_comboBox.setItemText(5, QCoreApplication.translate("Dialog", u"5", None))
-
         self.btn_exit_cam_disconect.setText(QCoreApplication.translate("Dialog", u"Disconnect", None))
         self.label_15.setText(QCoreApplication.translate("Dialog", u"Camera ", None))
 #if QT_CONFIG(tooltip)
