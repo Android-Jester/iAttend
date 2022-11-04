@@ -1,4 +1,22 @@
 from datetime import datetime as dt
+import json
+
+path = (r'test_code\\data_json.json')
+# with open(path,'r') as f:
+#     c = json.load(f)
+# print(len(c))
+
+def country_names(path:str):
+    with open(path,'r') as data:
+        json_data = json.load(data)
+    country_list = []
+    for country_name in range(len(json_data)):
+        country_list.append(json_data[country_name]['Name'])
+    return country_list
+
+d = country_names(path)
+print(d)
+    
 # from posixpath import splitext
 
 # def print_document(self):
@@ -29,14 +47,27 @@ from datetime import datetime as dt
 # day = int(dt.now().date().strftime('%d'))
 # print(day)
 
-print(dt.now().time().strftime('%H:%M:%S %p'),'\n')
-print(dt.now().date().strftime('%Y-%m-%d'))
+# print(dt.now().time().strftime('%H:%M:%S %p'),'\n')
+# print(dt.now().date().strftime('%Y-%m-%d'))
+# date=dt.now().date().strftime('%d-%m-%Y')
+# time=dt.now().time().strftime('%I:%M:%S %p')
 
-date = '2022-7-10'
-date = date.split('-')
+# # date = int('2022-7-10')
 
-end = '2023-08-30'
-end = end.split('-')
+# def reconstruct_date(date:str):
+#         list_months = ['January', 'Febuary', 'March',
+#                 'April', 'May', 'June', 'July',
+#                 'August', 'September', 'October',
+#                 'November', 'December']
+#         date_value=str(date).split('-')
+#         year = date_value[0]
+#         day = date_value[2]
+#         month = date_value[1]
+#         month=list_months[int(month)-1]
+#         return str(day+' '+month+' '+year)
+        
+# d = reconstruct_date('2024-10-10')
+# print(d)
 
 # year=int(dt.now().date().strftime('%Y'))
 # month =int(dt.now().date().strftime('%m'))
@@ -55,9 +86,14 @@ end = end.split('-')
 #     print(b)
 # else:
 #     pass
+# import os
+# path = 'C:\\ProgramData\\iVision\\redolf'
 
-import winsound
-winsound.PlaySound(r'test_code\\sound\\mixkit-confirmation-tone-2867.wav',winsound.SND_FILENAME)
+# if not os.path.exists(path):
+#     os.makedirs(path)
+
+# import winsound
+# winsound.PlaySound(r'test_code\\sound\\mixkit-confirmation-tone-2867.wav',winsound.SND_FILENAME)
 # winsound.Beep(1000,400)
 
 # list_months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -70,6 +106,5 @@ winsound.PlaySound(r'test_code\\sound\\mixkit-confirmation-tone-2867.wav',winsou
 # else:
 #     pass
 
-m = []
-print(int())
+
 
