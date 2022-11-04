@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Database</class>
+ <widget class="QDialog" name="Database">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -143,7 +143,7 @@
 }</string>
               </property>
               <property name="text">
-               <string>Database</string>
+               <string>Database Logout</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -258,9 +258,9 @@ QPushButton:hover{
            <widget class="QLineEdit" name="username">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>120</y>
-              <width>421</width>
+              <x>20</x>
+              <y>100</y>
+              <width>441</width>
               <height>51</height>
              </rect>
             </property>
@@ -298,8 +298,8 @@ QLineEdit:focus{
            <widget class="QLabel" name="label_36">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>130</y>
+              <x>30</x>
+              <y>110</y>
               <width>31</width>
               <height>31</height>
              </rect>
@@ -317,9 +317,9 @@ QLineEdit:focus{
            <widget class="QLineEdit" name="password">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>200</y>
-              <width>421</width>
+              <x>20</x>
+              <y>170</y>
+              <width>441</width>
               <height>51</height>
              </rect>
             </property>
@@ -360,8 +360,8 @@ QLineEdit:focus{
            <widget class="QLabel" name="label_37">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>210</y>
+              <x>30</x>
+              <y>180</y>
               <width>31</width>
               <height>31</height>
              </rect>
@@ -379,9 +379,9 @@ QLineEdit:focus{
            <widget class="QLineEdit" name="hostname">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>280</y>
-              <width>421</width>
+              <x>20</x>
+              <y>240</y>
+              <width>441</width>
               <height>51</height>
              </rect>
             </property>
@@ -419,8 +419,8 @@ QLineEdit:focus{
            <widget class="QLabel" name="label_38">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>290</y>
+              <x>30</x>
+              <y>250</y>
               <width>31</width>
               <height>31</height>
              </rect>
@@ -438,9 +438,9 @@ QLineEdit:focus{
            <widget class="QLineEdit" name="database_name">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>360</y>
-              <width>421</width>
+              <x>20</x>
+              <y>380</y>
+              <width>441</width>
               <height>51</height>
              </rect>
             </property>
@@ -478,8 +478,8 @@ QLineEdit:focus{
            <widget class="QLabel" name="label_39">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>370</y>
+              <x>30</x>
+              <y>390</y>
               <width>31</width>
               <height>31</height>
              </rect>
@@ -497,8 +497,8 @@ QLineEdit:focus{
            <widget class="QPushButton" name="btn_connect_test">
             <property name="geometry">
              <rect>
-              <x>30</x>
-              <y>440</y>
+              <x>20</x>
+              <y>450</y>
               <width>201</width>
               <height>41</height>
              </rect>
@@ -544,8 +544,8 @@ QPushButton:pressed{
            <widget class="QPushButton" name="btn_connect">
             <property name="geometry">
              <rect>
-              <x>250</x>
-              <y>440</y>
+              <x>260</x>
+              <y>450</y>
               <width>201</width>
               <height>41</height>
              </rect>
@@ -572,11 +572,11 @@ QPushButton:pressed{
 }</string>
             </property>
             <property name="text">
-             <string>Initialize connection</string>
+             <string>Initialize tables</string>
             </property>
             <property name="icon">
              <iconset resource="../resource/asset.qrc">
-              <normaloff>:/icons/asset/link-2.svg</normaloff>:/icons/asset/link-2.svg</iconset>
+              <normaloff>:/icons/asset/table.svg</normaloff>:/icons/asset/table.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -591,18 +591,18 @@ QPushButton:pressed{
            <widget class="QLabel" name="label_notification">
             <property name="geometry">
              <rect>
-              <x>30</x>
+              <x>20</x>
               <y>510</y>
-              <width>421</width>
+              <width>441</width>
               <height>101</height>
              </rect>
             </property>
             <property name="font">
              <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
+              <family>MS Shell Dlg 2</family>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
@@ -617,6 +617,143 @@ QPushButton:pressed{
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="port">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>310</y>
+              <width>441</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="tabletTracking">
+             <bool>true</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:15px;
+	padding-left: 45px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+            </property>
+            <property name="placeholderText">
+             <string>Port</string>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_40">
+            <property name="geometry">
+             <rect>
+              <x>30</x>
+              <y>320</y>
+              <width>31</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(45, 45, 45);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../resource/asset.qrc">:/icons/asset/power.svg</pixmap>
+            </property>
+           </widget>
+           <widget class="QRadioButton" name="sqlite">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>40</y>
+              <width>95</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QRadioButton{
+	color: rgb(255, 255, 255);
+	background-color:rgb(35,35,35)
+}</string>
+            </property>
+            <property name="text">
+             <string>SQLite3</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QRadioButton" name="mysql">
+            <property name="geometry">
+             <rect>
+              <x>190</x>
+              <y>40</y>
+              <width>95</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QRadioButton{
+	color: rgb(255, 255, 255);
+	background-color:rgb(35,35,35)
+}</string>
+            </property>
+            <property name="text">
+             <string>MySQL</string>
+            </property>
+           </widget>
+           <widget class="QRadioButton" name="postgresql">
+            <property name="geometry">
+             <rect>
+              <x>350</x>
+              <y>40</y>
+              <width>111</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QRadioButton{
+	color: rgb(255, 255, 255);
+	background-color:rgb(35,35,35)
+}</string>
+            </property>
+            <property name="text">
+             <string>PostgreSQL</string>
             </property>
            </widget>
           </widget>
