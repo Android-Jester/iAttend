@@ -157,11 +157,6 @@ class ExitCameraFeed(QtWidgets.QDialog):
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
 
-    def create_alert(self):
-        self.stop_webcam
-        self.show_alert = AlertDialog() 
-        self.show_alert.show()
-
     def update_frame(self): 
         thickness = 2
         rect_thickness = 1
