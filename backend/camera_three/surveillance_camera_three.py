@@ -139,7 +139,7 @@ class Surveilliance_Three(QtWidgets.QDialog):
     
     def stop_webcam(self):    
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.surveillance.camera_feeds.setPixmap(QPixmap())
         self.surveillance.camera_feeds.setAlignment(Qt.AlignCenter)
