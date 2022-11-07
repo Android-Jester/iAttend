@@ -6,6 +6,7 @@
 ##
 ################################################################################
 
+
 import os
 import sys
 import cv2
@@ -13,6 +14,7 @@ import wget
 import json
 import time
 import shutil
+import base64
 import requests
 import winsound
 import numpy as np
@@ -877,10 +879,10 @@ class MainWindow(QMainWindow):
                 self.ui.reg_image.setPixmap(QPixmap.fromImage(path[0]))
                 self.ui.reg_image.setScaledContents(True)
         elif self.ui.online_image.isChecked():
-            link = self.ui.image_file_reg.text()
+            link = requests.get(self.ui.image_file_reg.text())
             if self.connected_to_internet()==True:
                 try:
-                    wget.download(link,r"backend\\images\\download\\image.jpeg")
+                    wget.download(link.url,r"backend\\images\\download\\image.jpeg")
                     self.ui.reg_image.setPixmap(QPixmap.fromImage(r"backend\\images\\download\\image.jpeg"))
                     self.ui.reg_image.setScaledContents(True)
                 except Exception as e:
@@ -925,9 +927,11 @@ class MainWindow(QMainWindow):
             self.ui.last_in.setText("00:00:00") 
 
     def retreive_student_details(self,data):
+        decode_data=base64.b64decode(str(data)).decode('utf-8')
+        data_json = json.loads(decode_data)
         if isinstance(data, str):
-                self.last_seen(data)
-                db_data=self.fetch_data_from_db(data)
+                self.last_seen(data_json['reference'])
+                db_data=self.fetch_data_from_db(data_json['reference'])
                 if len(db_data) > 0:
                     list_months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July',
                      'August', 'September', 'October', 'November', 'December']
@@ -956,7 +960,7 @@ class MainWindow(QMainWindow):
                     " - "+list_months[int(end_date[1])-1]+","+end_date[0])
                     self.ui.year.setText(level)
                     self.ui.program.setText(db_data[6])
-                    self.load_image_from_db(data,self.ui.image)
+                    self.load_image_from_db(data_json['reference'],self.ui.image)
                 else:
                     self.loadUi_file()
                     self.show_info("Oops! student not found. Please register!")                
@@ -999,6 +1003,21 @@ class MainWindow(QMainWindow):
             else:
                  self.show_info("Oops! something went wrong...")
 
+    def retrive_registration_from_qrcode(self,qr_code_data):
+        json_data = json.loads(qr_code_data)
+        self.ui.reg_firstname.setText(json_data['firstname'])
+        self.ui.reg_middlename.setText(json_data['middle_name'])
+        self.ui.reg_lastname.setText(json_data['lastname'])
+        self.ui.reg_student_ref.setText(json_data['reference'])
+        self.ui.reg_index.setText(json_data['index'])
+        self.ui.reg_college.setText(json_data['college'])
+        self.ui.reg_nationality.setText(json_data['nationality'])
+        self.ui.reg_start_date.setText(json_data['issued_date'])
+        self.ui.reg_end_date.setText(json_data['expiry_date'])
+        self.ui.reg_programs.setCurrentText(json_data['program'])
+        self.ui.reg_college_2.setCurrentText(json_data['college'])
+        self.ui.image_file_reg.setText(json_data['image_url'])
+             
 
     def start_webcam_registration(self):
         ip_address = self.ui.reg_camera_ip.text()
@@ -1083,6 +1102,7 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness) 
+            self.retrive_registration_from_qrcode(qr_code_data)
             winsound.Beep(1000,100) 
         self.display_feed_registration(self.result,1)         
         
