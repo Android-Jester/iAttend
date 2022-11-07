@@ -245,7 +245,7 @@ class MainWindow(QMainWindow):
     def helper(self,path_pdf,file_name:str):
         path = 'C:\\ProgramData\\iVision\\data'
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        new_name=r'backend\\report\\piechart\\'+file_name+date+'.pdf'
+        new_name='D:\\Commons\\backend\\report\\piechart\\'+file_name+date+'.pdf'
         os.rename(path_pdf,new_name)
         shutil.copy2(new_name,path)
         os.rename(new_name,path_pdf)
@@ -253,7 +253,7 @@ class MainWindow(QMainWindow):
     def save_report(self):
         filename = self.ui.file_name.text()
         if self.ui.bar_chart.isChecked():
-            path =r'backend\\report\\barchart\\barchart.pdf'   
+            path ='D:\\Commons\\backend\\report\\barchart\\barchart.pdf'   
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -264,7 +264,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show()         
         elif self.ui.line_graph.isChecked():
-            path = r'backend\\report\\line_graph\\line_plot.pdf'
+            path = 'D:\\Commons\\backend\\report\\line_graph\\line_plot.pdf'
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -275,7 +275,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show() 
         elif self.ui.pie_chart.isChecked():
-            path = r'backend\\report\\piechart\\piechart.pdf'
+            path = 'D:\\Commons\\backend\\report\\piechart\\piechart.pdf'
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -326,7 +326,7 @@ class MainWindow(QMainWindow):
     def hot_reload(self):
         data = self.get_pichart_data()
         self.piechart.piechart(data,"Percentages of programs")
-        self.ui.plot_area.setPixmap(QPixmap.fromImage(r'backend\\report\\piechart\\piechart.png'))
+        self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
         self.ui.plot_area.setScaledContents(True)
         self.data_visualization()
 
@@ -432,19 +432,19 @@ class MainWindow(QMainWindow):
                 data = self.get_data_barchart()
                 self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students","Programs",
                 colors[:len(data[0])])
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage(r'backend\\report\\barchart\\barchart.png'))
+                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
                 self.ui.plot_area_2.setScaledContents(True)
             elif self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_by_date()
                 self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics ","Number of students",
                 self.get_report_start_date(),colors[:len(data[0])])
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage(r'backend\\report\\barchart\\barchart.png'))
+                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
                 self.ui.plot_area_2.setScaledContents(True)
             elif self.ui.report_end_date.text() and self.ui.report_end_date.text():
                 data = self.get_data_by_date_range()      
                 self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students",
                 self.get_report_start_date()+" <> "+self.get_report_end_date(),colors[:len(data[0])])
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage(r'backend\\report\\barchart\\barchart.png'))
+                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
                 self.ui.plot_area_2.setScaledContents(True)   
         elif self.ui.line_graph.isChecked():
             program=self.ui.college_courses.currentText()
@@ -452,29 +452,29 @@ class MainWindow(QMainWindow):
                 y_values =self.line_plot_values()
                 self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
                 y_label="Number of students",x_label="Date")
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage(r'backend\\report\\line_graph\\line_plot.png'))
+                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
                 self.ui.plot_area_2.setScaledContents(True)
             elif not self.ui.date_range_comboBox.currentText():
                 y_values=self.count_attendance_for_all_distinct_dates()
                 self.line_graph.plot_graph(y_values[0],title="Trend in attendance for "+program,label_="Trends",
                 y_label="Number of students",x_label=self.reconstruct_date(y_values[1])+'<>'+self.reconstruct_date(y_values[2]))
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage(r'backend\\report\\line_graph\\line_plot.png'))
+                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
                 self.ui.plot_area_2.setScaledContents(True)
         elif self.ui.pie_chart.isChecked():
             if self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_by_date()
                 self.piechart.piechart(data,self.get_report_start_date())
-                self.ui.plot_area.setPixmap(QPixmap.fromImage(r'backend\\report\\piechart\\piechart.png'))
+                self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
                 self.ui.plot_area.setScaledContents(True)
             elif self.ui.report_end_date.text() and self.ui.report_end_date.text():
                 data = self.get_data_by_date_range()      
                 self.piechart.piechart(data,self.get_report_start_date()+" <> "+self.get_report_end_date())
-                self.ui.plot_area.setPixmap(QPixmap.fromImage(r'backend\\report\\piechart\\piechart.png'))
+                self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
                 self.ui.plot_area.setScaledContents(True)
             elif not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_pichart_data()
                 self.piechart.piechart(data,"Percentages of programs")
-                self.ui.plot_area.setPixmap(QPixmap.fromImage(r'backend\\report\\piechart\\piechart.png'))
+                self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
                 self.ui.plot_area.setScaledContents(True)  
 
 
@@ -602,12 +602,12 @@ class MainWindow(QMainWindow):
         self.ui_table(results)
         return results
 
-    def query_database_for_data(self):      
+    def query_database_for_data(self):
         if self.ui.checkBox.isChecked():
             if self.ui.search_box.text() and self.ui.db_start_date.text():
                 program = self.ui.search_box.text()
-                program = "\'{}\'".format(program)
-                details = self.query_database("SELECT * FROM tb_attendance WHERE program="+program)
+                program_ = "\'{}\'".format(program)
+                details = self.query_database("SELECT * FROM tb_attendance WHERE program="+program_)
                 self.ui_table(details)
                 return details
             elif self.ui.search_box.text() and self.ui.db_start_date.text():
@@ -778,12 +778,12 @@ class MainWindow(QMainWindow):
                 image_data.append(data)
             db.commit()
             if len(image_data)>0:
-                with open(r'backend\\images\\assets\\image.jpeg','wb') as image_file:
+                with open('D:\\Commons\\backend\\images\\assets\\image.jpeg','wb') as image_file:
                         image_file.write(image_data[1])
-            label.setPixmap(QPixmap.fromImage(r'backend\\images\\assets\\image.jpeg'))
+            label.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\images\\assets\\image.jpeg'))
             label.setScaledContents(True)
         else:
-            label.setPixmap(QPixmap.fromImage(r'backend\\images\\assets\\img.png'))
+            label.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\images\\assets\\img.png'))
             label.setScaledContents(True)
 
     def search_student(self):
@@ -849,7 +849,7 @@ class MainWindow(QMainWindow):
             self.resets_fileds()
             self.alert_builder("Student data removed successfuly!")
         except:
-            self.alert_builder("Oops! internal server erro!")
+            self.alert_builder("Oops! internal server error!")
 
     def resets_fileds(self):
         self.ui.reg_firstname.setText("")
@@ -882,8 +882,8 @@ class MainWindow(QMainWindow):
             link = requests.get(self.ui.image_file_reg.text())
             if self.connected_to_internet()==True:
                 try:
-                    wget.download(link.url,r"backend\\images\\download\\image.jpeg")
-                    self.ui.reg_image.setPixmap(QPixmap.fromImage(r"backend\\images\\download\\image.jpeg"))
+                    wget.download(link.url,"D:\\Commons\\backend\\images\\download\\image.jpeg")
+                    self.ui.reg_image.setPixmap(QPixmap.fromImage("D:\\Commons\\backend\\images\\download\\image.jpeg"))
                     self.ui.reg_image.setScaledContents(True)
                 except Exception as e:
                     self.alert_builder("Oops! check your image url!")

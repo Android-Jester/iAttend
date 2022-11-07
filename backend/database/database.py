@@ -113,7 +113,7 @@ class Database(QtWidgets.QDialog):
                 self.ui_database.label_notification.setText("Please provide your connection details")
         elif self.ui_database.sqlite.isChecked():     
             try:
-                db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+                db = sqlite3.connect('D:\\Commons\\backend\\sqlite\\attendance_system.db')
                 cursor = db.cursor()
                 cursor.execute(create_tb_students_sqlite())
                 cursor.execute(create_tb_attendance_sqlite())

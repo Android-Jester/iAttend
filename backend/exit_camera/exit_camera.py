@@ -110,7 +110,7 @@ class ExitCameraFeed(QtWidgets.QDialog):
                          my_cursor.execute("UPDATE tb_attendance SET time_out= %s, duration=%s  WHERE st_reference=%s and date_stamp=%s ",(time_out,new_duration,str(results[1]),dt.now().date().strftime('%Y-%m-%d')))
                     db.commit()
                     winsound.Beep(1000,100)
-                    return "Hey! you have successfully logged out"
+                    return "Hey! your have successfully logged out"
                 else:
                     return "Oops! you are already logged out!"
         else:
