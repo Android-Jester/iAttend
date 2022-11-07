@@ -191,7 +191,7 @@ class MainWindow(QMainWindow):
         completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
 
-        country_completer = QCompleter(self.country_names(r'backend\\json\\data_json.json'))
+        country_completer = QCompleter(self.country_names('D:\\Commons\\backend\\json\\data_json.json'))
         country_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
@@ -1018,48 +1018,50 @@ class MainWindow(QMainWindow):
         self.ui.reg_college_2.setCurrentText(json_data['college'])
         self.ui.image_file_reg.setText(json_data['image_url'])
              
-
     def start_webcam_registration(self):
-        ip_address = self.ui.reg_camera_ip.text()
-        system_attached_camera = self.ui.reg_camera_combo.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:  
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam_registration
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Hey! wait a second while system\ninitializes camera") 
-                self.show_alert.show()
-                self.capture = VideoCapture(ip_address)
+        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
+            ip_address = self.ui.reg_camera_ip.text()
+            system_attached_camera = self.ui.reg_camera_combo.currentText()
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
+            self.network_capture = VideoCapture(ip_address)
+            if ip_address:  
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam_registration
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Hey! wait a second while system\ninitializes camera") 
+                    self.show_alert.show()
+                    self.capture = VideoCapture(ip_address)
                 
-        elif system_attached_camera:       
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam_registration
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Hey! wait a second while system\ninitializes camera") 
-                self.show_alert.show()
-                self.capture = VideoCapture(camera_id) 
+            elif system_attached_camera:       
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam_registration
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Hey! wait a second while system\ninitializes camera") 
+                    self.show_alert.show()
+                    self.capture = VideoCapture(camera_id) 
                         
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam_registration
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                    self.capture = VideoCapture(camera_id) 
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame_registration)
-        self.timer.start(3)
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame_registration)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show()
+        
 
     def update_frame_registration(self):
         thickness = 2
@@ -1121,7 +1123,7 @@ class MainWindow(QMainWindow):
         
     def stop_webcam_registration(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.ui.reg_cap_frame.setPixmap(QPixmap())
         self.ui.reg_cap_frame.setAlignment(Qt.AlignCenter)
@@ -1141,42 +1143,46 @@ class MainWindow(QMainWindow):
 
 
     def start_webcam(self):
-        ip_address = self.ui.camera_ip.text()
-        system_attached_camera = self.ui.comboBox.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:  
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.show_info("Hey! wait a second while system\ninitializes camera")
-                self.capture = VideoCapture(ip_address)
-                
-        elif system_attached_camera:       
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.show_info("Hey! wait a second while system\ninitializes camera")
-                self.capture = VideoCapture(camera_id) 
-                        
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
+            ip_address = self.ui.camera_ip.text()
+            system_attached_camera = self.ui.comboBox.currentText()
+            self.network_capture = VideoCapture(ip_address)
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame)
-        self.timer.start(3)
+            if ip_address:  
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.show_info("Hey! wait a second while system\ninitializes camera")
+                    self.capture = VideoCapture(ip_address)
+                
+            elif system_attached_camera:       
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.show_info("Hey! wait a second while system\ninitializes camera")
+                    self.capture = VideoCapture(camera_id) 
+                        
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                    self.show_info("Hey! wait a second while system\ninitializes camera")
+                    self.capture = VideoCapture(camera_id)
+
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show()
 
     def update_frame(self):
 
@@ -1237,7 +1243,7 @@ class MainWindow(QMainWindow):
         
     def stop_webcam(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.ui.camera_view.setPixmap(QPixmap())
         self.ui.camera_view.setAlignment(Qt.AlignCenter)
@@ -1260,43 +1266,45 @@ class MainWindow(QMainWindow):
 
 
     def start_webcam_cam_one(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-        self.show_alert.show()
-        ip_address = self.ui.camera_one_id_ip.text()
-        system_attached_camera = self.ui.camera_one_comboBox.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam_cam_one
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(ip_address)
+        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
+            self.show_alert.show()
+            ip_address = self.ui.camera_one_id_ip.text()
+            system_attached_camera = self.ui.camera_one_comboBox.currentText()
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
+            self.network_capture = VideoCapture(ip_address)
+            if ip_address:
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam_cam_one
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(ip_address)
                 
-        elif system_attached_camera:
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam_cam_one
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(camera_id) 
+            elif system_attached_camera:
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam_cam_one
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(camera_id) 
                         
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam_cam_one
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                self.capture = VideoCapture(camera_id) 
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame_cam_one)
-        self.timer.start(3)
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame_cam_one)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show()
 
     def update_frame_cam_one(self): 
         ret,self.frame = self.capture.read()
@@ -1318,7 +1326,7 @@ class MainWindow(QMainWindow):
     
     def stop_webcam_cam_one(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.ui.camera_1.setPixmap(QPixmap())
         self.ui.camera_1.setAlignment(Qt.AlignCenter)
@@ -1355,43 +1363,46 @@ class MainWindow(QMainWindow):
  
 
     def start_webcam_cam_two(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-        self.show_alert.show()
-        ip_address = self.ui.camera_two_id_ip.text()
-        system_attached_camera = self.ui.camera_two_comboBox.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam_cam_two
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(ip_address)
+        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
+            self.show_alert.show()
+        
+            ip_address = self.ui.camera_two_id_ip.text()
+            system_attached_camera = self.ui.camera_two_comboBox.currentText()
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
+            self.network_capture = VideoCapture(ip_address)
+            if ip_address:
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam_cam_two
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(ip_address)
                 
-        elif system_attached_camera:
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam_cam_two
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(camera_id) 
+            elif system_attached_camera:
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam_cam_two
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(camera_id) 
                         
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam_cam_two
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                self.capture = VideoCapture(camera_id) 
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame_cam_two)
-        self.timer.start(3)
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame_cam_two)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show()
 
     def update_frame_cam_two(self): 
         ret,self.frame = self.capture.read()
@@ -1413,7 +1424,7 @@ class MainWindow(QMainWindow):
     
     def stop_webcam_cam_two(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.ui.camera_2.setPixmap(QPixmap())
         self.ui.camera_2.setAlignment(Qt.AlignCenter)
@@ -1421,43 +1432,45 @@ class MainWindow(QMainWindow):
 
 
     def start_webcam_cam_three(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-        self.show_alert.show()
-        ip_address = self.ui.camera_three_id_ip.text()
-        system_attached_camera = self.ui.camera_three_comboBox.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam_cam_three
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(ip_address)
+        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
+            self.show_alert.show()
+            ip_address = self.ui.camera_three_id_ip.text()
+            system_attached_camera = self.ui.camera_three_comboBox.currentText()
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
+            self.network_capture = VideoCapture(ip_address)
+            if ip_address:
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam_cam_three
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(ip_address)
                 
-        elif system_attached_camera:
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam_cam_three
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(camera_id) 
+            elif system_attached_camera:
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam_cam_three
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(camera_id) 
                         
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam_cam_three
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                    self.capture = VideoCapture(camera_id) 
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame_cam_three)
-        self.timer.start(3) 
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame_cam_three)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show() 
     
     def update_frame_cam_three(self):  
         ret,self.frame = self.capture.read()
@@ -1479,7 +1492,7 @@ class MainWindow(QMainWindow):
     
     def stop_webcam_cam_three(self):    
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.ui.camera_3.setPixmap(QPixmap())
         self.ui.camera_3.setAlignment(Qt.AlignCenter)
@@ -1487,43 +1500,45 @@ class MainWindow(QMainWindow):
 
 
     def start_webcam_cam_four(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-        self.show_alert.show()
-        ip_address = self.ui.camera_four_id_ip.text()
-        system_attached_camera = self.ui.camera_four_comboBox.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam_cam_four
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(ip_address)
+        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
+            self.show_alert.show()
+            ip_address = self.ui.camera_four_id_ip.text()
+            system_attached_camera = self.ui.camera_four_comboBox.currentText()
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
+            self.network_capture = VideoCapture(ip_address)
+            if ip_address:
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam_cam_four
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(ip_address)
                 
-        elif system_attached_camera:
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam_cam_four
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(camera_id) 
+            elif system_attached_camera:
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam_cam_four
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(camera_id) 
                         
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam_cam_four
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                self.capture = VideoCapture(camera_id) 
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame_cam_four)
-        self.timer.start(3) 
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame_cam_four)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show() 
     
     def update_frame_cam_four(self):  
         ret,self.frame = self.capture.read()
@@ -1545,7 +1560,7 @@ class MainWindow(QMainWindow):
     
     def stop_webcam_cam_four(self):    
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
+        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
         self.show_alert.show()
         self.ui.camera_4.setPixmap(QPixmap())
         self.ui.camera_4.setAlignment(Qt.AlignCenter)
