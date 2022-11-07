@@ -1,4 +1,6 @@
+import base64
 import datetime
+import json
 import time
 import winsound
 import cv2
@@ -73,9 +75,11 @@ class ExitCameraFeed(QtWidgets.QDialog):
         self.ui_exit_camera.contrast_value.setText(str(value))
     
 
-    def log_student_out(self,reference:str):
+    def log_student_out(self,qr_code_data:str):
+        decode_data=base64.b64decode(str(qr_code_data)).decode('utf-8')
+        data_json = json.loads(decode_data)
         (db,my_cursor,connection_status) = self.database.my_cursor_()
-        cursor=my_cursor.execute("SELECT id,reference FROM tb_students WHERE reference= " +reference)
+        cursor=my_cursor.execute("SELECT id,reference FROM tb_students WHERE reference= " +data_json['reference'])
         cursor= my_cursor.fetchone()
         db.commit()
         results = []
