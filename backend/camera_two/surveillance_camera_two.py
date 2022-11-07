@@ -68,43 +68,46 @@ class Surveilliance_Two(QtWidgets.QDialog):
         self.surveillance_two.contrast_value.setText(str(value))
 
     def start_webcam(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-        self.show_alert.show()
-        ip_address = self.surveillance_two.exit_cam_ip.text()
-        system_attached_camera = self.surveillance_two.exit_comboBox.currentText()
-        camera_id = int(system_attached_camera)
-        self.system_capture = VideoCapture(camera_id)
-        self.network_capture = VideoCapture(ip_address)
-        if ip_address:
-            if self.network_capture is None or not self.network_capture.isOpened():    
-                self.stop_webcam
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(ip_address)
+        if self.surveillance_two.exit_cam_ip.text() or self.surveillance_two.exit_comboBox.currentText():
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
+            self.show_alert.show()
+            ip_address = self.surveillance_two.exit_cam_ip.text()
+            system_attached_camera = self.surveillance_two.exit_comboBox.currentText()
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)
+            self.network_capture = VideoCapture(ip_address)
+            if ip_address:
+                if self.network_capture is None or not self.network_capture.isOpened():    
+                    self.stop_webcam
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(ip_address)
                 
-        elif system_attached_camera:
-            if self.system_capture is None or not self.system_capture.isOpened():    
-                self.stop_webcam
-                self.show_alert = AlertDialog()
-                self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                self.show_alert.show()
-            else:
-                self.capture = VideoCapture(camera_id) 
+            elif system_attached_camera:
+                if self.system_capture is None or not self.system_capture.isOpened():    
+                    self.stop_webcam
+                    self.show_alert = AlertDialog()
+                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.show()
+                else:
+                    self.capture = VideoCapture(camera_id) 
                         
-        elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.stop_webcam
-                self.show_alert = AlertDialog()
-                self.show_alert.content() 
-                self.show_alert.show()
+            elif self.system_capture.isOpened() and self.network_capture.isOpened():
+                self.capture = VideoCapture(camera_id) 
 
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-        self.timer = QTimer()
-        self.timer.timeout.connect(self.update_frame)
-        self.timer.start(3) 
+            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
+            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
+            self.timer = QTimer()
+            self.timer.timeout.connect(self.update_frame)
+            self.timer.start(3)
+        else:
+            self.show_alert = AlertDialog()
+            self.show_alert.content("Oops! your have no active cameras available")  
+            self.show_alert.show() 
+     
     
     def update_frame(self):  
         ret,self.frame = self.capture.read()
