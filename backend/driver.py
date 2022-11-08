@@ -522,10 +522,11 @@ class MainWindow(QMainWindow):
         details = []
         cursor = my_cursor.execute(query)
         cursor = my_cursor.fetchall()
+        db.commit()
+        my_cursor.close()
         if cursor:
             for item in cursor:
                 details.append(item)
-            db.commit()
         return details
     
     def ui_table(self, details: list):
@@ -712,10 +713,11 @@ class MainWindow(QMainWindow):
                         my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
                     my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
                     (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
-                    db.commit() 
+                    db.commit()
+                    my_cursor.close() 
                     self.alert_builder("Student registered successfully")   
                 elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                    path = r'backend\\images\\download\\image.jpeg'
+                    path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
                     if os.path.exists(path):
                         with open(path, 'rb') as image:
                             data = image.read()
@@ -735,9 +737,10 @@ class MainWindow(QMainWindow):
                     my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                     (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
                     db.commit()
+                    my_cursor.close() 
                     self.alert_builder("Student registered successfully")    
                 elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                    path = r'backend\\images\\download\\image.jpeg'
+                    path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
                     if os.path.exists(path):
                         with open(path, 'rb') as image:
                             data = image.read()       
@@ -745,6 +748,7 @@ class MainWindow(QMainWindow):
                         my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                         (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))
                         db.commit()
+                        my_cursor.close()
                         os.remove(path)
                         self.alert_builder("Student registered successfully")    
                 else:
@@ -761,22 +765,24 @@ class MainWindow(QMainWindow):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         detail =my_cursor.execute("SELECT * FROM tb_students WHERE reference="+reference)
         detail= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
         db_data = []
         if detail:
             for data in detail:
                 db_data.append(data)
-            db.commit()
         return db_data
 
     def load_image_from_db(self,reference,label):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         cursor=my_cursor.execute("SELECT st_reference,image from tb_images WHERE st_reference="+reference)
         cursor= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
         image_data = []
         if cursor:
             for data in cursor:
                 image_data.append(data)
-            db.commit()
             if len(image_data)>0:
                 with open('D:\\Commons\\backend\\images\\assets\\image.jpeg','wb') as image_file:
                         image_file.write(image_data[1])
@@ -818,22 +824,26 @@ class MainWindow(QMainWindow):
                 if check_state == True:
                     my_cursor.execute("UPDATE tb_images SET image =? WHERE st_reference=?",(data,ref))
                     db.commit()
+                    my_cursor.close()
                 else:
                     my_cursor.execute("UPDATE tb_images SET image =%s WHERE st_reference=%s",(data,ref))
                     db.commit()
+                    my_cursor.close()
             self.alert_builder("Hey! Student image updated successfully.")
         elif self.ui.reg_student_ref.text() and self.ui.image_file_reg.text() and self.ui.online_image.isChecked():
             ref = self.ui.reg_student_ref.text()
-            path = r'backend\\images\\download\\image.jpeg'
+            path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
             if os.path.exists(path):
                 with open(path, 'rb') as image:
                     data = image.read()
                     if check_state == True:
                         my_cursor.execute("UPDATE tb_images SET image =? WHERE st_reference=?",(data,ref))
                         db.commit()
+                        my_cursor.close()
                     else:
                         my_cursor.execute("UPDATE tb_images SET image =%s WHERE st_reference=%s",(data,ref))
                         db.commit()
+                        my_cursor.close()
                 self.alert_builder("Hey! Student image updated successfully.")
                 os.remove(path)
             else:
@@ -846,6 +856,7 @@ class MainWindow(QMainWindow):
         try:
             my_cursor.execute("DELETE FROM tb_students where reference="+self.ui.reg_student_ref.text())
             db.commit()
+            my_cursor.close()
             self.resets_fileds()
             self.alert_builder("Student data removed successfuly!")
         except:
@@ -911,11 +922,12 @@ class MainWindow(QMainWindow):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         cursor=my_cursor.execute("SELECT date_stamp,time_out,duration FROM tb_attendance WHERE st_reference = "+(reference)+" ORDER BY date_stamp DESC LIMIT 2")
         cursor= my_cursor.fetchall()
+        db.commit()
+        my_cursor.close()
         last_seen_info = []
         if cursor:
             for data in cursor:
                 last_seen_info.append(data)
-            db.commit()
         if len(last_seen_info)>=2:
             details=self.reconstruct_date(last_seen_info[1][0])
             time = last_seen_info[0][1]
@@ -981,6 +993,7 @@ class MainWindow(QMainWindow):
         if self.ui.refrence.text() != "Reference" and self.ui.refrence.text() !="" :
             data=my_cursor.execute("SELECT st_reference,date_stamp FROM tb_attendance WHERE st_reference="+self.ui.refrence.text()+" and date_stamp="+date)
             data=my_cursor.fetchone()
+
             if data:
                 for detail in data:
                     details.append(detail)
@@ -1002,6 +1015,7 @@ class MainWindow(QMainWindow):
                 self.show_info("Attendance taken, you can proceed!\nNext person please...")
             else:
                  self.show_info("Oops! something went wrong...")
+        db.close()
 
     def retrive_registration_from_qrcode(self,qr_code_data):
         json_data = json.loads(qr_code_data)
