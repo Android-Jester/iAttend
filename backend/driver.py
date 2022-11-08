@@ -742,6 +742,18 @@ class MainWindow(QMainWindow):
         date = self.ui.calendarWidget_reg_2.selectedDate()
         self.ui.reg_end_date.setText(str(date.toPython()))
 
+    def fetch_data_from_db(self,reference):
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        detail =my_cursor.execute("SELECT * FROM tb_students WHERE reference="+reference)
+        detail= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
+        db_data = []
+        if detail:
+            for data in detail:
+                db_data.append(data)
+        return db_data
+
     def register_student(self):
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
@@ -756,74 +768,66 @@ class MainWindow(QMainWindow):
                 self.ui.reg_nationality.text(),
                 self.ui.reg_start_date.text(),
                 self.ui.reg_end_date.text(),
-            )
-            
-            if check_state == True:
-                if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
-                    with open(self.ui.image_file_reg.text(), 'rb') as image:
-                        data = image.read()
-                        my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
-                    my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
-                    (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
-                    db.commit()
-                    my_cursor.close() 
-                    self.alert_builder("Student registered successfully")   
-                elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                    path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
-                    if os.path.exists(path):
-                        with open(path, 'rb') as image:
+            ) 
+            details=self.fetch_data_from_db(self.ui.reg_student_ref.text())
+            if not details:
+                if check_state == True:
+                    if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
+                        with open(self.ui.image_file_reg.text(), 'rb') as image:
                             data = image.read()
                             my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
                         my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
-                        (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date)) 
+                        (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
                         db.commit()
-                        self.alert_builder("Student registered successfully")
-                        os.remove(path)          
+                        my_cursor.close() 
+                        self.alert_builder("Student registered successfully")   
+                    elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
+                        path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
+                        if os.path.exists(path):
+                            with open(path, 'rb') as image:
+                                data = image.read()
+                                my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
+                            my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
+                            (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date)) 
+                            db.commit()
+                            self.alert_builder("Student registered successfully")
+                            os.remove(path)          
+                        else:
+                            self.alert_builder("Oops! something went wrong while\nprocessing your request") 
                 else:
-                    self.alert_builder("Oops! something went wrong while\nprocessing your request") 
-            else:
-                if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
-                    with open(self.ui.image_file_reg.text(), 'rb') as image:
-                        data = image.read()
-                        my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student.reference,data))
-                    my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                    (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
-                    db.commit()
-                    my_cursor.close() 
-                    self.alert_builder("Student registered successfully")    
-                elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                    path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
-                    if os.path.exists(path):
-                        with open(path, 'rb') as image:
-                            data = image.read()       
+                    if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
+                        with open(self.ui.image_file_reg.text(), 'rb') as image:
+                            data = image.read()
                             my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student.reference,data))
                         my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                        (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))
+                        (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
                         db.commit()
-                        my_cursor.close()
-                        os.remove(path)
+                        my_cursor.close() 
                         self.alert_builder("Student registered successfully")    
-                else:
-                    self.alert_builder("Oops! something went wrong while\nprocessing your request") 
+                    elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
+                        path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
+                        if os.path.exists(path):
+                            with open(path, 'rb') as image:
+                                data = image.read()       
+                                my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student.reference,data))
+                            my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                            (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))
+                            db.commit()
+                            my_cursor.close()
+                            os.remove(path)
+                            self.alert_builder("Student registered successfully")    
+                        else:
+                            self.alert_builder("Oops! something went wrong while\nprocessing your request") 
+            else:
+                self.alert_builder("Oops! student with this reference\nalready exists")
         else:
-            self.alert_builder("Oops! something went wrong while\nprocessing your request") 
+            self.alert_builder("Oops! something went wrong while\nprocessing your request")
 
     def alert_builder(self, message:str):
         self.alert = AlertDialog()
         self.alert.content(message)
         self.alert.show()
           
-    def fetch_data_from_db(self,reference):
-        (db,my_cursor,connection_status) = self.database.my_cursor()
-        detail =my_cursor.execute("SELECT * FROM tb_students WHERE reference="+reference)
-        detail= my_cursor.fetchone()
-        db.commit()
-        my_cursor.close()
-        db_data = []
-        if detail:
-            for data in detail:
-                db_data.append(data)
-        return db_data
 
     def load_image_from_db(self,reference,label):
         (db,my_cursor,connection_status) = self.database.my_cursor()
