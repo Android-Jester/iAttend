@@ -76,10 +76,8 @@ class ExitCameraFeed(QtWidgets.QDialog):
     
 
     def log_student_out(self,qr_code_data:str):
-        decode_data=base64.b64decode(str(qr_code_data)).decode('utf-8')
-        data_json = json.loads(decode_data)
-        (db,my_cursor,connection_status) = self.database.my_cursor_()
-        cursor=my_cursor.execute("SELECT id,reference FROM tb_students WHERE reference= " +data_json['reference'])
+        db,my_cursor,connection_status = self.database.my_cursor_()
+        cursor=my_cursor.execute("SELECT id,reference FROM tb_students WHERE reference= " +qr_code_data)
         cursor= my_cursor.fetchone()
         db.commit()
         results = []
@@ -195,7 +193,9 @@ class ExitCameraFeed(QtWidgets.QDialog):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-            info=self.log_student_out(str(qr_code_data))
+            decode_data=base64.b64decode(data).decode('utf-8')
+            data_json = json.loads(decode_data)
+            info=self.log_student_out(data_json['reference'])
             self.ui_exit_camera.label_notification.setText(info)
         self.display_feed(self.result,1)          
 
