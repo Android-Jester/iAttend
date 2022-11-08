@@ -50,27 +50,28 @@ class Database(QtWidgets.QDialog):
         port=details[3]
         database = details[4]
         if self.ui_database.mysql.isChecked() and self.ui_database.database_name.text() and self.ui_database.password.text():
-            connection_status:str =("Connected to MySQL...")
             try:
+                connection_status:str =("Connected to MySQL...")
                 db=connector.connect(host=host,port=port,user=user,password=password,database=database)
                 self.ui_database.label_notification.setText(connection_status) 
                 return db,db.cursor(),connection_status 
             except Exception as e:
                 return str(e)
         elif self.ui_database.postgresql.isChecked() and self.ui_database.database_name.text() and self.ui_database.password.text():
-            connection_status:str =("Connected to PostgreSQL...")
             try:
+                connection_status:str =("Connected to PostgreSQL...")
                 db=psycopg2.connect(host=host,port=port,user=user,password=password,database=database)
                 self.ui_database.label_notification.setText(connection_status)
                 return db,db.cursor(),connection_status
             except Exception as e:
                 return str(e)
         else:
-            connection_status:str =("Connected to SQLite3...")
+            
             try:
-                db = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+                connection_status:str =("Connected to SQLite3...")
+                db = sqlite3.connect('D:\\Commons\\backend\\sqlite\\attendance_system.db')
                 self.ui_database.label_notification.setText(connection_status)
-                return db,db.cursor(),connection_status
+                return db, db.cursor(), connection_status
             except Exception as e:
                return str(e) 
           
