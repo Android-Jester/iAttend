@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'launcherdJsZEh.ui'
+## Form generated from reading UI file 'launcherYkZrJP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -84,7 +84,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"i<strong>Vision", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>iAttend</p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Your secuirity, Our concern!</p></body></html>", None))
     # retranslateUi
 
