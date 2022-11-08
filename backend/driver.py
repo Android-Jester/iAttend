@@ -649,7 +649,6 @@ class MainWindow(QMainWindow):
         start_date="\'{}\'".format(start)
         prog = self.ui.search_box.text()
         program="\'{}\'".format(prog)
-        print(program)
         results = self.query_database("SELECT * FROM tb_attendance WHERE program="+program+" and date_stamp="+start_date)
         self.ui_table(results)
         return results
@@ -657,12 +656,6 @@ class MainWindow(QMainWindow):
     def query_database_for_data(self):
         if self.ui.checkBox.isChecked():
             if self.ui.search_box.text() and self.ui.db_start_date.text():
-                program = self.ui.search_box.text()
-                program_ = "\'{}\'".format(program)
-                details = self.query_database("SELECT * FROM tb_attendance WHERE program="+program_)
-                self.ui_table(details)
-                return details
-            elif self.ui.search_box.text() and self.ui.db_start_date.text():
                 self.fetch_data_by_program_and_date()
             elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
                 start = self.ui.db_start_date.text()
