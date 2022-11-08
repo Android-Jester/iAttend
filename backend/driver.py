@@ -243,7 +243,14 @@ class MainWindow(QMainWindow):
         self.alert.show()
 
     def helper(self,path_pdf,file_name:str):
-        path = 'C:\\ProgramData\\iVision\\data'
+        root_dir = 'C:\\ProgramData\\iVision\\data'
+        list =('barchart','piechart','linechart','json_export','csv_export')
+        if self.ui.bar_chart.isChecked():
+            path = os.path.join(root_dir,list[0])
+        elif self.ui.line_graph.isChecked():
+            path = path = os.path.join(root_dir,list[2])
+        elif self.ui.pie_chart.isChecked():
+            path = path = os.path.join(root_dir,list[1])
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         new_name='D:\\Commons\\backend\\report\\piechart\\'+file_name+date+'.pdf'
         os.rename(path_pdf,new_name)
@@ -300,10 +307,14 @@ class MainWindow(QMainWindow):
         return str(day+' '+month+' '+year)
 
     def create_program_data_dir(self):
-        path = 'C:\\ProgramData\\iVision\\data'
-        if not os.path.exists(path):
-            os.makedirs(path)
-            return path
+        root_dir = 'C:\\ProgramData\\iVision\\data'
+        list =('barchart','piechart','linechart','json_export','csv_export')
+        if not os.path.exists(root_dir):
+            os.makedirs(root_dir)
+        for item in list:
+            path = os.path.join(root_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
 
     def get_pichart_data(self):
         query = self.query_database("SELECT DISTINCT program FROM tb_attendance")
@@ -430,58 +441,98 @@ class MainWindow(QMainWindow):
         if self.ui.bar_chart.isChecked():
             if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_barchart()
-                self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students","Programs",
-                colors[:len(data[0])])
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
-                self.ui.plot_area_2.setScaledContents(True)
+                if len(data[0])>=1:
+                    self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students","Programs",
+                    colors[:len(data[0])])
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
             elif self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_by_date()
-                self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics ","Number of students",
-                self.get_report_start_date(),colors[:len(data[0])])
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
-                self.ui.plot_area_2.setScaledContents(True)
+                if len(data[0])>=1:
+                    self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics ","Number of students",
+                    self.get_report_start_date(),colors[:len(data[0])])
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
             elif self.ui.report_end_date.text() and self.ui.report_end_date.text():
-                data = self.get_data_by_date_range()      
-                self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students",
-                self.get_report_start_date()+" <> "+self.get_report_end_date(),colors[:len(data[0])])
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
-                self.ui.plot_area_2.setScaledContents(True)   
+                data = self.get_data_by_date_range()
+                if len(data[0])>=1:      
+                    self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students",
+                    self.get_report_start_date()+" <> "+self.get_report_end_date(),colors[:len(data[0])])
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()   
         elif self.ui.line_graph.isChecked():
             program=self.ui.college_courses.currentText()
             if self.ui.date_range_comboBox.currentText():
                 y_values =self.line_plot_values()
-                self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
-                y_label="Number of students",x_label="Date")
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
-                self.ui.plot_area_2.setScaledContents(True)
+                if len(y_values)>=1:
+                    self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
+                    y_label="Number of students",x_label="Date")
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
+                    self.ui.plot_area_2.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
             elif not self.ui.date_range_comboBox.currentText():
                 y_values=self.count_attendance_for_all_distinct_dates()
-                self.line_graph.plot_graph(y_values[0],title="Trend in attendance for "+program,label_="Trends",
-                y_label="Number of students",x_label=self.reconstruct_date(y_values[1])+'<>'+self.reconstruct_date(y_values[2]))
-                self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
-                self.ui.plot_area_2.setScaledContents(True)
+                if len(y_values[0])>=1:
+                    self.line_graph.plot_graph(y_values[0],title="Trend in attendance for "+program,label_="Trends",
+                    y_label="Number of students",x_label=self.reconstruct_date(y_values[1])+'<>'+self.reconstruct_date(y_values[2]))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
+                    self.ui.plot_area_2.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
         elif self.ui.pie_chart.isChecked():
             if self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_by_date()
-                self.piechart.piechart(data,self.get_report_start_date())
-                self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
-                self.ui.plot_area.setScaledContents(True)
+                if len(data[0])>=1:
+                    self.piechart.piechart(data,self.get_report_start_date())
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
             elif self.ui.report_end_date.text() and self.ui.report_end_date.text():
-                data = self.get_data_by_date_range()      
-                self.piechart.piechart(data,self.get_report_start_date()+" <> "+self.get_report_end_date())
-                self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
-                self.ui.plot_area.setScaledContents(True)
+                data = self.get_data_by_date_range()
+                if len(data[0])>=1:      
+                    self.piechart.piechart(data,self.get_report_start_date()+" <> "+self.get_report_end_date())
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show() 
             elif not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_pichart_data()
-                self.piechart.piechart(data,"Percentages of programs")
-                self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
-                self.ui.plot_area.setScaledContents(True)  
+                if len(data[0])>=1:
+                    self.piechart.piechart(data,"Percentages of programs")
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show() 
 
 
     def export_data_to_csv(self):
         table=self.ui.tableWidget.item(0,0)
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iVision\\data\\students_data'+date+'.csv'
+        path = 'C:\\ProgramData\\iVision\\data\\csv_export\\students_data'+date+'.csv'
         if table:
             details=self.query_database_for_data()
             data = pd.DataFrame(details)
@@ -498,7 +549,7 @@ class MainWindow(QMainWindow):
     def export_data_to_json(self):
         table=self.ui.tableWidget.item(0,0)
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iVision\\data\\students_data'+date+'.json'
+        path = 'C:\\ProgramData\\iVision\\data\\json_export\\students_data'+date+'.json'
         if table:
             details=self.query_database_for_data()
             data=pd.DataFrame(details,columns=['Id','Program','Date_stamp','Time_in','Time_out','Duration','Reference'])
@@ -518,7 +569,7 @@ class MainWindow(QMainWindow):
             self.ui.reg_programs.addItems(programs)
         
     def query_database(self, query: str):
-        (db,my_cursor,connection_status) = self.database.my_cursor()
+        db,my_cursor,connection_status = self.database.my_cursor()
         details = []
         cursor = my_cursor.execute(query)
         cursor = my_cursor.fetchall()
@@ -706,6 +757,7 @@ class MainWindow(QMainWindow):
                 self.ui.reg_start_date.text(),
                 self.ui.reg_end_date.text(),
             )
+            
             if check_state == True:
                 if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
                     with open(self.ui.image_file_reg.text(), 'rb') as image:
