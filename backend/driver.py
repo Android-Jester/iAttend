@@ -655,18 +655,18 @@ class MainWindow(QMainWindow):
 
     def query_database_for_data(self):
         if self.ui.checkBox.isChecked():
-            if self.ui.search_box.text() and self.ui.db_start_date.text():
-                self.fetch_data_by_program_and_date()
-            elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+            if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
                 start = self.ui.db_start_date.text()
                 start_date="\'{}\'".format(start)
                 end = self.ui.db_end_date.text()
                 end_date="\'{}\'".format(end)
                 prog = self.ui.search_box.text()
                 program="\'{}\'".format(prog)
-                results = self.query_database("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
-                self.ui_table(results)
-                return results
+                results_ = self.query_database("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
+                self.ui_table(results_)
+                return results_
+            elif self.ui.search_box.text() and self.ui.db_start_date.text():
+                self.fetch_data_by_program_and_date()
             else:
                 program = self.ui.search_box.text()
                 program = "\'{}\'".format(program)

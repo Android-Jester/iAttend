@@ -1,25 +1,29 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'exit_cameratUaFwk.ui'
+## Form generated from reading UI file 'exit_camera.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.14.1
+## Created by: Qt User Interface Compiler version 6.3.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
-    QRect, QSize, QUrl, Qt)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
-    QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient)
-from PySide2.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QFrame,
+    QGridLayout, QHBoxLayout, QLabel, QLineEdit,
+    QPushButton, QSizePolicy, QSlider, QVBoxLayout,
+    QWidget)
 import asset_rc
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
-        if Dialog.objectName():
+        if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(1098, 900)
         Dialog.setMinimumSize(QSize(1098, 900))
@@ -66,7 +70,7 @@ class Ui_Dialog(object):
         self.label_2 = QLabel(self.frame_3)
         self.label_2.setObjectName(u"label_2")
         font = QFont()
-        font.setFamily(u"Arial")
+        font.setFamilies([u"Arial"])
         font.setPointSize(10)
         self.label_2.setFont(font)
         self.label_2.setStyleSheet(u"QLabel{\n"
@@ -158,7 +162,7 @@ class Ui_Dialog(object):
         self.camera_feeds.setMinimumSize(QSize(0, 600))
         self.camera_feeds.setMaximumSize(QSize(16777215, 600))
         font1 = QFont()
-        font1.setFamily(u"Arial")
+        font1.setFamilies([u"Arial"])
         font1.setPointSize(12)
         self.camera_feeds.setFont(font1)
         self.camera_feeds.setStyleSheet(u"QLabel{\n"
@@ -285,10 +289,9 @@ class Ui_Dialog(object):
         self.label_notification.setObjectName(u"label_notification")
         self.label_notification.setGeometry(QRect(10, 120, 511, 71))
         font3 = QFont()
-        font3.setFamily(u"MS Shell Dlg 2")
+        font3.setFamilies([u"MS Shell Dlg 2"])
         font3.setPointSize(10)
         font3.setBold(False)
-        font3.setWeight(50)
         self.label_notification.setFont(font3)
         self.label_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -344,10 +347,9 @@ class Ui_Dialog(object):
         self.entry_blur_label = QLabel(self.frame_7)
         self.entry_blur_label.setObjectName(u"entry_blur_label")
         font4 = QFont()
-        font4.setFamily(u"Arial")
+        font4.setFamilies([u"Arial"])
         font4.setPointSize(10)
         font4.setBold(False)
-        font4.setWeight(50)
         self.entry_blur_label.setFont(font4)
         self.entry_blur_label.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"

@@ -1,7 +1,9 @@
 
 import mysql.connector as connector
+
+from dataclasses import dataclass
 # import psycopg2
-# from datetime import datetime as dt
+from datetime import datetime as dt
 
 # from dataclasses import dataclass
 
@@ -52,15 +54,15 @@ my_cursor =db.cursor()
 
 # v = last_seen('20661163')
 # print(v)
-# def query_database(query: str):
-#         details = []
-#         cursor = my_cursor.execute(query)
-#         cursor = my_cursor.fetchall()
-#         if cursor:
-#             for item in cursor:
-#                 details.append(item)
-#             db.commit()
-#         return details
+def query_database(query: str):
+        details = []
+        cursor = my_cursor.execute(query)
+        cursor = my_cursor.fetchall()
+        if cursor:
+            for item in cursor:
+                details.append(item)
+            db.commit()
+        return details
 
 # def get_pichart_data():
 #         query = query_database("SELECT DISTINCT program FROM tb_attendance")
@@ -235,6 +237,7 @@ my_cursor =db.cursor()
 # import numpy as np
 # import math
 
+
 # ref=math.floor(np.random.random(1)*10000000)
 # time=dt.now().time().strftime('%H:%M:%S %p')
 # date=dt.now().date().strftime('%Y-%m-%d')
@@ -254,7 +257,7 @@ my_cursor =db.cursor()
 #     ref=math.floor(np.random.random(1)*1000000)
 #     attendance = Attendance(
 #             ref,
-#             data[i],
+#             data[i%6],
 #             str(dt.now().date().strftime("%Y-%m-%d")),
 #             str(dt.now().time().strftime("%H:%M:%S")),
 #             str(dt.now().time().strftime("%H:%M:%S")),
@@ -508,13 +511,31 @@ my_cursor =db.cursor()
 # print(d)
 # print(d[0])
 
-import sqlite3
-sql= """
-        CREATE TABLE IF NOT EXISTS tb_students(id INTEGER PRIMARY KEY AUTOINCREMENT, reference int NOT NULL UNIQUE, index_ int NOT NULL UNIQUE,
-        firstname TEXT NOT NULL, lastname TEXT NOT NULL, college TEXT NOT NULL,program TEXT NOT NULL,nationality TEXT NOT NULL,
-        startdate TEXT NOT NULL, enddate TEXT NOT NULL)
-    """
-con = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
-c = con.cursor()
-c.execute(sql)
-con.commit()
+# import sqlite3
+# sql= """
+#         CREATE TABLE IF NOT EXISTS tb_students(id INTEGER PRIMARY KEY AUTOINCREMENT, reference int NOT NULL UNIQUE, index_ int NOT NULL UNIQUE,
+#         firstname TEXT NOT NULL, lastname TEXT NOT NULL, college TEXT NOT NULL,program TEXT NOT NULL,nationality TEXT NOT NULL,
+#         startdate TEXT NOT NULL, enddate TEXT NOT NULL)
+#     """
+# con = sqlite3.connect(r'backend\\sqlite\\attendance_system.db')
+# c = con.cursor()
+# c.execute(sql)
+# con.commit()
+
+# def fetch_data_by_program_and_date(start,prog): 
+#         start_date="\'{}\'".format(start)
+#         program="\'{}\'".format(prog)
+#         results = query_database("SELECT * FROM tb_attendance WHERE program="+program+" and date_stamp="+start_date)
+#         return results
+# d = fetch_data_by_program_and_date('2022-11-07','BSc. Chemistry')
+# print(d)
+
+import json
+def tryy(start,end,prog): 
+        start_date="\'{}\'".format(start)
+        end_date="\'{}\'".format(end)
+        program="\'{}\'".format(prog)
+        results = query_database("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
+        return results
+c = tryy('2022-10-27','2022-11-07','BSc. Chemistry')
+print(json.dumps(c))

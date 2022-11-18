@@ -1,21 +1,21 @@
 from datetime import datetime as dt
 import json
 
-path = (r'test_code\\data_json.json')
-# with open(path,'r') as f:
-#     c = json.load(f)
-# print(len(c))
+# path = (r'test_code\\data_json.json')
+# # with open(path,'r') as f:
+# #     c = json.load(f)
+# # print(len(c))
 
-def country_names(path:str):
-    with open(path,'r') as data:
-        json_data = json.load(data)
-    country_list = []
-    for country_name in range(len(json_data)):
-        country_list.append(json_data[country_name]['Name'])
-    return country_list
+# def country_names(path:str):
+#     with open(path,'r') as data:
+#         json_data = json.load(data)
+#     country_list = []
+#     for country_name in range(len(json_data)):
+#         country_list.append(json_data[country_name]['Name'])
+#     return country_list
 
-d = country_names(path)
-print(d)
+# d = country_names(path)
+# print(d)
     
 # from posixpath import splitext
 
@@ -105,6 +105,16 @@ print(d)
 #     print(n)
 # else:
 #     pass
+
+import os
+from functools import partial
+
+root_dir = 'C:\\ProgramData\\iVision\\data'
+list =('barchart','piechart','linechart','json_export','csv_export')
+for item in list:
+    path = os.path.join(root_dir,item)
+    if not os.path.exists(path):
+        os.mkdir(path)
 
 
 
