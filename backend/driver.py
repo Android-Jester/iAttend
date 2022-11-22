@@ -598,42 +598,51 @@ class MainWindow(QMainWindow):
             row_count = row_count+1
 
     def fetch_details_for_card_view(self):
-        results=self.query_database("SELECT * FROM tb_attendance WHERE st_reference="+str(self.ui.search_box.text()))
-        self.ui_table(results)
-        if self.ui.search_box.text():
-            db_data=self.fetch_data_from_db(self.ui.search_box.text())
-            if len(db_data) > 0:
-                list_months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July',
+        try:
+            results=self.query_database("SELECT * FROM tb_attendance WHERE st_reference="+str(self.ui.search_box.text()))
+            self.ui_table(results)
+            if self.ui.search_box.text():
+                db_data=self.fetch_data_from_db(self.ui.search_box.text())
+                if len(db_data) > 0:
+                    list_months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July',
                      'August', 'September', 'October', 'November', 'December']
-                start_date = (str(db_data[8])).split('-')
-                end_date=str(db_data[9]).split('-')
-                student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))
+                    start_date = (str(db_data[8])).split('-')
+                    end_date=str(db_data[9]).split('-')
+                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))
                       
-                if student_year <= 1:
-                    level = "1st year"
-                elif student_year > 1 and student_year <= 2:
-                    level = "2nd year"
-                elif student_year > 2 and student_year <= 3:
-                    level = "3rd year"
-                elif student_year > 3 and student_year <= 4:
-                    level = "4th year"
-                helper = str(db_data[3]).split(" ")
-                self.ui.db_firstname.setText(helper[0])
-                self.ui.db_middlename.setText(helper[1])
-                self.ui.db_lastname.setText(db_data[4])
-                self.ui.db_refrence.setText(str(db_data[1]))
-                self.ui.db_index.setText(str(db_data[2]))
-                self.ui.db_college.setText(db_data[5])
-                self.ui.db_nationality.setText(db_data[7])
-                self.ui.db_programe.setText(db_data[6])
-                self.ui.db_year.setText(level)
-                self.ui.db_validity.setText(list_months[int(start_date[1])-1]+","+start_date[0]+
-                " - "+list_months[int(end_date[1])-1]+","+end_date[0])
-                self.load_image_from_db(self.ui.search_box.text(),self.ui.db_image_data)
+                    if student_year <= 1:
+                        level = "1st year"
+                    elif student_year > 1 and student_year <= 2:
+                        level = "2nd year"
+                    elif student_year > 2 and student_year <= 3:
+                        level = "3rd year"
+                    elif student_year > 3 and student_year <= 4:
+                        level = "4th year"
+                    elif student_year > 4 and student_year <= 5:
+                        level = "5th year"
+                    elif student_year > 5 and student_year <= 6:
+                        level = "6th year"
+                    helper = str(db_data[3]).split(" ")
+                    self.ui.db_firstname.setText(helper[0])
+                    self.ui.db_middlename.setText(helper[1])
+                    self.ui.db_lastname.setText(db_data[4])
+                    self.ui.db_refrence.setText(str(db_data[1]))
+                    self.ui.db_index.setText(str(db_data[2]))
+                    self.ui.db_college.setText(db_data[5])
+                    self.ui.db_nationality.setText(db_data[7])
+                    self.ui.db_programe.setText(db_data[6])
+                    self.ui.db_year.setText(level)
+                    self.ui.db_validity.setText(list_months[int(start_date[1])-1]+","+start_date[0]+
+                    " - "+list_months[int(end_date[1])-1]+","+end_date[0])
+                    self.load_image_from_db(self.ui.search_box.text(),self.ui.db_image_data)
+                else:
+                    self.alert_builder("Student details not found. Please enter\nyour details to register!")
             else:
-                self.alert_builder("Student details not found. Please enter\nyour details to register!")
-        else:
-            self.alert_builder("Oops! search field can't be empty.")
+                self.alert_builder("Oops! search field can't be empty.")
+        except:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! invalid search parameter...")
+            self.alert.show()
 
     def query_for_data_reference(self):
         start = self.ui.db_start_date.text()
