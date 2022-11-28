@@ -21,6 +21,7 @@ import numpy as np
 import pandas as pd
 
 import pyshine as ps
+from pathlib import Path
 from pyzbar.pyzbar import *
 from datetime import datetime as dt
 
@@ -181,6 +182,7 @@ class MainWindow(QMainWindow):
         self.ui.report_start_date.textChanged.connect(self.report_start_date_value_change)
         self.ui.btn_refresh.clicked.connect(self.hot_reload)
         self.ui.btn_save.clicked.connect(self.save_report)
+        self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
 
         data = ['BSc. Physics','BSc. Statistics','BSc. Chemistry','BSc. Mathematics','Doctor of Optometry','BSc. Biochemistry','BSc. Computer Science',
@@ -191,7 +193,7 @@ class MainWindow(QMainWindow):
         completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
 
-        country_completer = QCompleter(self.country_names('D:\\Commons\\backend\\json\\data_json.json'))
+        country_completer = QCompleter(self.country_names(r'backend\\json\\data_json.json'))
         country_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
@@ -204,6 +206,27 @@ class MainWindow(QMainWindow):
         self.create_program_data_dir()
         self.ui.btn_scan_range.clicked.connect(self.get_active_cameras)
         ##################################################################################################
+
+    def backup_history(self):
+        path =Path('C:\\ProgramData\\iVision\\data\\backup\\backup_history.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        time =dt.now().time().strftime('%I:%M:%S %p')
+        date=dt.now().date().strftime('%a %b %d %Y')
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n{date},{time}')
+            file.close()         
+
+    def backup_database(self):
+        path='C:\\ProgramData\\iVision\\data\\backup'
+        db_path = r'backend\\sqlite\\attendance_system.db'
+        if os.path.exists(path):
+            shutil.copy2(db_path,path)
+            self.backup_history()
+            self.alert = AlertDialog()
+            self.alert.content("Database successfully backed up...")
+            self.alert.show()
 
     def get_active_cameras(self):
         scan_range=self.ui.scan_range.text()
@@ -308,7 +331,7 @@ class MainWindow(QMainWindow):
 
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iVision\\data'
-        list =('barchart','piechart','linechart','json_export','csv_export')
+        list =('barchart','piechart','linechart','json_export','csv_export','backup')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
