@@ -220,7 +220,7 @@ class MainWindow(QMainWindow):
 
     def backup_database(self):
         path='C:\\ProgramData\\iVision\\data\\backup'
-        db_path = r'backend\\sqlite\\attendance_system.db'
+        db_path = 'D:\\Targets\\Commons\\backend\\sqlite\\attendance_system.db'
         if os.path.exists(path):
             shutil.copy2(db_path,path)
             self.backup_history()
@@ -275,7 +275,7 @@ class MainWindow(QMainWindow):
         elif self.ui.pie_chart.isChecked():
             path = path = os.path.join(root_dir,list[1])
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        new_name='D:\\Commons\\backend\\report\\piechart\\'+file_name+date+'.pdf'
+        new_name='D:\\Targets\\Commons\\backend\\report\\piechart\\'+file_name+date+'.pdf'
         os.rename(path_pdf,new_name)
         shutil.copy2(new_name,path)
         os.rename(new_name,path_pdf)
@@ -283,7 +283,7 @@ class MainWindow(QMainWindow):
     def save_report(self):
         filename = self.ui.file_name.text()
         if self.ui.bar_chart.isChecked():
-            path ='D:\\Commons\\backend\\report\\barchart\\barchart.pdf'   
+            path ='D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.pdf'   
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -294,7 +294,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show()         
         elif self.ui.line_graph.isChecked():
-            path = 'D:\\Commons\\backend\\report\\line_graph\\line_plot.pdf'
+            path = 'D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.pdf'
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -305,7 +305,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show() 
         elif self.ui.pie_chart.isChecked():
-            path = 'D:\\Commons\\backend\\report\\piechart\\piechart.pdf'
+            path = 'D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.pdf'
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -360,7 +360,7 @@ class MainWindow(QMainWindow):
     def hot_reload(self):
         data = self.get_pichart_data()
         self.piechart.piechart(data,"Percentages of programs")
-        self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+        self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
         self.ui.plot_area.setScaledContents(True)
         self.data_visualization()
 
@@ -467,7 +467,7 @@ class MainWindow(QMainWindow):
                 if len(data[0])>=1:
                     self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students","Programs",
                     colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -478,7 +478,7 @@ class MainWindow(QMainWindow):
                 if len(data[0])>=1:
                     self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics ","Number of students",
                     self.get_report_start_date(),colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -489,7 +489,7 @@ class MainWindow(QMainWindow):
                 if len(data[0])>=1:      
                     self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students",
                     self.get_report_start_date()+" <> "+self.get_report_end_date(),colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -502,7 +502,7 @@ class MainWindow(QMainWindow):
                 if len(y_values)>=1:
                     self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
                     y_label="Number of students",x_label="Date")
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -513,7 +513,7 @@ class MainWindow(QMainWindow):
                 if len(y_values[0])>=1:
                     self.line_graph.plot_graph(y_values[0],title="Trend in attendance for "+program,label_="Trends",
                     y_label="Number of students",x_label=self.reconstruct_date(y_values[1])+'<>'+self.reconstruct_date(y_values[2]))
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\line_graph\\line_plot.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -524,7 +524,7 @@ class MainWindow(QMainWindow):
                 data = self.get_data_by_date()
                 if len(data[0])>=1:
                     self.piechart.piechart(data,self.get_report_start_date())
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
                     self.ui.plot_area.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -534,7 +534,7 @@ class MainWindow(QMainWindow):
                 data = self.get_data_by_date_range()
                 if len(data[0])>=1:      
                     self.piechart.piechart(data,self.get_report_start_date()+" <> "+self.get_report_end_date())
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
                     self.ui.plot_area.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -544,7 +544,7 @@ class MainWindow(QMainWindow):
                 data = self.get_pichart_data()
                 if len(data[0])>=1:
                     self.piechart.piechart(data,"Percentages of programs")
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
                     self.ui.plot_area.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -631,8 +631,7 @@ class MainWindow(QMainWindow):
                      'August', 'September', 'October', 'November', 'December']
                     start_date = (str(db_data[8])).split('-')
                     end_date=str(db_data[9]).split('-')
-                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))
-                      
+                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))    
                     if student_year <= 1:
                         level = "1st year"
                     elif student_year > 1 and student_year <= 2:
@@ -865,12 +864,12 @@ class MainWindow(QMainWindow):
             for data in cursor:
                 image_data.append(data)
             if len(image_data)>0:
-                with open('D:\\Commons\\backend\\images\\assets\\image.jpeg','wb') as image_file:
+                with open('D:\\Targets\\Commons\\backend\\images\\assets\\image.jpeg','wb') as image_file:
                         image_file.write(image_data[1])
-            label.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\images\\assets\\image.jpeg'))
+            label.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\images\\assets\\image.jpeg'))
             label.setScaledContents(True)
         else:
-            label.setPixmap(QPixmap.fromImage('D:\\Commons\\backend\\images\\assets\\img.png'))
+            label.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\images\\assets\\img.png'))
             label.setScaledContents(True)
 
     def search_student(self):
@@ -913,7 +912,7 @@ class MainWindow(QMainWindow):
             self.alert_builder("Hey! Student image updated successfully.")
         elif self.ui.reg_student_ref.text() and self.ui.image_file_reg.text() and self.ui.online_image.isChecked():
             ref = self.ui.reg_student_ref.text()
-            path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
+            path = 'D:\\Targets\\Commons\\backend\\images\\download\\image.jpeg'
             if os.path.exists(path):
                 with open(path, 'rb') as image:
                     data = image.read()
@@ -1040,6 +1039,10 @@ class MainWindow(QMainWindow):
                         level = "3rd year"
                     elif student_year > 3 and student_year <= 4:
                         level = "4th year"
+                    elif student_year > 4 and student_year <= 5:
+                        level = "5th year"
+                    elif student_year > 5 and student_year <= 6:
+                        level = "6th year"
 
                     helper = str(db_data[3]).split(" ")
                     self.ui.firstname.setText(helper[0])
