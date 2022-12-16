@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardrAADPT.ui'
+## Form generated from reading UI file 'dashoboardjwKvah.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -3929,11 +3929,11 @@ class Ui_dashboard(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p style=\" "
                         "margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To prevent your from re-typing the e-mails all the time attached to the application is </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-size:11pt;\"> file where you can provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">subject, example@gmail.com, sender name, password ,</span><span style=\" font-size:11pt;\"> this file located in the </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iChurch\\data\\email_details</span><span style=\""
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iVision\\data\\email_details</span><span style=\""
                         " font-size:11pt;\"> directory.</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Backup</span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To backup create backup when the emdebbed database is used as main data source. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in</span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\"> 						C:\\ProgramData\\iChurch\\data\\backup</span><span"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To backup create backup when the emdebbed database is used as main data source. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in</span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\"> 						C:\\ProgramData\\iVision\\data\\backup</span><span"
                         " style=\" font-size:11pt;\"> directory.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Surveilliance</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
