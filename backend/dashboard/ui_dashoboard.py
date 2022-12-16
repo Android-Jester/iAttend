@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardIuHhjl.ui'
+## Form generated from reading UI file 'dashoboardrAADPT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -187,9 +187,9 @@ class Ui_dashboard(object):
         self.menu_frame.setFrameShape(QFrame.NoFrame)
         self.menu_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.menu_frame)
-        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 6)
         self.frame = QFrame(self.menu_frame)
         self.frame.setObjectName(u"frame")
         self.frame.setFrameShape(QFrame.NoFrame)
@@ -302,7 +302,7 @@ class Ui_dashboard(object):
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
         icon3 = QIcon()
-        icon3.addFile(u":/icons/asset/camera.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icons/asset/video.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_camera.setIcon(icon3)
         self.btn_camera.setIconSize(QSize(40, 40))
         self.btn_camera.setFlat(True)
@@ -334,7 +334,36 @@ class Ui_dashboard(object):
 
         self.verticalLayout.addWidget(self.btn_report)
 
-        self.btn_help = QPushButton(self.frame)
+        self.btn_mail_report_or_data = QPushButton(self.frame)
+        self.btn_mail_report_or_data.setObjectName(u"btn_mail_report_or_data")
+        self.btn_mail_report_or_data.setMinimumSize(QSize(0, 70))
+        self.btn_mail_report_or_data.setMaximumSize(QSize(16777215, 70))
+        self.btn_mail_report_or_data.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 0px solid;\n"
+"background-color: rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-left: 3px solid;\n"
+"	border-left-color: rgb(0, 170, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border-left-color: rgb(255, 255, 255);\n"
+"}")
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/asset/mail.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_mail_report_or_data.setIcon(icon5)
+        self.btn_mail_report_or_data.setIconSize(QSize(40, 40))
+        self.btn_mail_report_or_data.setFlat(True)
+
+        self.verticalLayout.addWidget(self.btn_mail_report_or_data)
+
+
+        self.verticalLayout_3.addWidget(self.frame, 0, Qt.AlignTop)
+
+        self.btn_help = QPushButton(self.menu_frame)
         self.btn_help.setObjectName(u"btn_help")
         self.btn_help.setMinimumSize(QSize(0, 70))
         self.btn_help.setMaximumSize(QSize(16777215, 70))
@@ -351,16 +380,13 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon5 = QIcon()
-        icon5.addFile(u":/icons/asset/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_help.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/asset/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_help.setIcon(icon6)
         self.btn_help.setIconSize(QSize(40, 40))
         self.btn_help.setFlat(True)
 
-        self.verticalLayout.addWidget(self.btn_help)
-
-
-        self.verticalLayout_3.addWidget(self.frame, 0, Qt.AlignTop)
+        self.verticalLayout_3.addWidget(self.btn_help)
 
 
         self.horizontalLayout_3.addWidget(self.menu_frame)
@@ -397,13 +423,13 @@ class Ui_dashboard(object):
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.info_frame = QFrame(self.left_frame)
         self.info_frame.setObjectName(u"info_frame")
-        self.info_frame.setMinimumSize(QSize(0, 470))
-        self.info_frame.setMaximumSize(QSize(16777215, 600))
+        self.info_frame.setMinimumSize(QSize(0, 430))
+        self.info_frame.setMaximumSize(QSize(16777215, 500))
         self.info_frame.setFrameShape(QFrame.NoFrame)
         self.info_frame.setFrameShadow(QFrame.Raised)
         self.image = QLabel(self.info_frame)
         self.image.setObjectName(u"image")
-        self.image.setGeometry(QRect(20, 80, 261, 291))
+        self.image.setGeometry(QRect(20, 30, 261, 291))
         font2 = QFont()
         font2.setFamily(u"Arial")
         font2.setPointSize(14)
@@ -419,7 +445,7 @@ class Ui_dashboard(object):
         self.image.setAlignment(Qt.AlignCenter)
         self.firstname = QLabel(self.info_frame)
         self.firstname.setObjectName(u"firstname")
-        self.firstname.setGeometry(QRect(290, 80, 191, 41))
+        self.firstname.setGeometry(QRect(290, 30, 191, 41))
         font3 = QFont()
         font3.setFamily(u"MS Shell Dlg 2")
         font3.setPointSize(10)
@@ -436,7 +462,7 @@ class Ui_dashboard(object):
         self.firstname.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.middlename = QLabel(self.info_frame)
         self.middlename.setObjectName(u"middlename")
-        self.middlename.setGeometry(QRect(290, 130, 191, 41))
+        self.middlename.setGeometry(QRect(290, 80, 191, 41))
         self.middlename.setFont(font3)
         self.middlename.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -448,7 +474,7 @@ class Ui_dashboard(object):
         self.middlename.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.lastname = QLabel(self.info_frame)
         self.lastname.setObjectName(u"lastname")
-        self.lastname.setGeometry(QRect(290, 180, 191, 41))
+        self.lastname.setGeometry(QRect(290, 130, 191, 41))
         self.lastname.setFont(font3)
         self.lastname.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -464,7 +490,7 @@ class Ui_dashboard(object):
         self.lastname.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.refrence = QLabel(self.info_frame)
         self.refrence.setObjectName(u"refrence")
-        self.refrence.setGeometry(QRect(290, 230, 191, 41))
+        self.refrence.setGeometry(QRect(290, 180, 191, 41))
         self.refrence.setFont(font3)
         self.refrence.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -476,7 +502,7 @@ class Ui_dashboard(object):
         self.refrence.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.index = QLabel(self.info_frame)
         self.index.setObjectName(u"index")
-        self.index.setGeometry(QRect(290, 280, 191, 41))
+        self.index.setGeometry(QRect(290, 230, 191, 41))
         self.index.setFont(font3)
         self.index.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -488,7 +514,7 @@ class Ui_dashboard(object):
         self.index.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.coledge = QLabel(self.info_frame)
         self.coledge.setObjectName(u"coledge")
-        self.coledge.setGeometry(QRect(290, 330, 191, 41))
+        self.coledge.setGeometry(QRect(290, 280, 191, 41))
         self.coledge.setFont(font3)
         self.coledge.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -500,7 +526,7 @@ class Ui_dashboard(object):
         self.coledge.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.validity = QLabel(self.info_frame)
         self.validity.setObjectName(u"validity")
-        self.validity.setGeometry(QRect(20, 380, 261, 41))
+        self.validity.setGeometry(QRect(20, 330, 261, 41))
         self.validity.setFont(font3)
         self.validity.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -512,7 +538,7 @@ class Ui_dashboard(object):
         self.validity.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.nationality = QLabel(self.info_frame)
         self.nationality.setObjectName(u"nationality")
-        self.nationality.setGeometry(QRect(290, 380, 191, 41))
+        self.nationality.setGeometry(QRect(290, 330, 191, 41))
         self.nationality.setFont(font3)
         self.nationality.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -524,7 +550,7 @@ class Ui_dashboard(object):
         self.nationality.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.year = QLabel(self.info_frame)
         self.year.setObjectName(u"year")
-        self.year.setGeometry(QRect(20, 430, 151, 41))
+        self.year.setGeometry(QRect(20, 380, 151, 41))
         self.year.setFont(font3)
         self.year.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -536,7 +562,7 @@ class Ui_dashboard(object):
         self.year.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.program = QLabel(self.info_frame)
         self.program.setObjectName(u"program")
-        self.program.setGeometry(QRect(180, 430, 301, 41))
+        self.program.setGeometry(QRect(180, 380, 301, 41))
         self.program.setFont(font3)
         self.program.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -548,7 +574,7 @@ class Ui_dashboard(object):
         self.program.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.last_out = QLabel(self.info_frame)
         self.last_out.setObjectName(u"last_out")
-        self.last_out.setGeometry(QRect(20, 480, 291, 41))
+        self.last_out.setGeometry(QRect(20, 430, 291, 41))
         self.last_out.setFont(font3)
         self.last_out.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -560,7 +586,7 @@ class Ui_dashboard(object):
         self.last_out.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.image_2 = QLabel(self.info_frame)
         self.image_2.setObjectName(u"image_2")
-        self.image_2.setGeometry(QRect(10, 70, 481, 461))
+        self.image_2.setGeometry(QRect(10, 10, 481, 481))
         self.image_2.setFont(font2)
         self.image_2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -570,7 +596,7 @@ class Ui_dashboard(object):
         self.image_2.setAlignment(Qt.AlignCenter)
         self.last_in = QLabel(self.info_frame)
         self.last_in.setObjectName(u"last_in")
-        self.last_in.setGeometry(QRect(320, 480, 161, 41))
+        self.last_in.setGeometry(QRect(320, 430, 161, 41))
         self.last_in.setFont(font3)
         self.last_in.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -580,27 +606,6 @@ class Ui_dashboard(object):
 "\n"
 "}")
         self.last_in.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-        self.date_frame_2 = QFrame(self.info_frame)
-        self.date_frame_2.setObjectName(u"date_frame_2")
-        self.date_frame_2.setGeometry(QRect(10, 10, 481, 51))
-        self.date_frame_2.setStyleSheet(u"QFrame{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.date_frame_2.setFrameShape(QFrame.StyledPanel)
-        self.date_frame_2.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_13 = QHBoxLayout(self.date_frame_2)
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.decorator = QLabel(self.date_frame_2)
-        self.decorator.setObjectName(u"decorator")
-        font4 = QFont()
-        font4.setPointSize(10)
-        self.decorator.setFont(font4)
-        self.decorator.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_13.addWidget(self.decorator)
-
         self.image_2.raise_()
         self.image.raise_()
         self.firstname.raise_()
@@ -615,19 +620,18 @@ class Ui_dashboard(object):
         self.program.raise_()
         self.last_out.raise_()
         self.last_in.raise_()
-        self.date_frame_2.raise_()
 
         self.verticalLayout_6.addWidget(self.info_frame)
 
         self.frame_3 = QFrame(self.left_frame)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setMinimumSize(QSize(0, 400))
-        self.frame_3.setMaximumSize(QSize(16777215, 400))
+        self.frame_3.setMinimumSize(QSize(0, 430))
+        self.frame_3.setMaximumSize(QSize(16777215, 430))
         self.frame_3.setFrameShape(QFrame.NoFrame)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.label_notification = QLabel(self.frame_3)
         self.label_notification.setObjectName(u"label_notification")
-        self.label_notification.setGeometry(QRect(10, 290, 481, 101))
+        self.label_notification.setGeometry(QRect(10, 310, 481, 121))
         self.label_notification.setFont(font3)
         self.label_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -638,7 +642,9 @@ class Ui_dashboard(object):
         self.label_notification.setWordWrap(True)
         self.camera_ip = QLineEdit(self.frame_3)
         self.camera_ip.setObjectName(u"camera_ip")
-        self.camera_ip.setGeometry(QRect(20, 40, 461, 51))
+        self.camera_ip.setGeometry(QRect(20, 50, 461, 51))
+        font4 = QFont()
+        font4.setPointSize(10)
         self.camera_ip.setFont(font4)
         self.camera_ip.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -657,13 +663,14 @@ class Ui_dashboard(object):
         self.camera_ip.setClearButtonEnabled(True)
         self.btn_connect_detect = QPushButton(self.frame_3)
         self.btn_connect_detect.setObjectName(u"btn_connect_detect")
-        self.btn_connect_detect.setGeometry(QRect(20, 110, 131, 41))
+        self.btn_connect_detect.setGeometry(QRect(20, 120, 131, 41))
         self.btn_connect_detect.setFont(font4)
         self.btn_connect_detect.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border:none;\n"
 "	border-radius: 10px;\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -673,18 +680,16 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/asset/video.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_connect_detect.setIcon(icon6)
+        self.btn_connect_detect.setIcon(icon3)
         self.btn_connect_detect.setIconSize(QSize(30, 30))
         self.btn_connect_detect.setFlat(True)
         self.label_27 = QLabel(self.frame_3)
         self.label_27.setObjectName(u"label_27")
-        self.label_27.setGeometry(QRect(30, 50, 41, 31))
+        self.label_27.setGeometry(QRect(30, 60, 41, 31))
         self.label_27.setPixmap(QPixmap(u":/icons/asset/video.svg"))
         self.btn_disconnect = QPushButton(self.frame_3)
         self.btn_disconnect.setObjectName(u"btn_disconnect")
-        self.btn_disconnect.setGeometry(QRect(160, 110, 141, 41))
+        self.btn_disconnect.setGeometry(QRect(160, 120, 141, 41))
         self.btn_disconnect.setFont(font4)
         self.btn_disconnect.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -707,7 +712,7 @@ class Ui_dashboard(object):
         self.btn_disconnect.setFlat(True)
         self.comboBox = QComboBox(self.frame_3)
         self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(310, 110, 171, 38))
+        self.comboBox.setGeometry(QRect(310, 120, 171, 38))
         self.comboBox.setMinimumSize(QSize(0, 38))
         self.comboBox.setMaximumSize(QSize(16777215, 38))
         self.comboBox.setFont(font4)
@@ -720,7 +725,7 @@ class Ui_dashboard(object):
         self.comboBox.setFrame(False)
         self.firstname_23 = QLabel(self.frame_3)
         self.firstname_23.setObjectName(u"firstname_23")
-        self.firstname_23.setGeometry(QRect(10, 0, 481, 171))
+        self.firstname_23.setGeometry(QRect(10, 10, 481, 171))
         font5 = QFont()
         font5.setFamily(u"Arial")
         font5.setPointSize(10)
@@ -737,7 +742,7 @@ class Ui_dashboard(object):
         self.firstname_23.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.firstname_24 = QLabel(self.frame_3)
         self.firstname_24.setObjectName(u"firstname_24")
-        self.firstname_24.setGeometry(QRect(10, 190, 481, 81))
+        self.firstname_24.setGeometry(QRect(10, 210, 481, 81))
         self.firstname_24.setFont(font5)
         self.firstname_24.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -748,7 +753,7 @@ class Ui_dashboard(object):
         self.firstname_24.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_open_exit_camera_ui = QPushButton(self.frame_3)
         self.btn_open_exit_camera_ui.setObjectName(u"btn_open_exit_camera_ui")
-        self.btn_open_exit_camera_ui.setGeometry(QRect(20, 210, 141, 41))
+        self.btn_open_exit_camera_ui.setGeometry(QRect(180, 230, 141, 41))
         self.btn_open_exit_camera_ui.setFont(font4)
         self.btn_open_exit_camera_ui.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -764,12 +769,12 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_open_exit_camera_ui.setIcon(icon6)
+        self.btn_open_exit_camera_ui.setIcon(icon3)
         self.btn_open_exit_camera_ui.setIconSize(QSize(30, 30))
         self.btn_open_exit_camera_ui.setFlat(True)
         self.btn_clear_label = QPushButton(self.frame_3)
         self.btn_clear_label.setObjectName(u"btn_clear_label")
-        self.btn_clear_label.setGeometry(QRect(340, 210, 141, 41))
+        self.btn_clear_label.setGeometry(QRect(340, 230, 141, 41))
         self.btn_clear_label.setFont(font4)
         self.btn_clear_label.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -792,7 +797,7 @@ class Ui_dashboard(object):
         self.btn_clear_label.setFlat(True)
         self.btn_open_database = QPushButton(self.frame_3)
         self.btn_open_database.setObjectName(u"btn_open_database")
-        self.btn_open_database.setGeometry(QRect(180, 210, 141, 41))
+        self.btn_open_database.setGeometry(QRect(20, 230, 141, 41))
         self.btn_open_database.setFont(font4)
         self.btn_open_database.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -999,7 +1004,7 @@ class Ui_dashboard(object):
 "	background-color: rgb(35, 35, 35);\n"
 "	border-radius: 10px;\n"
 "}")
-        self.contrast_label.setAlignment(Qt.AlignCenter)
+        self.contrast_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.gridLayout_2.addWidget(self.contrast_label, 6, 0, 1, 1)
 
@@ -1361,25 +1366,16 @@ class Ui_dashboard(object):
 
         self.start_date = QRadioButton(self.bottom)
         self.start_date.setObjectName(u"start_date")
-        self.start_date.setGeometry(QRect(20, 90, 131, 20))
+        self.start_date.setGeometry(QRect(20, 90, 261, 20))
         self.start_date.setFont(font6)
         self.start_date.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(35, 35, 35);\n"
 "}")
         icon10 = QIcon()
-        icon10.addFile(u":/icons/asset/filter.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.start_date.setIcon(icon10)
         self.start_date.setChecked(True)
-        self.end_date = QRadioButton(self.bottom)
-        self.end_date.setObjectName(u"end_date")
-        self.end_date.setGeometry(QRect(160, 90, 131, 20))
-        self.end_date.setFont(font6)
-        self.end_date.setStyleSheet(u"QRadioButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"}")
-        self.end_date.setIcon(icon10)
         self.db_start_date = QLineEdit(self.bottom)
         self.db_start_date.setObjectName(u"db_start_date")
         self.db_start_date.setGeometry(QRect(20, 130, 211, 51))
@@ -1502,7 +1498,9 @@ class Ui_dashboard(object):
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(35, 35, 35);\n"
 "}")
-        self.checkBox.setIcon(icon10)
+        icon12 = QIcon()
+        icon12.addFile(u":/icons/asset/filter.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.checkBox.setIcon(icon12)
         self.btn_json = QPushButton(self.bottom)
         self.btn_json.setObjectName(u"btn_json")
         self.btn_json.setGeometry(QRect(170, 20, 151, 41))
@@ -1528,7 +1526,6 @@ class Ui_dashboard(object):
         self.label_30.raise_()
         self.frame_6.raise_()
         self.start_date.raise_()
-        self.end_date.raise_()
         self.db_start_date.raise_()
         self.label_25.raise_()
         self.db_end_date.raise_()
@@ -1642,7 +1639,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_one_connect.setIcon(icon6)
+        self.btn_camera_one_connect.setIcon(icon3)
         self.btn_camera_one_connect.setIconSize(QSize(30, 30))
         self.btn_camera_one_connect.setFlat(True)
         self.btn_camera_one_disconnect = QPushButton(self.left_child)
@@ -1760,7 +1757,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_two_connect.setIcon(icon6)
+        self.btn_camera_two_connect.setIcon(icon3)
         self.btn_camera_two_connect.setIconSize(QSize(30, 30))
         self.btn_camera_two_connect.setFlat(True)
         self.firstname_26 = QLabel(self.left_child)
@@ -1837,7 +1834,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_three_connect.setIcon(icon6)
+        self.btn_camera_three_connect.setIcon(icon3)
         self.btn_camera_three_connect.setIconSize(QSize(30, 30))
         self.btn_camera_three_connect.setFlat(True)
         self.firstname_27 = QLabel(self.left_child)
@@ -1914,7 +1911,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_four_connect.setIcon(icon6)
+        self.btn_camera_four_connect.setIcon(icon3)
         self.btn_camera_four_connect.setIconSize(QSize(30, 30))
         self.btn_camera_four_connect.setFlat(True)
         self.firstname_28 = QLabel(self.left_child)
@@ -1951,9 +1948,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon12 = QIcon()
-        icon12.addFile(u":/icons/asset/cast.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_cast_cam_one.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/icons/asset/cast.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_cast_cam_one.setIcon(icon13)
         self.btn_cast_cam_one.setIconSize(QSize(30, 30))
         self.btn_cast_cam_one.setFlat(True)
         self.camera_two_comboBox = QComboBox(self.left_child)
@@ -1987,7 +1984,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_cast_cam_one_2.setIcon(icon12)
+        self.btn_cast_cam_one_2.setIcon(icon13)
         self.btn_cast_cam_one_2.setIconSize(QSize(30, 30))
         self.btn_cast_cam_one_2.setFlat(True)
         self.camera_three_comboBox = QComboBox(self.left_child)
@@ -2021,7 +2018,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_cast_cam_three.setIcon(icon12)
+        self.btn_cast_cam_three.setIcon(icon13)
         self.btn_cast_cam_three.setIconSize(QSize(30, 30))
         self.btn_cast_cam_three.setFlat(True)
         self.camera_four_comboBox = QComboBox(self.left_child)
@@ -2055,7 +2052,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_cast_cam_four.setIcon(icon12)
+        self.btn_cast_cam_four.setIcon(icon13)
         self.btn_cast_cam_four.setIconSize(QSize(30, 30))
         self.btn_cast_cam_four.setFlat(True)
         self.firstname_28.raise_()
@@ -2192,7 +2189,7 @@ class Ui_dashboard(object):
         self.left_fram_reg.setFrameShadow(QFrame.Raised)
         self.reg_image = QLabel(self.left_fram_reg)
         self.reg_image.setObjectName(u"reg_image")
-        self.reg_image.setGeometry(QRect(30, 120, 291, 331))
+        self.reg_image.setGeometry(QRect(30, 130, 291, 291))
         font9 = QFont()
         font9.setFamily(u"Arial")
         font9.setPointSize(14)
@@ -2208,7 +2205,7 @@ class Ui_dashboard(object):
         self.reg_image.setAlignment(Qt.AlignCenter)
         self.reg_firstname = QLineEdit(self.left_fram_reg)
         self.reg_firstname.setObjectName(u"reg_firstname")
-        self.reg_firstname.setGeometry(QRect(340, 120, 291, 51))
+        self.reg_firstname.setGeometry(QRect(340, 130, 291, 51))
         self.reg_firstname.setFont(font4)
         self.reg_firstname.setTabletTracking(True)
         self.reg_firstname.setStyleSheet(u"QLineEdit{\n"
@@ -2228,7 +2225,7 @@ class Ui_dashboard(object):
         self.reg_firstname.setClearButtonEnabled(True)
         self.reg_image_2 = QLabel(self.left_fram_reg)
         self.reg_image_2.setObjectName(u"reg_image_2")
-        self.reg_image_2.setGeometry(QRect(10, 100, 641, 581))
+        self.reg_image_2.setGeometry(QRect(10, 110, 641, 511))
         self.reg_image_2.setFont(font9)
         self.reg_image_2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2257,7 +2254,7 @@ class Ui_dashboard(object):
         self.reg_middlename.setClearButtonEnabled(True)
         self.reg_lastname = QLineEdit(self.left_fram_reg)
         self.reg_lastname.setObjectName(u"reg_lastname")
-        self.reg_lastname.setGeometry(QRect(340, 260, 291, 51))
+        self.reg_lastname.setGeometry(QRect(340, 250, 291, 51))
         self.reg_lastname.setFont(font4)
         self.reg_lastname.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2276,7 +2273,7 @@ class Ui_dashboard(object):
         self.reg_lastname.setClearButtonEnabled(True)
         self.reg_index = QLineEdit(self.left_fram_reg)
         self.reg_index.setObjectName(u"reg_index")
-        self.reg_index.setGeometry(QRect(340, 400, 291, 51))
+        self.reg_index.setGeometry(QRect(340, 370, 291, 51))
         self.reg_index.setFont(font4)
         self.reg_index.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2295,7 +2292,7 @@ class Ui_dashboard(object):
         self.reg_index.setClearButtonEnabled(True)
         self.reg_college = QLineEdit(self.left_fram_reg)
         self.reg_college.setObjectName(u"reg_college")
-        self.reg_college.setGeometry(QRect(340, 470, 291, 51))
+        self.reg_college.setGeometry(QRect(340, 430, 291, 51))
         self.reg_college.setFont(font4)
         self.reg_college.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2314,7 +2311,7 @@ class Ui_dashboard(object):
         self.reg_college.setClearButtonEnabled(True)
         self.reg_student_ref = QLineEdit(self.left_fram_reg)
         self.reg_student_ref.setObjectName(u"reg_student_ref")
-        self.reg_student_ref.setGeometry(QRect(340, 330, 291, 51))
+        self.reg_student_ref.setGeometry(QRect(340, 310, 291, 51))
         self.reg_student_ref.setFont(font4)
         self.reg_student_ref.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2333,7 +2330,7 @@ class Ui_dashboard(object):
         self.reg_student_ref.setClearButtonEnabled(True)
         self.reg_nationality = QLineEdit(self.left_fram_reg)
         self.reg_nationality.setObjectName(u"reg_nationality")
-        self.reg_nationality.setGeometry(QRect(30, 470, 291, 51))
+        self.reg_nationality.setGeometry(QRect(30, 430, 291, 51))
         self.reg_nationality.setFont(font4)
         self.reg_nationality.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2352,7 +2349,7 @@ class Ui_dashboard(object):
         self.reg_nationality.setClearButtonEnabled(True)
         self.reg_start_date = QLineEdit(self.left_fram_reg)
         self.reg_start_date.setObjectName(u"reg_start_date")
-        self.reg_start_date.setGeometry(QRect(30, 540, 291, 51))
+        self.reg_start_date.setGeometry(QRect(30, 490, 291, 51))
         self.reg_start_date.setFont(font4)
         self.reg_start_date.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2371,7 +2368,7 @@ class Ui_dashboard(object):
         self.reg_start_date.setClearButtonEnabled(True)
         self.reg_end_date = QLineEdit(self.left_fram_reg)
         self.reg_end_date.setObjectName(u"reg_end_date")
-        self.reg_end_date.setGeometry(QRect(340, 540, 291, 51))
+        self.reg_end_date.setGeometry(QRect(340, 490, 291, 51))
         self.reg_end_date.setFont(font4)
         self.reg_end_date.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2390,11 +2387,11 @@ class Ui_dashboard(object):
         self.reg_end_date.setClearButtonEnabled(True)
         self.label_35 = QLabel(self.left_fram_reg)
         self.label_35.setObjectName(u"label_35")
-        self.label_35.setGeometry(QRect(40, 550, 31, 31))
+        self.label_35.setGeometry(QRect(40, 500, 31, 31))
         self.label_35.setPixmap(QPixmap(u":/icons/asset/calendar.svg"))
         self.reg_programs = QComboBox(self.left_fram_reg)
         self.reg_programs.setObjectName(u"reg_programs")
-        self.reg_programs.setGeometry(QRect(340, 610, 291, 50))
+        self.reg_programs.setGeometry(QRect(340, 550, 291, 50))
         self.reg_programs.setMinimumSize(QSize(0, 50))
         self.reg_programs.setMaximumSize(QSize(16777215, 50))
         self.reg_programs.setFont(font4)
@@ -2462,7 +2459,7 @@ class Ui_dashboard(object):
         self.search_reg.setClearButtonEnabled(True)
         self.label_38 = QLabel(self.left_fram_reg)
         self.label_38.setObjectName(u"label_38")
-        self.label_38.setGeometry(QRect(10, 700, 641, 81))
+        self.label_38.setGeometry(QRect(10, 640, 641, 61))
         self.label_38.setFont(font7)
         self.label_38.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2473,7 +2470,7 @@ class Ui_dashboard(object):
         self.label_38.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.btn_register = QPushButton(self.left_fram_reg)
         self.btn_register.setObjectName(u"btn_register")
-        self.btn_register.setGeometry(QRect(30, 720, 131, 41))
+        self.btn_register.setGeometry(QRect(30, 650, 131, 41))
         self.btn_register.setFont(font4)
         self.btn_register.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2494,7 +2491,7 @@ class Ui_dashboard(object):
         self.btn_register.setFlat(True)
         self.btn_update = QPushButton(self.left_fram_reg)
         self.btn_update.setObjectName(u"btn_update")
-        self.btn_update.setGeometry(QRect(190, 720, 131, 41))
+        self.btn_update.setGeometry(QRect(190, 650, 131, 41))
         self.btn_update.setFont(font4)
         self.btn_update.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2510,14 +2507,14 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon13 = QIcon()
-        icon13.addFile(u":/icons/asset/users.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_update.setIcon(icon13)
+        icon14 = QIcon()
+        icon14.addFile(u":/icons/asset/image.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_update.setIcon(icon14)
         self.btn_update.setIconSize(QSize(30, 30))
         self.btn_update.setFlat(True)
         self.btn_remove = QPushButton(self.left_fram_reg)
         self.btn_remove.setObjectName(u"btn_remove")
-        self.btn_remove.setGeometry(QRect(340, 720, 131, 41))
+        self.btn_remove.setGeometry(QRect(340, 650, 131, 41))
         self.btn_remove.setFont(font4)
         self.btn_remove.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2533,14 +2530,14 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon14 = QIcon()
-        icon14.addFile(u":/icons/asset/user-minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove.setIcon(icon14)
+        icon15 = QIcon()
+        icon15.addFile(u":/icons/asset/user-minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove.setIcon(icon15)
         self.btn_remove.setIconSize(QSize(30, 30))
         self.btn_remove.setFlat(True)
         self.btn_clear = QPushButton(self.left_fram_reg)
         self.btn_clear.setObjectName(u"btn_clear")
-        self.btn_clear.setGeometry(QRect(500, 720, 131, 41))
+        self.btn_clear.setGeometry(QRect(500, 650, 131, 41))
         self.btn_clear.setFont(font4)
         self.btn_clear.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2561,7 +2558,7 @@ class Ui_dashboard(object):
         self.btn_clear.setFlat(True)
         self.label_39 = QLabel(self.left_fram_reg)
         self.label_39.setObjectName(u"label_39")
-        self.label_39.setGeometry(QRect(10, 800, 641, 141))
+        self.label_39.setGeometry(QRect(10, 810, 641, 131))
         self.label_39.setFont(font3)
         self.label_39.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2607,14 +2604,14 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon15 = QIcon()
-        icon15.addFile(u":/icons/asset/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_browse_reg.setIcon(icon15)
+        icon16 = QIcon()
+        icon16.addFile(u":/icons/asset/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_browse_reg.setIcon(icon16)
         self.btn_browse_reg.setIconSize(QSize(30, 30))
         self.btn_browse_reg.setFlat(True)
         self.reg_college_2 = QComboBox(self.left_fram_reg)
         self.reg_college_2.setObjectName(u"reg_college_2")
-        self.reg_college_2.setGeometry(QRect(30, 610, 291, 50))
+        self.reg_college_2.setGeometry(QRect(30, 550, 291, 50))
         self.reg_college_2.setMinimumSize(QSize(0, 50))
         self.reg_college_2.setMaximumSize(QSize(16777215, 50))
         self.reg_college_2.setFont(font4)
@@ -2631,26 +2628,89 @@ class Ui_dashboard(object):
         self.reg_college_2.setFrame(False)
         self.label_36 = QLabel(self.left_fram_reg)
         self.label_36.setObjectName(u"label_36")
-        self.label_36.setGeometry(QRect(350, 550, 31, 31))
+        self.label_36.setGeometry(QRect(350, 500, 31, 31))
         self.label_36.setPixmap(QPixmap(u":/icons/asset/calendar.svg"))
         self.file_system = QRadioButton(self.left_fram_reg)
         self.file_system.setObjectName(u"file_system")
-        self.file_system.setGeometry(QRect(160, 830, 131, 20))
+        self.file_system.setGeometry(QRect(220, 840, 131, 20))
         self.file_system.setFont(font4)
         self.file_system.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
-        icon16 = QIcon()
-        icon16.addFile(u":/icons/asset/image.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.file_system.setIcon(icon16)
+        self.file_system.setIcon(icon14)
         self.online_image = QRadioButton(self.left_fram_reg)
         self.online_image.setObjectName(u"online_image")
-        self.online_image.setGeometry(QRect(380, 830, 101, 20))
+        self.online_image.setGeometry(QRect(110, 840, 101, 20))
         self.online_image.setFont(font4)
         self.online_image.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
         icon17 = QIcon()
         icon17.addFile(u":/icons/asset/download-cloud.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.online_image.setIcon(icon17)
+        self.reg_email = QLineEdit(self.left_fram_reg)
+        self.reg_email.setObjectName(u"reg_email")
+        self.reg_email.setGeometry(QRect(30, 730, 421, 51))
+        self.reg_email.setFont(font4)
+        self.reg_email.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:15px;\n"
+"	padding-left: 45px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.reg_email.setClearButtonEnabled(True)
+        self.label_43 = QLabel(self.left_fram_reg)
+        self.label_43.setObjectName(u"label_43")
+        self.label_43.setGeometry(QRect(10, 720, 641, 71))
+        self.label_43.setFont(font7)
+        self.label_43.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"}")
+        self.label_43.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.label_44 = QLabel(self.left_fram_reg)
+        self.label_44.setObjectName(u"label_44")
+        self.label_44.setGeometry(QRect(40, 740, 31, 31))
+        self.label_44.setPixmap(QPixmap(u":/icons/asset/mail.svg"))
+        self.btn_send_mail = QPushButton(self.left_fram_reg)
+        self.btn_send_mail.setObjectName(u"btn_send_mail")
+        self.btn_send_mail.setGeometry(QRect(470, 730, 161, 51))
+        self.btn_send_mail.setFont(font4)
+        self.btn_send_mail.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        icon18 = QIcon()
+        icon18.addFile(u":/icons/asset/send.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_send_mail.setIcon(icon18)
+        self.btn_send_mail.setIconSize(QSize(30, 30))
+        self.btn_send_mail.setFlat(True)
+        self.image_less = QRadioButton(self.left_fram_reg)
+        self.image_less.setObjectName(u"image_less")
+        self.image_less.setGeometry(QRect(340, 840, 131, 20))
+        self.image_less.setFont(font4)
+        self.image_less.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(35, 35, 35);")
+        self.image_less.setIcon(icon14)
+        self.label_43.raise_()
         self.label_37.raise_()
         self.search_reg.raise_()
         self.reg_image_2.raise_()
@@ -2679,6 +2739,10 @@ class Ui_dashboard(object):
         self.label_36.raise_()
         self.file_system.raise_()
         self.online_image.raise_()
+        self.reg_email.raise_()
+        self.label_44.raise_()
+        self.btn_send_mail.raise_()
+        self.image_less.raise_()
 
         self.horizontalLayout_14.addWidget(self.left_fram_reg)
 
@@ -2738,7 +2802,7 @@ class Ui_dashboard(object):
         self.frame_16.setFrameShape(QFrame.NoFrame)
         self.frame_16.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_11 = QHBoxLayout(self.frame_16)
-        self.horizontalLayout_11.setSpacing(6)
+        self.horizontalLayout_11.setSpacing(10)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(0, -1, 0, 0)
         self.frame_17 = QFrame(self.frame_16)
@@ -2747,13 +2811,14 @@ class Ui_dashboard(object):
         self.frame_17.setFrameShape(QFrame.NoFrame)
         self.frame_17.setFrameShadow(QFrame.Raised)
         self.verticalLayout_24 = QVBoxLayout(self.frame_17)
+        self.verticalLayout_24.setSpacing(9)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.verticalLayout_24.setContentsMargins(0, 0, 0, 0)
         self.frame_24 = QFrame(self.frame_17)
         self.frame_24.setObjectName(u"frame_24")
         self.frame_24.setStyleSheet(u"background-color: rgb(35, 35, 35);\n"
 "border-radius:10px;")
-        self.frame_24.setFrameShape(QFrame.StyledPanel)
+        self.frame_24.setFrameShape(QFrame.NoFrame)
         self.frame_24.setFrameShadow(QFrame.Raised)
         self.btn_camera_reg_connect = QPushButton(self.frame_24)
         self.btn_camera_reg_connect.setObjectName(u"btn_camera_reg_connect")
@@ -2773,7 +2838,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_reg_connect.setIcon(icon6)
+        self.btn_camera_reg_connect.setIcon(icon3)
         self.btn_camera_reg_connect.setIconSize(QSize(30, 30))
         self.btn_camera_reg_connect.setFlat(True)
         self.reg_camera_combo = QComboBox(self.frame_24)
@@ -2958,48 +3023,13 @@ class Ui_dashboard(object):
         self.frame_10.setFrameShadow(QFrame.Raised)
         self.gridLayout_3 = QGridLayout(self.frame_10)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setHorizontalSpacing(10)
+        self.gridLayout_3.setVerticalSpacing(6)
         self.gridLayout_3.setContentsMargins(0, -1, 0, 0)
-        self.frame_20 = QFrame(self.frame_10)
-        self.frame_20.setObjectName(u"frame_20")
-        self.frame_20.setMinimumSize(QSize(0, 240))
-        self.frame_20.setMaximumSize(QSize(16777215, 240))
-        self.frame_20.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.frame_20.setFrameShape(QFrame.NoFrame)
-        self.frame_20.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_20 = QVBoxLayout(self.frame_20)
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.verticalLayout_20.setContentsMargins(-1, -1, 9, -1)
-        self.label_46 = QLabel(self.frame_20)
-        self.label_46.setObjectName(u"label_46")
-        self.label_46.setFont(font5)
-        self.label_46.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0, 0, 0);\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	border-radius: 10px;\n"
-"	padding-left:10px;\n"
-"}")
-        self.label_46.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.verticalLayout_20.addWidget(self.label_46)
-
-        self.calendarWidget_reg = QCalendarWidget(self.frame_20)
-        self.calendarWidget_reg.setObjectName(u"calendarWidget_reg")
-        self.calendarWidget_reg.setGridVisible(False)
-        self.calendarWidget_reg.setVerticalHeaderFormat(QCalendarWidget.NoVerticalHeader)
-        self.calendarWidget_reg.setNavigationBarVisible(True)
-
-        self.verticalLayout_20.addWidget(self.calendarWidget_reg)
-
-
-        self.gridLayout_3.addWidget(self.frame_20, 0, 0, 1, 1)
-
         self.frame_21 = QFrame(self.frame_10)
         self.frame_21.setObjectName(u"frame_21")
-        self.frame_21.setMinimumSize(QSize(0, 240))
-        self.frame_21.setMaximumSize(QSize(16777215, 240))
+        self.frame_21.setMinimumSize(QSize(379, 240))
+        self.frame_21.setMaximumSize(QSize(379, 240))
         self.frame_21.setStyleSheet(u"QFrame{\n"
 "	background-color: rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
@@ -3009,29 +3039,132 @@ class Ui_dashboard(object):
         self.verticalLayout_21 = QVBoxLayout(self.frame_21)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.verticalLayout_21.setContentsMargins(-1, -1, 9, -1)
-        self.label_47 = QLabel(self.frame_21)
-        self.label_47.setObjectName(u"label_47")
-        self.label_47.setFont(font5)
-        self.label_47.setStyleSheet(u"QLabel{\n"
-"	color: rgb(0, 0, 0);\n"
-"	background-color: rgb(255, 255, 255);\n"
+        self.change_date_box = QRadioButton(self.frame_21)
+        self.change_date_box.setObjectName(u"change_date_box")
+        self.change_date_box.setMinimumSize(QSize(0, 25))
+        self.change_date_box.setMaximumSize(QSize(16777215, 20))
+        self.change_date_box.setFont(font4)
+        self.change_date_box.setStyleSheet(u"color: rgb(255,255, 255);\n"
+"background-color: rgb(35, 35, 35);\n"
+"padding-left:5px;\n"
+"border-radius:7px;")
+        self.change_date_box.setIcon(icon10)
+
+        self.verticalLayout_21.addWidget(self.change_date_box)
+
+        self.calendarWidget_reg = QCalendarWidget(self.frame_21)
+        self.calendarWidget_reg.setObjectName(u"calendarWidget_reg")
+        self.calendarWidget_reg.setGridVisible(False)
+        self.calendarWidget_reg.setVerticalHeaderFormat(QCalendarWidget.NoVerticalHeader)
+        self.calendarWidget_reg.setNavigationBarVisible(True)
+
+        self.verticalLayout_21.addWidget(self.calendarWidget_reg)
+
+
+        self.gridLayout_3.addWidget(self.frame_21, 1, 1, 1, 1)
+
+        self.frame_20 = QFrame(self.frame_10)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setMinimumSize(QSize(370, 240))
+        self.frame_20.setMaximumSize(QSize(370, 240))
+        self.frame_20.setStyleSheet(u"QFrame{\n"
+"	background-color: rgb(35, 35, 35);\n"
 "	border-radius: 10px;\n"
-"	padding-left:10px;\n"
 "}")
-        self.label_47.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.frame_20.setFrameShape(QFrame.NoFrame)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.email_from = QLineEdit(self.frame_20)
+        self.email_from.setObjectName(u"email_from")
+        self.email_from.setGeometry(QRect(20, 40, 332, 41))
+        self.email_from.setMinimumSize(QSize(332, 0))
+        self.email_from.setMaximumSize(QSize(332, 16777215))
+        self.email_from.setFont(font4)
+        self.email_from.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.email_from.setClearButtonEnabled(True)
+        self.email_sender = QLineEdit(self.frame_20)
+        self.email_sender.setObjectName(u"email_sender")
+        self.email_sender.setGeometry(QRect(20, 140, 332, 41))
+        self.email_sender.setMinimumSize(QSize(332, 0))
+        self.email_sender.setMaximumSize(QSize(332, 16777215))
+        self.email_sender.setFont(font4)
+        self.email_sender.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.email_sender.setClearButtonEnabled(True)
+        self.sender_password = QLineEdit(self.frame_20)
+        self.sender_password.setObjectName(u"sender_password")
+        self.sender_password.setGeometry(QRect(20, 190, 332, 41))
+        self.sender_password.setMinimumSize(QSize(332, 0))
+        self.sender_password.setMaximumSize(QSize(332, 16777215))
+        self.sender_password.setFont(font4)
+        self.sender_password.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.sender_password.setEchoMode(QLineEdit.Password)
+        self.sender_password.setClearButtonEnabled(True)
+        self.label_9 = QLabel(self.frame_20)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setGeometry(QRect(20, 10, 111, 20))
+        self.label_9.setFont(font4)
+        self.label_9.setStyleSheet(u"color: rgb(255, 255, 255);")
+        self.email_subject = QLineEdit(self.frame_20)
+        self.email_subject.setObjectName(u"email_subject")
+        self.email_subject.setGeometry(QRect(20, 90, 332, 41))
+        self.email_subject.setMinimumSize(QSize(332, 0))
+        self.email_subject.setMaximumSize(QSize(332, 16777215))
+        self.email_subject.setFont(font4)
+        self.email_subject.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.email_subject.setClearButtonEnabled(True)
 
-        self.verticalLayout_21.addWidget(self.label_47)
-
-        self.calendarWidget_reg_2 = QCalendarWidget(self.frame_21)
-        self.calendarWidget_reg_2.setObjectName(u"calendarWidget_reg_2")
-        self.calendarWidget_reg_2.setGridVisible(False)
-        self.calendarWidget_reg_2.setVerticalHeaderFormat(QCalendarWidget.NoVerticalHeader)
-        self.calendarWidget_reg_2.setNavigationBarVisible(True)
-
-        self.verticalLayout_21.addWidget(self.calendarWidget_reg_2)
-
-
-        self.gridLayout_3.addWidget(self.frame_21, 0, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.frame_20, 1, 0, 1, 1)
 
 
         self.verticalLayout_17.addWidget(self.frame_10)
@@ -3216,9 +3349,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon18 = QIcon()
-        icon18.addFile(u":/icons/asset/download.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_load.setIcon(icon18)
+        icon19 = QIcon()
+        icon19.addFile(u":/icons/asset/download.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_load.setIcon(icon19)
         self.btn_load.setIconSize(QSize(30, 30))
         self.btn_load.setFlat(True)
         self.btn_save = QPushButton(self.frame_9)
@@ -3241,9 +3374,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon19 = QIcon()
-        icon19.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_save.setIcon(icon19)
+        icon20 = QIcon()
+        icon20.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_save.setIcon(icon20)
         self.btn_save.setIconSize(QSize(30, 30))
         self.btn_save.setFlat(True)
         self.btn_refresh = QPushButton(self.frame_9)
@@ -3266,9 +3399,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon20 = QIcon()
-        icon20.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_refresh.setIcon(icon20)
+        icon21 = QIcon()
+        icon21.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_refresh.setIcon(icon21)
         self.btn_refresh.setIconSize(QSize(30, 30))
         self.btn_refresh.setFlat(True)
         self.btn_remove_combox_item = QPushButton(self.frame_9)
@@ -3291,9 +3424,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon21 = QIcon()
-        icon21.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove_combox_item.setIcon(icon21)
+        icon22 = QIcon()
+        icon22.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove_combox_item.setIcon(icon22)
         self.btn_remove_combox_item.setIconSize(QSize(30, 30))
         self.btn_remove_combox_item.setFlat(True)
         self.college_comboBox = QComboBox(self.frame_9)
@@ -3518,6 +3651,28 @@ class Ui_dashboard(object):
 
         self.content_layout.addWidget(self.content)
 
+        self.btn_backup = QPushButton(self.centralwidget)
+        self.btn_backup.setObjectName(u"btn_backup")
+        self.btn_backup.setGeometry(QRect(0, 830, 70, 70))
+        self.btn_backup.setMinimumSize(QSize(0, 70))
+        self.btn_backup.setMaximumSize(QSize(16777215, 70))
+        self.btn_backup.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 0px solid;\n"
+"background-color: rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-left: 3px solid;\n"
+"	border-left-color: rgb(0, 170, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border-left-color: rgb(255, 255, 255);\n"
+"}")
+        self.btn_backup.setIcon(icon9)
+        self.btn_backup.setIconSize(QSize(40, 40))
+        self.btn_backup.setFlat(True)
         dashboard.setCentralWidget(self.centralwidget)
 #if QT_CONFIG(shortcut)
 #endif // QT_CONFIG(shortcut)
@@ -3542,6 +3697,7 @@ class Ui_dashboard(object):
         self.btn_search.setText("")
         self.btn_camera.setText("")
         self.btn_report.setText("")
+        self.btn_mail_report_or_data.setText("")
         self.btn_help.setText("")
         self.image.setText("")
         self.firstname.setText(QCoreApplication.translate("dashboard", u"Firstname", None))
@@ -3557,7 +3713,6 @@ class Ui_dashboard(object):
         self.last_out.setText(QCoreApplication.translate("dashboard", u"Last seen", None))
         self.image_2.setText("")
         self.last_in.setText(QCoreApplication.translate("dashboard", u"Duration", None))
-        self.decorator.setText(QCoreApplication.translate("dashboard", u"Kwame Nkrumah University Of Science And Technology", None))
         self.label_notification.setText(QCoreApplication.translate("dashboard", u"Notification", None))
         self.camera_ip.setPlaceholderText(QCoreApplication.translate("dashboard", u"Camera Id/IP ?", None))
         self.btn_connect_detect.setText(QCoreApplication.translate("dashboard", u"Connect", None))
@@ -3596,8 +3751,7 @@ class Ui_dashboard(object):
         self.btn_search_page.setText(QCoreApplication.translate("dashboard", u"Search", None))
         self.label_29.setText("")
         self.image_3.setText("")
-        self.start_date.setText(QCoreApplication.translate("dashboard", u"Start Date", None))
-        self.end_date.setText(QCoreApplication.translate("dashboard", u"End Date", None))
+        self.start_date.setText(QCoreApplication.translate("dashboard", u"Switch  Between Date Fields", None))
         self.db_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start date?", None))
         self.db_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"End date?", None))
         self.label_25.setText("")
@@ -3672,8 +3826,13 @@ class Ui_dashboard(object):
         self.image_file_reg.setPlaceholderText(QCoreApplication.translate("dashboard", u"File path", None))
         self.btn_browse_reg.setText(QCoreApplication.translate("dashboard", u"Browse", None))
         self.label_36.setText("")
-        self.file_system.setText(QCoreApplication.translate("dashboard", u"File system", None))
+        self.file_system.setText(QCoreApplication.translate("dashboard", u"System", None))
         self.online_image.setText(QCoreApplication.translate("dashboard", u"Online", None))
+        self.reg_email.setPlaceholderText(QCoreApplication.translate("dashboard", u"Email", None))
+        self.label_43.setText("")
+        self.label_44.setText("")
+        self.btn_send_mail.setText(QCoreApplication.translate("dashboard", u"Send mail", None))
+        self.image_less.setText(QCoreApplication.translate("dashboard", u"Image-less", None))
         self.reg_cap_frame.setText("")
         self.btn_camera_reg_connect.setText(QCoreApplication.translate("dashboard", u"Connect", None))
         self.btn_camera_reg_disconnect.setText(QCoreApplication.translate("dashboard", u"Disconnect", None))
@@ -3686,8 +3845,12 @@ class Ui_dashboard(object):
         self.reg_sharpness_value.setText(QCoreApplication.translate("dashboard", u"0", None))
         self.label_8.setText(QCoreApplication.translate("dashboard", u"Contrast", None))
         self.reg_contrast_value.setText(QCoreApplication.translate("dashboard", u"0", None))
-        self.label_46.setText(QCoreApplication.translate("dashboard", u"Start date", None))
-        self.label_47.setText(QCoreApplication.translate("dashboard", u"End date", None))
+        self.change_date_box.setText(QCoreApplication.translate("dashboard", u"Switch  Between Date Fields", None))
+        self.email_from.setPlaceholderText(QCoreApplication.translate("dashboard", u"From", None))
+        self.email_sender.setPlaceholderText(QCoreApplication.translate("dashboard", u"Email", None))
+        self.sender_password.setPlaceholderText(QCoreApplication.translate("dashboard", u"Password", None))
+        self.label_9.setText(QCoreApplication.translate("dashboard", u"Sender details", None))
+        self.email_subject.setPlaceholderText(QCoreApplication.translate("dashboard", u"Subject", None))
         self.plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
         self.plot_area_2.setText(QCoreApplication.translate("dashboard", u"Graph", None))
         self.report_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start date?", None))
@@ -3707,108 +3870,125 @@ class Ui_dashboard(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Getting Started</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">This page seeks to introduce the user on how to use most components of this software and how to get some"
-                        " of the various components working since it tend to give the end user more flexibility due to it loose coupling nature. </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">This page seeks to introduce the user on how to use most components of this sof"
+                        "tware and how to get some of the various components working since it tend to give the end user more flexibility due to it loose coupling nature. </span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Camera</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system by default is not configured to run on any camera whether inbuilt or online camera. You would need to scan for all available camera's connected to the system. This can be acheived by providing a number for the range of camera's you want to scan for and pressing the scan button provided. The software would only return list of available open camera's connected to the system. It also gives you the flexibility to connect to networked camera's. In other to acheive "
-                        "this, you need to provide the ip address of the camera on the netwok.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system by default is not configured to run on any camera whether inbuilt or online camera. You would need to scan for all available camera's connected to the system. This can be acheived by providing a number for the range of camera's you want to scan for and pressing the scan button provided. The software would only return list of available open camera's connected to the system. It also gives you the flexibility to connect to networked camer"
+                        "a's. In other to acheive this, you need to provide the ip address of the camera on the netwok.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Camera Connection</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">In other to connect any of the active camera's, first you need to make sure that the camera is not in use or if in use </span><span style=\" font-size:11pt; font-weight:600;\">make sure to diconnect</span><span style=\" font-size:11pt;\"> it before connecting it to different view or frame.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">e.g.</span><span s"
-                        "tyle=\" font-size:11pt;\"> if camera 0 is connected to </span><span style=\" font-size:11pt; font-weight:600;\">check in</span><span style=\" font-size:11pt;\"> view and you try to connect that same camera to </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> view then, the system would automatically release the camera for </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> view to use. This behaviour is been utilized throughout the system design.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:"
+                        "600;\">e.g.</span><span style=\" font-size:11pt;\"> if camera 0 is connected to </span><span style=\" font-size:11pt; font-weight:600;\">check in</span><span style=\" font-size:11pt;\"> view and you try to connect that same camera to </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> view then, the system would automatically release the camera for </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> view to use. This behaviour is been utilized throughout the system design.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Image Enhancement</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system provides so"
-                        "me image enhacement capabilties to process the image based on weather conditions. It currently provides full support for increasing. This would only work for camera's that supports these features. Some camera's do not give support fine tuning these features.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;"
+                        "\">The system provides some image enhacement capabilties to process the image based on weather conditions. It currently provides full support for increasing. This would only work for camera's that supports these features. Some camera's do not give support fine tuning these features.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1] Brightness [2] Sharpness [3] Contrast</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Databases</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system currently is providing full support for three(3) databases. </span></p>\n"
-"<p align=\"justi"
-                        "fy\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1] SQLite [2] MySQL [3] PostgreSQL</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">By default the system is configured to run on embedded database (SQLite) and you don't need to provided any connection details. If you desire to configure the system to run on either MySQL or PostgreSQL then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This is acheived by using the </span><span style=\" font-size:11pt; font-weight:600;\">initialize tables button</span><span style=\" font-size:11pt;\">."
-                        " This should be done once.</span><br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system currently is providing full support for three(3) databases. </span>"
+                        "</p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1] SQLite [2] MySQL [3] PostgreSQL</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">By default the system is configured to run on embedded database (SQLite) and you don't need to provided any connection details. If you desire to configure the system to run on either </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">MySQL or PostgreSQL</span><span style=\" font-size:11pt;\"> then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This is ach"
+                        "eived by using the </span><span style=\" font-size:11pt; font-weight:600;\">initialize tables button</span><span style=\" font-size:11pt;\">. This should be done once.</span><br /></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To prevent your from re-typing the database properties(MySQL or PostgreSQL) all the time attached to the application is</span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\"> properties.txt</span><span style=\" font-size:11pt;\"> file where you can provide the database connection details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example:</span><span style=\" font-family:'Consolas','Courier New','monospace'; font-size:11pt; font-weight:600; font-style:italic; color:#ce9178;\">Username,Password,Hostname,Port,Database</span><span style=\" font-siz"
+                        "e:11pt;\"> this file located in the </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iChurch\\data\\database_properties</span><span style=\" font-size:11pt;\"> directory.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Attendance</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Since the system comes with the support of three databases. In other to set either of these up to take attendance. You would need to set the </span><span style=\" font-size:11pt; font-weight:600;\">check in</span><span style=\" font-size:11pt;\"> camera </span><span style=\" font-size:11pt; font-weight:600;\">datasource</span><span style=\" font-size:11pt;\"> as well </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> camera </span><span style=\" font-size:11pt; font-weight:600;\">datasource</span><"
-                        "span style=\" font-size:11pt;\"> to be the same. To set this up you would need to open the </span><span style=\" font-size:11pt; font-weight:600;\">check in</span><span style=\" font-size:11pt;\"> camera datasource properties dialog. To set the </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> datasource properties use the </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> button provided to open the </span><span style=\" font-size:11pt; font-weight:600;\">exit camera</span><span style=\" font-size:11pt;\"> frame and use the </span><span style=\" font-size:11pt; font-weight:600;\">database button</span><span style=\" font-size:11pt;\"> provided to open the datasource dialog to set the properties. By default </span><span style=\" font-size:11pt; font-weight:600;\">check in and check out camera's</span><span style=\" font-size:11pt;\"> do run on the embedded database.</span></p>\n"
-"<p align=\"center\""
-                        " style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Searching</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">In other to retrive student details along with all the entries made by that students, they are various combinations or criterias you can use to acheive this and get results.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. If the search box is empty and the search button is pressed then it's going to fetch all the records present in the database table and render it inside the table view.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-le"
-                        "ft:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2]. If a reference number is provided then it's going to fetch that student details along with all the entries made by that student. The student details would be rendered on a card-view liked UI and the entries would also be rendered in a table view.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[3]. If a reference number is provided as well as start date then it would fecth all entries from that date down to the last appeared date and render the data to the UI.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[4] if a reference number is provided as well as start and end date then it would fetch the details from based on the date rang"
-                        "e provided and render the data to UI.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Since the system comes with the support of three databases. In other to set either of these up to take attendance. You would need to set the </span><span style=\" font-size:11pt; font-weight:600;\">check in</span><span style=\" font-size:11pt;\"> camera </span><span style=\" font-size:11pt; font-weight:600;\">datasource</span><span style=\" font-size:11pt;\"> as well </span>"
+                        "<span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> camera </span><span style=\" font-size:11pt; font-weight:600;\">datasource</span><span style=\" font-size:11pt;\"> to be the same. To set this up you would need to open the </span><span style=\" font-size:11pt; font-weight:600;\">check in</span><span style=\" font-size:11pt;\"> camera datasource properties dialog. To set the </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> datasource properties use the </span><span style=\" font-size:11pt; font-weight:600;\">check out</span><span style=\" font-size:11pt;\"> button provided to open the </span><span style=\" font-size:11pt; font-weight:600;\">exit camera</span><span style=\" font-size:11pt;\"> frame and use the </span><span style=\" font-size:11pt; font-weight:600;\">database button</span><span style=\" font-size:11pt;\"> provided to open the datasource dialog to set the properties. By default </span><span "
+                        "style=\" font-size:11pt; font-weight:600;\">check in and check out camera's</span><span style=\" font-size:11pt;\"> do run on the embedded database.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Searching</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">In other to retrive student details along with all the entries made by that students, they are various combinations or criterias you can use to acheive this and get results. When the switch date between date fields is checked the date picked from the the calender widget would be placed in the start date field and if unchecked then it would be placed in the end date field.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-"
+                        "bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. If the search box is empty and the search button is pressed then it's going to fetch all the records present in the database table and render it inside the table view.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2]. If a reference number is provided then it's going to fetch that student details along with all the entries made by that student. The student details would be rendered on a card-view liked UI and the entries would also be rendered in a table view.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[3]. If a reference number is provided as well as start date then it would fecth all entries from that"
+                        " date down to the last appeared date and render the data to the UI.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[4] if a reference number is provided as well as start and end date then it would fetch the details from based on the date range provided and render the data to UI.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[5]. If the search by program box is checked then you can fetch data based on the various programs. The search comes with autocompletion feature with the programs available.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Exporting Data</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system provides two solid ways of exporting data in either json or cvs format based on your need. Data can only be exported when the table view is not empty or data is not been render"
-                        "ed.The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. When data is exported in csv format the default location for the saved file is at C:\\ProgramData\\iVision\\data\\csv_export</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2]. When data is exported in json format the default location for the saved file is at C:\\ProgramData\\iVision\\data\\json_export</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; mar"
-                        "gin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Exporti"
+                        "ng Data</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system provides two solid ways of exporting data in either json or cvs format based on your need. Data can only be exported when the table view is not empty or data is not been rendered.The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. When data is exported in csv format the default location for the saved file is at </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iVision\\data\\csv_export</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; ma"
+                        "rgin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2]. When data is exported in json format the default location for the saved file is at </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iVision\\data\\json_export</span><br /></p></body></html>", None))
         self.textEdit_2.setHtml(QCoreApplication.translate("dashboard", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span styl"
-                        "e=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Surveilliance</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">E-mail properties</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The properties of the sender details can be place in the a text file located within the directory bel"
+                        "ow with the name </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iVision\\data\\email_details</span><span style=\" font-size:11pt;\"> to prevent you from re-writing them anytime ypu want to send e-mail. The application on start-up would automaticaly search for the file and load details from there. Please follow the exact format provided in the file.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The content of your mail can be typed in the content.txt located i"
+                        "n the same directory. This content is attached mails sent as attendance code. To send reports or data from the content_report.txt should be editted as per your need or requirement.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">Please take note the '</span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">Hello name,</span><span style=\" font-size:11pt;\">' section, you can change the 'Hello' but please keep the name as it is since the name part would would be provided from the user interface end.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p style=\" "
+                        "margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To prevent your from re-typing the e-mails all the time attached to the application is </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-size:11pt;\"> file where you can provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">subject, example@gmail.com, sender name, password ,</span><span style=\" font-size:11pt;\"> this file located in the </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iChurch\\data\\email_details</span><span style=\""
+                        " font-size:11pt;\"> directory.</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system supports four additional camera's to help monitor the sorroundings as well. To use this either provide </span><span style=\" font-size:11pt; font-weight:600;\">camera IP</span><span style=\" font-size:11pt;\"> address or  if is attached to system provide the </span><span style=\" font-size:11pt; font-weight:600;\">camera Id</span><span style=\" font-size:11pt;\"> in order to establish connection. If the default view provided is small and you would have a larger view then you can use the cast feature t"
-                        "o open a wider screen and connect to such camera. The normal view doesn't support image enhancement but you can use this feature when you cast it to a wider screen. </span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Backup</span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To backup create backup when the emdebbed database is used as main data source. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in</span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\"> 						C:\\ProgramData\\iChurch\\data\\backup</span><span"
+                        " style=\" font-size:11pt;\"> directory.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Surveilliance</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system supports four additional camera's to help monitor the sorroundings as well. To use this either provide </span><span style=\" font-size:11pt; font-weight:600;\">camera IP</span><span style=\" font-size:11pt;\"> address or  if is attached to system provide the </span><span style=\" font-size:11pt; font-w"
+                        "eight:600;\">camera Id</span><span style=\" font-size:11pt;\"> in order to establish connection. If the default view provided is small and you would have a larger view then you can use the cast feature to open a wider screen and connect to such camera. The normal view doesn't support image enhancement but you can use this feature when you cast it to a wider screen. </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Reports</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system provid"
-                        "es support for generating reports in three different ways based on the the users preference. By default the application wont display any report data unless it is hot reloaded. On hot reload, it is going to display piechart and any other type of chart or graph based on the one which is checked. The piechart side of this view is only used to render only piecharts. The other view is dynamic and hence display plots for either barchart or line graph.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><"
+                        "br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The system provides support for generating reports in three different ways based on the the users preference. By default the application wont display any report data unless it is hot reloaded. On hot reload, it is going to display piechart and any other type of chart or graph based on the one which is checked. The piechart side of this view is only used to render only piecharts. The other view is dynamic and hence display plots for either barchart or line graph.</span></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1] Piechart	[2] Barchart	[3] Line graph</span></p>\n"
-"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\""
-                        "><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Generating charts</span></p>\n"
+"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-"
+                        "block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Generating charts</span></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">This cases applies to piechart and barchart</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">In other to retrive data for analysis, these are various combinations or criterias you can use to acheive this and get results.</span></p>\n"
-"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-botto"
-                        "m:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">In other to retrive dat"
+                        "a for analysis, these are various combinations or criterias you can use to acheive this and get results.</span></p>\n"
+"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1].  If either of these radio buttuns is checked with start date provided and load button is pressed, then it is going to read all the data available based on such date, from the database and display a chart with such data.</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2].  If either of these radio buttuns is checked with start and end date provided and load button is pressed, then it is going to rea"
-                        "d all the data available based on the dates provided, from the database and display a chart with such data.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt"
+                        "-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2].  If either of these radio buttuns is checked with start and end date provided and load button is pressed, then it is going to read all the data available based on the dates provided, from the database and display a chart with such data.</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; text-decoration: underline;\">Line Graph</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The line graph/plot is only used to visualize trends i"
-                        "n data. To be able to plot trends in data. There is an additional combox provided to keep all the dates been selected for the line graph. Only dates from the first calender would be added to list.</span></p>\n"
+"<p align=\"justify\" st"
+                        "yle=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">The line graph/plot is only used to visualize trends in data. To be able to plot trends in data. There is an additional combox provided to keep all the dates been selected for the line graph. Only dates from the first calender would be added to list.</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. First you would to select the program to plot or visualize their trend.</span></p>\n"
-"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-                        "size:11pt;\">[2]. Pick dates from the first calender and it would automaticaly be added to the combox available.</span></p>\n"
+"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-i"
+                        "ndent:0px; font-size:11pt;\"><br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2]. Pick dates from the first calender and it would automaticaly be added to the combox available.</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[3]. To remove any unwanted date from the the list of dates to be used, select that date and use the </span><span style=\" font-size:11pt; font-weight:600;\">date button</span><span style=\" font-size:11pt;\"> to remove it.</span></p>\n"
-"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0"
-                        "px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[4]. After all the dates for the line graphs are selected, pressed the load button to plot the gragh.</span></p>\n"
+"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px"
+                        "; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[4]. After all the dates for the line graphs are selected, pressed the load button to plot the gragh.</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; text-decoration: underline;\">Saving Charts</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; text-decoration: underline;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\""
-                        " font-size:12pt;\">The only support provided for saving files is pdf format and this can't be set from the user end as it is provided from the application end.The saving format is as follows, the </span><span style=\" font-size:12pt; font-weight:600;\">filename</span><span style=\" font-size:12pt;\"> provided appended with this </span><span style=\" font-size:12pt; font-weight:600;\">[date]_[time]</span><span style=\" font-size:12pt;\"> where date and time is the current values on the machine running the application.</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:"
+                        "600; text-decoration: underline;\"><br /></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">The only support provided for saving files is pdf format and this can't be set from the user end as it is provided from the application end.The saving format is as follows, the </span><span style=\" font-size:12pt; font-weight:600;\">filename</span><span style=\" font-size:12pt;\"> provided appended with this </span><span style=\" font-size:12pt; font-weight:600;\">[date]_[time]</span><span style=\" font-size:12pt;\"> where date and time is the current values on the machine running the application.</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. If you want to save piecharts, make sure that radio button checked and provide a filename, the saved file would found in this direc"
-                        "tory. </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">C:\\ProgramData\\iVision\\data\\piechart</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-b"
+                        "lock-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[1]. If you want to save piecharts, make sure that radio button checked and provide a filename, the saved file would found in this directory. </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iVision\\data\\piechart</span></p>\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[2].If you want to save barcharts, make sure that radio button checked and provide a filename, the saved file would found in this directory. </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">C:\\ProgramData\\iVision\\data\\barchart</span></p>\n"
-"<p align=\"justify\" st"
-                        "yle=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
+"<p align=\"j"
+                        "ustify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iVision\\data\\barchart</span></p>\n"
+"<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p>\n"
 "<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">[3].If you want to save line graph, make sure that radio button checked and provide a filename, the saved file would found in this directory.</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\"> C:\\ProgramData\\iVision\\data\\linechart</span></p></body></html>", None))
+"<p align=\"justify\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; font-style:italic;\"> C:\\ProgramData\\iVision\\data\\linechar"
+                        "t</span></p></body></html>", None))
+        self.btn_backup.setText("")
     # retranslateUi
 
