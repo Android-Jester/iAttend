@@ -1,4 +1,5 @@
 
+import os
 import sqlite3
 import psycopg2
 
@@ -29,7 +30,22 @@ class Database_Connection(QtWidgets.QDialog):
 
         self.ui_database.btn_connect_test.clicked.connect(self.test_connection)
         self.ui_database.btn_connect.clicked.connect(self.my_cursor_)
-        
+        self.set_database_properties()
+
+    def get_details(self):
+        path = 'C:\\ProgramData\\iVision\\data\\database_properties\\properties.txt'
+        if os.path.exists(path):
+            with open(path,'r') as f:
+                details = f.read().split(',')
+            return details
+
+    def set_database_properties(self):
+        details = self.get_details()
+        self.ui_database.username.setText(details[0])
+        self.ui_database.password.setText(details[1])
+        self.ui_database.hostname.setText(details[2])
+        self.ui_database.port.setText(details[3])
+        self.ui_database.database_name.setText(details[4])
 
     def check_state(self):
         if self.ui_database.sqlite.isChecked():
