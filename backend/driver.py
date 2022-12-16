@@ -15,8 +15,10 @@ import json
 import time
 import shutil
 import base64
+import qrcode
 import requests
 import winsound
+import threading
 import numpy as np
 import pandas as pd
 
@@ -24,6 +26,12 @@ import pyshine as ps
 from pathlib import Path
 from pyzbar.pyzbar import *
 from datetime import datetime as dt
+
+import smtplib
+from pathlib import Path
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 
 from PySide2 import QtCore
 from PySide2.QtWidgets import *
@@ -34,10 +42,11 @@ from report.piechart.piechart import Canvas
 from report.barchart.barchart import Barchart
 from report.line_graph.line_plot import Line_plot
 
-
+from model.generate_code import Code
 from model.student import Student
 from model.attendance import Attendance
 
+from mail.mail import Mail
 from launcher.ui_launcher import Ui_MainWindow
 from camera_one.ui_surveillance_cam_one import *
 from camera_two.surveillance_camera_two import *
@@ -88,7 +97,8 @@ class MainWindow(QMainWindow):
         self.barchart = Barchart()
         self.line_graph = Line_plot()
         ########################################################################################################
-    
+        self.create_program_data_dir()
+        self.set_sender_details()
         #########################################################################################
         self.open_exit_camera = ExitCameraFeed()
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
@@ -96,6 +106,9 @@ class MainWindow(QMainWindow):
 
         self.database = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.database.show())
+
+        self.mail = Mail()
+        self.ui.btn_mail_report_or_data.clicked.connect(lambda: self.mail.show())
         ############################################################################################
 
         ############################################################################################
@@ -131,13 +144,12 @@ class MainWindow(QMainWindow):
         ##############################################################################################
         self.ui.btn_search_reg.clicked.connect(self.search_student)
         self.ui.calendarWidget_reg.selectionChanged.connect(self.get_registration_start_date)
-        self.ui.calendarWidget_reg_2.selectionChanged.connect(self.get_registration_end_date)
         self.ui.btn_register.clicked.connect(self.register_student)
         self.ui.btn_clear.clicked.connect(self.resets_fileds)
         self.ui.btn_update.clicked.connect(self.update_student)
         self.ui.btn_remove.clicked.connect(self.remove_student)
         self.ui.btn_browse_reg.clicked.connect(self.browse_image_files)
-     
+        self.ui.btn_send_mail.clicked.connect(self.send_email)
         ##############################################################################################
         
         #####################################################################################################
@@ -193,7 +205,7 @@ class MainWindow(QMainWindow):
         completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
 
-        country_completer = QCompleter(self.country_names(r'backend\\json\\data_json.json'))
+        country_completer = QCompleter(self.country_names('D:\\Targets\\Commons\\backend\\json\\data_json.json'))
         country_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
@@ -203,7 +215,6 @@ class MainWindow(QMainWindow):
         self.ui.college_comboBox.addItem(college[0])
         self.ui.college_courses.addItems(data)
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
-        self.create_program_data_dir()
         self.ui.btn_scan_range.clicked.connect(self.get_active_cameras)
         ##################################################################################################
 
@@ -331,13 +342,66 @@ class MainWindow(QMainWindow):
 
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iVision\\data'
-        list =('barchart','piechart','linechart','json_export','csv_export','backup')
+        list =('database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
             path = os.path.join(root_dir,item)
             if not os.path.exists(path):
                 os.mkdir(path)
+        self.create_files()
+
+    def create_files(self):
+        path =Path('C:\\ProgramData\\iVision\\data\\database_properties\\properties.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                if os.path.getsize(path)==0:
+                    file.write("Username,Password,Hostname,Port,Database")
+            file.close() 
+
+        details_path =Path('C:\\ProgramData\\iVision\\data\\email_details\\detail.txt')
+        details_path.touch(exist_ok=True)
+        d_file = open(details_path)
+        if os.path.exists(details_path):
+            with open(details_path,'a+') as d_file:
+                if os.path.getsize(details_path)==0:
+                    d_file.write("Subject,example@gmail.mail, Sender,Password")
+            d_file.close() 
+
+        content = """
+        Hello name,
+                Please attached to this message is your
+            attendance code. Please keep it safe as you 
+            will need this everytime you would want to 
+            access the facility. 
+                Attend Today, Acheive Tomorrow!
+                                            Thank you! """
+        content_path =Path('C:\\ProgramData\\iVision\\data\\email_details\\content.txt')
+        content_path.touch(exist_ok=True)
+        content_file = open(content_path)
+        if os.path.exists(content_path):
+            with open(content_path,'a+') as content_file:
+                if os.path.getsize(content_path)==0:
+                    content_file.write(content)
+            content_file.close() 
+
+        report_content = """
+        Hello name,
+    	        Please attached to this message is the
+            report or data you requested for. Feel free 
+            to contact us for our services at anytime.
+                                        Thank you! """
+        content_path =Path('C:\\ProgramData\\iVision\\data\\email_details\\content_report.txt')
+        content_path.touch(exist_ok=True)
+        content_file = open(content_path)
+        if os.path.exists(content_path):
+            with open(content_path,'a+') as content_file:
+                if  os.path.getsize(content_path)==0:
+                    content_file.write(report_content)
+            content_file.close()        
+    
 
     def get_pichart_data(self):
         query = self.query_database("SELECT DISTINCT program FROM tb_attendance")
@@ -356,7 +420,6 @@ class MainWindow(QMainWindow):
             result.append(item[1]) 
         return total, result
         
-
     def hot_reload(self):
         data = self.get_pichart_data()
         self.piechart.piechart(data,"Percentages of programs")
@@ -728,7 +791,7 @@ class MainWindow(QMainWindow):
         date = self.ui.calendarWidget.selectedDate()
         if self.ui.start_date.isChecked():
             self.ui.db_start_date.setText(str(date.toPython()))
-        elif self.ui.end_date.isChecked():
+        else:
             self.ui.db_end_date.setText(str(date.toPython()))
 
     def clear_fields_on_search_page(self):
@@ -757,15 +820,98 @@ class MainWindow(QMainWindow):
         self.ui.report_end_date.setText(str(date.toPython()))
         return str(date.toString())
   
-
     def get_registration_start_date(self):
         date = self.ui.calendarWidget_reg.selectedDate()
-        self.ui.reg_start_date.setText(str(date.toPython()))
+        if self.ui.change_date_box.isChecked():
+            self.ui.reg_end_date.setText(str(date.toPython()))
+        else:
+            self.ui.reg_start_date.setText(str(date.toPython()))
+    
 
-    def get_registration_end_date(self):
-        date = self.ui.calendarWidget_reg_2.selectedDate()
-        self.ui.reg_end_date.setText(str(date.toPython()))
+    def get_email_details(self):
+        from_ = self.ui.email_from.text()
+        from_email = self.ui.email_sender.text()
+        subject = self.ui.email_subject.text()
+        password = self.ui.sender_password.text()
+        to_address = self.ui.reg_email.text()
+        return to_address, subject, from_email, from_, password
 
+    def set_sender_details(self):
+        details=self.get_details()
+        self.ui.email_from.setText(details[2])
+        self.ui.email_sender.setText(details[1])
+        self.ui.email_subject.setText(details[0])
+        self.ui.sender_password.setText(details[3])
+    
+    def get_details(self):
+        path = 'C:\\ProgramData\\iVision\\data\\email_details\\detail.txt'
+        if os.path.exists(path):
+            with open(path,'r') as f:
+                details = f.read().split(',')
+            return details
+    
+    def get_mail_content(self):
+        path = 'C:\\ProgramData\\iVision\\data\\email_details\\content.txt'
+        if os.path.exists(path):
+            with open(path,'r') as f:
+                details = f.read()
+            return details.replace('name',self.ui.reg_firstname.text())
+
+    def convert_to_json(self, code:Code):
+        to_json = json.dumps(code)
+        return to_json
+
+    def generate_code(self):
+        code = Code(
+            index=self.ui.reg_index.text(),
+            reference=self.ui.reg_student_ref.text(),
+            email_address=self.ui.reg_email.text()
+        )
+        if code.reference !='':
+            code ={
+            "index":code.index,
+            "reference":code.reference,
+            "email_address":code.email_address}
+            code_json=self.convert_to_json(code)
+            image = qrcode.make(code_json)
+            path = 'C:\\ProgramData\\iVision\\data\\qr_code\\'+self.ui.reg_student_ref.text()+".png"
+            image.save(path)
+            return path
+            
+    def prepare_email(self):
+        details = self.get_email_details()
+        message = MIMEMultipart()
+        message['from']= details[3]
+        message['to']= details[0]
+        message['subject']= details[1]
+        message.attach(MIMEText(self.get_mail_content(),'plain'))
+        message.attach(MIMEImage(Path(self.generate_code()).read_bytes()))
+        with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
+            server.starttls()
+            server.login(details[2],details[4])
+            server.send_message(message)
+
+    def prepare_email_to_send(self):
+        if self.connected_to_internet()==True and self.ui.reg_email.text():
+            try:
+                self.prepare_email()
+                self.alert = AlertDialog()
+                self.alert.content("Hey! mail sent successfully...")
+                self.alert.show()
+            except Exception as e:
+                self.alert = AlertDialog()
+                self.alert.content(str(e))
+                self.alert.show()
+        else:
+                self.alert = AlertDialog()
+                self.alert.content("Oops! something went wrong mail\nnot sent...")
+                self.alert.show()
+
+    def send_email(self):
+        th=threading.Thread(target=self.prepare_email_to_send())
+        th.start()
+        
+        
     def fetch_data_from_db(self,reference):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         detail =my_cursor.execute("SELECT * FROM tb_students WHERE reference="+reference)
@@ -806,7 +952,7 @@ class MainWindow(QMainWindow):
                         my_cursor.close() 
                         self.alert_builder("Student registered successfully")   
                     elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                        path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
+                        path = 'D:\\Targets\\Commons\\backend\\images\\download\\image.jpeg'
                         if os.path.exists(path):
                             with open(path, 'rb') as image:
                                 data = image.read()
@@ -818,6 +964,16 @@ class MainWindow(QMainWindow):
                             os.remove(path)          
                         else:
                             self.alert_builder("Oops! something went wrong while\nprocessing your request") 
+                    elif self.ui.image_less.isChecked():
+                        path = path = 'D:\\Targets\\Commons\\backend\\images\\assets\\img.jpg'
+                        with open(path, 'rb') as image:
+                            data = image.read()
+                            my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
+                        my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
+                        (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
+                        db.commit()
+                        my_cursor.close() 
+                        self.alert_builder("Student registered successfully")   
                 else:
                     if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
                         with open(self.ui.image_file_reg.text(), 'rb') as image:
@@ -829,7 +985,7 @@ class MainWindow(QMainWindow):
                         my_cursor.close() 
                         self.alert_builder("Student registered successfully")    
                     elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                        path = 'D:\\Commons\\backend\\images\\download\\image.jpeg'
+                        path = 'D:\\Targets\\Commons\\backend\\images\\download\\image.jpeg'
                         if os.path.exists(path):
                             with open(path, 'rb') as image:
                                 data = image.read()       
@@ -842,6 +998,17 @@ class MainWindow(QMainWindow):
                             self.alert_builder("Student registered successfully")    
                         else:
                             self.alert_builder("Oops! something went wrong while\nprocessing your request") 
+                    elif self.ui.image_less.isChecked():
+                        path = 'D:\\Targets\\Commons\\backend\\images\\assets\\img.jpg'
+                        with open(path, 'rb') as image:
+                            data = image.read()       
+                            my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student.reference,data))
+                        my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                        (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))
+                        db.commit()
+                        my_cursor.close()
+                        os.remove(path)
+                        self.alert_builder("Student registered successfully")    
             else:
                 self.alert_builder("Oops! student with this reference\nalready exists")
         else:
@@ -1019,8 +1186,7 @@ class MainWindow(QMainWindow):
             self.ui.last_in.setText("00:00:00") 
 
     def retreive_student_details(self,data):
-        decode_data=base64.b64decode(str(data)).decode('utf-8')
-        data_json = json.loads(decode_data)
+        data_json = json.loads(data)
         if isinstance(data, str):
                 self.last_seen(data_json['reference'])
                 db_data=self.fetch_data_from_db(data_json['reference'])
@@ -1690,6 +1856,7 @@ class Splash_screen(QMainWindow):
         if counter > 100:
             self.timer.stop()
             self.main = MainWindow()
+            time.sleep(10)
             self.main.show()
             self.close()
         counter +=1
