@@ -14,7 +14,6 @@ import wget
 import json
 import time
 import shutil
-import base64
 import qrcode
 import requests
 import winsound
