@@ -5,9 +5,8 @@ import threading
 
 import smtplib
 from pathlib import Path
-from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
+from email.message import EmailMessage
 
 from PySide2 import QtCore, QtWidgets
 from PySide2.QtGui import (QColor)
@@ -94,12 +93,13 @@ class Mail(QtWidgets.QDialog):
 
     def prepare_email(self):
         details = self.get_email_details()
-        message = MIMEMultipart()
+        message = EmailMessage()
         message['from']= details[3]
         message['to']= details[0]
         message['subject']= details[1]
         message.attach(MIMEText(self.get_mail_content(),'plain'))
-        message.attach(MIMEImage(Path(self.ui_mail.image_file_reg.text()).read_bytes()))
+        message.add_attachment(open(self.ui_mail.image_file_reg.text()).read(),
+        filename=Path(self.ui_mail.image_file_reg.text()).name)
         with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
             server.starttls()
             server.login(details[2],details[4])
