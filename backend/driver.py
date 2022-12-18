@@ -34,7 +34,7 @@ from email.mime.image import MIMEImage
 
 from PySide2 import QtCore
 from PySide2.QtWidgets import *
-from PySide2.QtCore import (QPoint,Qt, QTimer)
+from PySide2.QtCore import (QPoint,Qt, QTimer,QThread)
 from PySide2.QtGui import (QColor, QPixmap, QImage)
 
 from report.piechart.piechart import Canvas
@@ -102,7 +102,6 @@ class MainWindow(QMainWindow):
         self.open_exit_camera = ExitCameraFeed()
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
         
-
         self.database = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.database.show())
 
@@ -125,7 +124,7 @@ class MainWindow(QMainWindow):
         ############################################################################################
 
         ############################################################################################
-        self.ui.btn_connect_detect.clicked.connect(self.start_webcam)
+        self.ui.btn_connect_detect.clicked.connect(self.start_process)
         self.ui.btn_disconnect.clicked.connect(self.stop_webcam)
 
         self.ui.btn_camera_reg_connect.clicked.connect(self.start_webcam_registration)
@@ -239,7 +238,6 @@ class MainWindow(QMainWindow):
             self.alert.show()
 
     def get_active_cameras(self):
-        scan_range=self.ui.scan_range.text()
         if scan_range:
             for camera in range(int(scan_range)):
                 capture = VideoCapture(camera)
@@ -1404,6 +1402,10 @@ class MainWindow(QMainWindow):
         self.ui.reg_contrast_value.setText(str(value))
         return value 
 
+    def start_process(self):
+        self.thread_= QThread(target=self.start_webcam)
+        self.thread_.start()
+        
 
     def start_webcam(self):
         if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
@@ -1761,7 +1763,6 @@ class MainWindow(QMainWindow):
         self.ui.camera_3.setAlignment(Qt.AlignCenter)
         self.timer.stop() 
 
-
     def start_webcam_cam_four(self):
         if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
             self.show_alert = AlertDialog()
@@ -1858,8 +1859,8 @@ class Splash_screen(QMainWindow):
             time.sleep(10)
             self.main.show()
             self.close()
-        counter +=1
-
+        counter +=1    
+    
 if __name__ == '__main__':
     application = QApplication(sys.argv)
     window = Splash_screen()  
