@@ -1,10 +1,10 @@
 
 import os
 import requests
-import threading
 
 import smtplib
 from pathlib import Path
+from pdf_mail import sendpdf
 from email.mime.text import MIMEText
 from email.message import EmailMessage
 
@@ -90,6 +90,15 @@ class Mail(QtWidgets.QDialog):
                 details = f.read()
             return details.replace('name',self.ui_mail.rep_name.text())
     
+    def send_pdf_mail(self):
+        details = self.get_email_details()
+        file_path__ = self.ui_mail.image_file_reg.text()
+        file_path= file_path__.split('.')[0]
+        directory=os.path.dirname(file_path__)
+        directory = directory.replace(os.path.sep,'/')
+        mail = sendpdf(details[2],details[0],details[4],details[1],
+        self.get_mail_content(),os.path.basename(file_path),directory) 
+        mail.email_send()
 
     def prepare_email(self):
         details = self.get_email_details()
@@ -108,13 +117,19 @@ class Mail(QtWidgets.QDialog):
     def prepare_email_to_send(self):
         if self.connected_to_internet()==True and self.ui_mail.reg_email.text() and self.ui_mail.image_file_reg.text():
             try:
-                self.prepare_email()
-                self.ui_mail.label_notification.setText("Hey! mail sent successfully...")
+                resolve_path = os.path.basename(self.ui_mail.image_file_reg.text())
+                resolve_path = resolve_path.split('.')[1]
+                if resolve_path == 'pdf':
+                    self.send_pdf_mail()
+                    self.ui_mail.label_notification.setText("Hey! mail sent successfully...")
+                else:
+                    self.prepare_email()
+                    self.ui_mail.label_notification.setText("Hey! mail sent successfully...")
             except Exception as e:
                 self.ui_mail.label_notification.setText(str(e))
         else:
             self.ui_mail.label_notification.setText("Oops! something went wrong mail\nnot sent...")
       
     def send_email(self):
-        th=threading.Thread(target=self.prepare_email_to_send())
-        th.start()
+        self.prepare_email_to_send()
+        
