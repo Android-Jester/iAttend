@@ -46,6 +46,10 @@ class Database_Connection(QtWidgets.QDialog):
         self.ui_database.hostname.setText(details[2])
         self.ui_database.port.setText(details[3])
         self.ui_database.database_name.setText(details[4])
+        if str(details[3])=='3306':
+            self.ui_database.mysql.setChecked(True)
+        elif str(details[3])=='5432':
+            self.ui_database.mysql.setChecked(True)
 
     def check_state(self):
         if self.ui_database.sqlite.isChecked():
