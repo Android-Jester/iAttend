@@ -1401,14 +1401,6 @@ class MainWindow(QMainWindow):
         self.ui.reg_contrast_value.setText(str(value))
         return value 
 
-    def start_process(self):
-        self.thread_= QThread(target=self.start_webcam)
-        self.thread_.start()
-        
-    def start_webcam_thread(self):  
-        self.thread_pool.start(self.start_webcam)
-
-    @Slot()
     def start_webcam(self):
         if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
             ip_address = self.ui.camera_ip.text()
@@ -1447,7 +1439,6 @@ class MainWindow(QMainWindow):
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
 
-    @Slot()
     def update_frame(self):
 
         thickness = 2
