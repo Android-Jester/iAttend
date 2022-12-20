@@ -2,20 +2,16 @@
 import os
 import requests
 
-import smtplib
-from pathlib import Path
-from pdf_mail import sendpdf
-from email.mime.text import MIMEText
-from email.message import EmailMessage
+from mail.thread import MailThread
+from mail.thread import MailThreadPDF
 
 from PySide2 import QtCore, QtWidgets
 from PySide2.QtGui import (QColor)
-from PySide2.QtWidgets import *
 from utils.sql import *
 from mail.ui_mail import Ui_Mail
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
 from PySide2.QtWidgets import *
+from PySide2.QtCore import *
+from PySide2.QtGui import *
 
 class Mail(QtWidgets.QDialog):
     def __init__(self):
@@ -92,27 +88,20 @@ class Mail(QtWidgets.QDialog):
     
     def send_pdf_mail(self):
         details = self.get_email_details()
+        content = self.get_mail_content()
         file_path__ = self.ui_mail.image_file_reg.text()
         file_path= file_path__.split('.')[0]
         directory=os.path.dirname(file_path__)
         directory = directory.replace(os.path.sep,'/')
-        mail = sendpdf(details[2],details[0],details[4],details[1],
-        self.get_mail_content(),os.path.basename(file_path),directory) 
-        mail.email_send()
+        self.mail_thread_pdf = MailThreadPDF(details,content,file_path,directory)
+        self.mail_thread_pdf.start()
 
     def prepare_email(self):
         details = self.get_email_details()
-        message = EmailMessage()
-        message['from']= details[3]
-        message['to']= details[0]
-        message['subject']= details[1]
-        message.attach(MIMEText(self.get_mail_content(),'plain'))
-        message.add_attachment(open(self.ui_mail.image_file_reg.text()).read(),
-        filename=Path(self.ui_mail.image_file_reg.text()).name)
-        with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
-            server.starttls()
-            server.login(details[2],details[4])
-            server.send_message(message)
+        content = self.get_mail_content()
+        file_path=self.ui_mail.image_file_reg.text()
+        self.mail_thread = MailThread(details,content,file_path)
+        self.mail_thread.start()
 
     def prepare_email_to_send(self):
         if self.connected_to_internet()==True and self.ui_mail.reg_email.text() and self.ui_mail.image_file_reg.text():
@@ -131,5 +120,5 @@ class Mail(QtWidgets.QDialog):
             self.ui_mail.label_notification.setText("Oops! something went wrong mail\nnot sent...")
       
     def send_email(self):
+        self.ui_mail.label_notification.setText("Notification")
         self.prepare_email_to_send()
-        
