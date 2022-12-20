@@ -17,7 +17,6 @@ import shutil
 import qrcode
 import requests
 import winsound
-import threading
 import numpy as np
 import pandas as pd
 
@@ -34,8 +33,8 @@ from email.mime.image import MIMEImage
 
 from PySide2 import QtCore
 from PySide2.QtWidgets import *
-from PySide2.QtCore import (QPoint,Qt, QTimer,QThread)
-from PySide2.QtGui import (QColor, QPixmap, QImage)
+from PySide2.QtCore import *
+from PySide2.QtGui import *
 
 from report.piechart.piechart import Canvas
 from report.barchart.barchart import Barchart
@@ -45,7 +44,9 @@ from model.generate_code import Code
 from model.student import Student
 from model.attendance import Attendance
 
+from scan_devices.camera import ActiveCameras
 from mail.mail import Mail
+from mail.thread import QRCodeMailThread
 from launcher.ui_launcher import Ui_MainWindow
 from camera_one.ui_surveillance_cam_one import *
 from camera_two.surveillance_camera_two import *
@@ -124,7 +125,7 @@ class MainWindow(QMainWindow):
         ############################################################################################
 
         ############################################################################################
-        self.ui.btn_connect_detect.clicked.connect(self.start_process)
+        self.ui.btn_connect_detect.clicked.connect(self.start_webcam)
         self.ui.btn_disconnect.clicked.connect(self.stop_webcam)
 
         self.ui.btn_camera_reg_connect.clicked.connect(self.start_webcam_registration)
@@ -147,7 +148,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_update.clicked.connect(self.update_student)
         self.ui.btn_remove.clicked.connect(self.remove_student)
         self.ui.btn_browse_reg.clicked.connect(self.browse_image_files)
-        self.ui.btn_send_mail.clicked.connect(self.send_email)
+        self.ui.btn_send_mail.clicked.connect(self.send_mail)
         ##############################################################################################
         
         #####################################################################################################
@@ -213,9 +214,36 @@ class MainWindow(QMainWindow):
         self.ui.college_comboBox.addItem(college[0])
         self.ui.college_courses.addItems(data)
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
-        self.ui.btn_scan_range.clicked.connect(self.get_active_cameras)
+        self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         ##################################################################################################
 
+    def get_active_cameras(self,camera:list):
+        self.ui.comboBox.clear()
+        self.ui.comboBox.addItems(camera)
+        self.ui.reg_camera_combo.addItems(camera)
+        self.open_exit_camera.set_combo_items(camera)
+        self.open_surveillance_camera_one.set_combo_items(camera)
+        self.surveillance_camera_three.set_combo_items(camera)
+        self.surveillance_camera_two.set_combo_items(camera)
+        self.surveillance_camera_four.set_combo_items(camera)
+        self.ui.camera_three_comboBox.addItems(camera)
+        self.ui.camera_two_comboBox.addItems(camera)
+        self.ui.camera_one_comboBox.addItems(camera)
+        self.ui.camera_four_comboBox.addItems(camera)
+        count = [self.ui.comboBox.itemText(i) for i in range(self.ui.comboBox.count())]
+        self.ui.scan_range_label.setText("Active camera(s): "+str(len(count)))
+        self.ui.label_notification.setText("Done scanning for available cameras...")           
+
+    def camera_thread(self):
+        scan_range = self.ui.scan_range.text()
+        if scan_range:
+            self.active = ActiveCameras(scan_range)
+            self.active.start()
+            self.active.cameras.connect(self.get_active_cameras)
+            self.ui.label_notification.setText("Scanning for available cameras...")
+        else:
+            self.alert_builder("Oops! no scan range provided...")
+    
     def backup_history(self):
         path =Path('C:\\ProgramData\\iVision\\data\\backup\\backup_history.txt')
         path.touch(exist_ok=True)
@@ -237,28 +265,6 @@ class MainWindow(QMainWindow):
             self.alert.content("Database successfully backed up...")
             self.alert.show()
 
-    def get_active_cameras(self):
-        if scan_range:
-            for camera in range(int(scan_range)):
-                capture = VideoCapture(camera)
-                valid_cameras = []
-                if capture.isOpened():
-                    valid_cameras.append(camera)
-                    data=[str(x) for x in valid_cameras]
-                    self.ui.comboBox.addItems(data)
-                    self.ui.reg_camera_combo.addItems(data)
-                    self.open_exit_camera.set_combo_items(data)
-                    self.open_surveillance_camera_one.set_combo_items(data)
-                    self.surveillance_camera_three.set_combo_items(data)
-                    self.surveillance_camera_two.set_combo_items(data)
-                    self.surveillance_camera_four.set_combo_items(data)
-                    self.ui.camera_three_comboBox.addItems(data)
-                    self.ui.camera_two_comboBox.addItems(data)
-                    self.ui.camera_one_comboBox.addItems(data)
-                    self.ui.camera_four_comboBox.addItems(data)
-                    self.ui.scan_range_label.setText("Active camera(s): "+str(len(data)))
-        else:
-            self.alert_builder("Oops! no scan range provided...")
 
     def country_names(self,path:str):
         with open(path,'r') as data:
@@ -877,16 +883,10 @@ class MainWindow(QMainWindow):
             
     def prepare_email(self):
         details = self.get_email_details()
-        message = MIMEMultipart()
-        message['from']= details[3]
-        message['to']= details[0]
-        message['subject']= details[1]
-        message.attach(MIMEText(self.get_mail_content(),'plain'))
-        message.attach(MIMEImage(Path(self.generate_code()).read_bytes()))
-        with smtplib.SMTP(host='smtp.gmail.com', port=587) as server:
-            server.starttls()
-            server.login(details[2],details[4])
-            server.send_message(message)
+        path = self.generate_code()
+        content = self.get_mail_content()
+        self.mail = QRCodeMailThread(details,content,path)
+        self.mail.start()
 
     def prepare_email_to_send(self):
         if self.connected_to_internet()==True and self.ui.reg_email.text():
@@ -904,9 +904,8 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! something went wrong mail\nnot sent...")
                 self.alert.show()
 
-    def send_email(self):
-        th=threading.Thread(target=self.prepare_email_to_send())
-        th.start()
+    def send_mail(self):
+        self.prepare_email_to_send()
         
         
     def fetch_data_from_db(self,reference):
@@ -1406,7 +1405,10 @@ class MainWindow(QMainWindow):
         self.thread_= QThread(target=self.start_webcam)
         self.thread_.start()
         
+    def start_webcam_thread(self):  
+        self.thread_pool.start(self.start_webcam)
 
+    @Slot()
     def start_webcam(self):
         if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
             ip_address = self.ui.camera_ip.text()
@@ -1414,7 +1416,6 @@ class MainWindow(QMainWindow):
             self.network_capture = VideoCapture(ip_address)
             camera_id = int(system_attached_camera)
             self.system_capture = VideoCapture(camera_id)
-
             if ip_address:  
                 if self.network_capture is None or not self.network_capture.isOpened():    
                     self.stop_webcam
@@ -1423,8 +1424,7 @@ class MainWindow(QMainWindow):
                     self.show_alert.show()
                 else:
                     self.show_info("Hey! wait a second while system\ninitializes camera")
-                    self.capture = VideoCapture(ip_address)
-                
+                    self.capture = VideoCapture(ip_address)    
             elif system_attached_camera:       
                 if self.system_capture is None or not self.system_capture.isOpened():    
                     self.stop_webcam
@@ -1433,22 +1433,21 @@ class MainWindow(QMainWindow):
                     self.show_alert.show()
                 else:
                     self.show_info("Hey! wait a second while system\ninitializes camera")
-                    self.capture = VideoCapture(camera_id) 
-                        
+                    self.capture = VideoCapture(camera_id)                  
             elif self.system_capture.isOpened() and self.network_capture.isOpened():
                     self.show_info("Hey! wait a second while system\ninitializes camera")
                     self.capture = VideoCapture(camera_id)
-
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
             self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame)
+            self.timer.timeout.connect(self.update_frame)  
             self.timer.start(3)
         else:
             self.show_alert = AlertDialog()
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
 
+    @Slot()
     def update_frame(self):
 
         thickness = 2
@@ -1856,7 +1855,7 @@ class Splash_screen(QMainWindow):
         if counter > 100:
             self.timer.stop()
             self.main = MainWindow()
-            time.sleep(10)
+            time.sleep(5)
             self.main.show()
             self.close()
         counter +=1    
