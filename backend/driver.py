@@ -245,7 +245,7 @@ class MainWindow(QMainWindow):
             self.alert_builder("Oops! no scan range provided...")
     
     def backup_history(self):
-        path =Path('C:\\ProgramData\\iVision\\data\\backup\\backup_history.txt')
+        path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
         path.touch(exist_ok=True)
         file = open(path)
         time =dt.now().time().strftime('%I:%M:%S %p')
@@ -256,7 +256,7 @@ class MainWindow(QMainWindow):
             file.close()         
 
     def backup_database(self):
-        path='C:\\ProgramData\\iVision\\data\\backup'
+        path='C:\\ProgramData\\iAttend\\data\\backup'
         db_path = 'D:\\Targets\\Commons\\backend\\sqlite\\attendance_system.db'
         if os.path.exists(path):
             shutil.copy2(db_path,path)
@@ -280,7 +280,7 @@ class MainWindow(QMainWindow):
         self.alert.show()
 
     def helper(self,path_pdf,file_name:str):
-        root_dir = 'C:\\ProgramData\\iVision\\data'
+        root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('barchart','piechart','linechart','json_export','csv_export')
         if self.ui.bar_chart.isChecked():
             path = os.path.join(root_dir,list[0])
@@ -344,7 +344,7 @@ class MainWindow(QMainWindow):
         return str(day+' '+month+' '+year)
 
     def create_program_data_dir(self):
-        root_dir = 'C:\\ProgramData\\iVision\\data'
+        root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
@@ -355,7 +355,7 @@ class MainWindow(QMainWindow):
         self.create_files()
 
     def create_files(self):
-        path =Path('C:\\ProgramData\\iVision\\data\\database_properties\\properties.txt')
+        path =Path('C:\\ProgramData\\iAttend\\data\\database_properties\\properties.txt')
         path.touch(exist_ok=True)
         file = open(path)
         if os.path.exists(path):
@@ -364,7 +364,7 @@ class MainWindow(QMainWindow):
                     file.write("Username,Password,Hostname,Port,Database")
             file.close() 
 
-        details_path =Path('C:\\ProgramData\\iVision\\data\\email_details\\detail.txt')
+        details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt')
         details_path.touch(exist_ok=True)
         d_file = open(details_path)
         if os.path.exists(details_path):
@@ -381,7 +381,7 @@ class MainWindow(QMainWindow):
             access the facility. 
                 Attend Today, Acheive Tomorrow!
                                             Thank you! """
-        content_path =Path('C:\\ProgramData\\iVision\\data\\email_details\\content.txt')
+        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content.txt')
         content_path.touch(exist_ok=True)
         content_file = open(content_path)
         if os.path.exists(content_path):
@@ -396,7 +396,7 @@ class MainWindow(QMainWindow):
             report or data you requested for. Feel free 
             to contact us for our services at anytime.
                                         Thank you! """
-        content_path =Path('C:\\ProgramData\\iVision\\data\\email_details\\content_report.txt')
+        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content_report.txt')
         content_path.touch(exist_ok=True)
         content_file = open(content_path)
         if os.path.exists(content_path):
@@ -621,7 +621,7 @@ class MainWindow(QMainWindow):
     def export_data_to_csv(self):
         table=self.ui.tableWidget.item(0,0)
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iVision\\data\\csv_export\\students_data'+date+'.csv'
+        path = 'C:\\ProgramData\\iAttend\\data\\csv_export\\students_data'+date+'.csv'
         if table:
             details=self.query_database_for_data()
             data = pd.DataFrame(details)
@@ -638,7 +638,7 @@ class MainWindow(QMainWindow):
     def export_data_to_json(self):
         table=self.ui.tableWidget.item(0,0)
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iVision\\data\\json_export\\students_data'+date+'.json'
+        path = 'C:\\ProgramData\\iAttend\\data\\json_export\\students_data'+date+'.json'
         if table:
             details=self.query_database_for_data()
             data=pd.DataFrame(details,columns=['Id','Program','Date_stamp','Time_in','Time_out','Duration','Reference'])
@@ -847,14 +847,14 @@ class MainWindow(QMainWindow):
         self.ui.sender_password.setText(details[3])
     
     def get_details(self):
-        path = 'C:\\ProgramData\\iVision\\data\\email_details\\detail.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read().split(',')
             return details
     
     def get_mail_content(self):
-        path = 'C:\\ProgramData\\iVision\\data\\email_details\\content.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\content.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read()
@@ -877,7 +877,7 @@ class MainWindow(QMainWindow):
             "email_address":code.email_address}
             code_json=self.convert_to_json(code)
             image = qrcode.make(code_json)
-            path = 'C:\\ProgramData\\iVision\\data\\qr_code\\'+self.ui.reg_student_ref.text()+".png"
+            path = 'C:\\ProgramData\\iAttend\\data\\qr_code\\'+self.ui.reg_student_ref.text()+".png"
             image.save(path)
             return path
             
