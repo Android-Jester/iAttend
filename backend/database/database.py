@@ -32,7 +32,7 @@ class Database(QtWidgets.QDialog):
         self.set_database_properties()
 
     def get_details(self):
-        path = 'C:\\ProgramData\\iVision\\data\\database_properties\\properties.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\database_properties\\properties.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read().split(',')
