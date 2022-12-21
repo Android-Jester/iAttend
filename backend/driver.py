@@ -196,26 +196,33 @@ class MainWindow(QMainWindow):
         self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
 
-        data = ['BSc. Physics','BSc. Statistics','BSc. Chemistry','BSc. Mathematics','Doctor of Optometry','BSc. Biochemistry','BSc. Computer Science',
-        'BSc. Actuarial Science','BSc. Biological Science','BSc. Environmental Science','BSc. Food Science and Technology','BSc. Meterology and Climate Science']
-        college = ['CoS']
-
-        completer = QCompleter(data)
+        college,programs=self.get_programs_CoS()
+        completer = QCompleter(programs)
         completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
-
         country_completer = QCompleter(self.country_names('D:\\Targets\\Commons\\backend\\json\\data_json.json'))
         country_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
-        self.ui.reg_college_2.addItem(college[0],data)
+        self.ui.reg_college_2.addItem(college,programs)
         self.ui.reg_college_2.currentIndexChanged.connect(self.update_program_combo)
         self.update_program_combo(self.ui.reg_college_2.currentIndex())
-        self.ui.college_comboBox.addItem(college[0])
-        self.ui.college_courses.addItems(data)
+        self.ui.college_comboBox.addItem(college)
+        self.ui.college_courses.addItems(programs)
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         ##################################################################################################
+
+    def get_programs_CoS(self):
+        path = 'C:\\ProgramData\\iAttend\\data\\programs\\CoS_programs.txt'
+        with open(path,'r') as file:
+            basedir = os.path.basename(path)
+            basedir=basedir.split("_")[0]
+            programs_list = []
+            programs = file.read().split(',')
+            for program in programs:
+                programs_list.append(program)
+            return basedir,programs_list
 
     def get_active_cameras(self,camera:list):
         self.ui.comboBox.clear()
@@ -345,7 +352,7 @@ class MainWindow(QMainWindow):
 
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
+        list =('programs','database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
@@ -362,6 +369,19 @@ class MainWindow(QMainWindow):
             with open(path,'a+') as file:
                 if os.path.getsize(path)==0:
                     file.write("Username,Password,Hostname,Port,Database")
+            file.close() 
+
+        path =Path('C:\\ProgramData\\iAttend\\data\\programs\\CoS_programs.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                if os.path.getsize(path)==0:
+                    file.write('BSc. Physics,BSc. Statistics,BSc. Chemistry,'
+                    +'BSc. Mathematics,Doctor of Optometry,BSc. Biochemistry,'
+                    +'BSc. Computer Science,BSc. Actuarial Science,BSc. Biological Science,'
+                    +'BSc. Environmental Science,BSc. Food Science and Technology,'
+                    +'BSc. Meterology and Climate Science')
             file.close() 
 
         details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt')
