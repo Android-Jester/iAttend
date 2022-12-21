@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardLjmffk.ui'
+## Form generated from reading UI file 'dashoboardlLMYkv.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1580,7 +1580,7 @@ class Ui_dashboard(object):
 "	background-color: rgb(45, 45, 45);\n"
 "	color: rgb(255, 255, 255);\n"
 "}")
-        self.tableWidget.setFrameShape(QFrame.Panel)
+        self.tableWidget.setFrameShape(QFrame.NoFrame)
         self.tableWidget.setFrameShadow(QFrame.Plain)
         self.tableWidget.setAutoScrollMargin(5)
         self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
