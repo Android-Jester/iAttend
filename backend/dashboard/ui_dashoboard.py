@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardRzbldx.ui'
+## Form generated from reading UI file 'dashoboardLjmffk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -205,6 +205,7 @@ class Ui_dashboard(object):
         self.btn_home.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
+"padding-right:5px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -237,7 +238,7 @@ class Ui_dashboard(object):
         self.btn_database.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
-"	padding-left:10px;\n"
+"	padding-left:5px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -265,6 +266,7 @@ class Ui_dashboard(object):
         self.btn_search.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
+"padding-right:5px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -278,7 +280,7 @@ class Ui_dashboard(object):
         icon2 = QIcon()
         icon2.addFile(u":/icons/asset/search.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_search.setIcon(icon2)
-        self.btn_search.setIconSize(QSize(40, 40))
+        self.btn_search.setIconSize(QSize(42, 42))
         self.btn_search.setCheckable(True)
         self.btn_search.setFlat(True)
 
@@ -291,6 +293,7 @@ class Ui_dashboard(object):
         self.btn_camera.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
+"padding-left:5px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -316,6 +319,7 @@ class Ui_dashboard(object):
         self.btn_report.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
+"padding-right:5px;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -327,9 +331,9 @@ class Ui_dashboard(object):
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
         icon4 = QIcon()
-        icon4.addFile(u":/icons/asset/pie-chart.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/icons/asset/bar-chart-2.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_report.setIcon(icon4)
-        self.btn_report.setIconSize(QSize(40, 40))
+        self.btn_report.setIconSize(QSize(43, 43))
         self.btn_report.setFlat(True)
 
         self.verticalLayout.addWidget(self.btn_report)
@@ -3982,7 +3986,12 @@ class Ui_dashboard(object):
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">To prevent you from re-typing the e-mails all the time attached to the application is </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file where you c"
                         "an provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">subject, example@gmail.com, sender name, password,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> this file located in the </span></p>\n"
 "<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\email_details</span><span"
-                        " style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p></body></html>", None))
+                        " style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; text-decoration: underline;\">College programs</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">CoS_programs.txt</span><span style=\" font-size:11pt;\"> file  located in the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\""
+                        ">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\programs </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory. Any new program added should be seperated by a comma to allow the application read it. </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">e.g.,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> BSc. Chemistry, BSc. Physics, new program,new program</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size"
+                        ":8pt;\"><br /></p></body></html>", None))
         self.btn_backup.setText("")
     # retranslateUi
 
