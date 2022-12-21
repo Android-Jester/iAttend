@@ -481,6 +481,7 @@ QPushButton:hover{
                  <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
+padding-right:5px;
 }
 
 QPushButton:hover{
@@ -539,7 +540,7 @@ QPushButton:pressed{
                  <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
-	padding-left:10px;
+	padding-left:5px;
 }
 
 QPushButton:hover{
@@ -591,6 +592,7 @@ QPushButton:pressed{
                  <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
+padding-right:5px;
 }
 
 QPushButton:hover{
@@ -611,8 +613,8 @@ QPushButton:pressed{
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>40</width>
-                  <height>40</height>
+                  <width>42</width>
+                  <height>42</height>
                  </size>
                 </property>
                 <property name="checkable">
@@ -641,6 +643,7 @@ QPushButton:pressed{
                  <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
+padding-left:5px;
 }
 
 QPushButton:hover{
@@ -688,6 +691,7 @@ QPushButton:pressed{
                  <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
+padding-right:5px;
 }
 
 QPushButton:hover{
@@ -704,12 +708,12 @@ QPushButton:pressed{
                 </property>
                 <property name="icon">
                  <iconset resource="../resource/asset.qrc">
-                  <normaloff>:/icons/asset/pie-chart.svg</normaloff>:/icons/asset/pie-chart.svg</iconset>
+                  <normaloff>:/icons/asset/bar-chart-2.svg</normaloff>:/icons/asset/bar-chart-2.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
-                  <width>40</width>
-                  <height>40</height>
+                  <width>43</width>
+                  <height>43</height>
                  </size>
                 </property>
                 <property name="flat">
@@ -8385,7 +8389,10 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The content of your mail can be typed in the content.txt located in the same directory. This content is attached mails sent as attendance code. To send reports or data from the content_report.txt should be edited as per your need or requirement.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;Please take note the '&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;Hello name,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;' section, you can change the 'Hello' but please keep the name as it is since the name part would be provided from the user interface end.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To prevent you from re-typing the e-mails all the time attached to the application is &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;detail.txt&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file where you can provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;subject, example@gmail.com, sender name, password,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; this file located in the &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\email_details&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\email_details&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;College programs&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;CoS_programs.txt&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; file  located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\programs &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory. Any new program added should be seperated by a comma to allow the application read it. &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; BSc. Chemistry, BSc. Physics, new program,new program&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
