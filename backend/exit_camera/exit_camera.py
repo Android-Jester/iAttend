@@ -59,11 +59,9 @@ class ExitCameraFeed(QtWidgets.QDialog):
             self.move(self.pos() + event.globalPos() - self.clickPosition)
             self.clickPosition = event.globalPos()
             event.accept()
-            pass
 
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
-        pass
   
     def update_brigthness(self, value):
         self.ui_exit_camera.brigthness_value.setText(str(value))
@@ -193,8 +191,7 @@ class ExitCameraFeed(QtWidgets.QDialog):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-            decode_data=base64.b64decode(data).decode('utf-8')
-            data_json = json.loads(decode_data)
+            data_json = json.loads(data)
             info=self.log_student_out(data_json['reference'])
             self.ui_exit_camera.label_notification.setText(info)
         self.display_feed(self.result,1)          
