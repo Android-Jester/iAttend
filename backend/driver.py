@@ -40,20 +40,23 @@ from report.piechart.piechart import Canvas
 from report.barchart.barchart import Barchart
 from report.line_graph.line_plot import Line_plot
 
-from model.generate_code import Code
 from model.student import Student
+
+from model.generate_code import Code
 from model.attendance import Attendance
 
-from scan_devices.camera import ActiveCameras
 from mail.mail import Mail
+
+from thread.thread import CustomThread
+from database.database import Database
 from mail.thread import QRCodeMailThread
+from scan_devices.camera import ActiveCameras
 from launcher.ui_launcher import Ui_MainWindow
 from camera_one.ui_surveillance_cam_one import *
 from camera_two.surveillance_camera_two import *
 from dashboard.ui_dashoboard import Ui_dashboard
 from camera_four.surveillance_camera_four import * 
 from exit_camera.exit_camera import ExitCameraFeed
-from database.database import Database
 from camera_three.surveillance_camera_three import * 
 from camera_one.surveillance_camera_one import Surveilliance_One
 
@@ -1055,8 +1058,8 @@ class MainWindow(QMainWindow):
             label.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\images\\assets\\img.png'))
             label.setScaledContents(True)
 
-    def search_student(self):
-            if self.ui.search_reg.text():
+    def search_thread(self):
+        if self.ui.search_reg.text():
                 db_data=self.fetch_data_from_db(self.ui.search_reg.text())
                 if len(db_data) > 0:
                     helper = str(db_data[3]).split(" ")
@@ -1074,8 +1077,13 @@ class MainWindow(QMainWindow):
                     self.load_image_from_db(self.ui.search_reg.text(),self.ui.reg_image)
                 else:
                     self.alert_builder("Student not found. Please enter\nyour details to register!")
-            else:
-                self.alert_builder("Oops! search field can't be empty.")
+        else:
+            self.alert_builder("Oops! search field can't be empty.")
+        
+    def search_student(self):
+        self.worker= CustomThread(self.search_thread)
+        self.runner= QThreadPool(self.worker)
+        self.runner.start()
 
     def update_student(self):
         check_state = self.database.check_state()
