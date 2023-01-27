@@ -7,6 +7,7 @@
 ################################################################################
 
 
+import csv
 import os
 import sys
 import cv2
@@ -93,6 +94,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_database.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.database))
         self.ui.btn_help.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
         self.ui.btn_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.report))
+        self.ui.btn_batch.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.batch))
         ##########################################################################################################
 
         #########################################################################################################
@@ -214,7 +216,70 @@ class MainWindow(QMainWindow):
         self.ui.college_courses.addItems(programs)
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
+        self.ui.btn_batch_browse.clicked.connect(self.browse_batch_data)
         ##################################################################################################
+
+    def load_batch_data(self):
+        results_list = []
+        path = self.ui.batch_browse.text()
+        with open(path,'r') as filename:
+            data=csv.reader(filename)
+            next(data)
+            self.alert = AlertDialog()
+            self.alert.content("Please the header was skipped...")
+            self.alert.show()
+            for student in data:
+                name_transformed = student[0]+' '+student[1]+' '+student[2]
+                student.pop(2)
+                student[0] = name_transformed
+                issued_date = str(student[7]).split('-')
+                expiry_date = str(student[8]).split('-')
+                issued_date_transformed = datetime.date(int(issued_date[0]),int(issued_date[1]),int(issued_date[2])).strftime("%b %Y")
+                expiry_date_transformed = datetime.date(int(expiry_date[0]),int(expiry_date[1]),int(expiry_date[2])).strftime("%b %Y")
+                student[8] = issued_date_transformed+' - '+expiry_date_transformed
+                student.pop(1)
+                student.pop(6)
+                results_list.append(student)
+            return results_list
+
+    def batch_table(self, details:list):
+        self.ui.tableWidget_batch.setAutoScroll(True)
+        self.ui.tableWidget_batch.setAutoScrollMargin(2)
+        self.ui.tableWidget_batch.setTabKeyNavigation(True)
+        self.ui.tableWidget_batch.setColumnWidth(0,230)
+        self.ui.tableWidget_batch.setColumnWidth(1,140)
+        self.ui.tableWidget_batch.setColumnWidth(2,140)
+        self.ui.tableWidget_batch.setColumnWidth(3,200)
+        self.ui.tableWidget_batch.setColumnWidth(4,100)
+        self.ui.tableWidget_batch.setColumnWidth(5,190)
+        self.ui.tableWidget_batch.setColumnWidth(6,180)
+        self.ui.tableWidget_batch.setColumnWidth(7,200)
+        self.ui.tableWidget_batch.setRowCount(len(details))
+        self.ui.tableWidget_batch.verticalHeader().setVisible(True)
+        row_count = 0
+        for data in details:
+            self.ui.tableWidget_batch.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[0])))
+            self.ui.tableWidget_batch.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[1])))
+            self.ui.tableWidget_batch.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
+            self.ui.tableWidget_batch.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
+            self.ui.tableWidget_batch.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
+            self.ui.tableWidget_batch.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
+            self.ui.tableWidget_batch.setItem(row_count,6,QtWidgets.QTableWidgetItem(str(data[6])))
+            self.ui.tableWidget_batch.setItem(row_count,7,QtWidgets.QTableWidgetItem(str(data[7])))
+            row_count = row_count+1
+        
+    def browse_batch_data(self):
+        file_type = "CSV Files(*.csv)"   
+        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
+        if path:
+            self.ui.batch_browse.setText(path[0])
+            try:
+                self.batch_table(self.load_batch_data())
+
+            except Exception as e:
+                self.alert = AlertDialog()
+                self.alert.content(str("Oops! invalid file format\n"+str(e)))
+                self.alert.show()
 
     def get_programs_CoS(self):
         path = 'C:\\ProgramData\\iAttend\\data\\programs\\CoS_programs.txt'
@@ -274,7 +339,6 @@ class MainWindow(QMainWindow):
             self.alert = AlertDialog()
             self.alert.content("Database successfully backed up...")
             self.alert.show()
-
 
     def country_names(self,path:str):
         with open(path,'r') as data:
@@ -1874,7 +1938,6 @@ class Splash_screen(QMainWindow):
         if counter > 100:
             self.timer.stop()
             self.main = MainWindow()
-            time.sleep(5)
             self.main.show()
             self.close()
         counter +=1    
