@@ -205,7 +205,7 @@ class MainWindow(QMainWindow):
         completer = QCompleter(programs)
         completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
-        country_completer = QCompleter(self.country_names('D:\\Targets\\Commons\\backend\\json\\data_json.json'))
+        country_completer = QCompleter(self.country_names('C:\\ProgramData\\iAttend\\data\\json_file\\data_json.json'))
         country_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
@@ -266,8 +266,6 @@ class MainWindow(QMainWindow):
                         file.close
                     self.ui.batch_notification.setText("Records inserted into database successfully")
        
-    
-
     def load_batch_data(self):
         results_list = []
         path = self.ui.batch_browse.text()
@@ -415,11 +413,12 @@ class MainWindow(QMainWindow):
         os.rename(path_pdf,new_name)
         shutil.copy2(new_name,path)
         os.rename(new_name,path_pdf)
-
+   
     def save_report(self):
         filename = self.ui.file_name.text()
-        if self.ui.bar_chart.isChecked():
-            path ='D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.pdf'   
+        root_path = "C:\ProgramData\iAttend\data\samples\\"
+        if self.ui.bar_chart.isChecked():    
+            path =root_path+'barchart.pdf'   
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -430,7 +429,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show()         
         elif self.ui.line_graph.isChecked():
-            path = 'D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.pdf'
+            path = root_path+'line_plot.pdf'
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -441,7 +440,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show() 
         elif self.ui.pie_chart.isChecked():
-            path = 'D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.pdf'
+            path = root_path+'piechart.pdf'
             if self.ui.file_name.text():
                 self.helper(path,filename)
                 self.alert = AlertDialog()
@@ -467,7 +466,9 @@ class MainWindow(QMainWindow):
 
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('batch_logs','programs','database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
+        list =('batch_logs','programs','database_properties','qr_code',
+        'barchart','piechart','linechart','json_export','csv_export',
+        'backup','email_details','json_file','samples')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
