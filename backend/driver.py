@@ -217,7 +217,56 @@ class MainWindow(QMainWindow):
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         self.ui.btn_batch_browse.clicked.connect(self.browse_batch_data)
+        self.ui.btn_start_job.clicked.connect(self.batch_insert_student_data)
         ##################################################################################################
+
+    def batch_insert_student_data(self):
+        check_state=self.database.check_state()
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        student_list = self.load_batch_data()
+        path = self.ui.batch_browse.text()
+        date=dt.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
+        name = str('record_logs')
+        path = str('C:\\ProgramData\\iAttend\\data\\batch_logs\\'+name+'_'+date+'.txt')
+        if path: 
+            if check_state == True:
+                for student in student_list:
+                    name = str(student[0]).split(' ')
+                    date = str(student[6]).split('-')
+                    firstname  = name[0]+' '+name[1]
+                    details=self.fetch_data_from_db(str(student[2]))
+                    if not details:
+                        my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
+                        (student[2],student[1],firstname,name[2],student[4],student[3],student[5],date[0],date[1]))   
+                        db.commit()
+                        self.ui.batch_notification.setText("Student details insertion in progress")
+                    else:
+                        self.ui.batch_notification.setText("Oops reference "+str(student[2])+"\nalready exists")
+                        with open(path,'a+') as file:
+                            file.writelines('\n'+str(student))
+                        file.close
+                    self.ui.batch_notification.setText("Records inserted into database successfully")
+            
+                pass
+            else:
+                for student in student_list:
+                    name = str(student[0]).split(' ')
+                    date = str(student[6]).split('-')
+                    firstname  = name[0]+' '+name[1]
+                    details=self.fetch_data_from_db(str(student[2]))
+                    if not details:
+                        my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                        (student[2],student[1],firstname,name[2],student[4],student[3],student[5],date[0],date[1]))   
+                        db.commit()
+                        self.ui.batch_notification.setText("Student details insertion in progress")
+                    else:
+                        self.ui.batch_notification.setText("Oops reference "+str(student[2])+"\nalready exists")
+                        with open(path,'a+') as file:
+                            file.writelines('\n'+str(student))
+                        file.close
+                    self.ui.batch_notification.setText("Records inserted into database successfully")
+       
+    
 
     def load_batch_data(self):
         results_list = []
@@ -225,9 +274,6 @@ class MainWindow(QMainWindow):
         with open(path,'r') as filename:
             data=csv.reader(filename)
             next(data)
-            self.alert = AlertDialog()
-            self.alert.content("Please the header was skipped...")
-            self.alert.show()
             for student in data:
                 name_transformed = student[0]+' '+student[1]+' '+student[2]
                 student.pop(2)
@@ -275,7 +321,9 @@ class MainWindow(QMainWindow):
             self.ui.batch_browse.setText(path[0])
             try:
                 self.batch_table(self.load_batch_data())
-
+                self.alert = AlertDialog()
+                self.alert.content("Please the header was skipped...")
+                self.alert.show()
             except Exception as e:
                 self.alert = AlertDialog()
                 self.alert.content(str("Oops! invalid file format\n"+str(e)))
@@ -419,7 +467,7 @@ class MainWindow(QMainWindow):
 
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('programs','database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
+        list =('batch_logs','programs','database_properties','qr_code','barchart','piechart','linechart','json_export','csv_export','backup','email_details')
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
