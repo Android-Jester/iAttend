@@ -918,7 +918,7 @@ QPushButton:pressed{
               <string notr="true">background-color: rgb(45, 45, 45);</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="home">
               <property name="minimumSize">
@@ -3856,10 +3856,10 @@ QPushButton:pressed{
                   </property>
                   <property name="font">
                    <font>
-                    <family>Arial</family>
-                    <pointsize>11</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <family>Microsoft Sans Serif</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -3874,7 +3874,10 @@ QPushButton:pressed{
                    <string/>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
                   </property>
                  </widget>
                  <widget class="QPushButton" name="btn_batch_browse">
@@ -3953,6 +3956,9 @@ QLineEdit:hover{
 QLineEdit:focus{
 	border:2px solid rgb(255, 255, 255);
 }</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
                   </property>
                   <property name="placeholderText">
                    <string>File name?</string>
