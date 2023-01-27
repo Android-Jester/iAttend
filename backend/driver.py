@@ -663,13 +663,14 @@ class MainWindow(QMainWindow):
         ,'#00A000','#4E0707','#B56727','#5DBB63']        
         width = 0.7
         program = self.ui.college_courses.currentText()
+        path = 'C:\\ProgramData\\iAttend\\data\\samples\\'
         if self.ui.bar_chart.isChecked():
             if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_barchart()
                 if len(data[0])>=1:
                     self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students","Programs",
                     colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -680,7 +681,7 @@ class MainWindow(QMainWindow):
                 if len(data[0])>=1:
                     self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics ","Number of students",
                     self.get_report_start_date(),colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -691,7 +692,7 @@ class MainWindow(QMainWindow):
                 if len(data[0])>=1:      
                     self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students",
                     self.get_report_start_date()+" <> "+self.get_report_end_date(),colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -704,7 +705,7 @@ class MainWindow(QMainWindow):
                 if len(y_values)>=1:
                     self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
                     y_label="Number of students",x_label="Date")
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'line_plot.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -715,7 +716,7 @@ class MainWindow(QMainWindow):
                 if len(y_values[0])>=1:
                     self.line_graph.plot_graph(y_values[0],title="Trend in attendance for "+program,label_="Trends",
                     y_label="Number of students",x_label=self.reconstruct_date(y_values[1])+'<>'+self.reconstruct_date(y_values[2]))
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'line_plot.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -726,7 +727,7 @@ class MainWindow(QMainWindow):
                 data = self.get_data_by_date()
                 if len(data[0])>=1:
                     self.piechart.piechart(data,self.get_report_start_date())
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
                     self.ui.plot_area.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -736,7 +737,7 @@ class MainWindow(QMainWindow):
                 data = self.get_data_by_date_range()
                 if len(data[0])>=1:      
                     self.piechart.piechart(data,self.get_report_start_date()+" <> "+self.get_report_end_date())
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
                     self.ui.plot_area.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -746,7 +747,7 @@ class MainWindow(QMainWindow):
                 data = self.get_pichart_data()
                 if len(data[0])>=1:
                     self.piechart.piechart(data,"Percentages of programs")
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
                     self.ui.plot_area.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -1072,6 +1073,7 @@ class MainWindow(QMainWindow):
                 self.ui.reg_end_date.text(),
             ) 
             details=self.fetch_data_from_db(self.ui.reg_student_ref.text())
+            root_path = 'C:\\ProgramData\\iAttend\\data\\images\\'
             if not details:
                 if check_state == True:
                     if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
@@ -1084,7 +1086,7 @@ class MainWindow(QMainWindow):
                         my_cursor.close() 
                         self.alert_builder("Student registered successfully")   
                     elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                        path = 'D:\\Targets\\Commons\\backend\\images\\download\\image.jpeg'
+                        path = path = root_path+'image.jpg'
                         if os.path.exists(path):
                             with open(path, 'rb') as image:
                                 data = image.read()
@@ -1097,7 +1099,7 @@ class MainWindow(QMainWindow):
                         else:
                             self.alert_builder("Oops! something went wrong while\nprocessing your request") 
                     elif self.ui.image_less.isChecked():
-                        path = path = 'D:\\Targets\\Commons\\backend\\images\\assets\\img.jpg'
+                        path = root_path+'img.jpg'
                         with open(path, 'rb') as image:
                             data = image.read()
                             my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
@@ -1117,7 +1119,7 @@ class MainWindow(QMainWindow):
                         my_cursor.close() 
                         self.alert_builder("Student registered successfully")    
                     elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                        path = 'D:\\Targets\\Commons\\backend\\images\\download\\image.jpeg'
+                        path = root_path+'image.jpg'
                         if os.path.exists(path):
                             with open(path, 'rb') as image:
                                 data = image.read()       
@@ -1131,7 +1133,7 @@ class MainWindow(QMainWindow):
                         else:
                             self.alert_builder("Oops! something went wrong while\nprocessing your request") 
                     elif self.ui.image_less.isChecked():
-                        path = 'D:\\Targets\\Commons\\backend\\images\\assets\\img.jpg'
+                        path = root_path+'img.jpg'
                         with open(path, 'rb') as image:
                             data = image.read()       
                             my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student.reference,data))
@@ -1159,16 +1161,18 @@ class MainWindow(QMainWindow):
         db.commit()
         my_cursor.close()
         image_data = []
+        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\'
+        path = root_path +'db_image.jpg'
         if cursor:
             for data in cursor:
                 image_data.append(data)
             if len(image_data)>0:
-                with open('D:\\Targets\\Commons\\backend\\images\\assets\\image.jpeg','wb') as image_file:
+                with open(path,'wb') as image_file:
                         image_file.write(image_data[1])
-            label.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\images\\assets\\image.jpeg'))
+            label.setPixmap(QPixmap.fromImage(path))
             label.setScaledContents(True)
         else:
-            label.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\images\\assets\\img.png'))
+            label.setPixmap(QPixmap.fromImage(root_path+'img.png'))
             label.setScaledContents(True)
 
     def search_thread(self):
