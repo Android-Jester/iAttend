@@ -89,7 +89,7 @@ class Database(QtWidgets.QDialog):
         else:  
             try:
                 connection_status:str =("Connected to SQLite3...")
-                db = sqlite3.connect('D:\\Targets\\Commons\\backend\\sqlite\\attendance_system.db')
+                db = sqlite3.connect('C:\\ProgramData\\iAttend\\data\\database\\attendance_system_commons.db')
                 self.ui_database.label_notification.setText(connection_status)
                 return db, db.cursor(), connection_status
             except Exception as e:
@@ -134,7 +134,7 @@ class Database(QtWidgets.QDialog):
                 self.ui_database.label_notification.setText("Please provide your connection details")
         elif self.ui_database.sqlite.isChecked():     
             try:
-                db = sqlite3.connect('D:\\Targets\\Commons\\backend\\sqlite\\attendance_system.db')
+                db = sqlite3.connect('C:\\ProgramData\\iAttend\\data\\database\\attendance_system_commons.db')
                 cursor = db.cursor()
                 cursor.execute(create_tb_students_sqlite())
                 cursor.execute(create_tb_attendance_sqlite())
