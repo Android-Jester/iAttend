@@ -562,7 +562,7 @@ class MainWindow(QMainWindow):
     def hot_reload(self):
         data = self.get_pichart_data()
         self.piechart.piechart(data,"Percentages of programs")
-        self.ui.plot_area.setPixmap(QPixmap.fromImage('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png'))
+        self.ui.plot_area.setPixmap(QPixmap.fromImage('C:\\ProgramData\\iAttend\\data\\samples\\piechart.png'))
         self.ui.plot_area.setScaledContents(True)
         self.data_visualization()
 
@@ -1281,8 +1281,9 @@ class MainWindow(QMainWindow):
             link = requests.get(self.ui.image_file_reg.text())
             if self.connected_to_internet()==True:
                 try:
-                    wget.download(link.url,"D:\\Commons\\backend\\images\\download\\image.jpeg")
-                    self.ui.reg_image.setPixmap(QPixmap.fromImage("D:\\Commons\\backend\\images\\download\\image.jpeg"))
+                    path = 'C:\\ProgramData\\iAttend\\data\\images\\db_images.jpg'
+                    wget.download(link.url,path)
+                    self.ui.reg_image.setPixmap(QPixmap.fromImage(path))
                     self.ui.reg_image.setScaledContents(True)
                 except Exception as e:
                     self.alert_builder("Oops! check your image url!")
@@ -1332,11 +1333,12 @@ class MainWindow(QMainWindow):
                 self.last_seen(data_json['reference'])
                 db_data=self.fetch_data_from_db(data_json['reference'])
                 if len(db_data) > 0:
-                    list_months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July',
-                     'August', 'September', 'October', 'November', 'December']
                     start_date = (str(db_data[8])).split('-')
                     end_date=str(db_data[9]).split('-')
                     student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))
+                    issued_date_transformed = datetime.date(int(start_date[0]),int(start_date[1]),int(start_date[2])).strftime("%b %Y")
+                    expiry_date_transformed = datetime.date(int(end_date[0]),int(end_date[1]),int(end_date[2])).strftime("%b %Y")
+                    validity = issued_date_transformed+' - '+expiry_date_transformed
                       
                     if student_year <= 1:
                         level = "1st year"
@@ -1359,8 +1361,7 @@ class MainWindow(QMainWindow):
                     self.ui.index.setText(str(db_data[2]))
                     self.ui.coledge.setText(db_data[5])
                     self.ui.nationality.setText(db_data[7])
-                    self.ui.validity.setText(list_months[int(start_date[1])-1]+","+start_date[0]+
-                    " - "+list_months[int(end_date[1])-1]+","+end_date[0])
+                    self.ui.validity.setText(validity)
                     self.ui.year.setText(level)
                     self.ui.program.setText(db_data[6])
                     self.load_image_from_db(data_json['reference'],self.ui.image)
