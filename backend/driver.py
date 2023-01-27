@@ -963,9 +963,15 @@ class MainWindow(QMainWindow):
     def get_registration_start_date(self):
         date = self.ui.calendarWidget_reg.selectedDate()
         if self.ui.change_date_box.isChecked():
-            self.ui.reg_end_date.setText(str(date.toPython()))
+            expiry_date=str(date.toPython())
+            end_date= expiry_date.split('-') 
+            expiry_date_transformed = datetime.date(int(end_date[0]),int(end_date[1]),int(end_date[2])).strftime("%b %Y")  
+            self.ui.reg_end_date.setText(expiry_date_transformed)
         else:
-            self.ui.reg_start_date.setText(str(date.toPython()))
+            start_date=str(date.toPython())
+            start_date = start_date.split('-')
+            issued_date_transformed = datetime.date(int(start_date[0]),int(start_date[1]),int(start_date[2])).strftime("%b %Y")
+            self.ui.reg_start_date.setText(issued_date_transformed)
     
 
     def get_email_details(self):
@@ -1061,6 +1067,14 @@ class MainWindow(QMainWindow):
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
         if self.ui.reg_student_ref.text() and self.ui.reg_firstname.text():
+            issued_date=self.ui.reg_start_date.text()
+            expiry_date=self.ui.reg_end_date.text()
+            start_date = issued_date.split('-')
+            end_date= expiry_date.split('-')
+            
+            issued_date_transformed = datetime.date(int(start_date[0]),int(start_date[1]),int(start_date[2])).strftime("%b %Y")
+            expiry_date_transformed = datetime.date(int(end_date[0]),int(end_date[1]),int(end_date[2])).strftime("%b %Y")
+
             student = Student(
                 int(self.ui.reg_student_ref.text()),
                 int(self.ui.reg_index.text()),
