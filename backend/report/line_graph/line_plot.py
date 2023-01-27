@@ -24,7 +24,7 @@ class Line_plot(FigureCanvas):
         plt.yticks(color='white',size= 12)
         plt.xticks(color='white',size= 12)
         plt.legend(label_,labelcolor = '#2d2d2d',handletextpad=0.5)
-        plt.savefig('D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.png',dpi = 300, edgecolor='none')
-        plt.savefig('D:\\Targets\\Commons\\backend\\report\\line_graph\\line_plot.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\ProgramData\iAttend\data\samples\\line_plot.png',dpi = 300, edgecolor='none')
+        plt.savefig('C:\ProgramData\iAttend\data\samples\\line_plot.pdf',dpi = 300, edgecolor='none')
 
 

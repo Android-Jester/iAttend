@@ -21,8 +21,8 @@ class Barchart(FigureCanvas):
         plt.ylabel(y_label,color='white',size= 15,labelpad= 13)
         plt.yticks(color='white',size= 12)
         plt.xticks(color='white',size= 12)
-        plt.savefig('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.png',dpi = 300, edgecolor='none')
-        plt.savefig('D:\\Targets\\Commons\\backend\\report\\barchart\\barchart.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\ProgramData\iAttend\data\samples\\barchart.png',dpi = 300, edgecolor='none')
+        plt.savefig('C:\ProgramData\iAttend\data\samples\\barchart.pdf',dpi = 300, edgecolor='none')
    
 
 

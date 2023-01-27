@@ -13,5 +13,5 @@ class Canvas(FigureCanvas):
         self.ax.pie(data[0],labels=data[1],autopct = '%1.1f%%', labeldistance = 1.1
         , radius=0.4, startangle =90, pctdistance = 0.4,textprops={'color':"w",'fontsize':13})
         self.ax.axis('equal')
-        plt.savefig('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.png',dpi = 300, edgecolor='none')
-        plt.savefig('D:\\Targets\\Commons\\backend\\report\\piechart\\piechart.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\ProgramData\iAttend\data\samples\\piechart.png',dpi = 300, edgecolor='none')
+        plt.savefig('C:\ProgramData\iAttend\data\samples\\piechart.pdf',dpi = 300, edgecolor='none')
