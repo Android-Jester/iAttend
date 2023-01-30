@@ -42,13 +42,12 @@ from report.barchart.barchart import Barchart
 from report.line_graph.line_plot import Line_plot
 
 from model.student import Student
-
 from model.generate_code import Code
 from model.attendance import Attendance
 
+from upload.images_insert import Images
 from mail.mail import Mail
-
-from thread.thread import CustomThread
+from thread.thread import ImageThread
 from database.database import Database
 from mail.thread import QRCodeMailThread
 from scan_devices.camera import ActiveCameras
@@ -113,6 +112,10 @@ class MainWindow(QMainWindow):
 
         self.mail = Mail()
         self.ui.btn_mail_report_or_data.clicked.connect(lambda: self.mail.show())
+
+        self.directory = Images()
+        self.ui.btn_batch_folder.clicked.connect(lambda: self.directory.show())
+        
         ############################################################################################
 
         ############################################################################################
@@ -217,8 +220,47 @@ class MainWindow(QMainWindow):
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         self.ui.btn_batch_browse.clicked.connect(self.browse_batch_data)
-        self.ui.btn_start_job.clicked.connect(self.batch_insert_student_data)
+        self.ui.btn_start_job.clicked.connect(self.insert_records_thread)
+        self.ui.btn_batch_images.clicked.connect(self.insert_images_thread)
         ##################################################################################################
+
+    def insert_images_thread(self):
+        self.pool = QThreadPool()
+        self.work = ImageThread(self.insert_images)
+        self.pool.start(self.work)
+
+    def insert_images(self):
+        path = self.directory.directory_path()
+        images_extension = ['jpg', 'jpeg', 'png']
+        if path:
+            self.ui.batch_notification.setText("Saving images in progress...") 
+            for item in os.listdir(path):
+                image = os.path.join(path,item)
+                image = os.path.abspath(image)
+                image_name = os.path.basename(image)
+                extension = image_name.split('.')[1]
+                student_reference = image_name.split('.')[0]
+                if extension in images_extension:
+                    check_state = self.database.check_state()
+                    (db,my_cursor,connection_status) = self.database.my_cursor()
+                    with open(image, 'rb') as image_data:
+                        data = image_data.read()
+                        if check_state == True:
+                            my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student_reference,data))
+                            db.commit()
+                            my_cursor.close()
+                        else:
+                            my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student_reference,data))
+                            db.commit()
+                            my_cursor.close()
+            self.ui.batch_notification.setText("All images saved successfully...")         
+        else:
+            self.alert("Oops! invalid images path specified...")
+
+    def insert_records_thread(self):
+        self.pool = QThreadPool()
+        self.work = ImageThread(self.batch_insert_student_data)
+        self.pool.start(self.work) 
 
     def batch_insert_student_data(self):
         check_state=self.database.check_state()
@@ -228,7 +270,9 @@ class MainWindow(QMainWindow):
         date=dt.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
         name = str('record_logs')
         path = str('C:\\ProgramData\\iAttend\\data\\batch_logs\\'+name+'_'+date+'.txt')
-        if path: 
+        table=self.ui.tableWidget_batch.item(0,0)
+        if path and table:
+            self.ui.batch_notification.setText("Saving records in progress...")  
             if check_state == True:
                 for student in student_list:
                     name = str(student[0]).split(' ')
@@ -239,15 +283,11 @@ class MainWindow(QMainWindow):
                         my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
                         (student[2],student[1],firstname,name[2],student[4],student[3],student[5],date[0],date[1]))   
                         db.commit()
-                        self.ui.batch_notification.setText("Student details insertion in progress")
                     else:
-                        self.ui.batch_notification.setText("Oops reference "+str(student[2])+"\nalready exists")
-                        with open(path,'a+') as file:
+                        with open(path,'a+') as file: 
                             file.writelines('\n'+str(student))
                         file.close
-                    self.ui.batch_notification.setText("Records inserted into database successfully")
-            
-                pass
+                self.ui.batch_notification.setText("Valid records saved successfully...")
             else:
                 for student in student_list:
                     name = str(student[0]).split(' ')
@@ -258,33 +298,36 @@ class MainWindow(QMainWindow):
                         my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                         (student[2],student[1],firstname,name[2],student[4],student[3],student[5],date[0],date[1]))   
                         db.commit()
-                        self.ui.batch_notification.setText("Student details insertion in progress")
                     else:
-                        self.ui.batch_notification.setText("Oops reference "+str(student[2])+"\nalready exists")
                         with open(path,'a+') as file:
                             file.writelines('\n'+str(student))
                         file.close
-                    self.ui.batch_notification.setText("Records inserted into database successfully")
+                self.ui.batch_notification.setText("Valid records saved successfully...")
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! invalid file path or content is empty...")
+            self.alert.show()
        
     def load_batch_data(self):
         results_list = []
         path = self.ui.batch_browse.text()
-        with open(path,'r') as filename:
-            data=csv.reader(filename)
-            next(data)
-            for student in data:
-                name_transformed = student[0]+' '+student[1]+' '+student[2]
-                student.pop(2)
-                student[0] = name_transformed
-                issued_date = str(student[7]).split('-')
-                expiry_date = str(student[8]).split('-')
-                issued_date_transformed = datetime.date(int(issued_date[0]),int(issued_date[1]),int(issued_date[2])).strftime("%b %Y")
-                expiry_date_transformed = datetime.date(int(expiry_date[0]),int(expiry_date[1]),int(expiry_date[2])).strftime("%b %Y")
-                student[8] = issued_date_transformed+' - '+expiry_date_transformed
-                student.pop(1)
-                student.pop(6)
-                results_list.append(student)
-            return results_list
+        if path:
+            with open(path,'r') as filename:
+                data=csv.reader(filename)
+                next(data)
+                for student in data:
+                    name_transformed = student[0]+' '+student[1]+' '+student[2]
+                    student.pop(2)
+                    student[0] = name_transformed
+                    issued_date = str(student[7]).split('-')
+                    expiry_date = str(student[8]).split('-')
+                    issued_date_transformed = datetime.date(int(issued_date[0]),int(issued_date[1]),int(issued_date[2])).strftime("%b %Y")
+                    expiry_date_transformed = datetime.date(int(expiry_date[0]),int(expiry_date[1]),int(expiry_date[2])).strftime("%b %Y")
+                    student[8] = issued_date_transformed+' - '+expiry_date_transformed
+                    student.pop(1)
+                    student.pop(6)
+                    results_list.append(student)
+                return results_list
 
     def batch_table(self, details:list):
         self.ui.tableWidget_batch.setAutoScroll(True)
@@ -409,7 +452,7 @@ class MainWindow(QMainWindow):
         elif self.ui.pie_chart.isChecked():
             path = path = os.path.join(root_dir,list[1])
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        new_name='D:\\Targets\\Commons\\backend\\report\\piechart\\'+file_name+date+'.pdf'
+        new_name='C:\\ProgramData\\iAttend\\data\\samples\\piechart\\'+file_name+date+'.pdf'
         os.rename(path_pdf,new_name)
         shutil.copy2(new_name,path)
         os.rename(new_name,path_pdf)
@@ -1067,14 +1110,6 @@ class MainWindow(QMainWindow):
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
         if self.ui.reg_student_ref.text() and self.ui.reg_firstname.text():
-            issued_date=self.ui.reg_start_date.text()
-            expiry_date=self.ui.reg_end_date.text()
-            start_date = issued_date.split('-')
-            end_date= expiry_date.split('-')
-            
-            issued_date_transformed = datetime.date(int(start_date[0]),int(start_date[1]),int(start_date[2])).strftime("%b %Y")
-            expiry_date_transformed = datetime.date(int(end_date[0]),int(end_date[1]),int(end_date[2])).strftime("%b %Y")
-
             student = Student(
                 int(self.ui.reg_student_ref.text()),
                 int(self.ui.reg_index.text()),
@@ -1234,7 +1269,7 @@ class MainWindow(QMainWindow):
             self.alert_builder("Hey! Student image updated successfully.")
         elif self.ui.reg_student_ref.text() and self.ui.image_file_reg.text() and self.ui.online_image.isChecked():
             ref = self.ui.reg_student_ref.text()
-            path = 'D:\\Targets\\Commons\\backend\\images\\download\\image.jpeg'
+            path = 'C:\\ProgramData\\iAttend\\data\\images\\image.jpeg'
             if os.path.exists(path):
                 with open(path, 'rb') as image:
                     data = image.read()
