@@ -3871,7 +3871,7 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string/>
+                   <string>Notification</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -3883,7 +3883,7 @@ QPushButton:pressed{
                  <widget class="QPushButton" name="btn_batch_browse">
                   <property name="geometry">
                    <rect>
-                    <x>470</x>
+                    <x>340</x>
                     <y>20</y>
                     <width>131</width>
                     <height>51</height>
@@ -3932,7 +3932,7 @@ QPushButton:pressed{
                    <rect>
                     <x>20</x>
                     <y>20</y>
-                    <width>441</width>
+                    <width>301</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -3970,9 +3970,9 @@ QLineEdit:focus{
                  <widget class="QPushButton" name="btn_start_job">
                   <property name="geometry">
                    <rect>
-                    <x>620</x>
+                    <x>490</x>
                     <y>20</y>
-                    <width>141</width>
+                    <width>131</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4061,12 +4061,12 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QPushButton" name="btn_batch_images">
+                 <widget class="QPushButton" name="btn_batch_folder">
                   <property name="geometry">
                    <rect>
-                    <x>780</x>
+                    <x>640</x>
                     <y>20</y>
-                    <width>141</width>
+                    <width>131</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4093,6 +4093,53 @@ QPushButton:pressed{
                   </property>
                   <property name="text">
                    <string>Images</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/folder.svg</normaloff>:/icons/asset/folder.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_batch_images">
+                  <property name="geometry">
+                   <rect>
+                    <x>790</x>
+                    <y>20</y>
+                    <width>131</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Insert</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
