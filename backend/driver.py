@@ -319,10 +319,10 @@ class MainWindow(QMainWindow):
                     name_transformed = student[0]+' '+student[1]+' '+student[2]
                     student.pop(2)
                     student[0] = name_transformed
-                    issued_date = str(student[7]).split('-')
-                    expiry_date = str(student[8]).split('-')
-                    issued_date_transformed = datetime.date(int(issued_date[0]),int(issued_date[1]),int(issued_date[2])).strftime("%b %Y")
-                    expiry_date_transformed = datetime.date(int(expiry_date[0]),int(expiry_date[1]),int(expiry_date[2])).strftime("%b %Y")
+                    issued_date = str(student[7]).split('/')
+                    expiry_date = str(student[8]).split('/')
+                    issued_date_transformed = datetime.date(int(issued_date[2]),int(issued_date[0]),int(issued_date[1])).strftime("%b %Y")
+                    expiry_date_transformed = datetime.date(int(expiry_date[2]),int(expiry_date[0]),int(expiry_date[1])).strftime("%b %Y")
                     student[8] = issued_date_transformed+' - '+expiry_date_transformed
                     student.pop(1)
                     student.pop(6)
