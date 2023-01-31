@@ -45,10 +45,12 @@ from model.student import Student
 from model.generate_code import Code
 from model.attendance import Attendance
 
-from upload.images_insert import Images
+
 from mail.mail import Mail
+from mail.send import SendThread
 from thread.thread import ImageThread
 from database.database import Database
+from upload.images_insert import Images
 from mail.thread import QRCodeMailThread
 from scan_devices.camera import ActiveCameras
 from launcher.ui_launcher import Ui_MainWindow
@@ -222,45 +224,107 @@ class MainWindow(QMainWindow):
         self.ui.btn_batch_browse.clicked.connect(self.browse_batch_data)
         self.ui.btn_start_job.clicked.connect(self.insert_records_thread)
         self.ui.btn_batch_images.clicked.connect(self.insert_images_thread)
+        self.ui.btn_batch_mail.clicked.connect(self.send_code_thread)
         ##################################################################################################
 
+    def send_code_thread(self):
+        student_data_path = self.ui.batch_browse.text()
+        if student_data_path:
+            self.pool = QThreadPool()
+            self.work = SendThread(self.generate_code_and_send)
+            self.pool.start(self.work)
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! invalid file path...")
+            self.alert.show()
+              
+    def generate_code_and_send(self):
+        student_data_path = self.ui.batch_browse.text() 
+        self.threadPool = QThreadPool()
+        content = self.get_mail_content()
+        details = self.get_email_details()
+        with open(student_data_path,'r') as data:
+            student_data = csv.reader(data)
+            student_list = []
+            next(data)
+            for row in student_data:
+                student_list.append(row)
+                student = Code(
+                    index=row[3],
+                    reference=row[4],
+                    email_address=[10]
+                    )
+                student_string ={
+                    "index":student.index,
+                    "reference":student.reference,
+                    "mail_address":student.email_address
+                    }
+                if self.connected_to_internet()==True:
+                    student_json=self.convert_to_json(student_string)
+                    image = qrcode.make(student_json)
+                    image_path='C:\\ProgramData\\iAttend\\data\\qr_code\\'+student.reference+".png"
+                    image.save(image_path)
+                    content = self.get_mail_content()
+                    content=content.replace('name',row[0])
+                    self.worker = QRCodeMailThread(details,content,image_path,row[10])
+                    self.threadPool.start(self.worker)
+                    self.ui.batch_notification.setText("Sending mails in progress...")      
+                else:
+                    self.alert = AlertDialog()
+                    self.alert.content("Oops! please check your internet\nconnection...")
+                    self.alert.show()
+            self.ui.batch_notification.setText("Mail for valid addresses sent...")
+                   
+    def convert_to_json(self, student:Student):
+        to_json = json.dumps(student)
+        return to_json  
+
     def insert_images_thread(self):
-        self.pool = QThreadPool()
-        self.work = ImageThread(self.insert_images)
-        self.pool.start(self.work)
+        path = self.directory.directory_path()
+        if path:
+            self.pool = QThreadPool()
+            self.work = ImageThread(self.insert_images)
+            self.pool.start(self.work)
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! invalid file path...")
+            self.alert.show()
 
     def insert_images(self):
         path = self.directory.directory_path()
-        images_extension = ['jpg', 'jpeg', 'png']
-        if path:
-            self.ui.batch_notification.setText("Saving images in progress...") 
-            for item in os.listdir(path):
-                image = os.path.join(path,item)
-                image = os.path.abspath(image)
-                image_name = os.path.basename(image)
-                extension = image_name.split('.')[1]
-                student_reference = image_name.split('.')[0]
-                if extension in images_extension:
-                    check_state = self.database.check_state()
-                    (db,my_cursor,connection_status) = self.database.my_cursor()
-                    with open(image, 'rb') as image_data:
-                        data = image_data.read()
-                        if check_state == True:
-                            my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student_reference,data))
-                            db.commit()
-                            my_cursor.close()
-                        else:
-                            my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student_reference,data))
-                            db.commit()
-                            my_cursor.close()
-            self.ui.batch_notification.setText("All images saved successfully...")         
-        else:
-            self.alert("Oops! invalid images path specified...")
+        images_extension = ['jpg', 'jpeg', 'png'] 
+        self.ui.batch_notification.setText("Saving images in progress...") 
+        for item in os.listdir(path):
+            image = os.path.join(path,item)
+            image = os.path.abspath(image)
+            image_name = os.path.basename(image)
+            extension = image_name.split('.')[1]
+            student_reference = image_name.split('.')[0]
+            if extension in images_extension:
+                check_state = self.database.check_state()
+                (db,my_cursor,connection_status) = self.database.my_cursor()
+                with open(image, 'rb') as image_data:
+                    data = image_data.read()
+                    if check_state == True:
+                        my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student_reference,data))
+                        db.commit()
+                        my_cursor.close()
+                    else:
+                        my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student_reference,data))
+                        db.commit()
+                        my_cursor.close()
+        self.ui.batch_notification.setText("All images saved successfully...")         
 
-    def insert_records_thread(self):
-        self.pool = QThreadPool()
-        self.work = ImageThread(self.batch_insert_student_data)
-        self.pool.start(self.work) 
+    def insert_records_thread(self): 
+        path = self.directory.directory_path()
+        if path:
+            self.pool = QThreadPool()
+            self.work = ImageThread(self.batch_insert_student_data)
+            self.pool.start(self.work)
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! invalid file path...")
+            self.alert.show()
 
     def batch_insert_student_data(self):
         check_state=self.database.check_state()
