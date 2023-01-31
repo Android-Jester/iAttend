@@ -43,17 +43,18 @@ class MailThreadPDF(QThread):
         self.mail_content,os.path.basename(self.file_path),self.directory) 
         mail.email_send()
 
-class QRCodeMailThread(QThread):
-    def __init__(self,details:list,mail_content,file_path):
+class QRCodeMailThread(QRunnable):
+    def __init__(self,details:list,mail_content,file_path,receiver):
         self.details = details
         self.mail_content = mail_content
         self.file_path = file_path
+        self.receiver = receiver 
         super().__init__()
  
     def run(self):
         message = MIMEMultipart()
         message['from']= self.details[3]
-        message['to']= self.details[0]
+        message['to']= self.receiver
         message['subject']= self.details[1]
         message.attach(MIMEText(self.mail_content,'plain'))
         message.attach(MIMEImage(Path(self.file_path).read_bytes()))
