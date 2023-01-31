@@ -199,9 +199,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_camera_four_connect.clicked.connect(self.start_webcam_cam_four)
         self.ui.btn_camera_four_disconnect.clicked.connect(self.stop_webcam_cam_four)
         ##################################################################################################
-        self.ui.btn_load.clicked.connect(self.data_visualization)
+        self.ui.btn_load.clicked.connect(self.data_visualization_thread)
         self.ui.report_start_date.textChanged.connect(self.report_start_date_value_change)
-        self.ui.btn_refresh.clicked.connect(self.hot_reload)
+        self.ui.btn_refresh.clicked.connect(self.hot_reload_thread)
         self.ui.btn_save.clicked.connect(self.save_report)
         self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
@@ -226,6 +226,16 @@ class MainWindow(QMainWindow):
         self.ui.btn_batch_images.clicked.connect(self.insert_images_thread)
         self.ui.btn_batch_mail.clicked.connect(self.send_code_thread)
         ##################################################################################################
+
+    def hot_reload_thread(self):
+        self.pool = QThreadPool()
+        self.work = SendThread(self.hot_reload)
+        self.pool.start(self.work)
+        
+    def data_visualization_thread(self):
+        self.pool = QThreadPool()
+        self.work = SendThread(self.data_visualization)
+        self.pool.start(self.work)
 
     def send_code_thread(self):
         student_data_path = self.ui.batch_browse.text()
