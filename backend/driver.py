@@ -495,7 +495,7 @@ class MainWindow(QMainWindow):
 
     def backup_database(self):
         path='C:\\ProgramData\\iAttend\\data\\backup'
-        db_path = 'D:\\Targets\\Commons\\backend\\sqlite\\attendance_system.db'
+        db_path = 'C:\\ProgramData\\iAttend\\data\\database\\attendance_system.db'
         if os.path.exists(path):
             shutil.copy2(db_path,path)
             self.backup_history()
@@ -1321,9 +1321,8 @@ class MainWindow(QMainWindow):
             self.alert_builder("Oops! search field can't be empty.")
         
     def search_student(self):
-        self.worker= CustomThread(self.search_thread)
-        self.runner= QThreadPool(self.worker)
-        self.runner.start()
+        self.search_thread()
+        
 
     def update_student(self):
         check_state = self.database.check_state()
