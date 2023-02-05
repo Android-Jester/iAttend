@@ -53,6 +53,7 @@ from database.database import Database
 from upload.images_insert import Images
 from mail.thread import QRCodeMailThread
 from scan_devices.camera import ActiveCameras
+from mail.thread import BatchQRCodeMailThread
 from launcher.ui_launcher import Ui_MainWindow
 from camera_one.ui_surveillance_cam_one import *
 from camera_two.surveillance_camera_two import *
@@ -239,13 +240,13 @@ class MainWindow(QMainWindow):
 
     def send_code_thread(self):
         student_data_path = self.ui.batch_browse.text()
-        if student_data_path:
+        if student_data_path and self.connected_to_internet()==True:
             self.pool = QThreadPool()
             self.work = SendThread(self.generate_code_and_send)
             self.pool.start(self.work)
         else:
             self.alert = AlertDialog()
-            self.alert.content("Oops! invalid file path...")
+            self.alert.content("Oops! invalid file path or check\ninternet connectivity.....")
             self.alert.show()
               
     def generate_code_and_send(self):
@@ -276,7 +277,7 @@ class MainWindow(QMainWindow):
                     image.save(image_path)
                     content = self.get_mail_content()
                     content=content.replace('name',row[0])
-                    self.worker = QRCodeMailThread(details,content,image_path,row[10])
+                    self.worker = BatchQRCodeMailThread(details,content,image_path,row[10])
                     self.threadPool.start(self.worker)
                     self.ui.batch_notification.setText("Sending mails in progress...")      
                 else:
@@ -340,12 +341,12 @@ class MainWindow(QMainWindow):
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
         student_list = self.load_batch_data()
-        path = self.ui.batch_browse.text()
+        file_path = self.ui.batch_browse.text()
         date=dt.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
         name = str('record_logs')
         path = str('C:\\ProgramData\\iAttend\\data\\batch_logs\\'+name+'_'+date+'.txt')
         table=self.ui.tableWidget_batch.item(0,0)
-        if path and table:
+        if file_path and table:
             self.ui.batch_notification.setText("Saving records in progress...")  
             if check_state == True:
                 for student in student_list:
