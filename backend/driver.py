@@ -24,6 +24,7 @@ import pandas as pd
 import pyshine as ps
 from pathlib import Path
 from pyzbar.pyzbar import *
+from time import strftime, strptime
 from datetime import datetime as dt
 
 import smtplib
@@ -1456,11 +1457,15 @@ class MainWindow(QMainWindow):
                 self.last_seen(data_json['reference'])
                 db_data=self.fetch_data_from_db(data_json['reference'])
                 if len(db_data) > 0:
-                    start_date = (str(db_data[8])).split('-')
-                    end_date=str(db_data[9]).split('-')
-                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))
-                    issued_date_transformed = datetime.date(int(start_date[0]),int(start_date[1]),int(start_date[2])).strftime("%b %Y")
-                    expiry_date_transformed = datetime.date(int(end_date[0]),int(end_date[1]),int(end_date[2])).strftime("%b %Y")
+                    start_date = (str(db_data[8])).split(' ')
+                    end_date=str(db_data[9]).split(' ')
+                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[1]))
+                    start_month = strptime(start_date[0],'%b')
+                    start_month=start_month.tm_mon
+                    end_month = strptime(end_date[1],'%b')
+                    end_month=end_month.tm_mon
+                    issued_date_transformed = datetime.date(int(start_date[1]),start_month,int(2)).strftime("%b %Y")
+                    expiry_date_transformed = datetime.date(int(end_date[2]),end_month,int(2)).strftime("%b %Y")
                     validity = issued_date_transformed+' - '+expiry_date_transformed
                       
                     if student_year <= 1:
