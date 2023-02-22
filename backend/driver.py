@@ -457,8 +457,21 @@ class MainWindow(QMainWindow):
                 programs_list.append(program)
             return basedir,programs_list
 
-    def get_active_cameras(self,camera:list):
+    def clear_camera_comboBoxes(self):
         self.ui.comboBox.clear()
+        self.ui.reg_camera_combo.clear()
+        self.open_exit_camera.set_combo_items('')
+        self.open_surveillance_camera_one.set_combo_items('')
+        self.surveillance_camera_three.set_combo_items('')
+        self.surveillance_camera_two.set_combo_items('')
+        self.surveillance_camera_four.set_combo_items('')
+        self.ui.camera_three_comboBox.clear()
+        self.ui.camera_two_comboBox.clear()
+        self.ui.camera_one_comboBox.clear()
+        self.ui.camera_four_comboBox.clear()
+        
+
+    def get_active_cameras(self,camera:list):
         self.ui.comboBox.addItems(camera)
         self.ui.reg_camera_combo.addItems(camera)
         self.open_exit_camera.set_combo_items(camera)
@@ -477,6 +490,8 @@ class MainWindow(QMainWindow):
     def camera_thread(self):
         scan_range = self.ui.scan_range.text()
         if scan_range:
+            self.clear_camera_comboBoxes()
+            self.ui.scan_range_label.setText('')
             self.active = ActiveCameras(scan_range)
             self.active.start()
             self.active.cameras.connect(self.get_active_cameras)
