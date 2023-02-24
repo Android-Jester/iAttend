@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'launchervfogFu.ui'
+## Form generated from reading UI file 'launcherxRAZrB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1008, 600)
+        MainWindow.resize(780, 513)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         self.main.setFrameShadow(QFrame.Sunken)
         self.label = QLabel(self.main)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(0, 190, 991, 91))
+        self.label.setGeometry(QRect(0, 160, 761, 91))
         font = QFont()
         font.setFamily(u"Modern No. 20")
         font.setPointSize(40)
@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         self.label.setAlignment(Qt.AlignCenter)
         self.label_2 = QLabel(self.main)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(0, 260, 991, 21))
+        self.label_2.setGeometry(QRect(60, 250, 651, 21))
         font1 = QFont()
         font1.setFamily(u"Modern No. 20")
         font1.setPointSize(14)
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.label_2.setAlignment(Qt.AlignCenter)
         self.progressBar = QProgressBar(self.main)
         self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setGeometry(QRect(0, 570, 991, 16))
+        self.progressBar.setGeometry(QRect(0, 480, 761, 16))
         self.progressBar.setStyleSheet(u"QProgressBar{	\n"
 "	background-color: rgb(98, 114, 164);\n"
 "	border-style:none;\n"
