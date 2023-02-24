@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
-class Canvas(FigureCanvas):
+class Piechart(FigureCanvas):
     def __init__(self):
         pass
     def piechart(self,data:list,title:str):
@@ -13,5 +13,8 @@ class Canvas(FigureCanvas):
         self.ax.pie(data[0],labels=data[1],autopct = '%1.1f%%', labeldistance = 1.1
         , radius=0.4, startangle =90, pctdistance = 0.4,textprops={'color':"w",'fontsize':13})
         self.ax.axis('equal')
-        plt.savefig('C:\ProgramData\iAttend\data\samples\\piechart.png',dpi = 300, edgecolor='none')
-        plt.savefig('C:\ProgramData\iAttend\data\samples\\piechart.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\samples\\piechart.png',dpi = 300, edgecolor='none')
+
+    def save_chart(self,name):
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\piechart\\'+name+'.pdf',dpi = 300, edgecolor='none')
+        
