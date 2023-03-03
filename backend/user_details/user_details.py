@@ -1,19 +1,14 @@
 
-
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
 from user_details.ui_user_details import Ui_Profile
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-from PySide2.QtGui import *
+from packages.pyqt import *
 
-class User(QtWidgets.QDialog):
+class User(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_profile = Ui_Profile()
         self.ui_profile.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_profile.btn_close.clicked.connect(self.close)
         self.ui_profile.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_profile.frame.mouseMoveEvent = self.MoveWindow 
