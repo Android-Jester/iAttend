@@ -27,7 +27,7 @@
        <string notr="true">
 	background-color: rgb(35, 35, 35);
 	border-radius:30px;
-background-color: rgb(45, 45, 45);
+	background-color: rgb(45, 45, 45);
 </string>
       </property>
       <property name="frameShape">
@@ -63,7 +63,7 @@ background-color: rgb(45, 45, 45);
          <property name="styleSheet">
           <string notr="true">QFrame{
 	background-color: rgb(35, 35, 35);
-	border-radius:5px;
+	border-radius:12px;
 }</string>
          </property>
          <property name="frameShape">
@@ -197,7 +197,7 @@ background-color: rgb(45, 45, 45);
 }</string>
                 </property>
                 <property name="text">
-                 <string>To keep connected with us,please login with your credentials</string>
+                 <string>To keep connected,please login with your credentials</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -628,7 +628,7 @@ QPushButton:hover{
                  <bool>true</bool>
                 </property>
                </widget>
-               <widget class="QPushButton" name="btn_batch_browse_3">
+               <widget class="QPushButton" name="avater">
                 <property name="geometry">
                  <rect>
                   <x>190</x>
@@ -683,6 +683,9 @@ QPushButton:pressed{
                   <width>100</width>
                   <height>100</height>
                  </size>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
