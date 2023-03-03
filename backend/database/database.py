@@ -1,21 +1,15 @@
 
-import os
-import psycopg2
-import sqlite3
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
-from PySide2.QtWidgets import *
-import mysql.connector as connector
-from utils.sql import *
+from packages.pyqt import *
+from packages.connection import *
 from database.ui_database import Ui_Database
 
-class Database(QtWidgets.QDialog):
+class Database(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_database = Ui_Database()
         self.ui_database.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_database.btn_close.clicked.connect(self.close)
         self.ui_database.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_database.frame.mouseMoveEvent = self.MoveWindow 
@@ -32,7 +26,7 @@ class Database(QtWidgets.QDialog):
         self.set_database_properties()
 
     def get_details(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\database_properties\\properties.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\properties\\properties.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read().split(',')
@@ -110,6 +104,7 @@ class Database(QtWidgets.QDialog):
                     cursor.execute(create_tb_students())
                     cursor.execute(create_tb_attendance())
                     cursor.execute(create_tb_images())
+                    cursor.execute(create_tb_cameras())
                     db.commit()
                     self.ui_database.label_notification.setText("Hey! you have MySQL working connection...")
                     return db,db.cursor() 
@@ -125,6 +120,7 @@ class Database(QtWidgets.QDialog):
                     cursor.execute(create_tb_students_postgres())
                     cursor.execute(create_tb_attendance_postgres())
                     cursor.execute(create_tb_images_postgres())
+                    cursor.execute(create_tb_cameras_postgres())
                     db.commit()
                     self.ui_database.label_notification.setText("Hey! you have PostgreSQL working connection...")
                     return db,db.cursor()
@@ -139,6 +135,7 @@ class Database(QtWidgets.QDialog):
                 cursor.execute(create_tb_students_sqlite())
                 cursor.execute(create_tb_attendance_sqlite())
                 cursor.execute(create_tb_images_sqlite())
+                cursor.execute(create_tb_cameras_sqlite())
                 db.commit()
                 self.ui_database.label_notification.setText("Hey! you have SQLite3 working connection...")
                 return db,db.cursor()
