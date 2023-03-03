@@ -1,4 +1,3 @@
-import base64
 import datetime
 import json
 import time
@@ -6,10 +5,7 @@ import winsound
 import cv2
 import numpy as np
 import pyshine as ps
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtCore import (Qt, QTimer)
-from PySide2.QtGui import (QColor, QPixmap, QImage)
-from PySide2.QtWidgets import *
+from packages.pyqt import *
 from cv2 import VideoCapture
 
 from pyzbar.pyzbar import *
@@ -18,14 +14,15 @@ from datetime import datetime as dt
 from alert.alert_dialog import *
 from exit_camera.ui_exit_camera import Ui_Dialog
 from exit_db.database_exit import *
+from packages.pyqt import *
 
-class ExitCameraFeed(QtWidgets.QDialog):
+class ExitCameraFeed(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_exit_camera = Ui_Dialog()
         self.ui_exit_camera.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_exit_camera.btn_close.clicked.connect(self.close)
         self.ui_exit_camera.btn_minimize.clicked.connect(self.showMinimized)
 
