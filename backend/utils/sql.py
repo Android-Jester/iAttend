@@ -20,6 +20,12 @@ def create_tb_images():
     """
     return sql
 
+def create_tb_cameras():
+    sql = """
+        CREATE TABLE IF NOT EXISTS tb_cameras(id INT PRIMARY KEY AUTO_INCREMENT, camera_id varchar(40) NOT NULL UNIQUE, camera_url varchar(100) NOT NULL)
+    """
+    return sql
+
 
 def create_tb_students_postgres():
     sql= """
@@ -42,6 +48,12 @@ def create_tb_images_postgres():
     """
     return sql
 
+def create_tb_cameras_postgres():
+    sql = """
+        CREATE TABLE IF NOT EXISTS tb_cameras(id SERIAL PRIMARY KEY, camera_id varchar(40) NOT NULL UNIQUE, camera_url varchar(100) NOT NULL)
+    """
+    return sql
+
 
 def create_tb_students_sqlite():
     sql= """
@@ -61,6 +73,12 @@ def create_tb_attendance_sqlite():
 def create_tb_images_sqlite():
     sql = """
         CREATE TABLE IF NOT EXISTS tb_images(id INTEGER PRIMARY KEY AUTOINCREMENT, st_reference int NOT NULL, image BLOB NOT NULL)
+    """
+    return sql
+
+def create_tb_cameras_sqlite():
+    sql = """
+        CREATE TABLE IF NOT EXISTS tb_cameras(id INTEGER PRIMARY KEY AUTOINCREMENT, camera_id TEXT NOT NULL, camera_url TEXT NOT NULL)
     """
     return sql
 
