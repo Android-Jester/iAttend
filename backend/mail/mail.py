@@ -5,24 +5,20 @@ import requests
 from mail.thread import MailThread
 from mail.thread import MailThreadPDF
 
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
 from utils.sql import *
+from packages.pyqt import *
 from mail.ui_mail import Ui_Mail
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-from PySide2.QtGui import *
 
-class Mail(QtWidgets.QDialog):
+class Mail(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_mail = Ui_Mail()
         self.ui_mail.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_mail.btn_close.clicked.connect(self.close)
         self.ui_mail.btn_minimize.clicked.connect(self.showMinimized)
-        self.ui_mail.frame.mouseMoveEvent = self.MoveWindow 
+        self.ui_mail.frame.mouseMoveEvent = self.MoveWindow
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)

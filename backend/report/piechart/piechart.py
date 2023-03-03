@@ -13,8 +13,8 @@ class Piechart(FigureCanvas):
         self.ax.pie(data[0],labels=data[1],autopct = '%1.1f%%', labeldistance = 1.1
         , radius=0.4, startangle =90, pctdistance = 0.4,textprops={'color':"w",'fontsize':13})
         self.ax.axis('equal')
-        plt.savefig('C:\\ProgramData\\iAttend\\data\\samples\\piechart.png',dpi = 300, edgecolor='none')
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\visualize\\piechart.png',dpi = 300, edgecolor='none')
 
     def save_chart(self,name):
-        plt.savefig('C:\\ProgramData\\iAttend\\data\\piechart\\'+name+'.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\piechart\\'+name+'.pdf',dpi = 300, edgecolor='none')
         

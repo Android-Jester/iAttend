@@ -21,10 +21,10 @@ class Barchart(FigureCanvas):
         plt.ylabel(y_label,color='white',size= 15,labelpad= 13)
         plt.yticks(color='white',size= 12)
         plt.xticks(color='white',size= 12)
-        plt.savefig('C:\\ProgramData\\iAttend\\data\\samples\\barchart.png',dpi = 300, edgecolor='none')
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\visualize\\barchart.png',dpi = 300, edgecolor='none')
 
     def save_chart(self,name):
-        plt.savefig('C:\\ProgramData\\iAttend\\data\\barchart\\'+name+'.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\barchart\\'+name+'.pdf',dpi = 300, edgecolor='none')
    
 
 

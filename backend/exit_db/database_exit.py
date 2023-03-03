@@ -1,22 +1,16 @@
 
-import os
-import sqlite3
-import psycopg2
-
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
-from PySide2.QtWidgets import *
-import mysql.connector as connector
+from packages.pyqt import *
+from packages.connection import *
 
 from exit_db.ui_exit_database import Ui_Database
 
-class Database_Connection(QtWidgets.QDialog):
+class Database_Connection(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_database = Ui_Database()
         self.ui_database.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_database.btn_close.clicked.connect(self.close)
         self.ui_database.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_database.frame.mouseMoveEvent = self.MoveWindow 
@@ -33,7 +27,7 @@ class Database_Connection(QtWidgets.QDialog):
         self.set_database_properties()
 
     def get_details(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\database_properties\\properties.txt'
+        path = 'C:\\ProgramData\\iAttend\\data\\properties\\properties.txt'
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read().split(',')
