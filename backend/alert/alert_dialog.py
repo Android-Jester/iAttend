@@ -1,21 +1,19 @@
-from PySide2 import QtCore, QtWidgets
-from PySide2.QtGui import (QColor)
-from PySide2.QtWidgets import *
+from packages.pyqt import *
 
 from alert.ui_alert_dialog import Ui_AlertDialog
 
-class AlertDialog(QtWidgets.QDialog):
+class AlertDialog(QDialog):
     def __init__(self):
-        QtWidgets.QDialog.__init__(self)
+        QDialog.__init__(self)
         self.ui_alert = Ui_AlertDialog()
         self.ui_alert.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.show()
         self.ui_alert.btn_close.clicked.connect(self.close)
         self.ui_alert.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_alert.btn_close_alert.clicked.connect(self.close)
-        self.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.setWindowModality(Qt.ApplicationModal)
         self.ui_alert.frame.mouseMoveEvent = self.MoveWindow
 
         self.shadow = QGraphicsDropShadowEffect(self)
