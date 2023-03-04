@@ -6,75 +6,27 @@
 ##
 ################################################################################
 
-
-import csv
-import os
-import sys
-import cv2
-import wget
-import json
-import time
-import shutil
-import qrcode
-import requests
-import winsound
-import numpy as np
-import pandas as pd
-
-import pyshine as ps
-from pathlib import Path
-from pyzbar.pyzbar import *
-from time import strftime, strptime
-from datetime import datetime as dt
-
-import smtplib
-from pathlib import Path
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-from email.mime.image import MIMEImage
-
-from PySide2 import QtCore
-from PySide2.QtWidgets import *
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-
-from report.piechart.piechart import Canvas
-from report.barchart.barchart import Barchart
-from report.line_graph.line_plot import Line_plot
-
-from model.student import Student
-from model.generate_code import Code
-from model.attendance import Attendance
-
-
-from mail.mail import Mail
-from mail.send import SendThread
-from thread.thread import ImageThread
-from database.database import Database
-from upload.images_insert import Images
-from mail.thread import QRCodeMailThread
-from scan_devices.camera import ActiveCameras
-from mail.thread import BatchQRCodeMailThread
-from launcher.ui_launcher import Ui_MainWindow
-from camera_one.ui_surveillance_cam_one import *
-from camera_two.surveillance_camera_two import *
-from dashboard.ui_dashoboard import Ui_dashboard
-from camera_four.surveillance_camera_four import * 
-from exit_camera.exit_camera import ExitCameraFeed
-from camera_three.surveillance_camera_three import * 
-from camera_one.surveillance_camera_one import Surveilliance_One
-
-GLOBAL_STATE = 0
-counter = 0
+from packages.misc import *
+from packages.mail import *
+from packages.pyqt import *
+from packages.model import *
+from packages.system import *
+from packages.camera import *
+from packages.report import *
+from packages.startup import *
+from packages.globals import *
+from packages.computing import *
+from packages.processing import *
 
 class MainWindow(QMainWindow):
     def __init__(self, **kwargs):
         QMainWindow.__init__(self, **kwargs)
         self.ui = Ui_dashboard()
         self.saveTimer = QTimer()
+        self.timer = QTimer()
         self.ui.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
         self.oldPosition = self.pos()
         #########################################################################################
         qtRectangle = self.frameGeometry()
@@ -93,7 +45,7 @@ class MainWindow(QMainWindow):
         #########################################################################################################
         self.ui.btn_home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home))
         self.ui.btn_search.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.search))
-        self.ui.btn_camera.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.camera))
+        self.ui.btn_admin.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.admin))
         self.ui.btn_database.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.database))
         self.ui.btn_help.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
         self.ui.btn_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.report))
@@ -101,7 +53,7 @@ class MainWindow(QMainWindow):
         ##########################################################################################################
 
         #########################################################################################################
-        self.piechart = Canvas()
+        self.piechart = Piechart()
         self.barchart = Barchart()
         self.line_graph = Line_plot()
         ########################################################################################################
@@ -120,21 +72,25 @@ class MainWindow(QMainWindow):
         self.directory = Images()
         self.ui.btn_batch_folder.clicked.connect(lambda: self.directory.show())
         
+        self.user = User()
+        self.ui.btn_login_user.clicked.connect(lambda: self.user.show())
+
+        self.config = Configuration()
+        self.ui.btn_camera.clicked.connect(lambda: self.config.show())
+        self.camera_1 = Camera_One()
+        self.ui.btn_camera.clicked.connect(lambda: self.camera_1.show())
+        self.camera_2 = Camera_Two()
+        self.ui.btn_camera.clicked.connect(lambda: self.camera_2.show())
+        self.camera_3 = Camera_Three()
+        self.ui.btn_camera.clicked.connect(lambda: self.camera_3.show())
+        self.camera_4 = Camera_Four()
+        self.ui.btn_camera.clicked.connect(lambda: self.camera_4.show())
+
+        self.login = Authentication()
+        # self.ui.btn_logout.clicked.connect(lambda: self.login.show())
+        self.ui.btn_logout.clicked.connect(self.logout)
         ############################################################################################
 
-        ############################################################################################
-        self.open_surveillance_camera_one = Surveilliance_One()
-        self.ui.btn_cast_cam_one.clicked.connect(lambda: self.open_surveillance_camera_one.show())
-
-        self.surveillance_camera_two = Surveilliance_Two()
-        self.ui.btn_cast_cam_one_2.clicked.connect(lambda: self.surveillance_camera_two.show())
-
-        self.surveillance_camera_three = Surveilliance_Three()
-        self.ui.btn_cast_cam_three.clicked.connect(lambda: self.surveillance_camera_three.show())
-
-        self.surveillance_camera_four = Surveilliance_Four()
-        self.ui.btn_cast_cam_four.clicked.connect(lambda: self.surveillance_camera_four.show())
-        ############################################################################################
 
         ############################################################################################
         self.ui.btn_connect_detect.clicked.connect(self.start_webcam)
@@ -187,19 +143,6 @@ class MainWindow(QMainWindow):
         self.ui.contrast_value.setText(str(self.ui.contrast.value()))
         ##################################################################################################
 
-        #################################################################################################
-
-        self.ui.btn_camera_one_connect.clicked.connect(self.start_webcam_cam_one)
-        self.ui.btn_camera_one_disconnect.clicked.connect(self.stop_webcam_cam_one)
-
-        self.ui.btn_camera_two_connect.clicked.connect(self.start_webcam_cam_two)
-        self.ui.btn_camera_two_disconnect.clicked.connect(self.stop_webcam_cam_two)
-
-        self.ui.btn_camera_three_connect.clicked.connect(self.start_webcam_cam_three)
-        self.ui.btn_camera_three_disconnect.clicked.connect(self.stop_webcam_cam_three)
-
-        self.ui.btn_camera_four_connect.clicked.connect(self.start_webcam_cam_four)
-        self.ui.btn_camera_four_disconnect.clicked.connect(self.stop_webcam_cam_four)
         ##################################################################################################
         self.ui.btn_load.clicked.connect(self.data_visualization_thread)
         self.ui.report_start_date.textChanged.connect(self.report_start_date_value_change)
@@ -210,10 +153,10 @@ class MainWindow(QMainWindow):
 
         college,programs=self.get_programs_CoS()
         completer = QCompleter(programs)
-        completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
         country_completer = QCompleter(self.country_names('C:\\ProgramData\\iAttend\\data\\json_file\\data_json.json'))
-        country_completer.setCaseSensitivity(QtCore.Qt.CaseInsensitive)
+        country_completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
         self.ui.reg_college_2.addItem(college,programs)
@@ -227,8 +170,28 @@ class MainWindow(QMainWindow):
         self.ui.btn_start_job.clicked.connect(self.insert_records_thread)
         self.ui.btn_batch_images.clicked.connect(self.insert_images_thread)
         self.ui.btn_batch_mail.clicked.connect(self.send_code_thread)
+
+        self.ui.user_image_browse.clicked.connect(self.user_profile_image)
+
         ##################################################################################################
 
+    def user_profile_image(self):
+        path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
+        if path:
+            self.ui.user_image_file.setText(path[0])
+            self.ui.user_image.setPixmap(QPixmap.fromImage(path[0]))
+            self.ui.user_image.setScaledContents(True)
+        
+    def logout_thread(self):
+        self.pool = QThreadPool()
+        self.work = SendThread(self.logout_thread)
+        self.pool.start(self.work)
+        
+    def logout(self):
+        self.main = MainWindow()
+        self.close()
+        self.login.show()
+        
     def hot_reload_thread(self):
         self.pool = QThreadPool()
         self.work = SendThread(self.hot_reload)
@@ -475,14 +438,6 @@ class MainWindow(QMainWindow):
         self.ui.comboBox.addItems(camera)
         self.ui.reg_camera_combo.addItems(camera)
         self.open_exit_camera.set_combo_items(camera)
-        self.open_surveillance_camera_one.set_combo_items(camera)
-        self.surveillance_camera_three.set_combo_items(camera)
-        self.surveillance_camera_two.set_combo_items(camera)
-        self.surveillance_camera_four.set_combo_items(camera)
-        self.ui.camera_three_comboBox.addItems(camera)
-        self.ui.camera_two_comboBox.addItems(camera)
-        self.ui.camera_one_comboBox.addItems(camera)
-        self.ui.camera_four_comboBox.addItems(camera)
         count = [self.ui.comboBox.itemText(i) for i in range(self.ui.comboBox.count())]
         self.ui.scan_range_label.setText("Active camera(s): "+str(len(count)))
         self.ui.label_notification.setText("Done scanning for available cameras...")           
@@ -532,29 +487,14 @@ class MainWindow(QMainWindow):
         self.alert = AlertDialog()
         self.alert.content(content)
         self.alert.show()
-
-    def helper(self,path_pdf,file_name:str):
-        root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('barchart','piechart','linechart','json_export','csv_export')
-        if self.ui.bar_chart.isChecked():
-            path = os.path.join(root_dir,list[0])
-        elif self.ui.line_graph.isChecked():
-            path = path = os.path.join(root_dir,list[2])
-        elif self.ui.pie_chart.isChecked():
-            path = path = os.path.join(root_dir,list[1])
-        date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        new_name='C:\\ProgramData\\iAttend\\data\\samples\\piechart\\'+file_name+date+'.pdf'
-        os.rename(path_pdf,new_name)
-        shutil.copy2(new_name,path)
-        os.rename(new_name,path_pdf)
    
     def save_report(self):
         filename = self.ui.file_name.text()
-        root_path = "C:\ProgramData\iAttend\data\samples\\"
+        date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        transformed_name=filename+date
         if self.ui.bar_chart.isChecked():    
-            path =root_path+'barchart.pdf'   
             if self.ui.file_name.text():
-                self.helper(path,filename)
+                self.barchart.save_chart(transformed_name)
                 self.alert = AlertDialog()
                 self.alert.content("Document saved successfully")
                 self.alert.show()
@@ -563,9 +503,8 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show()         
         elif self.ui.line_graph.isChecked():
-            path = root_path+'line_plot.pdf'
             if self.ui.file_name.text():
-                self.helper(path,filename)
+                self.line_graph.save_chart(transformed_name)
                 self.alert = AlertDialog()
                 self.alert.content("Document saved successfully")
                 self.alert.show()
@@ -574,9 +513,8 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show() 
         elif self.ui.pie_chart.isChecked():
-            path = root_path+'piechart.pdf'
             if self.ui.file_name.text():
-                self.helper(path,filename)
+                self.piechart.save_chart(transformed_name)
                 self.alert = AlertDialog()
                 self.alert.content("Document saved successfully")
                 self.alert.show()
@@ -584,25 +522,19 @@ class MainWindow(QMainWindow):
                 self.alert = AlertDialog()
                 self.alert.content("Oops! please provide file name")
                 self.alert.show() 
-        
-
+     
     def reconstruct_date(self,date:str):
-        list_months = ['January', 'Febuary', 'March',
-                'April', 'May', 'June', 'July',
-                'August', 'September', 'October',
-                'November', 'December']
         date_value=str(date).split('-')
-        year = date_value[0]
-        month = date_value[1]
-        day = date_value[2]
-        month=list_months[int(month)-1]
-        return str(day+' '+month+' '+year)
+        date_transformed = datetime.date(int(date_value[0]),int(date_value[1]),int(date_value[2])).strftime("%a %d %b, %Y")
+        return date_transformed
 
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('batch_logs','programs','database_properties','qr_code',
+        list =('batch_logs','programs','properties','qr_code',
         'barchart','piechart','linechart','json_export','csv_export',
-        'backup','email_details','json_file','samples')
+        'backup','email_details','json_file','samples','settings',
+        'footage','reports','exports')
+
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
         for item in list:
@@ -611,8 +543,29 @@ class MainWindow(QMainWindow):
                 os.mkdir(path)
         self.create_files()
 
+        report_dir = 'C:\\ProgramData\\iAttend\\data\\reports'
+        report = ('piechart','barchart','linegraph','visualize')    
+        for item in report:
+            path = os.path.join(report_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+
+        fortage_dir = 'C:\\ProgramData\\iAttend\\data\\footage'
+        footage = ('camera_1','camera_2','camera_3','camera_4','settings')
+        for item in footage:
+            path = os.path.join(fortage_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+        
+        export_dir = 'C:\\ProgramData\\iAttend\\data\\exports'
+        export = ('csv','json')
+        for item in export:
+            path = os.path.join(export_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+
     def create_files(self):
-        path =Path('C:\\ProgramData\\iAttend\\data\\database_properties\\properties.txt')
+        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\properties.txt')
         path.touch(exist_ok=True)
         file = open(path)
         if os.path.exists(path):
@@ -696,8 +649,6 @@ class MainWindow(QMainWindow):
     def hot_reload(self):
         data = self.get_pichart_data()
         self.piechart.piechart(data,"Percentages of programs")
-        self.ui.plot_area.setPixmap(QPixmap.fromImage('C:\\ProgramData\\iAttend\\data\\samples\\piechart.png'))
-        self.ui.plot_area.setScaledContents(True)
         self.data_visualization()
 
     def report_start_date_value_change(self):
@@ -797,7 +748,7 @@ class MainWindow(QMainWindow):
         ,'#00A000','#4E0707','#B56727','#5DBB63']        
         width = 0.7
         program = self.ui.college_courses.currentText()
-        path = 'C:\\ProgramData\\iAttend\\data\\samples\\'
+        path = 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
         if self.ui.bar_chart.isChecked():
             if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.get_data_barchart()
@@ -839,7 +790,7 @@ class MainWindow(QMainWindow):
                 if len(y_values)>=1:
                     self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
                     y_label="Number of students",x_label="Date")
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'line_plot.png'))
+                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                     self.ui.plot_area_2.setScaledContents(True)
                 else:
                     self.alert = AlertDialog()
@@ -892,7 +843,7 @@ class MainWindow(QMainWindow):
     def export_data_to_csv(self):
         table=self.ui.tableWidget.item(0,0)
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iAttend\\data\\csv_export\\students_data'+date+'.csv'
+        path = 'C:\\ProgramData\\iAttend\\data\\exports\\csv\\students_data'+date+'.csv'
         if table:
             details=self.query_database_for_data()
             data = pd.DataFrame(details)
@@ -909,7 +860,7 @@ class MainWindow(QMainWindow):
     def export_data_to_json(self):
         table=self.ui.tableWidget.item(0,0)
         date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
-        path = 'C:\\ProgramData\\iAttend\\data\\json_export\\students_data'+date+'.json'
+        path = 'C:\\ProgramData\\iAttend\\data\\exports\\json\\students_data'+date+'.json'
         if table:
             details=self.query_database_for_data()
             data=pd.DataFrame(details,columns=['Id','Program','Date_stamp','Time_in','Time_out','Duration','Reference'])
@@ -964,11 +915,8 @@ class MainWindow(QMainWindow):
             if self.ui.search_box.text():
                 db_data=self.fetch_data_from_db(self.ui.search_box.text())
                 if len(db_data) > 0:
-                    list_months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July',
-                     'August', 'September', 'October', 'November', 'December']
-                    start_date = (str(db_data[8])).split('-')
-                    end_date=str(db_data[9]).split('-')
-                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[0]))    
+                    start_date = (str(db_data[8])).split(' ')
+                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[1]))    
                     if student_year <= 1:
                         level = "1st year"
                     elif student_year > 1 and student_year <= 2:
@@ -991,8 +939,7 @@ class MainWindow(QMainWindow):
                     self.ui.db_nationality.setText(db_data[7])
                     self.ui.db_programe.setText(db_data[6])
                     self.ui.db_year.setText(level)
-                    self.ui.db_validity.setText(list_months[int(start_date[1])-1]+","+start_date[0]+
-                    " - "+list_months[int(end_date[1])-1]+","+end_date[0])
+                    self.ui.db_validity.setText(db_data[8]+" - "+db_data[9])
                     self.load_image_from_db(self.ui.search_box.text(),self.ui.db_image_data)
                 else:
                     self.alert_builder("Student details not found. Please enter\nyour details to register!")
@@ -1198,6 +1145,7 @@ class MainWindow(QMainWindow):
         return db_data
 
     def register_student(self):
+
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
         if self.ui.reg_student_ref.text() and self.ui.reg_firstname.text():
@@ -1312,7 +1260,7 @@ class MainWindow(QMainWindow):
             label.setPixmap(QPixmap.fromImage(path))
             label.setScaledContents(True)
         else:
-            label.setPixmap(QPixmap.fromImage(root_path+'img.png'))
+            label.setPixmap(QPixmap.fromImage(root_path+'image.jpg'))
             label.setScaledContents(True)
 
     def search_thread(self):
@@ -1430,19 +1378,19 @@ class MainWindow(QMainWindow):
                  self.alert_builder("Oops! check you internet connection!")         
 
     def loadUi_file(self):
-        self.ui.firstname.setText("")
-        self.ui.middlename.setText("")
-        self.ui.lastname.setText("")
-        self.ui.refrence.setText("")
-        self.ui.index.setText("")
-        self.ui.coledge.setText("")
-        self.ui.nationality.setText("")
-        self.ui.validity.setText("")
-        self.ui.program.setText("")
-        self.ui.year.setText("")
-        self.ui.last_in.setText("")
-        self.ui.last_out.setText("")
-        self.ui.image.setPixmap("")
+        self.ui.firstname.setText("Firstname")
+        self.ui.middlename.setText("Middlename")
+        self.ui.lastname.setText("Lastname")
+        self.ui.refrence.setText("Reference")
+        self.ui.index.setText("Index")
+        self.ui.coledge.setText("College")
+        self.ui.nationality.setText("Nationality")
+        self.ui.validity.setText("Validity")
+        self.ui.program.setText("Program")
+        self.ui.year.setText("Year")
+        self.ui.last_in.setText("Duration")
+        self.ui.last_out.setText("Last seen")
+        self.ui.image.setPixmap(QPixmap(u":/icons/asset/image.svg"))
         self.ui.label_notification.setText("Notification")
 
 
@@ -1457,9 +1405,10 @@ class MainWindow(QMainWindow):
             for data in cursor:
                 last_seen_info.append(data)
         if len(last_seen_info)>=2:
-            details=self.reconstruct_date(last_seen_info[1][0])
-            time = last_seen_info[0][1]
-            duration = last_seen_info[0][2]
+            details=str(last_seen_info[1][0]).split('-')
+            details = datetime.date(int(details[0]),int(details[1]),int(details[2])).strftime("%a %d %b, %Y")
+            time = last_seen_info[1][1]
+            duration = last_seen_info[1][2]
             self.ui.last_out.setText(details+' @ '+time)
             self.ui.last_in.setText(duration)           
         else:
@@ -1695,22 +1644,22 @@ class MainWindow(QMainWindow):
             ip_address = self.ui.camera_ip.text()
             system_attached_camera = self.ui.comboBox.currentText()
             self.network_capture = VideoCapture(ip_address)
-            camera_id = int(system_attached_camera)
-            self.system_capture = VideoCapture(camera_id)
             if ip_address:  
                 if self.network_capture is None or not self.network_capture.isOpened():    
                     self.stop_webcam
                     self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
+                    self.show_alert.content("Oops! check the camera ip address\nconnetion or is already in use.") 
                     self.show_alert.show()
                 else:
                     self.show_info("Hey! wait a second while system\ninitializes camera")
                     self.capture = VideoCapture(ip_address)    
-            elif system_attached_camera:       
+            elif system_attached_camera:
+                camera_id = int(system_attached_camera)
+                self.system_capture = VideoCapture(camera_id)       
                 if self.system_capture is None or not self.system_capture.isOpened():    
                     self.stop_webcam
                     self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
+                    self.show_alert.content("Oops! check the camera for\nconnetion or is already in use.")  
                     self.show_alert.show()
                 else:
                     self.show_info("Hey! wait a second while system\ninitializes camera")
@@ -1718,9 +1667,8 @@ class MainWindow(QMainWindow):
             elif self.system_capture.isOpened() and self.network_capture.isOpened():
                     self.show_info("Hey! wait a second while system\ninitializes camera")
                     self.capture = VideoCapture(camera_id)
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-            self.timer = QTimer()
+            # self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
+            # self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
             self.timer.timeout.connect(self.update_frame)  
             self.timer.start(3)
         else:
@@ -1769,7 +1717,7 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
             self.retreive_student_details(qr_code_data)
-            self.mark_attendance_db()  
+            self.mark_attendance_db()
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
@@ -1787,11 +1735,12 @@ class MainWindow(QMainWindow):
         
     def stop_webcam(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_view.setPixmap(QPixmap())
-        self.ui.camera_view.setAlignment(Qt.AlignCenter)
-        self.timer.stop()
+        self.show_alert.content("Hey! wait a second while system\nrelease camera") 
+        if self.timer is not None: 
+            self.show_alert.show()
+            self.ui.camera_view.setPixmap(QPixmap(" "))
+            self.ui.camera_view.setScaledContents(True)
+            self.timer.stop()
 
     def show_info(self, content:str):
         self.ui.label_notification.setText(content)       
@@ -1806,76 +1755,7 @@ class MainWindow(QMainWindow):
 
     def update_contrast(self, value):
         self.ui.contrast_value.setText(str(value))
-        return value     
-
-
-    def start_webcam_cam_one(self):
-        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-            self.show_alert.show()
-            ip_address = self.ui.camera_one_id_ip.text()
-            system_attached_camera = self.ui.camera_one_comboBox.currentText()
-            camera_id = int(system_attached_camera)
-            self.system_capture = VideoCapture(camera_id)
-            self.network_capture = VideoCapture(ip_address)
-            if ip_address:
-                if self.network_capture is None or not self.network_capture.isOpened():    
-                    self.stop_webcam_cam_one
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(ip_address)
-                
-            elif system_attached_camera:
-                if self.system_capture is None or not self.system_capture.isOpened():    
-                    self.stop_webcam_cam_one
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(camera_id) 
-                        
-            elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.capture = VideoCapture(camera_id) 
-
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame_cam_one)
-            self.timer.start(3)
-        else:
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Oops! your have no active cameras available")  
-            self.show_alert.show()
-
-    def update_frame_cam_one(self): 
-        ret,self.frame = self.capture.read()
-        self.frame = cv2.flip(self.frame,1)
-        self.display_feed_cam_one(self.frame,1)
-        
-    def display_feed_cam_one(self, image, window=1):
-        qformate = QImage.Format_Indexed8
-        if len(image.shape) == 3:
-            if image.shape[2] == 4:
-                qformate = QImage.Format_RGBA8888
-            else:
-                qformate = QImage.Format_RGB888
-        self.procesedImage = QImage(image,image.shape[1],image.shape[0],image.strides[0],qformate)
-        self.procesedImage = self.procesedImage.rgbSwapped()
-        if window == 1:
-            self.ui.camera_1.setPixmap(QPixmap.fromImage(self.procesedImage))
-            self.ui.camera_1.setScaledContents(True)
-    
-    def stop_webcam_cam_one(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_1.setPixmap(QPixmap())
-        self.ui.camera_1.setAlignment(Qt.AlignCenter)
-        self.timer.stop() 
-   
+        return value      
     
     def maximize_restore(self):
         global GLOBAL_STATE
@@ -1903,219 +1783,15 @@ class MainWindow(QMainWindow):
     def mouseMoveEvent(self,event):
         delta = QPoint(event.globalPos() - self.oldPosition)
         self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPosition = event.globalPos()    
- 
-
-    def start_webcam_cam_two(self):
-        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-            self.show_alert.show()
-        
-            ip_address = self.ui.camera_two_id_ip.text()
-            system_attached_camera = self.ui.camera_two_comboBox.currentText()
-            camera_id = int(system_attached_camera)
-            self.system_capture = VideoCapture(camera_id)
-            self.network_capture = VideoCapture(ip_address)
-            if ip_address:
-                if self.network_capture is None or not self.network_capture.isOpened():    
-                    self.stop_webcam_cam_two
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(ip_address)
-                
-            elif system_attached_camera:
-                if self.system_capture is None or not self.system_capture.isOpened():    
-                    self.stop_webcam_cam_two
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(camera_id) 
-                        
-            elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.capture = VideoCapture(camera_id) 
-
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame_cam_two)
-            self.timer.start(3)
-        else:
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Oops! your have no active cameras available")  
-            self.show_alert.show()
-
-    def update_frame_cam_two(self): 
-        ret,self.frame = self.capture.read()
-        self.frame = cv2.flip(self.frame,1)
-        self.display_feed_cam_two(self.frame,2)
-        
-    def display_feed_cam_two(self, image, window=2):
-        qformate = QImage.Format_Indexed8
-        if len(image.shape) == 3:
-            if image.shape[2] == 4:
-                qformate = QImage.Format_RGBA8888
-            else:
-                qformate = QImage.Format_RGB888
-        self.procesedImage = QImage(image,image.shape[1],image.shape[0],image.strides[0],qformate)
-        self.procesedImage = self.procesedImage.rgbSwapped()
-        if window == 2:
-            self.ui.camera_2.setPixmap(QPixmap.fromImage(self.procesedImage))
-            self.ui.camera_2.setScaledContents(True)
-    
-    def stop_webcam_cam_two(self):
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_2.setPixmap(QPixmap())
-        self.ui.camera_2.setAlignment(Qt.AlignCenter)
-        self.timer.stop() 
-
-
-    def start_webcam_cam_three(self):
-        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-            self.show_alert.show()
-            ip_address = self.ui.camera_three_id_ip.text()
-            system_attached_camera = self.ui.camera_three_comboBox.currentText()
-            camera_id = int(system_attached_camera)
-            self.system_capture = VideoCapture(camera_id)
-            self.network_capture = VideoCapture(ip_address)
-            if ip_address:
-                if self.network_capture is None or not self.network_capture.isOpened():    
-                    self.stop_webcam_cam_three
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(ip_address)
-                
-            elif system_attached_camera:
-                if self.system_capture is None or not self.system_capture.isOpened():    
-                    self.stop_webcam_cam_three
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(camera_id) 
-                        
-            elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                    self.capture = VideoCapture(camera_id) 
-
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame_cam_three)
-            self.timer.start(3)
-        else:
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Oops! your have no active cameras available")  
-            self.show_alert.show() 
-    
-    def update_frame_cam_three(self):  
-        ret,self.frame = self.capture.read()
-        self.frame = cv2.flip(self.frame,1)
-        self.display_feed_cam_three(self.frame,window=1)
-        
-    def display_feed_cam_three(self, image, window=1):
-        qformate = QImage.Format_Indexed8
-        if len(image.shape) == 3:
-            if image.shape[2] == 4:
-                qformate = QImage.Format_RGBA8888
-            else:
-                qformate = QImage.Format_RGB888
-        self.procesedImage = QImage(image,image.shape[1],image.shape[0],image.strides[0],qformate)
-        self.procesedImage = self.procesedImage.rgbSwapped()
-        if window == 1:
-            self.ui.camera_3.setPixmap(QPixmap.fromImage(self.procesedImage))
-            self.ui.camera_3.setScaledContents(True)
-    
-    def stop_webcam_cam_three(self):    
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_3.setPixmap(QPixmap())
-        self.ui.camera_3.setAlignment(Qt.AlignCenter)
-        self.timer.stop() 
-
-    def start_webcam_cam_four(self):
-        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Hey! wait a second while system\ninitializes camera")  
-            self.show_alert.show()
-            ip_address = self.ui.camera_four_id_ip.text()
-            system_attached_camera = self.ui.camera_four_comboBox.currentText()
-            camera_id = int(system_attached_camera)
-            self.system_capture = VideoCapture(camera_id)
-            self.network_capture = VideoCapture(ip_address)
-            if ip_address:
-                if self.network_capture is None or not self.network_capture.isOpened():    
-                    self.stop_webcam_cam_four
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(ip_address)
-                
-            elif system_attached_camera:
-                if self.system_capture is None or not self.system_capture.isOpened():    
-                    self.stop_webcam_cam_four
-                    self.show_alert = AlertDialog()
-                    self.show_alert.content("Oops! check the camera for connetion\nor is already in use.")  
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(camera_id) 
-                        
-            elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                self.capture = VideoCapture(camera_id) 
-
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame_cam_four)
-            self.timer.start(3)
-        else:
-            self.show_alert = AlertDialog()
-            self.show_alert.content("Oops! your have no active cameras available")  
-            self.show_alert.show() 
-    
-    def update_frame_cam_four(self):  
-        ret,self.frame = self.capture.read()
-        self.frame = cv2.flip(self.frame,1)
-        self.display_feed_cam_four(self.frame,window=1)
-        
-    def display_feed_cam_four(self, image, window=1):
-        qformate = QImage.Format_Indexed8
-        if len(image.shape) == 3:
-            if image.shape[2] == 4:
-                qformate = QImage.Format_RGBA8888
-            else:
-                qformate = QImage.Format_RGB888
-        self.procesedImage = QImage(image,image.shape[1],image.shape[0],image.strides[0],qformate)
-        self.procesedImage = self.procesedImage.rgbSwapped()
-        if window == 1:
-            self.ui.camera_4.setPixmap(QPixmap.fromImage(self.procesedImage))
-            self.ui.camera_4.setScaledContents(True)
-    
-    def stop_webcam_cam_four(self):    
-        self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_4.setPixmap(QPixmap())
-        self.ui.camera_4.setAlignment(Qt.AlignCenter)
-        self.timer.stop()    
+        self.oldPosition = event.globalPos()     
 
 class Splash_screen(QMainWindow):
     def __init__(self, **kwargs):
         QMainWindow.__init__(self, **kwargs)
         self.ui_splash = Ui_MainWindow()
         self.ui_splash.setupUi(self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
@@ -2124,7 +1800,7 @@ class Splash_screen(QMainWindow):
         self.shadow.setColor(QColor(0, 0, 0, 70))
         self.ui_splash.main.setGraphicsEffect(self.shadow)
 
-        self.timer = QtCore.QTimer(self)
+        self.timer = QTimer(self)
         self.timer.timeout.connect(self.progress)
         self.timer.start(40)
         self.show()
