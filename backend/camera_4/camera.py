@@ -129,12 +129,17 @@ class Camera_Four(QDialog):
     
     def stop_webcam(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.camera_feeds.setPixmap(QPixmap())
-        self.ui.camera_feeds.setAlignment(Qt.AlignCenter)
-        self.timer.stop() 
-    
+        if self.save_timer.isActive():
+            self.show_alert.content("Hey! wait a second while system\nrelease camera") 
+            self.show_alert.show()
+            self.ui.camera_feeds.setPixmap(u":/icons/asset/camera-off.svg")
+            self.ui.camera_feeds.setScaledContents(False)
+            self.save_timer.stop() 
+        else:
+            self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
+            self.show_alert.show()
+           
+            
                      
 
     
