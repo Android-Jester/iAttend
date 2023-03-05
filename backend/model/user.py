@@ -7,5 +7,5 @@ class UserDetails():
     reference: str
     contact: str
     role: str
-    address: str
+    mail: str
    
