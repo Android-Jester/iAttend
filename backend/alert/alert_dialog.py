@@ -9,7 +9,6 @@ class AlertDialog(QDialog):
         self.ui_alert.setupUi(self)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.show()
         self.ui_alert.btn_close.clicked.connect(self.close)
         self.ui_alert.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_alert.btn_close_alert.clicked.connect(self.close)
