@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'exit_cameratUaFwk.ui'
+## Form generated from reading UI file 'exit_cameraJntWfD.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -476,7 +476,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.label.setText("")
-        self.label_2.setText(QCoreApplication.translate("Dialog", u"Check Out", None))
+        self.label_2.setText(QCoreApplication.translate("Dialog", u"Logout", None))
         self.btn_minimize.setText("")
         self.btn_maximize.setText("")
         self.btn_close.setText("")
