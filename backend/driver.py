@@ -306,7 +306,7 @@ class MainWindow(QMainWindow):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         student_list = self.load_batch_data()
         file_path = self.ui.batch_browse.text()
-        date=dt.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
+        date=datetime.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
         name = str('record_logs')
         path = str('C:\\ProgramData\\iAttend\\data\\batch_logs\\'+name+'_'+date+'.txt')
         table=self.ui.tableWidget_batch.item(0,0)
@@ -384,14 +384,14 @@ class MainWindow(QMainWindow):
         self.ui.tableWidget_batch.verticalHeader().setVisible(True)
         row_count = 0
         for data in details:
-            self.ui.tableWidget_batch.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[0])))
-            self.ui.tableWidget_batch.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[1])))
-            self.ui.tableWidget_batch.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
-            self.ui.tableWidget_batch.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
-            self.ui.tableWidget_batch.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
-            self.ui.tableWidget_batch.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
-            self.ui.tableWidget_batch.setItem(row_count,6,QtWidgets.QTableWidgetItem(str(data[6])))
-            self.ui.tableWidget_batch.setItem(row_count,7,QtWidgets.QTableWidgetItem(str(data[7])))
+            self.ui.tableWidget_batch.setItem(row_count,0,QTableWidgetItem(str(data[0])))
+            self.ui.tableWidget_batch.setItem(row_count,1,QTableWidgetItem(str(data[1])))
+            self.ui.tableWidget_batch.setItem(row_count,2,QTableWidgetItem(str(data[2])))
+            self.ui.tableWidget_batch.setItem(row_count,3,QTableWidgetItem(str(data[3])))
+            self.ui.tableWidget_batch.setItem(row_count,4,QTableWidgetItem(str(data[4])))
+            self.ui.tableWidget_batch.setItem(row_count,5,QTableWidgetItem(str(data[5])))
+            self.ui.tableWidget_batch.setItem(row_count,6,QTableWidgetItem(str(data[6])))
+            self.ui.tableWidget_batch.setItem(row_count,7,QTableWidgetItem(str(data[7])))
             row_count = row_count+1
         
     def browse_batch_data(self):
@@ -458,8 +458,8 @@ class MainWindow(QMainWindow):
         path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
         path.touch(exist_ok=True)
         file = open(path)
-        time =dt.now().time().strftime('%I:%M:%S %p')
-        date=dt.now().date().strftime('%a %b %d %Y')
+        time =datetime.now().time().strftime('%I:%M:%S %p')
+        date=datetime.now().date().strftime('%a %b %d %Y')
         if os.path.exists(path):
             with open(path,'a+') as file:
                 file.writelines(f'\n{date},{time}')
@@ -490,7 +490,7 @@ class MainWindow(QMainWindow):
    
     def save_report(self):
         filename = self.ui.file_name.text()
-        date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        date=datetime.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         transformed_name=filename+date
         if self.ui.bar_chart.isChecked():    
             if self.ui.file_name.text():
@@ -842,7 +842,7 @@ class MainWindow(QMainWindow):
 
     def export_data_to_csv(self):
         table=self.ui.tableWidget.item(0,0)
-        date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        date=datetime.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         path = 'C:\\ProgramData\\iAttend\\data\\exports\\csv\\students_data'+date+'.csv'
         if table:
             details=self.query_database_for_data()
@@ -859,7 +859,7 @@ class MainWindow(QMainWindow):
 
     def export_data_to_json(self):
         table=self.ui.tableWidget.item(0,0)
-        date=dt.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        date=datetime.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         path = 'C:\\ProgramData\\iAttend\\data\\exports\\json\\students_data'+date+'.json'
         if table:
             details=self.query_database_for_data()
@@ -900,12 +900,12 @@ class MainWindow(QMainWindow):
         self.ui.tableWidget.verticalHeader().setVisible(True)
         row_count = 0
         for data in details:
-            self.ui.tableWidget.setItem(row_count,1,QtWidgets.QTableWidgetItem(str(data[1])))
-            self.ui.tableWidget.setItem(row_count,2,QtWidgets.QTableWidgetItem(str(data[2])))
-            self.ui.tableWidget.setItem(row_count,3,QtWidgets.QTableWidgetItem(str(data[3])))
-            self.ui.tableWidget.setItem(row_count,4,QtWidgets.QTableWidgetItem(str(data[4])))
-            self.ui.tableWidget.setItem(row_count,5,QtWidgets.QTableWidgetItem(str(data[5])))
-            self.ui.tableWidget.setItem(row_count,0,QtWidgets.QTableWidgetItem(str(data[6])))
+            self.ui.tableWidget.setItem(row_count,1,QTableWidgetItem(str(data[1])))
+            self.ui.tableWidget.setItem(row_count,2,QTableWidgetItem(str(data[2])))
+            self.ui.tableWidget.setItem(row_count,3,QTableWidgetItem(str(data[3])))
+            self.ui.tableWidget.setItem(row_count,4,QTableWidgetItem(str(data[4])))
+            self.ui.tableWidget.setItem(row_count,5,QTableWidgetItem(str(data[5])))
+            self.ui.tableWidget.setItem(row_count,0,QTableWidgetItem(str(data[6])))
             row_count = row_count+1
 
     def fetch_details_for_card_view(self):
@@ -916,7 +916,7 @@ class MainWindow(QMainWindow):
                 db_data=self.fetch_data_from_db(self.ui.search_box.text())
                 if len(db_data) > 0:
                     start_date = (str(db_data[8])).split(' ')
-                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[1]))    
+                    student_year=(int(datetime.now().date().strftime('%Y'))-int(start_date[1]))    
                     if student_year <= 1:
                         level = "1st year"
                     elif student_year > 1 and student_year <= 2:
@@ -1423,7 +1423,7 @@ class MainWindow(QMainWindow):
                 if len(db_data) > 0:
                     start_date = (str(db_data[8])).split(' ')
                     end_date=str(db_data[9]).split(' ')
-                    student_year=(int(dt.now().date().strftime('%Y'))-int(start_date[1]))
+                    student_year=(int(datetime.now().date().strftime('%Y'))-int(start_date[1]))
                     start_month = strptime(start_date[0],'%b')
                     start_month=start_month.tm_mon
                     end_month = strptime(end_date[1],'%b')
@@ -1466,14 +1466,14 @@ class MainWindow(QMainWindow):
         attendance = Attendance(
             self.ui.refrence.text(),
             self.ui.program.text(),
-            str(dt.now().date().strftime("%Y-%m-%d")),
-            str(dt.now().time().strftime("%H:%M:%S")),
-            str(dt.now().time().strftime("%H:%M:%S")),
+            str(datetime.now().date().strftime("%Y-%m-%d")),
+            str(datetime.now().time().strftime("%H:%M:%S")),
+            str(datetime.now().time().strftime("%H:%M:%S")),
             "00:00:00"
         )
         check_state = self.database.check_state()
         details = []
-        date="\'{}\'".format(dt.now().date().strftime("%Y-%m-%d"))
+        date="\'{}\'".format(datetime.now().date().strftime("%Y-%m-%d"))
         if self.ui.refrence.text() != "Reference" and self.ui.refrence.text() !="" :
             data=my_cursor.execute("SELECT st_reference,date_stamp FROM tb_attendance WHERE st_reference="+self.ui.refrence.text()+" and date_stamp="+date)
             data=my_cursor.fetchone()
@@ -1552,9 +1552,8 @@ class MainWindow(QMainWindow):
 
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame_registration)
-            self.timer.start(3)
+            self.saveTimer.timeout.connect(self.update_frame_registration)
+            self.saveTimer.start(3)
         else:
             self.show_alert = AlertDialog()
             self.show_alert.content("Oops! your have no active cameras available")  
@@ -1579,7 +1578,7 @@ class MainWindow(QMainWindow):
         self.text = str(time.strftime("%I:%M:%S %p"))
         ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
-        self.now = dt.now()
+        self.now = datetime.now()
         self.now = self.now.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.now,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(10,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
@@ -1621,11 +1620,15 @@ class MainWindow(QMainWindow):
         
     def stop_webcam_registration(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera")  
-        self.show_alert.show()
-        self.ui.reg_cap_frame.setPixmap(QPixmap())
-        self.ui.reg_cap_frame.setAlignment(Qt.AlignCenter)
-        self.timer.stop()
+        if self.saveTimer.isActive():
+            self.show_alert.content("Hey! wait a second while system\nrelease camera") 
+            self.show_alert.show()
+            self.ui.reg_cap_frame.setPixmap(u":/icons/asset/camera-off.svg")
+            self.ui.reg_cap_frame.setScaledContents(False)
+            self.saveTimer.stop() 
+        else:
+            self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
+            self.show_alert.show()
 
     def update_reg_brigthness(self, value):
         self.ui.reg_bright_value.setText(str(value))
@@ -1694,7 +1697,7 @@ class MainWindow(QMainWindow):
         self.text = str(time.strftime("%I:%M:%S %p"))
         ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
-        self.now = dt.now()
+        self.now = datetime.now()
         self.now = self.now.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.now,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(10,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
@@ -1735,12 +1738,15 @@ class MainWindow(QMainWindow):
         
     def stop_webcam(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\nrelease camera") 
-        if self.timer is not None: 
+        if self.timer.isActive():
+            self.show_alert.content("Hey! wait a second while system\nrelease camera") 
             self.show_alert.show()
-            self.ui.camera_view.setPixmap(QPixmap(" "))
-            self.ui.camera_view.setScaledContents(True)
-            self.timer.stop()
+            self.ui.camera_view.setPixmap(u":/icons/asset/camera-off.svg")
+            self.ui.camera_view.setScaledContents(False)
+            self.timer.stop() 
+        else:
+            self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
+            self.show_alert.show()  
 
     def show_info(self, content:str):
         self.ui.label_notification.setText(content)       
