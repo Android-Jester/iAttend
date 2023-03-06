@@ -5,5 +5,6 @@ class LoginUser():
     reference: str
     username: str
     password: str
+    status: str
 
    
