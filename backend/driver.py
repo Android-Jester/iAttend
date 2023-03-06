@@ -6,6 +6,7 @@
 ##
 ################################################################################
 
+from packages.date import *
 from packages.misc import *
 from packages.mail import *
 from packages.pyqt import *
@@ -176,10 +177,108 @@ class MainWindow(QMainWindow):
         self.ui.btn_user_status.clicked.connect(self.update_user_status)
         self.ui.btn_user_update.clicked.connect(self.update_user_details)
         self.ui.btn_user_clear.clicked.connect(self.clear_user_details)
+        self.ui.btn_user_search.clicked.connect(self.search_user)
+        self.ui.btn_export_data.clicked.connect(self.export_user_data)
+        self.ui.user_start_date.dateTimeChanged.connect(self.date_changed)
         ##################################################################################################
+    
+    def export_user_data(self):
+        table=self.ui.admin_table.item(0,0)
+        date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        path = 'C:\\ProgramData\\iAttend\\data\\exports\\csv\\login_user'+date+'.csv'
+        if table:
+            details=self.search_user()
+            data = pd.DataFrame(details)
+            data.to_csv(path,sep=',',index=False,
+            header=['Id', 'User_reference', 'User_username', 'User_date','User_login', 'User_logout', 'User_duration'])
+            self.alert = AlertDialog()
+            self.alert.content("Hey! data to exported successfully...")
+            self.alert.show()
+        else:
+            self.alert = AlertDialog()
+            self.alert.content("Oops! you have no data to export...")
+            self.alert.show()
 
-    def search_user():
-        pass
+    def date_changed(self):
+        date_ = self.ui.user_start_date.date().toPython()
+        if self.ui.user_range.isChecked():
+             self.ui.user_date.setText(str(date_))
+        else:
+            self.ui.user_end_date.setText(str(date_))
+           
+    def search_user(self):
+        reference = self.ui.user_search.text()
+        if reference:
+            details = self.query_database("SELECT * FROM tb_user_session WHERE user_reference="+reference)
+            user = self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+reference)
+            status = self.query_user_data("SELECT user_status FROM tb_user_credentials WHERE user_reference="+reference)
+            self.render_user_data(details)
+            self.render_user_details(user,status)
+            self.load_user_image(reference,self.ui.user_image)
+            return details
+        elif self.ui.user_date.text() and self.ui.user_range.isChecked():
+            start_date = self.ui.user_date.text()
+            start_date="\'{}\'".format(start_date)
+            stop_date = self.ui.user_end_date.text()
+            stop_date="\'{}\'".format(stop_date)
+            details = self.query_database("SELECT * FROM tb_user_session WHERE user_date BETWEEN "+start_date+" AND "+stop_date)
+            self.render_user_data(details)
+            return details  
+        elif self.ui.user_end_date.text() and not reference:
+            date=self.ui.user_end_date.text()
+            date_stamp="\'{}\'".format(date)
+            details = self.query_database("SELECT * FROM tb_user_session WHERE user_date="+date_stamp)
+            self.render_user_data(details) 
+            return details   
+        else:
+            details = self.query_database("SELECT * FROM tb_user_session")
+            self.render_user_data(details)
+            return details
+            
+    def render_user_details(self,details:list,status:str):
+        name = str(details[2]).split(' ')
+        self.ui.user_firstname.setText(name[0])
+        self.ui.user_middlename.setText(name[1])
+        self.ui.user_lastname.setText(details[3])
+        self.ui.user_reference.setText(details[1])
+        self.ui.user_contact.setText(details[4])
+        self.ui.user_email.setText(details[6])
+        self.ui.user_role.setCurrentText(str(details[5]))
+        self.ui.user_status.setCurrentText(str(status))
+        
+    def load_user_image(self,reference,label):
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        cursor=my_cursor.execute("SELECT user_reference,user_image from tb_user_profile WHERE user_reference="+reference)
+        cursor= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
+        image_data = []
+        path = 'C:\\ProgramData\\iAttend\\data\\images\\user_image.jpg'
+        if cursor:
+            for data in cursor:
+                image_data.append(data)
+            if len(image_data)>0:
+                with open(path,'wb') as image_file:
+                        image_file.write(image_data[1])
+            label.setPixmap(QPixmap.fromImage(path))
+            label.setScaledContents(True)
+
+    def render_user_data(self,details:list):
+        self.ui.admin_table.setAutoScroll(True)
+        self.ui.admin_table.setAutoScrollMargin(2)
+        self.ui.admin_table.setTabKeyNavigation(True)
+        self.ui.admin_table.setRowCount(len(details))
+        self.ui.admin_table.verticalHeader().setVisible(True)
+        row_count = 0
+        for data in details:
+            date=str(data[3]).split('-')
+            date = datetime.date(int(date[0]),int(date[1]),int(date[2])).strftime("%a %d %b, %Y")
+            self.ui.admin_table.setItem(row_count,0,QTableWidgetItem(str(data[2])))
+            self.ui.admin_table.setItem(row_count,1,QTableWidgetItem(str(date)))
+            self.ui.admin_table.setItem(row_count,2,QTableWidgetItem(str(data[4])))
+            self.ui.admin_table.setItem(row_count,3,QTableWidgetItem(str(data[5])))
+            self.ui.admin_table.setItem(row_count,4,QTableWidgetItem(str(data[6])))
+            row_count = row_count+1
     
     def clear_user_details(self):
         self.ui.user_firstname.setText("")
@@ -327,7 +426,6 @@ class MainWindow(QMainWindow):
 
         )
         return session
-        pass
 
     def user_profile_image(self):
         path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
@@ -573,14 +671,6 @@ class MainWindow(QMainWindow):
         self.ui.comboBox.clear()
         self.ui.reg_camera_combo.clear()
         self.open_exit_camera.set_combo_items('')
-        self.open_surveillance_camera_one.set_combo_items('')
-        self.surveillance_camera_three.set_combo_items('')
-        self.surveillance_camera_two.set_combo_items('')
-        self.surveillance_camera_four.set_combo_items('')
-        self.ui.camera_three_comboBox.clear()
-        self.ui.camera_two_comboBox.clear()
-        self.ui.camera_one_comboBox.clear()
-        self.ui.camera_four_comboBox.clear()
         
 
     def get_active_cameras(self,camera:list):
@@ -639,7 +729,7 @@ class MainWindow(QMainWindow):
    
     def save_report(self):
         filename = self.ui.file_name.text()
-        date=datetime.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         transformed_name=filename+date
         if self.ui.bar_chart.isChecked():    
             if self.ui.file_name.text():
@@ -682,7 +772,7 @@ class MainWindow(QMainWindow):
         list =('batch_logs','programs','properties','qr_code',
         'barchart','piechart','linechart','json_export','csv_export',
         'backup','email_details','json_file','samples','settings',
-        'footage','reports','exports')
+        'reports','exports','user')
 
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
@@ -696,13 +786,6 @@ class MainWindow(QMainWindow):
         report = ('piechart','barchart','linegraph','visualize')    
         for item in report:
             path = os.path.join(report_dir,item)
-            if not os.path.exists(path):
-                os.mkdir(path)
-
-        fortage_dir = 'C:\\ProgramData\\iAttend\\data\\footage'
-        footage = ('camera_1','camera_2','camera_3','camera_4','settings')
-        for item in footage:
-            path = os.path.join(fortage_dir,item)
             if not os.path.exists(path):
                 os.mkdir(path)
         
@@ -776,8 +859,7 @@ class MainWindow(QMainWindow):
                 if  os.path.getsize(content_path)==0:
                     content_file.write(report_content)
             content_file.close()        
-    
-
+  
     def get_pichart_data(self):
         query = self.query_database("SELECT DISTINCT program FROM tb_attendance")
         result_set= []
@@ -991,7 +1073,7 @@ class MainWindow(QMainWindow):
 
     def export_data_to_csv(self):
         table=self.ui.tableWidget.item(0,0)
-        date=datetime.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         path = 'C:\\ProgramData\\iAttend\\data\\exports\\csv\\students_data'+date+'.csv'
         if table:
             details=self.query_database_for_data()
@@ -1571,7 +1653,7 @@ class MainWindow(QMainWindow):
                 if len(db_data) > 0:
                     start_date = (str(db_data[8])).split(' ')
                     end_date=str(db_data[9]).split(' ')
-                    student_year=(int(datetime.now().date().strftime('%Y'))-int(start_date[1]))
+                    student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))
                     start_month = strptime(start_date[0],'%b')
                     start_month=start_month.tm_mon
                     end_month = strptime(end_date[1],'%b')
@@ -1614,14 +1696,14 @@ class MainWindow(QMainWindow):
         attendance = Attendance(
             self.ui.refrence.text(),
             self.ui.program.text(),
-            str(datetime.now().date().strftime("%Y-%m-%d")),
-            str(datetime.now().time().strftime("%H:%M:%S")),
-            str(datetime.now().time().strftime("%H:%M:%S")),
+            str(current.now().date().strftime("%Y-%m-%d")),
+            str(current.now().time().strftime("%H:%M:%S")),
+            str(current.now().time().strftime("%H:%M:%S")),
             "00:00:00"
         )
         check_state = self.database.check_state()
         details = []
-        date="\'{}\'".format(datetime.now().date().strftime("%Y-%m-%d"))
+        date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
         if self.ui.refrence.text() != "Reference" and self.ui.refrence.text() !="" :
             data=my_cursor.execute("SELECT st_reference,date_stamp FROM tb_attendance WHERE st_reference="+self.ui.refrence.text()+" and date_stamp="+date)
             data=my_cursor.fetchone()
@@ -1726,7 +1808,7 @@ class MainWindow(QMainWindow):
         self.text = str(time.strftime("%I:%M:%S %p"))
         ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
-        self.now = datetime.now()
+        self.now = current.now()
         self.now = self.now.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.now,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(10,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
@@ -1845,7 +1927,7 @@ class MainWindow(QMainWindow):
         self.text = str(time.strftime("%I:%M:%S %p"))
         ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
-        self.now = datetime.now()
+        self.now = current.now()
         self.now = self.now.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.now,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(10,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
