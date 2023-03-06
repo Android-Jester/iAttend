@@ -320,6 +320,9 @@ padding-left:-4px;
                   <height>30</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Ctrl+P</string>
+                </property>
                 <property name="flat">
                  <bool>true</bool>
                 </property>
@@ -729,6 +732,9 @@ QPushButton:pressed{
                   <height>40</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Ctrl+H</string>
+                </property>
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
@@ -784,6 +790,9 @@ QPushButton:pressed{
                   <height>45</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Ctrl+N</string>
+                </property>
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
@@ -834,6 +843,9 @@ QPushButton:pressed{
                   <width>35</width>
                   <height>42</height>
                  </size>
+                </property>
+                <property name="shortcut">
+                 <string>Ctrl+S</string>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -886,6 +898,9 @@ QPushButton:pressed{
                   <height>40</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Ctrl+B</string>
+                </property>
                 <property name="flat">
                  <bool>true</bool>
                 </property>
@@ -933,6 +948,9 @@ QPushButton:pressed{
                   <width>35</width>
                   <height>43</height>
                  </size>
+                </property>
+                <property name="shortcut">
+                 <string>Ctrl+R</string>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -1030,6 +1048,9 @@ QPushButton:pressed{
                   <height>40</height>
                  </size>
                 </property>
+                <property name="shortcut">
+                 <string>Ctrl+C</string>
+                </property>
                 <property name="flat">
                  <bool>true</bool>
                 </property>
@@ -1077,6 +1098,9 @@ QPushButton:pressed{
                   <width>32</width>
                   <height>40</height>
                  </size>
+                </property>
+                <property name="shortcut">
+                 <string>Ctrl+M</string>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -1130,6 +1154,9 @@ QPushButton:pressed{
                <height>40</height>
               </size>
              </property>
+             <property name="shortcut">
+              <string>Ctrl+B</string>
+             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -1178,6 +1205,9 @@ QPushButton:pressed{
                <height>40</height>
               </size>
              </property>
+             <property name="shortcut">
+              <string>Ctrl+L</string>
+             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -1225,12 +1255,19 @@ QPushButton:pressed{
                <height>40</height>
               </size>
              </property>
+             <property name="shortcut">
+              <string>Ctrl+H</string>
+             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
             </widget>
            </item>
           </layout>
+          <zorder>frame</zorder>
+          <zorder>btn_backup</zorder>
+          <zorder>btn_help</zorder>
+          <zorder>btn_logout</zorder>
          </widget>
         </item>
         <item>
@@ -1905,7 +1942,7 @@ QPushButton:pressed{
                       <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 }
 
@@ -1967,6 +2004,9 @@ QPushButton:pressed{
                        <width>30</width>
                        <height>30</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Shift+C</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2030,6 +2070,9 @@ QPushButton:pressed{
                        <width>30</width>
                        <height>30</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Shift+D</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2274,6 +2317,9 @@ QPushButton:pressed{
                        <width>30</width>
                        <height>30</height>
                       </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Ctrl+D</string>
                      </property>
                      <property name="flat">
                       <bool>true</bool>
@@ -2565,6 +2611,12 @@ QPushButton:pressed{
                              </property>
                              <property name="orientation">
                               <enum>Qt::Horizontal</enum>
+                             </property>
+                             <property name="invertedAppearance">
+                              <bool>false</bool>
+                             </property>
+                             <property name="invertedControls">
+                              <bool>false</bool>
                              </property>
                             </widget>
                            </item>
@@ -2880,6 +2932,9 @@ QPushButton:pressed{
                              <width>30</width>
                              <height>30</height>
                             </size>
+                           </property>
+                           <property name="shortcut">
+                            <string>Ctrl+F</string>
                            </property>
                            <property name="flat">
                             <bool>true</bool>
@@ -3639,7 +3694,7 @@ QPushButton:pressed{
                       <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(35, 35, 35);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -3679,7 +3734,7 @@ QLineEdit:focus{
                       <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(35, 35, 35);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -4652,7 +4707,7 @@ QPushButton:pressed{
                 <number>0</number>
                </property>
                <property name="leftMargin">
-                <number>0</number>
+                <number>3</number>
                </property>
                <property name="topMargin">
                 <number>0</number>
@@ -4665,9 +4720,15 @@ QPushButton:pressed{
                </property>
                <item>
                 <widget class="QFrame" name="left_child">
+                 <property name="minimumSize">
+                  <size>
+                   <width>550</width>
+                   <height>950</height>
+                  </size>
+                 </property>
                  <property name="maximumSize">
                   <size>
-                   <width>450</width>
+                   <width>550</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -4681,9 +4742,9 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>10</y>
-                    <width>441</width>
-                    <height>201</height>
+                    <y>20</y>
+                    <width>531</width>
+                    <height>91</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -4704,19 +4765,89 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Camera one</string>
+                   <string/>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                   </property>
                  </widget>
-                 <widget class="QPushButton" name="btn_camera_one_connect">
+                 <widget class="QLabel" name="firstname_26">
                   <property name="geometry">
                    <rect>
-                    <x>20</x>
-                    <y>150</y>
-                    <width>131</width>
-                    <height>41</height>
+                    <x>10</x>
+                    <y>130</y>
+                    <width>531</width>
+                    <height>391</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="user_search">
+                  <property name="geometry">
+                   <rect>
+                    <x>30</x>
+                    <y>40</y>
+                    <width>331</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Search here?</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_user_search">
+                  <property name="geometry">
+                   <rect>
+                    <x>370</x>
+                    <y>40</y>
+                    <width>151</width>
+                    <height>51</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -4741,11 +4872,11 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Connect</string>
+                   <string>Search</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
+                    <normaloff>:/icons/asset/search.svg</normaloff>:/icons/asset/search.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -4757,13 +4888,47 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QPushButton" name="btn_camera_one_disconnect">
+                 <widget class="QLabel" name="user_image">
                   <property name="geometry">
                    <rect>
-                    <x>160</x>
+                    <x>30</x>
                     <y>150</y>
-                    <width>141</width>
-                    <height>41</height>
+                    <width>241</width>
+                    <height>231</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="pixmap">
+                   <pixmap resource="../resource/asset.qrc">:/icons/asset/image.svg</pixmap>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="user_middlename">
+                  <property name="geometry">
+                   <rect>
+                    <x>290</x>
+                    <y>210</y>
+                    <width>231</width>
+                    <height>51</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -4772,44 +4937,185 @@ QPushButton:pressed{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{
+                   <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
 }
 
-QPushButton:hover{
-	border-radius: 20px;
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
 }
 
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
 }</string>
                   </property>
-                  <property name="text">
-                   <string>Disconnect</string>
+                  <property name="placeholderText">
+                   <string>Middlename</string>
                   </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video-off.svg</normaloff>:/icons/asset/video-off.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
+                  <property name="clearButtonEnabled">
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="camera_one_comboBox">
+                 <widget class="QLineEdit" name="user_lastname">
                   <property name="geometry">
                    <rect>
-                    <x>330</x>
-                    <y>80</y>
-                    <width>111</width>
+                    <x>290</x>
+                    <y>270</y>
+                    <width>231</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Lastname</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="user_firstname">
+                  <property name="geometry">
+                   <rect>
+                    <x>290</x>
+                    <y>150</y>
+                    <width>231</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Firstname</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="user_reference">
+                  <property name="geometry">
+                   <rect>
+                    <x>290</x>
+                    <y>330</y>
+                    <width>231</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Reference</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="user_contact">
+                  <property name="geometry">
+                   <rect>
+                    <x>290</x>
+                    <y>390</y>
+                    <width>231</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Contact</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="user_role">
+                  <property name="geometry">
+                   <rect>
+                    <x>30</x>
+                    <y>390</y>
+                    <width>91</width>
                     <height>50</height>
                    </rect>
                   </property>
@@ -4835,119 +5141,35 @@ QPushButton:pressed{
 	color: rgb(255, 255, 255);
 	border: 2px solid rgb(45, 45, 45);
 	padding-left:10px;
+background-color: rgb(45, 45, 45);
 	border-radius: 10px;
 }</string>
                   </property>
                   <property name="frame">
                    <bool>false</bool>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string>ADMIN</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>GUEST</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>USER</string>
+                   </property>
+                  </item>
                  </widget>
-                 <widget class="QLineEdit" name="camera_one_id_ip">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>80</y>
-                    <width>301</width>
-                    <height>51</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Camera Id/IP ?</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="label_31">
+                 <widget class="QLineEdit" name="user_email">
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>90</y>
-                    <width>41</width>
-                    <height>31</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_camera_two_disconnect">
-                  <property name="geometry">
-                   <rect>
-                    <x>160</x>
-                    <y>390</y>
-                    <width>141</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Disconnect</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video-off.svg</normaloff>:/icons/asset/video-off.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QLineEdit" name="camera_two_id_ip">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>320</y>
-                    <width>301</width>
+                    <y>450</y>
+                    <width>491</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4960,8 +5182,8 @@ QPushButton:pressed{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
+	border-radius:10px;
+	padding-left: 10px;
 }
 
 QLineEdit:hover{
@@ -4973,236 +5195,9 @@ QLineEdit:focus{
 }</string>
                   </property>
                   <property name="placeholderText">
-                   <string>Camera Id/IP ?</string>
+                   <string>example@example.com</string>
                   </property>
                   <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_camera_two_connect">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>390</y>
-                    <width>131</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Connect</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="firstname_26">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>260</y>
-                    <width>441</width>
-                    <height>191</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-	padding-left:10px;
-	padding-top:5px;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Camera two</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="label_32">
-                  <property name="geometry">
-                   <rect>
-                    <x>30</x>
-                    <y>330</y>
-                    <width>41</width>
-                    <height>31</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_camera_three_disconnect">
-                  <property name="geometry">
-                   <rect>
-                    <x>160</x>
-                    <y>630</y>
-                    <width>141</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Disconnect</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video-off.svg</normaloff>:/icons/asset/video-off.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QLineEdit" name="camera_three_id_ip">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>560</y>
-                    <width>301</width>
-                    <height>51</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Camera Id/IP ?</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_camera_three_connect">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>630</y>
-                    <width>131</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Connect</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
                    <bool>true</bool>
                   </property>
                  </widget>
@@ -5210,9 +5205,9 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>500</y>
-                    <width>441</width>
-                    <height>191</height>
+                    <y>540</y>
+                    <width>531</width>
+                    <height>81</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -5233,34 +5228,18 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Camera three</string>
+                   <string/>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                   </property>
                  </widget>
-                 <widget class="QLabel" name="label_33">
+                 <widget class="QPushButton" name="btn_user_register">
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>570</y>
-                    <width>41</width>
-                    <height>31</height>
-                   </rect>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="pixmap">
-                   <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_camera_four_disconnect">
-                  <property name="geometry">
-                   <rect>
-                    <x>160</x>
-                    <y>870</y>
-                    <width>141</width>
+                    <y>560</y>
+                    <width>151</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5286,11 +5265,11 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Disconnect</string>
+                   <string>Register</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video-off.svg</normaloff>:/icons/asset/video-off.svg</iconset>
+                    <normaloff>:/icons/asset/user-plus.svg</normaloff>:/icons/asset/user-plus.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -5302,49 +5281,12 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QLineEdit" name="camera_four_id_ip">
+                 <widget class="QPushButton" name="btn_user_update">
                   <property name="geometry">
                    <rect>
-                    <x>20</x>
-                    <y>800</y>
-                    <width>301</width>
-                    <height>51</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Camera Id/IP ?</string>
-                  </property>
-                  <property name="clearButtonEnabled">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_camera_four_connect">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>870</y>
-                    <width>131</width>
+                    <x>200</x>
+                    <y>560</y>
+                    <width>151</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5370,11 +5312,58 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Connect</string>
+                   <string>Update</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
+                    <normaloff>:/icons/asset/user.svg</normaloff>:/icons/asset/user.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_user_status">
+                  <property name="geometry">
+                   <rect>
+                    <x>370</x>
+                    <y>560</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Status</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/lock.svg</normaloff>:/icons/asset/lock.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -5390,9 +5379,9 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>740</y>
-                    <width>441</width>
-                    <height>191</height>
+                    <y>840</y>
+                    <width>531</width>
+                    <height>91</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -5413,34 +5402,194 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Camera four</string>
+                   <string/>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                   </property>
                  </widget>
-                 <widget class="QLabel" name="label_34">
+                 <widget class="QLineEdit" name="user_image_file">
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>810</y>
-                    <width>41</width>
-                    <height>31</height>
+                    <y>860</y>
+                    <width>351</width>
+                    <height>51</height>
                    </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>File path</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="user_image_browse">
+                  <property name="geometry">
+                   <rect>
+                    <x>400</x>
+                    <y>860</y>
+                    <width>121</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Browse</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/upload.svg</normaloff>:/icons/asset/upload.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="firstname_29">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>640</y>
+                    <width>531</width>
+                    <height>81</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
                   </property>
-                  <property name="pixmap">
-                   <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                   </property>
                  </widget>
-                 <widget class="QPushButton" name="btn_cast_cam_one">
+                 <widget class="QPushButton" name="btn_mail_user_details">
                   <property name="geometry">
                    <rect>
-                    <x>310</x>
-                    <y>150</y>
-                    <width>131</width>
+                    <x>30</x>
+                    <y>760</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>41</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>41</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Mail</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/send.svg</normaloff>:/icons/asset/send.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_user_clear">
+                  <property name="geometry">
+                   <rect>
+                    <x>370</x>
+                    <y>760</y>
+                    <width>151</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5466,11 +5615,11 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Cast</string>
+                   <string>Clear</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
+                    <normaloff>:/icons/asset/delete.svg</normaloff>:/icons/asset/delete.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -5482,97 +5631,229 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="camera_two_comboBox">
+                 <widget class="QDateEdit" name="user_start_date">
                   <property name="geometry">
                    <rect>
-                    <x>330</x>
-                    <y>320</y>
-                    <width>111</width>
-                    <height>50</height>
+                    <x>170</x>
+                    <y>660</y>
+                    <width>141</width>
+                    <height>41</height>
                    </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>50</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>50</height>
-                   </size>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>10</pointsize>
+                    <pointsize>12</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QComboBox{
+                   <string notr="true">QDateEdit{
 	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}</string>
+background-color: rgb(45, 45, 45);
+border: 2px solid rgb(45, 45, 45);
+padding-left:10px;
+border-radius: 10px;
+}
+
+</string>
                   </property>
                   <property name="frame">
                    <bool>false</bool>
                   </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="accelerated">
+                   <bool>true</bool>
+                  </property>
+                  <property name="correctionMode">
+                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                  </property>
+                  <property name="showGroupSeparator" stdset="0">
+                   <bool>false</bool>
+                  </property>
+                  <property name="dateTime">
+                   <datetime>
+                    <hour>0</hour>
+                    <minute>0</minute>
+                    <second>0</second>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </datetime>
+                  </property>
+                  <property name="minimumDate">
+                   <date>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </date>
+                  </property>
+                  <property name="displayFormat">
+                   <string>yyyy-MM-dd</string>
+                  </property>
+                  <property name="calendarPopup">
+                   <bool>true</bool>
+                  </property>
+                  <property name="timeSpec">
+                   <enum>Qt::LocalTime</enum>
+                  </property>
+                  <property name="date">
+                   <date>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </date>
+                  </property>
                  </widget>
-                 <widget class="QPushButton" name="btn_cast_cam_one_2">
+                 <widget class="QLabel" name="db_firstname_2">
                   <property name="geometry">
                    <rect>
-                    <x>310</x>
+                    <x>110</x>
+                    <y>660</y>
+                    <width>51</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MS Shell Dlg 2</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Start</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="db_firstname_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>320</x>
+                    <y>660</y>
+                    <width>51</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MS Shell Dlg 2</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>End</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                 <widget class="QDateEdit" name="user_end_date">
+                  <property name="geometry">
+                   <rect>
+                    <x>380</x>
+                    <y>660</y>
+                    <width>141</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QDateEdit{
+	color: rgb(255, 255, 255);
+background-color: rgb(45, 45, 45);
+border: 2px solid rgb(45, 45, 45);
+padding-left:10px;
+border-radius: 10px;
+}
+
+</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="accelerated">
+                   <bool>true</bool>
+                  </property>
+                  <property name="correctionMode">
+                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                  </property>
+                  <property name="dateTime">
+                   <datetime>
+                    <hour>0</hour>
+                    <minute>0</minute>
+                    <second>0</second>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </datetime>
+                  </property>
+                  <property name="minimumDate">
+                   <date>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </date>
+                  </property>
+                  <property name="displayFormat">
+                   <string>yyyy-MM-dd</string>
+                  </property>
+                  <property name="calendarPopup">
+                   <bool>true</bool>
+                  </property>
+                  <property name="timeSpec">
+                   <enum>Qt::LocalTime</enum>
+                  </property>
+                  <property name="date">
+                   <date>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </date>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="user_status">
+                  <property name="geometry">
+                   <rect>
+                    <x>130</x>
                     <y>390</y>
-                    <width>131</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Cast</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QComboBox" name="camera_three_comboBox">
-                  <property name="geometry">
-                   <rect>
-                    <x>330</x>
-                    <y>560</y>
-                    <width>111</width>
+                    <width>141</width>
                     <height>50</height>
                    </rect>
                   </property>
@@ -5598,19 +5879,30 @@ QPushButton:pressed{
 	color: rgb(255, 255, 255);
 	border: 2px solid rgb(45, 45, 45);
 	padding-left:10px;
+background-color: rgb(45, 45, 45);
 	border-radius: 10px;
 }</string>
                   </property>
                   <property name="frame">
                    <bool>false</bool>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string>ACTIVATED</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>DEACTIVATED</string>
+                   </property>
+                  </item>
                  </widget>
-                 <widget class="QPushButton" name="btn_cast_cam_three">
+                 <widget class="QRadioButton" name="user_range">
                   <property name="geometry">
                    <rect>
-                    <x>310</x>
-                    <y>630</y>
-                    <width>131</width>
+                    <x>30</x>
+                    <y>660</y>
+                    <width>81</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5620,84 +5912,69 @@ QPushButton:pressed{
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QPushButton{
+                   <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(35, 35, 35);</string>
+                  </property>
+                  <property name="text">
+                   <string>Range</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="firstname_30">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>740</y>
+                    <width>531</width>
+                    <height>81</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
 	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
+	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
+	padding-left:10px;
+	padding-top:5px;
 }</string>
                   </property>
                   <property name="text">
-                   <string>Cast</string>
+                   <string/>
                   </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="camera_four_comboBox">
+                 <widget class="QPushButton" name="btn_export_data">
                   <property name="geometry">
                    <rect>
-                    <x>330</x>
-                    <y>800</y>
-                    <width>111</width>
-                    <height>50</height>
+                    <x>200</x>
+                    <y>760</y>
+                    <width>151</width>
+                    <height>41</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>50</height>
+                    <height>41</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>50</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}</string>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_cast_cam_four">
-                  <property name="geometry">
-                   <rect>
-                    <x>310</x>
-                    <y>870</y>
-                    <width>131</width>
                     <height>41</height>
-                   </rect>
+                   </size>
                   </property>
                   <property name="font">
                    <font>
@@ -5721,11 +5998,11 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Cast</string>
+                   <string>Export</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/cast.svg</normaloff>:/icons/asset/cast.svg</iconset>
+                    <normaloff>:/icons/asset/file-text.svg</normaloff>:/icons/asset/file-text.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -5737,34 +6014,36 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <zorder>firstname_28</zorder>
-                 <zorder>firstname_27</zorder>
+                 <zorder>firstname_30</zorder>
                  <zorder>firstname_26</zorder>
                  <zorder>firstname_25</zorder>
-                 <zorder>btn_camera_one_connect</zorder>
-                 <zorder>btn_camera_one_disconnect</zorder>
-                 <zorder>camera_one_comboBox</zorder>
-                 <zorder>camera_one_id_ip</zorder>
-                 <zorder>label_31</zorder>
-                 <zorder>btn_camera_two_disconnect</zorder>
-                 <zorder>camera_two_id_ip</zorder>
-                 <zorder>btn_camera_two_connect</zorder>
-                 <zorder>label_32</zorder>
-                 <zorder>btn_camera_three_disconnect</zorder>
-                 <zorder>camera_three_id_ip</zorder>
-                 <zorder>btn_camera_three_connect</zorder>
-                 <zorder>label_33</zorder>
-                 <zorder>btn_camera_four_disconnect</zorder>
-                 <zorder>camera_four_id_ip</zorder>
-                 <zorder>btn_camera_four_connect</zorder>
-                 <zorder>label_34</zorder>
-                 <zorder>btn_cast_cam_one</zorder>
-                 <zorder>camera_two_comboBox</zorder>
-                 <zorder>btn_cast_cam_one_2</zorder>
-                 <zorder>camera_three_comboBox</zorder>
-                 <zorder>btn_cast_cam_three</zorder>
-                 <zorder>camera_four_comboBox</zorder>
-                 <zorder>btn_cast_cam_four</zorder>
+                 <zorder>user_search</zorder>
+                 <zorder>btn_user_search</zorder>
+                 <zorder>user_image</zorder>
+                 <zorder>user_middlename</zorder>
+                 <zorder>user_lastname</zorder>
+                 <zorder>user_firstname</zorder>
+                 <zorder>user_reference</zorder>
+                 <zorder>user_contact</zorder>
+                 <zorder>user_role</zorder>
+                 <zorder>user_email</zorder>
+                 <zorder>firstname_27</zorder>
+                 <zorder>btn_user_register</zorder>
+                 <zorder>btn_user_update</zorder>
+                 <zorder>btn_user_status</zorder>
+                 <zorder>firstname_28</zorder>
+                 <zorder>user_image_file</zorder>
+                 <zorder>user_image_browse</zorder>
+                 <zorder>firstname_29</zorder>
+                 <zorder>btn_mail_user_details</zorder>
+                 <zorder>btn_user_clear</zorder>
+                 <zorder>user_start_date</zorder>
+                 <zorder>db_firstname_2</zorder>
+                 <zorder>db_firstname_3</zorder>
+                 <zorder>user_end_date</zorder>
+                 <zorder>user_status</zorder>
+                 <zorder>user_range</zorder>
+                 <zorder>btn_export_data</zorder>
                 </widget>
                </item>
                <item>
@@ -5786,82 +6065,11 @@ QPushButton:pressed{
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>10</number>
+                   <number>0</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
-                  <item>
-                   <widget class="QFrame" name="camera_down">
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_7">
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <widget class="QLabel" name="camera_1">
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>20</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel{
-	background-color: rgb(35, 35, 35);
-	border-radius:10px;
-	color: rgb(255, 255, 255);
-}</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QLabel" name="camera_2">
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>20</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel{
-	background-color: rgb(35, 35, 35);
-	border-radius:10px;
-	color: rgb(255, 255, 255);
-}</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
                   <item>
                    <widget class="QFrame" name="camera_top">
                     <property name="frameShape">
@@ -5875,59 +6083,90 @@ QPushButton:pressed{
                       <number>0</number>
                      </property>
                      <item>
-                      <widget class="QLabel" name="camera_3">
+                      <widget class="QTableWidget" name="admin_table">
                        <property name="font">
                         <font>
-                         <family>Arial</family>
-                         <pointsize>20</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
+                         <pointsize>10</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QLabel{
-	background-color: rgb(35, 35, 35);
-	border-radius:10px;
+                        <string notr="true">QTableWidget{
+	background-color: rgb(45, 45, 45);
 	color: rgb(255, 255, 255);
 }</string>
                        </property>
-                       <property name="text">
-                        <string/>
+                       <property name="frameShape">
+                        <enum>QFrame::NoFrame</enum>
                        </property>
-                       <property name="pixmap">
-                        <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
+                       <property name="frameShadow">
+                        <enum>QFrame::Plain</enum>
                        </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
+                       <property name="editTriggers">
+                        <set>QAbstractItemView::NoEditTriggers</set>
                        </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QLabel" name="camera_4">
-                       <property name="font">
-                        <font>
-                         <family>Arial</family>
-                         <pointsize>20</pointsize>
-                         <weight>75</weight>
-                         <bold>true</bold>
-                        </font>
+                       <property name="sortingEnabled">
+                        <bool>true</bool>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel{
-	background-color: rgb(35, 35, 35);
-	border-radius:10px;
-	color: rgb(255, 255, 255);
-}</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="pixmap">
-                        <pixmap resource="../resource/asset.qrc">:/icons/asset/camera-off.svg</pixmap>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
+                       <attribute name="horizontalHeaderDefaultSectionSize">
+                        <number>170</number>
+                       </attribute>
+                       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                        <bool>true</bool>
+                       </attribute>
+                       <attribute name="horizontalHeaderStretchLastSection">
+                        <bool>true</bool>
+                       </attribute>
+                       <column>
+                        <property name="text">
+                         <string>Username</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Date</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                          <stylestrategy>PreferAntialias</stylestrategy>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Login</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Logout</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Duration</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                       </column>
                       </widget>
                      </item>
                     </layout>
@@ -6030,7 +6269,7 @@ QPushButton:pressed{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6098,7 +6337,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6135,7 +6374,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6172,7 +6411,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6209,7 +6448,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6246,7 +6485,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6283,7 +6522,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 10px;
 }
 
@@ -6320,7 +6559,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 }
 
@@ -6357,7 +6596,7 @@ QLineEdit:focus{
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 }
 
@@ -7014,7 +7253,7 @@ background-color: rgb(35, 35, 35);</string>
                    <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -7542,7 +7781,7 @@ QPushButton:pressed{
                                   <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 background-color: rgb(45, 45, 45);
 }
@@ -8397,7 +8636,7 @@ QLineEdit:focus{
                       <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 }
 
@@ -8453,7 +8692,7 @@ QLineEdit:focus{
                       <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 }
 
@@ -8509,7 +8748,7 @@ QLineEdit:focus{
                       <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 50px;
 }
 

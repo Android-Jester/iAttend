@@ -172,8 +172,162 @@ class MainWindow(QMainWindow):
         self.ui.btn_batch_mail.clicked.connect(self.send_code_thread)
 
         self.ui.user_image_browse.clicked.connect(self.user_profile_image)
-
+        self.ui.btn_user_register.clicked.connect(self.register_user)
+        self.ui.btn_user_status.clicked.connect(self.update_user_status)
+        self.ui.btn_user_update.clicked.connect(self.update_user_details)
+        self.ui.btn_user_clear.clicked.connect(self.clear_user_details)
         ##################################################################################################
+
+    def search_user():
+        pass
+    
+    def clear_user_details(self):
+        self.ui.user_firstname.setText("")
+        self.ui.user_middlename.setText("")
+        self.ui.user_lastname.setText("")
+        self.ui.user_reference.setText("")
+        self.ui.user_contact.setText("")
+        self.ui.user_email.setText("")
+        self.ui.user_image.setPixmap(u":/icons/asset/image.svg")
+        self.ui.user_image.setScaledContents(False)
+
+    def query_user_data(self,query):
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        detail =my_cursor.execute(query)
+        detail= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
+        db_data = []
+        if detail:
+            for data in detail:
+                db_data.append(data)
+        return db_data
+
+    def update_user_status(self):
+        check_state = self.database.check_state()
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        self.alert = AlertDialog()
+        if self.ui.user_reference.text():
+            if check_state == True:
+                my_cursor.execute("UPDATE tb_user_credentials SET user_status =? WHERE user_reference=?",
+                (self.ui.user_status.currentText(),self.ui.user_reference.text()))
+                db.commit()
+                my_cursor.close()
+                self.alert.content(f"User with {self.ui.user_reference.text()} status updated\nto {self.ui.user_status.currentText()}")
+                self.alert.show()
+            else:
+                my_cursor.execute("UPDATE tb_user_credentials SET user_status =%s WHERE user_reference=%s",
+                (self.ui.user_status.currentText(),self.ui.user_reference.text()))
+                db.commit()
+                my_cursor.close()
+                self.alert.content(f"User with {self.ui.user_reference.text()} status updated\nto {self.ui.user_status.currentText()}")
+                self.alert.show()
+        else: 
+            self.alert.content("Oops! can't change status for\nundefined user.")
+            self.alert.show()
+
+    def update_user_details(self):
+        check_state = self.database.check_state()
+        user = self.set_user_details()
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        self.alert = AlertDialog()
+        if self.ui.user_reference.text() and self.ui.user_contact.text() and self.ui.user_email.text():
+            if check_state == True:
+                my_cursor.execute("UPDATE tb_user_details SET user_contact =?, user_role =?, user_mail =? WHERE user_reference=?",
+                (user.contact,user.role,user.mail,user.reference))
+                db.commit()
+                my_cursor.close()
+                self.alert.content(f"User with {self.ui.user_reference.text()} some details\nupdated")
+                self.alert.show()
+            else:
+                my_cursor.execute("UPDATE tb_user_details SET user_contact =%s, user_role =%s, user_mail =%s WHERE user_reference=%s",
+                (user.contact,user.role,user.mail,user.reference))
+                db.commit()
+                my_cursor.close()
+                self.alert.content(f"User with {self.ui.user_reference.text()} some details\nupdated")
+                self.alert.show()
+        else: 
+            self.alert.content("Oops! can't change status for\nundefined user.")
+            self.alert.show()
+
+    def register_user(self):
+        self.alert = AlertDialog()
+        user = self.set_user_details()
+        credentials = self.set_user_credentials()
+        check_state=self.database.check_state()
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\image.jpg'
+        if self.ui.user_reference.text() and self.ui.user_contact.text() and self.ui.user_firstname.text():
+            details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+user.reference)
+            if not details:
+                if check_state == True:
+                    my_cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (?,?,?,?,?,?)",
+                    (user.reference,user.firstname,user.lastname,user.contact,user.role,user.mail)) 
+                    my_cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (?,?,?,?)",
+                    (credentials.reference,credentials.username,credentials.password,credentials.status))    
+                    db.commit()
+                    if self.ui.user_image_file.text():
+                        with open(self.ui.user_image_file.text(), 'rb') as image_data:
+                            data = image_data.read()
+                        my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(?,?)",(user.reference,data))
+                        db.commit()
+                    else:
+                        with open(root_path, 'rb') as image_data:
+                            data = image_data.read()
+                        my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(?,?)",(user.reference,data))
+                        db.commit()
+                    my_cursor.close()         
+                else:   
+                    my_cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (%s,%s,%s,%s,%s,%s)",
+                    (user.reference,user.firstname,user.lastname,user.contact,user.role,user.mail))   
+                    my_cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (%s,%s,%s,%s)",
+                    (credentials.reference,credentials.username,credentials.password,credentials.status))
+                    db.commit()
+                    if self.ui.user_image_file.text():
+                        with open(self.ui.user_image_file.text(), 'rb') as image_data:
+                            data = image_data.read()
+                        my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(%s,%s)",(user.reference,data))
+                        db.commit()
+                    else:
+                        with open(root_path, 'rb') as image_data:
+                            data = image_data.read()
+                        my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(%s,%s)",(user.reference,data))
+                        db.commit()
+                    my_cursor.close()
+            else:
+                self.alert.content(f"User with {user.reference} already exist.")
+                self.alert.show() 
+        else:
+            self.alert.content(f"Oops! something wrong.")
+            self.alert.show()
+
+    def set_user_details(self):
+        user = UserDetails(
+            self.ui.user_firstname.text()+" "+self.ui.user_middlename.text(),
+            self.ui.user_lastname.text(),
+            self.ui.user_reference.text(),
+            self.ui.user_contact.text(),
+            self.ui.user_role.currentText(),
+            self.ui.user_email.text()
+        )
+        return user
+
+    def set_user_credentials(self):
+        user = self.set_user_details()
+        credentials = LoginUser(
+            user.reference,
+            user.firstname,
+            user.contact,
+            self.ui.user_status.currentText()
+        )
+        return credentials
+    
+    def set_user_session(self):
+        session = UserDetails(
+
+        )
+        return session
+        pass
 
     def user_profile_image(self):
         path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
@@ -181,11 +335,6 @@ class MainWindow(QMainWindow):
             self.ui.user_image_file.setText(path[0])
             self.ui.user_image.setPixmap(QPixmap.fromImage(path[0]))
             self.ui.user_image.setScaledContents(True)
-        
-    def logout_thread(self):
-        self.pool = QThreadPool()
-        self.work = SendThread(self.logout_thread)
-        self.pool.start(self.work)
         
     def logout(self):
         self.main = MainWindow()
@@ -1145,7 +1294,6 @@ class MainWindow(QMainWindow):
         return db_data
 
     def register_student(self):
-
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
         if self.ui.reg_student_ref.text() and self.ui.reg_firstname.text():
