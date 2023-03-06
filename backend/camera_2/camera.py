@@ -1,4 +1,5 @@
 
+from packages.date import *
 from packages.processing import *
 from packages.system import *
 from packages.pyqt import *
@@ -88,9 +89,8 @@ class Camera_Two(QDialog):
             
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,300)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,300)
-            self.timer = QTimer()
-            self.timer.timeout.connect(self.update_frame)
-            self.timer.start(3)
+            self.save_timer.timeout.connect(self.update_frame)
+            self.save_timer.start(3)
         else:
             self.show_alert = AlertDialog()
             self.show_alert.content("Oops! your have no active cameras available")  
@@ -107,7 +107,7 @@ class Camera_Two(QDialog):
         self.text = str(time.strftime("%I:%M:%S %p"))
         ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
-        self.date = datetime.now() 
+        self.date = current.now() 
         self.date = self.date.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.date,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(10,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
