@@ -25,8 +25,7 @@ def create_tb_attendance():
             time_in varchar(30) NOT NULL,
             time_out varchar(30) NOT NULL,
             duration varchar(30) NOT NULL,
-            st_reference INT NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(reference)
+            st_reference INT NOT NULL
             )
         """
     return sql
@@ -99,9 +98,7 @@ def create_tb_user_sessions():
             user_date varchar(25) NOT NULL,
             user_login varchar(35) NOT NULL, 
             user_logout varchar(25) NOT NULL,
-            user_duration varchar(25) NOT NULL,
-            FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference),
-            FOREIGN KEY(user_username) REFERENCES tb_user_credentials(user_username)
+            user_duration varchar(25) NOT NULL
         )
     """
     return sql
@@ -134,8 +131,7 @@ def create_tb_attendance_postgres():
             time_in varchar(30) NOT NULL,
             time_out varchar(30) NOT NULL,
             duration varchar(30) NOT NULL,
-            st_reference INT NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(st_reference)
+            st_reference INT NOT NULL
             )
         """
     return sql
@@ -208,9 +204,7 @@ def create_tb_user_sessions_postgres():
             user_date varchar(25) NOT NULL,
             user_login varchar(35) NOT NULL, 
             user_logout varchar(25) NOT NULL,
-            user_duration varchar(25) NOT NULL,
-            FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference),
-            FOREIGN KEY(user_username) REFERENCES tb_user_credentials(user_username)
+            user_duration varchar(25) NOT NULL
         )
     """
     return sql
@@ -243,8 +237,7 @@ def create_tb_attendance_sqlite():
             time_in TEXT NOT NULL,
             time_out TEXT NOT NULL,
             duration TEXT NOT NULL,
-            st_reference INT NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(reference)
+            st_reference INT NOT NULL
             )
         """
     return sql
@@ -317,9 +310,7 @@ def create_tb_user_sessions_sqlite():
             user_date varchar(25) NOT NULL,
             user_login varchar(35) NOT NULL, 
             user_logout varchar(25) NOT NULL,
-            user_duration varchar(25) NOT NULL,
-            FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference),
-            FOREIGN KEY(user_username) REFERENCES tb_user_credentials(user_username)
+            user_duration varchar(25) NOT NULL
         )
     """
     return sql
