@@ -21,6 +21,7 @@ class ExitCameraFeed(QDialog):
         QDialog.__init__(self)
         self.ui_exit_camera = Ui_Dialog()
         self.ui_exit_camera.setupUi(self)
+        self.timer = QTimer()
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_exit_camera.btn_close.clicked.connect(self.close)
@@ -105,6 +106,7 @@ class ExitCameraFeed(QDialog):
                     winsound.Beep(1000,100)
                     return "Hey! your have successfully logged out"
                 else:
+                    winsound.Beep(1000,100)
                     return "Oops! you are already logged out!"
         else:
              return "Oops! student details not found."
@@ -142,7 +144,6 @@ class ExitCameraFeed(QDialog):
 
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-            self.timer = QTimer()
             self.timer.timeout.connect(self.update_frame)
             self.timer.start(3)
         else:
@@ -208,8 +209,12 @@ class ExitCameraFeed(QDialog):
         
     def stop_webcam(self):
         self.show_alert = AlertDialog()
-        self.show_alert.content("Hey! wait a second while system\release camera")  
-        self.show_alert.show()
-        self.ui_exit_camera.camera_feeds.setPixmap(QPixmap())
-        self.ui_exit_camera.camera_feeds.setAlignment(Qt.AlignCenter)
-        self.timer.stop()
+        if self.timer.isActive():
+            self.show_alert.content("Hey! wait a second while system\nrelease camera") 
+            self.show_alert.show()
+            self.ui_exit_camera.camera_feeds.setPixmap(u":/icons/asset/camera-off.svg")
+            self.ui_exit_camera.camera_feeds.setScaledContents(False)
+            self.timer.stop() 
+        else:
+            self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
+            self.show_alert.show() 
