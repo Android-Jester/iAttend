@@ -222,7 +222,7 @@ padding-left:5px;</string>
                <widget class="QLabel" name="label_4">
                 <property name="minimumSize">
                  <size>
-                  <width>835</width>
+                  <width>700</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -252,7 +252,7 @@ padding-left:5px;</string>
                <widget class="QLabel" name="label_6">
                 <property name="minimumSize">
                  <size>
-                  <width>260</width>
+                  <width>400</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -277,7 +277,7 @@ padding-left:5px;</string>
 }</string>
                 </property>
                 <property name="text">
-                 <string>session@username 00:00:00 PM</string>
+                 <string>session@username  00:00:00 PM</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -1700,7 +1700,7 @@ QPushButton:pressed{
                       <rect>
                        <x>20</x>
                        <y>430</y>
-                       <width>101</width>
+                       <width>91</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -1729,9 +1729,9 @@ QPushButton:pressed{
                     <widget class="QLabel" name="last_out">
                      <property name="geometry">
                       <rect>
-                       <x>130</x>
+                       <x>120</x>
                        <y>430</y>
-                       <width>241</width>
+                       <width>251</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -3132,7 +3132,7 @@ QLineEdit:focus{
                       <rect>
                        <x>20</x>
                        <y>440</y>
-                       <width>101</width>
+                       <width>91</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -3356,9 +3356,9 @@ QLineEdit:focus{
                     <widget class="QLabel" name="db_programe">
                      <property name="geometry">
                       <rect>
-                       <x>130</x>
+                       <x>120</x>
                        <y>440</y>
-                       <width>351</width>
+                       <width>361</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -5169,7 +5169,7 @@ background-color: rgb(45, 45, 45);
                    <rect>
                     <x>30</x>
                     <y>450</y>
-                    <width>491</width>
+                    <width>401</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -5634,7 +5634,7 @@ QPushButton:pressed{
                  <widget class="QDateEdit" name="user_start_date">
                   <property name="geometry">
                    <rect>
-                    <x>170</x>
+                    <x>80</x>
                     <y>660</y>
                     <width>141</width>
                     <height>41</height>
@@ -5675,144 +5675,6 @@ border-radius: 10px;
                   </property>
                   <property name="showGroupSeparator" stdset="0">
                    <bool>false</bool>
-                  </property>
-                  <property name="dateTime">
-                   <datetime>
-                    <hour>0</hour>
-                    <minute>0</minute>
-                    <second>0</second>
-                    <year>2023</year>
-                    <month>1</month>
-                    <day>1</day>
-                   </datetime>
-                  </property>
-                  <property name="minimumDate">
-                   <date>
-                    <year>2023</year>
-                    <month>1</month>
-                    <day>1</day>
-                   </date>
-                  </property>
-                  <property name="displayFormat">
-                   <string>yyyy-MM-dd</string>
-                  </property>
-                  <property name="calendarPopup">
-                   <bool>true</bool>
-                  </property>
-                  <property name="timeSpec">
-                   <enum>Qt::LocalTime</enum>
-                  </property>
-                  <property name="date">
-                   <date>
-                    <year>2023</year>
-                    <month>1</month>
-                    <day>1</day>
-                   </date>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="db_firstname_2">
-                  <property name="geometry">
-                   <rect>
-                    <x>110</x>
-                    <y>660</y>
-                    <width>51</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>MS Shell Dlg 2</family>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 5px;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Start</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="db_firstname_3">
-                  <property name="geometry">
-                   <rect>
-                    <x>320</x>
-                    <y>660</y>
-                    <width>51</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>MS Shell Dlg 2</family>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 5px;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>End</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                 <widget class="QDateEdit" name="user_end_date">
-                  <property name="geometry">
-                   <rect>
-                    <x>380</x>
-                    <y>660</y>
-                    <width>141</width>
-                    <height>41</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>12</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QDateEdit{
-	color: rgb(255, 255, 255);
-background-color: rgb(45, 45, 45);
-border: 2px solid rgb(45, 45, 45);
-padding-left:10px;
-border-radius: 10px;
-}
-
-</string>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                  <property name="readOnly">
-                   <bool>false</bool>
-                  </property>
-                  <property name="buttonSymbols">
-                   <enum>QAbstractSpinBox::UpDownArrows</enum>
-                  </property>
-                  <property name="accelerated">
-                   <bool>true</bool>
-                  </property>
-                  <property name="correctionMode">
-                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
                   </property>
                   <property name="dateTime">
                    <datetime>
@@ -5902,7 +5764,7 @@ background-color: rgb(45, 45, 45);
                    <rect>
                     <x>30</x>
                     <y>660</y>
-                    <width>81</width>
+                    <width>41</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5916,7 +5778,7 @@ background-color: rgb(45, 45, 45);
 background-color: rgb(35, 35, 35);</string>
                   </property>
                   <property name="text">
-                   <string>Range</string>
+                   <string>R</string>
                   </property>
                   <property name="autoExclusive">
                    <bool>false</bool>
@@ -6014,6 +5876,112 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
+                 <widget class="QLineEdit" name="user_end_date">
+                  <property name="geometry">
+                   <rect>
+                    <x>230</x>
+                    <y>660</y>
+                    <width>141</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Date</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="user_date">
+                  <property name="geometry">
+                   <rect>
+                    <x>380</x>
+                    <y>660</y>
+                    <width>141</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Date</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="user_access">
+                  <property name="geometry">
+                   <rect>
+                    <x>440</x>
+                    <y>450</y>
+                    <width>81</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+border-radius:10px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Access</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
                  <zorder>firstname_30</zorder>
                  <zorder>firstname_26</zorder>
                  <zorder>firstname_25</zorder>
@@ -6038,12 +6006,12 @@ QPushButton:pressed{
                  <zorder>btn_mail_user_details</zorder>
                  <zorder>btn_user_clear</zorder>
                  <zorder>user_start_date</zorder>
-                 <zorder>db_firstname_2</zorder>
-                 <zorder>db_firstname_3</zorder>
-                 <zorder>user_end_date</zorder>
                  <zorder>user_status</zorder>
                  <zorder>user_range</zorder>
                  <zorder>btn_export_data</zorder>
+                 <zorder>user_end_date</zorder>
+                 <zorder>user_date</zorder>
+                 <zorder>user_access</zorder>
                 </widget>
                </item>
                <item>
