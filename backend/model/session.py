@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 @dataclass
-class UserDetails():
+class Session():
     reference: str
     username: str
     date: str
