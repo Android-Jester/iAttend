@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardnrbFsH.ui'
+## Form generated from reading UI file 'dashoboardtEUijj.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -97,7 +97,7 @@ class Ui_dashboard(object):
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.label_4 = QLabel(self.options)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setMinimumSize(QSize(835, 0))
+        self.label_4.setMinimumSize(QSize(700, 0))
         self.label_4.setMaximumSize(QSize(500, 16777215))
         font1 = QFont()
         font1.setPointSize(10)
@@ -111,7 +111,7 @@ class Ui_dashboard(object):
 
         self.label_6 = QLabel(self.options)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setMinimumSize(QSize(260, 0))
+        self.label_6.setMinimumSize(QSize(400, 0))
         self.label_6.setMaximumSize(QSize(270, 16777215))
         font2 = QFont()
         font2.setPointSize(10)
@@ -770,7 +770,7 @@ class Ui_dashboard(object):
         self.nationality.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.year = QLabel(self.info_frame)
         self.year.setObjectName(u"year")
-        self.year.setGeometry(QRect(20, 430, 101, 41))
+        self.year.setGeometry(QRect(20, 430, 91, 41))
         self.year.setFont(font4)
         self.year.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -780,7 +780,7 @@ class Ui_dashboard(object):
         self.year.setAlignment(Qt.AlignCenter)
         self.last_out = QLabel(self.info_frame)
         self.last_out.setObjectName(u"last_out")
-        self.last_out.setGeometry(QRect(130, 430, 241, 41))
+        self.last_out.setGeometry(QRect(120, 430, 251, 41))
         self.last_out.setFont(font4)
         self.last_out.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1372,7 +1372,7 @@ class Ui_dashboard(object):
         self.db_refrence.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_year = QLabel(self.top)
         self.db_year.setObjectName(u"db_year")
-        self.db_year.setGeometry(QRect(20, 440, 101, 41))
+        self.db_year.setGeometry(QRect(20, 440, 91, 41))
         self.db_year.setFont(font4)
         self.db_year.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1449,7 +1449,7 @@ class Ui_dashboard(object):
         self.db_index.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_programe = QLabel(self.top)
         self.db_programe.setObjectName(u"db_programe")
-        self.db_programe.setGeometry(QRect(130, 440, 351, 41))
+        self.db_programe.setGeometry(QRect(120, 440, 361, 41))
         self.db_programe.setFont(font4)
         self.db_programe.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2242,7 +2242,7 @@ class Ui_dashboard(object):
         self.user_role.setFrame(False)
         self.user_email = QLineEdit(self.left_child)
         self.user_email.setObjectName(u"user_email")
-        self.user_email.setGeometry(QRect(30, 450, 491, 51))
+        self.user_email.setGeometry(QRect(30, 450, 401, 51))
         self.user_email.setFont(font2)
         self.user_email.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2574,6 +2574,14 @@ class Ui_dashboard(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.user_date.setClearButtonEnabled(True)
+        self.user_access = QRadioButton(self.left_child)
+        self.user_access.setObjectName(u"user_access")
+        self.user_access.setGeometry(QRect(440, 450, 81, 51))
+        self.user_access.setFont(font2)
+        self.user_access.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"border-radius:10px;")
+        self.user_access.setAutoExclusive(False)
         self.firstname_30.raise_()
         self.firstname_26.raise_()
         self.firstname_25.raise_()
@@ -2603,6 +2611,7 @@ class Ui_dashboard(object):
         self.btn_export_data.raise_()
         self.user_end_date.raise_()
         self.user_date.raise_()
+        self.user_access.raise_()
 
         self.horizontalLayout_6.addWidget(self.left_child)
 
@@ -4146,7 +4155,7 @@ class Ui_dashboard(object):
         dashboard.setWindowTitle(QCoreApplication.translate("dashboard", u"MainWindow", None))
         self.label.setText("")
         self.label_4.setText(QCoreApplication.translate("dashboard", u"iAttend", None))
-        self.label_6.setText(QCoreApplication.translate("dashboard", u"session@username 00:00:00 PM", None))
+        self.label_6.setText(QCoreApplication.translate("dashboard", u"session@username  00:00:00 PM", None))
         self.btn_login_user.setText("")
 #if QT_CONFIG(shortcut)
         self.btn_login_user.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+P", None))
@@ -4343,6 +4352,7 @@ class Ui_dashboard(object):
         self.btn_export_data.setText(QCoreApplication.translate("dashboard", u"Export", None))
         self.user_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
         self.user_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.user_access.setText(QCoreApplication.translate("dashboard", u"Access", None))
         ___qtablewidgetitem14 = self.admin_table.horizontalHeaderItem(0)
         ___qtablewidgetitem14.setText(QCoreApplication.translate("dashboard", u"Username", None));
         ___qtablewidgetitem15 = self.admin_table.horizontalHeaderItem(1)
