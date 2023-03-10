@@ -71,7 +71,7 @@ def create_tb_user_credentials():
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_reference varchar(25) NOT NULL,
             user_username varchar(40) NOT NULL UNIQUE,
-            user_password varchar(40) NOT NULL,
+            user_password varchar(255) NOT NULL,
             user_status varchar(10) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
@@ -102,6 +102,12 @@ def create_tb_user_sessions():
         )
     """
     return sql
+
+def create_database(database_name:str):
+    return "CREATE DATABASE IF NOT EXISTS "+database_name
+
+def user_database(database_name:str):
+    return "USE "+database_name 
 
 ############################################################################################
 
@@ -142,7 +148,7 @@ def create_tb_images_postgres():
             id SERIAL PRIMARY KEY,
             st_reference int NOT NULL UNIQUE, 
             image BYTEA NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(st_reference)
+            FOREIGN KEY(st_reference) REFERENCES tb_students(reference)
             )
         """
     return sql
@@ -177,7 +183,7 @@ def create_tb_user_credentials_postgres():
             id SERIAL PRIMARY KEY,
             user_reference varchar(25) NOT NULL,
             user_username varchar(40) NOT NULL UNIQUE,
-            user_password varchar(40) NOT NULL,
+            user_password varchar(255) NOT NULL,
             user_status varchar(10) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
@@ -283,7 +289,7 @@ def create_tb_user_credentials_sqlite():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_reference varchar(25) NOT NULL,
             user_username varchar(40) NOT NULL UNIQUE,
-            user_password varchar(40) NOT NULL,
+            user_password varchar(255) NOT NULL,
             user_status varchar(10) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
