@@ -1,5 +1,6 @@
 
 from packages.pyqt import *
+from packages.computing import *
 from packages.connection import *
 from database.ui_database import Ui_Database
 
@@ -39,9 +40,9 @@ class Database(QDialog):
         self.ui_database.hostname.setText(details[2])
         self.ui_database.port.setText(details[3])
         self.ui_database.database_name.setText(details[4])
-        if str(details[3])=='3306':
+        if str(details[5])=='mysql':
             self.ui_database.mysql.setChecked(True)
-        elif str(details[3])=='5432':
+        elif str(details[5])=='postgresql':
             self.ui_database.mysql.setChecked(True)
         
     def check_state(self):
@@ -83,12 +84,12 @@ class Database(QDialog):
         else:  
             try:
                 connection_status:str =("Connected to SQLite3...")
-                db = sqlite3.connect('C:\\ProgramData\\iAttend\\data\\database\\attendance_system_commons.db')
+                db = sqlite3.connect(self.get_path())
                 self.ui_database.label_notification.setText(connection_status)
                 return db, db.cursor(), connection_status
             except Exception as e:
                return str(e) 
-          
+    
     def test_connection(self):
         details = self.get_field_text()
         user = details[0]
@@ -99,8 +100,10 @@ class Database(QDialog):
         if self.ui_database.mysql.isChecked():
             if self.ui_database.database_name.text() and self.ui_database.password.text():
                 try:
-                    db=connector.connect(host=host,port=port,user=user,password=password,database=database)
+                    db=connector.connect(host=host,port=port,user=user,password=password)
                     cursor = db.cursor()
+                    cursor.execute(create_database(database))
+                    cursor.execute(user_database(database))
                     cursor.execute(create_tb_students())
                     cursor.execute(create_tb_attendance())
                     cursor.execute(create_tb_images())
@@ -136,9 +139,9 @@ class Database(QDialog):
                     self.ui_database.label_notification.setText(str(e))
             else:
                 self.ui_database.label_notification.setText("Please provide your connection details")
-        elif self.ui_database.sqlite.isChecked():     
+        else:     
             try:
-                db = sqlite3.connect('C:\\ProgramData\\iAttend\\data\\database\\attendance_system_commons.db')
+                db = sqlite3.connect(self.get_path())
                 cursor = db.cursor()
                 cursor.execute(create_tb_students_sqlite())
                 cursor.execute(create_tb_attendance_sqlite())
@@ -152,7 +155,10 @@ class Database(QDialog):
                 self.ui_database.label_notification.setText("Hey! you have SQLite3 working connection...")
                 return db,db.cursor()
             except Exception as e:
-                self.ui_database.label_notification.setText(str(e))    
+                self.ui_database.label_notification.setText(str(e))
+
+    def get_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db'    
     
     def MoveWindow(self, event):
         if self.isMaximized() == False:
