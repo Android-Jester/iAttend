@@ -6,6 +6,8 @@
 ##
 ################################################################################
 
+
+from packages.root import *
 from packages.date import *
 from packages.misc import *
 from packages.mail import *
@@ -13,11 +15,14 @@ from packages.pyqt import *
 from packages.model import *
 from packages.system import *
 from packages.camera import *
+from packages.hasher import *
 from packages.report import *
 from packages.startup import *
 from packages.globals import *
 from packages.computing import *
 from packages.processing import *
+from packages.connection import *
+from packages.authorities import *
 
 class MainWindow(QMainWindow):
     def __init__(self, **kwargs):
@@ -37,7 +42,7 @@ class MainWindow(QMainWindow):
         #########################################################################################
 
         #########################################################################################
-        self.ui.btn_close.clicked.connect(self.close)
+        self.ui.btn_close.clicked.connect(self.application_exit)
         self.ui.btn_minimize.clicked.connect(self.showMinimized)
         # self.ui.btn_maximize.clicked.connect(self.maximize_restore)
         self.ui.btn_clear_label.clicked.connect(self.loadUi_file)
@@ -58,8 +63,8 @@ class MainWindow(QMainWindow):
         self.barchart = Barchart()
         self.line_graph = Line_plot()
         ########################################################################################################
-        self.create_program_data_dir()
         self.set_sender_details()
+        self.admin_panel()
         #########################################################################################
         self.open_exit_camera = ExitCameraFeed()
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
@@ -75,6 +80,24 @@ class MainWindow(QMainWindow):
         
         self.user = User()
         self.ui.btn_login_user.clicked.connect(lambda: self.user.show())
+        details=self.user_last_seen(login_reference)
+
+        self.user.setProfile(
+            account_firstname,
+            account_lastname,
+            account_contact,
+            account_mail,
+            account_status,
+            account_role,
+            self.visits_count(),
+            details[0],
+            details[1],
+            login_reference)
+        self.load_user_profile(login_reference)
+        self.set_session()
+        self.user.profileImage('C:\\ProgramData\\iAttend\\data\\images\\user_image.jpg')
+        self.insert_thread()
+        
 
         self.config = Configuration()
         self.ui.btn_camera.clicked.connect(lambda: self.config.show())
@@ -88,7 +111,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_camera.clicked.connect(lambda: self.camera_4.show())
 
         self.login = Authentication()
-        # self.ui.btn_logout.clicked.connect(lambda: self.login.show())
         self.ui.btn_logout.clicked.connect(self.logout)
         ############################################################################################
 
@@ -181,7 +203,90 @@ class MainWindow(QMainWindow):
         self.ui.btn_export_data.clicked.connect(self.export_user_data)
         self.ui.user_start_date.dateTimeChanged.connect(self.date_changed)
         ##################################################################################################
-    
+
+    def application_exit(self):
+        self.close()
+        self.set_log_out_session()
+        self.login.show()
+
+    def admin_panel(self):
+        if account_role == user or account_role == guest:
+            self.ui.btn_admin.hide()
+        
+
+    def user_last_seen(self,reference:str):
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        cursor=my_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session WHERE user_reference = "+(reference)+" ORDER BY user_date DESC LIMIT 2")
+        cursor= my_cursor.fetchall()
+        db.commit()
+        my_cursor.close()
+        last_seen_info = []
+        if cursor:
+            for data in cursor:
+                last_seen_info.append(data)
+        if len(last_seen_info)>=2:
+            details=str(last_seen_info[1][0]).split('-')
+            details = datetime.date(int(details[0]),int(details[1]),int(details[2])).strftime("%a %d %b, %Y")
+            time = last_seen_info[1][1]
+            duration = last_seen_info[1][2]
+            return details+' @ '+time , duration          
+        else:
+            return "Oops! first timer", "00:00:00"
+            
+    def insert_thread(self):
+        self.pool = QThreadPool()
+        self.work = SendThread(self.insert_user_session)
+        self.pool.start(self.work)
+
+    def insert_user_session(self):
+        db,my_cursor,connection_status = self.database.my_cursor()
+        check_state=self.database.check_state()
+        session=self.set_user_session()
+        if check_state == True:
+            my_cursor.execute("INSERT INTO tb_user_session (user_reference,user_username,user_date,user_login,user_logout,user_duration) VALUES (?,?,?,?,?,?)",
+            (session.reference,session.username,session.date,session.login,session.logout,session.duration)) 
+            db.commit()
+            my_cursor.close()         
+        else:   
+            my_cursor.execute("INSERT INTO tb_user_session (user_reference,user_username,user_date,user_login,user_logout,user_duration) VALUES (%s,%s,%s,%s,%s,%s)",
+           (session.reference,session.username,session.date,session.login,session.logout,session.duration))   
+            db.commit()
+
+    def set_user_session(self):
+        session = Session(
+            login_reference,
+            login_username,
+            str(current.now().date().strftime("%Y-%m-%d")),
+            str(current.now().time().strftime("%H:%M:%S %p")),
+            str(current.now().time().strftime("%H:%M:%S %p")),
+            "00:00:00")
+        return session
+ 
+    def load_user_profile(self,reference):
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        cursor=my_cursor.execute("SELECT user_reference,user_image from tb_user_profile WHERE user_reference="+reference)
+        cursor= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
+        image_data = []
+        path = 'C:\\ProgramData\\iAttend\\data\\images\\user_image.jpg'
+        if cursor:
+            for data in cursor:
+                image_data.append(data)
+            if len(image_data)>0:
+                with open(path,'wb') as image_file:
+                        image_file.write(image_data[1])
+            pass
+        pass
+
+    def visits_count(self):
+        results=self.query_database("select count(user_reference) from tb_user_session where user_reference="+login_reference+" and user_duration NOT LIKE '%00:00:00%'")
+        return results[0][0]
+
+    def set_session(self):
+        self.ui.label_6.setText("session@"+login_username+" "+current.now().time().strftime("%I:%M:%S %p"))
+
+
     def export_user_data(self):
         table=self.ui.admin_table.item(0,0)
         date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
@@ -212,7 +317,12 @@ class MainWindow(QMainWindow):
             details = self.query_database("SELECT * FROM tb_user_session WHERE user_reference="+reference)
             user = self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+reference)
             status = self.query_user_data("SELECT user_status FROM tb_user_credentials WHERE user_reference="+reference)
-            self.render_user_data(details)
+            if len(details) > 0:
+                self.render_user_data(details)
+            else:
+                self.alert = AlertDialog()
+                self.alert.content(f"Oops! user with {reference} has no sessions.")
+                self.alert.show() 
             self.render_user_details(user,status)
             self.load_user_image(reference,self.ui.user_image)
             return details
@@ -357,7 +467,7 @@ class MainWindow(QMainWindow):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         root_path = 'C:\\ProgramData\\iAttend\\data\\images\\image.jpg'
         if self.ui.user_reference.text() and self.ui.user_contact.text() and self.ui.user_firstname.text():
-            details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+user.reference)
+            details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+"\'{}\'".format(user.reference)+" AND user_contact="+"\'{}\'".format(user.contact))
             if not details:
                 if check_state == True:
                     my_cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (?,?,?,?,?,?)",
@@ -413,20 +523,15 @@ class MainWindow(QMainWindow):
 
     def set_user_credentials(self):
         user = self.set_user_details()
+        password_hash = hash_password(user.contact)
         credentials = LoginUser(
             user.reference,
-            user.firstname,
-            user.contact,
+            user.lastname+"@250",
+            password_hash,
             self.ui.user_status.currentText()
         )
         return credentials
     
-    def set_user_session(self):
-        session = UserDetails(
-
-        )
-        return session
-
     def user_profile_image(self):
         path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
         if path:
@@ -435,9 +540,40 @@ class MainWindow(QMainWindow):
             self.ui.user_image.setScaledContents(True)
         
     def logout(self):
-        self.main = MainWindow()
+        self.set_log_out_session()
         self.close()
         self.login.show()
+        
+
+    def set_log_out_session(self):
+        date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
+        duration="\'{}\'".format("00:00:00")
+        reference = "\'{}\'".format(login_reference)
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        my_cursor.execute("SELECT user_login,user_duration FROM tb_user_session WHERE user_reference="+reference+" AND user_date="+date+" AND user_duration="+duration)
+        cursor=my_cursor.fetchall()
+        db.commit()
+        details=[]
+        if cursor is not None:
+            for data in cursor:
+                details.append(data)
+        time_out =current.now().time().strftime('%H:%M:%S')
+        new_time_out =current.now().time().strftime('%H:%M:%S %p')
+        time_out_split = str(time_out).split(':')
+        time_in = str(details[0][0]).split(':')
+        time_in_split=str(time_in[2]).split(' ')
+        construct_duration = (abs((int(time_out_split[0])-int(time_in[0]))),
+        abs((int(time_out_split[1])-int(time_in[1]))),
+        abs((int(time_out_split[2])-int(time_in_split[0]))))
+        new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
+        new_duration="\'{}\'".format(new_duration)
+        new_time_out="\'{}\'".format(new_time_out)
+        if str(details[0][1]) == "00:00:00":
+            my_cursor.execute("UPDATE tb_user_session SET user_logout="+new_time_out+", user_duration="+new_duration+" WHERE user_reference="+reference+" AND user_date="+date+" AND user_duration="+duration)
+            db.commit()
+            db.close()
+            my_cursor.close()
+        pass
         
     def hot_reload_thread(self):
         self.pool = QThreadPool()
@@ -697,8 +833,8 @@ class MainWindow(QMainWindow):
         path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
         path.touch(exist_ok=True)
         file = open(path)
-        time =datetime.now().time().strftime('%I:%M:%S %p')
-        date=datetime.now().date().strftime('%a %b %d %Y')
+        time =current.now().time().strftime('%I:%M:%S %p')
+        date=current.now().date().strftime('%a %b %d %Y')
         if os.path.exists(path):
             with open(path,'a+') as file:
                 file.writelines(f'\n{date},{time}')
@@ -706,7 +842,7 @@ class MainWindow(QMainWindow):
 
     def backup_database(self):
         path='C:\\ProgramData\\iAttend\\data\\backup'
-        db_path = 'C:\\ProgramData\\iAttend\\data\\database\\attendance_system.db'
+        db_path=self.database.get_path()
         if os.path.exists(path):
             shutil.copy2(db_path,path)
             self.backup_history()
@@ -1147,7 +1283,7 @@ class MainWindow(QMainWindow):
                 db_data=self.fetch_data_from_db(self.ui.search_box.text())
                 if len(db_data) > 0:
                     start_date = (str(db_data[8])).split(' ')
-                    student_year=(int(datetime.now().date().strftime('%Y'))-int(start_date[1]))    
+                    student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))    
                     if student_year <= 1:
                         level = "1st year"
                     elif student_year > 1 and student_year <= 2:
@@ -1789,7 +1925,6 @@ class MainWindow(QMainWindow):
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
         
-
     def update_frame_registration(self):
         thickness = 2
         rect_thickness = 1
@@ -2021,6 +2156,82 @@ class MainWindow(QMainWindow):
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPosition = event.globalPos()     
 
+class Authentication(QMainWindow):
+    def __init__(self):
+        QMainWindow.__init__(self)
+        self.ui_login = Ui_Login()
+        self.ui_login.setupUi(self)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.ui_login.btn_close.clicked.connect(self.close)
+        self.ui_login.btn_minimize.clicked.connect(self.showMinimized)
+        self.ui_login.btn_close.clicked.connect(self.close)
+        self.ui_login.avater.setDisabled(True)
+        self.ui_login.btn_login.clicked.connect(self.login)
+        self.database = Database()
+        self.show_alert = AlertDialog()
+        self.retrieve = ForgotPassword()
+        self.ui_login.btn_forgot_pass.clicked.connect(lambda: self.retrieve.show())
+        self.user()
+
+    def user(self):
+        self.ui_login.username.setText("redolf@250")
+        self.ui_login.student_id.setText("20661163")
+        self.ui_login.password.setText("0552588647")
+
+    def login(self):
+        username = self.ui_login.username.text()
+        reference = self.ui_login.student_id.text()
+        password = self.ui_login.password.text()
+        check_state=self.database.check_state()
+        global login_username
+        global login_reference
+        global account_firstname
+        global account_lastname
+        global account_contact
+        global account_mail
+        global account_role 
+        global account_status
+        if username and reference and password:
+            details = self.query_database("SELECT * FROM tb_user_details where user_reference="+str(reference))
+            credentials = self.query_database("SELECT * FROM tb_user_credentials where user_reference="+str(reference))
+            password = bytes(password,encoding='utf-8')
+            if check_state:
+                confirm = bcrypt.checkpw(password,credentials[0][3])
+            else:
+                confirm = bcrypt.checkpw(password,bytes(str(credentials[0][3]),encoding='utf-8'))
+                
+            if reference==str(credentials[0][1]) and username==str(credentials[0][2]) and confirm:
+                login_username = str(credentials[0][2])
+                login_reference = str(credentials[0][1])
+                account_status = str(credentials[0][4])
+                account_firstname = str(details[0][2])
+                account_lastname = str(details[0][3])
+                account_contact = str(details[0][4])
+                account_role = str(details[0][5]) 
+                account_mail = str(details[0][6])
+                self.main = MainWindow()
+                self.close()
+                self.main.show()   
+            else:
+                self.show_alert.content("Oops! Bad user credentials.") 
+                self.show_alert.show()
+        else:
+            self.show_alert.content("Oops! invalid login details.") 
+            self.show_alert.show()
+
+    def query_database(self, query: str):
+        (db,my_cursor,connection_status) = self.database.my_cursor()
+        details = []
+        cursor = my_cursor.execute(query)
+        cursor = my_cursor.fetchall()
+        db.commit()
+        my_cursor.close()
+        if cursor:
+            for item in cursor:
+                details.append(item)
+        return details
+   
 class Splash_screen(QMainWindow):
     def __init__(self, **kwargs):
         QMainWindow.__init__(self, **kwargs)
@@ -2035,22 +2246,162 @@ class Splash_screen(QMainWindow):
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(0, 0, 0, 70))
         self.ui_splash.main.setGraphicsEffect(self.shadow)
-
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.progress)
         self.timer.start(40)
+        self.create_database_tables()
+        self.create_program_data_dir()
+        self.populate_root_user_data()
         self.show()
+       
 
     def progress(self):
         global counter
         self.ui_splash.progressBar.setValue(counter)
         if counter > 100:
             self.timer.stop()
-            self.main = MainWindow()
+            # self.main = MainWindow()
+            self.main = Authentication()
             self.main.show()
             self.close()
         counter +=1    
-    
+
+    def create_program_data_dir(self):
+        root_dir = 'C:\\ProgramData\\iAttend\\data'
+        list =('batch_logs','programs','properties','qr_code',
+        'barchart','piechart','linechart','json_export','csv_export',
+        'backup','email_details','json_file','samples','settings',
+        'reports','exports','user')
+
+        if not os.path.exists(root_dir):
+            os.makedirs(root_dir)
+        for item in list:
+            path = os.path.join(root_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+        self.create_files()
+
+        report_dir = 'C:\\ProgramData\\iAttend\\data\\reports'
+        report = ('piechart','barchart','linegraph','visualize')    
+        for item in report:
+            path = os.path.join(report_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+        
+        export_dir = 'C:\\ProgramData\\iAttend\\data\\exports'
+        export = ('csv','json')
+        for item in export:
+            path = os.path.join(export_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+
+    def create_files(self):
+        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\properties.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                if os.path.getsize(path)==0:
+                    file.write("Username,Password,Hostname,Port,Database,Server")
+            file.close() 
+
+        path =Path('C:\\ProgramData\\iAttend\\data\\programs\\CoS_programs.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                if os.path.getsize(path)==0:
+                    file.write('BSc. Physics,BSc. Statistics,BSc. Chemistry,'
+                    +'BSc. Mathematics,Doctor of Optometry,BSc. Biochemistry,'
+                    +'BSc. Computer Science,BSc. Actuarial Science,BSc. Biological Science,'
+                    +'BSc. Environmental Science,BSc. Food Science and Technology,'
+                    +'BSc. Meterology and Climate Science')
+            file.close() 
+
+        details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt')
+        details_path.touch(exist_ok=True)
+        d_file = open(details_path)
+        if os.path.exists(details_path):
+            with open(details_path,'a+') as d_file:
+                if os.path.getsize(details_path)==0:
+                    d_file.write("Subject,example@gmail.mail, Sender,Password")
+            d_file.close() 
+
+        content = """
+        Hello name,
+                Please attached to this message is your
+            attendance code. Please keep it safe as you 
+            will need this everytime you would want to 
+            access the facility. 
+                Attend Today, Acheive Tomorrow!
+                                            Thank you! """
+        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content.txt')
+        content_path.touch(exist_ok=True)
+        content_file = open(content_path)
+        if os.path.exists(content_path):
+            with open(content_path,'a+') as content_file:
+                if os.path.getsize(content_path)==0:
+                    content_file.write(content)
+            content_file.close() 
+
+        report_content = """
+        Hello name,
+    	        Please attached to this message is the
+            report or data you requested for. Feel free 
+            to contact us for our services at anytime.
+                                        Thank you! """
+        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content_report.txt')
+        content_path.touch(exist_ok=True)
+        content_file = open(content_path)
+        if os.path.exists(content_path):
+            with open(content_path,'a+') as content_file:
+                if  os.path.getsize(content_path)==0:
+                    content_file.write(report_content)
+            content_file.close()
+
+    def create_database_tables(self):
+        db = sqlite3.connect(self.get_path())
+        cursor = db.cursor()
+        cursor.execute(create_tb_students_sqlite())
+        cursor.execute(create_tb_attendance_sqlite())
+        cursor.execute(create_tb_images_sqlite())
+        cursor.execute(create_tb_cameras_sqlite())
+        cursor.execute(create_tb_user_details_sqlite())
+        cursor.execute(create_tb_user_credentials_sqlite())
+        cursor.execute(create_tb_user_profile_sqlite())
+        cursor.execute(create_tb_user_sessions_sqlite())
+        db.commit()
+
+    def populate_root_user_data(self):
+        db = sqlite3.connect(self.get_path())
+        cursor = db.cursor()
+        details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+root_reference)
+        results=self.query_user_data("SELECT * FROM tb_user_credentials WHERE user_reference="+root_reference)
+        if not details:
+            password_hash = hash_password(root_password)
+            cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (?,?,?,?,?,?)",
+            (root_reference,root_firstname,root_lastname,root_contact,root_role,root_mail)) 
+            cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (?,?,?,?)",
+            (root_reference,root_username,password_hash,root_status))    
+            db.commit()
+        pass     
+
+    def get_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db' 
+
+    def query_user_data(self,query):
+        db = sqlite3.connect(self.get_path())
+        cursor = db.cursor()
+        details=cursor.execute(query)
+        details= cursor.fetchone()
+        db.commit()
+        cursor.close()
+        db_data = []
+        if details:
+            for data in details:
+                db_data.append(data)
+        return db_data
+
 if __name__ == '__main__':
     application = QApplication(sys.argv)
     window = Splash_screen()  
