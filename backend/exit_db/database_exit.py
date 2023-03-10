@@ -40,9 +40,9 @@ class Database_Connection(QDialog):
         self.ui_database.hostname.setText(details[2])
         self.ui_database.port.setText(details[3])
         self.ui_database.database_name.setText(details[4])
-        if str(details[3])=='3306':
+        if str(details[5])=='mysql':
             self.ui_database.mysql.setChecked(True)
-        elif str(details[3])=='5432':
+        elif str(details[5])=='postgresql':
             self.ui_database.mysql.setChecked(True)
 
     def check_state(self):
