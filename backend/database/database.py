@@ -117,6 +117,7 @@ class Database(QDialog):
                     return db,db.cursor() 
                 except Exception as e:
                     self.ui_database.label_notification.setText(str(e))
+                    return str(e)
             else:
                 self.ui_database.label_notification.setText("Please provide your connection details")
         elif self.ui_database.postgresql.isChecked():
@@ -137,6 +138,7 @@ class Database(QDialog):
                     return db,db.cursor()
                 except Exception as e:
                     self.ui_database.label_notification.setText(str(e))
+                    return str(e)
             else:
                 self.ui_database.label_notification.setText("Please provide your connection details")
         else:     
@@ -156,6 +158,7 @@ class Database(QDialog):
                 return db,db.cursor()
             except Exception as e:
                 self.ui_database.label_notification.setText(str(e))
+                return str(e)
 
     def get_path(self):
         return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db'    
