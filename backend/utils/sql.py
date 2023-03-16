@@ -35,8 +35,7 @@ def create_tb_images():
         CREATE TABLE IF NOT EXISTS tb_images(
             id INT PRIMARY KEY AUTO_INCREMENT,
             st_reference INT NOT NULL, 
-            image BLOB NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(reference)
+            image BLOB NOT NULL
             )
         """
     return sql
@@ -72,7 +71,7 @@ def create_tb_user_credentials():
             user_reference varchar(25) NOT NULL,
             user_username varchar(40) NOT NULL UNIQUE,
             user_password varchar(255) NOT NULL,
-            user_status varchar(10) NOT NULL,
+            user_status varchar(12) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
         """
@@ -147,8 +146,7 @@ def create_tb_images_postgres():
         CREATE TABLE IF NOT EXISTS tb_images(
             id SERIAL PRIMARY KEY,
             st_reference int NOT NULL UNIQUE, 
-            image BYTEA NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(reference)
+            image BYTEA NOT NULL
             )
         """
     return sql
@@ -184,7 +182,7 @@ def create_tb_user_credentials_postgres():
             user_reference varchar(25) NOT NULL,
             user_username varchar(40) NOT NULL UNIQUE,
             user_password varchar(255) NOT NULL,
-            user_status varchar(10) NOT NULL,
+            user_status varchar(12) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
         """
@@ -253,8 +251,7 @@ def create_tb_images_sqlite():
         CREATE TABLE IF NOT EXISTS tb_images(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             st_reference int NOT NULL,
-            image BLOB NOT NULL,
-            FOREIGN KEY(st_reference) REFERENCES tb_students(reference)
+            image BLOB NOT NULL
             )
         """
     return sql
@@ -290,7 +287,7 @@ def create_tb_user_credentials_sqlite():
             user_reference varchar(25) NOT NULL,
             user_username varchar(40) NOT NULL UNIQUE,
             user_password varchar(255) NOT NULL,
-            user_status varchar(10) NOT NULL,
+            user_status varchar(12) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
         """
@@ -310,6 +307,50 @@ def create_tb_user_profile_sqlite():
 def create_tb_user_sessions_sqlite():
     sql= """
         CREATE TABLE IF NOT EXISTS tb_user_session(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_reference varchar(20) NOT NULL,  
+            user_username varchar(25) NOT NULL,
+            user_date varchar(25) NOT NULL,
+            user_login varchar(35) NOT NULL, 
+            user_logout varchar(25) NOT NULL,
+            user_duration varchar(25) NOT NULL
+        )
+    """
+    return sql
+
+############################################################################################################
+
+def create_tb_attendance_last_seen_sqlite():
+    sql= """
+        CREATE TABLE IF NOT EXISTS tb_attendance_last_seen(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            program TEXT NOT NULL,
+            date_stamp TEXT NOT NULL,
+            time_in TEXT NOT NULL,
+            time_out TEXT NOT NULL,
+            duration TEXT NOT NULL,
+            st_reference INT NOT NULL
+            )
+        """
+    return sql
+
+def create_tb_attendance_temp_sqlite():
+    sql= """
+        CREATE TABLE IF NOT EXISTS tb_attendance_temp(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            program TEXT NOT NULL,
+            date_stamp TEXT NOT NULL,
+            time_in TEXT NOT NULL,
+            time_out TEXT NOT NULL,
+            duration TEXT NOT NULL,
+            st_reference INT NOT NULL
+            )
+        """
+    return sql
+
+def create_tb_user_sessions_last_seen_sqlite():
+    sql= """
+        CREATE TABLE IF NOT EXISTS tb_user_session_last_seen(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_reference varchar(20) NOT NULL,  
             user_username varchar(25) NOT NULL,
