@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'alert_dialognEyCIt.ui'
+## Form generated from reading UI file 'alert_dialogrvEoEZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -15,7 +15,6 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QRadialGradient)
 from PySide2.QtWidgets import *
 
-import asset_rc
 import asset_rc
 
 class Ui_AlertDialog(object):
@@ -119,10 +118,10 @@ class Ui_AlertDialog(object):
         self.content_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.content_frame)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 20, 0)
         self.label_3 = QLabel(self.content_frame)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setMaximumSize(QSize(50, 16777215))
+        self.label_3.setMaximumSize(QSize(40, 16777215))
         self.label_3.setPixmap(QPixmap(u":/icons/asset/alert-triangle.svg"))
 
         self.horizontalLayout_2.addWidget(self.label_3)
@@ -135,7 +134,7 @@ class Ui_AlertDialog(object):
         font.setBold(False)
         font.setWeight(50)
         self.content.setFont(font)
-        self.content.setStyleSheet(u"")
+        self.content.setStyleSheet(u"padding-left:-10px;")
         self.content.setAlignment(Qt.AlignCenter)
         self.content.setWordWrap(True)
 
