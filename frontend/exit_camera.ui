@@ -379,8 +379,8 @@ QPushButton:hover{
              <widget class="QFrame" name="frame_6">
               <property name="maximumSize">
                <size>
-                <width>535</width>
-                <height>16777215</height>
+                <width>600</width>
+                <height>212</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -399,11 +399,17 @@ QFrame{
               <widget class="QPushButton" name="btn_exit_cam_connect">
                <property name="geometry">
                 <rect>
-                 <x>10</x>
-                 <y>70</y>
+                 <x>20</x>
+                 <y>80</y>
                  <width>131</width>
-                 <height>41</height>
+                 <height>45</height>
                 </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>45</height>
+                </size>
                </property>
                <property name="font">
                 <font>
@@ -446,11 +452,17 @@ QPushButton:pressed{
               <widget class="QPushButton" name="btn_exit_cam_disconect">
                <property name="geometry">
                 <rect>
-                 <x>150</x>
-                 <y>70</y>
+                 <x>160</x>
+                 <y>80</y>
                  <width>141</width>
-                 <height>41</height>
+                 <height>45</height>
                 </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>45</height>
+                </size>
                </property>
                <property name="font">
                 <font>
@@ -493,21 +505,21 @@ QPushButton:pressed{
               <widget class="QComboBox" name="exit_comboBox">
                <property name="geometry">
                 <rect>
-                 <x>450</x>
-                 <y>70</y>
-                 <width>71</width>
-                 <height>41</height>
+                 <x>460</x>
+                 <y>80</y>
+                 <width>120</width>
+                 <height>45</height>
                 </rect>
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>0</width>
-                 <height>41</height>
+                 <width>120</width>
+                 <height>45</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>16777215</width>
+                 <width>130</width>
                  <height>41</height>
                 </size>
                </property>
@@ -532,9 +544,9 @@ QPushButton:pressed{
               <widget class="QLabel" name="label_28">
                <property name="geometry">
                 <rect>
-                 <x>20</x>
-                 <y>20</y>
-                 <width>41</width>
+                 <x>40</x>
+                 <y>30</y>
+                 <width>31</width>
                  <height>31</height>
                 </rect>
                </property>
@@ -551,9 +563,9 @@ QPushButton:pressed{
               <widget class="QLineEdit" name="exit_cam_ip">
                <property name="geometry">
                 <rect>
-                 <x>10</x>
-                 <y>10</y>
-                 <width>511</width>
+                 <x>20</x>
+                 <y>20</y>
+                 <width>561</width>
                  <height>51</height>
                 </rect>
                </property>
@@ -567,8 +579,8 @@ QPushButton:pressed{
     background-color: rgb(35,35,35);
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
+	border-radius:10px;
+	padding-left: 60px;
 }
 
 QLineEdit:hover{
@@ -589,10 +601,10 @@ QLineEdit:focus{
               <widget class="QLabel" name="label_notification">
                <property name="geometry">
                 <rect>
-                 <x>10</x>
-                 <y>120</y>
-                 <width>511</width>
-                 <height>71</height>
+                 <x>20</x>
+                 <y>140</y>
+                 <width>561</width>
+                 <height>51</height>
                 </rect>
                </property>
                <property name="font">
@@ -620,11 +632,17 @@ QLineEdit:focus{
               <widget class="QPushButton" name="btn_open_database">
                <property name="geometry">
                 <rect>
-                 <x>300</x>
-                 <y>70</y>
+                 <x>310</x>
+                 <y>80</y>
                  <width>141</width>
-                 <height>41</height>
+                 <height>45</height>
                 </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>45</height>
+                </size>
                </property>
                <property name="font">
                 <font>
@@ -677,7 +695,7 @@ QPushButton:pressed{
              <widget class="QFrame" name="frame_7">
               <property name="maximumSize">
                <size>
-                <width>520</width>
+                <width>450</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -694,6 +712,12 @@ QPushButton:pressed{
                <enum>QFrame::Raised</enum>
               </property>
               <layout class="QGridLayout" name="gridLayout">
+               <property name="leftMargin">
+                <number>15</number>
+               </property>
+               <property name="rightMargin">
+                <number>9</number>
+               </property>
                <property name="verticalSpacing">
                 <number>9</number>
                </property>

@@ -199,7 +199,7 @@ QPushButton:hover{
           <number>0</number>
          </property>
          <property name="rightMargin">
-          <number>0</number>
+          <number>20</number>
          </property>
          <property name="bottomMargin">
           <number>0</number>
@@ -208,7 +208,7 @@ QPushButton:hover{
           <widget class="QLabel" name="label_3">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>40</width>
              <height>16777215</height>
             </size>
            </property>
@@ -231,7 +231,7 @@ QPushButton:hover{
             </font>
            </property>
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">padding-left:-10px;</string>
            </property>
            <property name="text">
             <string> Something went wrong</string>
@@ -319,7 +319,6 @@ QPushButton:pressed{
  </widget>
  <resources>
   <include location="../resource/asset.qrc"/>
-  <include location="C:/users/btc omen/appdata/local/programs/python/python36/lib/site-packages/resource/asset.qrc"/>
  </resources>
  <connections/>
 </ui>
