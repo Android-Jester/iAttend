@@ -27,6 +27,7 @@ class MailThread(QThread):
             server.starttls()
             server.login(self.details[2],self.details[4])
             server.send_message(message)
+        server.close()
 
 class MailThreadPDF(QThread):
     def __init__(self,details:list,mail_content,file_path,directory):
@@ -41,12 +42,11 @@ class MailThreadPDF(QThread):
         self.mail_content,os.path.basename(self.file_path),self.directory) 
         mail.email_send()
 
-class QRCodeMailThread(QRunnable):
-    def __init__(self,details:list,mail_content,file_path,receiver):
+class QRCodeMailThread(QThread):
+    def __init__(self,details:list,mail_content,file_path):
         self.details = details
         self.mail_content = mail_content
         self.file_path = file_path
-        self.receiver = receiver 
         super().__init__()
  
     def run(self):
@@ -60,7 +60,7 @@ class QRCodeMailThread(QRunnable):
             server.starttls()
             server.login(self.details[2],self.details[4])
             server.send_message(message)
-
+        server.close()
 
 class BatchQRCodeMailThread(QRunnable):
     def __init__(self,details:list,mail_content,file_path,receiver):
@@ -81,3 +81,4 @@ class BatchQRCodeMailThread(QRunnable):
             server.starttls()
             server.login(self.details[2],self.details[4])
             server.send_message(message)
+        server.close()
