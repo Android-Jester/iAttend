@@ -1,4 +1,3 @@
-
 from packages.pyqt import *
 from packages.connection import *
 
@@ -105,6 +104,7 @@ class Database_Connection(QDialog):
                     return db,db.cursor() 
                 except Exception as e:
                     self.ui_database.label_notification.setText(str(e))
+                    return str(e)
             else:
                 self.ui_database.label_notification.setText("Please provide your connection details")
         elif self.ui_database.postgresql.isChecked():
@@ -115,6 +115,7 @@ class Database_Connection(QDialog):
                     return db,db.cursor()
                 except Exception as e:
                     self.ui_database.label_notification.setText(str(e))
+                    return str(e)
             else:
                 self.ui_database.label_notification.setText("Please provide your connection details")
         elif self.ui_database.sqlite.isChecked():     
@@ -123,7 +124,8 @@ class Database_Connection(QDialog):
                 self.ui_database.label_notification.setText("Hey! you have SQLite3 working connection...")
                 return db,db.cursor()
             except Exception as e:
-                self.ui_database.label_notification.setText(str(e))    
+                self.ui_database.label_notification.setText(str(e))
+                return str(e)    
     
     def MoveWindow(self, event):
         if self.isMaximized() == False:
