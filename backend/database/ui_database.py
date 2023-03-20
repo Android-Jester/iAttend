@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'databaseMJWZai.ui'
+## Form generated from reading UI file 'databasewOYjDg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -336,17 +336,9 @@ class Ui_Database(object):
         self.sqlite.setChecked(True)
         self.mysql = QRadioButton(self.frame_4)
         self.mysql.setObjectName(u"mysql")
-        self.mysql.setGeometry(QRect(180, 40, 95, 20))
+        self.mysql.setGeometry(QRect(140, 40, 95, 20))
         self.mysql.setFont(font1)
         self.mysql.setStyleSheet(u"QRadioButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color:rgb(35,35,35)\n"
-"}")
-        self.postgresql = QRadioButton(self.frame_4)
-        self.postgresql.setObjectName(u"postgresql")
-        self.postgresql.setGeometry(QRect(350, 40, 111, 20))
-        self.postgresql.setFont(font1)
-        self.postgresql.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color:rgb(35,35,35)\n"
 "}")
@@ -387,6 +379,5 @@ class Ui_Database(object):
         self.label_40.setText("")
         self.sqlite.setText(QCoreApplication.translate("Database", u"SQLite", None))
         self.mysql.setText(QCoreApplication.translate("Database", u"MySQL", None))
-        self.postgresql.setText(QCoreApplication.translate("Database", u"PostgreSQL", None))
     # retranslateUi
 
