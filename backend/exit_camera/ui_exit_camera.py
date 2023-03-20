@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'exit_cameraCuTmMv.ui'
+## Form generated from reading UI file 'exit_cameraoVuKhf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -186,7 +186,7 @@ class Ui_Dialog(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.frame_6 = QFrame(self.frame_5)
         self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setMaximumSize(QSize(600, 212))
+        self.frame_6.setMaximumSize(QSize(560, 212))
         self.frame_6.setStyleSheet(u"\n"
 "QFrame{\n"
 "	background-color: rgb(45, 45, 45);\n"
@@ -196,8 +196,9 @@ class Ui_Dialog(object):
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.btn_exit_cam_connect = QPushButton(self.frame_6)
         self.btn_exit_cam_connect.setObjectName(u"btn_exit_cam_connect")
-        self.btn_exit_cam_connect.setGeometry(QRect(20, 80, 131, 45))
+        self.btn_exit_cam_connect.setGeometry(QRect(20, 80, 161, 45))
         self.btn_exit_cam_connect.setMinimumSize(QSize(0, 45))
+        self.btn_exit_cam_connect.setMaximumSize(QSize(161, 45))
         font2 = QFont()
         font2.setPointSize(10)
         self.btn_exit_cam_connect.setFont(font2)
@@ -222,8 +223,9 @@ class Ui_Dialog(object):
         self.btn_exit_cam_connect.setFlat(True)
         self.btn_exit_cam_disconect = QPushButton(self.frame_6)
         self.btn_exit_cam_disconect.setObjectName(u"btn_exit_cam_disconect")
-        self.btn_exit_cam_disconect.setGeometry(QRect(160, 80, 141, 45))
+        self.btn_exit_cam_disconect.setGeometry(QRect(200, 80, 171, 45))
         self.btn_exit_cam_disconect.setMinimumSize(QSize(0, 45))
+        self.btn_exit_cam_disconect.setMaximumSize(QSize(171, 45))
         self.btn_exit_cam_disconect.setFont(font2)
         self.btn_exit_cam_disconect.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -246,9 +248,9 @@ class Ui_Dialog(object):
         self.btn_exit_cam_disconect.setFlat(True)
         self.exit_comboBox = QComboBox(self.frame_6)
         self.exit_comboBox.setObjectName(u"exit_comboBox")
-        self.exit_comboBox.setGeometry(QRect(460, 80, 120, 45))
+        self.exit_comboBox.setGeometry(QRect(390, 80, 141, 45))
         self.exit_comboBox.setMinimumSize(QSize(120, 45))
-        self.exit_comboBox.setMaximumSize(QSize(130, 41))
+        self.exit_comboBox.setMaximumSize(QSize(150, 45))
         self.exit_comboBox.setFont(font2)
         self.exit_comboBox.setStyleSheet(u"QComboBox{\n"
 "	background-color: rgb(35,35,35);\n"
@@ -265,7 +267,8 @@ class Ui_Dialog(object):
         self.label_28.setPixmap(QPixmap(u":/icons/asset/video.svg"))
         self.exit_cam_ip = QLineEdit(self.frame_6)
         self.exit_cam_ip.setObjectName(u"exit_cam_ip")
-        self.exit_cam_ip.setGeometry(QRect(20, 20, 561, 51))
+        self.exit_cam_ip.setGeometry(QRect(20, 20, 511, 51))
+        self.exit_cam_ip.setMaximumSize(QSize(521, 51))
         self.exit_cam_ip.setFont(font2)
         self.exit_cam_ip.setStyleSheet(u"QLineEdit{\n"
 "    background-color: rgb(35,35,35);\n"
@@ -285,7 +288,8 @@ class Ui_Dialog(object):
         self.exit_cam_ip.setClearButtonEnabled(True)
         self.label_notification = QLabel(self.frame_6)
         self.label_notification.setObjectName(u"label_notification")
-        self.label_notification.setGeometry(QRect(20, 140, 561, 51))
+        self.label_notification.setGeometry(QRect(20, 140, 511, 51))
+        self.label_notification.setMaximumSize(QSize(521, 51))
         font3 = QFont()
         font3.setFamily(u"MS Shell Dlg 2")
         font3.setPointSize(10)
@@ -298,43 +302,18 @@ class Ui_Dialog(object):
 "	border-radius: 10px;\n"
 "}")
         self.label_notification.setAlignment(Qt.AlignCenter)
-        self.btn_open_database = QPushButton(self.frame_6)
-        self.btn_open_database.setObjectName(u"btn_open_database")
-        self.btn_open_database.setGeometry(QRect(310, 80, 141, 45))
-        self.btn_open_database.setMinimumSize(QSize(0, 45))
-        self.btn_open_database.setFont(font2)
-        self.btn_open_database.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/asset/database.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_open_database.setIcon(icon2)
-        self.btn_open_database.setIconSize(QSize(30, 30))
-        self.btn_open_database.setFlat(True)
         self.btn_exit_cam_connect.raise_()
         self.btn_exit_cam_disconect.raise_()
         self.exit_comboBox.raise_()
         self.exit_cam_ip.raise_()
         self.label_28.raise_()
         self.label_notification.raise_()
-        self.btn_open_database.raise_()
 
         self.horizontalLayout_2.addWidget(self.frame_6)
 
         self.frame_7 = QFrame(self.frame_5)
         self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setMaximumSize(QSize(450, 16777215))
+        self.frame_7.setMaximumSize(QSize(490, 212))
         self.frame_7.setStyleSheet(u"QFrame{\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius:5px;\n"
@@ -490,7 +469,6 @@ class Ui_Dialog(object):
         self.label_28.setText("")
         self.exit_cam_ip.setPlaceholderText(QCoreApplication.translate("Dialog", u"Camera Id/IP ?", None))
         self.label_notification.setText(QCoreApplication.translate("Dialog", u"Notification", None))
-        self.btn_open_database.setText(QCoreApplication.translate("Dialog", u"Database", None))
         self.entry_blur_label.setText(QCoreApplication.translate("Dialog", u"Contrast", None))
         self.sharpness_value.setText(QCoreApplication.translate("Dialog", u"0", None))
         self.entry_dilation_label.setText(QCoreApplication.translate("Dialog", u"Brigthness", None))

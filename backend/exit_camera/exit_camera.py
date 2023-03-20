@@ -1,15 +1,14 @@
 import datetime
-
+from packages.pyqt import *
 from packages.date import *
 from packages.system import *
 from packages.computing import *
-from packages.processing import *
-
-
 from alert.alert_dialog import *
+from packages.processing import *
+from packages.connection import *
+from database.database import Database
 from exit_camera.ui_exit_camera import Ui_Dialog
-from exit_db.database_exit import *
-from packages.pyqt import *
+
 
 class ExitCameraFeed(QDialog):
     def __init__(self):
@@ -33,9 +32,6 @@ class ExitCameraFeed(QDialog):
         self.ui_exit_camera.sharpness_value.setText(str(self.ui_exit_camera.sharpness.value()))
         self.ui_exit_camera.contrast_value.setText(str(self.ui_exit_camera.contrast.value()))
 
-        self.database=Database_Connection()
-        self.ui_exit_camera.btn_open_database.clicked.connect(lambda: self.database.show())
-
         self.ui_exit_camera.frame.mouseMoveEvent = self.MoveWindow
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
@@ -43,6 +39,7 @@ class ExitCameraFeed(QDialog):
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(144, 144, 144, 40))
         self.ui_exit_camera.frame.setGraphicsEffect(self.shadow)
+        self.database = Database()
 
     def set_combo_items(self,active_cameras:list):
         self.ui_exit_camera.exit_comboBox.addItems(active_cameras)
@@ -66,7 +63,7 @@ class ExitCameraFeed(QDialog):
         self.ui_exit_camera.contrast_value.setText(str(value))
     
     def get_cache_path(self):
-        return 'C:\\ProgramData\\iAttend\\data\\cache\\attendance_database_cache.db'
+        return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
 
     def query_cache_database(self,qr_code_data):
         db = sqlite3.connect(self.get_cache_path())
@@ -79,8 +76,7 @@ class ExitCameraFeed(QDialog):
         if cursor is not None:
             for data in cursor:
                 results.append(data)
-            print(results)
-            cursor=my_cursor.execute("SELECT time_in,duration FROM tb_attendance WHERE st_reference="+str(results[1])+" and date_stamp="+date)
+            cursor=my_cursor.execute("SELECT time_in,duration FROM tb_attendance_temp WHERE st_reference="+str(results[1])+" and date_stamp="+date)
             cursor=my_cursor.fetchall()
             db.commit()
             details = []
@@ -88,70 +84,49 @@ class ExitCameraFeed(QDialog):
                 for data in cursor:
                     details.append(data)
                 db.commit()
-                time_out =current.now().time().strftime('%H:%M:%S')
-                date_stamp=current.now().date().strftime('%Y-%m-%d')
-                time_out_split = str(time_out).split(':')
-                time_in = str(details[0][0]).split(':')
-                construct_duration = (abs((int(time_out_split[0])-int(time_in[0]))),
-                abs((int(time_out_split[1])-int(time_in[1]))),
-                abs((int(time_out_split[2])-int(time_in[2]))))
-                new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
-                if str(details[0][1]) == "00:00:00":
-                    my_cursor.execute("UPDATE tb_attendance SET time_out= ?, duration= ?  WHERE st_reference=? and date_stamp= ? ",(time_out,new_duration,str(results[1]),date_stamp))
-                    db.commit()
-                    winsound.Beep(1000,100)
-                    return "Hey! your have successfully logged out"
+                if len(details)>0:
+                    time_out =current.now().time().strftime('%H:%M:%S')
+                    date_stamp=current.now().date().strftime('%Y-%m-%d')
+                    time_out_split = str(time_out).split(':')
+                    time_in = str(details[0][0]).split(':')
+                    construct_duration = (abs((int(time_out_split[0])-int(time_in[0]))),
+                    abs((int(time_out_split[1])-int(time_in[1]))),
+                    abs((int(time_out_split[2])-int(time_in[2]))))
+                    new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
+                    if str(details[0][1]) == "00:00:00":
+                        my_cursor.execute("UPDATE tb_attendance_temp SET time_out= ?, duration= ?  WHERE st_reference=? and date_stamp= ? ",(time_out,new_duration,str(results[1]),date_stamp))
+                        db.commit()
+                        winsound.Beep(1000,100)
+                        details = my_cursor.execute("SELECT * FROM tb_attendance_temp where st_reference="+str(results[1]))
+                        details=my_cursor.fetchone()
+                        my_cursor.execute("INSERT INTO tb_attendance(st_reference,program,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?)",
+                        (details[6],details[1],details[2],details[3],details[4],details[5]))
+                        db.commit()
+                        my_cursor.execute("DELETE FROM tb_attendance_temp where st_reference="+str(results[1]))
+                        db.commit()
+                        winsound.Beep(1000,100)
+                        my_cursor.execute("DELETE FROM tb_attendance_last_seen WHERE st_reference="+str(results[1]))
+                        db.commit()
+                        my_cursor.execute("INSERT INTO tb_attendance_last_seen (st_reference,program,date_stamp,time_in,time_out,duration) VALUES (?,?,?,?,?,?)",
+                        (details[6],details[1],details[2],details[3],details[4],details[5]))
+                        db.commit()
+                        winsound.Beep(1000,100)
+                        return "Hey! your have successfully logged out"
+                    else:
+                        winsound.Beep(1000,100)
+                        return "Oops! you are already logged out!"
                 else:
-                    winsound.Beep(1000,100)
-                    return "Oops! you are already logged out!"
-        else:
-             return "Oops! student details not found."
-
-    def retreive_data(self,qr_code_data):
-        (db,my_cursor,connection_status) = self.database.my_cursor_()
-        cursor=my_cursor.execute("SELECT id,reference FROM tb_students WHERE reference= " +qr_code_data)
-        cursor= my_cursor.fetchone()
-        db.commit()
-        results = []
-        date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
-        if cursor is not None:
-            for data in cursor:
-                results.append(data)
-            cursor=my_cursor.execute("SELECT time_in,duration FROM tb_attendance WHERE st_reference="+str(results[1])+" and date_stamp="+date)
-            cursor=my_cursor.fetchall()
-            db.commit()
-            details = []
-            if cursor is not None:
-                for data in cursor:
-                    details.append(data)
-                db.commit()
-                time_out =current.now().time().strftime('%H:%M:%S')
-                date_stamp=current.now().date().strftime('%Y-%m-%d')
-                time_out_split = str(time_out).split(':')
-                time_in = str(details[0][0]).split(':')
-                construct_duration = (abs((int(time_out_split[0])-int(time_in[0]))),
-                abs((int(time_out_split[1])-int(time_in[1]))),
-                abs((int(time_out_split[2])-int(time_in[2]))))
-                new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
-                if str(details[0][1]) == "00:00:00":
-                    my_cursor.execute("UPDATE tb_attendance SET time_out= ?, duration= ?  WHERE st_reference=? and date_stamp= ? ",(time_out,new_duration,str(results[1]),date_stamp))
-                    db.commit()
-                    winsound.Beep(1000,100)
-                    return "Hey! your have successfully logged out"
-                else:
-                    winsound.Beep(1000,100)
                     return "Oops! you are already logged out!"
         else:
              return "Oops! student details not found."
 
     def log_student_out(self,qr_code_data:str):
-        check_state = self.database.check_state()
-        if check_state == True:
-           return self.retreive_data(qr_code_data)
+        if self.database.check_state():
+            winsound.Beep(1000,100)
+            return 'Oops! no database configured...'
         else:
-           return self.query_cache_database(qr_code_data)
-           
-    
+            return self.query_cache_database(qr_code_data)
+            
     def start_webcam(self):
         if  self.ui_exit_camera.exit_cam_ip.text() or self.ui_exit_camera.exit_comboBox.currentText():
             self.show_alert = AlertDialog()
