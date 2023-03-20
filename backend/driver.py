@@ -2238,17 +2238,6 @@ class Authentication(QMainWindow):
         self.ui_login.btn_login.clicked.connect(self.login)
         self.retrieve = ForgotPassword()
         self.ui_login.btn_forgot_pass.clicked.connect(lambda: self.retrieve.show())
-        self.user()          
-
-    def user(self):
-        if self.database.check_state():
-            self.ui_login.username.setText("root@developer")
-            self.ui_login.student_id.setText("123456")
-            self.ui_login.password.setText("root@developer")
-        else:
-            self.ui_login.username.setText("redolf250")
-            self.ui_login.student_id.setText("20661163")
-            self.ui_login.password.setText("0552588647")
 
     def login_(self):
         try:
