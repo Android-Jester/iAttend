@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardzEChYK.ui'
+## Form generated from reading UI file 'dashoboardDXRCSu.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -98,7 +98,7 @@ class Ui_dashboard(object):
         self.label_4 = QLabel(self.options)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setMinimumSize(QSize(750, 0))
-        self.label_4.setMaximumSize(QSize(500, 16777215))
+        self.label_4.setMaximumSize(QSize(900, 16777215))
         font1 = QFont()
         font1.setPointSize(10)
         font1.setBold(False)
@@ -111,8 +111,8 @@ class Ui_dashboard(object):
 
         self.label_6 = QLabel(self.options)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setMinimumSize(QSize(400, 0))
-        self.label_6.setMaximumSize(QSize(270, 16777215))
+        self.label_6.setMinimumSize(QSize(350, 0))
+        self.label_6.setMaximumSize(QSize(350, 16777215))
         font2 = QFont()
         font2.setPointSize(10)
         self.label_6.setFont(font2)
@@ -129,8 +129,8 @@ class Ui_dashboard(object):
 
         self.btn_login_user = QPushButton(self.options)
         self.btn_login_user.setObjectName(u"btn_login_user")
-        self.btn_login_user.setMinimumSize(QSize(40, 40))
-        self.btn_login_user.setMaximumSize(QSize(16777215, 40))
+        self.btn_login_user.setMinimumSize(QSize(30, 40))
+        self.btn_login_user.setMaximumSize(QSize(30, 30))
         self.btn_login_user.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
@@ -145,42 +145,6 @@ class Ui_dashboard(object):
         self.btn_login_user.setFlat(True)
 
         self.horizontalLayout_19.addWidget(self.btn_login_user)
-
-        self.btn_login_user_2 = QPushButton(self.options)
-        self.btn_login_user_2.setObjectName(u"btn_login_user_2")
-        self.btn_login_user_2.setMinimumSize(QSize(40, 40))
-        self.btn_login_user_2.setMaximumSize(QSize(16777215, 40))
-        self.btn_login_user_2.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 0px solid;\n"
-"    background-color: rgb(35, 35, 35);\n"
-"padding-left:-4px;\n"
-"}\n"
-"")
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/asset/wifi.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_login_user_2.setIcon(icon1)
-        self.btn_login_user_2.setIconSize(QSize(30, 30))
-        self.btn_login_user_2.setFlat(True)
-
-        self.horizontalLayout_19.addWidget(self.btn_login_user_2)
-
-        self.btn_login_user_4 = QPushButton(self.options)
-        self.btn_login_user_4.setObjectName(u"btn_login_user_4")
-        self.btn_login_user_4.setMinimumSize(QSize(100, 40))
-        self.btn_login_user_4.setMaximumSize(QSize(16777215, 40))
-        self.btn_login_user_4.setFont(font2)
-        self.btn_login_user_4.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 0px solid;\n"
-"    background-color: rgb(35, 35, 35);\n"
-"padding-left:-4px;\n"
-"}\n"
-"")
-        self.btn_login_user_4.setIconSize(QSize(30, 30))
-        self.btn_login_user_4.setFlat(True)
-
-        self.horizontalLayout_19.addWidget(self.btn_login_user_4)
 
 
         self.horizontalLayout_2.addWidget(self.options)
@@ -308,9 +272,9 @@ class Ui_dashboard(object):
 "\n"
 "\n"
 "")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/asset/home.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_home.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/asset/home.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_home.setIcon(icon1)
         self.btn_home.setIconSize(QSize(32, 40))
         self.btn_home.setCheckable(True)
         self.btn_home.setChecked(False)
@@ -337,9 +301,9 @@ class Ui_dashboard(object):
 "	border-left-color: rgb(255, 255, 255);\n"
 "}\n"
 "")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/asset/user-plus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_database.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/asset/user-plus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_database.setIcon(icon2)
         self.btn_database.setIconSize(QSize(35, 45))
         self.btn_database.setCheckable(True)
         self.btn_database.setFlat(True)
@@ -364,9 +328,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/asset/search.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_search.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/asset/search.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_search.setIcon(icon3)
         self.btn_search.setIconSize(QSize(35, 42))
         self.btn_search.setCheckable(True)
         self.btn_search.setFlat(True)
@@ -391,9 +355,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon5 = QIcon()
-        icon5.addFile(u":/icons/asset/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_batch.setIcon(icon5)
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/asset/upload.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_batch.setIcon(icon4)
         self.btn_batch.setIconSize(QSize(35, 40))
         self.btn_batch.setFlat(True)
 
@@ -417,9 +381,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/asset/bar-chart-2.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_report.setIcon(icon6)
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/asset/bar-chart-2.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_report.setIcon(icon5)
         self.btn_report.setIconSize(QSize(35, 43))
         self.btn_report.setFlat(True)
 
@@ -443,9 +407,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon7 = QIcon()
-        icon7.addFile(u":/icons/asset/users.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_admin.setIcon(icon7)
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/asset/users.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_admin.setIcon(icon6)
         self.btn_admin.setIconSize(QSize(35, 40))
         self.btn_admin.setFlat(True)
 
@@ -469,9 +433,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/asset/video.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_camera.setIcon(icon8)
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/asset/video.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_camera.setIcon(icon7)
         self.btn_camera.setIconSize(QSize(35, 40))
         self.btn_camera.setFlat(True)
 
@@ -495,9 +459,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u":/icons/asset/mail.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_mail_report_or_data.setIcon(icon9)
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/asset/mail.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_mail_report_or_data.setIcon(icon8)
         self.btn_mail_report_or_data.setIconSize(QSize(32, 40))
         self.btn_mail_report_or_data.setFlat(True)
 
@@ -525,9 +489,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon10 = QIcon()
-        icon10.addFile(u":/icons/asset/database.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_backup.setIcon(icon10)
+        icon9 = QIcon()
+        icon9.addFile(u":/icons/asset/database.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_backup.setIcon(icon9)
         self.btn_backup.setIconSize(QSize(35, 40))
         self.btn_backup.setFlat(True)
 
@@ -551,9 +515,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon11 = QIcon()
-        icon11.addFile(u":/icons/asset/log-out.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_logout.setIcon(icon11)
+        icon10 = QIcon()
+        icon10.addFile(u":/icons/asset/log-out.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_logout.setIcon(icon10)
         self.btn_logout.setIconSize(QSize(35, 40))
         self.btn_logout.setFlat(True)
 
@@ -576,9 +540,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border-left-color: rgb(255, 255, 255);\n"
 "}")
-        icon12 = QIcon()
-        icon12.addFile(u":/icons/asset/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_help.setIcon(icon12)
+        icon11 = QIcon()
+        icon11.addFile(u":/icons/asset/help-circle.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_help.setIcon(icon11)
         self.btn_help.setIconSize(QSize(35, 40))
         self.btn_help.setFlat(True)
 
@@ -828,7 +792,7 @@ class Ui_dashboard(object):
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.label_notification = QLabel(self.frame_3)
         self.label_notification.setObjectName(u"label_notification")
-        self.label_notification.setGeometry(QRect(10, 310, 481, 121))
+        self.label_notification.setGeometry(QRect(10, 310, 481, 111))
         self.label_notification.setFont(font4)
         self.label_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -875,7 +839,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_connect_detect.setIcon(icon8)
+        self.btn_connect_detect.setIcon(icon7)
         self.btn_connect_detect.setIconSize(QSize(30, 30))
         self.btn_connect_detect.setFlat(True)
         self.label_27 = QLabel(self.frame_3)
@@ -900,9 +864,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon13 = QIcon()
-        icon13.addFile(u":/icons/asset/video-off.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_disconnect.setIcon(icon13)
+        icon12 = QIcon()
+        icon12.addFile(u":/icons/asset/video-off.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_disconnect.setIcon(icon12)
         self.btn_disconnect.setIconSize(QSize(30, 30))
         self.btn_disconnect.setFlat(True)
         self.comboBox = QComboBox(self.frame_3)
@@ -964,7 +928,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_open_exit_camera_ui.setIcon(icon8)
+        self.btn_open_exit_camera_ui.setIcon(icon7)
         self.btn_open_exit_camera_ui.setIconSize(QSize(30, 30))
         self.btn_open_exit_camera_ui.setFlat(True)
         self.btn_clear_label = QPushButton(self.frame_3)
@@ -985,9 +949,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon14 = QIcon()
-        icon14.addFile(u":/icons/asset/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_clear_label.setIcon(icon14)
+        icon13 = QIcon()
+        icon13.addFile(u":/icons/asset/delete.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_clear_label.setIcon(icon13)
         self.btn_clear_label.setIconSize(QSize(30, 30))
         self.btn_clear_label.setFlat(True)
         self.btn_open_database = QPushButton(self.frame_3)
@@ -1008,7 +972,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_open_database.setIcon(icon10)
+        self.btn_open_database.setIcon(icon9)
         self.btn_open_database.setIconSize(QSize(30, 30))
         self.btn_open_database.setFlat(True)
         self.firstname_23.raise_()
@@ -1078,6 +1042,7 @@ class Ui_dashboard(object):
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_2)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(-1, -1, -1, 15)
         self.frame_4 = QFrame(self.frame_2)
         self.frame_4.setObjectName(u"frame_4")
         self.frame_4.setMinimumSize(QSize(0, 0))
@@ -1092,6 +1057,7 @@ class Ui_dashboard(object):
         self.gridLayout_2 = QGridLayout(self.frame_4)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.gridLayout_2.setVerticalSpacing(20)
+        self.gridLayout_2.setContentsMargins(20, -1, -1, 9)
         self.label_14 = QLabel(self.frame_4)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setMinimumSize(QSize(0, 20))
@@ -1272,7 +1238,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_scan_range.setIcon(icon4)
+        self.btn_scan_range.setIcon(icon3)
         self.btn_scan_range.setIconSize(QSize(30, 30))
         self.btn_scan_range.setFlat(True)
         self.scan_range = QLineEdit(self.frame_5)
@@ -1487,7 +1453,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_search_page.setIcon(icon4)
+        self.btn_search_page.setIcon(icon3)
         self.btn_search_page.setIconSize(QSize(30, 30))
         self.btn_search_page.setFlat(True)
         self.label_29 = QLabel(self.top)
@@ -1567,9 +1533,9 @@ class Ui_dashboard(object):
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(35, 35, 35);\n"
 "}")
-        icon15 = QIcon()
-        icon15.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.start_date.setIcon(icon15)
+        icon14 = QIcon()
+        icon14.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.start_date.setIcon(icon14)
         self.start_date.setChecked(True)
         self.db_start_date = QLineEdit(self.bottom)
         self.db_start_date.setObjectName(u"db_start_date")
@@ -1644,7 +1610,7 @@ class Ui_dashboard(object):
 "QPushButton:hover{\n"
 "	border-radius: 20px;\n"
 "}")
-        self.btn_reload.setIcon(icon14)
+        self.btn_reload.setIcon(icon13)
         self.btn_reload.setIconSize(QSize(30, 30))
         self.btn_reload.setFlat(True)
         self.btn_csv = QPushButton(self.bottom)
@@ -1665,9 +1631,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon16 = QIcon()
-        icon16.addFile(u":/icons/asset/file.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_csv.setIcon(icon16)
+        icon15 = QIcon()
+        icon15.addFile(u":/icons/asset/file.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_csv.setIcon(icon15)
         self.btn_csv.setIconSize(QSize(30, 30))
         self.btn_csv.setFlat(True)
         self.label_26 = QLabel(self.bottom)
@@ -1693,9 +1659,9 @@ class Ui_dashboard(object):
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(35, 35, 35);\n"
 "}")
-        icon17 = QIcon()
-        icon17.addFile(u":/icons/asset/filter.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.checkBox.setIcon(icon17)
+        icon16 = QIcon()
+        icon16.addFile(u":/icons/asset/filter.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.checkBox.setIcon(icon16)
         self.btn_json = QPushButton(self.bottom)
         self.btn_json.setObjectName(u"btn_json")
         self.btn_json.setGeometry(QRect(170, 20, 151, 41))
@@ -1714,7 +1680,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_json.setIcon(icon16)
+        self.btn_json.setIcon(icon15)
         self.btn_json.setIconSize(QSize(30, 30))
         self.btn_json.setFlat(True)
         self.label_40.raise_()
@@ -1850,7 +1816,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_batch_browse.setIcon(icon16)
+        self.btn_batch_browse.setIcon(icon15)
         self.btn_batch_browse.setIconSize(QSize(30, 30))
         self.btn_batch_browse.setFlat(True)
         self.batch_browse = QLineEdit(self.frame_27)
@@ -1891,7 +1857,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_start_job.setIcon(icon15)
+        self.btn_start_job.setIcon(icon14)
         self.btn_start_job.setIconSize(QSize(30, 30))
         self.btn_start_job.setFlat(True)
         self.btn_batch_mail = QPushButton(self.frame_27)
@@ -1912,7 +1878,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_batch_mail.setIcon(icon9)
+        self.btn_batch_mail.setIcon(icon8)
         self.btn_batch_mail.setIconSize(QSize(30, 30))
         self.btn_batch_mail.setFlat(True)
         self.btn_batch_folder = QPushButton(self.frame_27)
@@ -1933,9 +1899,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon18 = QIcon()
-        icon18.addFile(u":/icons/asset/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_batch_folder.setIcon(icon18)
+        icon17 = QIcon()
+        icon17.addFile(u":/icons/asset/folder.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_batch_folder.setIcon(icon17)
         self.btn_batch_folder.setIconSize(QSize(30, 30))
         self.btn_batch_folder.setFlat(True)
         self.btn_batch_images = QPushButton(self.frame_27)
@@ -1956,9 +1922,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon19 = QIcon()
-        icon19.addFile(u":/icons/asset/image.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_batch_images.setIcon(icon19)
+        icon18 = QIcon()
+        icon18.addFile(u":/icons/asset/image.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_batch_images.setIcon(icon18)
         self.btn_batch_images.setIconSize(QSize(30, 30))
         self.btn_batch_images.setFlat(True)
 
@@ -2091,7 +2057,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_user_search.setIcon(icon4)
+        self.btn_user_search.setIcon(icon3)
         self.btn_user_search.setIconSize(QSize(30, 30))
         self.btn_user_search.setFlat(True)
         self.user_image = QLabel(self.left_child)
@@ -2209,7 +2175,6 @@ class Ui_dashboard(object):
         self.user_role = QComboBox(self.left_child)
         self.user_role.addItem("")
         self.user_role.addItem("")
-        self.user_role.addItem("")
         self.user_role.setObjectName(u"user_role")
         self.user_role.setGeometry(QRect(30, 390, 91, 50))
         self.user_role.setMinimumSize(QSize(0, 50))
@@ -2272,7 +2237,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_user_register.setIcon(icon3)
+        self.btn_user_register.setIcon(icon2)
         self.btn_user_register.setIconSize(QSize(30, 30))
         self.btn_user_register.setFlat(True)
         self.btn_user_update = QPushButton(self.left_child)
@@ -2314,9 +2279,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon20 = QIcon()
-        icon20.addFile(u":/icons/asset/lock.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_user_status.setIcon(icon20)
+        icon19 = QIcon()
+        icon19.addFile(u":/icons/asset/lock.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_user_status.setIcon(icon19)
         self.btn_user_status.setIconSize(QSize(30, 30))
         self.btn_user_status.setFlat(True)
         self.firstname_28 = QLabel(self.left_child)
@@ -2368,7 +2333,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.user_image_browse.setIcon(icon5)
+        self.user_image_browse.setIcon(icon4)
         self.user_image_browse.setIconSize(QSize(30, 30))
         self.user_image_browse.setFlat(True)
         self.firstname_29 = QLabel(self.left_child)
@@ -2403,9 +2368,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon21 = QIcon()
-        icon21.addFile(u":/icons/asset/send.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_mail_user_details.setIcon(icon21)
+        icon20 = QIcon()
+        icon20.addFile(u":/icons/asset/send.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_mail_user_details.setIcon(icon20)
         self.btn_mail_user_details.setIconSize(QSize(30, 30))
         self.btn_mail_user_details.setFlat(True)
         self.btn_user_clear = QPushButton(self.left_child)
@@ -2426,7 +2391,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_user_clear.setIcon(icon14)
+        self.btn_user_clear.setIcon(icon13)
         self.btn_user_clear.setIconSize(QSize(30, 30))
         self.btn_user_clear.setFlat(True)
         self.user_start_date = QDateEdit(self.left_child)
@@ -2512,9 +2477,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon22 = QIcon()
-        icon22.addFile(u":/icons/asset/file-text.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_export_data.setIcon(icon22)
+        icon21 = QIcon()
+        icon21.addFile(u":/icons/asset/file-text.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_export_data.setIcon(icon21)
         self.btn_export_data.setIconSize(QSize(30, 30))
         self.btn_export_data.setFlat(True)
         self.user_end_date = QLineEdit(self.left_child)
@@ -2892,7 +2857,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_search_reg.setIcon(icon4)
+        self.btn_search_reg.setIcon(icon3)
         self.btn_search_reg.setIconSize(QSize(30, 30))
         self.btn_search_reg.setFlat(True)
         self.label_37 = QLabel(self.left_fram_reg)
@@ -2954,7 +2919,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_register.setIcon(icon3)
+        self.btn_register.setIcon(icon2)
         self.btn_register.setIconSize(QSize(30, 30))
         self.btn_register.setFlat(True)
         self.btn_update = QPushButton(self.left_fram_reg)
@@ -2975,7 +2940,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_update.setIcon(icon19)
+        self.btn_update.setIcon(icon18)
         self.btn_update.setIconSize(QSize(30, 30))
         self.btn_update.setFlat(True)
         self.btn_remove = QPushButton(self.left_fram_reg)
@@ -2996,9 +2961,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon23 = QIcon()
-        icon23.addFile(u":/icons/asset/user-minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove.setIcon(icon23)
+        icon22 = QIcon()
+        icon22.addFile(u":/icons/asset/user-minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove.setIcon(icon22)
         self.btn_remove.setIconSize(QSize(30, 30))
         self.btn_remove.setFlat(True)
         self.btn_clear = QPushButton(self.left_fram_reg)
@@ -3019,7 +2984,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_clear.setIcon(icon14)
+        self.btn_clear.setIcon(icon13)
         self.btn_clear.setIconSize(QSize(30, 30))
         self.btn_clear.setFlat(True)
         self.label_39 = QLabel(self.left_fram_reg)
@@ -3070,7 +3035,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_browse_reg.setIcon(icon5)
+        self.btn_browse_reg.setIcon(icon4)
         self.btn_browse_reg.setIconSize(QSize(30, 30))
         self.btn_browse_reg.setFlat(True)
         self.reg_college_2 = QComboBox(self.left_fram_reg)
@@ -3100,16 +3065,16 @@ class Ui_dashboard(object):
         self.file_system.setFont(font2)
         self.file_system.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
-        self.file_system.setIcon(icon19)
+        self.file_system.setIcon(icon18)
         self.online_image = QRadioButton(self.left_fram_reg)
         self.online_image.setObjectName(u"online_image")
         self.online_image.setGeometry(QRect(110, 840, 101, 20))
         self.online_image.setFont(font2)
         self.online_image.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
-        icon24 = QIcon()
-        icon24.addFile(u":/icons/asset/download-cloud.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.online_image.setIcon(icon24)
+        icon23 = QIcon()
+        icon23.addFile(u":/icons/asset/download-cloud.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.online_image.setIcon(icon23)
         self.reg_email = QLineEdit(self.left_fram_reg)
         self.reg_email.setObjectName(u"reg_email")
         self.reg_email.setGeometry(QRect(30, 730, 421, 51))
@@ -3162,7 +3127,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_send_mail.setIcon(icon21)
+        self.btn_send_mail.setIcon(icon20)
         self.btn_send_mail.setIconSize(QSize(30, 30))
         self.btn_send_mail.setFlat(True)
         self.image_less = QRadioButton(self.left_fram_reg)
@@ -3171,7 +3136,7 @@ class Ui_dashboard(object):
         self.image_less.setFont(font2)
         self.image_less.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
-        self.image_less.setIcon(icon19)
+        self.image_less.setIcon(icon18)
         self.label_43.raise_()
         self.label_37.raise_()
         self.search_reg.raise_()
@@ -3300,7 +3265,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_reg_connect.setIcon(icon8)
+        self.btn_camera_reg_connect.setIcon(icon7)
         self.btn_camera_reg_connect.setIconSize(QSize(30, 30))
         self.btn_camera_reg_connect.setFlat(True)
         self.reg_camera_combo = QComboBox(self.frame_24)
@@ -3335,7 +3300,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_camera_reg_disconnect.setIcon(icon13)
+        self.btn_camera_reg_disconnect.setIcon(icon12)
         self.btn_camera_reg_disconnect.setIconSize(QSize(30, 30))
         self.btn_camera_reg_disconnect.setFlat(True)
         self.reg_camera_ip = QLineEdit(self.frame_24)
@@ -3510,7 +3475,7 @@ class Ui_dashboard(object):
 "background-color: rgb(35, 35, 35);\n"
 "padding-left:5px;\n"
 "border-radius:7px;")
-        self.change_date_box.setIcon(icon15)
+        self.change_date_box.setIcon(icon14)
 
         self.verticalLayout_21.addWidget(self.change_date_box)
 
@@ -3811,9 +3776,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon25 = QIcon()
-        icon25.addFile(u":/icons/asset/download.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_load.setIcon(icon25)
+        icon24 = QIcon()
+        icon24.addFile(u":/icons/asset/download.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_load.setIcon(icon24)
         self.btn_load.setIconSize(QSize(30, 30))
         self.btn_load.setFlat(True)
         self.btn_save = QPushButton(self.frame_9)
@@ -3836,9 +3801,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon26 = QIcon()
-        icon26.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_save.setIcon(icon26)
+        icon25 = QIcon()
+        icon25.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_save.setIcon(icon25)
         self.btn_save.setIconSize(QSize(30, 30))
         self.btn_save.setFlat(True)
         self.btn_refresh = QPushButton(self.frame_9)
@@ -3861,9 +3826,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon27 = QIcon()
-        icon27.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_refresh.setIcon(icon27)
+        icon26 = QIcon()
+        icon26.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_refresh.setIcon(icon26)
         self.btn_refresh.setIconSize(QSize(30, 30))
         self.btn_refresh.setFlat(True)
         self.btn_remove_combox_item = QPushButton(self.frame_9)
@@ -3886,9 +3851,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon28 = QIcon()
-        icon28.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove_combox_item.setIcon(icon28)
+        icon27 = QIcon()
+        icon27.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove_combox_item.setIcon(icon27)
         self.btn_remove_combox_item.setIconSize(QSize(30, 30))
         self.btn_remove_combox_item.setFlat(True)
         self.college_comboBox = QComboBox(self.frame_9)
@@ -4131,55 +4096,20 @@ class Ui_dashboard(object):
         self.label_4.setText(QCoreApplication.translate("dashboard", u"iAttend", None))
         self.label_6.setText(QCoreApplication.translate("dashboard", u"session@username  00:00:00 PM", None))
         self.btn_login_user.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_login_user.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+P", None))
-#endif // QT_CONFIG(shortcut)
-        self.btn_login_user_2.setText("")
-        self.btn_login_user_4.setText(QCoreApplication.translate("dashboard", u"1.5Mbs", None))
         self.btn_minimize.setText("")
         self.btn_maximize.setText("")
         self.btn_close.setText("")
         self.btn_home.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_home.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+H", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_database.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_database.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+N", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_search.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_search.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+S", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_batch.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_batch.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+B", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_report.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_report.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+R", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_admin.setText("")
         self.btn_camera.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_camera.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+C", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_mail_report_or_data.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_mail_report_or_data.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+M", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_backup.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_backup.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+B", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_logout.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_logout.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+L", None))
-#endif // QT_CONFIG(shortcut)
         self.btn_help.setText("")
-#if QT_CONFIG(shortcut)
-        self.btn_help.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+H", None))
-#endif // QT_CONFIG(shortcut)
         self.image.setText("")
         self.firstname.setText(QCoreApplication.translate("dashboard", u"Firstname", None))
         self.middlename.setText(QCoreApplication.translate("dashboard", u"Middlename", None))
@@ -4210,9 +4140,6 @@ class Ui_dashboard(object):
         self.btn_open_exit_camera_ui.setText(QCoreApplication.translate("dashboard", u"Logout", None))
         self.btn_clear_label.setText(QCoreApplication.translate("dashboard", u"Reset", None))
         self.btn_open_database.setText(QCoreApplication.translate("dashboard", u"Connection", None))
-#if QT_CONFIG(shortcut)
-        self.btn_open_database.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+D", None))
-#endif // QT_CONFIG(shortcut)
         self.camera_view.setText("")
         self.label_14.setText(QCoreApplication.translate("dashboard", u"Image Enhancement", None))
         self.brightness_value.setText(QCoreApplication.translate("dashboard", u"0", None))
@@ -4225,9 +4152,6 @@ class Ui_dashboard(object):
         self.scan_range_label.setText("")
         self.label_42.setText("")
         self.btn_scan_range.setText(QCoreApplication.translate("dashboard", u"Scan", None))
-#if QT_CONFIG(shortcut)
-        self.btn_scan_range.setShortcut(QCoreApplication.translate("dashboard", u"Ctrl+F", None))
-#endif // QT_CONFIG(shortcut)
         self.scan_range.setPlaceholderText(QCoreApplication.translate("dashboard", u"Scan range ?", None))
         self.db_validity.setText(QCoreApplication.translate("dashboard", u"Validity", None))
         self.db_refrence.setText(QCoreApplication.translate("dashboard", u"Reference", None))
@@ -4302,8 +4226,7 @@ class Ui_dashboard(object):
         self.user_reference.setPlaceholderText(QCoreApplication.translate("dashboard", u"Reference", None))
         self.user_contact.setPlaceholderText(QCoreApplication.translate("dashboard", u"Contact", None))
         self.user_role.setItemText(0, QCoreApplication.translate("dashboard", u"ADMIN", None))
-        self.user_role.setItemText(1, QCoreApplication.translate("dashboard", u"GUEST", None))
-        self.user_role.setItemText(2, QCoreApplication.translate("dashboard", u"USER", None))
+        self.user_role.setItemText(1, QCoreApplication.translate("dashboard", u"USER", None))
 
         self.user_email.setPlaceholderText(QCoreApplication.translate("dashboard", u"example@example.com", None))
         self.firstname_27.setText("")
@@ -4414,112 +4337,156 @@ class Ui_dashboard(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-se"
                         "rif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Camera Connection</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">In other to connect any of the active camera's, first you need to make sure that the camera is not in use or if in use </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">make sure to disconnect</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> it before connecting it to different view or frame.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">e.g.,</span><span style=\" font-famil"
-                        "y:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> if camera 0 is connected to </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">check in</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> view and you try to connect that same camera to </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">check out</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> view then, the system would automatically release the camera for </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">check out</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> view to use. This behavior is been utilized throughout the system design.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:"
-                        "0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Image Enhancement</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system provides some image enhancement capabilities to process the image based on weather conditions. It currently provides full support for increasing. This would only work for camera's that supports these features. Some camera's do not give support fine tuning these features.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; t"
-                        "ext-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1] Brightness	 [2] Sharpness 	[3] Contrast</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">In other to connect any of the active camera's, first you need to make sure that the camera is not in use or if in use </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">make sure to disconnect</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> it before connecting it to different view or frame.</span><span style=\" font-size:11pt;\"> </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">e.g.,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> if camera 0 is connected to</span><span style=\" font-family:'MS Shell Dlg 2',"
+                        "'sans-serif'; font-size:11pt; font-weight:600;\"> login</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> view and you try to connect that same camera to </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">logout</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> view then, the system would automatically release the camera for </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">login</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> view to use.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-s"
+                        "erif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Image Enhancement</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system provides some image enhancement capabilities to process the image based on weather conditions. It currently provides full support for increasing. This would only work for camera's that supports these features. Some camera's do not give support fine tuning these features.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1] Brightness	 [2] Sharpness 	[3] Contrast</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:"
+                        "0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Surveillance</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system supports four additional cameras to help monitor the surroundings as well. To use this either provide </span><span st"
-                        "yle=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">camera IP</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> address or if is attached to system provide the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">camera Id</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> in order to establish connection. If the default view provided is small and you would have a larger view then you can use the cast feature to open a wider screen and connect to such camera. The normal view doesn't support image enhancement but you can use this feature when you cast it to a wider screen. </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system supports four additional cameras to help monitor the surroundings as well. To use this provide </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">camera IP</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> address of the camera. Just select the camera Id from the drop down box"
+                        " provided and it would automatically load the select camera's connection address. The ability to add camera's to database is only available in administrative mode. Contact administrator if you run into problems connecting to any available camera.</span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; "
-                        "margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Databases</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system currently is providing full support for three (3) databases. </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1] SQLite	 [2] MySQL	 [3] PostgreSQL</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Databases</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system currently"
+                        " is providing full support MySQL databases. </span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left"
-                        ":0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">By default, the system is configured to run on embedded database (SQLite) and you don't need to provide any connection details. If you desire to configure the system to run on either </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">MySQL or PostgreSQL</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This is achieved by using the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">initialize tables button</span><span style=\" font-family:'MS Sh"
-                        "ell Dlg 2','sans-serif'; font-size:11pt;\">. This should be done once.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">By default, the system is configured not to run on any database. Ifconfigure the system to run on </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">MySQL </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This"
+                        " is achieved by using the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">initialize tables button</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">. This should be done once.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Database properties</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">To prevent you from re-typing the database properties (MySQL or PostgreSQL) all the time attached to the application is</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-"
-                        "size:11pt; font-weight:600; font-style:italic;\"> properties.txt</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file where you can provide the database connection details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example:</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">Username, Password, Hostname, Port, Database</span><span style=\" font-size:11pt;\"> this</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file located in the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span"
-                        " style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\database_properties</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\""
+                        ">To prevent you from re-typing the database properties (MySQL or PostgreSQL) all the time attached to the application is</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> properties.txt</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file where you can provide the database connection details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example:</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">Username, Password, Hostname, Port, Database,Server</span><span style=\" font-size:11pt;\"> this</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file located in the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-siz"
+                        "e:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\database_properties</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Backup</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">To backup create backup whe"
-                        "n the embedded database is used as main data source. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\backup</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px;"
+                        " margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">To backup create backup of the cache database. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\backup</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> The backup history file contains logs all your privious backup time and date stamp. </span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:"
+                        "0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Searching</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">In other to retrieve student details along with all the entries made by that student, they are various combinations or criteria\u2019s you can use to achieve this and get results. When the switch date between date fields is checked the date picked from the calendar widget would be placed in the start date field and if unchecked then it would be placed in the end date fiel"
+                        "d.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
-                        "text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Searching</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">In other to retrieve student details along with all the entries made by that student, they are various combinations or criteria\u2019s you can use to achieve this and get results. When the switch date between date fields is checked the date picked from the calendar widget would be placed in the start date field and if unchecked then it would be placed in the end date field.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. If the search box is empty and the search button is pressed then it's going to fetch all the records present in the database table and render it inside the table view.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p style=\" "
-                        "margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. If the search box is empty and the search button is pressed then it's going to fetch all the records present in the database table and render it inside the table view.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. If a reference number is provided then it's going to fetch that student details along with all the entries made by that student. The student details would be rendered on a card-view liked UI and the entries would also be rendered in"
-                        " a table view.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-si"
+                        "ze:11pt;\">[2]. If a reference number is provided then it's going to fetch that student details along with all the entries made by that student. The student details would be rendered on a card-view liked UI and the entries would also be rendered in a table view.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[3]. If a reference number is provided as well as start date then it would fetch all entries from that date down to the last appeared date and render the data to the UI.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;"
+                        " -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[4] if a reference number is provided as well as start and end date then it would fetch the details from based on the date range provided and render the data to UI.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'"
-                        "; font-size:11pt;\">[4] if a reference number is provided as well as start and end date then it would fetch the details from based on the date range provided and render the data to UI.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[5]. If the search by program box is checked then you can fetch data based on the various programs. The search comes with autocompletion feature with the programs"
+                        " available.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[5]. If the search by program box is checked then you can fetch data based on the various programs. The search comes with autocompletion feature with the programs available.</span><span style=\" font-size:11pt;\"> </span></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">\u00a0</span><span style=\" font-size:11pt;\"> </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Exporting Data</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system provides two solid ways of exporting data in either Json or CVS format based on your need. Data"
+                        " can only be exported when the table view is not empty or data is not been rendered. The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. When data is exported in csv format the default location for the saved file is at </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\export\\csv</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p st"
+                        "yle=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. When data is exported in Json format the default location for the saved file is at </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\export\\json</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Reports</span><span style=\" "
+                        "font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system provides support for generating reports in three different ways based on the user\u2019s preference. By default, the application won\u2019t display any report data unless it is hot reloaded. On hot reload, it is going to display pie chart and any other type of chart or graph based on the one which is checked. The pie chart side of this view is only used to render only pie charts. The other view is dynamic and hence display plots for either bar chart or line graph.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1] Pie chart\u00a0\u00a0\u00a0 [2] Bar chart\u00a0 [3] Li"
+                        "ne graph</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Generating charts</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">This case applies to pie chart and bar chart</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">In other to retrieve data for analysis, these are various combinati"
+                        "ons or criteria\u2019s you can use to achieve this and get results.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. If either of these radio buttons is checked with start date provided and load button is pressed, then it is going to read all the data available based on such date, from the database and display a chart with such data.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. If either of these radio buttons is checked with start and end date provided and load button is pressed, then it is going to read all the data available based on the dates provided, from the database and display a chart "
+                        "with such data.</span><span style=\" font-size:11pt;\"> </span></p></body></html>", None))
         self.textEdit_2.setHtml(QCoreApplication.translate("dashboard", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">\u00a0</span><span style=\" font-size:11pt;\"> </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Exporting Data</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The sys"
-                        "tem provides two solid ways of exporting data in either Json or CVS format based on your need. Data can only be exported when the table view is not empty or data is not been rendered. The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. When data is exported in csv format the default location for the saved file is at </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; fon"
-                        "t-style:italic;\">\\data\\csv_export</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. When data is exported in Json format the default location for the saved file is at </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\json_export</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-ser"
-                        "if'; font-size:11pt; font-weight:600; text-decoration: underline;\">Reports</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The system provides support for generating reports in three different ways based on the user\u2019s preference. By default, the application won\u2019t display any report data unless it is hot reloaded. On hot reload, it is going to display pie chart and any other type of chart or graph based on the one which is checked. The pie chart side of this view is only used to render only pie charts. The other view is dynamic and hence display plots for either bar chart or line graph.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell "
-                        "Dlg 2','sans-serif'; font-size:11pt;\">[1] Pie chart\u00a0\u00a0\u00a0 [2] Bar chart\u00a0 [3] Line graph</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Generating charts</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">This case applies to pie chart and bar chart</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','s"
-                        "ans-serif'; font-size:11pt;\">In other to retrieve data for analysis, these are various combinations or criteria\u2019s you can use to achieve this and get results.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. If either of these radio buttons is checked with start date provided and load button is pressed, then it is going to read all the data available based on such date, from the database and display a chart with such data.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. If either of these radio buttons is checked with start and end date provided and load button is pressed, then it is going t"
-                        "o read all the data available based on the dates provided, from the database and display a chart with such data.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Line Graph</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The line graph/plot is only used to visualize trends in data. To be able to plot trends in data. There is an additional combo box provided to keep all the dates been selected for the line graph. Only dates from the first calendar would be added to list.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-to"
-                        "p:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. First you would to select the program to plot or visualize their trend.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The line graph/plot is only used to visualize trends in data. To be able to plot trends in data. There is an additional combo box provided to keep all the da"
+                        "tes been selected for the line graph. Only dates from the first calendar would be added to list.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. First you would to select the program to plot or visualize their trend.</span><span style=\" font-size:11pt;\"> </span></p>\n"
 "<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. Pick dates from the first calendar and it would automatically be added to the combo box available.</span><span style=\" font-size:11pt;\">  </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[3]. To remove any unwanted date from the list of dates to be used, select that date and use the </span><span style=\" font-family:'MS Shell Dlg 2','sans-seri"
-                        "f'; font-size:11pt; font-weight:600;\">date button</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> to remove it.</span><span style=\" font-size:11pt;\">  </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; fo"
+                        "nt-size:11pt;\">[3]. To remove any unwanted date from the list of dates to be used, select that date and use the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">date button</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> to remove it.</span><span style=\" font-size:11pt;\">  </span></p>\n"
 "<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[4]. After all the dates for the line graphs are selected, pressed the load button to plot the graph.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Saving Charts</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style="
-                        "\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The only support provided for saving files is pdf format and this can't be set from the user end as it is provided from the application end. The saving format is as follows, the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">filename</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> provided appended with this </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">[date]_[time]</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> where date and time is the current values on the machine running the application.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. If you want to save pie c"
-                        "harts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\piechart</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. If you want to save bar charts, make sure that radio button checked and provide a filename, the saved file would be found in "
-                        "this directory. </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\barchart</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[3]. If you want to save line graph, make sure that radio button checked and provide a filename, the saved file would be found in this directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p style=\" margin-top:12px;"
-                        " margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\linechart</span><span style=\" font-size:11pt;\"> </span><span style=\" font-family:'Times New Roman','serif'; font-size:11pt;\">\u00a0</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Saving Charts</span><span styl"
+                        "e=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The only support provided for saving files is pdf format and this can't be set from the user end as it is provided from the application end. The saving format is as follows, the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">filename</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> provided appended with this </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">[date]_[time]</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> where date and time is the current values on the machine running the application.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin"
+                        "-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[1]. If you want to save pie charts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\reports\\piechart</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-fam"
+                        "ily:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[2]. If you want to save bar charts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\reports\\barchart</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">[3]. If you want to save line graph, m"
+                        "ake sure that radio button checked and provide a filename, the saved file would be found in this directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\reports\\linechart</span><span style=\" font-size:11pt;\"> </span><span style=\" font-family:'Times New Roman','serif'; font-size:11pt;\">\u00a0</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font"
+                        "-size:11pt; font-weight:600; text-decoration: underline;\">College programs</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">college_programs.txt</span><span style=\" font-size:11pt;\"> file  located in the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\programs </span><span styl"
+                        "e=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory. Any new program added should be seperated by a comma to allow the application read it. </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">e.g.,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> BSc. Chemistry, BSc. Physics, new program,new program. </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">Just replace the the college side the the college name. eg,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\"> CoS_programs.txt </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">for college of science, for engineering </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11"
+                        "pt; font-weight:600;\">CoE_programs.txt.</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">E-mail properties</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"justify\" style"
-                        "=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The properties of the sender details can be place in a text file located within the directory below with the name </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\email_details</sp"
-                        "an><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> to prevent you from re-writing them anytime you want to send e-mail. The application on start-up would automatically search for the file and load details from there. Please follow the exact format provided in the file.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The content of your mail can be typed in the content.txt located in the same directory. This content is attached mails sent as attendance code. To send reports or data from the content_report.txt should be edited as per your need or requirement.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style="
-                        "\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">Please take note the '</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">Hello name,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">' section, you can change the 'Hello' but please keep the name as it is since the name part would be provided from the user interface end.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">To prevent you from re-typing the e-mails all the time attached to the application is </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file where you c"
-                        "an provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">subject, example@gmail.com, sender name, password,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> this file located in the </span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\email_details</span><span"
-                        " style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600; text-decoration: underline;\">College programs</span></p>\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt;\">To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the </span><span style=\" font-size:11pt; font-weight:600; font-style:italic;\">CoS_programs.txt</span><span style=\" font-size:11pt;\"> file  located in the </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\""
-                        ">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\programs </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory. Any new program added should be seperated by a comma to allow the application read it. </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">e.g.,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\"> BSc. Chemistry, BSc. Physics, new program,new program</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size"
-                        ":8pt;\"><br /></p></body></html>", None))
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The properties of the sender details can be place in a text file located within the directory below with the name </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0"
+                        "; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\email_details</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> to prevent you from re-writing them anytime you want to send e-mail. The application on start-up would automatically search for the file and load details from there. Please follow the exact format provided in the file.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">The content of your mail can be typed "
+                        "in the content.txt located in the same directory. This content is attached mails sent as attendance code. To send reports or data from the content_report.txt should be edited as per your need or requirement.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">Please take note the '</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">Hello name,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">' section, you can change the 'Hello' but please keep the name as it is since the name part would be provided from the user interface end.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-inde"
+                        "nt:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">To prevent you from re-typing the e-mails all the time attached to the application is </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">detail.txt</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> file where you can provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">subject, example@gmail.com, sender name, password,</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> this file located in the </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-i"
+                        "ndent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\</span><span style=\" font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;\">iAttend</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">\\data\\email_details</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> directory.</span><span style=\" font-size:11pt;\"> </span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Batch processing</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell D"
+                        "lg 2','sans-serif'; font-size:11pt;\">To run a batch job and insert multiple students data into the database, just head to the batch processing page and follow these steps.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">NB: To perform this operation, you need strong internet connection.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Records</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">1. "
+                        "Use the browse button to select a </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">text or csv file</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> containing the data/records. The records should strictly follow the format given bellow. The date should be in </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">mm/dd/yyyy</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> format else, you would run into errors. Make sure to include header for the file as this would be skipped when it is loaded by the application. If headers are not provided then the first record would be skipped by default.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">Firstname,Middl"
+                        "ename,Lastname,Index,Reference,Program,College,Nationality,Issued date,Expiry date,Email</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">2. Make sure your have good internet connection and connected to a database as well.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">3. Click on the insert button to start the batch job, check from the notification panel to see the status of the job. If the job is still progress, just leave it for it finish the process. </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2',"
+                        "'sans-serif'; font-size:11pt;\">4. You can always check the logs for any finished batch process. Locate the log files in this directory </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iAttend\\data\\batch_logs </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> with this name format </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">batch_logs_unprocessed_date_time.txt </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">where date and time is the current stamps.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-seri"
+                        "f'; font-size:11pt;\">5. This log file contains records that wasn't saved due to duplicate entry or network connection error.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Images</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">NB: To perform this operation, you need strong internet connection.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">1. On the same batch page click on the images butto"
+                        "n with folder like image attached to it for a dialog to pop up.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">2. Use the browse button to select the folder containing the images. All the images within the selected folder would be listed.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">3. The naming format for the images should be, the student </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">reference_number.extension, e.g, 284458585.png</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span styl"
+                        "e=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">4. After selecting the images folder, you can close the dialog.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">5. To start the batch job to insert images into the database, click on the insert button with image icon attached to it. </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">6. Leave the application to whilst the operation is in progress.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">7. Check the st"
+                        "atus of the operation from the notification panel. </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">8. Check the logs generated after the operation for unprocessed images. </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">9.Location for log files </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iAttend\\data\\batch_logs  </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">with </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span "
+                        "style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">this name format </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\">image_logs_unprocessed_date_time.txt  </span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">where date and time is the current stamps.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;\">Generate QR Code</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">After inserting the records into the database, the code for taking attendance can now be generated. On the batch page locate the</span><span style=\" f"
+                        "ont-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;\"> mail button</span><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\"> with message icon attached to it.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">NB: To perform this operation, you need strong internet connection, and might need to switch of the sending device proxy.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">1. Click on to start generating and the sending processing simultaneously.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-blo"
+                        "ck-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">2. Leave the application to perform the operation.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">3. Check the notification panel for the procgress of the sending.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">4. Only valid mail addresses would receive the code generated.</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">5. Locate all codes generated within this di"
+                        "rectory </span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;\">C:\\ProgramData\\iAttend\\data\\qr_code\\</span></p>\n"
+"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;\">6. You can now delete the generated codes after the process.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;\"><br /></p></body></html>", None))
     # retranslateUi
 
