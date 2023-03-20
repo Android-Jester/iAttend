@@ -24,7 +24,7 @@ class Barchart(FigureCanvas):
         plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\visualize\\barchart.png',dpi = 300, edgecolor='none')
 
     def save_chart(self,name):
-        plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\barchart\\'+name+'.pdf',dpi = 300, edgecolor='none')
+        plt.savefig('C:\\ProgramData\\iAttend\\data\\reports\\barchart\\'+name+'.pdf',dpi = 1000, edgecolor='none')
    
 
 
