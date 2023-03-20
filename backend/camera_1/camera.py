@@ -36,8 +36,7 @@ class Camera_One(QDialog):
 
         self.ui.frame.mouseMoveEvent = self.MoveWindow
         self.ui.comboBox.addItems(self.configuration.delegate())
-        self.ui.comboBox.activated.connect(self.update_combo)
-        
+        self.ui.comboBox.activated.connect(self.update_combo)        
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
@@ -46,7 +45,6 @@ class Camera_One(QDialog):
         self.shadow.setColor(QColor(144, 144, 144, 40))
         self.ui.frame.setGraphicsEffect(self.shadow)
     
-
     def update_combo(self):
         id_index = self.ui.comboBox.currentIndex()
         url_list = self.configuration.update_comboBox()
@@ -70,7 +68,6 @@ class Camera_One(QDialog):
         
     def update_contrast(self, value):
         self.ui.contrast_value.setText(str(value))
-
 
     def start_webcam(self):
         if self.ui.exit_cam_ip.text():
