@@ -96,7 +96,7 @@ class MainWindow(QMainWindow):
         self.load_user_profile(login_reference)
         self.set_session()
         self.user.profileImage('C:\\ProgramData\\iAttend\\data\\images\\user_image.jpg')
-        self.insert_user_session()
+        self.insert_thread()
         
     
         self.camera_4 = Camera_Four()
@@ -173,11 +173,11 @@ class MainWindow(QMainWindow):
         self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
 
-        college,programs=self.get_programs_CoS()
+        college,programs=self.get_programs()
         completer = QCompleter(programs)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
-        country_completer = QCompleter(self.country_names('C:\\ProgramData\\iAttend\\data\\json_file\\data_json.json'))
+        country_completer = QCompleter(self.country_names(self.resource_path('data_json.json')))
         country_completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.ui.reg_nationality.setCompleter(country_completer)
         
@@ -202,11 +202,16 @@ class MainWindow(QMainWindow):
         self.ui.btn_export_data.clicked.connect(self.export_user_data)
         self.ui.user_start_date.dateTimeChanged.connect(self.date_changed)
         self.ui.btn_mail_user_details.clicked.connect(self.send_account_detail)
-
+        # self.ui.btn_csv.setEnabled(False)
+        # self.ui.btn_json.setEnabled(False)
         ##################################################################################################
+
+    def resource_path(self,relative_path):
+        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
+        return path
     
     def get_cache_path(self):
-        return 'C:\\ProgramData\\iAttend\\data\\cache\\attendance_database_cache.db'
+        return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
 
     def query_cache_database(self,query:str):
         db = sqlite3.connect(self.get_cache_path())
@@ -238,7 +243,7 @@ class MainWindow(QMainWindow):
         self.login.show()
 
     def admin_panel(self):
-        if account_role == user or account_role == guest:
+        if account_role == user:
             self.ui.btn_admin.hide()
         
     def camera_config(self):
@@ -250,7 +255,7 @@ class MainWindow(QMainWindow):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         check_state=self.database.check_state()
         if check_state == True:
-            cursor=my_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session WHERE user_reference = "+(reference))
+            cursor=my_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session_last_seen WHERE user_reference = "+(reference))
             cursor= my_cursor.fetchall()
             db.commit()       
         else:
@@ -278,15 +283,15 @@ class MainWindow(QMainWindow):
         self.pool.start(self.work)
 
     def insert_user_session(self):   
+        (db,my_cursor,connection_status) = self.database.my_cursor()
         check_state=self.database.check_state()
         session=self.set_user_session()
         self.alert = AlertDialog()
         try:
-            db,my_cursor,connection_status = self.database.my_cursor()
             if check_state == True:
                 my_cursor.execute("INSERT INTO tb_user_session (user_reference,user_username,user_date,user_login,user_logout,user_duration) VALUES (?,?,?,?,?,?)",
-                (session.reference,session.username,session.date,session.login,session.logout,session.duration)) 
-                db.commit()       
+                (session.reference,session.username,session.date,session.login,session.logout,session.duration))
+                db.commit()         
             else:
                 db = sqlite3.connect(self.get_cache_path())
                 cursor = db.cursor()
@@ -331,12 +336,8 @@ class MainWindow(QMainWindow):
     def set_session(self):
         self.ui.label_6.setText("session@"+login_username+" "+current.now().time().strftime("%I:%M:%S %p"))
 
-    def export_user_data_thread(self):
-        self.pool = QThreadPool()
-        self.work = SendThread(self.export_user_data)
-        self.pool.start(self.work)
-
     def export_user_data(self):
+        self.alert = AlertDialog()
         table=self.ui.admin_table.item(0,0)
         date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         path = 'C:\\ProgramData\\iAttend\\data\\exports\\csv\\login_user'+date+'.csv'
@@ -345,11 +346,9 @@ class MainWindow(QMainWindow):
             data = pd.DataFrame(details)
             data.to_csv(path,sep=',',index=False,
             header=['Id', 'User_reference', 'User_username', 'User_date','User_login', 'User_logout', 'User_duration'])
-            self.alert = AlertDialog()
             self.alert.content("Hey! data to exported successfully...")
             self.alert.show()
         else:
-            self.alert = AlertDialog()
             self.alert.content("Oops! you have no data to export...")
             self.alert.show()
 
@@ -359,61 +358,59 @@ class MainWindow(QMainWindow):
              self.ui.user_date.setText(str(date_))
         else:
             self.ui.user_end_date.setText(str(date_))
-
-    def user_search_thread(self):
-        self.pool = QThreadPool()
-        self.work = SendThread(self.search_user)
-        self.pool.start(self.work)
              
     def search_user(self):
+        self.alert = AlertDialog()
         reference = self.ui.user_search.text()
-        if reference:
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_reference="+reference)
-            user = self.query_cache_data_list("SELECT * FROM tb_user_details WHERE user_reference="+reference)
-            status = self.query_cache_data_list("SELECT user_status FROM tb_user_credentials WHERE user_reference="+reference)
-            if len(details) > 0:
+        if not self.database.check_state():
+            if reference:
+                details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_reference="+reference)
+                user = self.query_database("SELECT * FROM tb_user_details WHERE user_reference="+reference)
+                status = self.query_database("SELECT user_status FROM tb_user_credentials WHERE user_reference="+reference)
+                if len(details) > 0:
+                    self.render_user_data(details)
+                else:  
+                    self.alert.content(f"Oops! user with {reference} has no sessions.")
+                    self.alert.show() 
+                self.render_user_details(user,status)
+                self.load_user_image(reference,self.ui.user_image)
+                return details
+            elif self.ui.user_date.text() and self.ui.user_range.isChecked():
+                start_date = self.ui.user_date.text()
+                start_date="\'{}\'".format(start_date)
+                stop_date = self.ui.user_end_date.text()
+                stop_date="\'{}\'".format(stop_date)
+                details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date BETWEEN "+start_date+" AND "+stop_date)
                 self.render_user_data(details)
+                return details  
+            elif self.ui.user_end_date.text() and not reference:
+                date=self.ui.user_end_date.text()
+                date_stamp="\'{}\'".format(date)
+                details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date="+date_stamp)
+                self.render_user_data(details) 
+                return details   
             else:
-                self.alert = AlertDialog()
-                self.alert.content(f"Oops! user with {reference} has no sessions.")
-                self.alert.show() 
-            self.render_user_details(user,status)
-            self.load_user_image(reference,self.ui.user_image)
-            return details
-        elif self.ui.user_date.text() and self.ui.user_range.isChecked():
-            start_date = self.ui.user_date.text()
-            start_date="\'{}\'".format(start_date)
-            stop_date = self.ui.user_end_date.text()
-            stop_date="\'{}\'".format(stop_date)
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date BETWEEN "+start_date+" AND "+stop_date)
-            self.render_user_data(details)
-            return details  
-        elif self.ui.user_end_date.text() and not reference:
-            date=self.ui.user_end_date.text()
-            date_stamp="\'{}\'".format(date)
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date="+date_stamp)
-            self.render_user_data(details) 
-            return details   
+                details = self.query_cache_data_list("SELECT * FROM tb_user_session")
+                self.render_user_data(details)
+                return details
         else:
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session")
-            self.render_user_data(details)
-            return details
+            self.alert.content("Oops! no database configured...")
+            self.alert.show()
             
     def render_user_details(self,details:list,status:str):
         if len(details) > 0:
-            name = str(details[2]).split(' ')
+            name = str(details[0][2]).split(' ')
             self.ui.user_firstname.setText(name[0])
             self.ui.user_middlename.setText(name[1])
-            self.ui.user_lastname.setText(details[3])
-            self.ui.user_reference.setText(details[1])
-            self.ui.user_contact.setText(details[4])
-            self.ui.user_email.setText(details[6])
-            self.ui.user_role.setCurrentText(str(details[5]))
+            self.ui.user_lastname.setText(details[0][3])
+            self.ui.user_reference.setText(details[0][1])
+            self.ui.user_contact.setText(details[0][4])
+            self.ui.user_email.setText(details[0][6])
+            self.ui.user_role.setCurrentText(str(details[0][5]))
             self.ui.user_status.setCurrentText(str(status))
         else:
             pass
  
-
     def load_user_image(self,reference,label):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         cursor=my_cursor.execute("SELECT user_reference,user_image from tb_user_profile WHERE user_reference="+reference)
@@ -566,30 +563,12 @@ class MainWindow(QMainWindow):
         credentials = self.set_user_credentials()
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
-        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\image.jpg'
+        root_path = self.resource_path('image.jpg')
         if self.ui.user_reference.text() and self.ui.user_contact.text() and self.ui.user_firstname.text():
             details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+"\'{}\'".format(user.reference)+" AND user_contact="+"\'{}\'".format(user.contact))
             if not details:
-                try:
-                    if check_state == True:
-                        my_cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (?,?,?,?,?,?)",
-                        (user.reference,user.firstname,user.lastname,user.contact,user.role,user.mail)) 
-                        my_cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (?,?,?,?)",
-                        (credentials.reference,credentials.username,credentials.password,credentials.status))    
-                        if self.ui.user_image_file.text():
-                            with open(self.ui.user_image_file.text(), 'rb') as image_data:
-                                data = image_data.read()
-                            my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(?,?)",(user.reference,data))
-                        else:
-                            with open(root_path, 'rb') as image_data:
-                                data = image_data.read()
-                            my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(?,?)",(user.reference,data))
-                        db.commit()
-                        my_cursor.close()
-                        self.alert.content(f"User with {user.reference} registered successfully.")
-                        self.alert.show()
-                except Exception as e:
-                    self.alert.content(str(e))
+                if check_state == True:
+                    self.alert.content("Oops! no database configured...")
                     self.alert.show()          
                 else: 
                     try:  
@@ -710,15 +689,20 @@ class MainWindow(QMainWindow):
             self.alert.content(str(e))
             self.alert.show()
 
+
     def send_code_thread(self):
         student_data_path = self.ui.batch_browse.text()
-        if student_data_path and self.connected_to_internet()==True:
-            self.pool = QThreadPool()
-            self.work = SendThread(self.generate_code_and_send)
-            self.pool.start(self.work)
+        self.alert = AlertDialog()
+        if student_data_path:
+            if self.connected_to_internet()==True:
+                self.pool = QThreadPool()
+                self.work = SendThread(self.generate_code_and_send)
+                self.pool.start(self.work)
+            else:
+                self.alert.content("Oops! check internet connectivity...")
+                self.alert.show()
         else:
-            self.alert = AlertDialog()
-            self.alert.content("Oops! invalid file path or check\ninternet connectivity.....")
+            self.alert.content("Oops! invalid file path or check\ninternet connectivity...")
             self.alert.show()
               
     def generate_code_and_send(self):
@@ -762,15 +746,19 @@ class MainWindow(QMainWindow):
         to_json = json.dumps(student)
         return to_json  
 
-
     def insert_images_thread(self):
+        self.alert = AlertDialog()
+        check_state = self.database.check_state()
         path = self.directory.directory_path()
         if path:
-            self.pool = QThreadPool()
-            self.work = ImageThread(self.insert_images)
-            self.pool.start(self.work)
+            if not check_state:
+                self.pool = QThreadPool()
+                self.work = ImageThread(self.insert_images)
+                self.pool.start(self.work)
+            else:
+                self.alert.content("Oops! no database configured...")
+                self.alert.show()
         else:
-            self.alert = AlertDialog()
             self.alert.content("Oops! invalid file path...")
             self.alert.show()
 
@@ -779,7 +767,7 @@ class MainWindow(QMainWindow):
 
     def insert_images(self):
         date=current.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
-        name = str('images_logs')
+        name = str('images_logs_unprocessed')
         log_path = str('C:\\ProgramData\\iAttend\\data\\batch_logs\\'+name+'_'+date+'.txt')
         path = self.directory.directory_path()
         images_extension = ['jpg', 'jpeg', 'png'] 
@@ -796,57 +784,45 @@ class MainWindow(QMainWindow):
                     file.writelines('\n'+str(student_reference))
                     file.close
             if extension in images_extension and validate:
-                check_state = self.database.check_state()
                 (db,my_cursor,connection_status) = self.database.my_cursor()
                 with open(image,'rb') as image_data:
                     data = image_data.read()
-                    if check_state == True:
-                        my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student_reference,data))
-                        db.commit()
-                        my_cursor.close()
-                    else:
-                        my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student_reference,data))
-                        db.commit()
-                        my_cursor.close()
-        self.ui.batch_notification.setText("Valid images saved successfully\nanalyse logs for details...")         
-
+                    my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student_reference,data))
+                    db.commit()
+                    my_cursor.close()
+        self.ui.batch_notification.setText("Valid images saved successfully\nanalyse logs for details...") 
+              
     def insert_records_thread(self): 
         path = self.directory.directory_path()
+        self.alert = AlertDialog()
+        check_state = self.database.check_state()
         if path:
-            self.pool = QThreadPool()
-            self.work = ImageThread(self.batch_insert_student_data)
-            self.pool.start(self.work)
+            if not check_state:
+                self.pool = QThreadPool()
+                self.work = ImageThread(self.batch_insert_student_data)
+                self.pool.start(self.work)
+            else:
+                self.alert.content("Oops! no database configured...")
+                self.alert.show()
         else:
-            self.alert = AlertDialog()
             self.alert.content("Oops! invalid file path...")
             self.alert.show()
 
     def batch_insert_student_data(self):
+        self.alert = AlertDialog()
         check_state=self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
         student_list = self.load_batch_data()
         file_path = self.ui.batch_browse.text()
         date=current.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
-        name = str('record_logs')
+        name = str('batch_logs_unprocessed')
         path = str('C:\\ProgramData\\iAttend\\data\\batch_logs\\'+name+'_'+date+'.txt')
         table=self.ui.tableWidget_batch.item(0,0)
+        print(file_path)
         if file_path and table:
             self.ui.batch_notification.setText("Saving records in progress...")  
             if check_state == True:
-                for student in student_list:
-                    name = str(student[0]).split(' ')
-                    date = str(student[6]).split('-')
-                    firstname  = name[0]+' '+name[1]
-                    details=self.fetch_data_from_db(str(student[2]))
-                    if not details:
-                        my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
-                        (student[2],student[1],firstname,name[2],student[4],student[3],student[5],date[0],date[1]))   
-                        db.commit()
-                    else:
-                        with open(path,'a+') as file: 
-                            file.writelines('\n'+str(student))
-                        file.close
-                self.ui.batch_notification.setText("Valid images saved successfully\nanalyse logs for details...")
+                pass
             else:
                 for student in student_list:
                     name = str(student[0]).split(' ')
@@ -862,8 +838,7 @@ class MainWindow(QMainWindow):
                             file.writelines('\n'+str(student))
                         file.close
                 self.ui.batch_notification.setText("Valid records saved successfully...")
-        else:
-            self.alert = AlertDialog()
+        else:   
             self.alert.content("Oops! invalid file path or content is empty...")
             self.alert.show()
        
@@ -915,8 +890,8 @@ class MainWindow(QMainWindow):
             row_count = row_count+1
         
     def browse_batch_data(self):
-        file_type = "CSV Files(*.csv)"   
-        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Users\\BTC OMEN\\Documents",file_type)
+        file_type = "CSV Files(*.csv);;Text Files(*.txt)"   
+        path= QFileDialog.getOpenFileName(self, "Select File","C:\\Documents",file_type)
         if path:
             self.ui.batch_browse.setText(path[0])
             try:
@@ -929,8 +904,14 @@ class MainWindow(QMainWindow):
                 self.alert.content(str("Oops! invalid file format\n"+str(e)))
                 self.alert.show()
 
-    def get_programs_CoS(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\programs\\CoS_programs.txt'
+    def get_programs_path(self):
+        root_dir = 'C:\\ProgramData\\iAttend\\data\\programs'
+        for item in os.listdir(root_dir):
+            file = os.path.join(root_dir,item)
+        return file
+
+    def get_programs(self):
+        path = self.get_programs_path()
         with open(path,'r') as file:
             basedir = os.path.basename(path)
             basedir=basedir.split("_")[0]
@@ -939,7 +920,6 @@ class MainWindow(QMainWindow):
             for program in programs:
                 programs_list.append(program)
             return basedir,programs_list
-
 
     def clear_camera_comboBoxes(self):
         self.ui.comboBox.clear()
@@ -956,7 +936,7 @@ class MainWindow(QMainWindow):
 
     def camera_thread(self):
         scan_range = self.ui.scan_range.text()
-        if scan_range:
+        if self.validate_field('^[1-9]+$',scan_range):
             self.clear_camera_comboBoxes()
             self.ui.scan_range_label.setText('')
             self.active = ActiveCameras(scan_range)
@@ -964,8 +944,18 @@ class MainWindow(QMainWindow):
             self.active.cameras.connect(self.get_active_cameras)
             self.ui.label_notification.setText("Scanning for available cameras...")
         else:
-            self.alert_builder("Oops! no scan range provided...")
+            self.alert_builder("Oops! no scan range provided\nor invalid input...")
     
+    def server_logs(self,source,save_logs):
+        date=current.now().date().strftime('%a %b %d %Y')
+        path =Path('C:\\ProgramData\\iAttend\\data\\cache\\logs\\'+date+'_history.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        time =current.now().time().strftime('%I:%M:%S %p')
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n{source} {time} {save_logs}')
+            file.close()  
 
     def backup_history(self):
         path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
@@ -975,16 +965,16 @@ class MainWindow(QMainWindow):
         date=current.now().date().strftime('%a %b %d %Y')
         if os.path.exists(path):
             with open(path,'a+') as file:
-                file.writelines(f'\n{date},{time}')
+                file.writelines(f'\n[SUCCESS] {date},{time}')
             file.close()         
 
     def backup_database(self):
+        self.alert = AlertDialog()
         path='C:\\ProgramData\\iAttend\\data\\backup'
-        db_path=self.database.get_path()
+        db_path=self.get_cache_path()
         if os.path.exists(path):
             shutil.copy2(db_path,path)
             self.backup_history()
-            self.alert = AlertDialog()
             self.alert.content("Database successfully backed up...")
             self.alert.show()
 
@@ -1001,49 +991,62 @@ class MainWindow(QMainWindow):
         self.alert.content(content)
         self.alert.show()
 
-
     def hot_reload_thread(self):
-        self.pool = QThreadPool()
-        self.work = SendThread(self.hot_reload)
-        self.pool.start(self.work)
-        
-    def data_visualization_thread(self):
-        self.pool = QThreadPool.globalInstance()
-        if self.pool.activeThreadCount()==0:
-            self.work = SendThread(self.data_visualization)
+        self.alert = AlertDialog()
+        if not self.database.check_state():
+            self.pool = QThreadPool()
+            self.work = SendThread(self.hot_reload)
             self.pool.start(self.work)
         else:
-            self.pool.clear()
+            self.alert.content("Oops! no database configured...")
+            self.alert.show() 
         
+    def data_visualization_thread(self):
+        self.alert = AlertDialog()
+        if self.database.check_state():
+            self.alert.content("Oops! no database configured...")
+            self.alert.show()
+        else:
+            self.pool = QThreadPool.globalInstance()
+            if self.pool.activeThreadCount()==0:
+                self.work = SendThread(self.data_visualization)
+                self.pool.start(self.work)
+            else:
+                self.pool.clear()
+                  
     def save_report(self):
         filename = self.ui.file_name.text()
         date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         transformed_name=filename+date
         self.alert = AlertDialog()
-        if self.ui.bar_chart.isChecked():    
-            if self.ui.file_name.text():
-                self.barchart.save_chart(transformed_name)
-                self.alert.content("Document saved successfully")
-                self.alert.show()
-            else:
-                self.alert.content("Oops! please provide file name")
-                self.alert.show()         
-        elif self.ui.line_graph.isChecked():
-            if self.ui.file_name.text():
-                self.line_graph.save_chart(transformed_name)
-                self.alert.content("Document saved successfully")
-                self.alert.show()
-            else:
-                self.alert.content("Oops! please provide file name")
-                self.alert.show() 
-        elif self.ui.pie_chart.isChecked():
-            if self.ui.file_name.text():
-                self.piechart.save_chart(transformed_name)
-                self.alert.content("Document saved successfully")
-                self.alert.show()
-            else:
-                self.alert.content("Oops! please provide file name")
-                self.alert.show() 
+        if not self.database.check_state():
+            if self.ui.bar_chart.isChecked():
+                if self.ui.file_name.text():
+                    self.barchart.save_chart(transformed_name)
+                    self.alert.content("Document saved successfully")
+                    self.alert.show()
+                else:
+                    self.alert.content("Oops! please provide file name")
+                    self.alert.show()         
+            elif self.ui.line_graph.isChecked():
+                if self.ui.file_name.text():
+                    self.line_graph.save_chart(transformed_name)
+                    self.alert.content("Document saved successfully")
+                    self.alert.show()
+                else:
+                    self.alert.content("Oops! please provide file name")
+                    self.alert.show() 
+            elif self.ui.pie_chart.isChecked():
+                if self.ui.file_name.text():
+                    self.piechart.save_chart(transformed_name)
+                    self.alert.content("Document saved successfully")
+                    self.alert.show()
+                else:
+                    self.alert.content("Oops! please provide file name")
+                    self.alert.show() 
+        else:
+            self.alert.content("Oops! no database configured...")
+            self.alert.show() 
      
     def reconstruct_date(self,date:str):
         date_value=str(date).split('-')
@@ -1070,11 +1073,11 @@ class MainWindow(QMainWindow):
                 result[index] = 'OPT'
         return total, result
         
-    def hot_reload(self):
+    def hot_reload(self): 
         data = self.get_pichart_data()
         self.piechart.piechart(data,"Percentages of programs")
         self.data_visualization()
-
+        
     def report_start_date_value_change(self):
         date=self.ui.report_start_date.text()
         if self.ui.line_graph.isChecked():
@@ -1260,6 +1263,7 @@ class MainWindow(QMainWindow):
                     self.alert.show() 
 
     def export_data_to_csv(self):
+        self.alert = AlertDialog()
         table=self.ui.tableWidget.item(0,0)
         date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         path = 'C:\\ProgramData\\iAttend\\data\\exports\\csv\\students_data'+date+'.csv'
@@ -1268,15 +1272,14 @@ class MainWindow(QMainWindow):
             data = pd.DataFrame(details)
             data.to_csv(path,sep=',',index=False,
             header=['Id','Program','Date_stamp','Time_in','Time_out','Duration','Reference'])
-            self.alert = AlertDialog()
             self.alert.content("Hey! data to exported successfully...")
             self.alert.show()
         else:
-            self.alert = AlertDialog()
             self.alert.content("Oops! you have no data to export...")
             self.alert.show()
 
     def export_data_to_json(self):
+        self.alert = AlertDialog()
         table=self.ui.tableWidget.item(0,0)
         date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
         path = 'C:\\ProgramData\\iAttend\\data\\exports\\json\\students_data'+date+'.json'
@@ -1284,11 +1287,9 @@ class MainWindow(QMainWindow):
             details=self.query_database_for_data()
             data=pd.DataFrame(details,columns=['Id','Program','Date_stamp','Time_in','Time_out','Duration','Reference'])
             data.to_json(path,orient='records',indent=4)
-            self.alert = AlertDialog()
             self.alert.content("Hey! data to exported successfully...")
             self.alert.show()
         else:
-            self.alert = AlertDialog()
             self.alert.content("Oops! you have no data to export...")
             self.alert.show()
 
@@ -1319,8 +1320,10 @@ class MainWindow(QMainWindow):
         self.ui.tableWidget.verticalHeader().setVisible(True)
         row_count = 0
         for data in details:
+            date=str(data[2]).split('-')
+            date = datetime.date(int(date[0]),int(date[1]),int(date[2])).strftime("%a %d %b, %Y")
             self.ui.tableWidget.setItem(row_count,1,QTableWidgetItem(str(data[1])))
-            self.ui.tableWidget.setItem(row_count,2,QTableWidgetItem(str(data[2])))
+            self.ui.tableWidget.setItem(row_count,2,QTableWidgetItem(str(date)))
             self.ui.tableWidget.setItem(row_count,3,QTableWidgetItem(str(data[3])))
             self.ui.tableWidget.setItem(row_count,4,QTableWidgetItem(str(data[4])))
             self.ui.tableWidget.setItem(row_count,5,QTableWidgetItem(str(data[5])))
@@ -1388,43 +1391,48 @@ class MainWindow(QMainWindow):
         return results
 
     def query_database_for_data(self):
-        if self.ui.checkBox.isChecked():
-            if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                start = self.ui.db_start_date.text()
-                start_date="\'{}\'".format(start)
-                end = self.ui.db_end_date.text()
-                end_date="\'{}\'".format(end)
-                prog = self.ui.search_box.text()
-                program="\'{}\'".format(prog)
-                results_ = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
-                self.ui_table(results_)
-                return results_
-            elif self.ui.search_box.text() and self.ui.db_start_date.text():
-                self.fetch_data_by_program_and_date()
+        self.alert = AlertDialog()
+        if not self.database.check_state():
+            if self.ui.checkBox.isChecked():
+                if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    start = self.ui.db_start_date.text()
+                    start_date="\'{}\'".format(start)
+                    end = self.ui.db_end_date.text()
+                    end_date="\'{}\'".format(end)
+                    prog = self.ui.search_box.text()
+                    program="\'{}\'".format(prog)
+                    results_ = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
+                    self.ui_table(results_)
+                    return results_
+                elif self.ui.search_box.text() and self.ui.db_start_date.text():
+                    self.fetch_data_by_program_and_date()
+                else:
+                    program = self.ui.search_box.text()
+                    program = "\'{}\'".format(program)
+                    details = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE program="+program)
+                    self.ui_table(details)
+                    return details
             else:
-                program = self.ui.search_box.text()
-                program = "\'{}\'".format(program)
-                details = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE program="+program)
-                self.ui_table(details)
-                return details
+                if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    self.query_for_data_reference()
+                elif self.ui.db_start_date.text():
+                    current_date = self.ui.db_start_date.text()
+                    current_date = "\'{}\'".format(current_date)
+                    results = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp ="+current_date)
+                    self.ui_table(results)
+                    return results
+                elif self.ui.search_box.text():
+                    self.fetch_details_for_card_view()
+                elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    self.fetch_details_for_card_view()
+                    return self.query_for_data_reference() 
+                else:
+                    details=self.query_cache_data_list("SELECT * FROM tb_attendance")
+                    self.ui_table(details)
+                    return details 
         else:
-            if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                self.query_for_data_reference()
-            elif self.ui.db_start_date.text():
-                current_date = self.ui.db_start_date.text()
-                current_date = "\'{}\'".format(current_date)
-                results = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp ="+current_date)
-                self.ui_table(results)
-                return results
-            elif self.ui.search_box.text():
-                self.fetch_details_for_card_view()
-            elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                self.fetch_details_for_card_view()
-                return self.query_for_data_reference() 
-            else:
-                details=self.query_cache_data_list("SELECT * FROM tb_attendance")
-                self.ui_table(details)
-                return details 
+            self.alert.content("Oops! no database configured...")
+            self.alert.show()
                         
 
     def get_date_on_search_page(self):
@@ -1435,21 +1443,21 @@ class MainWindow(QMainWindow):
             self.ui.db_end_date.setText(str(date.toPython()))
 
     def clear_fields_on_search_page(self):
-        self.ui.db_firstname.setText("")
-        self.ui.db_middlename.setText("")
-        self.ui.db_lastname.setText("")
-        self.ui.db_college.setText("")
-        self.ui.db_refrence.setText("")
-        self.ui.db_index.setText("")
-        self.ui.db_nationality.setText("")
-        self.ui.db_programe.setText("")
-        self.ui.db_validity.setText("")
-        self.ui.db_year.setText("")
-        self.ui.db_image_data.setPixmap("")
+        self.ui.db_firstname.setText("Firstname")
+        self.ui.db_middlename.setText("Middlename")
+        self.ui.db_lastname.setText("Lastname")
+        self.ui.db_college.setText("College")
+        self.ui.db_refrence.setText("Reference")
+        self.ui.db_index.setText("Index")
+        self.ui.db_nationality.setText("Nationality")
+        self.ui.db_programe.setText("Program")
+        self.ui.db_validity.setText("Validity")
+        self.ui.db_year.setText("Year")
+        self.ui.db_image_data.setPixmap(u":/icons/asset/image.svg")
+        self.ui.db_image_data.setScaledContents(False)
         self.ui.db_start_date.setText("")
         self.ui.db_end_date.setText("")
         
-
     def get_report_start_date(self):
         date =self.ui.calendarWidget_report.selectedDate()
         self.ui.report_start_date.setText(str(date.toPython()))
@@ -1532,24 +1540,26 @@ class MainWindow(QMainWindow):
         self.mail.start()
 
     def prepare_email_to_send(self):
+        self.alert = AlertDialog()
         if self.connected_to_internet()==True and self.ui.reg_email.text():
             try:
                 self.prepare_email()
-                self.alert = AlertDialog()
                 self.alert.content("Hey! mail sent successfully...")
                 self.alert.show()
             except Exception as e:
-                self.alert = AlertDialog()
                 self.alert.content(str(e))
                 self.alert.show()
         else:
-                self.alert = AlertDialog()
-                self.alert.content("Oops! something went wrong mail\nnot sent...")
-                self.alert.show()
+            self.alert.content("Oops! something went wrong mail\nnot sent...")
+            self.alert.show()
 
     def send_mail(self):
-        self.prepare_email_to_send()
-
+        self.alert = AlertDialog()
+        if self.database.check_state():
+            self.alert.content("Oops! no database is configured...")
+            self.alert.show()
+        else:
+            self.prepare_email_to_send()
 
     def register_student(self):
         check_state=self.database.check_state()
@@ -1571,38 +1581,7 @@ class MainWindow(QMainWindow):
                 root_path = 'C:\\ProgramData\\iAttend\\data\\images\\'
                 if not details:
                     if check_state == True:
-                        if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
-                            with open(self.ui.image_file_reg.text(), 'rb') as image:
-                                data = image.read()
-                                my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
-                            my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
-                            (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
-                            db.commit()
-                            my_cursor.close() 
-                            self.alert_builder("Student registered successfully")   
-                        elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                            path = path = root_path+'image.jpg'
-                            if os.path.exists(path):
-                                with open(path, 'rb') as image:
-                                    data = image.read()
-                                    my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
-                                my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
-                                (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date)) 
-                                db.commit()
-                                self.alert_builder("Student registered successfully")
-                                os.remove(path)          
-                            else:
-                                self.alert_builder("Oops! something went wrong while\nprocessing your request") 
-                        elif self.ui.image_less.isChecked():
-                            path = root_path+'img.jpg'
-                            with open(path, 'rb') as image:
-                                data = image.read()
-                                my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(?,?)",(student.reference,data))
-                            my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (?,?,?,?,?,?,?,?,?)",
-                            (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))   
-                            db.commit()
-                            my_cursor.close() 
-                            self.alert_builder("Student registered successfully")   
+                        self.alert_builder("Oops! no database configured...")
                     else:
                         if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
                             with open(self.ui.image_file_reg.text(), 'rb') as image:
@@ -1614,7 +1593,7 @@ class MainWindow(QMainWindow):
                             my_cursor.close() 
                             self.alert_builder("Student registered successfully")    
                         elif self.ui.online_image.isChecked() and self.ui.image_file_reg.text():
-                            path = root_path+'image.jpg'
+                            path = root_path+'online_image.jpg'
                             if os.path.exists(path):
                                 with open(path, 'rb') as image:
                                     data = image.read()       
@@ -1628,7 +1607,7 @@ class MainWindow(QMainWindow):
                             else:
                                 self.alert_builder("Oops! something went wrong while\nprocessing your request") 
                         elif self.ui.image_less.isChecked():
-                            path = root_path+'img.jpg'
+                            path = self.resource_path('image.jpg')
                             with open(path, 'rb') as image:
                                 data = image.read()       
                                 my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student.reference,data))
@@ -1636,7 +1615,6 @@ class MainWindow(QMainWindow):
                             (student.reference,student.index_,student.firstname,student.lastname,student.college,student.program,student.nationality,student.start_date,student.end_date))
                             db.commit()
                             my_cursor.close()
-                            os.remove(path)
                             self.alert_builder("Student registered successfully")    
                 else:
                     self.alert_builder("Oops! student with this reference\nalready exists")
@@ -1685,7 +1663,7 @@ class MainWindow(QMainWindow):
                 with open(self.ui.image_file_reg.text(), 'rb') as image:
                     data = image.read()
                     if check_state == True:
-                        my_cursor.execute("UPDATE tb_images SET image=? WHERE st_reference=?",(data,ref))     
+                        self.alert_builder("Oops! no database configured...")  
                     else:
                         my_cursor.execute("UPDATE tb_images SET image=%s WHERE st_reference=%s",(data,ref))
                 db.commit()
@@ -1698,9 +1676,7 @@ class MainWindow(QMainWindow):
                     with open(path, 'rb') as image:
                         data = image.read()
                         if check_state == True:
-                            my_cursor.execute("UPDATE tb_images SET image=? WHERE st_reference=?",(data,ref))
-                            db.commit()
-                            my_cursor.close()
+                            self.alert_builder("Oops! no database configured...")  
                         else:
                             my_cursor.execute("UPDATE tb_images SET image=%s WHERE st_reference=%s",(data,ref))
                             db.commit()
@@ -1716,13 +1692,20 @@ class MainWindow(QMainWindow):
             self.alert.show()
 
     def remove_student(self):
+        check_state = self.database.check_state()
         try:
             (db,my_cursor,connection_status) = self.database.my_cursor()
-            my_cursor.execute("DELETE FROM tb_students where reference="+self.ui.reg_student_ref.text())
-            db.commit()
-            my_cursor.close()
-            self.resets_fileds()
-            self.alert_builder("Student data removed successfuly!")
+            if check_state == True:
+                self.alert_builder("Oops! no database configured...")
+            else: 
+                db_cache = sqlite3.connect(self.get_cache_path())
+                cursor = db_cache.cursor() 
+                cursor.execute("DELETE FROM tb_students where reference="+self.ui.reg_student_ref.text())
+                cursor.execute("DELETE FROM tb_images where reference="+self.ui.reg_student_ref.text())
+                db_cache.commit()
+                cursor.close()
+                self.resets_fileds()
+                self.alert_builder("Student data removed successfuly!")
         except:
             self.alert_builder("Oops! internal server error!")
 
@@ -1749,23 +1732,31 @@ class MainWindow(QMainWindow):
 
     def browse_image_files(self):
         if self.ui.file_system.isChecked():    
-            path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
+            path= QFileDialog.getOpenFileName(self, "Select File","C:\\Pictures","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
             if path:
                 self.ui.image_file_reg.setText(path[0])
                 self.ui.reg_image.setPixmap(QPixmap.fromImage(path[0]))
                 self.ui.reg_image.setScaledContents(True)
         elif self.ui.online_image.isChecked():
-            link = requests.get(self.ui.image_file_reg.text())
-            if self.connected_to_internet()==True:
-                try:
-                    path = 'C:\\ProgramData\\iAttend\\data\\images\\db_images.jpg'
-                    wget.download(link.url,path)
-                    self.ui.reg_image.setPixmap(QPixmap.fromImage(path))
-                    self.ui.reg_image.setScaledContents(True)
-                except Exception as e:
-                    self.alert_builder("Oops! check your image url!")
+            self.alert = AlertDialog()
+            if self.connected_to_internet()==True and self.ui.image_file_reg.text():
+                self.pool = QThreadPool()
+                self.work = SendThread(self.download_image)
+                self.pool.start(self.work)
+                self.alert.content("Image downloaded successfully!")
+                self.alert.show()
             elif self.connected_to_internet()==False:
-                 self.alert_builder("Oops! check you internet connection!")         
+                 self.alert_builder("Oops! check you internet connection!") 
+
+    def download_image(self):
+        try:
+            link = requests.get(self.ui.image_file_reg.text())
+            path = 'C:\\ProgramData\\iAttend\\data\\images\\online_image.jpg'
+            wget.download(link.url,path)
+            self.ui.reg_image.setPixmap(QPixmap.fromImage(path))
+            self.ui.reg_image.setScaledContents(True)
+        except Exception as e:
+            self.alert_builder("Oops! check your image url!")       
 
     def loadUi_file(self):
         self.ui.firstname.setText("Firstname")
@@ -1786,19 +1777,26 @@ class MainWindow(QMainWindow):
 
     def last_seen(self,reference:str):  
         (db,my_cursor,connection_status) = self.database.my_cursor()
-        cursor=my_cursor.execute("SELECT date_stamp,time_out,duration FROM tb_attendance WHERE st_reference = "+(reference)+" ORDER BY date_stamp DESC LIMIT 2")
-        cursor= my_cursor.fetchall()
-        db.commit()
-        my_cursor.close()
+        check_state=self.database.check_state()
+        if check_state == True:
+            cursor=my_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session WHERE user_reference = "+(reference))
+            cursor= my_cursor.fetchall()
+            db.commit()       
+        else:
+            db = sqlite3.connect(self.get_cache_path())
+            _cursor = db.cursor()
+            cursor=_cursor.execute("SELECT date_stamp,time_out,duration FROM tb_attendance_last_seen WHERE st_reference = "+(reference))
+            cursor= _cursor.fetchall()
+            db.commit()
         last_seen_info = []
         if cursor:
             for data in cursor:
                 last_seen_info.append(data)
-        if len(last_seen_info)>=2:
-            details=str(last_seen_info[1][0]).split('-')
+        if len(last_seen_info)>=1:
+            details=str(last_seen_info[0][0]).split('-')
             details = datetime.date(int(details[0]),int(details[1]),int(details[2])).strftime("%a %d %b, %Y")
-            time = last_seen_info[1][1]
-            duration = last_seen_info[1][2]
+            time = last_seen_info[0][1]
+            duration = last_seen_info[0][2]
             self.ui.last_out.setText(details+' @ '+time)
             self.ui.last_in.setText(duration)           
         else:
@@ -1824,6 +1822,7 @@ class MainWindow(QMainWindow):
         try:
             db_cache=self.query_cache_database("SELECT * FROM tb_students WHERE reference="+reference)
             if len(db_cache) > 0:
+                self.server_logs('[CACHED]',db_cache[:2])
                 return db_cache
             else:
                 (db,my_cursor,connection_status) = self.database.my_cursor()
@@ -1835,6 +1834,7 @@ class MainWindow(QMainWindow):
                 if detail:
                     for data in detail:
                         db_data.append(data)
+                    self.server_logs('[SERVER]',db_data[:2])
                 return db_data
         except Exception as e:
             self.alert_builder(str(e))          
@@ -1857,7 +1857,7 @@ class MainWindow(QMainWindow):
             label.setPixmap(QPixmap.fromImage(path))
             label.setScaledContents(True)
         else:
-            label.setPixmap(QPixmap.fromImage(root_path+'image.jpg'))
+            label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
             label.setScaledContents(True)
 
     def retreive_student_details(self,data):
@@ -1865,17 +1865,9 @@ class MainWindow(QMainWindow):
         if isinstance(data, str):
                 self.last_seen(data_json['reference'])
                 db_data=self.fetch_data_from_db(data_json['reference'])
-                
                 if len(db_data) > 0:
                     start_date = (str(db_data[8])).split(' ')
-                    end_date=str(db_data[9]).split(' ')
                     student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))
-                    # start_month = strptime(start_date[0],'%b')
-                    # start_month=start_month.tm_mon
-                    # end_month = strptime(end_date[1],'%b')
-                    # end_month=end_month.tm_mon
-                    # issued_date_transformed = datetime.date(int(start_date[1]),start_month,int(2)).strftime("%b %Y")
-                    # expiry_date_transformed = datetime.date(int(end_date[2]),end_month,int(2)).strftime("%b %Y")
                     validity = str(db_data[8])+' - '+str(db_data[9])  
                     if student_year <= 1:
                         level = "1st year"
@@ -1922,19 +1914,17 @@ class MainWindow(QMainWindow):
         details = []
         date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
         if self.ui.refrence.text() != "Reference" and self.ui.refrence.text() !="" :
-            data=cursor.execute("SELECT st_reference,date_stamp FROM tb_attendance WHERE st_reference="+self.ui.refrence.text()+" and date_stamp="+date)
+            data=cursor.execute("SELECT st_reference,date_stamp FROM tb_attendance_temp WHERE st_reference="+self.ui.refrence.text()+" and date_stamp="+date)
             data=cursor.fetchone()
             if data:
-                for detail in data:
-                    details.append(detail)
+                for item in data:
+                    details.append(item)
                 db.commit()
             if not details:
                 if check_state==True:
-                    my_cursor.execute("INSERT INTO tb_attendance(st_reference,program,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?)",
-                    (attendance.st_reference,attendance.program,attendance.date,attendance.time_in,attendance.time_out,attendance.duration))
-                    db.commit()
+                    self.ui.label_notification.setText("Oops! no database configured...")
                 else: 
-                    cursor.execute("INSERT INTO tb_attendance(st_reference,program,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?)",
+                    cursor.execute("INSERT INTO tb_attendance_temp(st_reference,program,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?)",
                     (attendance.st_reference,attendance.program,attendance.date,attendance.time_in,attendance.time_out,attendance.duration))
                     cache_db.commit()
             elif details:
@@ -1958,7 +1948,6 @@ class MainWindow(QMainWindow):
         self.ui.reg_programs.setCurrentText(json_data['program'])
         self.ui.reg_college_2.setCurrentText(json_data['college'])
         self.ui.image_file_reg.setText(json_data['image_url'])
-
 
     def start_webcam_registration(self):
         self.show_alert = AlertDialog()
@@ -2154,8 +2143,13 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-            self.retreive_student_details(qr_code_data)
-            self.mark_attendance_db()
+            check_state = self.database.check_state()
+            if check_state == True:
+                self.ui.label_notification.setText("Oops! no database configured...")
+                winsound.Beep(1000,100)
+            else:
+                self.retreive_student_details(qr_code_data)
+                self.mark_attendance_db()
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
@@ -2234,37 +2228,27 @@ class Authentication(QMainWindow):
         self.ui_login = Ui_Login()
         self.ui_login.setupUi(self)
         self.show_alert = AlertDialog()
-        self.database = Database()  
+        self.database = Database()
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.ui_login.btn_close.clicked.connect(self.close)
         self.ui_login.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_login.btn_close.clicked.connect(self.close)
         self.ui_login.avater.setDisabled(True)
-        self.ui_login.btn_login.clicked.connect(self.login_)
+        self.ui_login.btn_login.clicked.connect(self.login)
         self.retrieve = ForgotPassword()
         self.ui_login.btn_forgot_pass.clicked.connect(lambda: self.retrieve.show())
-        self.user()
-
-    def test_connection(self):
-        if self.connected_to_internet():
-            self.show_alert.content("Connected") 
-            self.show_alert.show()
-        else:
-            self.show_alert.content("Not connection!") 
-            self.show_alert.show()
-
-    def connected_to_internet(self,url='http://www.google.com/', timeout=5):
-        try:
-            _ = requests.head(url, timeout=timeout)
-            return True
-        except requests.ConnectionError:  
-            return False            
+        self.user()          
 
     def user(self):
-        self.ui_login.username.setText("redolf@250")
-        self.ui_login.student_id.setText("20661163")
-        self.ui_login.password.setText("0552588647")
+        if self.database.check_state():
+            self.ui_login.username.setText("root@developer")
+            self.ui_login.student_id.setText("123456")
+            self.ui_login.password.setText("root@developer")
+        else:
+            self.ui_login.username.setText("redolf250")
+            self.ui_login.student_id.setText("20661163")
+            self.ui_login.password.setText("0552588647")
 
     def login_(self):
         try:
@@ -2272,7 +2256,6 @@ class Authentication(QMainWindow):
                 self.main = MainWindow()
                 self.main.show()
         except Exception as e:
-            print(str(e))
             self.show_alert.content("Oop! check your database\nconnection properties.") 
             self.show_alert.show()  
 
@@ -2293,29 +2276,33 @@ class Authentication(QMainWindow):
             details = self.query_database_login("SELECT * FROM tb_user_details where user_reference="+str(reference))
             credentials = self.query_database_login("SELECT * FROM tb_user_credentials where user_reference="+str(reference))
             password = bytes(password,encoding='utf-8')
-            if check_state:
-                confirm = bcrypt.checkpw(password,credentials[0][3])
-            else:
-                confirm = bcrypt.checkpw(password,bytes(str(credentials[0][3]),encoding='utf-8'))   
-            if reference==str(credentials[0][1]) and username==str(credentials[0][2]) and confirm:
-                if str(credentials[0][4])=="ACTIVATED":
-                    login_username = str(credentials[0][2])
-                    login_reference = str(credentials[0][1])
-                    account_status = str(credentials[0][4])
-                    account_firstname = str(details[0][2])
-                    account_lastname = str(details[0][3])
-                    account_contact = str(details[0][4])
-                    account_role = str(details[0][5]) 
-                    account_mail = str(details[0][6])
-                    self.main = MainWindow()
-                    self.main.show()
-                    self.close()
+            if len(credentials) > 0:
+                if check_state:
+                    confirm = bcrypt.checkpw(password,credentials[0][3])
                 else:
-                    self.show_alert.content(f"Oops! user account DEACTIVATED\ncontact administrator.") 
-                    self.show_alert.show() 
+                    confirm = bcrypt.checkpw(password,bytes(str(credentials[0][3]),encoding='utf-8'))   
+                if reference==str(credentials[0][1]) and username==str(credentials[0][2]) and confirm:
+                    if str(credentials[0][4])=="ACTIVATED":
+                        login_username = str(credentials[0][2])
+                        login_reference = str(credentials[0][1])
+                        account_status = str(credentials[0][4])
+                        account_firstname = str(details[0][2])
+                        account_lastname = str(details[0][3])
+                        account_contact = str(details[0][4])
+                        account_role = str(details[0][5]) 
+                        account_mail = str(details[0][6])
+                        self.main = MainWindow()
+                        self.main.show()
+                        self.close()
+                    else:
+                        self.show_alert.content(f"Oops! user account DEACTIVATED\ncontact administrator.") 
+                        self.show_alert.show() 
+                else:
+                    self.show_alert.content("Oops! Bad user credentials.") 
+                    self.show_alert.show()
             else:
-                self.show_alert.content("Oops! Bad user credentials.") 
-                self.show_alert.show()
+                self.show_alert.content("Oops! no details found.") 
+                self.show_alert.show() 
         else:
             self.show_alert.content("Oops! invalid login details.") 
             self.show_alert.show()
@@ -2352,8 +2339,8 @@ class Splash_screen(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.progress)
         self.timer.start(40)
-        self.create_database_tables()
         self.create_program_data_dir()
+        self.create_database_tables()
         self.populate_root_user_data()
         self.create_cache_database()
         self.show()       
@@ -2372,9 +2359,7 @@ class Splash_screen(QMainWindow):
     def create_program_data_dir(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','programs','properties','qr_code',
-        'barchart','piechart','linechart','json_export','csv_export',
-        'backup','email_details','json_file','samples','settings',
-        'reports','exports','user','cache')
+        'backup','email_details','reports','exports','cache','images')
 
         if not os.path.exists(root_dir):
             os.makedirs(root_dir)
@@ -2383,6 +2368,13 @@ class Splash_screen(QMainWindow):
             if not os.path.exists(path):
                 os.mkdir(path)
         self.create_files()
+
+        cache_dir = 'C:\\ProgramData\\iAttend\\data\\cache'
+        cache = ('database','logs')    
+        for item in cache:
+            path = os.path.join(cache_dir,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
 
         report_dir = 'C:\\ProgramData\\iAttend\\data\\reports'
         report = ('piechart','barchart','linegraph','visualize')    
@@ -2408,18 +2400,11 @@ class Splash_screen(QMainWindow):
                     file.write("Username,Password,Hostname,Port,Database,Server")
             file.close() 
 
-        path =Path('C:\\ProgramData\\iAttend\\data\\programs\\CoS_programs.txt')
+        path =Path('C:\\ProgramData\\iAttend\\data\\programs\\college_programs.txt')
         path.touch(exist_ok=True)
         file = open(path)
         if os.path.exists(path):
-            with open(path,'a+') as file:
-                if os.path.getsize(path)==0:
-                    file.write('BSc. Physics,BSc. Statistics,BSc. Chemistry,'
-                    +'BSc. Mathematics,Doctor of Optometry,BSc. Biochemistry,'
-                    +'BSc. Computer Science,BSc. Actuarial Science,BSc. Biological Science,'
-                    +'BSc. Environmental Science,BSc. Food Science and Technology,'
-                    +'BSc. Meterology and Climate Science')
-            file.close() 
+            pass
 
         details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt')
         details_path.touch(exist_ok=True)
@@ -2427,7 +2412,7 @@ class Splash_screen(QMainWindow):
         if os.path.exists(details_path):
             with open(details_path,'a+') as d_file:
                 if os.path.getsize(details_path)==0:
-                    d_file.write("Subject,example@gmail.mail,Sender,Password")
+                    d_file.write("Subject,example@gmail.com,Sender,Password")
             d_file.close() 
 
         details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\reset_password.txt')
@@ -2541,14 +2526,12 @@ class Splash_screen(QMainWindow):
     def create_database_tables(self):
         db = sqlite3.connect(self.get_path())
         cursor = db.cursor()
-        cursor.execute(create_tb_students_sqlite())
-        cursor.execute(create_tb_attendance_sqlite())
-        cursor.execute(create_tb_images_sqlite())
         cursor.execute(create_tb_cameras_sqlite())
         cursor.execute(create_tb_user_details_sqlite())
         cursor.execute(create_tb_user_credentials_sqlite())
         cursor.execute(create_tb_user_profile_sqlite())
         cursor.execute(create_tb_user_sessions_sqlite())
+        cursor.execute(create_tb_user_sessions_last_seen_sqlite())
         db.commit()
 
     def create_cache_database(self):
@@ -2558,22 +2541,19 @@ class Splash_screen(QMainWindow):
         cursor.execute(create_tb_attendance_sqlite())
         cursor.execute(create_tb_images_sqlite())
         cursor.execute(create_tb_cameras_sqlite())
-        cursor.execute(create_tb_user_details_sqlite())
-        cursor.execute(create_tb_user_credentials_sqlite())
-        cursor.execute(create_tb_user_profile_sqlite())
         cursor.execute(create_tb_user_sessions_sqlite())
         cursor.execute(create_tb_attendance_temp_sqlite())
         cursor.execute(create_tb_attendance_last_seen_sqlite())
         db.commit()
 
     def get_cache_path(self):
-        return 'C:\\ProgramData\\iAttend\\data\\cache\\attendance_database_cache.db'
+        return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
 
     def populate_root_user_data(self):
         db = sqlite3.connect(self.get_path())
         cursor = db.cursor()
         details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+root_reference)
-        results=self.query_user_data("SELECT * FROM tb_user_credentials WHERE user_reference="+root_reference)
+        self.query_user_data("SELECT * FROM tb_user_credentials WHERE user_reference="+root_reference)
         if not details:
             password_hash = hash_password(root_password)
             cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (?,?,?,?,?,?)",
@@ -2581,7 +2561,20 @@ class Splash_screen(QMainWindow):
             cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (?,?,?,?)",
             (root_reference,root_username,password_hash,root_status))    
             db.commit()
-        pass     
+            self.insert_profile_image(root_reference,self.resource_path('image.jpg'))
+        pass 
+
+    def resource_path(self,relative_path):
+        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
+        return path
+
+    def insert_profile_image(self,reference,path):
+        db = sqlite3.connect(self.get_path())
+        cursor = db.cursor()
+        with open(path,'rb') as image_data:
+            data = image_data.read()
+        cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(?,?)",(reference,data))
+        db.commit()    
 
     def get_path(self):
         return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db' 
