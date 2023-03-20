@@ -82,42 +82,27 @@ class ForgotPassword(QDialog):
         reference = self.ui_reset.reference.text()
         password = self.ui_reset.password.text()
         if reference and username and password:
-            try:
                 (db,my_cursor,connection_status) = self.database.my_cursor()
                 if check_state == True:
-                    details=self.query_database("SELECT * FROM tb_user_credentials WHERE user_reference="+"\'{}\'".format(reference))
-                    if details:
-                        if username==str(details[0][2]) and reference==str(details[0][1]):
-                            hash = hash_password(password)
-                            my_cursor.execute("UPDATE tb_user_credentials SET user_password=? WHERE user_reference=?",(hash,reference))
-                            db.commit()
-                            my_cursor.close()
-                            self.clear_fields()
-                            self.content("User password updated successfully")
+                    self.content("Oops! not connected to database..") 
+                else:
+                    try:
+                        details=self.query_database("SELECT * FROM tb_user_credentials WHERE user_reference="+"\'{}\'".format(reference))
+                        if details:
+                            if username==str(details[0][2]) and reference==str(details[0][1]):
+                                hash = hash_password(password)
+                                my_cursor.execute("UPDATE tb_user_credentials SET user_password=%s WHERE user_reference=%s",(hash,reference))
+                                db.commit()
+                                my_cursor.close()
+                                self.clear_fields()
+                                self.send_mail(reference,username)
+                                self.content("User password updated successfully")
+                            else:
+                                self.content(f"{username}, {reference} not found")
                         else:
-                            self.content(f"{username}, {reference} not found")
-                    else:
-                        self.content("User not found for such combination") 
-            except:
-                self.content("Oops! Something went wrong")     
-            else:
-                try:
-                    details=self.query_database("SELECT * FROM tb_user_credentials WHERE user_reference="+"\'{}\'".format(reference))
-                    if details:
-                        if username==str(details[0][2]) and reference==str(details[0][1]):
-                            hash = hash_password(password)
-                            my_cursor.execute("UPDATE tb_user_credentials SET user_password=%s WHERE user_reference=%s",(hash,reference))
-                            db.commit()
-                            my_cursor.close()
-                            self.clear_fields()
-                            self.send_mail(reference,username)
-                            self.content("User password updated successfully")
-                        else:
-                            self.content(f"{username}, {reference} not found")
-                    else:
-                        self.content("User not found for such combination")
-                except:
-                    self.content("Oops! Something went wrong")  
+                            self.content("User not found for such combination")
+                    except:
+                        self.content("Oops! Something went wrong")  
         else: 
             self.content("Empty fields not permitted!")
             
