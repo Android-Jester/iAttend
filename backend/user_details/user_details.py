@@ -22,7 +22,7 @@ class User(QDialog):
         self.shadow.setColor(QColor(230, 230, 230, 50))
         self.ui_profile.frame.setGraphicsEffect(self.shadow)
         self.database = Database()
-        self.ui_profile.btn_update_profile.clicked.connect(self.update_profil_picture)
+        self.ui_profile.btn_update_profile.clicked.connect(self.update_profile_picture)
         self.ui_profile.btn_browse.clicked.connect(self.browse_image_files)
         self.ui_profile.btn_update_user.clicked.connect(self.update_username_password)
 
@@ -47,7 +47,7 @@ class User(QDialog):
         pm = pm.scaled(size, size, Qt.KeepAspectRatio,Qt.SmoothTransformation)
         return pm
     
-    def update_profil_picture(self):
+    def update_profile_picture(self):
         user_id=self.ui_profile.reference.text()
         check_state = self.database.check_state()
         (db,my_cursor,connection_status) = self.database.my_cursor()
@@ -77,7 +77,7 @@ class User(QDialog):
                 my_cursor.execute("UPDATE tb_user_credentials SET user_username=? WHERE user_reference=?",(name,user_id))
                 db.commit()
                 my_cursor.close()
-                self.ui_profile.notification.setText("Password updated successfully")
+                self.ui_profile.notification.setText("Username updated successfully")
             else:
                 my_cursor.execute("UPDATE tb_user_credentials SET user_username=%s WHERE user_reference=%s",(name,user_id))
                 db.commit()
