@@ -39,9 +39,13 @@ class Configuration(QDialog):
     
     def search(self):
         camera = "\'{}\'".format(self.ui_cofig.camera_reference.text())
+        check_state = self.database.check_state()
         if self.ui_cofig.camera_reference.text():
-            result=self.query_database("SELECT camera_url FROM tb_cameras WHERE camera_id="+camera)
-            self.ui_cofig.camera_ip.setText(result[0])
+            if check_state == True:
+                self.ui_cofig.label_notification.setText("Oops! no database configured...")
+            else:
+                result=self.query_database("SELECT camera_url FROM tb_cameras WHERE camera_id="+camera)
+                self.ui_cofig.camera_ip.setText(result[0])
         else:
             self.ui_cofig.label_notification.setText("Search cannot be empty\nCamera Id: %s" %camera)
      
@@ -67,9 +71,7 @@ class Configuration(QDialog):
         if self.ui_cofig.camera_reference.text() and self.ui_cofig.camera_ip.text():
             try:
                 if check_state == True:
-                    my_cursor.execute("INSERT INTO tb_cameras(camera_id,camera_url) VALUES(?,?)",(camera_reference,camera_url))
-                    db.commit()
-                    self.ui_cofig.label_notification.setText("Camera Id: %s inserted successfully!" % camera_reference)
+                    self.ui_cofig.label_notification.setText("Oops! no database configured...")
                 else:
                     my_cursor.execute("INSERT INTO tb_cameras(camera_id,camera_url) VALUES(%s,%s)",(camera_reference,camera_url))
                     db.commit()
@@ -89,9 +91,7 @@ class Configuration(QDialog):
         if self.ui_cofig.camera_reference.text() and self.ui_cofig.camera_ip.text():
             try:
                 if check_state == True:
-                    my_cursor.execute("UPDATE tb_cameras SET camera_url=? WHERE camera_id=?",(camera_reference,camera_url))
-                    db.commit()
-                    self.ui_cofig.label_notification.setText("Camera with %s  updated successfully" %camera_reference)
+                    self.ui_cofig.label_notification.setText("Oops! no database configured...")
                 else:
                     my_cursor.execute("UPDATE tb_cameras SET camera_url=%s WHERE camera_id=%s",(camera_url,camera_reference))
                     db.commit()
@@ -103,19 +103,22 @@ class Configuration(QDialog):
 
     def delete_camera(self):
         (db,my_cursor,connection_status) = self.database.my_cursor()
+        check_state = self.database.check_state()
         camera = "\'{}\'".format(self.ui_cofig.camera_reference.text())
         camera = camera.strip()
         if self.ui_cofig.camera_reference.text():
             try:
-                my_cursor.execute("DELETE FROM tb_cameras WHERE camera_id="+camera)
-                db.commit()
-                self.ui_cofig.label_notification.setText("Camera removed successfully\nCamera Id: %s" %self.ui_cofig.camera_reference.text())
+                if check_state == True:
+                    self.ui_cofig.label_notification.setText("Oops! no database configured...")
+                else:
+                    my_cursor.execute("DELETE FROM tb_cameras WHERE camera_id="+camera)
+                    db.commit()
+                    self.ui_cofig.label_notification.setText("Camera removed successfully\nCamera Id: %s" %self.ui_cofig.camera_reference.text())
             except Exception as e:
                 self.ui_cofig.label_notification.setText(str(e))
         else:
             self.ui_cofig.label_notification.setText("Oops! camera Id provided!") 
-            
-    
+               
     def MoveWindow(self, event):
         if self.isMaximized() == False:
             self.move(self.pos() + event.globalPos() - self.clickPosition)
