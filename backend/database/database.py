@@ -42,8 +42,6 @@ class Database(QDialog):
         self.ui_database.database_name.setText(details[4])
         if str(details[5])=='mysql':
             self.ui_database.mysql.setChecked(True)
-        elif str(details[5])=='postgresql':
-            self.ui_database.mysql.setChecked(True)
         
     def check_state(self):
         if self.ui_database.sqlite.isChecked():
@@ -73,15 +71,7 @@ class Database(QDialog):
                 return db,db.cursor(),connection_status 
             except Exception as e:
                 return str(e)
-        elif self.ui_database.postgresql.isChecked() and self.ui_database.database_name.text() and self.ui_database.password.text():
-            try:
-                connection_status:str =("Connected to PostgreSQL...")
-                db=psycopg2.connect(host=host,port=port,user=user,password=password,database=database)
-                self.ui_database.label_notification.setText(connection_status)
-                return db,db.cursor(),connection_status
-            except Exception as e:
-                return str(e)
-        else:  
+        else:
             try:
                 connection_status:str =("Connected to SQLite3...")
                 db = sqlite3.connect(self.get_path())
@@ -89,7 +79,10 @@ class Database(QDialog):
                 return db, db.cursor(), connection_status
             except Exception as e:
                return str(e) 
-    
+
+    def get_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db'     
+         
     def test_connection(self):
         details = self.get_field_text()
         user = details[0]
@@ -105,49 +98,20 @@ class Database(QDialog):
                     cursor.execute(create_database(database))
                     cursor.execute(user_database(database))
                     cursor.execute(create_tb_students())
-                    cursor.execute(create_tb_attendance())
-                    cursor.execute(create_tb_images())
                     cursor.execute(create_tb_cameras())
                     cursor.execute(create_tb_user_details())
                     cursor.execute(create_tb_user_credentials())
                     cursor.execute(create_tb_user_profile())
-                    cursor.execute(create_tb_user_sessions())
                     db.commit()
                     self.ui_database.label_notification.setText("Hey! you have MySQL working connection...")
                     return db,db.cursor() 
                 except Exception as e:
                     self.ui_database.label_notification.setText(str(e))
                     return str(e)
-            else:
-                self.ui_database.label_notification.setText("Please provide your connection details")
-        elif self.ui_database.postgresql.isChecked():
-            if self.ui_database.database_name.text() and self.ui_database.password.text():
-                try:
-                    db=psycopg2.connect(host=host,port=port,user=user,password=password,database=database)
-                    cursor = db.cursor()
-                    cursor.execute(create_tb_students_postgres())
-                    cursor.execute(create_tb_attendance_postgres())
-                    cursor.execute(create_tb_images_postgres())
-                    cursor.execute(create_tb_cameras_postgres())
-                    cursor.execute(create_tb_user_details_postgres())
-                    cursor.execute(create_tb_user_credentials_postgres())
-                    cursor.execute(create_tb_user_profile_postgres())
-                    cursor.execute(create_tb_user_sessions_postgres())
-                    db.commit()
-                    self.ui_database.label_notification.setText("Hey! you have PostgreSQL working connection...")
-                    return db,db.cursor()
-                except Exception as e:
-                    self.ui_database.label_notification.setText(str(e))
-                    return str(e)
-            else:
-                self.ui_database.label_notification.setText("Please provide your connection details")
-        else:     
+        else: 
             try:
                 db = sqlite3.connect(self.get_path())
                 cursor = db.cursor()
-                cursor.execute(create_tb_students_sqlite())
-                cursor.execute(create_tb_attendance_sqlite())
-                cursor.execute(create_tb_images_sqlite())
                 cursor.execute(create_tb_cameras_sqlite())
                 cursor.execute(create_tb_user_details_sqlite())
                 cursor.execute(create_tb_user_credentials_sqlite())
@@ -159,10 +123,7 @@ class Database(QDialog):
             except Exception as e:
                 self.ui_database.label_notification.setText(str(e))
                 return str(e)
-
-    def get_path(self):
-        return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db'    
-    
+              
     def MoveWindow(self, event):
         if self.isMaximized() == False:
             self.move(self.pos() + event.globalPos() - self.clickPosition)
