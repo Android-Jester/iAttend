@@ -228,7 +228,7 @@ padding-left:5px;</string>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>500</width>
+                  <width>900</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -252,13 +252,13 @@ padding-left:5px;</string>
                <widget class="QLabel" name="label_6">
                 <property name="minimumSize">
                  <size>
-                  <width>400</width>
+                  <width>350</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>270</width>
+                  <width>350</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -288,14 +288,14 @@ padding-left:5px;</string>
                <widget class="QPushButton" name="btn_login_user">
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>30</width>
                   <height>40</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>16777215</width>
-                  <height>40</height>
+                  <width>30</width>
+                  <height>30</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -313,92 +313,6 @@ padding-left:-4px;
                 <property name="icon">
                  <iconset resource="../resource/asset.qrc">
                   <normaloff>:/icons/asset/user.svg</normaloff>:/icons/asset/user.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="shortcut">
-                 <string>Ctrl+P</string>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_login_user_2">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	border: 0px solid;
-    background-color: rgb(35, 35, 35);
-padding-left:-4px;
-}
-</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../resource/asset.qrc">
-                  <normaloff>:/icons/asset/wifi.svg</normaloff>:/icons/asset/wifi.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>30</width>
-                  <height>30</height>
-                 </size>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_login_user_4">
-                <property name="minimumSize">
-                 <size>
-                  <width>100</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	border: 0px solid;
-    background-color: rgb(35, 35, 35);
-padding-left:-4px;
-}
-</string>
-                </property>
-                <property name="text">
-                 <string>1.5Mbs</string>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -691,9 +605,6 @@ QPushButton:pressed{
                   <height>40</height>
                  </size>
                 </property>
-                <property name="shortcut">
-                 <string>Ctrl+H</string>
-                </property>
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
@@ -749,9 +660,6 @@ QPushButton:pressed{
                   <height>45</height>
                  </size>
                 </property>
-                <property name="shortcut">
-                 <string>Ctrl+N</string>
-                </property>
                 <property name="checkable">
                  <bool>true</bool>
                 </property>
@@ -802,9 +710,6 @@ QPushButton:pressed{
                   <width>35</width>
                   <height>42</height>
                  </size>
-                </property>
-                <property name="shortcut">
-                 <string>Ctrl+S</string>
                 </property>
                 <property name="checkable">
                  <bool>true</bool>
@@ -857,9 +762,6 @@ QPushButton:pressed{
                   <height>40</height>
                  </size>
                 </property>
-                <property name="shortcut">
-                 <string>Ctrl+B</string>
-                </property>
                 <property name="flat">
                  <bool>true</bool>
                 </property>
@@ -907,9 +809,6 @@ QPushButton:pressed{
                   <width>35</width>
                   <height>43</height>
                  </size>
-                </property>
-                <property name="shortcut">
-                 <string>Ctrl+R</string>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -1007,9 +906,6 @@ QPushButton:pressed{
                   <height>40</height>
                  </size>
                 </property>
-                <property name="shortcut">
-                 <string>Ctrl+C</string>
-                </property>
                 <property name="flat">
                  <bool>true</bool>
                 </property>
@@ -1057,9 +953,6 @@ QPushButton:pressed{
                   <width>32</width>
                   <height>40</height>
                  </size>
-                </property>
-                <property name="shortcut">
-                 <string>Ctrl+M</string>
                 </property>
                 <property name="flat">
                  <bool>true</bool>
@@ -1113,9 +1006,6 @@ QPushButton:pressed{
                <height>40</height>
               </size>
              </property>
-             <property name="shortcut">
-              <string>Ctrl+B</string>
-             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -1164,9 +1054,6 @@ QPushButton:pressed{
                <height>40</height>
               </size>
              </property>
-             <property name="shortcut">
-              <string>Ctrl+L</string>
-             </property>
              <property name="flat">
               <bool>true</bool>
              </property>
@@ -1213,9 +1100,6 @@ QPushButton:pressed{
                <width>35</width>
                <height>40</height>
               </size>
-             </property>
-             <property name="shortcut">
-              <string>Ctrl+H</string>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -1855,7 +1739,7 @@ QPushButton:pressed{
                        <x>10</x>
                        <y>310</y>
                        <width>481</width>
-                       <height>121</height>
+                       <height>111</height>
                       </rect>
                      </property>
                      <property name="font">
@@ -2277,9 +2161,6 @@ QPushButton:pressed{
                        <height>30</height>
                       </size>
                      </property>
-                     <property name="shortcut">
-                      <string>Ctrl+D</string>
-                     </property>
                      <property name="flat">
                       <bool>true</bool>
                      </property>
@@ -2433,6 +2314,9 @@ QPushButton:pressed{
                         <enum>QFrame::Raised</enum>
                        </property>
                        <layout class="QHBoxLayout" name="horizontalLayout_10">
+                        <property name="bottomMargin">
+                         <number>15</number>
+                        </property>
                         <item>
                          <widget class="QFrame" name="frame_4">
                           <property name="minimumSize">
@@ -2461,6 +2345,12 @@ QPushButton:pressed{
                            <enum>QFrame::Raised</enum>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_2">
+                           <property name="leftMargin">
+                            <number>20</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>9</number>
+                           </property>
                            <property name="verticalSpacing">
                             <number>20</number>
                            </property>
@@ -2891,9 +2781,6 @@ QPushButton:pressed{
                              <width>30</width>
                              <height>30</height>
                             </size>
-                           </property>
-                           <property name="shortcut">
-                            <string>Ctrl+F</string>
                            </property>
                            <property name="flat">
                             <bool>true</bool>
@@ -5116,11 +5003,6 @@ background-color: rgb(45, 45, 45);
                   <item>
                    <property name="text">
                     <string>ADMIN</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>GUEST</string>
                    </property>
                   </item>
                   <item>
@@ -9306,27 +9188,25 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system by default is not configured to run on any camera whether inbuilt or online camera. You would need to scan for all available camera's connected to the system. This can be achieved by providing a number for the range of camera's you want to scan for and pressing the scan button provided. The software would only return list of available open camera's connected to the system. It also gives you the flexibility to connect to networked cameras. In other to achieve this, you need to provide the Ip address of the camera on the network.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Camera Connection&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to connect any of the active camera's, first you need to make sure that the camera is not in use or if in use &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;make sure to disconnect&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; it before connecting it to different view or frame.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; if camera 0 is connected to &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;check in&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view and you try to connect that same camera to &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;check out&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view then, the system would automatically release the camera for &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;check out&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view to use. This behavior is been utilized throughout the system design.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to connect any of the active camera's, first you need to make sure that the camera is not in use or if in use &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;make sure to disconnect&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; it before connecting it to different view or frame.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; if camera 0 is connected to&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; login&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view and you try to connect that same camera to &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;logout&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view then, the system would automatically release the camera for &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;login&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view to use.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Image Enhancement&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides some image enhancement capabilities to process the image based on weather conditions. It currently provides full support for increasing. This would only work for camera's that supports these features. Some camera's do not give support fine tuning these features.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1] Brightness	 [2] Sharpness 	[3] Contrast&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Surveillance&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system supports four additional cameras to help monitor the surroundings as well. To use this either provide &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;camera IP&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; address or if is attached to system provide the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;camera Id&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; in order to establish connection. If the default view provided is small and you would have a larger view then you can use the cast feature to open a wider screen and connect to such camera. The normal view doesn't support image enhancement but you can use this feature when you cast it to a wider screen. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system supports four additional cameras to help monitor the surroundings as well. To use this provide &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;camera IP&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; address of the camera. Just select the camera Id from the drop down box provided and it would automatically load the select camera's connection address. The ability to add camera's to database is only available in administrative mode. Contact administrator if you run into problems connecting to any available camera.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Databases&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system currently is providing full support for three (3) databases. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1] SQLite	 [2] MySQL	 [3] PostgreSQL&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system currently is providing full support MySQL databases. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;By default, the system is configured to run on embedded database (SQLite) and you don't need to provide any connection details. If you desire to configure the system to run on either &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;MySQL or PostgreSQL&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This is achieved by using the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;initialize tables button&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;. This should be done once.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;By default, the system is configured not to run on any database. Ifconfigure the system to run on &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;MySQL &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This is achieved by using the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;initialize tables button&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;. This should be done once.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Database properties&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To prevent you from re-typing the database properties (MySQL or PostgreSQL) all the time attached to the application is&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; properties.txt&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file where you can provide the database connection details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example:&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;Username, Password, Hostname, Port, Database&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; this&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\database_properties&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To prevent you from re-typing the database properties (MySQL or PostgreSQL) all the time attached to the application is&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; properties.txt&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file where you can provide the database connection details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example:&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;Username, Password, Hostname, Port, Database,Server&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; this&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\database_properties&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Backup&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To backup create backup when the embedded database is used as main data source. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\backup&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To backup create backup of the cache database. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\backup&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; The backup history file contains logs all your privious backup time and date stamp. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Searching&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to retrieve student details along with all the entries made by that student, they are various combinations or criteria’s you can use to achieve this and get results. When the switch date between date fields is checked the date picked from the calendar widget would be placed in the start date field and if unchecked then it would be placed in the end date field.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
@@ -9339,7 +9219,20 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[4] if a reference number is provided as well as start and end date then it would fetch the details from based on the date range provided and render the data to UI.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[5]. If the search by program box is checked then you can fetch data based on the various programs. The search comes with autocompletion feature with the programs available.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[5]. If the search by program box is checked then you can fetch data based on the various programs. The search comes with autocompletion feature with the programs available.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Exporting Data&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides two solid ways of exporting data in either Json or CVS format based on your need. Data can only be exported when the table view is not empty or data is not been rendered. The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. When data is exported in csv format the default location for the saved file is at &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\export\csv&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. When data is exported in Json format the default location for the saved file is at &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\export\json&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Reports&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides support for generating reports in three different ways based on the user’s preference. By default, the application won’t display any report data unless it is hot reloaded. On hot reload, it is going to display pie chart and any other type of chart or graph based on the one which is checked. The pie chart side of this view is only used to render only pie charts. The other view is dynamic and hence display plots for either bar chart or line graph.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1] Pie chart    [2] Bar chart  [3] Line graph&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Generating charts&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;This case applies to pie chart and bar chart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to retrieve data for analysis, these are various combinations or criteria’s you can use to achieve this and get results.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. If either of these radio buttons is checked with start date provided and load button is pressed, then it is going to read all the data available based on such date, from the database and display a chart with such data.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. If either of these radio buttons is checked with start and end date provided and load button is pressed, then it is going to read all the data available based on the dates provided, from the database and display a chart with such data.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -9417,18 +9310,6 @@ p, li { white-space: pre-wrap; }
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Exporting Data&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides two solid ways of exporting data in either Json or CVS format based on your need. Data can only be exported when the table view is not empty or data is not been rendered. The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. When data is exported in csv format the default location for the saved file is at &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\csv_export&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. When data is exported in Json format the default location for the saved file is at &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\json_export&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Reports&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides support for generating reports in three different ways based on the user’s preference. By default, the application won’t display any report data unless it is hot reloaded. On hot reload, it is going to display pie chart and any other type of chart or graph based on the one which is checked. The pie chart side of this view is only used to render only pie charts. The other view is dynamic and hence display plots for either bar chart or line graph.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1] Pie chart    [2] Bar chart  [3] Line graph&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Generating charts&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;This case applies to pie chart and bar chart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to retrieve data for analysis, these are various combinations or criteria’s you can use to achieve this and get results.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. If either of these radio buttons is checked with start date provided and load button is pressed, then it is going to read all the data available based on such date, from the database and display a chart with such data.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. If either of these radio buttons is checked with start and end date provided and load button is pressed, then it is going to read all the data available based on the dates provided, from the database and display a chart with such data.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Line Graph&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The line graph/plot is only used to visualize trends in data. To be able to plot trends in data. There is an additional combo box provided to keep all the dates been selected for the line graph. Only dates from the first calendar would be added to list.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. First you would to select the program to plot or visualize their trend.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
@@ -9438,11 +9319,13 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Saving Charts&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The only support provided for saving files is pdf format and this can't be set from the user end as it is provided from the application end. The saving format is as follows, the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;filename&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; provided appended with this &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;[date]_[time]&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; where date and time is the current values on the machine running the application.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. If you want to save pie charts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\piechart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\reports\piechart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. If you want to save bar charts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\barchart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\reports\barchart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[3]. If you want to save line graph, make sure that radio button checked and provide a filename, the saved file would be found in this directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\linechart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\reports\linechart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;College programs&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;college_programs.txt&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; file  located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\programs &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory. Any new program added should be seperated by a comma to allow the application read it. &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; BSc. Chemistry, BSc. Physics, new program,new program. &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;Just replace the the college side the the college name. eg,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; CoS_programs.txt &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;for college of science, for engineering &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;CoE_programs.txt.&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;E-mail properties&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The properties of the sender details can be place in a text file located within the directory below with the name &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;detail.txt&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\email_details&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; to prevent you from re-writing them anytime you want to send e-mail. The application on start-up would automatically search for the file and load details from there. Please follow the exact format provided in the file.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
@@ -9450,8 +9333,39 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;Please take note the '&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;Hello name,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;' section, you can change the 'Hello' but please keep the name as it is since the name part would be provided from the user interface end.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To prevent you from re-typing the e-mails all the time attached to the application is &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;detail.txt&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file where you can provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;subject, example@gmail.com, sender name, password,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; this file located in the &lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\email_details&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;College programs&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;CoS_programs.txt&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; file  located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\programs &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory. Any new program added should be seperated by a comma to allow the application read it. &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; BSc. Chemistry, BSc. Physics, new program,new program&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Batch processing&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To run a batch job and insert multiple students data into the database, just head to the batch processing page and follow these steps.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;NB: To perform this operation, you need strong internet connection.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Records&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;1. Use the browse button to select a &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;text or csv file&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; containing the data/records. The records should strictly follow the format given bellow. The date should be in &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;mm/dd/yyyy&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; format else, you would run into errors. Make sure to include header for the file as this would be skipped when it is loaded by the application. If headers are not provided then the first record would be skipped by default.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;Firstname,Middlename,Lastname,Index,Reference,Program,College,Nationality,Issued date,Expiry date,Email&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;2. Make sure your have good internet connection and connected to a database as well.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;3. Click on the insert button to start the batch job, check from the notification panel to see the status of the job. If the job is still progress, just leave it for it finish the process. &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;4. You can always check the logs for any finished batch process. Locate the log files in this directory &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\iAttend\data\batch_logs &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; with this name format &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;batch_logs_unprocessed_date_time.txt &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;where date and time is the current stamps.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;5. This log file contains records that wasn't saved due to duplicate entry or network connection error.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Images&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;NB: To perform this operation, you need strong internet connection.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;1. On the same batch page click on the images button with folder like image attached to it for a dialog to pop up.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;2. Use the browse button to select the folder containing the images. All the images within the selected folder would be listed.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;3. The naming format for the images should be, the student &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;reference_number.extension, e.g, 284458585.png&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;4. After selecting the images folder, you can close the dialog.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;5. To start the batch job to insert images into the database, click on the insert button with image icon attached to it. &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;6. Leave the application to whilst the operation is in progress.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;7. Check the status of the operation from the notification panel. &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;8. Check the logs generated after the operation for unprocessed images. &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;9.Location for log files &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\iAttend\data\batch_logs  &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;with &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;this name format &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;image_logs_unprocessed_date_time.txt  &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;where date and time is the current stamps.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Generate QR Code&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;After inserting the records into the database, the code for taking attendance can now be generated. On the batch page locate the&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; mail button&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; with message icon attached to it.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;NB: To perform this operation, you need strong internet connection, and might need to switch of the sending device proxy.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;1. Click on to start generating and the sending processing simultaneously.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;2. Leave the application to perform the operation.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;3. Check the notification panel for the procgress of the sending.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;4. Only valid mail addresses would receive the code generated.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;5. Locate all codes generated within this directory &lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\iAttend\data\qr_code\&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;6. You can now delete the generated codes after the process.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>

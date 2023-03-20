@@ -379,7 +379,7 @@ QPushButton:hover{
              <widget class="QFrame" name="frame_6">
               <property name="maximumSize">
                <size>
-                <width>600</width>
+                <width>560</width>
                 <height>212</height>
                </size>
               </property>
@@ -401,13 +401,19 @@ QFrame{
                 <rect>
                  <x>20</x>
                  <y>80</y>
-                 <width>131</width>
+                 <width>161</width>
                  <height>45</height>
                 </rect>
                </property>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>161</width>
                  <height>45</height>
                 </size>
                </property>
@@ -452,15 +458,21 @@ QPushButton:pressed{
               <widget class="QPushButton" name="btn_exit_cam_disconect">
                <property name="geometry">
                 <rect>
-                 <x>160</x>
+                 <x>200</x>
                  <y>80</y>
-                 <width>141</width>
+                 <width>171</width>
                  <height>45</height>
                 </rect>
                </property>
                <property name="minimumSize">
                 <size>
                  <width>0</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>171</width>
                  <height>45</height>
                 </size>
                </property>
@@ -505,9 +517,9 @@ QPushButton:pressed{
               <widget class="QComboBox" name="exit_comboBox">
                <property name="geometry">
                 <rect>
-                 <x>460</x>
+                 <x>390</x>
                  <y>80</y>
-                 <width>120</width>
+                 <width>141</width>
                  <height>45</height>
                 </rect>
                </property>
@@ -519,8 +531,8 @@ QPushButton:pressed{
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>130</width>
-                 <height>41</height>
+                 <width>150</width>
+                 <height>45</height>
                 </size>
                </property>
                <property name="font">
@@ -565,9 +577,15 @@ QPushButton:pressed{
                 <rect>
                  <x>20</x>
                  <y>20</y>
-                 <width>561</width>
+                 <width>511</width>
                  <height>51</height>
                 </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>521</width>
+                 <height>51</height>
+                </size>
                </property>
                <property name="font">
                 <font>
@@ -603,9 +621,15 @@ QLineEdit:focus{
                 <rect>
                  <x>20</x>
                  <y>140</y>
-                 <width>561</width>
+                 <width>511</width>
                  <height>51</height>
                 </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>521</width>
+                 <height>51</height>
+                </size>
                </property>
                <property name="font">
                 <font>
@@ -629,74 +653,20 @@ QLineEdit:focus{
                 <set>Qt::AlignCenter</set>
                </property>
               </widget>
-              <widget class="QPushButton" name="btn_open_database">
-               <property name="geometry">
-                <rect>
-                 <x>310</x>
-                 <y>80</y>
-                 <width>141</width>
-                 <height>45</height>
-                </rect>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>45</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                </font>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-               </property>
-               <property name="text">
-                <string>Database</string>
-               </property>
-               <property name="icon">
-                <iconset resource="../resource/asset.qrc">
-                 <normaloff>:/icons/asset/database.svg</normaloff>:/icons/asset/database.svg</iconset>
-               </property>
-               <property name="iconSize">
-                <size>
-                 <width>30</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="flat">
-                <bool>true</bool>
-               </property>
-              </widget>
               <zorder>btn_exit_cam_connect</zorder>
               <zorder>btn_exit_cam_disconect</zorder>
               <zorder>exit_comboBox</zorder>
               <zorder>exit_cam_ip</zorder>
               <zorder>label_28</zorder>
               <zorder>label_notification</zorder>
-              <zorder>btn_open_database</zorder>
              </widget>
             </item>
             <item>
              <widget class="QFrame" name="frame_7">
               <property name="maximumSize">
                <size>
-                <width>450</width>
-                <height>16777215</height>
+                <width>490</width>
+                <height>212</height>
                </size>
               </property>
               <property name="styleSheet">

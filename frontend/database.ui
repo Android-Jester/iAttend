@@ -711,7 +711,7 @@ QLineEdit:focus{
            <widget class="QRadioButton" name="mysql">
             <property name="geometry">
              <rect>
-              <x>180</x>
+              <x>140</x>
               <y>40</y>
               <width>95</width>
               <height>20</height>
@@ -730,30 +730,6 @@ QLineEdit:focus{
             </property>
             <property name="text">
              <string>MySQL</string>
-            </property>
-           </widget>
-           <widget class="QRadioButton" name="postgresql">
-            <property name="geometry">
-             <rect>
-              <x>350</x>
-              <y>40</y>
-              <width>111</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QRadioButton{
-	color: rgb(255, 255, 255);
-	background-color:rgb(35,35,35)
-}</string>
-            </property>
-            <property name="text">
-             <string>PostgreSQL</string>
             </property>
            </widget>
           </widget>
