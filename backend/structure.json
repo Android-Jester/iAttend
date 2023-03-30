@@ -1,0 +1,161 @@
+[
+    {
+        "CoS":{
+            "FoB":[
+                "Dept. of Biochemistry and Biotechnology",
+                "Dept. of Environmental Science",
+                "Dept. of Food Science and Technology",
+                "Dept. of Optometry and Visual Science",
+                "Dept. of Theoretical and Applied Biology"
+            ],
+            "FoPCS":[
+                "Dept. of Chemistry",
+                "Dept. of Computer Science",
+                "Dept. of Mathematics",
+                "Dept. of Physics",
+                "Dept. of Statistics and Actuarial Science",
+                "Dept. of Meteorology and Climate Science"
+            ]
+        }
+    },
+    {
+        "CoE":{
+            "FoCGE":[
+                "Dept. of Civil Engineering",
+                "Dept. of Geological Engineering",
+                "Dept. of Geomatic Engineering",
+                "Dept. of Petroleum Engineering"
+            ],
+            "FoMCE":[
+                "Dept. of Chemical Engineering",
+                "Dept. of Material Engineering",
+                "Dept. of Mechanical Engineering",
+                "Dept. of Agricultural and Biosystems Engineering"
+            ],
+            "FoECE":[
+                "Dept. of Computer Engineering",
+                "Dept. of Telecommunications Engineering",
+                "Dept. of Electrical and Electronic Engineering"
+            ]
+        }
+    },
+    {
+        "CoHS":{
+            "FoAHS": [
+                "Dept. of Nursing",
+	            "Dept. of Medical Diagnostics",
+	            "Dept. of Sports and Exercise Science",
+                "Dept. of Physiotherapy and Sports Sciences"
+            ],
+            "SoMD":[
+                "Dept. of Anatomy",
+                "Dept. of Medicine",
+	            "Dept. of Pathology",
+	            "Dept. of Child Health",
+	            "Dept. of Clinical Microbiology",
+	            "Dept. of Eye, Ear, Nose and Throat",
+                "Dept. of Molecular Medicine",
+                "Dept. of Obstetrics & Gynaecology",
+                "Dept. of Physiology",
+                "Dept. of Radiology",
+                "Dept. of Surgery",
+                "Dept. of Adult Oral Health",
+                "Dept. of Basic Oral Health",
+                "Dept. of Community Dentistry",
+                "Dept. of Oral Health & Orthodontics",
+                "Dept. of Oral & Maxillofacial Science",
+                "Dept. of Anaesthesiology & Intensive Care",
+                "Dept. of Behavioural Sciences",
+                "Dept. of Community Health"
+            ],
+            "FoPPS":[
+                "Dept. of Herbal Medicine",
+                "Dept. of Pharmaceutics",
+	            "Dept. of Pharmacology",
+	            "Dept. of Pharmacognosy",
+	            "Dept. of Pharmaceutical Chemistry",
+	            "Dept. of Pharmacy Practice"
+            ],
+            "SoPH":[
+                "Dept. of Epidemiology & Biostatistics",
+                "Dept. of Global and International Health",
+	            "Dept. of Health Policy, Management & Economics",
+	            "Dept. of Health Promotion, Education & Disability",
+	            "Dept. of Occupational and Environmental Health",
+	            "Dept. of Population, Family and Reproductive Health"
+            ],
+            "SoVM":[
+                "Dept. of Veterinary Clinical Studies",
+                "Dept. of Veterinary Anatomy and Physiology",
+	            "Dept. of Veterinary Pathobiology",
+	            "Dept. of Veterinary Pharmacology and Toxicology",
+	            "Dept. of Veterinary Public Health and Epidemiology"
+            ]
+        }   
+
+    },
+    {
+        "CABE":{
+            "FoBE": [
+                "Dept. of Architecture",
+	            "Dept. of Construction Technology and Management",
+	            "Dept. of Land Economy",
+	            "Dept. of Planning"
+            ],
+            "FoA":[
+                " Dept. of Communication Design",
+	            "Dept. of Educational Innovations in Science & Technology",
+	            "Dept. of Painting and Sculpture",
+	            "Dept. of Integrated Rural Art and Industry",
+	            " Dept. of Industrial Art",
+	            "Dept. of Publishing Studies"
+            ]
+        }
+
+    },
+    {
+        "CANR":{
+            "FoA": [
+            "Dept. of Agricultural Economics Agribusiness and Extension",
+            "Dept. of Animal Science",
+            "Dept. of Horticulture",
+            "Dept. of Crop and Soil Science"
+            ],
+
+            "FoRNR": [
+            "Dept. of Agroforestry",
+            "Dept. of Fisheries and Watershed Management",
+            "Dept. of Silviculture and Forest Management",
+            "Dept. of Wildlife and Range Management",
+            "Dept. of Wood Science and Technology",
+            "Dept. of Forest Resources Technology"
+            ]
+        }
+    },
+    {
+        "CoHSS":{
+            "FoL": [
+                "Dept. of Commercial Law",
+	            "Dept. of Private Law",
+	            "Dept. of Public Law"
+            ],
+            "SoB": [
+                "Dept. of Accounting and Finance",
+	            "Dept. of Supply Chain and Information Systems",
+	            "Dept. of Marketing and Corporate Strategy",
+                "Dept. of Human Resource and Organisational Development"
+            ],
+            "FoSS":[
+                "Dept. of Economics",
+	            "Dept. of English",
+	            "Dept. of Geography & Rural Development",
+	            "Dept. of History & Political Studies",
+	            "Dept. of Modern Languages",
+	            "Dept. of Sociology & Social Work",
+                "Dept. of Religious Studies"
+            ]
+        }
+
+    }
+    
+]
