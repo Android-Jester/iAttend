@@ -65,10 +65,13 @@ class ExitCameraFeed(QDialog):
     def get_cache_path(self):
         return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
 
+    def value_formater(self,value):
+        return "\'{}\'".format(value)
+
     def query_cache_database(self,qr_code_data):
         db = sqlite3.connect(self.get_cache_path())
         my_cursor = db.cursor()
-        my_cursor.execute("SELECT id,reference FROM tb_students WHERE reference= " +qr_code_data)
+        my_cursor.execute("SELECT generated_id,student_reference FROM tb_students WHERE student_reference= " +self.value_formater(qr_code_data))
         cursor= my_cursor.fetchone()
         db.commit()
         results = []
@@ -76,7 +79,7 @@ class ExitCameraFeed(QDialog):
         if cursor is not None:
             for data in cursor:
                 results.append(data)
-            cursor=my_cursor.execute("SELECT time_in,duration FROM tb_attendance_temp WHERE st_reference="+str(results[1])+" and date_stamp="+date)
+            cursor=my_cursor.execute("SELECT time_in,duration FROM tb_attendance_temp WHERE student_reference="+self.value_formater(results[1])+" and date_stamp="+date)
             cursor=my_cursor.fetchall()
             db.commit()
             details = []
@@ -93,22 +96,22 @@ class ExitCameraFeed(QDialog):
                     abs((int(time_out_split[1])-int(time_in[1]))),
                     abs((int(time_out_split[2])-int(time_in[2]))))
                     new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
+                    student_reference=self.value_formater(results[1])
                     if str(details[0][1]) == "00:00:00":
-                        my_cursor.execute("UPDATE tb_attendance_temp SET time_out= ?, duration= ?  WHERE st_reference=? and date_stamp= ? ",(time_out,new_duration,str(results[1]),date_stamp))
+                        my_cursor.execute("UPDATE tb_attendance_temp SET time_out= ?, duration= ?  WHERE student_reference=? and date_stamp= ? ",(time_out,new_duration,student_reference,date_stamp))
                         db.commit()
                         winsound.Beep(1000,100)
-                        details = my_cursor.execute("SELECT * FROM tb_attendance_temp where st_reference="+str(results[1]))
+                        details = my_cursor.execute("SELECT * FROM tb_attendance_temp where student_reference="+student_reference)
                         details=my_cursor.fetchone()
-                        my_cursor.execute("INSERT INTO tb_attendance(st_reference,program,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?)",
-                        (details[6],details[1],details[2],details[3],details[4],details[5]))
+                        my_cursor.execute("INSERT INTO tb_attendance (student_reference,student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                        (details[1],details[2],details[3],details[4],details[5],details[6],details[7],details[8],details[9],details[10],time_out,new_duration))
                         db.commit()
-                        my_cursor.execute("DELETE FROM tb_attendance_temp where st_reference="+str(results[1]))
+                        my_cursor.execute("DELETE FROM tb_attendance_temp where student_reference="+student_reference)
+                        my_cursor.execute("DELETE FROM tb_attendance_last_seen WHERE student_reference="+student_reference)
                         db.commit()
                         winsound.Beep(1000,100)
-                        my_cursor.execute("DELETE FROM tb_attendance_last_seen WHERE st_reference="+str(results[1]))
-                        db.commit()
-                        my_cursor.execute("INSERT INTO tb_attendance_last_seen (st_reference,program,date_stamp,time_in,time_out,duration) VALUES (?,?,?,?,?,?)",
-                        (details[6],details[1],details[2],details[3],details[4],details[5]))
+                        my_cursor.execute("INSERT INTO tb_attendance_last_seen (student_reference,date_stamp,time_in,time_out,duration) VALUES (?,?,?,?,?)",
+                        (details[1],details[9],details[10],time_out,new_duration))
                         db.commit()
                         winsound.Beep(1000,100)
                         return "Hey! your have successfully logged out"
