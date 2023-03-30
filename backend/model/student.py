@@ -2,12 +2,12 @@ from dataclasses import dataclass
 
 @dataclass
 class Student():
-    reference: int
-    index_: int
-    firstname: str
-    lastname: str
-    college: str
-    program: str
-    nationality: str
-    start_date: str
-    end_date: str
+    student_reference: str
+    student_index: str
+    student_firstname: str
+    student_lastname: str
+    student_nationality: str
+    student_gender: str
+    student_disability: str
+    card_issued_date: str
+    card_expiry_date: str
