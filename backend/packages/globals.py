@@ -39,6 +39,9 @@ account_firstname= ''
 GLOBAL_STATE
 account_lastname= ''
 
+GLOBAL_STATE
+student_disability= ''
+
 
 
 
