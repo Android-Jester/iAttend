@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardnzNWrv.ui'
+## Form generated from reading UI file 'dashoboardjUenKH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1345,7 +1345,7 @@ class Ui_dashboard(object):
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.left_frame_2 = QFrame(self.search)
         self.left_frame_2.setObjectName(u"left_frame_2")
-        self.left_frame_2.setMinimumSize(QSize(500, 0))
+        self.left_frame_2.setMinimumSize(QSize(520, 0))
         self.left_frame_2.setMaximumSize(QSize(500, 16777215))
         self.left_frame_2.setFrameShape(QFrame.NoFrame)
         self.left_frame_2.setFrameShadow(QFrame.Raised)
@@ -1772,8 +1772,8 @@ class Ui_dashboard(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(5, -1, 9, 12)
         self.tableWidget = QTableWidget(self.rigth_frame)
-        if (self.tableWidget.columnCount() < 6):
-            self.tableWidget.setColumnCount(6)
+        if (self.tableWidget.columnCount() < 12):
+            self.tableWidget.setColumnCount(12)
         __qtablewidgetitem = QTableWidgetItem()
         __qtablewidgetitem.setFont(font2);
         __qtablewidgetitem.setBackground(QColor(255, 255, 255));
@@ -1793,6 +1793,18 @@ class Ui_dashboard(object):
         __qtablewidgetitem5 = QTableWidgetItem()
         __qtablewidgetitem5.setFont(font1);
         self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(7, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(8, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(9, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(10, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(11, __qtablewidgetitem11)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setLayoutDirection(Qt.LeftToRight)
         self.tableWidget.setStyleSheet(u"QTableWidget{\n"
@@ -2002,30 +2014,30 @@ class Ui_dashboard(object):
         self.tableWidget_batch = QTableWidget(self.frame_29)
         if (self.tableWidget_batch.columnCount() < 8):
             self.tableWidget_batch.setColumnCount(8)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        __qtablewidgetitem6.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(0, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        __qtablewidgetitem7.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(1, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        __qtablewidgetitem8.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(2, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        __qtablewidgetitem9.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(3, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        __qtablewidgetitem10.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(4, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        __qtablewidgetitem11.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(5, __qtablewidgetitem11)
         __qtablewidgetitem12 = QTableWidgetItem()
         __qtablewidgetitem12.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(6, __qtablewidgetitem12)
+        self.tableWidget_batch.setHorizontalHeaderItem(0, __qtablewidgetitem12)
         __qtablewidgetitem13 = QTableWidgetItem()
         __qtablewidgetitem13.setFont(font2);
-        self.tableWidget_batch.setHorizontalHeaderItem(7, __qtablewidgetitem13)
+        self.tableWidget_batch.setHorizontalHeaderItem(1, __qtablewidgetitem13)
+        __qtablewidgetitem14 = QTableWidgetItem()
+        __qtablewidgetitem14.setFont(font2);
+        self.tableWidget_batch.setHorizontalHeaderItem(2, __qtablewidgetitem14)
+        __qtablewidgetitem15 = QTableWidgetItem()
+        __qtablewidgetitem15.setFont(font2);
+        self.tableWidget_batch.setHorizontalHeaderItem(3, __qtablewidgetitem15)
+        __qtablewidgetitem16 = QTableWidgetItem()
+        __qtablewidgetitem16.setFont(font2);
+        self.tableWidget_batch.setHorizontalHeaderItem(4, __qtablewidgetitem16)
+        __qtablewidgetitem17 = QTableWidgetItem()
+        __qtablewidgetitem17.setFont(font2);
+        self.tableWidget_batch.setHorizontalHeaderItem(5, __qtablewidgetitem17)
+        __qtablewidgetitem18 = QTableWidgetItem()
+        __qtablewidgetitem18.setFont(font2);
+        self.tableWidget_batch.setHorizontalHeaderItem(6, __qtablewidgetitem18)
+        __qtablewidgetitem19 = QTableWidgetItem()
+        __qtablewidgetitem19.setFont(font2);
+        self.tableWidget_batch.setHorizontalHeaderItem(7, __qtablewidgetitem19)
         self.tableWidget_batch.setObjectName(u"tableWidget_batch")
         self.tableWidget_batch.setFont(font2)
         self.tableWidget_batch.setStyleSheet(u"QTableWidget{\n"
@@ -2642,24 +2654,24 @@ class Ui_dashboard(object):
         self.admin_table = QTableWidget(self.camera_top)
         if (self.admin_table.columnCount() < 5):
             self.admin_table.setColumnCount(5)
-        __qtablewidgetitem14 = QTableWidgetItem()
-        __qtablewidgetitem14.setFont(font2);
-        self.admin_table.setHorizontalHeaderItem(0, __qtablewidgetitem14)
+        __qtablewidgetitem20 = QTableWidgetItem()
+        __qtablewidgetitem20.setFont(font2);
+        self.admin_table.setHorizontalHeaderItem(0, __qtablewidgetitem20)
         font11 = QFont()
         font11.setPointSize(10)
         font11.setStyleStrategy(QFont.PreferAntialias)
-        __qtablewidgetitem15 = QTableWidgetItem()
-        __qtablewidgetitem15.setFont(font11);
-        self.admin_table.setHorizontalHeaderItem(1, __qtablewidgetitem15)
-        __qtablewidgetitem16 = QTableWidgetItem()
-        __qtablewidgetitem16.setFont(font2);
-        self.admin_table.setHorizontalHeaderItem(2, __qtablewidgetitem16)
-        __qtablewidgetitem17 = QTableWidgetItem()
-        __qtablewidgetitem17.setFont(font2);
-        self.admin_table.setHorizontalHeaderItem(3, __qtablewidgetitem17)
-        __qtablewidgetitem18 = QTableWidgetItem()
-        __qtablewidgetitem18.setFont(font2);
-        self.admin_table.setHorizontalHeaderItem(4, __qtablewidgetitem18)
+        __qtablewidgetitem21 = QTableWidgetItem()
+        __qtablewidgetitem21.setFont(font11);
+        self.admin_table.setHorizontalHeaderItem(1, __qtablewidgetitem21)
+        __qtablewidgetitem22 = QTableWidgetItem()
+        __qtablewidgetitem22.setFont(font2);
+        self.admin_table.setHorizontalHeaderItem(2, __qtablewidgetitem22)
+        __qtablewidgetitem23 = QTableWidgetItem()
+        __qtablewidgetitem23.setFont(font2);
+        self.admin_table.setHorizontalHeaderItem(3, __qtablewidgetitem23)
+        __qtablewidgetitem24 = QTableWidgetItem()
+        __qtablewidgetitem24.setFont(font2);
+        self.admin_table.setHorizontalHeaderItem(4, __qtablewidgetitem24)
         self.admin_table.setObjectName(u"admin_table")
         self.admin_table.setFont(font2)
         self.admin_table.setStyleSheet(u"QTableWidget{\n"
@@ -4094,15 +4106,27 @@ class Ui_dashboard(object):
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("dashboard", u"Reference", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("dashboard", u"Program", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("dashboard", u"College", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("dashboard", u"Date", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("dashboard", u"Faculty", None));
         ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("dashboard", u"Time In", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("dashboard", u"Program", None));
         ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("dashboard", u"Time Out", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("dashboard", u"Category", None));
         ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("dashboard", u"Duration", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("dashboard", u"Nationality", None));
+        ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("dashboard", u"Gender", None));
+        ___qtablewidgetitem7 = self.tableWidget.horizontalHeaderItem(7)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("dashboard", u"Disability", None));
+        ___qtablewidgetitem8 = self.tableWidget.horizontalHeaderItem(8)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("dashboard", u"Date", None));
+        ___qtablewidgetitem9 = self.tableWidget.horizontalHeaderItem(9)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("dashboard", u"Login", None));
+        ___qtablewidgetitem10 = self.tableWidget.horizontalHeaderItem(10)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("dashboard", u"Logout", None));
+        ___qtablewidgetitem11 = self.tableWidget.horizontalHeaderItem(11)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("dashboard", u"Duration", None));
         self.label_45.setText("")
         self.batch_notification.setText(QCoreApplication.translate("dashboard", u"Notification", None))
         self.btn_batch_browse.setText(QCoreApplication.translate("dashboard", u"Browse", None))
@@ -4111,22 +4135,22 @@ class Ui_dashboard(object):
         self.btn_batch_mail.setText(QCoreApplication.translate("dashboard", u"Mail", None))
         self.btn_batch_folder.setText(QCoreApplication.translate("dashboard", u"Images", None))
         self.btn_batch_images.setText(QCoreApplication.translate("dashboard", u"Insert", None))
-        ___qtablewidgetitem6 = self.tableWidget_batch.horizontalHeaderItem(0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("dashboard", u"Name", None));
-        ___qtablewidgetitem7 = self.tableWidget_batch.horizontalHeaderItem(1)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("dashboard", u"Index", None));
-        ___qtablewidgetitem8 = self.tableWidget_batch.horizontalHeaderItem(2)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("dashboard", u"Reference", None));
-        ___qtablewidgetitem9 = self.tableWidget_batch.horizontalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("dashboard", u"Program", None));
-        ___qtablewidgetitem10 = self.tableWidget_batch.horizontalHeaderItem(4)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("dashboard", u"College", None));
-        ___qtablewidgetitem11 = self.tableWidget_batch.horizontalHeaderItem(5)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("dashboard", u"Naionality", None));
-        ___qtablewidgetitem12 = self.tableWidget_batch.horizontalHeaderItem(6)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("dashboard", u"Validity", None));
-        ___qtablewidgetitem13 = self.tableWidget_batch.horizontalHeaderItem(7)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("dashboard", u"E-mail", None));
+        ___qtablewidgetitem12 = self.tableWidget_batch.horizontalHeaderItem(0)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("dashboard", u"Name", None));
+        ___qtablewidgetitem13 = self.tableWidget_batch.horizontalHeaderItem(1)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("dashboard", u"Index", None));
+        ___qtablewidgetitem14 = self.tableWidget_batch.horizontalHeaderItem(2)
+        ___qtablewidgetitem14.setText(QCoreApplication.translate("dashboard", u"Reference", None));
+        ___qtablewidgetitem15 = self.tableWidget_batch.horizontalHeaderItem(3)
+        ___qtablewidgetitem15.setText(QCoreApplication.translate("dashboard", u"Program", None));
+        ___qtablewidgetitem16 = self.tableWidget_batch.horizontalHeaderItem(4)
+        ___qtablewidgetitem16.setText(QCoreApplication.translate("dashboard", u"College", None));
+        ___qtablewidgetitem17 = self.tableWidget_batch.horizontalHeaderItem(5)
+        ___qtablewidgetitem17.setText(QCoreApplication.translate("dashboard", u"Naionality", None));
+        ___qtablewidgetitem18 = self.tableWidget_batch.horizontalHeaderItem(6)
+        ___qtablewidgetitem18.setText(QCoreApplication.translate("dashboard", u"Validity", None));
+        ___qtablewidgetitem19 = self.tableWidget_batch.horizontalHeaderItem(7)
+        ___qtablewidgetitem19.setText(QCoreApplication.translate("dashboard", u"E-mail", None));
         self.firstname_25.setText("")
         self.firstname_26.setText("")
         self.user_search.setPlaceholderText(QCoreApplication.translate("dashboard", u"Search here?", None))
@@ -4160,16 +4184,16 @@ class Ui_dashboard(object):
         self.btn_export_data.setText(QCoreApplication.translate("dashboard", u"Export", None))
         self.user_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
         self.user_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
-        ___qtablewidgetitem14 = self.admin_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("dashboard", u"Username", None));
-        ___qtablewidgetitem15 = self.admin_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("dashboard", u"Date", None));
-        ___qtablewidgetitem16 = self.admin_table.horizontalHeaderItem(2)
-        ___qtablewidgetitem16.setText(QCoreApplication.translate("dashboard", u"Login", None));
-        ___qtablewidgetitem17 = self.admin_table.horizontalHeaderItem(3)
-        ___qtablewidgetitem17.setText(QCoreApplication.translate("dashboard", u"Logout", None));
-        ___qtablewidgetitem18 = self.admin_table.horizontalHeaderItem(4)
-        ___qtablewidgetitem18.setText(QCoreApplication.translate("dashboard", u"Duration", None));
+        ___qtablewidgetitem20 = self.admin_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem20.setText(QCoreApplication.translate("dashboard", u"Username", None));
+        ___qtablewidgetitem21 = self.admin_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem21.setText(QCoreApplication.translate("dashboard", u"Date", None));
+        ___qtablewidgetitem22 = self.admin_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem22.setText(QCoreApplication.translate("dashboard", u"Login", None));
+        ___qtablewidgetitem23 = self.admin_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem23.setText(QCoreApplication.translate("dashboard", u"Logout", None));
+        ___qtablewidgetitem24 = self.admin_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem24.setText(QCoreApplication.translate("dashboard", u"Duration", None));
         self.reg_image.setText("")
         self.reg_firstname.setPlaceholderText(QCoreApplication.translate("dashboard", u"Firstname", None))
         self.reg_image_2.setText("")
