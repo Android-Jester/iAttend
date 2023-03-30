@@ -98,6 +98,8 @@ class Database(QDialog):
                     cursor.execute(create_database(database))
                     cursor.execute(user_database(database))
                     cursor.execute(create_tb_students())
+                    cursor.execute(create_tb_student_profile())
+                    cursor.execute(create_tb_student_study_details())
                     cursor.execute(create_tb_cameras())
                     cursor.execute(create_tb_user_details())
                     cursor.execute(create_tb_user_credentials())
