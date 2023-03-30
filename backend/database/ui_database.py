@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'databasewOYjDg.ui'
+## Form generated from reading UI file 'databaseYUvXsr.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -336,12 +336,25 @@ class Ui_Database(object):
         self.sqlite.setChecked(True)
         self.mysql = QRadioButton(self.frame_4)
         self.mysql.setObjectName(u"mysql")
-        self.mysql.setGeometry(QRect(140, 40, 95, 20))
+        self.mysql.setGeometry(QRect(120, 40, 81, 20))
         self.mysql.setFont(font1)
         self.mysql.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color:rgb(35,35,35)\n"
 "}")
+        self.comboBox = QComboBox(self.frame_4)
+        self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setGeometry(QRect(220, 30, 241, 38))
+        self.comboBox.setMinimumSize(QSize(0, 38))
+        self.comboBox.setMaximumSize(QSize(16777215, 38))
+        self.comboBox.setFont(font1)
+        self.comboBox.setStyleSheet(u"QComboBox{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid rgb(45, 45, 45);\n"
+"	padding-left:10px;\n"
+"	border-radius: 5px;\n"
+"}")
+        self.comboBox.setFrame(False)
 
         self.verticalLayout_2.addWidget(self.frame_4)
 
