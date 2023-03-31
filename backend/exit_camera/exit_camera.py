@@ -68,6 +68,18 @@ class ExitCameraFeed(QDialog):
     def value_formater(self,value):
         return "\'{}\'".format(value)
 
+    def compute_duration(self,time_in: str, time_out: str):
+        from datetime import date,time
+        time_in = time_in.split(':')
+        seconds = str(time_in[2]).split(' ')[0]
+        time_in = time(hour=int(time_in[0]),minute=int(time_in[1]),second=int(seconds))
+        time_out =time_out.split(':')
+        seconds = str(time_out[2]).split(' ')[0]
+        time_out = time(int(time_out[0]),int(time_out[1]),int(seconds))
+        date_ = date(1,1,1)
+        duration=current.combine(date_,time_out)-current.combine(date_,time_in)
+        return str(duration)
+
     def query_cache_database(self,qr_code_data):
         db = sqlite3.connect(self.get_cache_path())
         my_cursor = db.cursor()
@@ -88,14 +100,9 @@ class ExitCameraFeed(QDialog):
                     details.append(data)
                 db.commit()
                 if len(details)>0:
-                    time_out =current.now().time().strftime('%H:%M:%S')
+                    time_out =current.now().time().strftime('%I:%M:%S %p')
                     date_stamp=current.now().date().strftime('%Y-%m-%d')
-                    time_out_split = str(time_out).split(':')
-                    time_in = str(details[0][0]).split(':')
-                    construct_duration = (abs((int(time_out_split[0])-int(time_in[0]))),
-                    abs((int(time_out_split[1])-int(time_in[1]))),
-                    abs((int(time_out_split[2])-int(time_in[2]))))
-                    new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
+                    new_duration = self.compute_duration(time_in=str(details[0][0]),time_out=time_out)
                     student_reference=self.value_formater(results[1])
                     if str(details[0][1]) == "00:00:00":
                         my_cursor.execute("UPDATE tb_attendance_temp SET time_out= ?, duration= ?  WHERE student_reference=? and date_stamp= ? ",(time_out,new_duration,student_reference,date_stamp))
@@ -117,9 +124,9 @@ class ExitCameraFeed(QDialog):
                         return "Hey! your have successfully logged out"
                     else:
                         winsound.Beep(1000,100)
-                        return "Oops! you are already logged out!"
+                        return "Hey! your have successfully logged out"
                 else:
-                    return "Oops! you are already logged out!"
+                    return f"Oops! {qr_code_data} you are already logged out!"
         else:
              return "Oops! student details not found."
 
