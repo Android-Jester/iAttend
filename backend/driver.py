@@ -123,10 +123,12 @@ class MainWindow(QMainWindow):
 
         #############################################################################################
         self.ui.btn_search_page.clicked.connect(self.query_database_for_data)
-        self.ui.calendarWidget.selectionChanged.connect(self.get_date_on_search_page)
+        self.ui.search_page_date.dateTimeChanged.connect(self.get_date_on_search_page)
         self.ui.calendarWidget_report.selectionChanged.connect(self.get_report_start_date)
         self.ui.calendarWidget_report_2.selectionChanged.connect(self.get_report_end_date)
         self.ui.btn_reload.clicked.connect(self.clear_fields_on_search_page)
+        self.ui.btn_csv.clicked.connect(self.export_data_to_csv)
+        self.ui.btn_json.clicked.connect(self.export_data_to_json)
         ##############################################################################################
 
         ##############################################################################################
@@ -139,12 +141,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_browse_reg.clicked.connect(self.browse_image_files)
         self.ui.btn_send_mail.clicked.connect(self.send_mail)
         ##############################################################################################
-        
-        #####################################################################################################
-        self.ui.calendarWidget.selectionChanged.connect(self.get_date_on_search_page)
-        self.ui.btn_csv.clicked.connect(self.export_data_to_csv)
-        self.ui.btn_json.clicked.connect(self.export_data_to_json)
-        #####################################################################################################
 
         ###############################################################################################
         self.ui.brigthness.valueChanged.connect(self.update_brigthness)
@@ -193,15 +189,17 @@ class MainWindow(QMainWindow):
         self.ui.btn_export_data.clicked.connect(self.export_user_data)
         self.ui.user_start_date.dateTimeChanged.connect(self.date_changed)
         self.ui.btn_mail_user_details.clicked.connect(self.send_account_detail)
-        # self.ui.btn_csv.setEnabled(False)
-        # self.ui.btn_json.setEnabled(False)
-        # ,QDateTime,QDate,QTime
+
         load_data(self.resource_path('structure.json'))
         load_colleges(self.resource_path('structure.json'))
         self.ui.reg_college.activated.connect(self.load_college_faculties)
         self.ui.reg_faculty.activated.connect(self.load_colleges)
         self.load_college_faculties()
         self.load_colleges()
+
+        # self.ui.btn_csv.setEnabled(False)
+        # self.ui.btn_json.setEnabled(False)
+        # ,QDateTime,QDate,QTime
         ##################################################################################################  
 
     def value_formater(self,value):
@@ -322,8 +320,8 @@ class MainWindow(QMainWindow):
             login_reference,
             login_username,
             str(current.now().date().strftime("%Y-%m-%d")),
-            str(current.now().time().strftime("%H:%M:%S %p")),
-            str(current.now().time().strftime("%H:%M:%S %p")),
+            str(current.now().time().strftime("%I:%M:%S %p")),
+            str(current.now().time().strftime("%I:%M:%S %p")),
             "00:00:00")
         return session
  
@@ -651,7 +649,19 @@ class MainWindow(QMainWindow):
         except Exception as e:
             self.alert.content(str(e))
             self.alert.show()
-        
+
+    def compute_duration(self,time_in: str, time_out: str):
+        from datetime import date,time
+        time_in = time_in.split(':')
+        seconds = str(time_in[2]).split(' ')[0]
+        time_in = time(hour=int(time_in[0]),minute=int(time_in[1]),second=int(seconds))
+        time_out =time_out.split(':')
+        seconds = str(time_out[2]).split(' ')[0]
+        time_out = time(int(time_out[0]),int(time_out[1]),int(seconds))
+        date_ = date(1,1,1)
+        duration=current.combine(date_,time_out)-current.combine(date_,time_in)
+        return str(duration)
+
     def set_log_out_session(self):
         date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
         _date=current.now().date().strftime("%Y-%m-%d")
@@ -676,17 +686,12 @@ class MainWindow(QMainWindow):
             if cursor is not None:
                 for data in cursor:
                     details.append(data)
-            time_out =current.now().time().strftime('%H:%M:%S')
-            new_time_out =current.now().time().strftime('%H:%M:%S %p')
-            _time_out =current.now().time().strftime('%H:%M:%S %p')
-            time_out_split = str(time_out).split(':')
-            time_in = str(details[0][0]).split(':')
-            time_in_split=str(time_in[2]).split(' ')
-            construct_duration = (abs((int(time_out_split[0])-int(time_in[0]))),
-            abs((int(time_out_split[1])-int(time_in[1]))),
-            abs((int(time_out_split[2])-int(time_in_split[0]))))
-            new_duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
-            _duration = str(str(construct_duration[0])+':'+str(construct_duration[1])+':'+str(construct_duration[2]))
+            time_out =current.now().time().strftime('%I:%M:%S %p')
+            new_time_out =current.now().time().strftime('%I:%M:%S %p')
+            _time_out =current.now().time().strftime('%I:%M:%S %p')
+            
+            new_duration = self.compute_duration(time_in=str(details[0][0]),time_out=time_out)
+            _duration = new_duration
             new_duration="\'{}\'".format(new_duration)
             new_time_out="\'{}\'".format(new_time_out)
             if str(details[0][1]) == "00:00:00":
@@ -1461,14 +1466,13 @@ class MainWindow(QMainWindow):
             self.alert.content("Oops! no database configured...")
             self.alert.show()
                         
-
     def get_date_on_search_page(self):
-        date = self.ui.calendarWidget.selectedDate()
+        date = self.ui.search_page_date.date().toPython()
         if self.ui.start_date.isChecked():
-            self.ui.db_start_date.setText(str(date.toPython()))
+            self.ui.db_end_date.setText(str(date))
         else:
-            self.ui.db_end_date.setText(str(date.toPython()))
-
+            self.ui.db_start_date.setText(str(date))
+         
     def clear_fields_on_search_page(self):
         self.ui.db_firstname.setText("Firstname")
         self.ui.db_middlename.setText("Middlename")
@@ -2016,8 +2020,8 @@ class MainWindow(QMainWindow):
             self.ui.gender.text(),
             student_disability,
             str(current.now().date().strftime("%Y-%m-%d")),
-            str(current.now().time().strftime("%H:%M:%S")),
-            str(current.now().time().strftime("%H:%M:%S")),
+            str(current.now().time().strftime("%I:%M:%S %p")),
+            str(current.now().time().strftime("%I:%M:%S %p")),
             "00:00:00" )
         return attendance
 
