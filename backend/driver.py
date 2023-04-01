@@ -196,11 +196,20 @@ class MainWindow(QMainWindow):
         self.ui.reg_faculty.activated.connect(self.load_colleges)
         self.load_college_faculties()
         self.load_colleges()
+        self.set_curent_dates()
 
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
         # ,QDateTime,QDate,QTime
-        ##################################################################################################  
+        ##################################################################################################
+
+    def set_curent_dates(self):
+        self.now = current.now().date()
+        curent_date=QDate(self.now.year,self.now.month,self.now.day)
+        self.ui.search_page_date.setDate(curent_date)
+        self.ui.user_start_date.setDate(curent_date)
+        self.ui.user_end_date.clear()
+        self.ui.db_start_date.clear()
 
     def value_formater(self,value):
         return "\'{}\'".format(value)
@@ -1425,43 +1434,48 @@ class MainWindow(QMainWindow):
     def query_database_for_data(self):
         self.alert = AlertDialog()
         if not self.database.check_state():
-            if self.ui.checkBox.isChecked():
-                if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                    start = self.ui.db_start_date.text()
-                    start_date="\'{}\'".format(start)
-                    end = self.ui.db_end_date.text()
-                    end_date="\'{}\'".format(end)
-                    prog = self.ui.search_box.text()
-                    program="\'{}\'".format(prog)
-                    results_ = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
-                    self.ui_table(results_)
-                    return results_
-                elif self.ui.search_box.text() and self.ui.db_start_date.text():
-                    self.fetch_data_by_program_and_date()
-                else:
-                    program = self.ui.search_box.text()
-                    program = "\'{}\'".format(program)
-                    details = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE program="+program)
-                    self.ui_table(details)
-                    return details
+            if self.ui.db_current_session.isChecked():
+                details=self.query_cache_data_list("SELECT * FROM tb_attendance_temp")
+                self.ui_table(details)
+                return details 
             else:
-                if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                    self.query_for_data_reference()
-                elif self.ui.db_start_date.text():
-                    current_date = self.ui.db_start_date.text()
-                    current_date = "\'{}\'".format(current_date)
-                    results = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp ="+current_date)
-                    self.ui_table(results)
-                    return results
-                elif self.ui.search_box.text():
-                    self.fetch_details_for_card_view()
-                elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                    self.fetch_details_for_card_view()
-                    return self.query_for_data_reference() 
+                if self.ui.checkBox.isChecked():
+                    if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                        start = self.ui.db_start_date.text()
+                        start_date="\'{}\'".format(start)
+                        end = self.ui.db_end_date.text()
+                        end_date="\'{}\'".format(end)
+                        prog = self.ui.search_box.text()
+                        program="\'{}\'".format(prog)
+                        results_ = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
+                        self.ui_table(results_)
+                        return results_
+                    elif self.ui.search_box.text() and self.ui.db_start_date.text():
+                        self.fetch_data_by_program_and_date()
+                    else:
+                        program = self.ui.search_box.text()
+                        program = "\'{}\'".format(program)
+                        details = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE program="+program)
+                        self.ui_table(details)
+                        return details
                 else:
-                    details=self.query_cache_data_list("SELECT * FROM tb_attendance")
-                    self.ui_table(details)
-                    return details 
+                    if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                        self.query_for_data_reference()
+                    elif self.ui.db_start_date.text():
+                        current_date = self.ui.db_start_date.text()
+                        current_date = "\'{}\'".format(current_date)
+                        results = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp ="+current_date)
+                        self.ui_table(results)
+                        return results
+                    elif self.ui.search_box.text():
+                        self.fetch_details_for_card_view()
+                    elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                        self.fetch_details_for_card_view()
+                        return self.query_for_data_reference() 
+                    else:
+                        details=self.query_cache_data_list("SELECT * FROM tb_attendance")
+                        self.ui_table(details)
+                        return details 
         else:
             self.alert.content("Oops! no database configured...")
             self.alert.show()
