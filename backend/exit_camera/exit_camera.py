@@ -100,7 +100,7 @@ class ExitCameraFeed(QDialog):
                     details.append(data)
                 db.commit()
                 if len(details)>0:
-                    time_out =current.now().time().strftime('%I:%M:%S %p')
+                    time_out =current.now().time().strftime('%H:%M:%S %p')
                     date_stamp=current.now().date().strftime('%Y-%m-%d')
                     new_duration = self.compute_duration(time_in=str(details[0][0]),time_out=time_out)
                     student_reference=self.value_formater(results[1])
