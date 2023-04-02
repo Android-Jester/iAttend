@@ -141,7 +141,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_browse_reg.clicked.connect(self.browse_image_files)
         self.ui.btn_send_mail.clicked.connect(self.send_mail)
         self.ui.reg_type.addItems(self.read_category(self.resource_path('categories.txt')))
-        print(self.read_category(self.resource_path('categories.txt')))
         ##############################################################################################
 
         ###############################################################################################
@@ -897,7 +896,9 @@ class MainWindow(QMainWindow):
         if path:
             with open(path,'r') as filename:
                 data=csv.reader(filename)
-                next(data)
+                if self.ui.header_check.isChecked():
+                    next(data)
+                pass
                 for student in data:
                     name_transformed = student[0]+' '+student[1]+' '+student[2]
                     student.pop(2)
@@ -916,14 +917,18 @@ class MainWindow(QMainWindow):
         self.ui.tableWidget_batch.setAutoScroll(True)
         self.ui.tableWidget_batch.setAutoScrollMargin(2)
         self.ui.tableWidget_batch.setTabKeyNavigation(True)
-        self.ui.tableWidget_batch.setColumnWidth(0,230)
+        self.ui.tableWidget_batch.setColumnWidth(0,250)
         self.ui.tableWidget_batch.setColumnWidth(1,140)
         self.ui.tableWidget_batch.setColumnWidth(2,140)
-        self.ui.tableWidget_batch.setColumnWidth(3,200)
+        self.ui.tableWidget_batch.setColumnWidth(3,220)
         self.ui.tableWidget_batch.setColumnWidth(4,100)
-        self.ui.tableWidget_batch.setColumnWidth(5,190)
-        self.ui.tableWidget_batch.setColumnWidth(6,180)
-        self.ui.tableWidget_batch.setColumnWidth(7,200)
+        self.ui.tableWidget_batch.setColumnWidth(5,110)
+        self.ui.tableWidget_batch.setColumnWidth(6,190)
+        self.ui.tableWidget_batch.setColumnWidth(7,100)
+        self.ui.tableWidget_batch.setColumnWidth(8,100)
+        self.ui.tableWidget_batch.setColumnWidth(9,300)
+        self.ui.tableWidget_batch.setColumnWidth(10,140)
+        self.ui.tableWidget_batch.setColumnWidth(11,250)
         self.ui.tableWidget_batch.setRowCount(len(details))
         self.ui.tableWidget_batch.verticalHeader().setVisible(True)
         row_count = 0
@@ -936,6 +941,10 @@ class MainWindow(QMainWindow):
             self.ui.tableWidget_batch.setItem(row_count,5,QTableWidgetItem(str(data[5])))
             self.ui.tableWidget_batch.setItem(row_count,6,QTableWidgetItem(str(data[6])))
             self.ui.tableWidget_batch.setItem(row_count,7,QTableWidgetItem(str(data[7])))
+            self.ui.tableWidget_batch.setItem(row_count,8,QTableWidgetItem(str(data[8])))
+            self.ui.tableWidget_batch.setItem(row_count,9,QTableWidgetItem(str(data[9])))
+            self.ui.tableWidget_batch.setItem(row_count,10,QTableWidgetItem(str(data[10])))
+            self.ui.tableWidget_batch.setItem(row_count,11,QTableWidgetItem(str(data[11])))
             row_count = row_count+1
         
     def browse_batch_data(self):
@@ -946,7 +955,10 @@ class MainWindow(QMainWindow):
             try:
                 self.batch_table(self.load_batch_data())
                 self.alert = AlertDialog()
-                self.alert.content("Please the header was skipped...")
+                if self.ui.header_check.isChecked():
+                    self.alert.content(f"Please the header was skipped...\nTotal count: {len(self.load_batch_data())}")
+                else:
+                    self.alert.content(f"Total count: {len(self.load_batch_data())}")
                 self.alert.show()
             except Exception as e:
                 self.alert = AlertDialog()
@@ -1732,11 +1744,11 @@ class MainWindow(QMainWindow):
                 self.ui.reg_start_date.setText(db_data[8])
                 self.ui.reg_end_date.setText(db_data[9])
                 self.ui.reg_college.setCurrentText(str(db_data[12]))
-                faculty=load_faculties(str(db_data[12]))
+                faculty=load_faculties(self.resource_path('structure.json'),str(db_data[12]))
                 self.ui.reg_faculty.clear()
                 self.ui.reg_faculty.addItems(faculty)
                 self.ui.reg_faculty.setCurrentText(str(db_data[13]))
-                program = get_dept(str(db_data[12]),str(db_data[13]))
+                program = get_dept(self.resource_path('structure.json'),str(db_data[12]),str(db_data[13]))
                 self.ui.reg_programs.clear()
                 self.ui.reg_programs.addItems(program)
                 self.ui.reg_programs.setCurrentText(str(db_data[14]))
