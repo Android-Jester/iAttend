@@ -69,7 +69,7 @@ class MainWindow(QMainWindow):
         #########################################################################################
         self.open_exit_camera = ExitCameraFeed()
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
-        
+    
         self.database = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.database.show())
 
@@ -197,12 +197,18 @@ class MainWindow(QMainWindow):
         self.load_college_faculties()
         self.load_colleges()
         self.set_curent_dates()
-
+        self.set_database_colleges()
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
         # ,QDateTime,QDate,QTime
-        
         ##################################################################################################
+    
+    def set_database_colleges(self):
+        results=load_colleges(self.resource_path('database_properties.json'))
+        self.database.set_colleges(results)
+
+    def load_properties_path(self):
+        self.resource_path('database_properties.json')       
 
     def read_programs(self,path):
         with open(path,'r') as file:
@@ -873,13 +879,17 @@ class MainWindow(QMainWindow):
                 pass
             else:
                 for student in student_list:
-                    name = str(student[0]).split(' ')
+                    name_ = str(student[0]).split(' ')
+                    firstname  = name_[0]+' '+name_[1]
+                    lastname = str(name_[2]).strip()
                     date = str(student[6]).split('-')
-                    firstname  = name[0]+' '+name[1]
-                    details=self.fetch_data_from_db(str(student[2]))
+                    details=self.fetch_data_from_db(str(student[1])) 
                     if not details:
-                        my_cursor.execute("INSERT INTO tb_students (reference,index_,firstname,lastname,college,program,nationality,startdate,enddate) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                        (student[2],student[1],firstname,name[2],student[4],student[3],student[5],date[0],date[1]))   
+                        my_cursor.execute("INSERT INTO tb_students(student_reference,student_index,student_firstname,student_lastname,student_nationality,student_gender,student_disability,card_issued_date,card_expiry_date) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                        (student[1],student[2],firstname,lastname,student[3],student[4],student[5],str(date[0]).strip(),str(date[1]).strip())) 
+                        db.commit()
+                        my_cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (%s,%s,%s,%s,%s)",
+                        (student[1],student[7],student[8],student[9],student[10]))   
                         db.commit()
                     else:
                         with open(path,'a+') as file:
@@ -1931,6 +1941,7 @@ class MainWindow(QMainWindow):
             self.ui.last_in.setText("00:00:00") 
 
     def insert_into_cache_db(self,data: list):
+        # database_image='C:\\ProgramData\\iAttend\\data\\images\\database_image.jpg'
         db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
         student_reference=self.value_formater(data[1])
@@ -1942,7 +1953,12 @@ class MainWindow(QMainWindow):
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
             (data[11],data[12],data[13],data[14],data[15]))   
             db.commit()
-            cursor.close()
+            # with open(database_image,'rb') as image:
+            #     data = image.read()
+            #     cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(?,?)",(self.ui.reference.text(),data))
+            # db.commit()
+            # cursor.close()
+            
 
     def fetch_data_from_db(self,reference):
         try:
@@ -1985,15 +2001,17 @@ class MainWindow(QMainWindow):
         cache_path='C:\\ProgramData\\iAttend\\data\\images\\cached_image.jpg'
         db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
-        data=cursor.execute("SELECT student_reference,student_image from tb_student_images WHERE student_reference="+student_reference) 
-        cursor.fetchone()
-        with open(cache_path, 'wb') as image:
-            image.write(data[1])     
-        db.commit()
-        label.setPixmap(QPixmap.fromImage(cache_path))
-        label.setScaledContents(True)
+        data=cursor.execute("SELECT student_image from tb_student_images WHERE student_reference="+student_reference) 
+        data=cursor.fetchone()
+        try:
+            with open(cache_path, 'wb') as image:
+                image.write(data[0])     
+            db.commit()
+            label.setPixmap(QPixmap.fromImage(cache_path))
+            label.setScaledContents(True)
+        except Exception as e:
+            pass
         
-
     def load_image_from_db(self,query,label):
         (db,my_cursor,connection_status) = self.database.my_cursor()
         cursor=my_cursor.execute(query)
@@ -2001,15 +2019,14 @@ class MainWindow(QMainWindow):
         db.commit()
         my_cursor.close()
         image_data = []
-        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\'
-        path = root_path+'database_image.jpg'
+        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\database_image.jpg'
         if cursor:
             for data in cursor:
                 image_data.append(data)
             if len(image_data)>0:
-                with open(path,'wb') as image_file:
+                with open(root_path,'wb') as image_file:
                         image_file.write(image_data[1])
-            label.setPixmap(QPixmap.fromImage(path))
+            label.setPixmap(QPixmap.fromImage(root_path))
             label.setScaledContents(True)
         else:
             label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
@@ -2020,8 +2037,8 @@ class MainWindow(QMainWindow):
         if isinstance(data, str):
                 self.last_seen(data_json['reference'])
                 db_data=self.fetch_data_from_db(data_json['reference'])
-                student_reference=self.value_formater(self.ui.reference.text())
-                if len(db_data) > 0:
+                if db_data:
+                    student_reference = self.value_formater(db_data[1])
                     start_date = (str(db_data[8])).split(' ')
                     student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))
                     validity = str(db_data[8])+' - '+str(db_data[9])  
@@ -2053,7 +2070,7 @@ class MainWindow(QMainWindow):
                     self.ui.faculty.setText(str(db_data[13]))
                     self.ui.program.setText(str(db_data[14]))
                     self.ui.type.setText(str(db_data[15]))
-                    self.load_image_from_db("SELECT student_reference,student_image from tb_student_images WHERE student_reference="+student_reference,self.ui.image)
+                    self.load_image_from_db("SELECT student_reference,student_image FROM tb_student_images WHERE student_reference="+student_reference,self.ui.image)
                     self.insert_into_cache_db(db_data)
                 else:
                     self.loadUi_file()
@@ -2430,6 +2447,10 @@ class Splash_screen(QMainWindow):
             if not os.path.exists(path):
                 os.mkdir(path)
 
+    def resource_path(self,relative_path):
+        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
+        return path
+
     def create_files(self):
         path =Path('C:\\ProgramData\\iAttend\\data\\properties\\properties.txt')
         path.touch(exist_ok=True)
@@ -2438,6 +2459,19 @@ class Splash_screen(QMainWindow):
             with open(path,'a+') as file:
                 if os.path.getsize(path)==0:
                     file.write("Username,Password,Hostname,Port,Database,Server")
+            file.close() 
+
+      
+        with open(self.resource_path('database_properties.json'),'r') as data:
+            json_data = json.load(data)
+        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\database_properties.json')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            pass
+            with open(path,'a+') as file:
+                if os.path.getsize(path)==0:
+                    json.dump(json_data,file,indent=2)
             file.close() 
 
         path =Path('C:\\ProgramData\\iAttend\\data\\programs\\college_programs.txt')
@@ -2604,10 +2638,6 @@ class Splash_screen(QMainWindow):
             db.commit()
             self.insert_profile_image(root_reference,self.resource_path('image.jpg'))
         pass 
-
-    def resource_path(self,relative_path):
-        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
-        return path
 
     def insert_profile_image(self,reference,path):
         db = sqlite3.connect(self.get_path())
