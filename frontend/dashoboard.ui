@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1517</width>
+    <width>1524</width>
     <height>1021</height>
    </rect>
   </property>
@@ -38,7 +38,7 @@
       <x>0</x>
       <y>0</y>
       <width>1545</width>
-      <height>1021</height>
+      <height>1030</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -768,54 +768,6 @@ QPushButton:pressed{
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_report">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	border: 0px solid;
-padding-right:5px;
-}
-
-QPushButton:hover{
-	border-left: 3px solid;
-	border-left-color: rgb(0, 170, 255);
-}
-
-QPushButton:pressed{
-	border-left-color: rgb(255, 255, 255);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../resource/asset.qrc">
-                  <normaloff>:/icons/asset/bar-chart-2.svg</normaloff>:/icons/asset/bar-chart-2.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>35</width>
-                  <height>43</height>
-                 </size>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
                <widget class="QPushButton" name="btn_sink_data">
                 <property name="minimumSize">
                  <size>
@@ -856,6 +808,54 @@ QPushButton:pressed{
                  <size>
                   <width>32</width>
                   <height>40</height>
+                 </size>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_report">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	border: 0px solid;
+padding-right:5px;
+}
+
+QPushButton:hover{
+	border-left: 3px solid;
+	border-left-color: rgb(0, 170, 255);
+}
+
+QPushButton:pressed{
+	border-left-color: rgb(255, 255, 255);
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resource/asset.qrc">
+                  <normaloff>:/icons/asset/bar-chart-2.svg</normaloff>:/icons/asset/bar-chart-2.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>35</width>
+                  <height>43</height>
                  </size>
                 </property>
                 <property name="flat">
@@ -4556,9 +4556,9 @@ QLineEdit:focus{
                  <widget class="QPushButton" name="btn_batch_browse">
                   <property name="geometry">
                    <rect>
-                    <x>340</x>
+                    <x>400</x>
                     <y>20</y>
-                    <width>131</width>
+                    <width>121</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4643,9 +4643,9 @@ QLineEdit:focus{
                  <widget class="QPushButton" name="btn_start_job">
                   <property name="geometry">
                    <rect>
-                    <x>490</x>
+                    <x>540</x>
                     <y>20</y>
-                    <width>131</width>
+                    <width>121</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4690,9 +4690,9 @@ QPushButton:pressed{
                  <widget class="QPushButton" name="btn_batch_mail">
                   <property name="geometry">
                    <rect>
-                    <x>940</x>
+                    <x>960</x>
                     <y>20</y>
-                    <width>141</width>
+                    <width>121</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4737,9 +4737,9 @@ QPushButton:pressed{
                  <widget class="QPushButton" name="btn_batch_folder">
                   <property name="geometry">
                    <rect>
-                    <x>640</x>
+                    <x>680</x>
                     <y>20</y>
-                    <width>131</width>
+                    <width>121</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4784,9 +4784,9 @@ QPushButton:pressed{
                  <widget class="QPushButton" name="btn_batch_images">
                   <property name="geometry">
                    <rect>
-                    <x>790</x>
+                    <x>820</x>
                     <y>20</y>
-                    <width>131</width>
+                    <width>121</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4826,6 +4826,32 @@ QPushButton:pressed{
                   </property>
                   <property name="flat">
                    <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="header_check">
+                  <property name="geometry">
+                   <rect>
+                    <x>340</x>
+                    <y>20</y>
+                    <width>41</width>
+                    <height>51</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(45, 45, 45);
+border-radius:5px;</string>
+                  </property>
+                  <property name="text">
+                   <string>H</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </widget>
@@ -4897,16 +4923,6 @@ QPushButton:pressed{
                     </column>
                     <column>
                      <property name="text">
-                      <string>Index</string>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
                       <string>Reference</string>
                      </property>
                      <property name="font">
@@ -4917,17 +4933,7 @@ QPushButton:pressed{
                     </column>
                     <column>
                      <property name="text">
-                      <string>Program</string>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                    </column>
-                    <column>
-                     <property name="text">
-                      <string>College</string>
+                      <string>Index</string>
                      </property>
                      <property name="font">
                       <font>
@@ -4947,6 +4953,26 @@ QPushButton:pressed{
                     </column>
                     <column>
                      <property name="text">
+                      <string>Gender</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Disability</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
                       <string>Validity</string>
                      </property>
                      <property name="font">
@@ -4957,7 +4983,1212 @@ QPushButton:pressed{
                     </column>
                     <column>
                      <property name="text">
+                      <string>College</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Faculty</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Department</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Category</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
                       <string>E-mail</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="page">
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>5</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>5</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="frame_6">
+                 <property name="minimumSize">
+                  <size>
+                   <width>350</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>200</width>
+                   <height>16777215</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QLabel" name="design">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>331</width>
+                    <height>91</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Facilities</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>680</y>
+                    <width>331</width>
+                    <height>281</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Datasource</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="db_consolidation_range">
+                  <property name="geometry">
+                   <rect>
+                    <x>170</x>
+                    <y>220</y>
+                    <width>161</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(45, 45, 45);
+border-radius:5px;</string>
+                  </property>
+                  <property name="text">
+                   <string>Switch date fields</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QDateEdit" name="db_consolidation_date">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>220</y>
+                    <width>141</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QDateEdit{
+	color: rgb(255, 255, 255);
+background-color: rgb(45, 45, 45);
+border: 2px solid rgb(45, 45, 45);
+padding-left:10px;
+border-radius: 10px;
+}
+
+</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="buttonSymbols">
+                   <enum>QAbstractSpinBox::UpDownArrows</enum>
+                  </property>
+                  <property name="accelerated">
+                   <bool>true</bool>
+                  </property>
+                  <property name="correctionMode">
+                   <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+                  </property>
+                  <property name="showGroupSeparator" stdset="0">
+                   <bool>false</bool>
+                  </property>
+                  <property name="dateTime">
+                   <datetime>
+                    <hour>0</hour>
+                    <minute>0</minute>
+                    <second>0</second>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </datetime>
+                  </property>
+                  <property name="minimumDate">
+                   <date>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </date>
+                  </property>
+                  <property name="displayFormat">
+                   <string>yyyy-MM-dd</string>
+                  </property>
+                  <property name="calendarPopup">
+                   <bool>true</bool>
+                  </property>
+                  <property name="timeSpec">
+                   <enum>Qt::LocalTime</enum>
+                  </property>
+                  <property name="date">
+                   <date>
+                    <year>2023</year>
+                    <month>1</month>
+                    <day>1</day>
+                   </date>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_start">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>170</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Date</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="comboBox_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>180</x>
+                    <y>270</y>
+                    <width>151</width>
+                    <height>38</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 5px;
+}</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_stop">
+                  <property name="geometry">
+                   <rect>
+                    <x>180</x>
+                    <y>170</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Date</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="db_consolidation_facilities">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>50</y>
+                    <width>311</width>
+                    <height>38</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 5px;
+}</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="db_consolidation_notification">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>480</y>
+                    <width>311</width>
+                    <height>71</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Notification</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_partition">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>380</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Range</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_consolidation_load">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>270</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Load</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/download.svg</normaloff>:/icons/asset/download.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_4">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>130</y>
+                    <width>331</width>
+                    <height>191</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Pull data</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_5">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>340</y>
+                    <width>331</width>
+                    <height>221</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Merge strategy</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_consolidation_partition">
+                  <property name="geometry">
+                   <rect>
+                    <x>180</x>
+                    <y>380</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Partition</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/bar-chart.svg</normaloff>:/icons/asset/bar-chart.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_consolidation_upload">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>430</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Upload</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/upload.svg</normaloff>:/icons/asset/upload.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_6">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>580</y>
+                    <width>331</width>
+                    <height>81</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>E-mail</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_mail">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>610</y>
+                    <width>311</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Address</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_username">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>710</y>
+                    <width>311</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Username</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_password">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>760</y>
+                    <width>311</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="echoMode">
+                   <enum>QLineEdit::Password</enum>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Password</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_database">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>860</y>
+                    <width>311</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Database</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_hostname">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>810</y>
+                    <width>311</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Hostname</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="db_consolidation_port">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>910</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Port</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_consolidation_explain">
+                  <property name="geometry">
+                   <rect>
+                    <x>180</x>
+                    <y>430</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Strategy</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/git-branch.svg</normaloff>:/icons/asset/git-branch.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_consolidation_test">
+                  <property name="geometry">
+                   <rect>
+                    <x>180</x>
+                    <y>910</y>
+                    <width>151</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Test</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/link.svg</normaloff>:/icons/asset/link.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <zorder>design_5</zorder>
+                 <zorder>design_4</zorder>
+                 <zorder>design</zorder>
+                 <zorder>design_2</zorder>
+                 <zorder>db_consolidation_range</zorder>
+                 <zorder>db_consolidation_date</zorder>
+                 <zorder>db_consolidation_start</zorder>
+                 <zorder>comboBox_2</zorder>
+                 <zorder>db_consolidation_stop</zorder>
+                 <zorder>db_consolidation_facilities</zorder>
+                 <zorder>db_consolidation_notification</zorder>
+                 <zorder>db_consolidation_partition</zorder>
+                 <zorder>btn_consolidation_load</zorder>
+                 <zorder>btn_consolidation_partition</zorder>
+                 <zorder>btn_consolidation_upload</zorder>
+                 <zorder>design_6</zorder>
+                 <zorder>db_consolidation_mail</zorder>
+                 <zorder>db_consolidation_username</zorder>
+                 <zorder>db_consolidation_password</zorder>
+                 <zorder>db_consolidation_database</zorder>
+                 <zorder>db_consolidation_hostname</zorder>
+                 <zorder>db_consolidation_port</zorder>
+                 <zorder>btn_consolidation_explain</zorder>
+                 <zorder>btn_consolidation_test</zorder>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_15">
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_11">
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QTableWidget" name="tableWidget_2">
+                    <property name="frameShape">
+                     <enum>QFrame::NoFrame</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Plain</enum>
+                    </property>
+                    <property name="editTriggers">
+                     <set>QAbstractItemView::NoEditTriggers</set>
+                    </property>
+                    <property name="sortingEnabled">
+                     <bool>true</bool>
+                    </property>
+                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                     <bool>true</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>150</number>
+                    </attribute>
+                    <attribute name="verticalHeaderStretchLastSection">
+                     <bool>true</bool>
+                    </attribute>
+                    <column>
+                     <property name="text">
+                      <string>College</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Faculty</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Program</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Category</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Facility</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Nationality</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Gender</string>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Disability</string>
                      </property>
                      <property name="font">
                       <font>
@@ -6089,7 +7320,8 @@ background-color: rgb(45, 45, 45);
                   </property>
                   <property name="styleSheet">
                    <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(35, 35, 35);</string>
+background-color: rgb(45, 45, 45);
+border-radius:5px;</string>
                   </property>
                   <property name="text">
                    <string>R</string>
