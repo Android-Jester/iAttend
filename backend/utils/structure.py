@@ -67,4 +67,12 @@ def get_dept(resource_path,name_of_college, faculty_name):
         college = result[0][name_of_college]        
         return college[faculty_name]
     
-
+def load_database_properties(resource_path,name_of_college):
+    data = load_data(resource_path)
+    result = [c for c in data if get_key(c) == name_of_college]
+    if len(result) > 0:
+        college = result[0][name_of_college]        
+        items = []
+        for item in college.values():
+            items.append(item) 
+        return items
