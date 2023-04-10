@@ -1,5 +1,7 @@
 
+
 from packages.pyqt import *
+from utils.structure import *
 from packages.computing import *
 from packages.connection import *
 from database.ui_database import Ui_Database
@@ -21,10 +23,26 @@ class Database(QDialog):
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(230, 230, 230, 50))
         self.ui_database.frame.setGraphicsEffect(self.shadow)
-
         self.ui_database.btn_connect_test.clicked.connect(self.test_connection)
         self.ui_database.btn_connect.clicked.connect(self.my_cursor)
         self.set_database_properties()
+        self.ui_database.comboBox.activated.connect(self.get_database_properties)  
+
+    def get_database_properties(self):
+        path = 'C:\\ProgramData\\iAttend\\data\\properties\\database_properties.json'
+        properties=load_database_properties(path,self.ui_database.comboBox.currentText())
+        self.ui_database.username.setText(properties[0])
+        self.ui_database.password.setText(properties[1])
+        self.ui_database.hostname.setText(properties[2])
+        self.ui_database.port.setText(properties[3])
+        self.ui_database.database_name.setText(properties[4])
+        
+    def resource_path(self,relative_path):
+        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
+        return path
+
+    def set_colleges(self, colleges: list):
+        self.ui_database.comboBox.addItems(colleges)
 
     def get_details(self):
         path = 'C:\\ProgramData\\iAttend\\data\\properties\\properties.txt'
