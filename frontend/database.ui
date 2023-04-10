@@ -276,7 +276,7 @@ QPushButton:hover{
              <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -335,7 +335,7 @@ QLineEdit:focus{
              <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -397,7 +397,7 @@ QLineEdit:focus{
              <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -456,7 +456,7 @@ QLineEdit:focus{
              <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -643,7 +643,7 @@ QPushButton:pressed{
              <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
 	padding-left: 45px;
 }
 
@@ -686,7 +686,7 @@ QLineEdit:focus{
              <rect>
               <x>20</x>
               <y>40</y>
-              <width>95</width>
+              <width>71</width>
               <height>20</height>
              </rect>
             </property>
@@ -711,9 +711,9 @@ QLineEdit:focus{
            <widget class="QRadioButton" name="mysql">
             <property name="geometry">
              <rect>
-              <x>140</x>
+              <x>110</x>
               <y>40</y>
-              <width>95</width>
+              <width>81</width>
               <height>20</height>
              </rect>
             </property>
@@ -730,6 +730,91 @@ QLineEdit:focus{
             </property>
             <property name="text">
              <string>MySQL</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="comboBox">
+            <property name="geometry">
+             <rect>
+              <x>200</x>
+              <y>30</y>
+              <width>131</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>41</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>38</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 5px;
+}</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="btn_update_con_properties">
+            <property name="geometry">
+             <rect>
+              <x>350</x>
+              <y>30</y>
+              <width>111</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+            </property>
+            <property name="text">
+             <string>Update</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resource/asset.qrc">
+              <normaloff>:/icons/asset/repeat.svg</normaloff>:/icons/asset/repeat.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
             </property>
            </widget>
           </widget>
