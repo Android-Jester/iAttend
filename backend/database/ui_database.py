@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'databaseYUvXsr.ui'
+## Form generated from reading UI file 'databaseYqLMgc.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -145,7 +145,7 @@ class Ui_Database(object):
         self.username.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -170,7 +170,7 @@ class Ui_Database(object):
         self.password.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -196,7 +196,7 @@ class Ui_Database(object):
         self.hostname.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -221,7 +221,7 @@ class Ui_Database(object):
         self.database_name.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -308,7 +308,7 @@ class Ui_Database(object):
         self.port.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -327,7 +327,7 @@ class Ui_Database(object):
         self.label_40.setPixmap(QPixmap(u":/icons/asset/power.svg"))
         self.sqlite = QRadioButton(self.frame_4)
         self.sqlite.setObjectName(u"sqlite")
-        self.sqlite.setGeometry(QRect(20, 40, 95, 20))
+        self.sqlite.setGeometry(QRect(20, 40, 71, 20))
         self.sqlite.setFont(font1)
         self.sqlite.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -336,7 +336,7 @@ class Ui_Database(object):
         self.sqlite.setChecked(True)
         self.mysql = QRadioButton(self.frame_4)
         self.mysql.setObjectName(u"mysql")
-        self.mysql.setGeometry(QRect(120, 40, 81, 20))
+        self.mysql.setGeometry(QRect(110, 40, 81, 20))
         self.mysql.setFont(font1)
         self.mysql.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -344,8 +344,8 @@ class Ui_Database(object):
 "}")
         self.comboBox = QComboBox(self.frame_4)
         self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(220, 30, 241, 38))
-        self.comboBox.setMinimumSize(QSize(0, 38))
+        self.comboBox.setGeometry(QRect(200, 30, 131, 41))
+        self.comboBox.setMinimumSize(QSize(0, 41))
         self.comboBox.setMaximumSize(QSize(16777215, 38))
         self.comboBox.setFont(font1)
         self.comboBox.setStyleSheet(u"QComboBox{\n"
@@ -355,6 +355,29 @@ class Ui_Database(object):
 "	border-radius: 5px;\n"
 "}")
         self.comboBox.setFrame(False)
+        self.btn_update_con_properties = QPushButton(self.frame_4)
+        self.btn_update_con_properties.setObjectName(u"btn_update_con_properties")
+        self.btn_update_con_properties.setGeometry(QRect(350, 30, 111, 41))
+        self.btn_update_con_properties.setFont(font1)
+        self.btn_update_con_properties.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_update_con_properties.setIcon(icon2)
+        self.btn_update_con_properties.setIconSize(QSize(30, 30))
+        self.btn_update_con_properties.setFlat(True)
 
         self.verticalLayout_2.addWidget(self.frame_4)
 
@@ -392,5 +415,6 @@ class Ui_Database(object):
         self.label_40.setText("")
         self.sqlite.setText(QCoreApplication.translate("Database", u"SQLite", None))
         self.mysql.setText(QCoreApplication.translate("Database", u"MySQL", None))
+        self.btn_update_con_properties.setText(QCoreApplication.translate("Database", u"Update", None))
     # retranslateUi
 
