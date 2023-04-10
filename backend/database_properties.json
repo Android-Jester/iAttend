@@ -1,0 +1,56 @@
+[
+    {
+        "CoS":{
+            "username":"username@CoS",
+            "password":"passsword@CoS",
+            "hostname":"hostname@CoS",
+            "port":"port@CoS",
+            "database":"database@CoS"
+        }
+    },
+    {
+        "CoE": {
+          "username": "username@CoE",
+          "password": "passsword@CoE",
+          "hostname": "hostname@CoE",
+          "port": "port@CoE",
+          "database": "database@CoE"
+        }
+      },
+      {
+        "CoHS": {
+          "username": "username@CoHS",
+          "password": "passsword@CoHS",
+          "hostname": "hostname@CoHS",
+          "port": "port@CoHS",
+          "database": "database@CoHS"
+        }
+      },
+      {
+        "CABE": {
+          "username": "username@CABE",
+          "password": "passsword@CABE",
+          "hostname": "hostname@CABE",
+          "port": "port@CABE",
+          "database": "database@CABE"
+        }
+      },
+      {
+        "CANR": {
+          "username": "username@CANR",
+          "password": "passsword@CANR",
+          "hostname": "hostname@CANR",
+          "port": "port@CANR",
+          "database": "database@CANR"
+        }
+      },
+      {
+        "CoHSS": {
+          "username": "username@CoHSS",
+          "password": "passsword@CoHSS",
+          "hostname": "hostname@CoHSS",
+          "port": "port@CoHSS",
+          "database": "database@CoHSS"
+        }
+      }
+]
