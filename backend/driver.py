@@ -201,7 +201,15 @@ class MainWindow(QMainWindow):
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
         # ,QDateTime,QDate,QTime
+        self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
         ##################################################################################################
+
+    def set_date_for_consolidation(self):
+        date = self.ui.db_consolidation_date.date().toPython()
+        if self.ui.db_consolidation_range.isChecked():
+            self.ui.db_consolidation_stop.setText(str(date))
+        else:
+            self.ui.db_consolidation_start.setText(str(date))
     
     def set_database_colleges(self):
         results=load_colleges(self.resource_path('database_properties.json'))
@@ -234,8 +242,10 @@ class MainWindow(QMainWindow):
         curent_date=QDate(self.now.year,self.now.month,self.now.day)
         self.ui.search_page_date.setDate(curent_date)
         self.ui.user_start_date.setDate(curent_date)
+        self.ui.db_consolidation_date.setDate(curent_date)
         self.ui.user_end_date.clear()
         self.ui.db_start_date.clear()
+        self.ui.db_consolidation_date.clear()
 
     def value_formater(self,value):
         return "\'{}\'".format(value)
