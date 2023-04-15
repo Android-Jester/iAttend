@@ -216,10 +216,35 @@ class MainWindow(QMainWindow):
         return start_date
 
     def push_data(self):
-        results=self.load_merge_data()
-        details = []
-        for item in range(len(results)):
-            pass
+        self.alert = AlertDialog()
+        facility = self.ui.db_consolidation_facility.text()
+        try: 
+            properties = self.merge_database_properties()
+            results=self.transform_data(self.load_merge_data(),facility)
+            partition = self.validate_field("^[0-9]+$",self.ui.db_consolidation_partition.text())
+            if results and partition: 
+                batch_size=self.compute_push_strategy(self.load_merge_data())
+                db,test=self.database_connection_test(properties)
+                cursor = db.cursor()
+                cursor.execute(user_database(properties[4]))
+                for record in range(0,len(results),batch_size):
+                    cursor.executemany("INSERT INTO tb_attendance_central_merge(student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,facility_used) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+                    results[record:record+batch_size])
+                    db.commit()
+                self.alert.content("Pushed "+str(len(results))+" records to server")
+                self.alert.show()
+            else:
+                self.alert.content("Oops! records or partition strategy\nnot set!")
+                self.alert.show()
+        except Exception as e:
+            self.alert.content(str(e))
+            self.alert.show()
+          
+    def transform_data(self, records:list, facility: str):
+        data_list = []        
+        for record in range(len(records)):
+            data_list.append(list(records[record])+[facility])
+        return tuple(data_list)
 
     def get_central_database_properties(self):
         properties=load_data('C:\\ProgramData\\iAttend\\data\\properties\\central_database_connection_propeties.json')
@@ -250,6 +275,7 @@ class MainWindow(QMainWindow):
                 cursor=db.cursor()
                 cursor.execute(create_database(properties[4]))
                 cursor.execute(user_database(properties[4]))
+                cursor.execute(create_tb_attendance_central_database())
                 db.commit()
                 self.alert.content(test)
                 self.alert.show()
@@ -277,12 +303,11 @@ class MainWindow(QMainWindow):
             return "Oops",str(e)
         
     def compute_push_strategy(self,results):
-        return math.ceil(len(results)//int(self.ui.db_consolidation_partition.text()))
+        return (len(results)//int(self.ui.db_consolidation_partition.text()))
     
     def partition_strategy(self):
         self.alert = AlertDialog()
         results=self.load_merge_data()
-        print(results[0])
         number = self.ui.db_consolidation_partition.text()
         partition = self.validate_field("^[0-9]+$",number)
         if results and partition:
