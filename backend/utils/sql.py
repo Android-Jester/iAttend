@@ -221,6 +221,21 @@ def create_tb_user_sessions_sqlite():
     """
     return sql
 
+def create_tb_attendance_central_database():
+    sql= """
+        CREATE TABLE IF NOT EXISTS tb_attendance_central_merge(
+            generated_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+            student_college varchar(20) NOT NULL,
+            student_faculty varchar(25) NOT NULL,
+            student_program varchar(255) NOT NULL,
+            student_category varchar(255) NOT NULL,
+            student_nationality varchar(80) NOT NULL,
+            student_gender varchar(15) NOT NULL,
+            student_disability varchar(5) NOT NULL,
+            facility_used varchar(30)
+            )
+        """
+    return sql
 ############################################################################################################
 
 def create_tb_attendance_last_seen_sqlite():
