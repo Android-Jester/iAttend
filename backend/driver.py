@@ -200,10 +200,11 @@ class MainWindow(QMainWindow):
         self.set_curent_dates()
         self.set_database_colleges()
         
+        self.get_central_database_properties()
         self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
         self.ui.btn_consolidation_load.clicked.connect(self.load_merge_data)
         self.ui.btn_consolidation_partition.clicked.connect(self.partition_strategy)
-        self.ui.btn_consolidation_test.clicked.connect(self.database_connection_test)
+        self.ui.btn_consolidation_test.clicked.connect(self.database_test)
         self.ui.btn_consolidation_upload.clicked.connect(self.push_data)
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
@@ -215,14 +216,83 @@ class MainWindow(QMainWindow):
         return start_date
 
     def push_data(self):
-        pass
+        results=self.load_merge_data()
+        details = []
+        for item in range(len(results)):
+            pass
+
+    def get_central_database_properties(self):
+        properties=load_data('C:\\ProgramData\\iAttend\\data\\properties\\central_database_connection_propeties.json')
+        self.ui.db_consolidation_hostname.setText(properties['hostname'])
+        self.ui.db_consolidation_port.setText(properties['port'])
+        self.ui.db_consolidation_username.setText(properties['username'])
+        self.ui.db_consolidation_password.setText(properties['password'])
+        self.ui.db_consolidation_database.setText(properties['database'])
+
+    def validate_merge_database_fields(self):
+        properties_list =  self.merge_database_properties()
+        data_list = []
+        empty_list = []
+        for field in properties_list:
+            if field:
+                data_list.append(field)
+            else:
+               empty_list.append(field)
+        return data_list,empty_list
+
+    def database_test(self):
+        self.alert = AlertDialog()
+        properties = self.merge_database_properties()
+        valid,invalid = self.validate_merge_database_fields()
+        if len(invalid)==0:
+            try:
+                db,test=self.database_connection_test(properties)
+                cursor=db.cursor()
+                cursor.execute(create_database(properties[4]))
+                cursor.execute(user_database(properties[4]))
+                db.commit()
+                self.alert.content(test)
+                self.alert.show()
+            except Exception:
+                self.alert.content("Oops! check your database connection\nproperties...")
+                self.alert.show()
+        else:
+            self.alert.content("Oops! set all database properties...")
+            self.alert.show()
+            
+    def merge_database_properties(self):
+        host = self.ui.db_consolidation_hostname.text()
+        port = self.ui.db_consolidation_port.text()
+        user = self.ui.db_consolidation_username.text()
+        password = self.ui.db_consolidation_password.text()
+        database = self.ui.db_consolidation_database.text()
+        return host, port, user, password, database
+
+    def database_connection_test(self,properties: list):
+        try:
+            connection_status:str =("Connected to MySQL...")
+            db=connector.connect(host=properties[0],port=properties[1],user=properties[2],password=properties[3]) 
+            return db,connection_status
+        except Exception as e:
+            return "Oops",str(e)
+        
+    def compute_push_strategy(self,results):
+        return math.ceil(len(results)//int(self.ui.db_consolidation_partition.text()))
     
-    def database_connection_test(self):
-        pass
-
     def partition_strategy(self):
-        pass
-
+        self.alert = AlertDialog()
+        results=self.load_merge_data()
+        print(results[0])
+        number = self.ui.db_consolidation_partition.text()
+        partition = self.validate_field("^[0-9]+$",number)
+        if results and partition:
+            data=self.compute_push_strategy(results)
+            self.alert.content("Pushing "+str(data)+" records per batch\n Number of batches: "+str(number))
+            self.alert.show()
+        else:
+            self.alert.content("Oops! provide data and range\nto perform this operation...")
+            self.alert.show()
+             
     def consolidation_table(self,details: list):
         self.ui.merge_table.setAutoScroll(True)
         self.ui.merge_table.setAutoScrollMargin(2)
@@ -255,20 +325,17 @@ class MainWindow(QMainWindow):
         if self.ui.db_fetch_all.isChecked():
             results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance")
             self.consolidation_table(results)
-            self.alert.content("Total records fetched: "+str(len(results)))
-            self.alert.show()
+            self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
             return results
         elif start and not state:
             results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp="+start)
             self.consolidation_table(results)
-            self.alert.content("Total records fetched: "+str(len(results)))
-            self.alert.show()
+            self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
             return results
         elif start and stop and state:
             results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp BETWEEN "+start+" AND "+stop)
             self.consolidation_table(results)
-            self.alert.content("Total records fetched: "+str(len(results)))
-            self.alert.show()
+            self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
             return results
         
     def set_date_for_consolidation(self):
@@ -2536,7 +2603,22 @@ class Splash_screen(QMainWindow):
             with open(path,'a+') as file:
                 if os.path.getsize(path)==0:
                     file.write("Username,Password,Hostname,Port,Database,Server")
-            file.close() 
+            file.close()
+        json_data = {
+            "username":"username@CoS",
+            "password":"passsword@CoS",
+            "hostname":"hostname@CoS",
+            "port":"port@CoS",
+            "database":"database@CoS"
+        }
+        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\central_database_connection_propeties.json')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                if os.path.getsize(path)==0:
+                    json.dump(json_data,file,indent=2)
+            file.close()  
 
       
         with open(self.resource_path('database_properties.json'),'r') as data:
