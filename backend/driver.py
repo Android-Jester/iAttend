@@ -57,6 +57,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_help.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
         self.ui.btn_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.report))
         self.ui.btn_batch.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.batch))
+        self.ui.btn_sink_data.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
         ##########################################################################################################
 
         #########################################################################################################
@@ -198,12 +199,78 @@ class MainWindow(QMainWindow):
         self.load_colleges()
         self.set_curent_dates()
         self.set_database_colleges()
+        
+        self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
+        self.ui.btn_consolidation_load.clicked.connect(self.load_merge_data)
+        self.ui.btn_consolidation_partition.clicked.connect(self.partition_strategy)
+        self.ui.btn_consolidation_test.clicked.connect(self.database_connection_test)
+        self.ui.btn_consolidation_upload.clicked.connect(self.push_data)
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
         # ,QDateTime,QDate,QTime
-        self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
         ##################################################################################################
 
+    def date_formater(self,date):
+        start_date="\'{}\'".format(date)
+        return start_date
+
+    def push_data(self):
+        pass
+    
+    def database_connection_test(self):
+        pass
+
+    def partition_strategy(self):
+        pass
+
+    def consolidation_table(self,details: list):
+        self.ui.merge_table.setAutoScroll(True)
+        self.ui.merge_table.setAutoScrollMargin(2)
+        self.ui.merge_table.setTabKeyNavigation(True)
+        self.ui.merge_table.setRowCount(len(details))
+        self.ui.merge_table.verticalHeader().setVisible(True)
+        self.ui.merge_table.setColumnWidth(2,350)
+        self.ui.merge_table.setColumnWidth(0,100)
+        self.ui.merge_table.setColumnWidth(1,100)
+        self.ui.merge_table.setColumnWidth(1,140)
+        self.ui.merge_table.setColumnWidth(4,250)
+        self.ui.merge_table.setColumnWidth(5,100)
+        self.ui.merge_table.setColumnWidth(6,100)
+        row_count = 0
+        for data in details:
+            self.ui.merge_table.setItem(row_count,0,QTableWidgetItem(str(data[0])))
+            self.ui.merge_table.setItem(row_count,1,QTableWidgetItem(str(data[1])))
+            self.ui.merge_table.setItem(row_count,2,QTableWidgetItem(str(data[2])))
+            self.ui.merge_table.setItem(row_count,3,QTableWidgetItem(str(data[3])))
+            self.ui.merge_table.setItem(row_count,4,QTableWidgetItem(str(data[4])))
+            self.ui.merge_table.setItem(row_count,5,QTableWidgetItem(str(data[5])))
+            self.ui.merge_table.setItem(row_count,6,QTableWidgetItem(str(data[6])))
+            row_count = row_count+1
+        
+    def load_merge_data(self):
+        self.alert = AlertDialog()
+        start=self.date_formater(self.ui.db_consolidation_start.text())
+        state = self.ui.db_consolidation_range.isChecked()
+        stop=self.date_formater(self.ui.db_consolidation_stop.text())
+        if self.ui.db_fetch_all.isChecked():
+            results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance")
+            self.consolidation_table(results)
+            self.alert.content("Total records fetched: "+str(len(results)))
+            self.alert.show()
+            return results
+        elif start and not state:
+            results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp="+start)
+            self.consolidation_table(results)
+            self.alert.content("Total records fetched: "+str(len(results)))
+            self.alert.show()
+            return results
+        elif start and stop and state:
+            results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp BETWEEN "+start+" AND "+stop)
+            self.consolidation_table(results)
+            self.alert.content("Total records fetched: "+str(len(results)))
+            self.alert.show()
+            return results
+        
     def set_date_for_consolidation(self):
         date = self.ui.db_consolidation_date.date().toPython()
         if self.ui.db_consolidation_range.isChecked():
