@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardyZImTR.ui'
+## Form generated from reading UI file 'dashoboardKMlitd.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -2292,7 +2292,7 @@ class Ui_dashboard(object):
         self.db_consolidation_notification.setWordWrap(True)
         self.db_consolidation_partition = QLineEdit(self.frame_6)
         self.db_consolidation_partition.setObjectName(u"db_consolidation_partition")
-        self.db_consolidation_partition.setGeometry(QRect(20, 370, 151, 41))
+        self.db_consolidation_partition.setGeometry(QRect(20, 370, 311, 41))
         self.db_consolidation_partition.setFont(font2)
         self.db_consolidation_partition.setTabletTracking(True)
         self.db_consolidation_partition.setStyleSheet(u"QLineEdit{\n"
@@ -2359,7 +2359,7 @@ class Ui_dashboard(object):
         self.design_5.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_consolidation_partition = QPushButton(self.frame_6)
         self.btn_consolidation_partition.setObjectName(u"btn_consolidation_partition")
-        self.btn_consolidation_partition.setGeometry(QRect(180, 370, 151, 41))
+        self.btn_consolidation_partition.setGeometry(QRect(180, 420, 151, 41))
         self.btn_consolidation_partition.setFont(font2)
         self.btn_consolidation_partition.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2534,29 +2534,6 @@ class Ui_dashboard(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.db_consolidation_port.setClearButtonEnabled(True)
-        self.btn_consolidation_explain = QPushButton(self.frame_6)
-        self.btn_consolidation_explain.setObjectName(u"btn_consolidation_explain")
-        self.btn_consolidation_explain.setGeometry(QRect(180, 420, 151, 41))
-        self.btn_consolidation_explain.setFont(font2)
-        self.btn_consolidation_explain.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        icon22 = QIcon()
-        icon22.addFile(u":/icons/asset/git-branch.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_consolidation_explain.setIcon(icon22)
-        self.btn_consolidation_explain.setIconSize(QSize(30, 30))
-        self.btn_consolidation_explain.setFlat(True)
         self.btn_consolidation_test = QPushButton(self.frame_6)
         self.btn_consolidation_test.setObjectName(u"btn_consolidation_test")
         self.btn_consolidation_test.setGeometry(QRect(180, 910, 151, 41))
@@ -2575,9 +2552,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon23 = QIcon()
-        icon23.addFile(u":/icons/asset/link.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_consolidation_test.setIcon(icon23)
+        icon22 = QIcon()
+        icon22.addFile(u":/icons/asset/link.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_consolidation_test.setIcon(icon22)
         self.btn_consolidation_test.setIconSize(QSize(30, 30))
         self.btn_consolidation_test.setFlat(True)
         self.db_consolidation_facility = QLineEdit(self.frame_6)
@@ -2628,7 +2605,6 @@ class Ui_dashboard(object):
         self.db_consolidation_database.raise_()
         self.db_consolidation_hostname.raise_()
         self.db_consolidation_port.raise_()
-        self.btn_consolidation_explain.raise_()
         self.btn_consolidation_test.raise_()
         self.db_consolidation_facility.raise_()
         self.db_fetch_all.raise_()
@@ -2990,9 +2966,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon24 = QIcon()
-        icon24.addFile(u":/icons/asset/lock.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_user_status.setIcon(icon24)
+        icon23 = QIcon()
+        icon23.addFile(u":/icons/asset/lock.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_user_status.setIcon(icon23)
         self.btn_user_status.setIconSize(QSize(30, 30))
         self.btn_user_status.setFlat(True)
         self.firstname_28 = QLabel(self.left_child)
@@ -3079,9 +3055,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon25 = QIcon()
-        icon25.addFile(u":/icons/asset/send.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_mail_user_details.setIcon(icon25)
+        icon24 = QIcon()
+        icon24.addFile(u":/icons/asset/send.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_mail_user_details.setIcon(icon24)
         self.btn_mail_user_details.setIconSize(QSize(30, 30))
         self.btn_mail_user_details.setFlat(True)
         self.btn_user_clear = QPushButton(self.left_child)
@@ -3652,9 +3628,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon26 = QIcon()
-        icon26.addFile(u":/icons/asset/user-minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove.setIcon(icon26)
+        icon25 = QIcon()
+        icon25.addFile(u":/icons/asset/user-minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove.setIcon(icon25)
         self.btn_remove.setIconSize(QSize(30, 30))
         self.btn_remove.setFlat(True)
         self.btn_clear = QPushButton(self.left_fram_reg)
@@ -3763,9 +3739,9 @@ class Ui_dashboard(object):
         self.online_image.setFont(font2)
         self.online_image.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(35, 35, 35);")
-        icon27 = QIcon()
-        icon27.addFile(u":/icons/asset/download-cloud.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.online_image.setIcon(icon27)
+        icon26 = QIcon()
+        icon26.addFile(u":/icons/asset/download-cloud.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.online_image.setIcon(icon26)
         self.image_less = QRadioButton(self.left_fram_reg)
         self.image_less.setObjectName(u"image_less")
         self.image_less.setGeometry(QRect(340, 860, 131, 20))
@@ -3931,7 +3907,7 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        self.btn_send_mail.setIcon(icon25)
+        self.btn_send_mail.setIcon(icon24)
         self.btn_send_mail.setIconSize(QSize(30, 30))
         self.btn_send_mail.setFlat(True)
         self.reg_email = QLineEdit(self.frame_13)
@@ -3975,9 +3951,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon28 = QIcon()
-        icon28.addFile(u":/icons/asset/credit-card.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_save_card.setIcon(icon28)
+        icon27 = QIcon()
+        icon27.addFile(u":/icons/asset/credit-card.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_save_card.setIcon(icon27)
         self.btn_save_card.setIconSize(QSize(30, 30))
         self.btn_save_card.setFlat(True)
 
@@ -4340,9 +4316,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon29 = QIcon()
-        icon29.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_save.setIcon(icon29)
+        icon28 = QIcon()
+        icon28.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_save.setIcon(icon28)
         self.btn_save.setIconSize(QSize(30, 30))
         self.btn_save.setFlat(True)
         self.btn_refresh = QPushButton(self.frame_9)
@@ -4365,9 +4341,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon30 = QIcon()
-        icon30.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_refresh.setIcon(icon30)
+        icon29 = QIcon()
+        icon29.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_refresh.setIcon(icon29)
         self.btn_refresh.setIconSize(QSize(30, 30))
         self.btn_refresh.setFlat(True)
         self.btn_remove_combox_item = QPushButton(self.frame_9)
@@ -4390,9 +4366,9 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon31 = QIcon()
-        icon31.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove_combox_item.setIcon(icon31)
+        icon30 = QIcon()
+        icon30.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove_combox_item.setIcon(icon30)
         self.btn_remove_combox_item.setIconSize(QSize(30, 30))
         self.btn_remove_combox_item.setFlat(True)
         self.college_comboBox = QComboBox(self.frame_9)
@@ -4792,7 +4768,7 @@ class Ui_dashboard(object):
         self.db_consolidation_start.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
         self.db_consolidation_stop.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
         self.db_consolidation_notification.setText(QCoreApplication.translate("dashboard", u"Notification", None))
-        self.db_consolidation_partition.setPlaceholderText(QCoreApplication.translate("dashboard", u"Range", None))
+        self.db_consolidation_partition.setPlaceholderText(QCoreApplication.translate("dashboard", u"Partition", None))
         self.btn_consolidation_load.setText(QCoreApplication.translate("dashboard", u"Load", None))
         self.design_4.setText(QCoreApplication.translate("dashboard", u"Pull data", None))
         self.design_5.setText(QCoreApplication.translate("dashboard", u"Merge strategy", None))
@@ -4805,7 +4781,6 @@ class Ui_dashboard(object):
         self.db_consolidation_database.setPlaceholderText(QCoreApplication.translate("dashboard", u"Database", None))
         self.db_consolidation_hostname.setPlaceholderText(QCoreApplication.translate("dashboard", u"Hostname", None))
         self.db_consolidation_port.setPlaceholderText(QCoreApplication.translate("dashboard", u"Port", None))
-        self.btn_consolidation_explain.setText(QCoreApplication.translate("dashboard", u"Strategy", None))
         self.btn_consolidation_test.setText(QCoreApplication.translate("dashboard", u"Test", None))
         self.db_consolidation_facility.setPlaceholderText(QCoreApplication.translate("dashboard", u"Facility name", None))
         self.db_fetch_all.setText(QCoreApplication.translate("dashboard", u"Fetch all records", None))
