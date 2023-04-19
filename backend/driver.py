@@ -125,8 +125,7 @@ class MainWindow(QMainWindow):
         #############################################################################################
         self.ui.btn_search_page.clicked.connect(self.query_database_for_data)
         self.ui.search_page_date.dateTimeChanged.connect(self.get_date_on_search_page)
-        self.ui.calendarWidget_report.selectionChanged.connect(self.get_report_start_date)
-        self.ui.calendarWidget_report_2.selectionChanged.connect(self.get_report_end_date)
+        self.ui.report_date.dateTimeChanged.connect(self.get_report_date)
         self.ui.btn_reload.clicked.connect(self.clear_fields_on_search_page)
         self.ui.btn_csv.clicked.connect(self.export_data_to_csv)
         self.ui.btn_json.clicked.connect(self.export_data_to_json)
@@ -402,8 +401,10 @@ class MainWindow(QMainWindow):
         self.ui.search_page_date.setDate(curent_date)
         self.ui.user_start_date.setDate(curent_date)
         self.ui.db_consolidation_date.setDate(curent_date)
+        self.ui.report_date.setDate(curent_date)
         self.ui.user_end_date.clear()
         self.ui.db_start_date.clear()
+        self.ui.report_start_date.clear()
         self.ui.db_consolidation_date.clear()
 
     def value_formater(self,value):
@@ -1168,6 +1169,7 @@ class MainWindow(QMainWindow):
         else:
             self.alert_builder("Oops! no scan range provided\nor invalid input...")
     
+
     def server_logs(self,source,save_logs):
         date=current.now().date().strftime('%a %b %d %Y')
         path =Path('C:\\ProgramData\\iAttend\\data\\cache\\logs\\'+date+'_history.txt')
@@ -1212,6 +1214,7 @@ class MainWindow(QMainWindow):
         self.alert = AlertDialog()
         self.alert.content(content)
         self.alert.show()
+
 
     def hot_reload_thread(self):
         self.alert = AlertDialog()
@@ -1711,15 +1714,12 @@ class MainWindow(QMainWindow):
         self.ui.db_start_date.setText("")
         self.ui.db_end_date.setText("")
         
-    def get_report_start_date(self):
-        date =self.ui.calendarWidget_report.selectedDate()
-        self.ui.report_start_date.setText(str(date.toPython()))
-        return str(date.toString())
-
-    def get_report_end_date(self):
-        date =self.ui.calendarWidget_report_2.selectedDate()
-        self.ui.report_end_date.setText(str(date.toPython()))
-        return str(date.toString())
+    def get_report_date(self):
+        date_ = self.ui.report_date.date().toPython()
+        if self.ui.report_date_range.isChecked():
+             self.ui.report_end_date.setText(str(date_))
+        else:
+            self.ui.report_start_date.setText(str(date_))
   
     def get_registration_start_date(self):
         date = self.ui.calendarWidget_reg.selectedDate()
