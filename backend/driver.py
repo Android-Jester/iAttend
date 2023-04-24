@@ -2560,7 +2560,7 @@ class Splash_screen(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.progress)
         self.timer.start(40)
-        self.create_program_data_dir()
+        self.create_program_directory()
         self.create_database_tables()
         self.populate_root_user_data()
         self.create_cache_database()
@@ -2577,11 +2577,11 @@ class Splash_screen(QMainWindow):
             self.close()
         counter +=1    
 
-    def create_program_data_dir(self):
+    def create_program_directory(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','programs','properties','qr_code',
         'backup','email_details','reports','exports','cache',
-        'images')
+        'images','partition')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
@@ -2620,15 +2620,27 @@ class Splash_screen(QMainWindow):
         path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
         return path
 
-    def create_files(self):
-        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\properties.txt')
+    def write_to_file(self,path: str,data: str,type: str):
+        path =Path(path)
         path.touch(exist_ok=True)
         file = open(path)
         if os.path.exists(path):
             with open(path,'a+') as file:
-                if os.path.getsize(path)==0:
-                    file.write("Username,Password,Hostname,Port,Database,Server")
+                if type == 'json':
+                    if os.path.getsize(path)==0:
+                        json.dump(data,file,indent=2)
+                else:
+                    if os.path.getsize(path)==0:
+                        file.write(data)
             file.close()
+
+    def create_files(self):
+        root = 'C:\\ProgramData\\iAttend\\data\\'
+        path =os.path.join(root,'properties\\properties.txt')
+        mail_properties = "Username,Password,Hostname,Port,Database,Server"
+        self.write_to_file(path,mail_properties,'text/plain')
+
+        path =path =os.path.join(root,'properties\\central_database_connection_propeties.json')
         json_data = {
             "username":"username@CoS",
             "password":"passsword@CoS",
@@ -2636,61 +2648,38 @@ class Splash_screen(QMainWindow):
             "port":"port@CoS",
             "database":"database@CoS"
         }
-        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\central_database_connection_propeties.json')
-        path.touch(exist_ok=True)
-        file = open(path)
-        if os.path.exists(path):
-            with open(path,'a+') as file:
-                if os.path.getsize(path)==0:
-                    json.dump(json_data,file,indent=2)
-            file.close()  
-
+        self.write_to_file(path,json_data,'json')
+       
       
         with open(self.resource_path('database_properties.json'),'r') as data:
             json_data = json.load(data)
-        path =Path('C:\\ProgramData\\iAttend\\data\\properties\\database_properties.json')
+        path =os.path.join(root,'properties\\database_properties.json')
+        self.write_to_file(path,data,'json')
+        
+        path =os.path.join(root,'programs\\college_programs.txt')
+        path =Path(path)
         path.touch(exist_ok=True)
-        file = open(path)
-        if os.path.exists(path):
-            pass
-            with open(path,'a+') as file:
-                if os.path.getsize(path)==0:
-                    json.dump(json_data,file,indent=2)
-            file.close() 
-
-        path =Path('C:\\ProgramData\\iAttend\\data\\programs\\college_programs.txt')
-        path.touch(exist_ok=True)
-        file = open(path)
         if os.path.exists(path):
             pass
 
-        details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt')
-        details_path.touch(exist_ok=True)
-        d_file = open(details_path)
-        if os.path.exists(details_path):
-            with open(details_path,'a+') as d_file:
-                if os.path.getsize(details_path)==0:
-                    d_file.write("Subject,example@gmail.com,Sender,Password")
-            d_file.close() 
+        path =os.path.join(root,'email_details\\detail.txt')
+        self.write_to_file(path,mail_properties,'text/plain')
+        
+        path =os.path.join(root,'partition\\partition.txt')
+        partition = 'Faculty,Gender,College,Category,Disability,Department,Nationality'
+        self.write_to_file(path,partition,'text/plain') 
 
-        details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\reset_password.txt')
-        details_path.touch(exist_ok=True)
-        d_file = open(details_path)
-        if os.path.exists(details_path):
-            with open(details_path,'a+') as d_file:
-                if os.path.getsize(details_path)==0:
-                    d_file.write("Subject,example@gmail.mail,Sender,Password")
-            d_file.close() 
+        path =os.path.join(root,'partition\\database_fields.txt')
+        partition = 'student_faculty,student_gender,student_college,student_category,student_disability,student_department,student_nationality'
+        self.write_to_file(path,partition,'text/plain')
+        
+        path =os.path.join(root,'email_details\\reset_password.txt')
+        self.write_to_file(path,mail_properties,'text/plain')
 
-        details_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\account_registration.txt')
-        details_path.touch(exist_ok=True)
-        d_file = open(details_path)
-        if os.path.exists(details_path):
-            with open(details_path,'a+') as d_file:
-                if os.path.getsize(details_path)==0:
-                    d_file.write("Subject,example@gmail.mail,Sender,Password")
-            d_file.close() 
-
+        path =os.path.join(root,'email_details\\account_registration.txt')
+        self.write_to_file(path,mail_properties,'text/plain')
+        
+        path =os.path.join(root,'email_details\\content.txt')
         content = """
         Hello name,
                 Please attached to this message is your
@@ -2699,30 +2688,18 @@ class Splash_screen(QMainWindow):
             access the facility. 
                 Attend Today, Acheive Tomorrow!
                                             Thank you! """
-        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content.txt')
-        content_path.touch(exist_ok=True)
-        content_file = open(content_path)
-        if os.path.exists(content_path):
-            with open(content_path,'a+') as content_file:
-                if os.path.getsize(content_path)==0:
-                    content_file.write(content)
-            content_file.close() 
-
+        self.write_to_file(path,content,'text/plain')
+        
+        path =os.path.join(root,'email_details\\content_report.txt')
         report_content = """
         Hello name,
     	        Please attached to this message is the
             report or data you requested for. Feel free 
             to contact us for our services at anytime.
                                         Thank you! """
-        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\content_report.txt')
-        content_path.touch(exist_ok=True)
-        content_file = open(content_path)
-        if os.path.exists(content_path):
-            with open(content_path,'a+') as content_file:
-                if  os.path.getsize(content_path)==0:
-                    content_file.write(report_content)
-            content_file.close()
-
+        self.write_to_file(path,report_content,'text/plain')
+        
+        path =os.path.join(root,'email_details\\credential_mail.txt')
         credentials_content = """
             Dear Name,
             
@@ -2740,15 +2717,9 @@ class Splash_screen(QMainWindow):
 
             College_name,
             """
-        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\credential_mail.txt')
-        content_path.touch(exist_ok=True)
-        content_file = open(content_path)
-        if os.path.exists(content_path):
-            with open(content_path,'a+') as content_file:
-                if  os.path.getsize(content_path)==0:
-                    content_file.write(credentials_content)
-            content_file.close()
-
+        self.write_to_file(path,credentials_content,'text/plain')
+        
+        path =os.path.join(root,'email_details\\new_account_mail.txt')
         new_account_content = """
         Dear Name,
 
@@ -2772,14 +2743,8 @@ class Splash_screen(QMainWindow):
 
         College_name,
         """
-        content_path =Path('C:\\ProgramData\\iAttend\\data\\email_details\\new_account_mail.txt')
-        content_path.touch(exist_ok=True)
-        content_file = open(content_path)
-        if os.path.exists(content_path):
-            with open(content_path,'a+') as content_file:
-                if  os.path.getsize(content_path)==0:
-                    content_file.write(new_account_content)
-            content_file.close()
+        self.write_to_file(path,new_account_content,'text/plain')
+        
 
     def create_database_tables(self):
         db = sqlite3.connect(self.get_path())
