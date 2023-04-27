@@ -1364,7 +1364,14 @@ class MainWindow(QMainWindow):
             values.append(result_set[0][0])
             return values, results[0][0], results[-1][-1]
 
+    def report_date(self):
+        report_start_date= self.ui.report_start_date.text()
+        report_end_date= self.ui.report_end_date.text()
+        return report_start_date, report_end_date
+
     def query_distinct_parameter(self,database_column,first_date_param,second_date_param,query_type):
+        first_date_param = self.date_formater(first_date_param)
+        second_date_param = self.date_formater(second_date_param)
         if query_type=="date":
             return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp={first_date_param}"
         elif query_type=="range":
@@ -1373,10 +1380,12 @@ class MainWindow(QMainWindow):
             return f"SELECT DISTINCT {database_column} FROM tb_attendance"
 
     def count_distinct_parameter(self,database_column,first_date_param,second_date_param,query_type,parameter):
+        first_date_param = self.date_formater(first_date_param)
+        second_date_param = self.date_formater(second_date_param)
         if query_type=="date":
-            return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp={first_date_param}"
+            return f"SELECT COUNT({database_column}) FROM tb_attendance WHERE {database_column}={parameter} AND date_stamp={first_date_param}"
         elif query_type=="range":
-            return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp BETWEEN {first_date_param} AND {second_date_param}"
+            return f"SELECT COUNT({database_column}) FROM tb_attendance WHERE {database_column}={parameter} AND date_stamp BETWEEN {first_date_param} AND {second_date_param}"
         else:
             return f"SELECT COUNT({database_column}) FROM tb_attendance WHERE {database_column}={parameter}"
     
@@ -1403,43 +1412,6 @@ class MainWindow(QMainWindow):
         else:
             return result_list,total
 
-    def query_with_parameter_and_date(self):
-        start = self.ui.report_start_date.text()
-        start_date="\'{}\'".format(start)
-        query_result = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance where date_stamp= "+start_date)
-        result_list= []
-        for item in query_result: 
-            result_list.append(item[0])
-        total:list = []
-        for item in result_list:
-            program = "\'{}\'".format(item)
-            sub_count = self.query_cache_data_list("SELECT COUNT(*) FROM tb_attendance WHERE program="+program+" and date_stamp= "+start_date)
-            total.append(sub_count[0][0])
-        data = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance where date_stamp= "+start_date)
-        result= []
-        for item in data:
-            item = str(item[0]).split(' ')
-            result.append(item[1][0:4].upper())   
-        return total, result
-
-    def get_data_by_date_range(self):
-        start_date="\'{}\'".format(self.ui.report_start_date.text())
-        end_date="\'{}\'".format(self.ui.report_end_date.text())
-        query_result = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance where date_stamp BETWEEN "+start_date+" AND "+end_date)
-        result_list= []
-        for item in query_result: 
-            result_list.append(item[0])
-        total:list = []
-        for item in result_list:
-            program = "\'{}\'".format(item)
-            sub_count = self.query_cache_data_list("SELECT COUNT(*) date_stamp FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
-            total.append(sub_count[0][0])
-        data = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance where date_stamp BETWEEN "+start_date+" AND "+end_date)
-        result= []
-        for item in data:
-            item = str(item[0]).split(' ')
-            result.append(item[1][0:4].upper())  
-        return total, result
 
     def line_plot_values(self):
         results_list = []
@@ -1460,11 +1432,126 @@ class MainWindow(QMainWindow):
     def remove_item_from_comboBox(self):
         self.ui.date_range_comboBox.removeItem(self.ui.date_range_comboBox.currentIndex())
 
+    def get_plot_parameter(self,value,default,type):
+        if type=='number':
+            if self.validate_field('^[0-9]+$',value):
+                return int(value)
+            else:
+                return default
+        elif type=='text':
+            if value:
+                return value
+            else:
+                return default
+
+    def get_plot_properties(self):
+        title = f"Grouped By {self.ui.query_parameter.currentText()}"
+        chart_title=self.get_plot_parameter(value=self.ui.chart_title.text(),default=title,type='text')
+        figure_area=self.get_plot_parameter(value=self.ui.figure_area.text(),default=10,type='number')
+        bar_width=self.get_plot_parameter(value=self.ui.bar_width.text(),default=8,type='number')
+        bar_width= (bar_width/10)
+        dpi=self.get_plot_parameter(value=self.ui.dpi.text(),default=200,type='number')
+        startangle=self.get_plot_parameter(value=self.ui.start_angle.text(),default=0,type='number')
+        pctdistance=self.get_plot_parameter(value=self.ui.pctdist.text(),default=4,type='number')
+        pctdistance = (pctdistance/10)
+        labeldistance=self.get_plot_parameter(value=self.ui.pie_ldist.text(),default=105,type='number')
+        labeldistance = (labeldistance/100)
+        return chart_title,figure_area,bar_width,dpi,startangle,pctdistance,labeldistance
+
+    def reconstruct_date_report(self,date:str):
+        date_value=str(date).split('-')
+        date_transformed = datetime.date(int(date_value[0]),int(date_value[1]),int(date_value[2])).strftime("%b %d, %Y")
+        return date_transformed 
+
+    def barchart_plots(self):
+        colors=self.shuffle_colors()
+        properties=self.get_plot_properties()
+        self.alert = AlertDialog()
+        report_date = self.report_date()
+        path = 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
+        y_label= 'Number of students'
+        if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
+            data = self.query_database_with_parameter('','','')
+            if len(data[0])>=1:
+                self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
+                bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",
+                colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
+        elif self.ui.report_start_date.text() and not self.ui.report_end_date.text():
+                data = self.query_database_with_parameter(date=report_date[0],range='',type='date')
+                if len(data[0])>=1:
+                    self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
+                    bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",
+                    colors=colors[:len(data[0])],title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])}]",
+                    area=properties[1],dpi=properties[3])
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
+        elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
+                data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
+                if len(data[0])>=1:      
+                    self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
+                    bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",colors=colors[:len(data[0])],
+                    title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
+                    area=properties[1],dpi=properties[3])
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
+
+    def report_piechart(self):
+        colors=self.shuffle_colors()
+        properties=self.get_plot_properties()
+        self.alert = AlertDialog()
+        report_date = self.report_date()
+        path = 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
+        if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
+            data = self.query_database_with_parameter('','','')
+            if len(data[0])>=1:
+                self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
+                area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
+        elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
+            data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
+            if len(data[0])>=1:      
+                self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
+                colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
+                pctdistance=properties[5],labeldistance=properties[6])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show() 
+        elif  self.ui.report_start_date.text() and not self.ui.report_end_date.text():
+            data = self.query_database_with_parameter(date=report_date[0],range='',type='date')
+            if len(data[0])>=1:
+                self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])}]",
+                colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
+                pctdistance=properties[5],labeldistance=properties[6])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
+    
     def data_visualization(self):
-        # print(self.shuffle_colors())
-        details=self.query_database_with_parameter('','','')
-        print(details)
-        pass
+        if self.ui.pie_chart.isChecked():
+            self.report_piechart()
+        elif self.ui.bar_chart.isChecked():
+            self.barchart_plots()
+        elif self.ui.line_graph.isChecked():
+            pass
 
     def export_data_to_csv(self):
         self.alert = AlertDialog()
