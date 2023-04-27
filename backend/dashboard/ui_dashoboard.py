@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardKMlitd.ui'
+## Form generated from reading UI file 'dashoboardbrZTyi.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -22,7 +22,7 @@ class Ui_dashboard(object):
     def setupUi(self, dashboard):
         if dashboard.objectName():
             dashboard.setObjectName(u"dashboard")
-        dashboard.resize(1524, 1028)
+        dashboard.resize(1511, 1029)
         dashboard.setMinimumSize(QSize(1500, 1000))
         dashboard.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(dashboard)
@@ -31,7 +31,7 @@ class Ui_dashboard(object):
         self.centralwidget.setStyleSheet(u"")
         self.drop_shadow_layout = QFrame(self.centralwidget)
         self.drop_shadow_layout.setObjectName(u"drop_shadow_layout")
-        self.drop_shadow_layout.setGeometry(QRect(0, 0, 1545, 1030))
+        self.drop_shadow_layout.setGeometry(QRect(0, 0, 1532, 1030))
         self.drop_shadow_layout.setMinimumSize(QSize(1280, 1000))
         self.drop_shadow_layout.setStyleSheet(u"")
         self.drop_shadow_layout.setFrameShape(QFrame.NoFrame)
@@ -4122,118 +4122,57 @@ class Ui_dashboard(object):
         self.stackedWidget.addWidget(self.database)
         self.report = QWidget()
         self.report.setObjectName(u"report")
-        self.verticalLayout_13 = QVBoxLayout(self.report)
-        self.verticalLayout_13.setSpacing(9)
-        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.verticalLayout_13.setContentsMargins(0, 0, 12, 0)
+        self.verticalLayout_12 = QVBoxLayout(self.report)
+        self.verticalLayout_12.setSpacing(9)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.frame_7 = QFrame(self.report)
         self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setMinimumSize(QSize(0, 650))
-        self.frame_7.setMaximumSize(QSize(16777215, 650))
+        self.frame_7.setMinimumSize(QSize(0, 0))
+        self.frame_7.setMaximumSize(QSize(16777215, 980))
         self.frame_7.setFrameShape(QFrame.NoFrame)
         self.frame_7.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_17 = QHBoxLayout(self.frame_7)
-        self.horizontalLayout_17.setSpacing(10)
-        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.horizontalLayout_17.setContentsMargins(-1, -1, 0, 0)
-        self.plot_area = QLabel(self.frame_7)
-        self.plot_area.setObjectName(u"plot_area")
-        self.plot_area.setMinimumSize(QSize(699, 632))
-        self.plot_area.setMaximumSize(QSize(699, 632))
-        self.plot_area.setFont(font6)
-        self.plot_area.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35,35,35);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.plot_area.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_17.addWidget(self.plot_area)
-
-        self.plot_area_2 = QLabel(self.frame_7)
-        self.plot_area_2.setObjectName(u"plot_area_2")
-        self.plot_area_2.setMinimumSize(QSize(710, 632))
-        self.plot_area_2.setMaximumSize(QSize(698, 632))
-        self.plot_area_2.setFont(font6)
-        self.plot_area_2.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35,35,35);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.plot_area_2.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_17.addWidget(self.plot_area_2)
-
-
-        self.verticalLayout_13.addWidget(self.frame_7)
-
-        self.frame_8 = QFrame(self.report)
+        self.horizontalLayout_16 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.frame_8 = QFrame(self.frame_7)
         self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setStyleSheet(u"")
-        self.frame_8.setFrameShape(QFrame.NoFrame)
+        self.frame_8.setMinimumSize(QSize(335, 0))
+        self.frame_8.setMaximumSize(QSize(330, 16777215))
         self.frame_8.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_14 = QVBoxLayout(self.frame_8)
-        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.verticalLayout_14.setContentsMargins(-1, 0, 0, -1)
-        self.frame_9 = QFrame(self.frame_8)
-        self.frame_9.setObjectName(u"frame_9")
-        self.frame_9.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(35,35,35);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.frame_9.setFrameShape(QFrame.NoFrame)
-        self.frame_9.setFrameShadow(QFrame.Raised)
-        self.frame_12 = QFrame(self.frame_9)
-        self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setGeometry(QRect(10, 20, 361, 241))
-        self.frame_12.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.frame_12.setFrameShape(QFrame.NoFrame)
-        self.frame_12.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_16 = QVBoxLayout(self.frame_12)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.calendarWidget_report = QCalendarWidget(self.frame_12)
-        self.calendarWidget_report.setObjectName(u"calendarWidget_report")
-        self.calendarWidget_report.setVerticalHeaderFormat(QCalendarWidget.NoVerticalHeader)
-        self.calendarWidget_report.setNavigationBarVisible(True)
-
-        self.verticalLayout_16.addWidget(self.calendarWidget_report)
-
-        self.report_start_date = QLineEdit(self.frame_9)
-        self.report_start_date.setObjectName(u"report_start_date")
-        self.report_start_date.setGeometry(QRect(760, 20, 181, 51))
-        self.report_start_date.setFont(font2)
-        self.report_start_date.setStyleSheet(u"QLineEdit{\n"
+        self.report_date = QDateEdit(self.frame_8)
+        self.report_date.setObjectName(u"report_date")
+        self.report_date.setGeometry(QRect(10, 200, 141, 41))
+        self.report_date.setFont(font8)
+        self.report_date.setStyleSheet(u"QDateEdit{\n"
 "	color: rgb(255, 255, 255);\n"
-"	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:10px;\n"
-"	padding-left: 50px;\n"
+"background-color: rgb(45, 45, 45);\n"
+"border: 2px solid rgb(45, 45, 45);\n"
+"padding-left:10px;\n"
+"border-radius: 10px;\n"
 "}\n"
 "\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"	border:2px solid rgb(255, 255, 255);\n"
-"}")
-        self.report_start_date.setClearButtonEnabled(True)
-        self.label_23 = QLabel(self.frame_9)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setGeometry(QRect(770, 30, 31, 31))
-        self.label_23.setStyleSheet(u"background-color: rgb(45, 45, 45);")
-        self.label_23.setPixmap(QPixmap(u":/icons/asset/calendar.svg"))
-        self.report_end_date = QLineEdit(self.frame_9)
+"")
+        self.report_date.setFrame(False)
+        self.report_date.setReadOnly(False)
+        self.report_date.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.report_date.setAccelerated(True)
+        self.report_date.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
+        self.report_date.setProperty("showGroupSeparator", False)
+        self.report_date.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.report_date.setMinimumDate(QDate(2023, 1, 1))
+        self.report_date.setCalendarPopup(True)
+        self.report_date.setTimeSpec(Qt.LocalTime)
+        self.report_date.setDate(QDate(2023, 1, 1))
+        self.report_end_date = QLineEdit(self.frame_8)
         self.report_end_date.setObjectName(u"report_end_date")
-        self.report_end_date.setGeometry(QRect(970, 20, 201, 51))
+        self.report_end_date.setGeometry(QRect(170, 150, 151, 41))
         self.report_end_date.setFont(font2)
+        self.report_end_date.setTabletTracking(True)
         self.report_end_date.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:10px;\n"
-"	padding-left: 50px;\n"
+"	padding-left: 10px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -4243,21 +4182,30 @@ class Ui_dashboard(object):
 "QLineEdit:focus{\n"
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
+        self.report_end_date.setReadOnly(True)
         self.report_end_date.setClearButtonEnabled(True)
-        self.label_24 = QLabel(self.frame_9)
-        self.label_24.setObjectName(u"label_24")
-        self.label_24.setGeometry(QRect(980, 30, 31, 31))
-        self.label_24.setStyleSheet(u"background-color: rgb(45, 45, 45);")
-        self.label_24.setPixmap(QPixmap(u":/icons/asset/calendar.svg"))
-        self.file_name = QLineEdit(self.frame_9)
-        self.file_name.setObjectName(u"file_name")
-        self.file_name.setGeometry(QRect(1200, 20, 211, 51))
-        self.file_name.setFont(font2)
-        self.file_name.setStyleSheet(u"QLineEdit{\n"
+        self.design_7 = QLabel(self.frame_8)
+        self.design_7.setObjectName(u"design_7")
+        self.design_7.setGeometry(QRect(0, 110, 331, 141))
+        self.design_7.setFont(font5)
+        self.design_7.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_7.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.report_start_date = QLineEdit(self.frame_8)
+        self.report_start_date.setObjectName(u"report_start_date")
+        self.report_start_date.setGeometry(QRect(10, 150, 151, 41))
+        self.report_start_date.setFont(font2)
+        self.report_start_date.setTabletTracking(True)
+        self.report_start_date.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
 "	border-radius:10px;\n"
-"	padding-left: 50px;\n"
+"	padding-left: 10px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
@@ -4267,17 +4215,106 @@ class Ui_dashboard(object):
 "QLineEdit:focus{\n"
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
-        self.file_name.setClearButtonEnabled(True)
-        self.label_20 = QLabel(self.frame_9)
-        self.label_20.setObjectName(u"label_20")
-        self.label_20.setGeometry(QRect(1210, 30, 31, 31))
-        self.label_20.setStyleSheet(u"background-color: rgb(45, 45, 45);")
-        self.label_20.setPixmap(QPixmap(u":/icons/asset/file.svg"))
-        self.btn_load = QPushButton(self.frame_9)
+        self.report_start_date.setFrame(True)
+        self.report_start_date.setReadOnly(True)
+        self.report_start_date.setClearButtonEnabled(True)
+        self.report_date_range = QRadioButton(self.frame_8)
+        self.report_date_range.setObjectName(u"report_date_range")
+        self.report_date_range.setGeometry(QRect(160, 200, 161, 41))
+        self.report_date_range.setFont(font2)
+        self.report_date_range.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(45, 45, 45);\n"
+"border-radius:5px;")
+        self.report_date_range.setAutoExclusive(False)
+        self.design_8 = QLabel(self.frame_8)
+        self.design_8.setObjectName(u"design_8")
+        self.design_8.setGeometry(QRect(0, 0, 331, 91))
+        self.design_8.setFont(font5)
+        self.design_8.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_8.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.chart_title = QLineEdit(self.frame_8)
+        self.chart_title.setObjectName(u"chart_title")
+        self.chart_title.setGeometry(QRect(10, 40, 311, 41))
+        self.chart_title.setFont(font2)
+        self.chart_title.setTabletTracking(True)
+        self.chart_title.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.chart_title.setFrame(True)
+        self.chart_title.setReadOnly(False)
+        self.chart_title.setClearButtonEnabled(True)
+        self.design_9 = QLabel(self.frame_8)
+        self.design_9.setObjectName(u"design_9")
+        self.design_9.setGeometry(QRect(0, 380, 331, 81))
+        self.design_9.setFont(font5)
+        self.design_9.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_9.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.pie_chart = QRadioButton(self.frame_8)
+        self.pie_chart.setObjectName(u"pie_chart")
+        self.pie_chart.setGeometry(QRect(10, 420, 101, 23))
+        self.pie_chart.setFont(font6)
+        self.pie_chart.setStyleSheet(u"QRadioButton{\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	color: rgb(255, 255, 255);\n"
+"}")
+        self.pie_chart.setChecked(False)
+        self.bar_chart = QRadioButton(self.frame_8)
+        self.bar_chart.setObjectName(u"bar_chart")
+        self.bar_chart.setGeometry(QRect(110, 420, 101, 23))
+        self.bar_chart.setFont(font6)
+        self.bar_chart.setStyleSheet(u"QRadioButton{\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	color: rgb(255, 255, 255);\n"
+"}")
+        self.bar_chart.setChecked(False)
+        self.line_graph = QRadioButton(self.frame_8)
+        self.line_graph.setObjectName(u"line_graph")
+        self.line_graph.setGeometry(QRect(210, 420, 111, 23))
+        self.line_graph.setFont(font6)
+        self.line_graph.setStyleSheet(u"QRadioButton{\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	color: rgb(255, 255, 255);\n"
+"}")
+        self.design_10 = QLabel(self.frame_8)
+        self.design_10.setObjectName(u"design_10")
+        self.design_10.setGeometry(QRect(0, 760, 331, 91))
+        self.design_10.setFont(font5)
+        self.design_10.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_10.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.btn_load = QPushButton(self.frame_8)
         self.btn_load.setObjectName(u"btn_load")
-        self.btn_load.setGeometry(QRect(760, 220, 141, 45))
-        self.btn_load.setMinimumSize(QSize(0, 45))
-        self.btn_load.setMaximumSize(QSize(16777215, 45))
+        self.btn_load.setGeometry(QRect(10, 800, 151, 40))
+        self.btn_load.setMinimumSize(QSize(0, 40))
+        self.btn_load.setMaximumSize(QSize(16777215, 40))
         self.btn_load.setFont(font2)
         self.btn_load.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4296,36 +4333,11 @@ class Ui_dashboard(object):
         self.btn_load.setIcon(icon20)
         self.btn_load.setIconSize(QSize(30, 30))
         self.btn_load.setFlat(True)
-        self.btn_save = QPushButton(self.frame_9)
-        self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setGeometry(QRect(930, 220, 141, 45))
-        self.btn_save.setMinimumSize(QSize(0, 45))
-        self.btn_save.setMaximumSize(QSize(16777215, 45))
-        self.btn_save.setFont(font2)
-        self.btn_save.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        icon28 = QIcon()
-        icon28.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_save.setIcon(icon28)
-        self.btn_save.setIconSize(QSize(30, 30))
-        self.btn_save.setFlat(True)
-        self.btn_refresh = QPushButton(self.frame_9)
+        self.btn_refresh = QPushButton(self.frame_8)
         self.btn_refresh.setObjectName(u"btn_refresh")
-        self.btn_refresh.setGeometry(QRect(1100, 220, 141, 45))
-        self.btn_refresh.setMinimumSize(QSize(0, 45))
-        self.btn_refresh.setMaximumSize(QSize(16777215, 45))
+        self.btn_refresh.setGeometry(QRect(170, 800, 151, 40))
+        self.btn_refresh.setMinimumSize(QSize(0, 40))
+        self.btn_refresh.setMaximumSize(QSize(16777215, 40))
         self.btn_refresh.setFont(font2)
         self.btn_refresh.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4341,16 +4353,46 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon29 = QIcon()
-        icon29.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_refresh.setIcon(icon29)
+        icon28 = QIcon()
+        icon28.addFile(u":/icons/asset/refresh-cw.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_refresh.setIcon(icon28)
         self.btn_refresh.setIconSize(QSize(30, 30))
         self.btn_refresh.setFlat(True)
-        self.btn_remove_combox_item = QPushButton(self.frame_9)
+        self.design_11 = QLabel(self.frame_8)
+        self.design_11.setObjectName(u"design_11")
+        self.design_11.setGeometry(QRect(0, 480, 331, 91))
+        self.design_11.setFont(font5)
+        self.design_11.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_11.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.date_range_comboBox = QComboBox(self.frame_8)
+        self.date_range_comboBox.setObjectName(u"date_range_comboBox")
+        self.date_range_comboBox.setGeometry(QRect(10, 520, 171, 40))
+        self.date_range_comboBox.setMinimumSize(QSize(0, 40))
+        self.date_range_comboBox.setMaximumSize(QSize(16777215, 40))
+        self.date_range_comboBox.setFont(font2)
+        self.date_range_comboBox.setStyleSheet(u"QComboBox{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid rgb(45, 45, 45);\n"
+"	padding-left:10px;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}")
+        self.date_range_comboBox.setEditable(False)
+        self.date_range_comboBox.setFrame(False)
+        self.btn_remove_combox_item = QPushButton(self.frame_8)
         self.btn_remove_combox_item.setObjectName(u"btn_remove_combox_item")
-        self.btn_remove_combox_item.setGeometry(QRect(1270, 220, 141, 45))
-        self.btn_remove_combox_item.setMinimumSize(QSize(0, 45))
-        self.btn_remove_combox_item.setMaximumSize(QSize(16777215, 45))
+        self.btn_remove_combox_item.setGeometry(QRect(190, 520, 131, 40))
+        self.btn_remove_combox_item.setMinimumSize(QSize(0, 40))
+        self.btn_remove_combox_item.setMaximumSize(QSize(16777215, 40))
         self.btn_remove_combox_item.setFont(font2)
         self.btn_remove_combox_item.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4366,18 +4408,148 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon30 = QIcon()
-        icon30.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_remove_combox_item.setIcon(icon30)
+        icon29 = QIcon()
+        icon29.addFile(u":/icons/asset/minus.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_remove_combox_item.setIcon(icon29)
         self.btn_remove_combox_item.setIconSize(QSize(30, 30))
         self.btn_remove_combox_item.setFlat(True)
-        self.college_comboBox = QComboBox(self.frame_9)
-        self.college_comboBox.setObjectName(u"college_comboBox")
-        self.college_comboBox.setGeometry(QRect(760, 90, 131, 50))
-        self.college_comboBox.setMinimumSize(QSize(0, 50))
-        self.college_comboBox.setMaximumSize(QSize(16777215, 50))
-        self.college_comboBox.setFont(font2)
-        self.college_comboBox.setStyleSheet(u"QComboBox{\n"
+        self.design_12 = QLabel(self.frame_8)
+        self.design_12.setObjectName(u"design_12")
+        self.design_12.setGeometry(QRect(0, 270, 331, 91))
+        self.design_12.setFont(font5)
+        self.design_12.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_12.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.design_13 = QLabel(self.frame_8)
+        self.design_13.setObjectName(u"design_13")
+        self.design_13.setGeometry(QRect(0, 870, 331, 91))
+        self.design_13.setFont(font5)
+        self.design_13.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_13.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.file_name = QLineEdit(self.frame_8)
+        self.file_name.setObjectName(u"file_name")
+        self.file_name.setGeometry(QRect(10, 910, 181, 40))
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(40)
+        sizePolicy.setHeightForWidth(self.file_name.sizePolicy().hasHeightForWidth())
+        self.file_name.setSizePolicy(sizePolicy)
+        self.file_name.setMinimumSize(QSize(0, 40))
+        self.file_name.setMaximumSize(QSize(16777215, 40))
+        self.file_name.setFont(font2)
+        self.file_name.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.file_name.setClearButtonEnabled(True)
+        self.btn_save = QPushButton(self.frame_8)
+        self.btn_save.setObjectName(u"btn_save")
+        self.btn_save.setGeometry(QRect(200, 910, 121, 40))
+        self.btn_save.setMinimumSize(QSize(0, 40))
+        self.btn_save.setMaximumSize(QSize(16777215, 40))
+        self.btn_save.setFont(font2)
+        self.btn_save.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        icon30 = QIcon()
+        icon30.addFile(u":/icons/asset/save.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_save.setIcon(icon30)
+        self.btn_save.setIconSize(QSize(30, 30))
+        self.btn_save.setFlat(True)
+        self.design_14 = QLabel(self.frame_8)
+        self.design_14.setObjectName(u"design_14")
+        self.design_14.setGeometry(QRect(0, 590, 331, 151))
+        self.design_14.setFont(font5)
+        self.design_14.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"	border-radius: 10px;\n"
+"	padding-left:10px;\n"
+"	padding-top:5px;\n"
+"}")
+        self.design_14.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.figure_area = QLineEdit(self.frame_8)
+        self.figure_area.setObjectName(u"figure_area")
+        self.figure_area.setGeometry(QRect(10, 630, 91, 41))
+        self.figure_area.setFont(font2)
+        self.figure_area.setTabletTracking(True)
+        self.figure_area.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.figure_area.setFrame(True)
+        self.figure_area.setReadOnly(False)
+        self.figure_area.setClearButtonEnabled(True)
+        self.start_angle = QLineEdit(self.frame_8)
+        self.start_angle.setObjectName(u"start_angle")
+        self.start_angle.setGeometry(QRect(10, 690, 91, 41))
+        self.start_angle.setFont(font2)
+        self.start_angle.setTabletTracking(True)
+        self.start_angle.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.start_angle.setReadOnly(False)
+        self.start_angle.setClearButtonEnabled(True)
+        self.query_parameter = QComboBox(self.frame_8)
+        self.query_parameter.setObjectName(u"query_parameter")
+        self.query_parameter.setGeometry(QRect(10, 310, 171, 40))
+        self.query_parameter.setMinimumSize(QSize(0, 40))
+        self.query_parameter.setMaximumSize(QSize(16777215, 40))
+        self.query_parameter.setFont(font2)
+        self.query_parameter.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid rgb(45, 45, 45);\n"
 "	padding-left:10px;\n"
@@ -4387,114 +4559,178 @@ class Ui_dashboard(object):
 "QLineEdit:hover{\n"
 "	border:2px solid rgb(35, 35, 35);\n"
 "}")
-        self.college_comboBox.setFrame(False)
-        self.frame_14 = QFrame(self.frame_9)
-        self.frame_14.setObjectName(u"frame_14")
-        self.frame_14.setGeometry(QRect(380, 20, 361, 241))
-        self.frame_14.setStyleSheet(u"QFrame{\n"
-"	background-color: rgb(255, 255, 255);\n"
-"	border-radius: 10px;\n"
-"}")
-        self.frame_14.setFrameShape(QFrame.NoFrame)
-        self.frame_14.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_19 = QVBoxLayout(self.frame_14)
-        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
-        self.calendarWidget_report_2 = QCalendarWidget(self.frame_14)
-        self.calendarWidget_report_2.setObjectName(u"calendarWidget_report_2")
-        self.calendarWidget_report_2.setVerticalHeaderFormat(QCalendarWidget.NoVerticalHeader)
-        self.calendarWidget_report_2.setNavigationBarVisible(True)
-
-        self.verticalLayout_19.addWidget(self.calendarWidget_report_2)
-
-        self.college_courses = QComboBox(self.frame_9)
-        self.college_courses.setObjectName(u"college_courses")
-        self.college_courses.setGeometry(QRect(900, 90, 291, 50))
-        self.college_courses.setMinimumSize(QSize(0, 50))
-        self.college_courses.setMaximumSize(QSize(16777215, 50))
-        self.college_courses.setFont(font2)
-        self.college_courses.setStyleSheet(u"QComboBox{\n"
+        self.query_parameter.setEditable(False)
+        self.query_parameter.setFrame(False)
+        self.btn_refresh_query_parameters = QPushButton(self.frame_8)
+        self.btn_refresh_query_parameters.setObjectName(u"btn_refresh_query_parameters")
+        self.btn_refresh_query_parameters.setGeometry(QRect(190, 310, 131, 40))
+        self.btn_refresh_query_parameters.setMinimumSize(QSize(0, 40))
+        self.btn_refresh_query_parameters.setMaximumSize(QSize(16777215, 40))
+        self.btn_refresh_query_parameters.setFont(font2)
+        self.btn_refresh_query_parameters.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
 "	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        icon31 = QIcon()
+        icon31.addFile(u":/icons/asset/refresh-ccw.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_refresh_query_parameters.setIcon(icon31)
+        self.btn_refresh_query_parameters.setIconSize(QSize(30, 30))
+        self.btn_refresh_query_parameters.setFlat(True)
+        self.bar_width = QLineEdit(self.frame_8)
+        self.bar_width.setObjectName(u"bar_width")
+        self.bar_width.setGeometry(QRect(120, 630, 91, 41))
+        self.bar_width.setFont(font2)
+        self.bar_width.setTabletTracking(True)
+        self.bar_width.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
 "	border:2px solid rgb(35, 35, 35);\n"
-"}")
-        self.college_courses.setFrame(False)
-        self.frame_18 = QFrame(self.frame_9)
-        self.frame_18.setObjectName(u"frame_18")
-        self.frame_18.setGeometry(QRect(760, 160, 651, 41))
-        self.frame_18.setStyleSheet(u"QFrame{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border-radius: 10px;\n"
 "}\n"
-"")
-        self.frame_18.setFrameShape(QFrame.StyledPanel)
-        self.frame_18.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_16 = QHBoxLayout(self.frame_18)
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.pie_chart = QRadioButton(self.frame_18)
-        self.pie_chart.setObjectName(u"pie_chart")
-        self.pie_chart.setFont(font6)
-        self.pie_chart.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	color: rgb(255, 255, 255);\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
 "}")
-        self.pie_chart.setChecked(False)
-
-        self.horizontalLayout_16.addWidget(self.pie_chart)
-
-        self.bar_chart = QRadioButton(self.frame_18)
-        self.bar_chart.setObjectName(u"bar_chart")
-        self.bar_chart.setFont(font6)
-        self.bar_chart.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(45, 45, 45);\n"
+        self.bar_width.setReadOnly(False)
+        self.bar_width.setClearButtonEnabled(True)
+        self.dpi = QLineEdit(self.frame_8)
+        self.dpi.setObjectName(u"dpi")
+        self.dpi.setGeometry(QRect(230, 630, 91, 41))
+        self.dpi.setFont(font2)
+        self.dpi.setTabletTracking(True)
+        self.dpi.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
-"}")
-        self.bar_chart.setChecked(True)
-
-        self.horizontalLayout_16.addWidget(self.bar_chart)
-
-        self.line_graph = QRadioButton(self.frame_18)
-        self.line_graph.setObjectName(u"line_graph")
-        self.line_graph.setFont(font6)
-        self.line_graph.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	color: rgb(255, 255, 255);\n"
-"}")
-
-        self.horizontalLayout_16.addWidget(self.line_graph)
-
-        self.date_range_comboBox = QComboBox(self.frame_9)
-        self.date_range_comboBox.setObjectName(u"date_range_comboBox")
-        self.date_range_comboBox.setGeometry(QRect(1200, 90, 211, 50))
-        self.date_range_comboBox.setMinimumSize(QSize(0, 50))
-        self.date_range_comboBox.setMaximumSize(QSize(16777215, 50))
-        self.date_range_comboBox.setFont(font2)
-        self.date_range_comboBox.setStyleSheet(u"QComboBox{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
-"	border-radius: 10px;\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
 "}\n"
 "\n"
 "QLineEdit:hover{\n"
 "	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
 "}")
-        self.date_range_comboBox.setEditable(False)
-        self.date_range_comboBox.setFrame(False)
+        self.dpi.setReadOnly(False)
+        self.dpi.setClearButtonEnabled(True)
+        self.pie_ldist = QLineEdit(self.frame_8)
+        self.pie_ldist.setObjectName(u"pie_ldist")
+        self.pie_ldist.setGeometry(QRect(120, 690, 91, 41))
+        self.pie_ldist.setFont(font2)
+        self.pie_ldist.setTabletTracking(True)
+        self.pie_ldist.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.pie_ldist.setReadOnly(False)
+        self.pie_ldist.setClearButtonEnabled(True)
+        self.pctdist = QLineEdit(self.frame_8)
+        self.pctdist.setObjectName(u"pctdist")
+        self.pctdist.setGeometry(QRect(230, 690, 91, 41))
+        self.pctdist.setFont(font2)
+        self.pctdist.setTabletTracking(True)
+        self.pctdist.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.pctdist.setReadOnly(False)
+        self.pctdist.setClearButtonEnabled(True)
+        self.design_7.raise_()
+        self.report_date.raise_()
+        self.report_end_date.raise_()
+        self.report_start_date.raise_()
+        self.report_date_range.raise_()
+        self.design_8.raise_()
+        self.chart_title.raise_()
+        self.design_9.raise_()
+        self.pie_chart.raise_()
+        self.bar_chart.raise_()
+        self.line_graph.raise_()
+        self.design_10.raise_()
+        self.btn_load.raise_()
+        self.btn_refresh.raise_()
+        self.design_11.raise_()
+        self.date_range_comboBox.raise_()
+        self.btn_remove_combox_item.raise_()
+        self.design_12.raise_()
+        self.design_13.raise_()
+        self.file_name.raise_()
+        self.btn_save.raise_()
+        self.design_14.raise_()
+        self.figure_area.raise_()
+        self.start_angle.raise_()
+        self.query_parameter.raise_()
+        self.btn_refresh_query_parameters.raise_()
+        self.bar_width.raise_()
+        self.dpi.raise_()
+        self.pie_ldist.raise_()
+        self.pctdist.raise_()
 
-        self.verticalLayout_14.addWidget(self.frame_9)
+        self.horizontalLayout_16.addWidget(self.frame_8)
+
+        self.frame_9 = QFrame(self.frame_7)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_13 = QVBoxLayout(self.frame_9)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.plot_area = QLabel(self.frame_9)
+        self.plot_area.setObjectName(u"plot_area")
+        self.plot_area.setMinimumSize(QSize(0, 0))
+        self.plot_area.setMaximumSize(QSize(16777215, 16777215))
+        self.plot_area.setFont(font6)
+        self.plot_area.setStyleSheet(u"QLabel{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35,35,35);\n"
+"	border-radius: 10px;\n"
+"}")
+        self.plot_area.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_13.addWidget(self.plot_area)
 
 
-        self.verticalLayout_13.addWidget(self.frame_8)
+        self.horizontalLayout_16.addWidget(self.frame_9)
+
+
+        self.verticalLayout_12.addWidget(self.frame_7)
 
         self.stackedWidget.addWidget(self.report)
-        self.frame_8.raise_()
-        self.frame_7.raise_()
         self.settings = QWidget()
         self.settings.setObjectName(u"settings")
         self.horizontalLayout_12 = QHBoxLayout(self.settings)
@@ -4599,7 +4835,7 @@ class Ui_dashboard(object):
 
         self.retranslateUi(dashboard)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(6)
 
 
         QMetaObject.connectSlotsByName(dashboard)
@@ -4884,21 +5120,35 @@ class Ui_dashboard(object):
         self.label_9.setText(QCoreApplication.translate("dashboard", u"Sender details", None))
         self.email_subject.setPlaceholderText(QCoreApplication.translate("dashboard", u"Subject", None))
         self.change_date_box.setText(QCoreApplication.translate("dashboard", u"Switch  Between Date Fields", None))
-        self.plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
-        self.plot_area_2.setText(QCoreApplication.translate("dashboard", u"Graph", None))
-        self.report_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start date?", None))
-        self.label_23.setText("")
-        self.report_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"End date?", None))
-        self.label_24.setText("")
-        self.file_name.setPlaceholderText(QCoreApplication.translate("dashboard", u"File name?", None))
-        self.label_20.setText("")
-        self.btn_load.setText(QCoreApplication.translate("dashboard", u"Load", None))
-        self.btn_save.setText(QCoreApplication.translate("dashboard", u"Save", None))
-        self.btn_refresh.setText(QCoreApplication.translate("dashboard", u"Reload", None))
-        self.btn_remove_combox_item.setText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.report_date.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
+        self.report_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.design_7.setText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.report_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.report_date_range.setText(QCoreApplication.translate("dashboard", u"Switch date fields", None))
+        self.design_8.setText(QCoreApplication.translate("dashboard", u"Chart/Graph title", None))
+        self.chart_title.setPlaceholderText(QCoreApplication.translate("dashboard", u"Title", None))
+        self.design_9.setText(QCoreApplication.translate("dashboard", u"Plot types", None))
         self.pie_chart.setText(QCoreApplication.translate("dashboard", u"Piechart", None))
         self.bar_chart.setText(QCoreApplication.translate("dashboard", u"Barchart", None))
-        self.line_graph.setText(QCoreApplication.translate("dashboard", u"Line graph", None))
+        self.line_graph.setText(QCoreApplication.translate("dashboard", u"Line Graph", None))
+        self.design_10.setText(QCoreApplication.translate("dashboard", u"Operation", None))
+        self.btn_load.setText(QCoreApplication.translate("dashboard", u"Load", None))
+        self.btn_refresh.setText(QCoreApplication.translate("dashboard", u"Refresh", None))
+        self.design_11.setText(QCoreApplication.translate("dashboard", u"Plot values", None))
+        self.btn_remove_combox_item.setText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.design_12.setText(QCoreApplication.translate("dashboard", u"Partition", None))
+        self.design_13.setText(QCoreApplication.translate("dashboard", u"Save report", None))
+        self.file_name.setPlaceholderText(QCoreApplication.translate("dashboard", u"File name?", None))
+        self.btn_save.setText(QCoreApplication.translate("dashboard", u"Save", None))
+        self.design_14.setText(QCoreApplication.translate("dashboard", u"Figure properties", None))
+        self.figure_area.setPlaceholderText(QCoreApplication.translate("dashboard", u"size", None))
+        self.start_angle.setPlaceholderText(QCoreApplication.translate("dashboard", u"angle", None))
+        self.btn_refresh_query_parameters.setText(QCoreApplication.translate("dashboard", u"Refresh", None))
+        self.bar_width.setPlaceholderText(QCoreApplication.translate("dashboard", u"width", None))
+        self.dpi.setPlaceholderText(QCoreApplication.translate("dashboard", u"dpi", None))
+        self.pie_ldist.setPlaceholderText(QCoreApplication.translate("dashboard", u"lbdist", None))
+        self.pctdist.setPlaceholderText(QCoreApplication.translate("dashboard", u"pctdist", None))
+        self.plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
         self.textEdit.setHtml(QCoreApplication.translate("dashboard", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
