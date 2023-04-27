@@ -119,7 +119,6 @@ class MainWindow(QMainWindow):
         ############################################################################################
         self.ui.btn_connect_detect.clicked.connect(self.start_webcam)
         self.ui.btn_disconnect.clicked.connect(self.stop_webcam)
-
         ############################################################################################
 
         #############################################################################################
@@ -161,7 +160,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
 
-        completer = QCompleter(self.read_programs(self.resource_path('programs.txt')))
+        completer = QCompleter(self.read_text_file(self.resource_path('programs.txt')))
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.ui.search_box.setCompleter(completer)
         country_completer = QCompleter(self.country_names(self.resource_path('data_json.json')))
@@ -205,10 +204,54 @@ class MainWindow(QMainWindow):
         self.ui.btn_consolidation_partition.clicked.connect(self.partition_strategy)
         self.ui.btn_consolidation_test.clicked.connect(self.database_test)
         self.ui.btn_consolidation_upload.clicked.connect(self.push_data)
+
+        self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
+        self.ui.btn_refresh_query_parameters.clicked.connect(self.reload_query_parameter)
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
         # ,QDateTime,QDate,QTime
         ##################################################################################################
+
+    def shuffle_colors(self):
+        details=self.get_read_colors_file(self.resource_path('colors.txt'))
+        shuffled = np.random.permutation(details)
+        return shuffled
+
+    def get_read_colors_file(self,path):
+        colors_list = []
+        with open(path,'r') as data:
+            colors=data.read().replace('\n','')
+            colors = colors.split(',')
+            for color in colors:
+                color = '#'+color
+                colors_list.append(color)
+            return np.random.permutation(colors_list)
+
+    def reload_query_parameter(self):
+        self.ui.query_parameter.clear()
+        self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
+        query_parameter = self.read_partitions(self.get_root_path('partition\\partition.txt'))
+        database_fields=self.read_partitions(self.get_root_path('partition\\database_fields.txt'))
+        return dict(zip(query_parameter,database_fields))
+
+    def get_database_field(self):
+        dictionary=self.map_query_parameter_to_db_field()
+        return dictionary.get(self.ui.query_parameter.currentText())
+
+    def map_query_parameter_to_db_field(self):
+        query_parameter = self.read_partitions(self.get_root_path('partition\\partition.txt'))
+        database_fields=self.read_partitions(self.get_root_path('partition\\database_fields.txt'))
+        return dict(zip(query_parameter,database_fields))
+        
+    def get_root_path(self,relative_path):
+        root_path = 'C:\\ProgramData\\iAttend\\data\\'
+        return os.path.join(root_path,relative_path)
+
+    def read_partitions(self,path):
+        if os.path.exists(path):
+            with open(path,'r') as f:
+                details = f.read().split(',')
+            return details
 
     def date_formater(self,date):
         start_date="\'{}\'".format(date)
@@ -376,14 +419,14 @@ class MainWindow(QMainWindow):
     def load_properties_path(self):
         self.resource_path('database_properties.json')       
 
-    def read_programs(self,path):
+    def read_text_file(self,path):
         with open(path,'r') as file:
-            programs_list = []
+            data_list = []
             programs = file.readlines()
             for program in programs:
-                programs_list.append(program)
+                data_list.append(program)
             file.close()
-            return programs_list
+            return data_list
 
     def read_category(self,path):
         with open(path,'r') as file:
@@ -1321,27 +1364,46 @@ class MainWindow(QMainWindow):
             values.append(result_set[0][0])
             return values, results[0][0], results[-1][-1]
 
-    def get_data_barchart(self):
-        query_result = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance")
+    def query_distinct_parameter(self,database_column,first_date_param,second_date_param,query_type):
+        if query_type=="date":
+            return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp={first_date_param}"
+        elif query_type=="range":
+            return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp BETWEEN {first_date_param} AND {second_date_param}"
+        else:
+            return f"SELECT DISTINCT {database_column} FROM tb_attendance"
+
+    def count_distinct_parameter(self,database_column,first_date_param,second_date_param,query_type,parameter):
+        if query_type=="date":
+            return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp={first_date_param}"
+        elif query_type=="range":
+            return f"SELECT DISTINCT {database_column} FROM tb_attendance WHERE date_stamp BETWEEN {first_date_param} AND {second_date_param}"
+        else:
+            return f"SELECT COUNT({database_column}) FROM tb_attendance WHERE {database_column}={parameter}"
+    
+    def query_database_with_parameter(self,date,range,type):
+        query_param=self.get_database_field()
+        query_result = self.query_cache_data_list(self.query_distinct_parameter(query_param,date,range,type))
         result_list= []
         for item in query_result: 
             result_list.append(item[0])
         total:list = []
         for item in result_list:
-            program = "\'{}\'".format(item)
-            sub_count = self.query_cache_data_list("SELECT COUNT(*) FROM tb_attendance WHERE program="+program)
+            parameter = self.date_formater(item)
+            sub_count = self.query_cache_data_list(self.count_distinct_parameter(query_param,date,range,type,parameter))
             total.append(sub_count[0][0])
-        data = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance")
-        results= []
-        for item in data:
-            item = str(item[0]).split(' ')
-            results.append(item[1][0:4].upper()) 
-            if 'OF' in results:
-                index = results.index('OF')
-                results[index] = 'OPT'
-        return total,results
+        department:list = []
+        if query_param=='student_program':
+            for item in query_result:
+                item = str(item[0]).split(' ')
+                department.append(item[2][0:4].upper()) 
+                if 'OF' in department:
+                    index = department.index('OF')
+                    department[index] = 'OPT'
+            return department,total
+        else:
+            return result_list,total
 
-    def get_data_by_date(self):
+    def query_with_parameter_and_date(self):
         start = self.ui.report_start_date.text()
         start_date="\'{}\'".format(start)
         query_result = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance where date_stamp= "+start_date)
@@ -1399,93 +1461,10 @@ class MainWindow(QMainWindow):
         self.ui.date_range_comboBox.removeItem(self.ui.date_range_comboBox.currentIndex())
 
     def data_visualization(self):
-        colors = ['#2000DF', '#80c300', '#3DED97', 'yellow', 'orange', 'violet','#60009F','#005080'
-        ,'#00A000','#4E0707','#B56727','#5DBB63']        
-        width = 0.7
-        program = self.ui.college_courses.currentText()
-        path = 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
-        self.alert = AlertDialog()
-        if self.ui.bar_chart.isChecked():
-            if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
-                data = self.get_data_barchart()
-                if len(data[0])>=1:
-                    self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students","Programs",
-                    colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'barchart.png'))
-                    self.ui.plot_area_2.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()
-            elif self.ui.report_start_date.text() and not self.ui.report_end_date.text():
-                data = self.get_data_by_date()
-                if len(data[0])>=1:
-                    self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics ","Number of students",
-                    self.get_report_start_date(),colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'barchart.png'))
-                    self.ui.plot_area_2.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()
-            elif self.ui.report_end_date.text() and self.ui.report_end_date.text():
-                data = self.get_data_by_date_range()
-                if len(data[0])>=1:      
-                    self.barchart.bar_plot_single_view(data[0], data[1],width,"Statictics","Number of students",
-                    self.get_report_start_date()+" <> "+self.get_report_end_date(),colors[:len(data[0])])
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'barchart.png'))
-                    self.ui.plot_area_2.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()   
-        elif self.ui.line_graph.isChecked():
-            program=self.ui.college_courses.currentText()
-            if self.ui.date_range_comboBox.currentText():
-                y_values =self.line_plot_values()
-                if len(y_values)>=1:
-                    self.line_graph.plot_graph(y_values,title="Trend in attendance for "+program,label_="Trends",
-                    y_label="Number of students",x_label="Date")
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
-                    self.ui.plot_area_2.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()
-            elif not self.ui.date_range_comboBox.currentText():
-                y_values=self.count_attendance_for_all_distinct_dates()
-                if len(y_values[0])>=1:
-                    self.line_graph.plot_graph(y_values[0],title="Trend in attendance for "+program,label_="Trends",
-                    y_label="Number of students",x_label=self.reconstruct_date(y_values[1])+'<>'+self.reconstruct_date(y_values[2]))
-                    self.ui.plot_area_2.setPixmap(QPixmap.fromImage(path+'line_plot.png'))
-                    self.ui.plot_area_2.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()
-        elif self.ui.pie_chart.isChecked():
-            if self.ui.report_start_date.text() and not self.ui.report_end_date.text():
-                data = self.get_data_by_date()
-                if len(data[0])>=1:
-                    self.piechart.piechart(data,self.get_report_start_date())
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
-                    self.ui.plot_area.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()
-            elif self.ui.report_end_date.text() and self.ui.report_end_date.text():
-                data = self.get_data_by_date_range()
-                if len(data[0])>=1:      
-                    self.piechart.piechart(data,self.get_report_start_date()+" <> "+self.get_report_end_date())
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
-                    self.ui.plot_area.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show() 
-            elif not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
-                data = self.get_pichart_data()
-                if len(data[0])>=1:
-                    self.piechart.piechart(data,"Percentages of programs")
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
-                    self.ui.plot_area.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show() 
+        # print(self.shuffle_colors())
+        details=self.query_database_with_parameter('','','')
+        print(details)
+        pass
 
     def export_data_to_csv(self):
         self.alert = AlertDialog()
@@ -2666,11 +2645,11 @@ class Splash_screen(QMainWindow):
         self.write_to_file(path,mail_properties,'text/plain')
         
         path =os.path.join(root,'partition\\partition.txt')
-        partition = 'Faculty,Gender,College,Category,Disability,Department,Nationality'
+        partition = 'Faculty,Gender,College,Category,Disability,Nationality,Department'
         self.write_to_file(path,partition,'text/plain') 
 
         path =os.path.join(root,'partition\\database_fields.txt')
-        partition = 'student_faculty,student_gender,student_college,student_category,student_disability,student_department,student_nationality'
+        partition = 'student_faculty,student_gender,student_college,student_category,student_disability,student_nationality,student_program'
         self.write_to_file(path,partition,'text/plain')
         
         path =os.path.join(root,'email_details\\reset_password.txt')
