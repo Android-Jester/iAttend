@@ -168,10 +168,7 @@ class MainWindow(QMainWindow):
         self.ui.reg_nationality.setCompleter(country_completer)
         
         self.ui.reg_college.addItems(load_colleges(self.resource_path('structure.json')))
-        self.ui.reg_college.currentIndexChanged.connect(self.update_program_combo)
-        self.update_program_combo(self.ui.reg_college.currentIndex())
-        # self.ui.college_comboBox.addItem(college)
-        # self.ui.college_courses.addItems(programs)
+       
         self.ui.btn_remove_combox_item.clicked.connect(self.remove_item_from_comboBox)
         self.ui.btn_scan_range.clicked.connect(self.camera_thread)
         self.ui.btn_batch_browse.clicked.connect(self.browse_batch_data)
@@ -207,10 +204,32 @@ class MainWindow(QMainWindow):
 
         self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
         self.ui.btn_refresh_query_parameters.clicked.connect(self.reload_query_parameter)
+        self.ui.report_colleges.addItems(load_colleges(self.resource_path('structure.json')))
+        self.ui.report_colleges.activated.connect(self.load_college_faculties_report)
+        self.ui.report_faculties.activated.connect(self.load_colleges_report)
+        self.load_college_faculties_report()
+        self.load_colleges_report()
+
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False)
         # ,QDateTime,QDate,QTime
         ##################################################################################################
+
+    
+
+    def load_colleges_report(self):
+        report_departments = get_dept(self.resource_path('structure.json'),self.ui.report_colleges.currentText(),self.ui.report_faculties.currentText())
+        self.ui.report_departments.clear()
+        self.ui.report_departments.addItems(report_departments)
+        self.ui.report_colleges.activated.connect(self.load_college_faculties_report)
+
+    def load_college_faculties_report(self):
+        faculties=load_faculties(self.resource_path('structure.json'),self.ui.report_colleges.currentText())
+        self.ui.report_faculties.clear()
+        self.ui.report_faculties.addItems(faculties)
+        report_departments = get_dept(self.resource_path('structure.json'),self.ui.report_colleges.currentText(),self.ui.report_faculties.currentText())
+        self.ui.report_departments.clear()
+        self.ui.report_departments.addItems(report_departments)
 
     def shuffle_colors(self):
         details=self.get_read_colors_file(self.resource_path('colors.txt'))
@@ -253,6 +272,7 @@ class MainWindow(QMainWindow):
                 details = f.read().split(',')
             return details
 
+ 
     def date_formater(self,date):
         start_date="\'{}\'".format(date)
         return start_date
@@ -1033,6 +1053,7 @@ class MainWindow(QMainWindow):
     def validate_field(self,pattern,value):
         return bool(re.match(pattern,value))
 
+    #refactoring to be done here
     def insert_images(self):
         date=current.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
         name = str('images_logs_unprocessed')
@@ -1055,7 +1076,7 @@ class MainWindow(QMainWindow):
                 (db,my_cursor,connection_status) = self.database.my_cursor()
                 with open(image,'rb') as image_data:
                     data = image_data.read()
-                    my_cursor.execute("INSERT INTO tb_images(st_reference,image) VALUES(%s,%s)",(student_reference,data))
+                    my_cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(%s,%s)",(student_reference,data))
                     db.commit()
                     my_cursor.close()
         self.ui.batch_notification.setText("Valid images saved successfully\nanalyse logs for details...") 
@@ -1545,13 +1566,16 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! your data is not enough to\ngenerate charts..")
                 self.alert.show()
     
+    def line_plot(self):
+        pass
+
     def data_visualization(self):
         if self.ui.pie_chart.isChecked():
             self.report_piechart()
         elif self.ui.bar_chart.isChecked():
             self.barchart_plots()
         elif self.ui.line_graph.isChecked():
-            pass
+            self.line_plot()
 
     def export_data_to_csv(self):
         self.alert = AlertDialog()
@@ -1588,12 +1612,6 @@ class MainWindow(QMainWindow):
         else:
             self.alert.content("Oops! you have no data or filename\nprovided...")
             self.alert.show()
-
-    def update_program_combo(self,index):
-        self.ui.reg_programs.clear()
-        programs = self.ui.reg_college.itemData(index)
-        if programs:
-            self.ui.reg_programs.addItems(programs)
         
     def query_database(self, query: str):
         db,my_cursor,connection_status = self.database.my_cursor()
