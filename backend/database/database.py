@@ -45,20 +45,21 @@ class Database(QDialog):
         self.ui_database.comboBox.addItems(colleges)
 
     def get_details(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\properties\\properties.txt'
-        if os.path.exists(path):
-            with open(path,'r') as f:
-                details = f.read().split(',')
-            return details
-
+        with open('C:\\ProgramData\\iAttend\\data\\properties\\connection_properties.json','r') as f:
+            data = f.read()
+            try:
+                return json.loads(data)
+            except Exception as e:
+                pass
+    
     def set_database_properties(self):
         details = self.get_details()
-        self.ui_database.username.setText(details[0])
-        self.ui_database.password.setText(details[1])
-        self.ui_database.hostname.setText(details[2])
-        self.ui_database.port.setText(details[3])
-        self.ui_database.database_name.setText(details[4])
-        if str(details[5])=='mysql':
+        self.ui_database.username.setText(details['username'])
+        self.ui_database.password.setText(details['password'])
+        self.ui_database.hostname.setText(details['hostname'])
+        self.ui_database.port.setText(details['port'])
+        self.ui_database.database_name.setText(details['database'])
+        if str(details['servername'])=='mysql':
             self.ui_database.mysql.setChecked(True)
         
     def check_state(self):
@@ -116,7 +117,6 @@ class Database(QDialog):
                     cursor.execute(create_database(database))
                     cursor.execute(user_database(database))
                     cursor.execute(create_tb_students())
-                    cursor.execute(create_tb_student_profile())
                     cursor.execute(create_tb_student_study_details())
                     cursor.execute(create_tb_cameras())
                     cursor.execute(create_tb_user_details())
