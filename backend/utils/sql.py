@@ -35,8 +35,7 @@ def create_tb_student_profile():
         CREATE TABLE IF NOT EXISTS tb_student_images(
             generated_id BIGINT PRIMARY KEY AUTO_INCREMENT,
             student_reference varchar(100) NOT NULL UNIQUE, 
-            student_image BLOB NOT NULL,
-            FOREIGN KEY(student_reference) REFERENCES tb_students(student_reference) ON DELETE CASCADE ON UPDATE CASCADE
+            student_image BLOB NOT NULL
             )
         """
     return sql
@@ -153,8 +152,7 @@ def create_tb_images_sqlite():
         CREATE TABLE IF NOT EXISTS tb_student_images(
             generated_id INTEGER PRIMARY KEY AUTOINCREMENT,
             student_reference varchar(100) NOT NULL UNIQUE, 
-            student_image BLOB NOT NULL,
-            FOREIGN KEY(student_reference) REFERENCES tb_students(student_reference) ON DELETE CASCADE ON UPDATE CASCADE
+            student_image BLOB NOT NULL
             )
         """
     return sql
