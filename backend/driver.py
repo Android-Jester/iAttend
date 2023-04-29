@@ -2515,7 +2515,6 @@ class MainWindow(QMainWindow):
         self.ui.contrast_value.setText(str(value))
         return value      
     
-
     def maximize_restore(self):
         global GLOBAL_STATE
         status = GLOBAL_STATE
@@ -2741,7 +2740,7 @@ class Splash_screen(QMainWindow):
         mail_properties = "Username,Password,Hostname,Port,Database,Server"
         self.write_to_file(path,mail_properties,'text/plain')
 
-        path =path =os.path.join(root,'properties\\central_database_connection_propeties.json')
+        path =os.path.join(root,'properties\\central_database_connection_propeties.json')
         json_data = {
             "username":"username@CoS",
             "password":"passsword@CoS",
@@ -2750,8 +2749,18 @@ class Splash_screen(QMainWindow):
             "database":"database@CoS"
         }
         self.write_to_file(path,json_data,'json')
+
+        path =os.path.join(root,'properties\\connection_propeties.json')
+        json_data = {
+            "username":"username@connection",
+            "password":"passsword@connection",
+            "hostname":"hostname@connection",
+            "port":"port@connection",
+            "database":"database@connection",
+            "servername":"servername@connection"
+        }
+        self.write_to_file(path,json_data,'json')
        
-      
         with open(self.resource_path('database_properties.json'),'r') as data:
             json_data = json.load(data)
         path =os.path.join(root,'properties\\database_properties.json')
