@@ -155,7 +155,7 @@ class MainWindow(QMainWindow):
         ##################################################################################################
         self.ui.btn_load.clicked.connect(self.data_visualization)
         self.ui.report_start_date.textChanged.connect(self.report_start_date_value_change)
-        self.ui.btn_refresh.clicked.connect(self.hot_reload_thread)
+        self.ui.btn_refresh.clicked.connect(self.refresh_report_page)
         self.ui.btn_save.clicked.connect(self.save_report)
         self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
@@ -203,7 +203,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_consolidation_upload.clicked.connect(self.push_data)
 
         self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
-        self.ui.btn_refresh_query_parameters.clicked.connect(self.reload_query_parameter)
         self.ui.report_colleges.addItems(load_colleges(self.resource_path('structure.json')))
         self.ui.report_colleges.activated.connect(self.load_college_faculties_report)
         self.ui.report_faculties.activated.connect(self.load_colleges_report)
@@ -211,11 +210,9 @@ class MainWindow(QMainWindow):
         self.load_colleges_report()
 
         # self.ui.btn_csv.setEnabled(False)
-        # self.ui.btn_json.setEnabled(False)
+        # self.ui.btn_json.setEnabled(False) 
         # ,QDateTime,QDate,QTime
         ##################################################################################################
-
-    
 
     def load_colleges_report(self):
         report_departments = get_dept(self.resource_path('structure.json'),self.ui.report_colleges.currentText(),self.ui.report_faculties.currentText())
@@ -231,9 +228,8 @@ class MainWindow(QMainWindow):
         self.ui.report_departments.clear()
         self.ui.report_departments.addItems(report_departments)
 
-    def shuffle_colors(self):
-        details=self.get_read_colors_file(self.resource_path('colors.txt'))
-        shuffled = np.random.permutation(details)
+    def shuffle_list(self,data: list):
+        shuffled = np.random.permutation(data)
         return shuffled
 
     def get_read_colors_file(self,path):
@@ -245,13 +241,6 @@ class MainWindow(QMainWindow):
                 color = '#'+color
                 colors_list.append(color)
             return np.random.permutation(colors_list)
-
-    def reload_query_parameter(self):
-        self.ui.query_parameter.clear()
-        self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
-        query_parameter = self.read_partitions(self.get_root_path('partition\\partition.txt'))
-        database_fields=self.read_partitions(self.get_root_path('partition\\database_fields.txt'))
-        return dict(zip(query_parameter,database_fields))
 
     def get_database_field(self):
         dictionary=self.map_query_parameter_to_db_field()
@@ -272,7 +261,6 @@ class MainWindow(QMainWindow):
                 details = f.read().split(',')
             return details
 
- 
     def date_formater(self,date):
         start_date="\'{}\'".format(date)
         return start_date
@@ -1010,9 +998,7 @@ class MainWindow(QMainWindow):
                     email_address=[10]
                     )
                 student_string ={
-                    "index":student.index,
                     "reference":student.reference,
-                    "mail_address":student.email_address
                     }
                 if self.connected_to_internet()==True:
                     student_json=self.convert_to_json(student_string)
@@ -1053,7 +1039,6 @@ class MainWindow(QMainWindow):
     def validate_field(self,pattern,value):
         return bool(re.match(pattern,value))
 
-    #refactoring to be done here
     def insert_images(self):
         date=current.now().strftime('%d_%B_%Y_%I_%M_%S_%p')
         name = str('images_logs_unprocessed')
@@ -1073,10 +1058,11 @@ class MainWindow(QMainWindow):
                     file.writelines('\n'+str(student_reference))
                     file.close
             if extension in images_extension and validate:
-                (db,my_cursor,connection_status) = self.database.my_cursor()
+                db = sqlite3.connect(self.get_cache_path())
+                my_cursor = db.cursor()
                 with open(image,'rb') as image_data:
                     data = image_data.read()
-                    my_cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(%s,%s)",(student_reference,data))
+                    my_cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(?,?)",(student_reference,data))
                     db.commit()
                     my_cursor.close()
         self.ui.batch_notification.setText("Valid images saved successfully\nanalyse logs for details...") 
@@ -1085,6 +1071,7 @@ class MainWindow(QMainWindow):
         path = self.ui.batch_browse.text()
         self.alert = AlertDialog()
         check_state = self.database.check_state()
+        partition = self.validate_field("^[0-9]+$",self.ui.batch_partition.text())
         if path:
             if not check_state:
                 self.pool = QThreadPool()
@@ -1094,9 +1081,10 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! no database configured...")
                 self.alert.show()
         else:
-            self.alert.content("Oops! invalid file path...")
+            self.alert.content("Oops! invalid file path or\n Split not set...")
             self.alert.show()
 
+    #to be refactored
     def batch_insert_student_data(self):
         self.alert = AlertDialog()
         check_state=self.database.check_state()
@@ -1112,6 +1100,9 @@ class MainWindow(QMainWindow):
             if check_state == True:
                 pass
             else:
+                start = time.time()
+                partition = self.validate_field("^[0-9]+$",self.ui.batch_partition.text())
+                batch_size= len(student_list)//partition
                 for student in student_list:
                     name_ = str(student[0]).split(' ')
                     firstname  = name_[0]+' '+name_[1]
@@ -1125,18 +1116,21 @@ class MainWindow(QMainWindow):
                         my_cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (%s,%s,%s,%s,%s)",
                         (student[1],student[7],student[8],student[9],student[10]))   
                         db.commit()
+                        print(f"Student record @{student[1]} pushed to server")
                     else:
                         with open(path,'a+') as file:
                             file.writelines('\n'+str(student))
                         file.close
+                end = time.time()
                 self.ui.batch_notification.setText("Valid records saved successfully...")
+                print(f"Execution time {end-start} seconds")
         else:   
             self.alert.content("Oops! invalid file path or content is empty...")
             self.alert.show()
        
     def load_batch_data(self):
         results_list = []
-        path = self.ui.batch_browse.text()
+        path = batch_file_path
         if path:
             with open(path,'r') as filename:
                 data=csv.reader(filename)
@@ -1194,8 +1188,10 @@ class MainWindow(QMainWindow):
     def browse_batch_data(self):
         file_type = "CSV Files(*.csv);;Text Files(*.txt)"   
         path= QFileDialog.getOpenFileName(self, "Select File","C:\\Documents",file_type)
+        global batch_file_path
         if path:
-            self.ui.batch_browse.setText(path[0])
+            batch_file_path= path[0]
+            self.ui.batch_browse.setText(os.path.basename(path[0]))
             try:
                 self.batch_table(self.load_batch_data())
                 self.alert = AlertDialog()
@@ -1280,15 +1276,18 @@ class MainWindow(QMainWindow):
         self.alert.show()
 
 
-    def hot_reload_thread(self):
-        self.alert = AlertDialog()
-        if not self.database.check_state():
-            self.pool = QThreadPool()
-            self.work = SendThread(self.hot_reload)
-            self.pool.start(self.work)
-        else:
-            self.alert.content("Oops! no database configured...")
-            self.alert.show() 
+    def refresh_report_page(self):
+        self.ui.chart_title.clear()
+        self.ui.report_start_date.clear()
+        self.ui.report_end_date.clear()
+        self.ui.dpi.clear()
+        self.ui.figure_area.clear()
+        self.ui.bar_width.clear()
+        self.ui.start_angle.clear()
+        self.ui.pie_ldist.clear()
+        self.ui.pctdist.clear()
+        self.ui.file_name.clear()
+        self.ui. plot_area.setText('Graph')
         
     def data_visualization_thread(self):
         self.alert = AlertDialog()
@@ -1341,49 +1340,11 @@ class MainWindow(QMainWindow):
         date_value=str(date).split('-')
         date_transformed = datetime.date(int(date_value[0]),int(date_value[1]),int(date_value[2])).strftime("%a %d %b, %Y")
         return date_transformed   
-    
-    def get_pichart_data(self):
-        query = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance")
-        result_set= []
-        for item in query: 
-            result_set.append(item[0])
-        total:list = []
-        for item in result_set:
-            program = "\'{}\'".format(item)
-            sub_count = self.query_cache_data_list("SELECT COUNT(*) FROM tb_attendance WHERE program="+program)
-            total.append(sub_count[0][0])
-        data = self.query_cache_data_list("SELECT DISTINCT program FROM tb_attendance")
-        result= []
-        for item in data:
-            item = str(item[0]).split(' ')
-            result.append(item[1][0:4].upper()) 
-            if 'OF' in result:
-                index = result.index('OF')
-                result[index] = 'OPT'
-        return total, result
-        
-    def hot_reload(self): 
-        data = self.get_pichart_data()
-        self.piechart.piechart(data,"Percentages of programs")
-        self.data_visualization()
         
     def report_start_date_value_change(self):
         date=self.ui.report_start_date.text()
         if self.ui.line_graph.isChecked():
             self.ui.date_range_comboBox.addItem(date) 
-
-    def count_attendance_for_all_distinct_dates(self):
-        program_="\'{}\'".format(self.ui.college_courses.currentText())
-        results_list = []
-        results=self.query_cache_data_list("SELECT DISTINCT date_stamp FROM tb_attendance where program="+program_+" order by date_stamp asc")
-        for date in results:
-            results_list.append(date[0])    
-        values =[]
-        for date in results_list:
-            date_values="\'{}\'".format(date)
-            result_set=self.query_cache_data_list("SELECT COUNT(*) FROM tb_attendance where date_stamp="+date_values + " and program="+program_)
-            values.append(result_set[0][0])
-            return values, results[0][0], results[-1][-1]
 
     def report_date(self):
         report_start_date= self.ui.report_start_date.text()
@@ -1433,19 +1394,26 @@ class MainWindow(QMainWindow):
         else:
             return result_list,total
 
-
-    def line_plot_values(self):
+    def line_plot_values(self,database_column,query_param,partition):
         results_list = []
-        dates=self.get_date_for_line_plot()
-        program=self.ui.college_courses.currentText()
+        dates = sorted(self.get_dates_for_line_plot())
         for date in range(len(dates)):
-            date_values="\'{}\'".format(dates[date])
-            program_="\'{}\'".format(program)
-            results=self.query_cache_data_list("SELECT COUNT(*) program FROM tb_attendance where date_stamp="+date_values+" AND program="+program_)
-            results_list.append(results[0][0])
+            date_value=self.date_formater(dates[date])
+            if partition=='Faculty' or partition=='Department' or partition=='College':
+                results=self.query_cache_data_list(f"SELECT COUNT({database_column}) FROM tb_attendance where date_stamp={date_value} AND {database_column}={query_param}")
+                results_list.append(results)
+            else:
+                results=self.query_cache_data_list(f"SELECT COUNT({database_column}) FROM tb_attendance where date_stamp={date_value}")
+                results_list.append(results)
         return results_list
 
-    def get_date_for_line_plot(self):
+    def get_actual_plot_values(self,data: list):
+        values: list = []
+        for item in data:
+            values.append(item[0][0])
+        return values
+
+    def get_dates_for_line_plot(self):
         setattr(self.ui.date_range_comboBox,'allItems',
         lambda:[self.ui.date_range_comboBox.itemText(i) for i in range(self.ui.date_range_comboBox.count())])
         return self.ui.date_range_comboBox.allItems()
@@ -1465,8 +1433,8 @@ class MainWindow(QMainWindow):
             else:
                 return default
 
-    def get_plot_properties(self):
-        title = f"Grouped By {self.ui.query_parameter.currentText()}"
+    def get_plot_properties(self,hearder:str):
+        title = f"{hearder} {self.ui.query_parameter.currentText()}"
         chart_title=self.get_plot_parameter(value=self.ui.chart_title.text(),default=title,type='text')
         figure_area=self.get_plot_parameter(value=self.ui.figure_area.text(),default=10,type='number')
         bar_width=self.get_plot_parameter(value=self.ui.bar_width.text(),default=8,type='number')
@@ -1484,12 +1452,15 @@ class MainWindow(QMainWindow):
         date_transformed = datetime.date(int(date_value[0]),int(date_value[1]),int(date_value[2])).strftime("%b %d, %Y")
         return date_transformed 
 
+    def get_visualize_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
+
     def barchart_plots(self):
-        colors=self.shuffle_colors()
-        properties=self.get_plot_properties()
+        colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
+        properties=self.get_plot_properties('Grouped By')
         self.alert = AlertDialog()
         report_date = self.report_date()
-        path = 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
+        path = self.get_visualize_path()
         y_label= 'Number of students'
         if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
             data = self.query_database_with_parameter('','','')
@@ -1528,11 +1499,11 @@ class MainWindow(QMainWindow):
                     self.alert.show()
 
     def report_piechart(self):
-        colors=self.shuffle_colors()
-        properties=self.get_plot_properties()
+        colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
+        properties=self.get_plot_properties('Grouped By')
         self.alert = AlertDialog()
         report_date = self.report_date()
-        path = 'C:\\ProgramData\\iAttend\\data\\reports\\visualize\\'
+        path = self.get_visualize_path()
         if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
             data = self.query_database_with_parameter('','','')
             if len(data[0])>=1:
@@ -1567,7 +1538,59 @@ class MainWindow(QMainWindow):
                 self.alert.show()
     
     def line_plot(self):
-        pass
+        colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
+        colors=colors[:1]
+        marker=self.shuffle_list(self.read_partitions(self.resource_path('markers.txt')))
+        marker=marker[:1]
+        properties=self.get_plot_properties('Plotted By')
+        self.alert = AlertDialog()
+        path = self.get_visualize_path()
+        y_label= 'Number of students'
+        query_param=self.get_database_field() 
+        report_faculties=self.date_formater(self.ui.report_faculties.currentText())
+        report_departments=self.date_formater(self.ui.report_departments.currentText())
+        report_college=self.date_formater(self.ui.report_colleges.currentText())
+        query_value = self.ui.query_parameter.currentText()
+        if query_value == "Faculty":
+            data=self.get_actual_plot_values(self.line_plot_values(query_param,report_faculties,'Faculty'))
+            if len(data)>=1:
+                self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
+                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
+        elif query_value == "Department":
+            data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,'Department'))
+            if len(data)>=1:
+                self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
+                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
+        elif query_value == "College":
+            data=self.get_actual_plot_values(self.line_plot_values(query_param,report_college,'College'))
+            if len(data)>=1:
+                self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
+                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
+        else:
+            data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,''))
+            if len(data)>=1:
+                self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
+                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
+                self.ui.plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
 
     def data_visualization(self):
         if self.ui.pie_chart.isChecked():
@@ -2194,7 +2217,6 @@ class MainWindow(QMainWindow):
             self.ui.last_in.setText("00:00:00") 
 
     def insert_into_cache_db(self,data: list):
-        # database_image='C:\\ProgramData\\iAttend\\data\\images\\database_image.jpg'
         db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
         student_reference=self.value_formater(data[1])
@@ -2206,13 +2228,7 @@ class MainWindow(QMainWindow):
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
             (data[11],data[12],data[13],data[14],data[15]))   
             db.commit()
-            # with open(database_image,'rb') as image:
-            #     data = image.read()
-            #     cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(?,?)",(self.ui.reference.text(),data))
-            # db.commit()
-            # cursor.close()
             
-
     def fetch_data_from_db(self,reference):
         try:
             student_reference=self.value_formater(reference)
@@ -2266,7 +2282,8 @@ class MainWindow(QMainWindow):
             pass
         
     def load_image_from_db(self,query,label):
-        (db,my_cursor,connection_status) = self.database.my_cursor()
+        db = sqlite3.connect(self.get_cache_path())
+        my_cursor = db.cursor()
         cursor=my_cursor.execute(query)
         cursor= my_cursor.fetchone()
         db.commit()
