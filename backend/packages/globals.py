@@ -42,6 +42,8 @@ account_lastname= ''
 GLOBAL_STATE
 student_disability= ''
 
+GLOBAL_STATE
+batch_file_path= ''
 
 
 
