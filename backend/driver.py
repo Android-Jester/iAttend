@@ -194,7 +194,6 @@ class MainWindow(QMainWindow):
         self.load_colleges()
         self.set_curent_dates()
         self.set_database_colleges()
-        
         self.get_central_database_properties()
         self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
         self.ui.btn_consolidation_load.clicked.connect(self.load_merge_data)
@@ -801,11 +800,8 @@ class MainWindow(QMainWindow):
             return details
 
     def get_registration_details(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\account_registration.txt'
-        if os.path.exists(path):
-            with open(path,'r') as f:
-                details = f.read().split(',')
-            return details
+        data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\account_registration.json')
+        return data['sender'],data['subject'],data['mail'],data['password']
 
     def send_account_detail(self):
         self.alert = AlertDialog()
@@ -1084,7 +1080,6 @@ class MainWindow(QMainWindow):
             self.alert.content("Oops! invalid file path or\n Split not set...")
             self.alert.show()
 
-    #to be refactored
     def batch_insert_student_data(self):
         self.alert = AlertDialog()
         check_state=self.database.check_state()
@@ -1858,11 +1853,8 @@ class MainWindow(QMainWindow):
         self.ui.sender_password.setText(details[3])
     
     def get_details(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\detail.txt'
-        if os.path.exists(path):
-            with open(path,'r') as f:
-                details = f.read().split(',')
-            return details
+        data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\details.json')
+        return data['sender'],data['subject'],data['mail'],data['password']
     
     def get_mail_content(self):
         path = 'C:\\ProgramData\\iAttend\\data\\email_details\\content.txt'
@@ -2736,10 +2728,13 @@ class Splash_screen(QMainWindow):
 
     def create_files(self):
         root = 'C:\\ProgramData\\iAttend\\data\\'
-        path =os.path.join(root,'properties\\properties.txt')
-        mail_properties = "Username,Password,Hostname,Port,Database,Server"
-        self.write_to_file(path,mail_properties,'text/plain')
-
+        mail_properties = {
+                "sender": "Sender",
+                "subject": "Subject",
+                "mail": "example@example.com",
+                "password": "Password"
+                }
+        
         path =os.path.join(root,'properties\\central_database_connection_propeties.json')
         json_data = {
             "username":"username@CoS",
@@ -2750,7 +2745,7 @@ class Splash_screen(QMainWindow):
         }
         self.write_to_file(path,json_data,'json')
 
-        path =os.path.join(root,'properties\\connection_propeties.json')
+        path =os.path.join(root,'properties\\connection_properties.json')
         json_data = {
             "username":"username@connection",
             "password":"passsword@connection",
@@ -2772,8 +2767,8 @@ class Splash_screen(QMainWindow):
         if os.path.exists(path):
             pass
 
-        path =os.path.join(root,'email_details\\detail.txt')
-        self.write_to_file(path,mail_properties,'text/plain')
+        path =os.path.join(root,'email_details\\details.json')
+        self.write_to_file(path,mail_properties,'json')
         
         path =os.path.join(root,'partition\\partition.txt')
         partition = 'Faculty,Gender,College,Category,Disability,Nationality,Department'
@@ -2783,11 +2778,11 @@ class Splash_screen(QMainWindow):
         partition = 'student_faculty,student_gender,student_college,student_category,student_disability,student_nationality,student_program'
         self.write_to_file(path,partition,'text/plain')
         
-        path =os.path.join(root,'email_details\\reset_password.txt')
-        self.write_to_file(path,mail_properties,'text/plain')
+        path =os.path.join(root,'email_details\\reset_password.json')
+        self.write_to_file(path,mail_properties,'json')
 
-        path =os.path.join(root,'email_details\\account_registration.txt')
-        self.write_to_file(path,mail_properties,'text/plain')
+        path =os.path.join(root,'email_details\\account_registration.json')
+        self.write_to_file(path,mail_properties,'json')
         
         path =os.path.join(root,'email_details\\content.txt')
         content = """
@@ -2855,7 +2850,6 @@ class Splash_screen(QMainWindow):
         """
         self.write_to_file(path,new_account_content,'text/plain')
         
-
     def create_database_tables(self):
         db = sqlite3.connect(self.get_path())
         cursor = db.cursor()
