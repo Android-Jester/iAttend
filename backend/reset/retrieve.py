@@ -62,11 +62,8 @@ class ForgotPassword(QDialog):
             return details
 
     def get_details(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\reset_password.txt'
-        if os.path.exists(path):
-            with open(path,'r') as f:
-                details = f.read().split(',')
-            return details
+        data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\reset_password.json')
+        return data['sender'],data['subject'],data['mail'],data['password']
 
     def send_mail(self,reference,username): 
         account_mail=self.query_database("SELECT user_mail,user_lastname FROM tb_user_details WHERE user_reference="+"\'{}\'".format(reference))
