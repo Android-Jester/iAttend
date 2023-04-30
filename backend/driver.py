@@ -264,6 +264,20 @@ class MainWindow(QMainWindow):
         start_date="\'{}\'".format(date)
         return start_date
 
+    def consolidation_mail_details(self):
+        data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\consolidation.json')
+        return data['sender'],data['subject'],data['mail'],data['password']
+
+    def consolidation_mail_content(self,facility_name,total_records,date_fetched,current_account):
+        date = current.now().strftime("%a %b %d, %Y,")
+        time_ = time.strftime("%I:%M:%S %p")
+        path = 'C:\\ProgramData\\iAttend\\data\\email_details\\consolidation_content.txt'
+        if os.path.exists(path):
+            with open(path,'r') as f:
+                details = f.read()
+                details = str(details).replace('stamp',f"{date} {time_}").replace('facility',facility_name).replace('value',total_records).replace('date',date_fetched).replace('Username',current_account)
+            return details
+
     def push_data(self):
         self.alert = AlertDialog()
         facility = self.ui.db_consolidation_facility.text()
@@ -271,7 +285,8 @@ class MainWindow(QMainWindow):
             properties = self.merge_database_properties()
             results=self.transform_data(self.load_merge_data(),facility)
             partition = self.validate_field("^[0-9]+$",self.ui.db_consolidation_partition.text())
-            if results and partition: 
+            facility = self.ui.db_consolidation_facility.text()
+            if results and partition and facility: 
                 batch_size=self.compute_push_strategy(self.load_merge_data())
                 db,test=self.database_connection_test(properties)
                 cursor = db.cursor()
@@ -280,10 +295,20 @@ class MainWindow(QMainWindow):
                     cursor.executemany("INSERT INTO tb_attendance_central_merge(student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,facility_used) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
                     results[record:record+batch_size])
                     db.commit()
+                current_account = f"{account_firstname} {account_lastname}"
+                receiver = self.ui.db_consolidation_mail.text() 
+                records_date=self.load_merge_dates()
+                content = self.consolidation_mail_content(facility,str(len(results)),records_date,current_account)
+                print(content)
+                if self.connected_to_internet()==True and receiver:
+                    self.mail=UserMailThread(details=self.consolidation_mail_details(),mail_content=content,receiver=receiver)
+                    self.mail.start()
+                    self.alert.content(f"Mail sent to administrator..")
+                    self.alert.show()
                 self.alert.content("Pushed "+str(len(results))+" records to server")
                 self.alert.show()
             else:
-                self.alert.content("Oops! records or partition strategy\nnot set!")
+                self.alert.content("Oops! records or partition\nstrategy/facility name not set!")
                 self.alert.show()
         except Exception as e:
             self.alert.content(str(e))
@@ -390,7 +415,18 @@ class MainWindow(QMainWindow):
             self.ui.merge_table.setItem(row_count,5,QTableWidgetItem(str(data[5])))
             self.ui.merge_table.setItem(row_count,6,QTableWidgetItem(str(data[6])))
             row_count = row_count+1
-        
+
+    def load_merge_dates(self):
+        start=self.date_formater(self.ui.db_consolidation_start.text())
+        state = self.ui.db_consolidation_range.isChecked()
+        stop=self.date_formater(self.ui.db_consolidation_stop.text())
+        if self.ui.db_fetch_all.isChecked(): 
+            return 'All records fetched from database'
+        elif start and not state:
+            return self.reconstruct_date(start)
+        elif start and stop and state:
+            return f'{self.reconstruct_date(start)}-{self.reconstruct_date(stop)}'
+
     def load_merge_data(self):
         self.alert = AlertDialog()
         start=self.date_formater(self.ui.db_consolidation_start.text())
@@ -2769,6 +2805,9 @@ class Splash_screen(QMainWindow):
 
         path =os.path.join(root,'email_details\\details.json')
         self.write_to_file(path,mail_properties,'json')
+
+        path =os.path.join(root,'email_details\\consolidation.json')
+        self.write_to_file(path,mail_properties,'json')
         
         path =os.path.join(root,'partition\\partition.txt')
         partition = 'Faculty,Gender,College,Category,Disability,Nationality,Department'
@@ -2850,6 +2889,35 @@ class Splash_screen(QMainWindow):
         """
         self.write_to_file(path,new_account_content,'text/plain')
         
+        path =os.path.join(root,'email_details\\consolidation_content.txt')
+        merge_content = """
+        Dear Administrator,
+
+            I hope this message finds you well. I wanted 
+            to inform you that as of stamp, the data you 
+            requested has been successfully pushed to the
+            server.
+
+            Facility name: facility
+            Total records: value
+            Date: date
+
+            Our team has taken great care to ensure that the
+            data is accurate and up-to-date, and we have also
+            implemented appropriate security measures to protect
+            the data.
+
+            Please let us know if you need any further assistance
+            or if you have any questions or concerns. We are always
+            happy to help in any way we can.
+
+            Thank you for your attention to this matter.
+
+        Best regards,
+        Username
+        """
+        self.write_to_file(path,merge_content,'text/plain')
+
     def create_database_tables(self):
         db = sqlite3.connect(self.get_path())
         cursor = db.cursor()
