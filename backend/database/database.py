@@ -152,5 +152,3 @@ class Database(QDialog):
 
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
-
-    
