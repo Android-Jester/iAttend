@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardDAhHeA.ui'
+## Form generated from reading UI file 'dashoboardSyyILg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1268,9 +1268,9 @@ class Ui_dashboard(object):
         self.label_18.setAlignment(Qt.AlignCenter)
         self.scan_range_label = QLabel(self.frame_5)
         self.scan_range_label.setObjectName(u"scan_range_label")
-        self.scan_range_label.setGeometry(QRect(20, 160, 435, 51))
-        self.scan_range_label.setMinimumSize(QSize(435, 0))
-        self.scan_range_label.setMaximumSize(QSize(435, 16777215))
+        self.scan_range_label.setGeometry(QRect(20, 160, 420, 51))
+        self.scan_range_label.setMinimumSize(QSize(420, 0))
+        self.scan_range_label.setMaximumSize(QSize(420, 16777215))
         self.scan_range_label.setFont(font4)
         self.scan_range_label.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1287,9 +1287,9 @@ class Ui_dashboard(object):
         self.label_42.setPixmap(QPixmap(u":/icons/asset/camera.svg"))
         self.btn_scan_range = QPushButton(self.frame_5)
         self.btn_scan_range.setObjectName(u"btn_scan_range")
-        self.btn_scan_range.setGeometry(QRect(310, 80, 145, 51))
-        self.btn_scan_range.setMinimumSize(QSize(145, 0))
-        self.btn_scan_range.setMaximumSize(QSize(145, 16777215))
+        self.btn_scan_range.setGeometry(QRect(310, 80, 130, 51))
+        self.btn_scan_range.setMinimumSize(QSize(130, 0))
+        self.btn_scan_range.setMaximumSize(QSize(130, 16777215))
         self.btn_scan_range.setFont(font2)
         self.btn_scan_range.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1983,7 +1983,7 @@ class Ui_dashboard(object):
         self.btn_batch_browse.setFlat(True)
         self.batch_browse = QLineEdit(self.frame_27)
         self.batch_browse.setObjectName(u"batch_browse")
-        self.batch_browse.setGeometry(QRect(20, 20, 301, 51))
+        self.batch_browse.setGeometry(QRect(20, 20, 221, 51))
         self.batch_browse.setFont(font2)
         self.batch_browse.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2091,7 +2091,7 @@ class Ui_dashboard(object):
         self.btn_batch_images.setFlat(True)
         self.header_check = QRadioButton(self.frame_27)
         self.header_check.setObjectName(u"header_check")
-        self.header_check.setGeometry(QRect(340, 20, 41, 51))
+        self.header_check.setGeometry(QRect(260, 20, 121, 51))
         self.header_check.setFont(font2)
         self.header_check.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(45, 45, 45);\n"
@@ -4292,6 +4292,7 @@ class Ui_dashboard(object):
 "	color: rgb(255, 255, 255);\n"
 "}")
         self.pie_chart.setChecked(False)
+        self.pie_chart.setAutoExclusive(True)
         self.bar_chart = QRadioButton(self.frame_8)
         self.bar_chart.setObjectName(u"bar_chart")
         self.bar_chart.setGeometry(QRect(110, 580, 101, 23))
@@ -4301,6 +4302,7 @@ class Ui_dashboard(object):
 "	color: rgb(255, 255, 255);\n"
 "}")
         self.bar_chart.setChecked(False)
+        self.bar_chart.setAutoExclusive(True)
         self.line_graph = QRadioButton(self.frame_8)
         self.line_graph.setObjectName(u"line_graph")
         self.line_graph.setGeometry(QRect(210, 580, 111, 23))
@@ -4309,6 +4311,7 @@ class Ui_dashboard(object):
 "	background-color: rgb(35, 35, 35);\n"
 "	color: rgb(255, 255, 255);\n"
 "}")
+        self.line_graph.setAutoExclusive(True)
         self.design_10 = QLabel(self.frame_8)
         self.design_10.setObjectName(u"design_10")
         self.design_10.setGeometry(QRect(0, 770, 331, 91))
@@ -4505,7 +4508,7 @@ class Ui_dashboard(object):
         self.start_angle.setClearButtonEnabled(True)
         self.query_parameter = QComboBox(self.frame_8)
         self.query_parameter.setObjectName(u"query_parameter")
-        self.query_parameter.setGeometry(QRect(10, 380, 171, 37))
+        self.query_parameter.setGeometry(QRect(10, 380, 311, 37))
         self.query_parameter.setMinimumSize(QSize(0, 37))
         self.query_parameter.setMaximumSize(QSize(16777215, 35))
         self.query_parameter.setFont(font2)
@@ -4722,29 +4725,6 @@ class Ui_dashboard(object):
 "	padding-top:5px;\n"
 "}")
         self.design_11.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.btn_refresh_query_parameters = QPushButton(self.frame_8)
-        self.btn_refresh_query_parameters.setObjectName(u"btn_refresh_query_parameters")
-        self.btn_refresh_query_parameters.setGeometry(QRect(190, 380, 131, 38))
-        self.btn_refresh_query_parameters.setMinimumSize(QSize(0, 38))
-        self.btn_refresh_query_parameters.setMaximumSize(QSize(16777215, 38))
-        self.btn_refresh_query_parameters.setFont(font2)
-        self.btn_refresh_query_parameters.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 15px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        self.btn_refresh_query_parameters.setIcon(icon28)
-        self.btn_refresh_query_parameters.setIconSize(QSize(30, 30))
-        self.btn_refresh_query_parameters.setFlat(True)
         self.design_11.raise_()
         self.design_7.raise_()
         self.report_date.raise_()
@@ -4777,7 +4757,6 @@ class Ui_dashboard(object):
         self.report_departments.raise_()
         self.btn_remove_combox_item.raise_()
         self.date_range_comboBox.raise_()
-        self.btn_refresh_query_parameters.raise_()
 
         self.horizontalLayout_16.addWidget(self.frame_8)
 
@@ -4913,7 +4892,7 @@ class Ui_dashboard(object):
 
         self.retranslateUi(dashboard)
 
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(dashboard)
@@ -5050,7 +5029,7 @@ class Ui_dashboard(object):
         self.btn_batch_mail.setText(QCoreApplication.translate("dashboard", u"Mail", None))
         self.btn_batch_folder.setText(QCoreApplication.translate("dashboard", u"Images", None))
         self.btn_batch_images.setText(QCoreApplication.translate("dashboard", u"Insert", None))
-        self.header_check.setText(QCoreApplication.translate("dashboard", u"H", None))
+        self.header_check.setText(QCoreApplication.translate("dashboard", u"File Header", None))
         ___qtablewidgetitem12 = self.tableWidget_batch.horizontalHeaderItem(0)
         ___qtablewidgetitem12.setText(QCoreApplication.translate("dashboard", u"Name", None));
         ___qtablewidgetitem13 = self.tableWidget_batch.horizontalHeaderItem(1)
@@ -5225,7 +5204,6 @@ class Ui_dashboard(object):
         self.pctdist.setPlaceholderText(QCoreApplication.translate("dashboard", u"pctdist", None))
         self.btn_remove_combox_item.setText(QCoreApplication.translate("dashboard", u"Date", None))
         self.design_11.setText(QCoreApplication.translate("dashboard", u"Plot values", None))
-        self.btn_refresh_query_parameters.setText(QCoreApplication.translate("dashboard", u"Refresh", None))
         self.plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
         self.textEdit.setHtml(QCoreApplication.translate("dashboard", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
