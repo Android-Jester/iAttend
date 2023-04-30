@@ -13,12 +13,12 @@ class UserMailThread(QThread):
         try:
             msg = EmailMessage()
             msg.set_content(self.mail_content)
-            msg['Subject'] = str(self.details[0])
-            msg['From'] = str(self.details[2])+' <apps.learning.commons@gmail.com>'
+            msg['Subject'] = str(self.details[1])
+            msg['From'] = str(self.details[0])+f'<{str(self.details[2])}>'
             msg['To'] = str(self.receiver)
             server = smtplib.SMTP(host='smtp.gmail.com', port=587)
             server.starttls()
-            server.login(str(self.details[1]),str(self.details[3]))
+            server.login(str(self.details[2]),str(self.details[3]))
             server.send_message(msg)
             server.quit()
         except smtplib.SMTPException:
