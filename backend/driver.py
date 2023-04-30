@@ -207,7 +207,7 @@ class MainWindow(QMainWindow):
         self.ui.report_faculties.activated.connect(self.load_colleges_report)
         self.load_college_faculties_report()
         self.load_colleges_report()
-
+        
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False) 
         # ,QDateTime,QDate,QTime
@@ -299,13 +299,10 @@ class MainWindow(QMainWindow):
                 receiver = self.ui.db_consolidation_mail.text() 
                 records_date=self.load_merge_dates()
                 content = self.consolidation_mail_content(facility,str(len(results)),records_date,current_account)
-                print(content)
                 if self.connected_to_internet()==True and receiver:
                     self.mail=UserMailThread(details=self.consolidation_mail_details(),mail_content=content,receiver=receiver)
                     self.mail.start()
-                    self.alert.content(f"Mail sent to administrator..")
-                    self.alert.show()
-                self.alert.content("Pushed "+str(len(results))+" records to server")
+                self.alert.content("Pushed "+str(len(results))+" records to server\nMail sent to administrator..")
                 self.alert.show()
             else:
                 self.alert.content("Oops! records or partition\nstrategy/facility name not set!")
@@ -1883,9 +1880,9 @@ class MainWindow(QMainWindow):
 
     def set_sender_details(self):
         details=self.get_details()
-        self.ui.email_from.setText(details[2])
-        self.ui.email_sender.setText(details[1])
-        self.ui.email_subject.setText(details[0])
+        self.ui.email_from.setText(details[0])
+        self.ui.email_sender.setText(details[2])
+        self.ui.email_subject.setText(details[1])
         self.ui.sender_password.setText(details[3])
     
     def get_details(self):
