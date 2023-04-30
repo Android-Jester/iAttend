@@ -1197,7 +1197,7 @@ QPushButton:pressed{
               <string notr="true">background-color: rgb(45, 45, 45);</string>
              </property>
              <property name="currentIndex">
-              <number>6</number>
+              <number>0</number>
              </property>
              <widget class="QWidget" name="home">
               <property name="minimumSize">
@@ -2854,19 +2854,19 @@ QPushButton:pressed{
                             <rect>
                              <x>20</x>
                              <y>160</y>
-                             <width>435</width>
+                             <width>420</width>
                              <height>51</height>
                             </rect>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>435</width>
+                             <width>420</width>
                              <height>0</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>435</width>
+                             <width>420</width>
                              <height>16777215</height>
                             </size>
                            </property>
@@ -2918,19 +2918,19 @@ QPushButton:pressed{
                             <rect>
                              <x>310</x>
                              <y>80</y>
-                             <width>145</width>
+                             <width>130</width>
                              <height>51</height>
                             </rect>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>145</width>
+                             <width>130</width>
                              <height>0</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>145</width>
+                             <width>130</width>
                              <height>16777215</height>
                             </size>
                            </property>
@@ -4635,7 +4635,7 @@ QPushButton:pressed{
                    <rect>
                     <x>20</x>
                     <y>20</y>
-                    <width>301</width>
+                    <width>221</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4861,9 +4861,9 @@ QPushButton:pressed{
                  <widget class="QRadioButton" name="header_check">
                   <property name="geometry">
                    <rect>
-                    <x>340</x>
+                    <x>260</x>
                     <y>20</y>
-                    <width>41</width>
+                    <width>121</width>
                     <height>51</height>
                    </rect>
                   </property>
@@ -4878,7 +4878,7 @@ background-color: rgb(45, 45, 45);
 border-radius:5px;</string>
                   </property>
                   <property name="text">
-                   <string>H</string>
+                   <string>File Header</string>
                   </property>
                   <property name="autoExclusive">
                    <bool>false</bool>
@@ -9619,10 +9619,22 @@ border-radius:7px;</string>
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>200</y>
+                       <y>180</y>
                        <width>141</width>
-                       <height>41</height>
+                       <height>38</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>38</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -9698,10 +9710,22 @@ border-radius: 10px;
                      <property name="geometry">
                       <rect>
                        <x>170</x>
-                       <y>150</y>
+                       <y>130</y>
                        <width>151</width>
-                       <height>41</height>
+                       <height>38</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>38</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -9741,7 +9765,7 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>110</y>
+                       <y>90</y>
                        <width>331</width>
                        <height>141</height>
                       </rect>
@@ -9774,10 +9798,22 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>150</y>
+                       <y>130</y>
                        <width>151</width>
-                       <height>41</height>
+                       <height>38</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>38</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -9820,10 +9856,22 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>160</x>
-                       <y>200</y>
+                       <y>180</y>
                        <width>161</width>
-                       <height>41</height>
+                       <height>38</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>38</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -9848,7 +9896,7 @@ border-radius:5px;</string>
                        <x>0</x>
                        <y>0</y>
                        <width>331</width>
-                       <height>91</height>
+                       <height>81</height>
                       </rect>
                      </property>
                      <property name="font">
@@ -9865,11 +9913,12 @@ border-radius:5px;</string>
 	background-color: rgb(35, 35, 35);
 	border-radius: 10px;
 	padding-left:10px;
-	padding-top:5px;
+	padding-top:2px;
+	padding-bottom:10px;
 }</string>
                      </property>
                      <property name="text">
-                      <string>Chart/Graph title</string>
+                      <string>Plot title</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -9879,10 +9928,22 @@ border-radius:5px;</string>
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>40</y>
+                       <y>30</y>
                        <width>311</width>
-                       <height>41</height>
+                       <height>37</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>37</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>16777215</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -9925,9 +9986,9 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>380</y>
+                       <y>540</y>
                        <width>331</width>
-                       <height>81</height>
+                       <height>71</height>
                       </rect>
                      </property>
                      <property name="font">
@@ -9958,7 +10019,7 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>420</y>
+                       <y>580</y>
                        <width>101</width>
                        <height>23</height>
                       </rect>
@@ -9981,12 +10042,15 @@ QLineEdit:focus{
                      <property name="checked">
                       <bool>false</bool>
                      </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                     <widget class="QRadioButton" name="bar_chart">
                      <property name="geometry">
                       <rect>
                        <x>110</x>
-                       <y>420</y>
+                       <y>580</y>
                        <width>101</width>
                        <height>23</height>
                       </rect>
@@ -10009,12 +10073,15 @@ QLineEdit:focus{
                      <property name="checked">
                       <bool>false</bool>
                      </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                     <widget class="QRadioButton" name="line_graph">
                      <property name="geometry">
                       <rect>
                        <x>210</x>
-                       <y>420</y>
+                       <y>580</y>
                        <width>111</width>
                        <height>23</height>
                       </rect>
@@ -10034,12 +10101,15 @@ QLineEdit:focus{
                      <property name="text">
                       <string>Line Graph</string>
                      </property>
+                     <property name="autoExclusive">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                     <widget class="QLabel" name="design_10">
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>760</y>
+                       <y>770</y>
                        <width>331</width>
                        <height>91</height>
                       </rect>
@@ -10072,21 +10142,21 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>800</y>
+                       <y>810</y>
                        <width>151</width>
-                       <height>40</height>
+                       <height>38</height>
                       </rect>
                      </property>
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>40</height>
+                       <height>38</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>40</height>
+                       <height>38</height>
                       </size>
                      </property>
                      <property name="font">
@@ -10103,7 +10173,7 @@ QLineEdit:focus{
 }
 
 QPushButton:hover{
-	border-radius: 20px;
+	border-radius: 15px;
 }
 
 QPushButton:pressed{
@@ -10131,21 +10201,21 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>170</x>
-                       <y>800</y>
+                       <y>810</y>
                        <width>151</width>
-                       <height>40</height>
+                       <height>38</height>
                       </rect>
                      </property>
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>40</height>
+                       <height>38</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>40</height>
+                       <height>38</height>
                       </size>
                      </property>
                      <property name="font">
@@ -10162,7 +10232,7 @@ QPushButton:pressed{
 }
 
 QPushButton:hover{
-	border-radius: 20px;
+	border-radius: 15px;
 }
 
 QPushButton:pressed{
@@ -10186,150 +10256,13 @@ QPushButton:pressed{
                       <bool>true</bool>
                      </property>
                     </widget>
-                    <widget class="QLabel" name="design_11">
-                     <property name="geometry">
-                      <rect>
-                       <x>0</x>
-                       <y>480</y>
-                       <width>331</width>
-                       <height>91</height>
-                      </rect>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Arial</family>
-                       <pointsize>10</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-	padding-left:10px;
-	padding-top:5px;
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Plot values</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                     </property>
-                    </widget>
-                    <widget class="QComboBox" name="date_range_comboBox">
-                     <property name="geometry">
-                      <rect>
-                       <x>10</x>
-                       <y>520</y>
-                       <width>171</width>
-                       <height>40</height>
-                      </rect>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}</string>
-                     </property>
-                     <property name="editable">
-                      <bool>false</bool>
-                     </property>
-                     <property name="frame">
-                      <bool>false</bool>
-                     </property>
-                    </widget>
-                    <widget class="QPushButton" name="btn_remove_combox_item">
-                     <property name="geometry">
-                      <rect>
-                       <x>190</x>
-                       <y>520</y>
-                       <width>131</width>
-                       <height>40</height>
-                      </rect>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Date</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resource/asset.qrc">
-                       <normaloff>:/icons/asset/minus.svg</normaloff>:/icons/asset/minus.svg</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>30</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="flat">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
                     <widget class="QLabel" name="design_12">
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>270</y>
+                       <y>340</y>
                        <width>331</width>
-                       <height>91</height>
+                       <height>191</height>
                       </rect>
                      </property>
                      <property name="font">
@@ -10479,7 +10412,7 @@ QLineEdit:focus{
 }
 
 QPushButton:hover{
-	border-radius: 20px;
+	border-radius: 15px;
 }
 
 QPushButton:pressed{
@@ -10507,9 +10440,9 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>0</x>
-                       <y>590</y>
+                       <y>620</y>
                        <width>331</width>
-                       <height>151</height>
+                       <height>141</height>
                       </rect>
                      </property>
                      <property name="font">
@@ -10540,10 +10473,22 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>630</y>
+                       <y>660</y>
                        <width>91</width>
-                       <height>41</height>
+                       <height>35</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -10586,10 +10531,22 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>690</y>
+                       <y>710</y>
                        <width>91</width>
-                       <height>41</height>
+                       <height>35</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -10629,21 +10586,21 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>310</y>
-                       <width>171</width>
-                       <height>40</height>
+                       <y>380</y>
+                       <width>311</width>
+                       <height>37</height>
                       </rect>
                      </property>
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>40</height>
+                       <height>37</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>40</height>
+                       <height>35</height>
                       </size>
                      </property>
                      <property name="font">
@@ -10670,73 +10627,26 @@ QLineEdit:hover{
                       <bool>false</bool>
                      </property>
                     </widget>
-                    <widget class="QPushButton" name="btn_refresh_query_parameters">
+                    <widget class="QLineEdit" name="bar_width">
                      <property name="geometry">
                       <rect>
-                       <x>190</x>
-                       <y>310</y>
-                       <width>131</width>
-                       <height>40</height>
+                       <x>120</x>
+                       <y>660</y>
+                       <width>91</width>
+                       <height>35</height>
                       </rect>
                      </property>
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>40</height>
+                       <height>35</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>40</height>
+                       <height>35</height>
                       </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Refresh</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resource/asset.qrc">
-                       <normaloff>:/icons/asset/refresh-ccw.svg</normaloff>:/icons/asset/refresh-ccw.svg</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>30</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="flat">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
-                    <widget class="QLineEdit" name="bar_width">
-                     <property name="geometry">
-                      <rect>
-                       <x>120</x>
-                       <y>630</y>
-                       <width>91</width>
-                       <height>41</height>
-                      </rect>
                      </property>
                      <property name="font">
                       <font>
@@ -10776,10 +10686,22 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>230</x>
-                       <y>630</y>
+                       <y>660</y>
                        <width>91</width>
-                       <height>41</height>
+                       <height>35</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -10819,10 +10741,22 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>120</x>
-                       <y>690</y>
+                       <y>710</y>
                        <width>91</width>
-                       <height>41</height>
+                       <height>35</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -10862,10 +10796,22 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>230</x>
-                       <y>690</y>
+                       <y>710</y>
                        <width>91</width>
-                       <height>41</height>
+                       <height>35</height>
                       </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
                      </property>
                      <property name="font">
                       <font>
@@ -10901,6 +10847,279 @@ QLineEdit:focus{
                       <bool>true</bool>
                      </property>
                     </widget>
+                    <widget class="QComboBox" name="report_colleges">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>430</y>
+                       <width>141</width>
+                       <height>37</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>37</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                     </property>
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                    <widget class="QComboBox" name="report_faculties">
+                     <property name="geometry">
+                      <rect>
+                       <x>160</x>
+                       <y>430</y>
+                       <width>161</width>
+                       <height>37</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>37</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                     </property>
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                    <widget class="QComboBox" name="report_departments">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>480</y>
+                       <width>311</width>
+                       <height>37</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>37</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                     </property>
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="btn_remove_combox_item">
+                     <property name="geometry">
+                      <rect>
+                       <x>190</x>
+                       <y>280</y>
+                       <width>131</width>
+                       <height>37</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>37</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Date</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../resource/asset.qrc">
+                       <normaloff>:/icons/asset/minus.svg</normaloff>:/icons/asset/minus.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                    <widget class="QComboBox" name="date_range_comboBox">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>280</y>
+                       <width>171</width>
+                       <height>37</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>37</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                     </property>
+                     <property name="editable">
+                      <bool>false</bool>
+                     </property>
+                     <property name="frame">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                    <widget class="QLabel" name="design_11">
+                     <property name="geometry">
+                      <rect>
+                       <x>0</x>
+                       <y>240</y>
+                       <width>331</width>
+                       <height>91</height>
+                      </rect>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>10</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Plot values</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                     </property>
+                    </widget>
+                    <zorder>design_11</zorder>
                     <zorder>design_7</zorder>
                     <zorder>report_date</zorder>
                     <zorder>report_end_date</zorder>
@@ -10915,9 +11134,6 @@ QLineEdit:focus{
                     <zorder>design_10</zorder>
                     <zorder>btn_load</zorder>
                     <zorder>btn_refresh</zorder>
-                    <zorder>design_11</zorder>
-                    <zorder>date_range_comboBox</zorder>
-                    <zorder>btn_remove_combox_item</zorder>
                     <zorder>design_12</zorder>
                     <zorder>design_13</zorder>
                     <zorder>file_name</zorder>
@@ -10926,11 +11142,15 @@ QLineEdit:focus{
                     <zorder>figure_area</zorder>
                     <zorder>start_angle</zorder>
                     <zorder>query_parameter</zorder>
-                    <zorder>btn_refresh_query_parameters</zorder>
                     <zorder>bar_width</zorder>
                     <zorder>dpi</zorder>
                     <zorder>pie_ldist</zorder>
                     <zorder>pctdist</zorder>
+                    <zorder>report_colleges</zorder>
+                    <zorder>report_faculties</zorder>
+                    <zorder>report_departments</zorder>
+                    <zorder>btn_remove_combox_item</zorder>
+                    <zorder>date_range_comboBox</zorder>
                    </widget>
                   </item>
                   <item>
