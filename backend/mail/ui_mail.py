@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mailJNyswn.ui'
+## Form generated from reading UI file 'mailiZZSNC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -172,7 +172,7 @@ class Ui_Mail(object):
         self.sender_password.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 50px;\n"
 "}\n"
 "\n"
@@ -194,7 +194,7 @@ class Ui_Mail(object):
         self.email_subject.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -215,7 +215,7 @@ class Ui_Mail(object):
         self.email_sender.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 50px;\n"
 "}\n"
 "\n"
@@ -236,7 +236,7 @@ class Ui_Mail(object):
         self.email_from.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -265,7 +265,7 @@ class Ui_Mail(object):
         self.reg_email.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:15px;\n"
+"	border-radius:10px;\n"
 "	padding-left: 45px;\n"
 "}\n"
 "\n"
@@ -312,7 +312,7 @@ class Ui_Mail(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	border-radius: 20px;\n"
+"	border-radius: 15px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
@@ -335,7 +335,7 @@ class Ui_Mail(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	border-radius: 20px;\n"
+"	border-radius: 15px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
