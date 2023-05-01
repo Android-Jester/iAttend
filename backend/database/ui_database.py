@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'databaseYqLMgc.ui'
+## Form generated from reading UI file 'databasefspxdP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -355,11 +355,11 @@ class Ui_Database(object):
 "	border-radius: 5px;\n"
 "}")
         self.comboBox.setFrame(False)
-        self.btn_update_con_properties = QPushButton(self.frame_4)
-        self.btn_update_con_properties.setObjectName(u"btn_update_con_properties")
-        self.btn_update_con_properties.setGeometry(QRect(350, 30, 111, 41))
-        self.btn_update_con_properties.setFont(font1)
-        self.btn_update_con_properties.setStyleSheet(u"QPushButton{\n"
+        self.btn_update_properties = QPushButton(self.frame_4)
+        self.btn_update_properties.setObjectName(u"btn_update_properties")
+        self.btn_update_properties.setGeometry(QRect(350, 30, 111, 41))
+        self.btn_update_properties.setFont(font1)
+        self.btn_update_properties.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border:none;\n"
@@ -375,9 +375,9 @@ class Ui_Database(object):
 "}")
         icon2 = QIcon()
         icon2.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_update_con_properties.setIcon(icon2)
-        self.btn_update_con_properties.setIconSize(QSize(30, 30))
-        self.btn_update_con_properties.setFlat(True)
+        self.btn_update_properties.setIcon(icon2)
+        self.btn_update_properties.setIconSize(QSize(30, 30))
+        self.btn_update_properties.setFlat(True)
 
         self.verticalLayout_2.addWidget(self.frame_4)
 
@@ -415,6 +415,6 @@ class Ui_Database(object):
         self.label_40.setText("")
         self.sqlite.setText(QCoreApplication.translate("Database", u"SQLite", None))
         self.mysql.setText(QCoreApplication.translate("Database", u"MySQL", None))
-        self.btn_update_con_properties.setText(QCoreApplication.translate("Database", u"Update", None))
+        self.btn_update_properties.setText(QCoreApplication.translate("Database", u"Update", None))
     # retranslateUi
 
