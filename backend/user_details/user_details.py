@@ -14,12 +14,12 @@ class User(QDialog):
         self.ui_profile.btn_close.clicked.connect(self.close)
         self.ui_profile.btn_minimize.clicked.connect(self.showMinimized)
         self.ui_profile.frame.mouseMoveEvent = self.MoveWindow 
-
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(230, 230, 230, 50))
+        self.move(1200, 100)
         self.ui_profile.frame.setGraphicsEffect(self.shadow)
         self.database = Database()
         self.ui_profile.btn_update_profile.clicked.connect(self.update_profile_picture)
