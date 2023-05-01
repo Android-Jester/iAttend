@@ -54,10 +54,11 @@ class MainWindow(QMainWindow):
         self.ui.btn_search.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.search))
         self.ui.btn_admin.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.admin))
         self.ui.btn_database.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.database))
-        self.ui.btn_help.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.settings))
+        self.ui.btn_consolidation_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.merge_report))
         self.ui.btn_report.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.report))
         self.ui.btn_batch.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.batch))
         self.ui.btn_sink_data.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
+        self.ui.btn_help_link.clicked.connect(self.help_url)
         ##########################################################################################################
 
         #########################################################################################################
@@ -157,7 +158,6 @@ class MainWindow(QMainWindow):
         self.ui.report_start_date.textChanged.connect(self.report_start_date_value_change)
         self.ui.btn_refresh.clicked.connect(self.refresh_report_page)
         self.ui.btn_save.clicked.connect(self.save_report)
-        self.ui.btn_backup.clicked.connect(self.backup_database)
         #################################################################################################
 
         completer = QCompleter(self.read_text_file(self.resource_path('programs.txt')))
@@ -202,6 +202,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_consolidation_upload.clicked.connect(self.push_data)
 
         self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
+        self.ui.merge_query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
         self.ui.report_colleges.addItems(load_colleges(self.resource_path('structure.json')))
         self.ui.report_colleges.activated.connect(self.load_college_faculties_report)
         self.ui.report_faculties.activated.connect(self.load_colleges_report)
@@ -212,6 +213,7 @@ class MainWindow(QMainWindow):
         # self.ui.btn_json.setEnabled(False) 
         # ,QDateTime,QDate,QTime
         ##################################################################################################
+   
 
     def load_colleges_report(self):
         report_departments = get_dept(self.resource_path('structure.json'),self.ui.report_colleges.currentText(),self.ui.report_faculties.currentText())
@@ -2540,6 +2542,10 @@ class MainWindow(QMainWindow):
         self.ui.contrast_value.setText(str(value))
         return value      
     
+    #To be implemented
+    def help_url(self):
+        print("To online help page")
+
     def maximize_restore(self):
         global GLOBAL_STATE
         status = GLOBAL_STATE
@@ -2706,7 +2712,7 @@ class Splash_screen(QMainWindow):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','programs','properties','qr_code',
         'backup','email_details','reports','exports','cache',
-        'images','partition')
+        'images','partition','application_logs')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
