@@ -27,16 +27,66 @@ class Database(QDialog):
         self.ui_database.btn_connect.clicked.connect(self.my_cursor)
         self.set_database_properties()
         self.ui_database.comboBox.activated.connect(self.get_database_properties)  
+        self.ui_database.btn_update_properties.clicked.connect(self.update_connection_properties)
 
     def get_database_properties(self):
-        path = 'C:\\ProgramData\\iAttend\\data\\properties\\database_properties.json'
-        properties=load_database_properties(path,self.ui_database.comboBox.currentText())
+        properties=load_database_properties(self.get_properties(),self.ui_database.comboBox.currentText())
         self.ui_database.username.setText(properties[0])
         self.ui_database.password.setText(properties[1])
         self.ui_database.hostname.setText(properties[2])
         self.ui_database.port.setText(properties[3])
         self.ui_database.database_name.setText(properties[4])
-        
+
+    def get_properties(self):
+        return 'C:\\ProgramData\\iAttend\\data\\properties\\database_properties.json'
+
+    def get_fields_values(self):
+        username=self.ui_database.username.text()
+        password=self.ui_database.password.text()
+        hostname=self.ui_database.hostname.text()
+        port=self.ui_database.port.text()
+        database_name=self.ui_database.database_name.text()
+        return username,password,hostname,port,database_name
+
+    def validate_database_fields(self):
+        properties_list =  self.get_fields_values()
+        data_list = []
+        empty_list = []
+        for field in properties_list:
+            if field:
+                data_list.append(field)
+            else:
+                empty_list.append(field)
+        return data_list,empty_list
+
+    def connection_properties(self,path,Key_name,properties):
+        with open(path,'r') as content:
+            data = json.load(content) 
+            index = -1
+            for key in range(len(data)):
+                if Key_name in data[key]:
+                    index = key
+                    break
+            update=data[index][Key_name]
+            update['username'] = properties[0]
+            update['password'] = properties[1]
+            update['hostname'] = properties[2]
+            update['port'] = properties[3]
+            update['database'] = properties[4]
+            with open(path,'w') as content:
+                json.dump(data, content, indent=4)
+            content.close()
+
+    def update_connection_properties(self):
+        path = self.get_properties()
+        key_name=self.ui_database.comboBox.currentText()
+        data_list,empty_list=self.validate_database_fields()
+        if len(empty_list) == 0:
+            self.connection_properties(path,key_name,data_list)
+            self.ui_database.label_notification.setText("Hey! database properties updated...")
+        else:
+            self.ui_database.label_notification.setText("Oops! empty  values not allowed...")
+
     def resource_path(self,relative_path):
         path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
         return path
