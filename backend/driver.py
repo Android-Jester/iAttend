@@ -75,11 +75,17 @@ class MainWindow(QMainWindow):
         self.database = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.database.show())
 
+        self.merge = CentralDatabase()
+        self.ui.btn_merge_connection.clicked.connect(lambda: self.merge.show())
+
         self.mail = Mail()
         self.ui.btn_mail_report_or_data.clicked.connect(lambda: self.mail.show())
 
         self.directory = Images()
         self.ui.btn_batch_folder.clicked.connect(lambda: self.directory.show())
+
+        self.data_view = DataView()
+        self.ui.btn_generated_data.clicked.connect(lambda: self.data_view.show())
         
         self.user = User()
         self.ui.btn_login_user.clicked.connect(lambda: self.user.show())
@@ -203,17 +209,157 @@ class MainWindow(QMainWindow):
 
         self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
         self.ui.merge_query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
+        self.ui.merge_query_parameter.addItem('Facility')
         self.ui.report_colleges.addItems(load_colleges(self.resource_path('structure.json')))
         self.ui.report_colleges.activated.connect(self.load_college_faculties_report)
         self.ui.report_faculties.activated.connect(self.load_colleges_report)
         self.load_college_faculties_report()
         self.load_colleges_report()
         
+        self.ui.btn_merge_load.clicked.connect(self.merge_report_generate)
+        self.ui.btn_merge_save.clicked.connect(self.merge_report)
+
         # self.ui.btn_csv.setEnabled(False)
         # self.ui.btn_json.setEnabled(False) 
         # ,QDateTime,QDate,QTime
         ##################################################################################################
-   
+
+    
+    def merge_report_generate(self):
+        if self.ui.merge_pie_chart.isChecked():
+            self.merge_piechart_generate()
+        elif self.ui.merge_bar_chart.isChecked():
+            self.merge_barchart_generate()
+        elif self.ui.merge_line_graph.isChecked():
+            print("Line graph generation......")
+
+    def get_merge_plot_properties(self,hearder:str):
+        title = f"{hearder} {self.ui.merge_query_parameter.currentText()}"
+        chart_title=self.get_plot_parameter(value=self.ui.merge_chart_title.text(),default=title,type='text')
+        figure_area=self.get_plot_parameter(value=self.ui.merge_figure_area.text(),default=10,type='number')
+        bar_width=self.get_plot_parameter(value=self.ui.merge_bar_width.text(),default=8,type='number')
+        bar_width= (bar_width/10)
+        dpi=self.get_plot_parameter(value=self.ui.merge_dpi.text(),default=200,type='number')
+        startangle=self.get_plot_parameter(value=self.ui.merge_start_angle.text(),default=0,type='number')
+        pctdistance=self.get_plot_parameter(value=self.ui.merge_pctdist.text(),default=4,type='number')
+        pctdistance = (pctdistance/10)
+        labeldistance=self.get_plot_parameter(value=self.ui.merge_pie_ldist.text(),default=105,type='number')
+        labeldistance = (labeldistance/100)
+        return chart_title,figure_area,bar_width,dpi,startangle,pctdistance,labeldistance
+
+    def merge_piechart_generate(self):
+        colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
+        properties=self.get_merge_plot_properties('Grouped By')
+        self.alert = AlertDialog()
+        path = self.get_visualize_path()
+        data = self.query_database_with_merge_parameter()
+        if len(data[0])>=1:
+            self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
+            area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
+            self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
+            self.ui.merge_plot_area.setScaledContents(True)
+        else:
+            self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+            self.alert.show()
+
+    def merge_barchart_generate(self):
+        colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
+        properties=self.get_merge_plot_properties('Grouped By')
+        self.alert = AlertDialog()
+        path = self.get_visualize_path()
+        y_label= 'Number of students'
+        data = self.query_database_with_merge_parameter()
+        if len(data[0])>=1:
+            self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
+            bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",
+            colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
+            self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
+            self.ui.merge_plot_area.setScaledContents(True)
+        else:
+            self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+            self.alert.show()
+
+    def merge_linegraph_generate(self):
+        pass
+    
+    def query_distinct_merge_parameter(self,database_column):
+        return f"SELECT DISTINCT {database_column} FROM tb_attendance_central_merge"
+
+    def count_distinct_merge_parameter(self,database_column,parameter):
+        return f"SELECT COUNT({database_column}) FROM tb_attendance_central_merge WHERE {database_column}={parameter}"
+
+    def get_database_merge_field(self):
+        dictionary=self.map_query_parameter_to_db_field()
+        return dictionary.get(self.ui.merge_query_parameter.currentText())
+
+    def query_database_with_merge_parameter(self):
+        if self.ui.merge_query_parameter.currentText()=="Facility":
+            query_param = "facility_used"
+        else:
+            query_param=self.get_database_merge_field()
+        query_result = self.merge_report_data(self.query_distinct_merge_parameter(query_param))
+        result_list= []
+        for item in query_result: 
+            result_list.append(item[0])
+        total:list = []
+        for item in result_list:
+            parameter = self.date_formater(item)
+            sub_count = self.merge_report_data(self.count_distinct_merge_parameter(query_param,parameter))
+            total.append(sub_count[0][0])
+        department:list = []
+        if query_param=='student_program':
+            for item in query_result:
+                item = str(item[0]).split(' ')
+                department.append(item[2][0:4].upper()) 
+                if 'OF' in department:
+                    index = department.index('OF')
+                    department[index] = 'OPT'
+            return department,total
+        else:
+            return result_list,total
+
+    def merge_report_data(self,query:str):
+        db,db_cursor = self.merge.merge_cursor()
+        details = []
+        cursor = db_cursor.execute(query)
+        cursor = db_cursor.fetchall()
+        db.commit()
+        db_cursor.close()
+        if cursor:
+            for item in cursor:
+                details.append(item)
+        return details
+
+    def merge_report(self):
+        filename = self.ui.merge_file_name.text()
+        date=current.now().strftime('_%d_%B_%Y-%I_%M_%S_%p')
+        transformed_name=filename+date
+        self.alert = AlertDialog()
+        if self.ui.merge_bar_chart.isChecked():
+            if filename:
+                self.barchart.save_chart(transformed_name)
+                self.alert.content("Document saved successfully")
+                self.alert.show()
+            else:
+                self.alert.content("Oops! please provide file name")
+                self.alert.show()         
+        elif self.ui.merge_line_graph.isChecked():
+            if filename:
+                self.line_graph.save_chart(transformed_name)
+                self.alert.content("Document saved successfully")
+                self.alert.show()
+            else:
+                self.alert.content("Oops! please provide file name")
+                self.alert.show() 
+        elif self.ui.merge_pie_chart.isChecked():
+            if filename:
+                self.piechart.save_chart(transformed_name)
+                self.alert.content("Document saved successfully")
+                self.alert.show()
+            else:
+                self.alert.content("Oops! please provide file name")
+                self.alert.show() 
+
 
     def load_colleges_report(self):
         report_departments = get_dept(self.resource_path('structure.json'),self.ui.report_colleges.currentText(),self.ui.report_faculties.currentText())
@@ -1271,6 +1417,7 @@ class MainWindow(QMainWindow):
                 file.writelines(f'\n{source} {time} {save_logs}')
             file.close()  
 
+    #might be changed in the future
     def backup_history(self):
         path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
         path.touch(exist_ok=True)
