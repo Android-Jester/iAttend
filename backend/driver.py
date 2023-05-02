@@ -252,14 +252,20 @@ class MainWindow(QMainWindow):
         properties=self.get_merge_plot_properties('Grouped By')
         self.alert = AlertDialog()
         path = self.get_visualize_path()
-        data = self.query_database_with_merge_parameter()
-        if len(data[0])>=1:
-            self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
-            area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
-            self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
-            self.ui.merge_plot_area.setScaledContents(True)
+        table_name=self.merge.get_table_name()
+        if table_name:
+            data = self.query_database_with_merge_parameter()
+            if len(data[0])>=1:
+                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
+                self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
+                area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
+                self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
+                self.ui.merge_plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
         else:
-            self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+            self.alert.content("Oops! test database connection\nto load tables...")
             self.alert.show()
 
     def merge_barchart_generate(self):
@@ -268,25 +274,34 @@ class MainWindow(QMainWindow):
         self.alert = AlertDialog()
         path = self.get_visualize_path()
         y_label= 'Number of students'
-        data = self.query_database_with_merge_parameter()
-        if len(data[0])>=1:
-            self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-            bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",
-            colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
-            self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
-            self.ui.merge_plot_area.setScaledContents(True)
+        table_name=self.merge.get_table_name()
+        if table_name:
+            data = self.query_database_with_merge_parameter()
+            if len(data[0])>=1:
+                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
+                self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
+                bar_width=properties[2],y_label=y_label,x_label=f"values",
+                colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
+                self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
+                self.ui.merge_plot_area.setScaledContents(True)
+            else:
+                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.show()
         else:
-            self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+            self.alert.content("Oops! test database connection\nto load tables...")
             self.alert.show()
+    
 
     def merge_linegraph_generate(self):
         pass
     
     def query_distinct_merge_parameter(self,database_column):
-        return f"SELECT DISTINCT {database_column} FROM tb_attendance_central_merge"
+        table_name=self.merge.get_table_name()
+        return f"SELECT DISTINCT {database_column} FROM {table_name}"
 
     def count_distinct_merge_parameter(self,database_column,parameter):
-        return f"SELECT COUNT({database_column}) FROM tb_attendance_central_merge WHERE {database_column}={parameter}"
+        table_name=self.merge.get_table_name()
+        return f"SELECT COUNT({database_column}) FROM {table_name} WHERE {database_column}={parameter}"
 
     def get_database_merge_field(self):
         dictionary=self.map_query_parameter_to_db_field()
@@ -1642,8 +1657,9 @@ class MainWindow(QMainWindow):
         if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
             data = self.query_database_with_parameter('','','')
             if len(data[0])>=1:
+                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-                bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",
+                bar_width=properties[2],y_label=y_label,x_label=f"values",
                 colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                 self.ui.plot_area.setScaledContents(True)
@@ -1653,8 +1669,9 @@ class MainWindow(QMainWindow):
         elif self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.query_database_with_parameter(date=report_date[0],range='',type='date')
                 if len(data[0])>=1:
+                    self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                     self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-                    bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",
+                    bar_width=properties[2],y_label=y_label,x_label=f"values",
                     colors=colors[:len(data[0])],title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])}]",
                     area=properties[1],dpi=properties[3])
                     self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
@@ -1664,9 +1681,10 @@ class MainWindow(QMainWindow):
                     self.alert.show()
         elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
                 data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
-                if len(data[0])>=1:      
+                if len(data[0])>=1: 
+                    self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))     
                     self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-                    bar_width=properties[2],y_label=y_label,x_label=f"values {data[1]}",colors=colors[:len(data[0])],
+                    bar_width=properties[2],y_label=y_label,x_label=f"values",colors=colors[:len(data[0])],
                     title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
                     area=properties[1],dpi=properties[3])
                     self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
@@ -1684,6 +1702,7 @@ class MainWindow(QMainWindow):
         if not self.ui.report_start_date.text() and not self.ui.report_end_date.text():
             data = self.query_database_with_parameter('','','')
             if len(data[0])>=1:
+                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
                 area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
@@ -1693,7 +1712,8 @@ class MainWindow(QMainWindow):
                 self.alert.show()
         elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
             data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
-            if len(data[0])>=1:      
+            if len(data[0])>=1:
+                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))      
                 self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
                 colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
                 pctdistance=properties[5],labeldistance=properties[6])
@@ -1705,6 +1725,7 @@ class MainWindow(QMainWindow):
         elif  self.ui.report_start_date.text() and not self.ui.report_end_date.text():
             data = self.query_database_with_parameter(date=report_date[0],range='',type='date')
             if len(data[0])>=1:
+                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])}]",
                 colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
                 pctdistance=properties[5],labeldistance=properties[6])
@@ -1732,7 +1753,7 @@ class MainWindow(QMainWindow):
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_faculties,'Faculty'))
             if len(data)>=1:
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1742,7 +1763,7 @@ class MainWindow(QMainWindow):
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,'Department'))
             if len(data)>=1:
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1752,7 +1773,7 @@ class MainWindow(QMainWindow):
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_college,'College'))
             if len(data)>=1:
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1762,7 +1783,7 @@ class MainWindow(QMainWindow):
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,''))
             if len(data)>=1:
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values {data}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
