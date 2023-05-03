@@ -10,6 +10,7 @@ import shutil
 import requests
 import winsound
 import datetime
+import webbrowser
 from pathlib import Path
 from time import strptime
 from functools import reduce
