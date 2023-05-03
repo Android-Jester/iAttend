@@ -2754,7 +2754,11 @@ class MainWindow(QMainWindow):
     
     #To be implemented
     def help_url(self):
-        print("To online help page")
+        try:
+            url = "https://www.google.com"
+            webbrowser.open(url)
+        except Exception as e:
+            print(str(e))
 
     def maximize_restore(self):
         global GLOBAL_STATE
