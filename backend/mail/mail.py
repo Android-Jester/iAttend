@@ -6,6 +6,7 @@ from mail.thread import MailThread
 from mail.thread import MailThreadPDF
 
 from utils.sql import *
+from utils.update import *
 from packages.pyqt import *
 from utils.structure import *
 from mail.ui_mail import Ui_Mail
@@ -29,6 +30,7 @@ class Mail(QDialog):
         self.ui_mail.frame.setGraphicsEffect(self.shadow)
         self.ui_mail.btn_send_mail.clicked.connect(self.send_email)
         self.ui_mail.btn_browse_reg.clicked.connect(self.browse_files)
+        self.ui_mail.btn_update_mail_details.clicked.connect(self.update_mail_details)
         self.set_sender_details()
        
     def MoveWindow(self, event):
@@ -69,6 +71,13 @@ class Mail(QDialog):
         self.ui_mail.email_subject.setText(details[1])
         self.ui_mail.sender_password.setText(details[3])
     
+    def update_mail_details(self):
+        path='C:\\ProgramData\\iAttend\\data\\email_details\\details.json'
+        properties=self.get_email_details()
+        properties = properties[1:]
+        properties =[properties[2],properties[0],properties[1],properties[3]]
+        update_mail_details(path,properties)
+
     def get_details(self):
         data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\details.json')
         return data['sender'],data['subject'],data['mail'],data['password']
