@@ -12,3 +12,4 @@ import winsound
 import datetime
 from pathlib import Path
 from time import strptime
+from functools import reduce
