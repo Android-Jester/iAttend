@@ -206,6 +206,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_consolidation_partition.clicked.connect(self.partition_strategy)
         self.ui.btn_consolidation_test.clicked.connect(self.database_test)
         self.ui.btn_consolidation_upload.clicked.connect(self.push_data)
+        self.ui.btn_consolidation_update.clicked.connect(self.update_merge_connection_properties)
 
         self.ui.query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
         self.ui.merge_query_parameter.addItems(self.read_partitions(self.get_root_path('partition\\partition.txt')))
@@ -501,6 +502,31 @@ class MainWindow(QMainWindow):
             else:
                empty_list.append(field)
         return data_list,empty_list
+
+    def update_merge_connection_properties(self):
+        self.alert = AlertDialog()
+        path = 'C:\\ProgramData\\iAttend\\data\\properties\\central_database_connection_propeties.json'
+        data_list,empty_list=self.validate_merge_database_fields()
+        data_list = [data_list[2],data_list[3],data_list[0],data_list[1],data_list[4]]
+        if len(empty_list) == 0:
+            self.connection_properties(path,data_list)
+            self.alert.content("Hey! database properties updated......")
+            self.alert.show()
+        else:
+            self.alert.content("Oops! empty  values not allowed......")
+            self.alert.show()
+
+    def connection_properties(self,path,properties):
+        with open(path,'r') as content:
+            update = json.load(content) 
+            update['username'] = properties[0]
+            update['password'] = properties[1]
+            update['hostname'] = properties[2]
+            update['port'] = properties[3]
+            update['database'] = properties[4]
+            with open(path,'w') as content:
+                json.dump(update, content, indent=4)
+            content.close()
 
     def load_database_tables(self):
         self.alert = AlertDialog()
