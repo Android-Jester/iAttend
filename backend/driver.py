@@ -1033,7 +1033,8 @@ class MainWindow(QMainWindow):
             return details
 
     def get_registration_details(self):
-        data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\account_registration.json')
+        data=load_data('C:\\ProgramData\\iAttend\\data\\email_details\\details.json')
+        data['subject'] = "Account Details"
         return data['sender'],data['subject'],data['mail'],data['password']
 
     def send_account_detail(self):
@@ -3028,12 +3029,6 @@ class Splash_screen(QMainWindow):
         path =os.path.join(root,'partition\\database_fields.txt')
         partition = 'student_faculty,student_gender,student_college,student_category,student_disability,student_nationality,student_program'
         self.write_to_file(path,partition,'text/plain')
-        
-        path =os.path.join(root,'email_details\\reset_password.json')
-        self.write_to_file(path,mail_properties,'json')
-
-        path =os.path.join(root,'email_details\\account_registration.json')
-        self.write_to_file(path,mail_properties,'json')
         
         path =os.path.join(root,'email_details\\content.txt')
         content = """
