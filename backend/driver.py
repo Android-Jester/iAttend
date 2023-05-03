@@ -746,6 +746,7 @@ class MainWindow(QMainWindow):
     def admin_panel(self):
         if account_role == user:
             self.ui.btn_admin.hide()
+            self.ui.btn_consolidation_report.hide()
         
     def camera_config(self):
         if account_role == admin:
