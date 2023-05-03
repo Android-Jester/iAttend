@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1511</width>
+    <width>1520</width>
     <height>1029</height>
    </rect>
   </property>
@@ -37,7 +37,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1532</width>
+      <width>1540</width>
       <height>1030</height>
      </rect>
     </property>
@@ -218,11 +218,14 @@ padding-left:5px;</string>
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_19">
+              <property name="spacing">
+               <number>9</number>
+              </property>
               <item>
                <widget class="QLabel" name="label_4">
                 <property name="minimumSize">
                  <size>
-                  <width>750</width>
+                  <width>870</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -252,13 +255,13 @@ padding-left:5px;</string>
                <widget class="QLabel" name="label_6">
                 <property name="minimumSize">
                  <size>
-                  <width>320</width>
-                  <height>0</height>
+                  <width>370</width>
+                  <height>34</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>320</width>
+                  <width>350</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -270,9 +273,8 @@ padding-left:5px;</string>
                 <property name="styleSheet">
                  <string notr="true">QLabel{
 	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-	padding-left:10px;
+	background-color: rgb(45, 45, 45);
+	border-radius: 15px;
 	padding-bottom:-5px;
 }</string>
                 </property>
@@ -280,21 +282,21 @@ padding-left:5px;</string>
                  <string>session@username  00:00:00 PM</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_login_user">
+               <widget class="QPushButton" name="btn_help_link">
                 <property name="minimumSize">
                  <size>
-                  <width>30</width>
-                  <height>40</height>
+                  <width>40</width>
+                  <height>35</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>30</width>
+                  <width>50</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -303,7 +305,59 @@ padding-left:5px;</string>
 	color: rgb(255, 255, 255);
 	border: 0px solid;
     background-color: rgb(35, 35, 35);
-padding-left:-4px;
+	border-radius:15px;
+}
+
+QPushButton:hover{
+	border-radius: 16px;
+ background-color: rgb(45, 45, 45);
+}
+
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resource/asset.qrc">
+                  <normaloff>:/icons/asset/help-circle.svg</normaloff>:/icons/asset/help-circle.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_login_user">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>35</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>50</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	border: 0px solid;
+    background-color: rgb(35, 35, 35);
+	border-radius:15px;
+}
+
+QPushButton:hover{
+	border-radius: 16px;
+ background-color: rgb(45, 45, 45);
 }
 </string>
                 </property>
@@ -507,7 +561,7 @@ QPushButton:hover{
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <property name="spacing">
-            <number>5</number>
+            <number>4</number>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -526,13 +580,13 @@ QPushButton:hover{
              <property name="minimumSize">
               <size>
                <width>0</width>
-               <height>680</height>
+               <height>630</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
-               <height>635</height>
+               <height>600</height>
               </size>
              </property>
              <property name="frameShape">
@@ -543,7 +597,7 @@ QPushButton:hover{
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <property name="spacing">
-               <number>10</number>
+               <number>5</number>
               </property>
               <property name="leftMargin">
                <number>0</number>
@@ -587,6 +641,11 @@ QPushButton:pressed{
 	border-left-color: 3px solid rgb(255, 255, 255);
 }
 
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
 
 
 
@@ -645,6 +704,13 @@ QPushButton:hover{
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
 }
+
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
+
 </string>
                 </property>
                 <property name="text">
@@ -696,7 +762,12 @@ QPushButton:hover{
 
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
-}</string>
+}
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -747,7 +818,13 @@ QPushButton:hover{
 
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
-}</string>
+}
+
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -792,6 +869,12 @@ QPushButton:hover{
 	border-left: 3px solid;
 	border-left-color: rgb(0, 170, 255);
 }
+
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
 
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
@@ -840,7 +923,11 @@ QPushButton:hover{
 	border-left: 3px solid;
 	border-left-color: rgb(0, 170, 255);
 }
-
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
 }</string>
@@ -856,6 +943,64 @@ QPushButton:pressed{
                  <size>
                   <width>35</width>
                   <height>43</height>
+                 </size>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_consolidation_report">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>70</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	border: 0px solid;
+padding-left:5px;
+}
+
+QPushButton:hover{
+	border-left: 3px solid;
+	border-left-color: rgb(0, 170, 255);
+}
+
+QPushButton:pressed{
+	border-left-color: 3px solid rgb(255, 255, 255);
+}
+
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
+
+
+
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resource/asset.qrc">
+                  <normaloff>:/icons/asset/pie-chart.svg</normaloff>:/icons/asset/pie-chart.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>35</width>
+                  <height>40</height>
                  </size>
                 </property>
                 <property name="flat">
@@ -889,6 +1034,12 @@ QPushButton:hover{
 	border-left-color: rgb(0, 170, 255);
 }
 
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
+
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
 }</string>
@@ -911,107 +1062,11 @@ QPushButton:pressed{
                 </property>
                </widget>
               </item>
-              <item>
-               <widget class="QPushButton" name="btn_camera">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	border: 0px solid;
-padding-left:5px;
-}
-
-QPushButton:hover{
-	border-left: 3px solid;
-	border-left-color: rgb(0, 170, 255);
-}
-
-QPushButton:pressed{
-	border-left-color: rgb(255, 255, 255);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../resource/asset.qrc">
-                  <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>35</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="btn_mail_report_or_data">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>70</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	border: 0px solid;
-background-color: rgb(35, 35, 35);
-}
-
-QPushButton:hover{
-	border-left: 3px solid;
-	border-left-color: rgb(0, 170, 255);
-}
-
-QPushButton:pressed{
-	border-left-color: rgb(255, 255, 255);
-}</string>
-                </property>
-                <property name="text">
-                 <string/>
-                </property>
-                <property name="icon">
-                 <iconset resource="../resource/asset.qrc">
-                  <normaloff>:/icons/asset/mail.svg</normaloff>:/icons/asset/mail.svg</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>32</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
              </layout>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="btn_backup">
+            <widget class="QPushButton" name="btn_camera">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1028,14 +1083,18 @@ QPushButton:pressed{
               <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
-    background-color: rgb(35, 35, 35);
-padding-left:-4px;
+padding-left:5px;
 }
 
 QPushButton:hover{
 	border-left: 3px solid;
 	border-left-color: rgb(0, 170, 255);
 }
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
 
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
@@ -1046,11 +1105,65 @@ QPushButton:pressed{
              </property>
              <property name="icon">
               <iconset resource="../resource/asset.qrc">
-               <normaloff>:/icons/asset/database.svg</normaloff>:/icons/asset/database.svg</iconset>
+               <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
              </property>
              <property name="iconSize">
               <size>
                <width>35</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_mail_report_or_data">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>70</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>70</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	border: 0px solid;
+background-color: rgb(35, 35, 35);
+}
+
+QPushButton:hover{
+	border-left: 3px solid;
+	border-left-color: rgb(0, 170, 255);
+}
+
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
+
+QPushButton:pressed{
+	border-left-color: rgb(255, 255, 255);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../resource/asset.qrc">
+               <normaloff>:/icons/asset/mail.svg</normaloff>:/icons/asset/mail.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
                <height>40</height>
               </size>
              </property>
@@ -1078,13 +1191,18 @@ QPushButton:pressed{
 	color: rgb(255, 255, 255);
 	border: 0px solid;
 background-color: rgb(35, 35, 35);
+padding-left:5px;
 }
 
 QPushButton:hover{
 	border-left: 3px solid;
 	border-left-color: rgb(0, 170, 255);
 }
-
+ QPushButton:focus{
+            color: rgb(255, 255, 255);
+            border-left: 3px solid rgb(255, 255, 255);
+            padding-left:5px;
+  }
 QPushButton:pressed{
 	border-left-color: rgb(255, 255, 255);
 }</string>
@@ -1107,58 +1225,7 @@ QPushButton:pressed{
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="QPushButton" name="btn_help">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>70</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>70</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	border: 0px solid;
-}
-
-QPushButton:hover{
-	border-left: 3px solid;
-	border-left-color: rgb(0, 170, 255);
-}
-
-QPushButton:pressed{
-	border-left-color: rgb(255, 255, 255);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="../resource/asset.qrc">
-               <normaloff>:/icons/asset/help-circle.svg</normaloff>:/icons/asset/help-circle.svg</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>35</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="flat">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
           </layout>
-          <zorder>frame</zorder>
-          <zorder>btn_backup</zorder>
-          <zorder>btn_help</zorder>
-          <zorder>btn_logout</zorder>
          </widget>
         </item>
         <item>
@@ -1167,11 +1234,11 @@ QPushButton:pressed{
            <enum>QFrame::NoFrame</enum>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
+           <enum>QFrame::Plain</enum>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <property name="spacing">
-            <number>9</number>
+            <number>5</number>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -1191,6 +1258,12 @@ QPushButton:pressed{
               <size>
                <width>500</width>
                <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>1445</width>
+               <height>980</height>
               </size>
              </property>
              <property name="styleSheet">
@@ -2391,6 +2464,9 @@ QPushButton:pressed{
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_8">
+                     <property name="rightMargin">
+                      <number>5</number>
+                     </property>
                      <item>
                       <widget class="QLabel" name="camera_view">
                        <property name="minimumSize">
@@ -2475,6 +2551,9 @@ QPushButton:pressed{
                        <layout class="QHBoxLayout" name="horizontalLayout_10">
                         <property name="spacing">
                          <number>9</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>5</number>
                         </property>
                         <property name="bottomMargin">
                          <number>9</number>
@@ -2854,13 +2933,13 @@ QPushButton:pressed{
                             <rect>
                              <x>20</x>
                              <y>160</y>
-                             <width>420</width>
+                             <width>425</width>
                              <height>51</height>
                             </rect>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>420</width>
+                             <width>425</width>
                              <height>0</height>
                             </size>
                            </property>
@@ -2918,19 +2997,19 @@ QPushButton:pressed{
                             <rect>
                              <x>310</x>
                              <y>80</y>
-                             <width>130</width>
+                             <width>135</width>
                              <height>51</height>
                             </rect>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>130</width>
+                             <width>135</width>
                              <height>0</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>130</width>
+                             <width>135</width>
                              <height>16777215</height>
                             </size>
                            </property>
@@ -3070,7 +3149,7 @@ QLineEdit:focus{
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>5</number>
+                   <number>9</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
@@ -4315,11 +4394,14 @@ QLineEdit:focus{
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                  <property name="spacing">
+                   <number>9</number>
+                  </property>
                   <property name="leftMargin">
                    <number>5</number>
                   </property>
                   <property name="rightMargin">
-                   <number>0</number>
+                   <number>5</number>
                   </property>
                   <property name="bottomMargin">
                    <number>9</number>
@@ -4493,6 +4575,15 @@ QLineEdit:focus{
              </widget>
              <widget class="QWidget" name="batch">
               <layout class="QVBoxLayout" name="verticalLayout_20">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>9</number>
+               </property>
+               <property name="topMargin">
+                <number>9</number>
+               </property>
                <property name="rightMargin">
                 <number>5</number>
                </property>
@@ -4511,7 +4602,7 @@ QLineEdit:focus{
                   </size>
                  </property>
                  <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
+                  <enum>QFrame::NoFrame</enum>
                  </property>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
@@ -4553,7 +4644,7 @@ QLineEdit:focus{
                    <rect>
                     <x>1120</x>
                     <y>0</y>
-                    <width>311</width>
+                    <width>301</width>
                     <height>91</height>
                    </rect>
                   </property>
@@ -4902,7 +4993,7 @@ border-radius:5px;</string>
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>0</number>
+                   <number>5</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
@@ -5725,8 +5816,8 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>710</y>
-                    <width>311</width>
+                    <y>760</y>
+                    <width>141</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5765,7 +5856,7 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>760</y>
+                    <y>810</y>
                     <width>311</width>
                     <height>41</height>
                    </rect>
@@ -5807,9 +5898,9 @@ QLineEdit:focus{
                  <widget class="QLineEdit" name="db_consolidation_database">
                   <property name="geometry">
                    <rect>
-                    <x>20</x>
-                    <y>860</y>
-                    <width>311</width>
+                    <x>170</x>
+                    <y>760</y>
+                    <width>161</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5848,8 +5939,8 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>810</y>
-                    <width>311</width>
+                    <y>860</y>
+                    <width>201</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -5887,9 +5978,9 @@ QLineEdit:focus{
                  <widget class="QLineEdit" name="db_consolidation_port">
                   <property name="geometry">
                    <rect>
-                    <x>20</x>
-                    <y>910</y>
-                    <width>151</width>
+                    <x>230</x>
+                    <y>860</y>
+                    <width>101</width>
                     <height>41</height>
                    </rect>
                   </property>
@@ -6037,6 +6128,141 @@ border-radius:5px;</string>
                    <bool>false</bool>
                   </property>
                  </widget>
+                 <widget class="QComboBox" name="database_tables">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>710</y>
+                    <width>211</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>371</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_load_tables">
+                  <property name="geometry">
+                   <rect>
+                    <x>240</x>
+                    <y>710</y>
+                    <width>91</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Load</string>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_consolidation_update">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>910</y>
+                    <width>141</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Update</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/repeat.svg</normaloff>:/icons/asset/repeat.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
                  <zorder>design_5</zorder>
                  <zorder>design_4</zorder>
                  <zorder>design</zorder>
@@ -6060,6 +6286,9 @@ border-radius:5px;</string>
                  <zorder>btn_consolidation_test</zorder>
                  <zorder>db_consolidation_facility</zorder>
                  <zorder>db_fetch_all</zorder>
+                 <zorder>database_tables</zorder>
+                 <zorder>btn_load_tables</zorder>
+                 <zorder>btn_consolidation_update</zorder>
                 </widget>
                </item>
                <item>
@@ -6072,7 +6301,7 @@ border-radius:5px;</string>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_11">
                   <property name="rightMargin">
-                   <number>0</number>
+                   <number>5</number>
                   </property>
                   <property name="bottomMargin">
                    <number>5</number>
@@ -6265,7 +6494,7 @@ border-radius:5px;</string>
                     <x>10</x>
                     <y>120</y>
                     <width>531</width>
-                    <height>451</height>
+                    <height>441</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -6394,7 +6623,7 @@ QPushButton:pressed{
                     <x>30</x>
                     <y>140</y>
                     <width>241</width>
-                    <height>271</height>
+                    <height>261</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -6428,12 +6657,18 @@ QPushButton:pressed{
                     <x>290</x>
                     <y>210</y>
                     <width>231</width>
-                    <height>56</height>
+                    <height>53</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>53</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>53</height>
                    </size>
                   </property>
@@ -6471,12 +6706,18 @@ QLineEdit:focus{
                     <x>290</x>
                     <y>280</y>
                     <width>231</width>
-                    <height>56</height>
+                    <height>53</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>53</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>53</height>
                    </size>
                   </property>
@@ -6514,12 +6755,18 @@ QLineEdit:focus{
                     <x>290</x>
                     <y>140</y>
                     <width>231</width>
-                    <height>56</height>
+                    <height>53</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>53</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>53</height>
                    </size>
                   </property>
@@ -6560,12 +6807,18 @@ QLineEdit:focus{
                     <x>290</x>
                     <y>350</y>
                     <width>231</width>
-                    <height>56</height>
+                    <height>53</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>53</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>53</height>
                    </size>
                   </property>
@@ -6603,12 +6856,18 @@ QLineEdit:focus{
                     <x>290</x>
                     <y>420</y>
                     <width>231</width>
-                    <height>56</height>
+                    <height>53</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>53</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>53</height>
                    </size>
                   </property>
@@ -6645,7 +6904,7 @@ QLineEdit:focus{
                    <rect>
                     <x>30</x>
                     <y>420</y>
-                    <width>91</width>
+                    <width>241</width>
                     <height>53</height>
                    </rect>
                   </property>
@@ -6658,7 +6917,7 @@ QLineEdit:focus{
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>50</height>
+                    <height>53</height>
                    </size>
                   </property>
                   <property name="font">
@@ -6694,13 +6953,19 @@ background-color: rgb(45, 45, 45);
                    <rect>
                     <x>30</x>
                     <y>490</y>
-                    <width>491</width>
-                    <height>56</height>
+                    <width>301</width>
+                    <height>53</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
+                    <height>53</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
                     <height>53</height>
                    </size>
                   </property>
@@ -6736,9 +7001,9 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>590</y>
+                    <y>580</y>
                     <width>531</width>
-                    <height>61</height>
+                    <height>81</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -6910,7 +7175,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>870</y>
+                    <y>880</y>
                     <width>531</width>
                     <height>91</height>
                    </rect>
@@ -6943,10 +7208,22 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>890</y>
+                    <y>900</y>
                     <width>351</width>
-                    <height>51</height>
+                    <height>50</height>
                    </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
                   </property>
                   <property name="font">
                    <font>
@@ -6980,10 +7257,22 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>400</x>
-                    <y>890</y>
+                    <y>900</y>
                     <width>121</width>
-                    <height>51</height>
+                    <height>50</height>
                    </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>50</height>
+                   </size>
                   </property>
                   <property name="font">
                    <font>
@@ -7027,7 +7316,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>670</y>
+                    <y>680</y>
                     <width>531</width>
                     <height>81</height>
                    </rect>
@@ -7060,7 +7349,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>790</y>
+                    <y>800</y>
                     <width>151</width>
                     <height>41</height>
                    </rect>
@@ -7119,7 +7408,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>370</x>
-                    <y>790</y>
+                    <y>800</y>
                     <width>151</width>
                     <height>41</height>
                    </rect>
@@ -7166,7 +7455,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>80</x>
-                    <y>690</y>
+                    <y>700</y>
                     <width>141</width>
                     <height>41</height>
                    </rect>
@@ -7244,9 +7533,9 @@ border-radius: 10px;
                  <widget class="QComboBox" name="user_status">
                   <property name="geometry">
                    <rect>
-                    <x>130</x>
-                    <y>420</y>
-                    <width>141</width>
+                    <x>340</x>
+                    <y>490</y>
+                    <width>181</width>
                     <height>53</height>
                    </rect>
                   </property>
@@ -7259,7 +7548,7 @@ border-radius: 10px;
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>50</height>
+                    <height>53</height>
                    </size>
                   </property>
                   <property name="font">
@@ -7294,7 +7583,7 @@ background-color: rgb(45, 45, 45);
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>690</y>
+                    <y>700</y>
                     <width>41</width>
                     <height>41</height>
                    </rect>
@@ -7320,7 +7609,7 @@ border-radius:5px;</string>
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>770</y>
+                    <y>780</y>
                     <width>531</width>
                     <height>81</height>
                    </rect>
@@ -7353,7 +7642,7 @@ border-radius:5px;</string>
                   <property name="geometry">
                    <rect>
                     <x>200</x>
-                    <y>790</y>
+                    <y>800</y>
                     <width>151</width>
                     <height>41</height>
                    </rect>
@@ -7412,7 +7701,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>230</x>
-                    <y>690</y>
+                    <y>700</y>
                     <width>141</width>
                     <height>41</height>
                    </rect>
@@ -7452,7 +7741,7 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>380</x>
-                    <y>690</y>
+                    <y>700</y>
                     <width>141</width>
                     <height>41</height>
                    </rect>
@@ -7546,14 +7835,14 @@ QLineEdit:focus{
                   <item>
                    <widget class="QFrame" name="camera_top">
                     <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
+                     <enum>QFrame::NoFrame</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
                     <layout class="QHBoxLayout" name="horizontalLayout_8">
                      <property name="rightMargin">
-                      <number>0</number>
+                      <number>5</number>
                      </property>
                      <item>
                       <widget class="QTableWidget" name="admin_table">
@@ -8467,7 +8756,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>830</y>
+                    <y>840</y>
                     <width>641</width>
                     <height>131</height>
                    </rect>
@@ -8499,7 +8788,7 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>30</x>
-                    <y>890</y>
+                    <y>900</y>
                     <width>451</width>
                     <height>51</height>
                    </rect>
@@ -8536,7 +8825,7 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>510</x>
-                    <y>890</y>
+                    <y>900</y>
                     <width>121</width>
                     <height>51</height>
                    </rect>
@@ -8641,7 +8930,7 @@ QLineEdit:hover{
                   <property name="geometry">
                    <rect>
                     <x>220</x>
-                    <y>860</y>
+                    <y>870</y>
                     <width>131</width>
                     <height>20</height>
                    </rect>
@@ -8667,7 +8956,7 @@ background-color: rgb(35, 35, 35);</string>
                   <property name="geometry">
                    <rect>
                     <x>110</x>
-                    <y>860</y>
+                    <y>870</y>
                     <width>101</width>
                     <height>20</height>
                    </rect>
@@ -8693,7 +8982,7 @@ background-color: rgb(35, 35, 35);</string>
                   <property name="geometry">
                    <rect>
                     <x>340</x>
-                    <y>860</y>
+                    <y>870</y>
                     <width>131</width>
                     <height>20</height>
                    </rect>
@@ -8948,7 +9237,7 @@ border-radius:7px;</string>
                    <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>9</number>
+                   <number>0</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
@@ -8963,7 +9252,7 @@ border-radius:7px;</string>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_17">
                      <property name="rightMargin">
-                      <number>0</number>
+                      <number>2</number>
                      </property>
                      <item>
                       <widget class="QFrame" name="frame_13">
@@ -8978,7 +9267,7 @@ border-radius:7px;</string>
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>771</width>
+                          <width>761</width>
                           <height>531</height>
                          </rect>
                         </property>
@@ -9009,7 +9298,7 @@ border-radius:7px;</string>
                          <rect>
                           <x>0</x>
                           <y>550</y>
-                          <width>771</width>
+                          <width>761</width>
                           <height>91</height>
                          </rect>
                         </property>
@@ -9039,9 +9328,9 @@ border-radius:7px;</string>
                        <widget class="QPushButton" name="btn_send_mail">
                         <property name="geometry">
                          <rect>
-                          <x>430</x>
+                          <x>410</x>
                           <y>570</y>
-                          <width>141</width>
+                          <width>151</width>
                           <height>51</height>
                          </rect>
                         </property>
@@ -9088,7 +9377,7 @@ QPushButton:pressed{
                          <rect>
                           <x>20</x>
                           <y>570</y>
-                          <width>391</width>
+                          <width>381</width>
                           <height>51</height>
                          </rect>
                         </property>
@@ -9139,7 +9428,7 @@ QLineEdit:focus{
                        <widget class="QPushButton" name="btn_save_card">
                         <property name="geometry">
                          <rect>
-                          <x>590</x>
+                          <x>580</x>
                           <y>570</y>
                           <width>161</width>
                           <height>51</height>
@@ -9210,7 +9499,7 @@ QPushButton:pressed{
                          <number>0</number>
                         </property>
                         <property name="rightMargin">
-                         <number>0</number>
+                         <number>5</number>
                         </property>
                         <property name="bottomMargin">
                          <number>5</number>
@@ -9232,7 +9521,7 @@ QPushButton:pressed{
                           <property name="maximumSize">
                            <size>
                             <width>370</width>
-                            <height>280</height>
+                            <height>285</height>
                            </size>
                           </property>
                           <property name="styleSheet">
@@ -9474,7 +9763,7 @@ QLineEdit:focus{
                           <property name="minimumSize">
                            <size>
                             <width>379</width>
-                            <height>240</height>
+                            <height>250</height>
                            </size>
                           </property>
                           <property name="maximumSize">
@@ -9496,6 +9785,9 @@ QLineEdit:focus{
                            <enum>QFrame::Raised</enum>
                           </property>
                           <layout class="QVBoxLayout" name="verticalLayout_21">
+                           <property name="topMargin">
+                            <number>9</number>
+                           </property>
                            <property name="rightMargin">
                             <number>9</number>
                            </property>
@@ -9598,6 +9890,12 @@ border-radius:7px;</string>
                   <enum>QFrame::Raised</enum>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_16">
+                  <property name="rightMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>11</number>
+                  </property>
                   <item>
                    <widget class="QFrame" name="frame_8">
                     <property name="minimumSize">
@@ -11217,10 +11515,10 @@ QLineEdit:hover{
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="settings">
+             <widget class="QWidget" name="merge_report">
               <layout class="QHBoxLayout" name="horizontalLayout_12">
                <property name="spacing">
-                <number>0</number>
+                <number>6</number>
                </property>
                <property name="leftMargin">
                 <number>0</number>
@@ -11235,16 +11533,10 @@ QLineEdit:hover{
                 <number>0</number>
                </property>
                <item>
-                <widget class="QFrame" name="frame_19">
-                 <property name="minimumSize">
-                  <size>
-                   <width>710</width>
-                   <height>0</height>
-                  </size>
-                 </property>
+                <widget class="QFrame" name="frame_12">
                  <property name="maximumSize">
                   <size>
-                   <width>710</width>
+                   <width>350</width>
                    <height>16777215</height>
                   </size>
                  </property>
@@ -11254,269 +11546,1427 @@ QLineEdit:hover{
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
+                 <widget class="QLabel" name="design_23">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>331</width>
+                    <height>101</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:2px;
+	padding-bottom:10px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Plot title</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_chart_title">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>50</y>
+                    <width>311</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>37</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="frame">
+                   <bool>true</bool>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>Title</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="report_colleges_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>230</y>
+                    <width>141</width>
+                    <height>37</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>37</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_24">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>470</y>
+                    <width>331</width>
+                    <height>81</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Plot types</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="merge_bar_chart">
+                  <property name="geometry">
+                   <rect>
+                    <x>120</x>
+                    <y>510</y>
+                    <width>101</width>
+                    <height>23</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QRadioButton{
+	background-color: rgb(35, 35, 35);
+	color: rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Barchart</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="merge_line_graph">
+                  <property name="geometry">
+                   <rect>
+                    <x>220</x>
+                    <y>510</y>
+                    <width>111</width>
+                    <height>23</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QRadioButton{
+	background-color: rgb(35, 35, 35);
+	color: rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Line Graph</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_25">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>130</y>
+                    <width>331</width>
+                    <height>201</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Partition</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="report_faculties_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>170</x>
+                    <y>220</y>
+                    <width>161</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="merge_pie_chart">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>510</y>
+                    <width>101</width>
+                    <height>23</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QRadioButton{
+	background-color: rgb(35, 35, 35);
+	color: rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Piechart</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="report_departments_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>270</y>
+                    <width>311</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="merge_query_parameter">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>170</y>
+                    <width>191</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="report_colleges_4">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>220</y>
+                    <width>141</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_bar_width">
+                  <property name="geometry">
+                   <rect>
+                    <x>130</x>
+                    <y>610</y>
+                    <width>91</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>35</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>width</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_start_angle">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>670</y>
+                    <width>91</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>angle</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_26">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>750</y>
+                    <width>331</width>
+                    <height>101</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Operation</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_27">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>870</y>
+                    <width>331</width>
+                    <height>101</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Save report</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_dpi">
+                  <property name="geometry">
+                   <rect>
+                    <x>240</x>
+                    <y>610</y>
+                    <width>91</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>dpi</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_merge_load">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>790</y>
+                    <width>151</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Load</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/download.svg</normaloff>:/icons/asset/download.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_merge_connection">
+                  <property name="geometry">
+                   <rect>
+                    <x>180</x>
+                    <y>790</y>
+                    <width>151</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Connection</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/database.svg</normaloff>:/icons/asset/database.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_merge_save">
+                  <property name="geometry">
+                   <rect>
+                    <x>210</x>
+                    <y>910</y>
+                    <width>121</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Save</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/save.svg</normaloff>:/icons/asset/save.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_28">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>570</y>
+                    <width>331</width>
+                    <height>161</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Figure properties</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_pie_ldist">
+                  <property name="geometry">
+                   <rect>
+                    <x>130</x>
+                    <y>670</y>
+                    <width>91</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>lbdist</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_file_name">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>910</y>
+                    <width>181</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>40</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>File name?</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_pctdist">
+                  <property name="geometry">
+                   <rect>
+                    <x>240</x>
+                    <y>670</y>
+                    <width>91</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>pctdist</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLineEdit" name="merge_figure_area">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>610</y>
+                    <width>91</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="tabletTracking">
+                   <bool>true</bool>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+                  </property>
+                  <property name="frame">
+                   <bool>true</bool>
+                  </property>
+                  <property name="readOnly">
+                   <bool>false</bool>
+                  </property>
+                  <property name="placeholderText">
+                   <string>size</string>
+                  </property>
+                  <property name="clearButtonEnabled">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QComboBox" name="date_range_comboBox_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>390</y>
+                    <width>171</width>
+                    <height>37</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>37</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	color: rgb(255, 255, 255);
+	border: 2px solid rgb(45, 45, 45);
+	padding-left:10px;
+	border-radius: 10px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}</string>
+                  </property>
+                  <property name="editable">
+                   <bool>false</bool>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_remove_combox_item_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>200</x>
+                    <y>390</y>
+                    <width>131</width>
+                    <height>37</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>37</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Date</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/minus.svg</normaloff>:/icons/asset/minus.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="design_29">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>350</y>
+                    <width>331</width>
+                    <height>101</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Plot values</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                  </property>
+                 </widget>
+                 <widget class="QPushButton" name="btn_generated_data">
+                  <property name="geometry">
+                   <rect>
+                    <x>220</x>
+                    <y>170</y>
+                    <width>111</width>
+                    <height>40</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>38</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>View</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../resource/asset.qrc">
+                    <normaloff>:/icons/asset/maximize.svg</normaloff>:/icons/asset/maximize.svg</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                 <zorder>design_29</zorder>
+                 <zorder>design_28</zorder>
+                 <zorder>design_23</zorder>
+                 <zorder>merge_chart_title</zorder>
+                 <zorder>report_colleges_3</zorder>
+                 <zorder>design_24</zorder>
+                 <zorder>merge_bar_chart</zorder>
+                 <zorder>merge_line_graph</zorder>
+                 <zorder>design_25</zorder>
+                 <zorder>report_faculties_3</zorder>
+                 <zorder>merge_pie_chart</zorder>
+                 <zorder>report_departments_3</zorder>
+                 <zorder>merge_query_parameter</zorder>
+                 <zorder>report_colleges_4</zorder>
+                 <zorder>merge_bar_width</zorder>
+                 <zorder>merge_start_angle</zorder>
+                 <zorder>design_26</zorder>
+                 <zorder>design_27</zorder>
+                 <zorder>merge_dpi</zorder>
+                 <zorder>btn_merge_load</zorder>
+                 <zorder>btn_merge_connection</zorder>
+                 <zorder>btn_merge_save</zorder>
+                 <zorder>merge_pie_ldist</zorder>
+                 <zorder>merge_file_name</zorder>
+                 <zorder>merge_pctdist</zorder>
+                 <zorder>merge_figure_area</zorder>
+                 <zorder>date_range_comboBox_3</zorder>
+                 <zorder>btn_remove_combox_item_3</zorder>
+                 <zorder>btn_generated_data</zorder>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_17">
+                 <property name="maximumSize">
+                  <size>
+                   <width>1089</width>
+                   <height>980</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <property name="spacing">
+                   <number>3</number>
+                  </property>
                   <property name="leftMargin">
-                   <number>9</number>
+                   <number>0</number>
                   </property>
                   <property name="rightMargin">
                    <number>9</number>
                   </property>
                   <item>
-                   <widget class="QFrame" name="frame_26">
+                   <widget class="QLabel" name="merge_plot_area">
                     <property name="minimumSize">
                      <size>
-                      <width>700</width>
+                      <width>0</width>
                       <height>0</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>695</width>
+                      <width>16777215</width>
                       <height>16777215</height>
                      </size>
                     </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
                     <property name="styleSheet">
-                     <string notr="true">QFrame{
-	background-color: rgb(35, 35, 35);
+                     <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35,35,35);
 	border-radius: 10px;
 }</string>
                     </property>
-                    <property name="frameShape">
-                     <enum>QFrame::StyledPanel</enum>
+                    <property name="text">
+                     <string>Graph</string>
                     </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_15">
-                     <property name="spacing">
-                      <number>9</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>12</number>
-                     </property>
-                     <item>
-                      <widget class="QTextEdit" name="textEdit">
-                       <property name="minimumSize">
-                        <size>
-                         <width>685</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>680</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QTextEdit{
-	color: rgb(255, 255, 255);
-	
-	
-}</string>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::NoFrame</enum>
-                       </property>
-                       <property name="readOnly">
-                        <bool>true</bool>
-                       </property>
-                       <property name="html">
-                        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Getting Started&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;This page seeks to introduce the user on how to use most components of this software and how to get some of the various components working since it tend to give the end user more flexibility due to it loose coupling nature. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Camera&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system by default is not configured to run on any camera whether inbuilt or online camera. You would need to scan for all available camera's connected to the system. This can be achieved by providing a number for the range of camera's you want to scan for and pressing the scan button provided. The software would only return list of available open camera's connected to the system. It also gives you the flexibility to connect to networked cameras. In other to achieve this, you need to provide the Ip address of the camera on the network.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Camera Connection&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to connect any of the active camera's, first you need to make sure that the camera is not in use or if in use &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;make sure to disconnect&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; it before connecting it to different view or frame.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; if camera 0 is connected to&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; login&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view and you try to connect that same camera to &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;logout&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view then, the system would automatically release the camera for &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;login&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; view to use.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Image Enhancement&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides some image enhancement capabilities to process the image based on weather conditions. It currently provides full support for increasing. This would only work for camera's that supports these features. Some camera's do not give support fine tuning these features.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1] Brightness	 [2] Sharpness 	[3] Contrast&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Surveillance&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system supports four additional cameras to help monitor the surroundings as well. To use this provide &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;camera IP&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; address of the camera. Just select the camera Id from the drop down box provided and it would automatically load the select camera's connection address. The ability to add camera's to database is only available in administrative mode. Contact administrator if you run into problems connecting to any available camera.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Databases&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system currently is providing full support MySQL databases. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;By default, the system is configured not to run on any database. Ifconfigure the system to run on &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;MySQL &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;then you would need to provide your connection details and would also need to test the connection status to check whether you have a working connection or not. You don't need create the database tables as the system is able to detect and create the tables it needs in other to function. This is achieved by using the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;initialize tables button&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;. This should be done once.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Database properties&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To prevent you from re-typing the database properties (MySQL or PostgreSQL) all the time attached to the application is&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; properties.txt&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file where you can provide the database connection details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example:&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;Username, Password, Hostname, Port, Database,Server&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; this&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\database_properties&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Backup&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To backup create backup of the cache database. Head to the advanced search page and use the backup button provided to back the database up. The backup location for the backup is in&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\backup&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; The backup history file contains logs all your privious backup time and date stamp. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Searching&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to retrieve student details along with all the entries made by that student, they are various combinations or criteria’s you can use to achieve this and get results. When the switch date between date fields is checked the date picked from the calendar widget would be placed in the start date field and if unchecked then it would be placed in the end date field.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. If the search box is empty and the search button is pressed then it's going to fetch all the records present in the database table and render it inside the table view.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. If a reference number is provided then it's going to fetch that student details along with all the entries made by that student. The student details would be rendered on a card-view liked UI and the entries would also be rendered in a table view.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[3]. If a reference number is provided as well as start date then it would fetch all entries from that date down to the last appeared date and render the data to the UI.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[4] if a reference number is provided as well as start and end date then it would fetch the details from based on the date range provided and render the data to UI.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[5]. If the search by program box is checked then you can fetch data based on the various programs. The search comes with autocompletion feature with the programs available.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Exporting Data&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides two solid ways of exporting data in either Json or CVS format based on your need. Data can only be exported when the table view is not empty or data is not been rendered. The default naming format is student_data_[date]_[time]. Where the date and time is the date and time stamp of the day the file was exported.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. When data is exported in csv format the default location for the saved file is at &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\export\csv&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. When data is exported in Json format the default location for the saved file is at &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\export\json&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Reports&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The system provides support for generating reports in three different ways based on the user’s preference. By default, the application won’t display any report data unless it is hot reloaded. On hot reload, it is going to display pie chart and any other type of chart or graph based on the one which is checked. The pie chart side of this view is only used to render only pie charts. The other view is dynamic and hence display plots for either bar chart or line graph.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1] Pie chart    [2] Bar chart  [3] Line graph&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Generating charts&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;This case applies to pie chart and bar chart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;In other to retrieve data for analysis, these are various combinations or criteria’s you can use to achieve this and get results.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. If either of these radio buttons is checked with start date provided and load button is pressed, then it is going to read all the data available based on such date, from the database and display a chart with such data.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. If either of these radio buttons is checked with start and end date provided and load button is pressed, then it is going to read all the data available based on the dates provided, from the database and display a chart with such data.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_25">
-                 <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_25">
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QFrame" name="frame_28">
-                    <property name="maximumSize">
-                     <size>
-                      <width>720</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QFrame{
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-}</string>
-                    </property>
-                    <property name="frameShape">
-                     <enum>QFrame::NoFrame</enum>
-                    </property>
-                    <property name="frameShadow">
-                     <enum>QFrame::Raised</enum>
-                    </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_18">
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <item>
-                      <widget class="QTextEdit" name="textEdit_2">
-                       <property name="minimumSize">
-                        <size>
-                         <width>700</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>680</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QTextEdit{
-	color: rgb(255, 255, 255);
-	
-	
-}</string>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::NoFrame</enum>
-                       </property>
-                       <property name="readOnly">
-                        <bool>true</bool>
-                       </property>
-                       <property name="html">
-                        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Line Graph&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The line graph/plot is only used to visualize trends in data. To be able to plot trends in data. There is an additional combo box provided to keep all the dates been selected for the line graph. Only dates from the first calendar would be added to list.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. First you would to select the program to plot or visualize their trend.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. Pick dates from the first calendar and it would automatically be added to the combo box available.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[3]. To remove any unwanted date from the list of dates to be used, select that date and use the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;date button&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; to remove it.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;  &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[4]. After all the dates for the line graphs are selected, pressed the load button to plot the graph.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Saving Charts&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The only support provided for saving files is pdf format and this can't be set from the user end as it is provided from the application end. The saving format is as follows, the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;filename&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; provided appended with this &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;[date]_[time]&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; where date and time is the current values on the machine running the application.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[1]. If you want to save pie charts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\reports\piechart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[2]. If you want to save bar charts, make sure that radio button checked and provide a filename, the saved file would be found in this directory. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\reports\barchart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;[3]. If you want to save line graph, make sure that radio button checked and provide a filename, the saved file would be found in this directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\reports\linechart&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;College programs&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;To it make easier to added new programs to the existing ones been offered by the college in the near future, the application provides a way to handle this situation. You just need to edit the &lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;college_programs.txt&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; file  located in the &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\programs &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory. Any new program added should be seperated by a comma to allow the application read it. &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;e.g.,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt; BSc. Chemistry, BSc. Physics, new program,new program. &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;Just replace the the college side the the college name. eg,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; CoS_programs.txt &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;for college of science, for engineering &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;CoE_programs.txt.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;E-mail properties&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The properties of the sender details can be place in a text file located within the directory below with the name &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;detail.txt&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\email_details&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; to prevent you from re-writing them anytime you want to send e-mail. The application on start-up would automatically search for the file and load details from there. Please follow the exact format provided in the file.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;The content of your mail can be typed in the content.txt located in the same directory. This content is attached mails sent as attendance code. To send reports or data from the content_report.txt should be edited as per your need or requirement.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;Please take note the '&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;Hello name,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;' section, you can change the 'Hello' but please keep the name as it is since the name part would be provided from the user interface end.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To prevent you from re-typing the e-mails all the time attached to the application is &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;detail.txt&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; file where you can provide the mail details to save you time. Anytime you load the application, these properties are also loaded. Please follow the format as seen in the text file or below is an example: &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;subject, example@gmail.com, sender name, password,&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; this file located in the &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:14pt; font-weight:600; font-style:italic;&quot;&gt;iAttend&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;\data\email_details&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; directory.&lt;/span&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Batch processing&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;To run a batch job and insert multiple students data into the database, just head to the batch processing page and follow these steps.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;NB: To perform this operation, you need strong internet connection.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Records&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;1. Use the browse button to select a &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;text or csv file&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; containing the data/records. The records should strictly follow the format given bellow. The date should be in &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;mm/dd/yyyy&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; format else, you would run into errors. Make sure to include header for the file as this would be skipped when it is loaded by the application. If headers are not provided then the first record would be skipped by default.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;Firstname,Middlename,Lastname,Index,Reference,Program,College,Nationality,Issued date,Expiry date,Email&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;2. Make sure your have good internet connection and connected to a database as well.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;3. Click on the insert button to start the batch job, check from the notification panel to see the status of the job. If the job is still progress, just leave it for it finish the process. &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;4. You can always check the logs for any finished batch process. Locate the log files in this directory &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\iAttend\data\batch_logs &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; with this name format &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;batch_logs_unprocessed_date_time.txt &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;where date and time is the current stamps.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;5. This log file contains records that wasn't saved due to duplicate entry or network connection error.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Images&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;NB: To perform this operation, you need strong internet connection.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;1. On the same batch page click on the images button with folder like image attached to it for a dialog to pop up.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;2. Use the browse button to select the folder containing the images. All the images within the selected folder would be listed.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;3. The naming format for the images should be, the student &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;reference_number.extension, e.g, 284458585.png&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;4. After selecting the images folder, you can close the dialog.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;5. To start the batch job to insert images into the database, click on the insert button with image icon attached to it. &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;6. Leave the application to whilst the operation is in progress.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;7. Check the status of the operation from the notification panel. &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;8. Check the logs generated after the operation for unprocessed images. &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;9.Location for log files &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\iAttend\data\batch_logs  &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;with &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;this name format &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt;image_logs_unprocessed_date_time.txt  &lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;where date and time is the current stamps.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; text-decoration: underline;&quot;&gt;Generate QR Code&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;After inserting the records into the database, the code for taking attendance can now be generated. On the batch page locate the&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600;&quot;&gt; mail button&lt;/span&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt; with message icon attached to it.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;NB: To perform this operation, you need strong internet connection, and might need to switch of the sending device proxy.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;1. Click on to start generating and the sending processing simultaneously.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;2. Leave the application to perform the operation.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;3. Check the notification panel for the procgress of the sending.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;4. Only valid mail addresses would receive the code generated.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;5. Locate all codes generated within this directory &lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;C:\ProgramData\iAttend\data\qr_code\&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2','sans-serif'; font-size:11pt;&quot;&gt;6. You can now delete the generated codes after the process.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
                    </widget>
                   </item>
                  </layout>

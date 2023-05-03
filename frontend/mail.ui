@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-radius:5px;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QFrame" name="frame">
@@ -249,115 +252,148 @@ QPushButton:hover{
          </item>
          <item>
           <widget class="QFrame" name="frame_4">
+           <property name="maximumSize">
+            <size>
+             <width>482</width>
+             <height>636</height>
+            </size>
+           </property>
            <property name="frameShape">
             <enum>QFrame::NoFrame</enum>
            </property>
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <widget class="QLabel" name="label_36">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>120</y>
-              <width>31</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(45, 45, 45);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="../resource/asset.qrc">:/icons/asset/user.svg</pixmap>
-            </property>
-           </widget>
-           <widget class="QLabel" name="label_37">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>330</y>
-              <width>31</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(45, 45, 45);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="../resource/asset.qrc">:/icons/asset/lock.svg</pixmap>
-            </property>
-           </widget>
-           <widget class="QLabel" name="label_notification">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>530</y>
-              <width>441</width>
-              <height>81</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <family>MS Shell Dlg 2</family>
-              <pointsize>10</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border-radius: 10px;
-}</string>
-            </property>
-            <property name="text">
-             <string>Notification</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="wordWrap">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="sender_password">
-            <property name="geometry">
-             <rect>
-              <x>17</x>
-              <y>320</y>
-              <width>441</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QFrame" name="frame_5">
+              <property name="maximumSize">
+               <size>
+                <width>464</width>
+                <height>618</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_44">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>40</y>
+                 <width>31</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../resource/asset.qrc">:/icons/asset/mail.svg</pixmap>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_36">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>110</y>
+                 <width>31</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(45, 45, 45);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../resource/asset.qrc">:/icons/asset/user.svg</pixmap>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="email_subject">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>170</y>
+                 <width>443</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
+	border-radius:10px;
+	padding-left: 45px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+               </property>
+               <property name="placeholderText">
+                <string>Subject</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="sender_password">
+               <property name="geometry">
+                <rect>
+                 <x>7</x>
+                 <y>310</y>
+                 <width>443</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
 	padding-left: 50px;
 }
 
@@ -368,271 +404,45 @@ QLineEdit:hover{
 QLineEdit:focus{
 	border:2px solid rgb(255, 255, 255);
 }</string>
-            </property>
-            <property name="echoMode">
-             <enum>QLineEdit::Password</enum>
-            </property>
-            <property name="placeholderText">
-             <string>Password</string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="email_subject">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>180</y>
-              <width>441</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 45px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-            </property>
-            <property name="placeholderText">
-             <string>Subject</string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="email_sender">
-            <property name="geometry">
-             <rect>
-              <x>17</x>
-              <y>250</y>
-              <width>441</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 50px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-            </property>
-            <property name="placeholderText">
-             <string>Email</string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="email_from">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>110</y>
-              <width>441</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>338</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 45px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-            </property>
-            <property name="placeholderText">
-             <string>From</string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLabel" name="label_38">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>190</y>
-              <width>31</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(45, 45, 45);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="../resource/asset.qrc">:/icons/asset/edit-3.svg</pixmap>
-            </property>
-           </widget>
-           <widget class="QLabel" name="label_39">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>260</y>
-              <width>31</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(45, 45, 45);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="../resource/asset.qrc">:/icons/asset/mail.svg</pixmap>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="reg_email">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>40</y>
-              <width>441</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
-	color: rgb(255, 255, 255);
-	border: 2px solid  rgb(45, 45, 45);
-	border-radius:15px;
-	padding-left: 45px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}
-
-QLineEdit:focus{
-	border:2px solid rgb(255, 255, 255);
-}</string>
-            </property>
-            <property name="placeholderText">
-             <string>Receipient(s) </string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLabel" name="label_44">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>50</y>
-              <width>31</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="../resource/asset.qrc">:/icons/asset/mail.svg</pixmap>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="image_file_reg">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>390</y>
-              <width>251</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+               <property name="placeholderText">
+                <string>Password</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="rep_name">
+               <property name="geometry">
+                <rect>
+                 <x>270</x>
+                 <y>380</y>
+                 <width>181</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>181</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:10px;
@@ -646,30 +456,95 @@ QLineEdit:hover{
 QLineEdit:focus{
 	border:2px solid rgb(255, 255, 255);
 }</string>
-            </property>
-            <property name="placeholderText">
-             <string>File path</string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="btn_browse_reg">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>460</y>
-              <width>211</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
+               </property>
+               <property name="placeholderText">
+                <string>Receipient name</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_notification">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>520</y>
+                 <width>441</width>
+                 <height>81</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>441</width>
+                 <height>81</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>MS Shell Dlg 2</family>
+                 <pointsize>10</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 10px;
+}</string>
+               </property>
+               <property name="text">
+                <string>Notification</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_38">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>180</y>
+                 <width>31</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(45, 45, 45);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../resource/asset.qrc">:/icons/asset/edit-3.svg</pixmap>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="btn_send_mail">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>450</y>
+                 <width>131</width>
+                 <height>51</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>131</width>
+                 <height>51</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	background-color: rgb(45, 45, 45);
 	border:none;
@@ -677,46 +552,52 @@ QLineEdit:focus{
 }
 
 QPushButton:hover{
-	border-radius: 20px;
+	border-radius: 15px;
 }
 
 QPushButton:pressed{
 	border: 2px solid rgb(255,255,255);	
 }</string>
-            </property>
-            <property name="text">
-             <string>Browse</string>
-            </property>
-            <property name="icon">
-             <iconset resource="../resource/asset.qrc">
-              <normaloff>:/icons/asset/upload.svg</normaloff>:/icons/asset/upload.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="btn_send_mail">
-            <property name="geometry">
-             <rect>
-              <x>250</x>
-              <y>460</y>
-              <width>211</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
+               </property>
+               <property name="text">
+                <string>Send mail</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resource/asset.qrc">
+                 <normaloff>:/icons/asset/send.svg</normaloff>:/icons/asset/send.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="btn_browse_reg">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>450</y>
+                 <width>141</width>
+                 <height>51</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>141</width>
+                 <height>51</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
 	color: rgb(255, 255, 255);
 	background-color: rgb(45, 45, 45);
 	border:none;
@@ -724,46 +605,160 @@ QPushButton:pressed{
 }
 
 QPushButton:hover{
-	border-radius: 20px;
+	border-radius: 15px;
 }
 
 QPushButton:pressed{
 	border: 2px solid rgb(255,255,255);	
 }</string>
-            </property>
-            <property name="text">
-             <string>Send mail</string>
-            </property>
-            <property name="icon">
-             <iconset resource="../resource/asset.qrc">
-              <normaloff>:/icons/asset/send.svg</normaloff>:/icons/asset/send.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="flat">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="rep_name">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>390</y>
-              <width>181</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLineEdit{
+               </property>
+               <property name="text">
+                <string>Browse</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resource/asset.qrc">
+                 <normaloff>:/icons/asset/upload.svg</normaloff>:/icons/asset/upload.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QPushButton" name="btn_update_mail_details">
+               <property name="geometry">
+                <rect>
+                 <x>320</x>
+                 <y>450</y>
+                 <width>131</width>
+                 <height>51</height>
+                </rect>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>131</width>
+                 <height>51</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+               </property>
+               <property name="text">
+                <string>Update</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../resource/asset.qrc">
+                 <normaloff>:/icons/asset/repeat.svg</normaloff>:/icons/asset/repeat.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="email_sender">
+               <property name="geometry">
+                <rect>
+                 <x>7</x>
+                 <y>240</y>
+                 <width>443</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 50px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+               </property>
+               <property name="placeholderText">
+                <string>Email</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="image_file_reg">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>380</y>
+                 <width>241</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>241</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:10px;
@@ -777,29 +772,181 @@ QLineEdit:hover{
 QLineEdit:focus{
 	border:2px solid rgb(255, 255, 255);
 }</string>
-            </property>
-            <property name="placeholderText">
-             <string>Receipient name</string>
-            </property>
-            <property name="clearButtonEnabled">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <zorder>sender_password</zorder>
-           <zorder>email_from</zorder>
-           <zorder>label_36</zorder>
-           <zorder>label_37</zorder>
-           <zorder>label_notification</zorder>
-           <zorder>email_subject</zorder>
-           <zorder>email_sender</zorder>
-           <zorder>label_38</zorder>
-           <zorder>label_39</zorder>
-           <zorder>reg_email</zorder>
-           <zorder>label_44</zorder>
-           <zorder>image_file_reg</zorder>
-           <zorder>btn_browse_reg</zorder>
-           <zorder>btn_send_mail</zorder>
-           <zorder>rep_name</zorder>
+               </property>
+               <property name="placeholderText">
+                <string>File path</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_39">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>250</y>
+                 <width>31</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(45, 45, 45);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../resource/asset.qrc">:/icons/asset/mail.svg</pixmap>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_37">
+               <property name="geometry">
+                <rect>
+                 <x>20</x>
+                 <y>320</y>
+                 <width>31</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(45, 45, 45);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../resource/asset.qrc">:/icons/asset/lock.svg</pixmap>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="email_from">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>100</y>
+                 <width>443</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 45px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+               </property>
+               <property name="placeholderText">
+                <string>From</string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="reg_email">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>443</width>
+                 <height>55</height>
+                </rect>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>443</width>
+                 <height>55</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit{
+	color: rgb(255, 255, 255);
+	border: 2px solid  rgb(45, 45, 45);
+	border-radius:10px;
+	padding-left: 45px;
+}
+
+QLineEdit:hover{
+	border:2px solid rgb(35, 35, 35);
+}
+
+QLineEdit:focus{
+	border:2px solid rgb(255, 255, 255);
+}</string>
+               </property>
+               <property name="placeholderText">
+                <string>Receipient(s) </string>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <zorder>reg_email</zorder>
+              <zorder>email_from</zorder>
+              <zorder>label_44</zorder>
+              <zorder>label_36</zorder>
+              <zorder>email_subject</zorder>
+              <zorder>sender_password</zorder>
+              <zorder>rep_name</zorder>
+              <zorder>label_notification</zorder>
+              <zorder>label_38</zorder>
+              <zorder>btn_send_mail</zorder>
+              <zorder>btn_browse_reg</zorder>
+              <zorder>btn_update_mail_details</zorder>
+              <zorder>email_sender</zorder>
+              <zorder>image_file_reg</zorder>
+              <zorder>label_39</zorder>
+              <zorder>label_37</zorder>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
