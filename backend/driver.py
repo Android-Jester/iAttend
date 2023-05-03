@@ -213,6 +213,7 @@ class MainWindow(QMainWindow):
         self.ui.report_colleges.addItems(load_colleges(self.resource_path('structure.json')))
         self.ui.report_colleges.activated.connect(self.load_college_faculties_report)
         self.ui.report_faculties.activated.connect(self.load_colleges_report)
+        self.ui.btn_load_tables.clicked.connect(self.load_database_tables)
         self.load_college_faculties_report()
         self.load_colleges_report()
         
@@ -258,7 +259,8 @@ class MainWindow(QMainWindow):
             if len(data[0])>=1:
                 self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
-                area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
+                area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6],
+                xlabel=f"Total records: {self.calculate_records_total(data[1])}")
                 self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
                 self.ui.merge_plot_area.setScaledContents(True)
             else:
@@ -280,7 +282,7 @@ class MainWindow(QMainWindow):
             if len(data[0])>=1:
                 self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-                bar_width=properties[2],y_label=y_label,x_label=f"values",
+                bar_width=properties[2],y_label=y_label,x_label=f"Total records: {self.calculate_records_total(data[1])}",
                 colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
                 self.ui.merge_plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                 self.ui.merge_plot_area.setScaledContents(True)
@@ -444,18 +446,19 @@ class MainWindow(QMainWindow):
     def push_data(self):
         self.alert = AlertDialog()
         facility = self.ui.db_consolidation_facility.text()
+        tablename = self.ui.database_tables.currentText()
         try: 
             properties = self.merge_database_properties()
             results=self.transform_data(self.load_merge_data(),facility)
             partition = self.validate_field("^[0-9]+$",self.ui.db_consolidation_partition.text())
             facility = self.ui.db_consolidation_facility.text()
-            if results and partition and facility: 
+            if results and partition and facility and tablename: 
                 batch_size=self.compute_push_strategy(self.load_merge_data())
                 db,test=self.database_connection_test(properties)
                 cursor = db.cursor()
                 cursor.execute(user_database(properties[4]))
                 for record in range(0,len(results),batch_size):
-                    cursor.executemany("INSERT INTO tb_attendance_central_merge(student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,facility_used) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+                    cursor.executemany(f"INSERT INTO {tablename}(student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,facility_used) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
                     results[record:record+batch_size])
                     db.commit()
                 current_account = f"{account_firstname} {account_lastname}"
@@ -468,7 +471,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Pushed "+str(len(results))+" records to server\nMail sent to administrator..")
                 self.alert.show()
             else:
-                self.alert.content("Oops! records or partition\nstrategy/facility name not set!")
+                self.alert.content("Oops! records or partition strategy\nfacility/table name not set!")
                 self.alert.show()
         except Exception as e:
             self.alert.content(str(e))
@@ -499,23 +502,31 @@ class MainWindow(QMainWindow):
                empty_list.append(field)
         return data_list,empty_list
 
+    def load_database_tables(self):
+        self.alert = AlertDialog()
+        try:
+            properties = self.merge_database_properties()
+            db,test=self.database_connection_test(properties)
+            cursor=db.cursor()
+            cursor.execute("SHOW TABLES")
+            results = cursor.fetchall()
+            tables = []
+            for row in results:
+                tables.append(row[0])
+            self.ui.database_tables.clear()
+            self.ui.database_tables.addItems(tables)
+        except:
+            self.alert.content(test)
+            self.alert.show()
+            
     def database_test(self):
         self.alert = AlertDialog()
         properties = self.merge_database_properties()
         valid,invalid = self.validate_merge_database_fields()
         if len(invalid)==0:
-            try:
-                db,test=self.database_connection_test(properties)
-                cursor=db.cursor()
-                cursor.execute(create_database(properties[4]))
-                cursor.execute(user_database(properties[4]))
-                cursor.execute(create_tb_attendance_central_database())
-                db.commit()
-                self.alert.content(test)
-                self.alert.show()
-            except Exception:
-                self.alert.content("Oops! check your database connection\nproperties...")
-                self.alert.show()
+            db,test=self.database_connection_test(properties)
+            self.alert.content(test)
+            self.alert.show()
         else:
             self.alert.content("Oops! set all database properties...")
             self.alert.show()
@@ -530,8 +541,8 @@ class MainWindow(QMainWindow):
 
     def database_connection_test(self,properties: list):
         try:
-            connection_status:str =("Connected to MySQL...")
-            db=connector.connect(host=properties[0],port=properties[1],user=properties[2],password=properties[3]) 
+            connection_status:bool = ("Connected to database...")
+            db=connector.connect(host=properties[0],port=properties[1],user=properties[2],password=properties[3],database=properties[4]) 
             return db,connection_status
         except Exception as e:
             return "Oops",str(e)
@@ -1659,7 +1670,7 @@ class MainWindow(QMainWindow):
             if len(data[0])>=1:
                 self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-                bar_width=properties[2],y_label=y_label,x_label=f"values",
+                bar_width=properties[2],y_label=y_label,x_label=f"Total records: {self.calculate_records_total(data[1])}",
                 colors=colors[:len(data[0])],title=f"{properties[0]}",area=properties[1],dpi=properties[3])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                 self.ui.plot_area.setScaledContents(True)
@@ -1704,7 +1715,8 @@ class MainWindow(QMainWindow):
             if len(data[0])>=1:
                 self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.piechart.piechart(data=data,title=properties[0],colors=colors[:len(data[0])],startangle=properties[4],
-                area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6])
+                area=properties[1],dpi=properties[3],pctdistance=properties[5],labeldistance=properties[6],
+                xlabel=f"Total records: {self.calculate_records_total(data[1])}")
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1753,7 +1765,7 @@ class MainWindow(QMainWindow):
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_faculties,'Faculty'))
             if len(data)>=1:
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"Total records: {self.calculate_records_total(data[1])}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1789,6 +1801,9 @@ class MainWindow(QMainWindow):
             else:
                 self.alert.content("Oops! your data is not enough to\ngenerate charts..")
                 self.alert.show()
+
+    def calculate_records_total(self,records):
+       return reduce(lambda x, y: x + y, records)
 
     def data_visualization(self):
         if self.ui.pie_chart.isChecked():
