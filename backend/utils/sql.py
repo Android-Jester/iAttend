@@ -221,7 +221,7 @@ def create_tb_user_sessions_sqlite():
 
 def create_tb_attendance_central_database():
     sql= """
-        CREATE TABLE IF NOT EXISTS tb_attendance_central_merge(
+        CREATE TABLE IF NOT EXISTS tb_attendance(
             generated_id BIGINT PRIMARY KEY AUTO_INCREMENT,
             student_college varchar(20) NOT NULL,
             student_faculty varchar(25) NOT NULL,
