@@ -24,7 +24,7 @@ class Database(QDialog):
         self.shadow.setColor(QColor(230, 230, 230, 50))
         self.ui_database.frame.setGraphicsEffect(self.shadow)
         self.ui_database.btn_connect_test.clicked.connect(self.test_connection)
-        self.ui_database.btn_connect.clicked.connect(self.my_cursor)
+        self.ui_database.btn_update_properties_2.clicked.connect(self.update_properties)
         self.set_database_properties()
         self.ui_database.comboBox.activated.connect(self.get_database_properties)  
         self.ui_database.btn_update_properties.clicked.connect(self.update_connection_properties)
@@ -40,16 +40,8 @@ class Database(QDialog):
     def get_properties(self):
         return 'C:\\ProgramData\\iAttend\\data\\properties\\database_properties.json'
 
-    def get_fields_values(self):
-        username=self.ui_database.username.text()
-        password=self.ui_database.password.text()
-        hostname=self.ui_database.hostname.text()
-        port=self.ui_database.port.text()
-        database_name=self.ui_database.database_name.text()
-        return username,password,hostname,port,database_name
-
     def validate_database_fields(self):
-        properties_list =  self.get_fields_values()
+        properties_list =  self.get_field_text()
         data_list = []
         empty_list = []
         for field in properties_list:
@@ -76,6 +68,29 @@ class Database(QDialog):
             with open(path,'w') as content:
                 json.dump(data, content, indent=4)
             content.close()
+
+    def database_properties(self,path,properties):
+        with open(path,'r') as content:
+            update = json.load(content) 
+            update['username'] = properties[0]
+            update['password'] = properties[1]
+            update['hostname'] = properties[2]
+            update['port'] = properties[3]
+            update['database'] = properties[4]
+            update['servername'] = self.ui_database.server_type.text()
+            with open(path,'w') as content:
+                json.dump(update, content, indent=4)
+            content.close()
+
+    def update_properties(self):
+        path = 'C:\\ProgramData\\iAttend\\data\\properties\\connection_properties.json'
+        data_list,empty_list=self.validate_database_fields()
+        properties = list(self.get_field_text())
+        if len(empty_list) == 0 and self.ui_database.server_type.text():
+            self.database_properties(path,properties)
+            self.ui_database.label_notification.setText("Hey! database properties updated...")
+        else:
+            self.ui_database.label_notification.setText("Oops! empty  values not allowed...")
 
     def update_connection_properties(self):
         path = self.get_properties()
@@ -109,6 +124,7 @@ class Database(QDialog):
         self.ui_database.hostname.setText(details['hostname'])
         self.ui_database.port.setText(details['port'])
         self.ui_database.database_name.setText(details['database'])
+        self.ui_database.server_type.setText(details['servername'])
         if str(details['servername'])=='mysql':
             self.ui_database.mysql.setChecked(True)
         

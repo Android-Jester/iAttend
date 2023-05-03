@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'databasefspxdP.ui'
+## Form generated from reading UI file 'databaseWJBKBP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -138,6 +138,12 @@ class Ui_Database(object):
         self.username = QLineEdit(self.frame_4)
         self.username.setObjectName(u"username")
         self.username.setGeometry(QRect(20, 100, 441, 51))
+        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.username.sizePolicy().hasHeightForWidth())
+        self.username.setSizePolicy(sizePolicy)
+        self.username.setMaximumSize(QSize(441, 51))
         font1 = QFont()
         font1.setPointSize(10)
         self.username.setFont(font1)
@@ -165,6 +171,9 @@ class Ui_Database(object):
         self.password = QLineEdit(self.frame_4)
         self.password.setObjectName(u"password")
         self.password.setGeometry(QRect(20, 170, 441, 51))
+        sizePolicy.setHeightForWidth(self.password.sizePolicy().hasHeightForWidth())
+        self.password.setSizePolicy(sizePolicy)
+        self.password.setMaximumSize(QSize(441, 51))
         self.password.setFont(font1)
         self.password.setTabletTracking(True)
         self.password.setStyleSheet(u"QLineEdit{\n"
@@ -191,6 +200,9 @@ class Ui_Database(object):
         self.hostname = QLineEdit(self.frame_4)
         self.hostname.setObjectName(u"hostname")
         self.hostname.setGeometry(QRect(20, 240, 441, 51))
+        sizePolicy.setHeightForWidth(self.hostname.sizePolicy().hasHeightForWidth())
+        self.hostname.setSizePolicy(sizePolicy)
+        self.hostname.setMaximumSize(QSize(441, 51))
         self.hostname.setFont(font1)
         self.hostname.setTabletTracking(True)
         self.hostname.setStyleSheet(u"QLineEdit{\n"
@@ -216,6 +228,9 @@ class Ui_Database(object):
         self.database_name = QLineEdit(self.frame_4)
         self.database_name.setObjectName(u"database_name")
         self.database_name.setGeometry(QRect(20, 380, 441, 51))
+        sizePolicy.setHeightForWidth(self.database_name.sizePolicy().hasHeightForWidth())
+        self.database_name.setSizePolicy(sizePolicy)
+        self.database_name.setMaximumSize(QSize(441, 51))
         self.database_name.setFont(font1)
         self.database_name.setTabletTracking(True)
         self.database_name.setStyleSheet(u"QLineEdit{\n"
@@ -241,6 +256,9 @@ class Ui_Database(object):
         self.btn_connect_test = QPushButton(self.frame_4)
         self.btn_connect_test.setObjectName(u"btn_connect_test")
         self.btn_connect_test.setGeometry(QRect(20, 450, 201, 41))
+        sizePolicy.setHeightForWidth(self.btn_connect_test.sizePolicy().hasHeightForWidth())
+        self.btn_connect_test.setSizePolicy(sizePolicy)
+        self.btn_connect_test.setMaximumSize(QSize(201, 41))
         self.btn_connect_test.setFont(font1)
         self.btn_connect_test.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -261,11 +279,14 @@ class Ui_Database(object):
         self.btn_connect_test.setIcon(icon)
         self.btn_connect_test.setIconSize(QSize(30, 30))
         self.btn_connect_test.setFlat(True)
-        self.btn_connect = QPushButton(self.frame_4)
-        self.btn_connect.setObjectName(u"btn_connect")
-        self.btn_connect.setGeometry(QRect(260, 450, 201, 41))
-        self.btn_connect.setFont(font1)
-        self.btn_connect.setStyleSheet(u"QPushButton{\n"
+        self.btn_update_properties_2 = QPushButton(self.frame_4)
+        self.btn_update_properties_2.setObjectName(u"btn_update_properties_2")
+        self.btn_update_properties_2.setGeometry(QRect(260, 450, 201, 41))
+        sizePolicy.setHeightForWidth(self.btn_update_properties_2.sizePolicy().hasHeightForWidth())
+        self.btn_update_properties_2.setSizePolicy(sizePolicy)
+        self.btn_update_properties_2.setMaximumSize(QSize(201, 41))
+        self.btn_update_properties_2.setFont(font1)
+        self.btn_update_properties_2.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border:none;\n"
@@ -280,13 +301,19 @@ class Ui_Database(object):
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
         icon1 = QIcon()
-        icon1.addFile(u":/icons/asset/table.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_connect.setIcon(icon1)
-        self.btn_connect.setIconSize(QSize(30, 30))
-        self.btn_connect.setFlat(True)
+        icon1.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_update_properties_2.setIcon(icon1)
+        self.btn_update_properties_2.setIconSize(QSize(30, 30))
+        self.btn_update_properties_2.setFlat(True)
         self.label_notification = QLabel(self.frame_4)
         self.label_notification.setObjectName(u"label_notification")
         self.label_notification.setGeometry(QRect(20, 510, 441, 101))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.label_notification.sizePolicy().hasHeightForWidth())
+        self.label_notification.setSizePolicy(sizePolicy1)
+        self.label_notification.setMaximumSize(QSize(441, 101))
         font2 = QFont()
         font2.setFamily(u"MS Shell Dlg 2")
         font2.setPointSize(10)
@@ -302,7 +329,10 @@ class Ui_Database(object):
         self.label_notification.setWordWrap(True)
         self.port = QLineEdit(self.frame_4)
         self.port.setObjectName(u"port")
-        self.port.setGeometry(QRect(20, 310, 441, 51))
+        self.port.setGeometry(QRect(20, 310, 231, 51))
+        sizePolicy.setHeightForWidth(self.port.sizePolicy().hasHeightForWidth())
+        self.port.setSizePolicy(sizePolicy)
+        self.port.setMaximumSize(QSize(231, 51))
         self.port.setFont(font1)
         self.port.setTabletTracking(True)
         self.port.setStyleSheet(u"QLineEdit{\n"
@@ -328,6 +358,9 @@ class Ui_Database(object):
         self.sqlite = QRadioButton(self.frame_4)
         self.sqlite.setObjectName(u"sqlite")
         self.sqlite.setGeometry(QRect(20, 40, 71, 20))
+        sizePolicy.setHeightForWidth(self.sqlite.sizePolicy().hasHeightForWidth())
+        self.sqlite.setSizePolicy(sizePolicy)
+        self.sqlite.setMaximumSize(QSize(71, 20))
         self.sqlite.setFont(font1)
         self.sqlite.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -337,6 +370,9 @@ class Ui_Database(object):
         self.mysql = QRadioButton(self.frame_4)
         self.mysql.setObjectName(u"mysql")
         self.mysql.setGeometry(QRect(110, 40, 81, 20))
+        sizePolicy.setHeightForWidth(self.mysql.sizePolicy().hasHeightForWidth())
+        self.mysql.setSizePolicy(sizePolicy)
+        self.mysql.setMaximumSize(QSize(81, 20))
         self.mysql.setFont(font1)
         self.mysql.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -345,8 +381,10 @@ class Ui_Database(object):
         self.comboBox = QComboBox(self.frame_4)
         self.comboBox.setObjectName(u"comboBox")
         self.comboBox.setGeometry(QRect(200, 30, 131, 41))
+        sizePolicy.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
+        self.comboBox.setSizePolicy(sizePolicy)
         self.comboBox.setMinimumSize(QSize(0, 41))
-        self.comboBox.setMaximumSize(QSize(16777215, 38))
+        self.comboBox.setMaximumSize(QSize(131, 41))
         self.comboBox.setFont(font1)
         self.comboBox.setStyleSheet(u"QComboBox{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -358,6 +396,9 @@ class Ui_Database(object):
         self.btn_update_properties = QPushButton(self.frame_4)
         self.btn_update_properties.setObjectName(u"btn_update_properties")
         self.btn_update_properties.setGeometry(QRect(350, 30, 111, 41))
+        sizePolicy.setHeightForWidth(self.btn_update_properties.sizePolicy().hasHeightForWidth())
+        self.btn_update_properties.setSizePolicy(sizePolicy)
+        self.btn_update_properties.setMaximumSize(QSize(111, 41))
         self.btn_update_properties.setFont(font1)
         self.btn_update_properties.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -373,11 +414,38 @@ class Ui_Database(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_update_properties.setIcon(icon2)
+        self.btn_update_properties.setIcon(icon1)
         self.btn_update_properties.setIconSize(QSize(30, 30))
         self.btn_update_properties.setFlat(True)
+        self.server_type = QLineEdit(self.frame_4)
+        self.server_type.setObjectName(u"server_type")
+        self.server_type.setGeometry(QRect(270, 310, 191, 51))
+        sizePolicy.setHeightForWidth(self.server_type.sizePolicy().hasHeightForWidth())
+        self.server_type.setSizePolicy(sizePolicy)
+        self.server_type.setMaximumSize(QSize(191, 51))
+        self.server_type.setFont(font1)
+        self.server_type.setTabletTracking(True)
+        self.server_type.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 45px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.server_type.setReadOnly(False)
+        self.server_type.setClearButtonEnabled(True)
+        self.label_41 = QLabel(self.frame_4)
+        self.label_41.setObjectName(u"label_41")
+        self.label_41.setGeometry(QRect(280, 320, 31, 31))
+        self.label_41.setStyleSheet(u"background-color: rgb(45, 45, 45);")
+        self.label_41.setPixmap(QPixmap(u":/icons/asset/server.svg"))
 
         self.verticalLayout_2.addWidget(self.frame_4)
 
@@ -409,12 +477,14 @@ class Ui_Database(object):
         self.database_name.setPlaceholderText(QCoreApplication.translate("Database", u"Database", None))
         self.label_39.setText("")
         self.btn_connect_test.setText(QCoreApplication.translate("Database", u"Test connection", None))
-        self.btn_connect.setText(QCoreApplication.translate("Database", u"Initialize tables", None))
+        self.btn_update_properties_2.setText(QCoreApplication.translate("Database", u"Update properties", None))
         self.label_notification.setText(QCoreApplication.translate("Database", u"Notification", None))
         self.port.setPlaceholderText(QCoreApplication.translate("Database", u"Port", None))
         self.label_40.setText("")
         self.sqlite.setText(QCoreApplication.translate("Database", u"SQLite", None))
         self.mysql.setText(QCoreApplication.translate("Database", u"MySQL", None))
         self.btn_update_properties.setText(QCoreApplication.translate("Database", u"Update", None))
+        self.server_type.setPlaceholderText(QCoreApplication.translate("Database", u"Server", None))
+        self.label_41.setText("")
     # retranslateUi
 
