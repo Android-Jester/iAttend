@@ -2805,7 +2805,11 @@ class Authentication(QMainWindow):
         self.ui_login.btn_login.clicked.connect(self.login)
         self.retrieve = ForgotPassword()
         self.ui_login.btn_forgot_pass.clicked.connect(lambda: self.retrieve.show())
-        self.user()          
+        self.ui_login.btn_login.pressed.connect(self.Change_text)
+        self.user()                 
+
+    def Change_text(self):
+        self.ui_login.btn_login.setText('Loading...')
 
     def user(self):
         if self.database.check_state():
@@ -2816,15 +2820,6 @@ class Authentication(QMainWindow):
             self.ui_login.username.setText("redolf250")
             self.ui_login.student_id.setText("20661163")
             self.ui_login.password.setText("0552588647")
-
-    def login_(self):
-        try:
-            if self.login()==True:
-                self.main = MainWindow()
-                self.main.show()
-        except Exception as e:
-            self.show_alert.content("Oop! check your database\nconnection properties.") 
-            self.show_alert.show()  
 
     def login(self):
         username = self.ui_login.username.text()
@@ -2862,15 +2857,19 @@ class Authentication(QMainWindow):
                         self.main.show()
                         self.close()
                     else:
+                        self.ui_login.btn_login.setText('Login')
                         self.show_alert.content(f"Oops! user account DEACTIVATED\ncontact administrator.") 
                         self.show_alert.show() 
                 else:
+                    self.ui_login.btn_login.setText('Login')
                     self.show_alert.content("Oops! Bad user credentials.") 
                     self.show_alert.show()
             else:
+                self.ui_login.btn_login.setText('Login')
                 self.show_alert.content("Oops! no details found.") 
                 self.show_alert.show() 
         else:
+            self.ui_login.btn_login.setText('Login')
             self.show_alert.content("Oops! invalid login details.") 
             self.show_alert.show()
 
