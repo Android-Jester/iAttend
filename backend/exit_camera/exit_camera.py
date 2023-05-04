@@ -9,7 +9,6 @@ from packages.connection import *
 from database.database import Database
 from exit_camera.ui_exit_camera import Ui_Dialog
 
-
 class ExitCameraFeed(QDialog):
     def __init__(self):
         QDialog.__init__(self)
@@ -22,6 +21,7 @@ class ExitCameraFeed(QDialog):
         self.ui_exit_camera.btn_minimize.clicked.connect(self.showMinimized)
 
         self.ui_exit_camera.btn_exit_cam_connect.clicked.connect(self.start_webcam)
+        self.ui_exit_camera.btn_exit_cam_connect.pressed.connect(self.connect_to_camera)
         self.ui_exit_camera.btn_exit_cam_disconect.clicked.connect(self.stop_webcam)
   
         self.ui_exit_camera.brigthness.valueChanged.connect(self.update_brigthness)
@@ -136,7 +136,15 @@ class ExitCameraFeed(QDialog):
             return 'Oops! no database configured...'
         else:
             return self.query_cache_database(qr_code_data)
-            
+
+    def connect_to_camera(self):
+        if self.ui_exit_camera.exit_comboBox.currentText():
+            self.show_info("Connecting to selected device\nthis may take some few seconds...")
+        pass
+    
+    def show_info(self, content:str):
+        self.ui_exit_camera.label_notification.setText(content) 
+
     def start_webcam(self):
         if  self.ui_exit_camera.exit_cam_ip.text() or self.ui_exit_camera.exit_comboBox.currentText():
             self.show_alert = AlertDialog()
@@ -154,8 +162,7 @@ class ExitCameraFeed(QDialog):
                     self.show_alert.content("Oops! check the camera ip address connetion\nor is already in use.") 
                     self.show_alert.show()
                 else:
-                    self.capture = VideoCapture(ip_address)
-                
+                    self.capture = VideoCapture(ip_address)      
             elif system_attached_camera:
                 if self.system_capture is None or not self.system_capture.isOpened():    
                     self.stop_webcam
@@ -167,11 +174,11 @@ class ExitCameraFeed(QDialog):
                         
             elif self.system_capture.isOpened() and self.network_capture.isOpened():
                 self.capture = VideoCapture(camera_id)
-
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
             self.timer.timeout.connect(self.update_frame)
             self.timer.start(3)
+            self.show_info("Connected to selected device\nsuccessfully...") 
         else:
             self.show_alert = AlertDialog()
             self.show_alert.content("Oops! your have no active cameras available")  
@@ -236,11 +243,13 @@ class ExitCameraFeed(QDialog):
     def stop_webcam(self):
         self.show_alert = AlertDialog()
         if self.timer.isActive():
+            self.show_info("Disconnecting from selected device\nthis may take some few seconds...")
             self.show_alert.content("Hey! wait a second while system\nrelease camera") 
             self.show_alert.show()
             self.ui_exit_camera.camera_feeds.setPixmap(u":/icons/asset/camera-off.svg")
             self.ui_exit_camera.camera_feeds.setScaledContents(False)
             self.timer.stop() 
+            self.show_info("Disconnected from device\nsuccessfully...") 
         else:
             self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
             self.show_alert.show() 
