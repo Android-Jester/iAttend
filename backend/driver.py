@@ -125,6 +125,7 @@ class MainWindow(QMainWindow):
 
         ############################################################################################
         self.ui.btn_connect_detect.clicked.connect(self.start_webcam)
+        self.ui.btn_connect_detect.pressed.connect(self.connect_to_camera)
         self.ui.btn_disconnect.clicked.connect(self.stop_webcam)
         ############################################################################################
 
@@ -192,6 +193,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_export_data.clicked.connect(self.export_user_data)
         self.ui.user_start_date.dateTimeChanged.connect(self.date_changed)
         self.ui.btn_mail_user_details.clicked.connect(self.send_account_detail)
+        self.ui.btn_generate_code.clicked.connect(self.generate_code_print)
+        self.ui.btn_find_filesearch.clicked.connect(self.search_for_code)
+        self.ui.btn_print_code.clicked.connect(self.print_code)
 
         load_data(self.resource_path('structure.json'))
         load_colleges(self.resource_path('structure.json'))
@@ -2129,6 +2133,71 @@ class MainWindow(QMainWindow):
         to_json = json.dumps(code)
         return to_json
 
+    def generate_code_print(self):
+        self.alert = AlertDialog()
+        reference = self.ui.find_file.text()
+        if reference !='':
+            code ={"reference":reference}
+            code_json=self.convert_to_json(code)
+            image = qrcode.make(code_json)
+            path = 'C:\\ProgramData\\iAttend\\data\\qr_code\\'+self.ui.find_file.text()+".png"
+            image.save(path)
+            self.ui.generate_code_label.setPixmap(QPixmap.fromImage(path))
+            self.ui.generate_code_label.setScaledContents(True)
+            self.ui.find_filename.setText(os.path.basename(path))
+            self.ui.find_filepath.setText(path)
+        else:
+            self.alert.content("Oops! can't generate code with\nempty field...")
+            self.alert.show()
+
+    def search_for_code(self):
+        self.alert = AlertDialog()
+        directory = 'C:\\ProgramData\\iAttend\\data\\qr_code\\'
+        filename = self.ui.find_file.text()
+        filename = filename+'.png'
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if file == filename:
+                    image_path=os.path.join(root, filename)
+                    self.ui.generate_code_label.setPixmap(QPixmap.fromImage(image_path))
+                    self.ui.generate_code_label.setScaledContents(True)
+                    self.ui.find_filename.setText(os.path.basename(image_path))
+                    self.ui.find_filepath.setText(image_path)
+                    image = QImage(image_path)
+                    image=image.size()
+                    self.ui.image_size.setText(f"{image.width()} x {image.height()}")
+                    break
+            else:
+                continue
+            break
+        else:
+            self.alert.content("Oops! no file with such name found...")
+            self.alert.show()
+
+    def print_code(self):
+        self.alert = AlertDialog()
+        self.printer = QPrinter(QPrinter.HighResolution)
+        path = self.ui.find_filepath.text()
+        image = QImage(path)
+        if path:
+            dialog = QPrintDialog(self.printer, self)
+            if dialog.exec_() != QPrintDialog.Accepted:
+                return
+            page_layout = QPageLayout(QPageSize(image.size()), QPageLayout.Portrait, QMarginsF())
+            self.printer.setPageLayout(page_layout)
+            painter = QPainter()
+            painter.begin(self.printer)
+            painter.setRenderHint(QPainter.SmoothPixmapTransform)
+            image_size = image.size()
+            page_rect = painter.viewport()
+            image_rect = QRectF(0, 0, image_size.width()+1000, image_size.height()+1000)
+            image_rect.moveTop(page_rect.top())
+            painter.drawImage(image_rect, image)
+            painter.end()
+        else:
+            self.alert.content("Oops! select image file for\nprinting...")
+            self.alert.show()
+
     def generate_code(self):
         code = Code(
             index=self.ui.reg_index.text(),
@@ -2136,10 +2205,7 @@ class MainWindow(QMainWindow):
             email_address=self.ui.reg_email.text()
         )
         if code.reference !='':
-            code ={
-            "index":code.index,
-            "reference":code.reference,
-            "email_address":code.email_address}
+            code ={"reference":code.reference}
             code_json=self.convert_to_json(code)
             image = qrcode.make(code_json)
             path = 'C:\\ProgramData\\iAttend\\data\\qr_code\\'+self.ui.reg_student_ref.text()+".png"
@@ -2308,7 +2374,8 @@ class MainWindow(QMainWindow):
         check_state = self.database.check_state()
         self.alert = AlertDialog()
         try:
-            (db,my_cursor,connection_status) = self.database.my_cursor()
+            db = sqlite3.connect(self.get_cache_path())
+            my_cursor = db.cursor()
             if self.ui.reg_student_ref.text() and self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
                 ref = self.ui.reg_student_ref.text()
                 with open(self.ui.image_file_reg.text(), 'rb') as image:
@@ -2316,28 +2383,11 @@ class MainWindow(QMainWindow):
                     if check_state == True:
                         self.alert_builder("Oops! no database configured...")  
                     else:
-                        my_cursor.execute("UPDATE tb_images SET image=%s WHERE st_reference=%s",(data,ref))
-                db.commit()
-                my_cursor.close()
+                        my_cursor.execute("UPDATE tb_student_images SET student_image=? WHERE student_reference=?",(data,ref))
+                    db.commit()
+                    my_cursor.close()
                 self.alert_builder("Hey! Student image updated successfully.")
-            elif self.ui.reg_student_ref.text() and self.ui.image_file_reg.text() and self.ui.online_image.isChecked():
-                ref = self.ui.reg_student_ref.text()
-                path = 'C:\\ProgramData\\iAttend\\data\\images\\online_image.jpeg'
-                if os.path.exists(path):
-                    with open(path, 'rb') as image:
-                        data = image.read()
-                        if check_state == True:
-                            self.alert_builder("Oops! no database configured...")  
-                        else:
-                            my_cursor.execute("UPDATE tb_images SET image=%s WHERE st_reference=%s",(data,ref))
-                            db.commit()
-                            my_cursor.close()
-                    self.alert_builder("Hey! Student image updated successfully.")
-                    os.remove(path)
-                else:
-                    self.alert_builder("Oops! the image does not exist.\nplease download it and try again.")
-            else:
-                self.alert_builder("Oops! Something went wrong.")
+           
         except Exception as e:
             self.alert.content("Document saved successfully")
             self.alert.show()
@@ -2349,13 +2399,17 @@ class MainWindow(QMainWindow):
             if check_state == True:
                 self.alert_builder("Oops! no database configured...")
             else: 
-                # db_cache = sqlite3.connect(self.get_cache_path())
-                # cursor = db_cache.cursor()
                 if self.ui.reg_student_ref.text():
                     student_reference=self.value_formater(self.ui.reg_student_ref.text()) 
                     my_cursor.execute("DELETE FROM tb_students where student_reference="+student_reference)
                     db.commit()
                     my_cursor.close()
+                    db_cache = sqlite3.connect(self.get_cache_path())
+                    cache_cursor = db_cache.cursor()
+                    cache_cursor.execute("DELETE FROM tb_students where student_reference="+student_reference)
+                    cache_cursor.execute("DELETE FROM tb_student_images where student_reference="+student_reference)
+                    db_cache.commit()
+                    cache_cursor.close()
                     self.resets_fileds()
                     self.alert_builder("Student data removed successfuly!")
                 else:
@@ -2646,6 +2700,11 @@ class MainWindow(QMainWindow):
                  self.show_info("Oops! something went wrong...")
         db.close()
 
+    def connect_to_camera(self):
+        if self.ui.comboBox.currentText():
+            self.show_info("Connecting to selected device\nthis may take some few seconds...")
+        pass
+
     def start_webcam(self):
         self.show_alert = AlertDialog()
         if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
@@ -2658,7 +2717,6 @@ class MainWindow(QMainWindow):
                     self.show_alert.content("Oops! check the camera ip address\nconnetion or is already in use.") 
                     self.show_alert.show()
                 else:
-                    self.show_info("Hey! wait a second while system\ninitializes camera")
                     self.capture = VideoCapture(ip_address)    
             elif system_attached_camera:
                 camera_id = int(system_attached_camera)
@@ -2668,14 +2726,13 @@ class MainWindow(QMainWindow):
                     self.show_alert.content("Oops! check the camera for\nconnetion or is already in use.")  
                     self.show_alert.show()
                 else:
-                    self.show_info("Hey! wait a second while system\ninitializes camera")
                     self.capture = VideoCapture(camera_id)                  
             elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                    self.show_info("Hey! wait a second while system\ninitializes camera")
                     self.capture = VideoCapture(camera_id)
             self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
             self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-            self.timer.timeout.connect(self.update_frame)  
+            self.timer.timeout.connect(self.update_frame)
+            self.show_info("Connected to selected device\nsuccessfully...") 
             self.timer.start(3)
         else:
             self.show_alert.content("Oops! your have no active cameras available")  
@@ -2745,11 +2802,13 @@ class MainWindow(QMainWindow):
     def stop_webcam(self):
         self.show_alert = AlertDialog()
         if self.timer.isActive():
+            self.show_info("Disconnecting from selected device\nthis may take some few seconds...")
             self.show_alert.content("Hey! wait a second while system\nrelease camera") 
             self.show_alert.show()
             self.ui.camera_view.setPixmap(u":/icons/asset/camera-off.svg")
             self.ui.camera_view.setScaledContents(False)
-            self.timer.stop() 
+            self.timer.stop()
+            self.show_info("Disconnected from device\nsuccessfully...") 
         else:
             self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
             self.show_alert.show()  
