@@ -161,6 +161,7 @@ class MainWindow(QMainWindow):
 
         ##################################################################################################
         self.ui.btn_load.clicked.connect(self.data_visualization)
+        self.ui.btn_load.pressed.connect(self.change_load_text)
         self.ui.report_start_date.textChanged.connect(self.report_start_date_value_change)
         self.ui.btn_refresh.clicked.connect(self.refresh_report_page)
         self.ui.btn_save.clicked.connect(self.save_report)
@@ -219,6 +220,7 @@ class MainWindow(QMainWindow):
         self.load_colleges_report()
         
         self.ui.btn_merge_load.clicked.connect(self.merge_report_generate)
+        self.ui.btn_merge_load.pressed.connect(self.change_merge_load_text)
         self.ui.btn_merge_save.clicked.connect(self.merge_report)
 
         # self.ui.btn_csv.setEnabled(False)
@@ -226,14 +228,22 @@ class MainWindow(QMainWindow):
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
+    def change_merge_load_text(self):
+        table_name=self.merge.get_table_name()
+        if table_name:
+            self.ui.btn_merge_load.setText('Loading...')
+        pass
     
     def merge_report_generate(self):
         if self.ui.merge_pie_chart.isChecked():
             self.merge_piechart_generate()
+            self.ui.btn_merge_load.setText('Load')
         elif self.ui.merge_bar_chart.isChecked():
             self.merge_barchart_generate()
+            self.ui.btn_merge_load.setText('Load')
         elif self.ui.merge_line_graph.isChecked():
             print("Line graph generation......")
+            self.ui.btn_merge_load.setText('Load')
 
     def get_merge_plot_properties(self,hearder:str):
         title = f"{hearder} {self.ui.merge_query_parameter.currentText()}"
@@ -1833,13 +1843,19 @@ class MainWindow(QMainWindow):
     def calculate_records_total(self,records):
        return reduce(lambda x, y: x + y, records)
 
+    def change_load_text(self):
+        self.ui.btn_load.setText('Loading...')
+
     def data_visualization(self):
         if self.ui.pie_chart.isChecked():
             self.report_piechart()
+            self.ui.btn_load.setText('Load')
         elif self.ui.bar_chart.isChecked():
             self.barchart_plots()
+            self.ui.btn_load.setText('Load')
         elif self.ui.line_graph.isChecked():
             self.line_plot()
+            self.ui.btn_load.setText('Load')
 
     def export_data_to_csv(self):
         self.alert = AlertDialog()
@@ -2805,10 +2821,10 @@ class Authentication(QMainWindow):
         self.ui_login.btn_login.clicked.connect(self.login)
         self.retrieve = ForgotPassword()
         self.ui_login.btn_forgot_pass.clicked.connect(lambda: self.retrieve.show())
-        self.ui_login.btn_login.pressed.connect(self.Change_text)
+        self.ui_login.btn_login.pressed.connect(self.change_text)
         self.user()                 
 
-    def Change_text(self):
+    def change_text(self):
         self.ui_login.btn_login.setText('Loading...')
 
     def user(self):
