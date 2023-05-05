@@ -232,6 +232,18 @@ class MainWindow(QMainWindow):
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
+    def application_logs(self,message):
+        time =current.now().time().strftime('%I:%M:%S %p')
+        date=current.now().date().strftime('%a %b %d %Y')
+        filename=current.now().date().strftime('%a_%b_%d_%Y')
+        path =Path(f'C:\\ProgramData\\iAttend\\data\\application_logs\\{filename}.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n[{date}] [{time}]: {message}')
+            file.close()
+
     def change_merge_load_text(self):
         table_name=self.merge.get_table_name()
         if table_name:
@@ -483,6 +495,7 @@ class MainWindow(QMainWindow):
                 if self.connected_to_internet()==True and receiver:
                     self.mail=UserMailThread(details=self.consolidation_mail_details(),mail_content=content,receiver=receiver)
                     self.mail.start()
+                self.application_logs(f'Push records to central database -> successfully')
                 self.alert.content("Pushed "+str(len(results))+" records to server\nMail sent to administrator..")
                 self.alert.show()
             else:
@@ -490,6 +503,7 @@ class MainWindow(QMainWindow):
                 self.alert.show()
         except Exception as e:
             self.alert.content(str(e))
+            self.application_logs(f'Push records to central database -> {str(e)}')
             self.alert.show()
           
     def transform_data(self, records:list, facility: str):
@@ -557,6 +571,7 @@ class MainWindow(QMainWindow):
             self.ui.database_tables.addItems(tables)
         except:
             self.alert.content(test)
+            self.application_logs(f'Load tables central database connection <Push records> -> {test}')
             self.alert.show()
             
     def database_test(self):
@@ -565,6 +580,7 @@ class MainWindow(QMainWindow):
         valid,invalid = self.validate_merge_database_fields()
         if len(invalid)==0:
             db,test=self.database_connection_test(properties)
+            self.application_logs(f'Central database connection test -> {test}')
             self.alert.content(test)
             self.alert.show()
         else:
@@ -1146,6 +1162,7 @@ class MainWindow(QMainWindow):
         try:
             self.set_log_out_session()
             self.close()
+            self.application_logs("Authentication page shown.....")
             self.login.show()
         except Exception as e:
             self.alert.content(str(e))
@@ -1208,6 +1225,9 @@ class MainWindow(QMainWindow):
             pass
         except Exception as e:
             self.alert.content(str(e))
+            self.application_logs("Current login user logged out unsuccessfully")
+            self.application_logs("Current login user logged with unupdated session details")
+            self.application_logs(str(e))
             self.alert.show()
 
 
@@ -1483,19 +1503,7 @@ class MainWindow(QMainWindow):
         if os.path.exists(path):
             with open(path,'a+') as file:
                 file.writelines(f'\n{source} {time} {save_logs}')
-            file.close()  
-
-    #might be changed in the future
-    def backup_history(self):
-        path =Path('C:\\ProgramData\\iAttend\\data\\backup\\backup_history.txt')
-        path.touch(exist_ok=True)
-        file = open(path)
-        time =current.now().time().strftime('%I:%M:%S %p')
-        date=current.now().date().strftime('%a %b %d %Y')
-        if os.path.exists(path):
-            with open(path,'a+') as file:
-                file.writelines(f'\n[SUCCESS] {date},{time}')
-            file.close()         
+            file.close()     
 
     def backup_database(self):
         self.alert = AlertDialog()
@@ -2883,6 +2891,18 @@ class Authentication(QMainWindow):
         self.ui_login.btn_login.pressed.connect(self.change_text)
         self.user()                 
 
+    def application_logs(self,message):
+        time =current.now().time().strftime('%I:%M:%S %p')
+        date=current.now().date().strftime('%a %b %d %Y')
+        filename=current.now().date().strftime('%a_%b_%d_%Y')
+        path =Path(f'C:\\ProgramData\\iAttend\\data\\application_logs\\{filename}.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n[{date}] [{time}]: {message}')
+            file.close()
+
     def change_text(self):
         self.ui_login.btn_login.setText('Loading...')
 
@@ -2916,8 +2936,10 @@ class Authentication(QMainWindow):
             if len(credentials) > 0:
                 if check_state:
                     confirm = bcrypt.checkpw(password,credentials[0][3])
+                    self.application_logs("Authenticating user with embedded database")
                 else:
-                    confirm = bcrypt.checkpw(password,bytes(str(credentials[0][3]),encoding='utf-8'))   
+                    confirm = bcrypt.checkpw(password,bytes(str(credentials[0][3]),encoding='utf-8'))
+                    self.application_logs("Authenticating user with server based database")   
                 if reference==str(credentials[0][1]) and username==str(credentials[0][2]) and confirm:
                     if str(credentials[0][4])=="ACTIVATED":
                         login_username = str(credentials[0][2])
@@ -2930,17 +2952,21 @@ class Authentication(QMainWindow):
                         account_mail = str(details[0][6])
                         self.main = MainWindow()
                         self.main.show()
+                        self.application_logs("Authenticated user with credentials successfully")
                         self.close()
                     else:
+                        self.application_logs("Authenticating user failed with credentials -> DEATIVATED")
                         self.ui_login.btn_login.setText('Login')
                         self.show_alert.content(f"Oops! user account DEACTIVATED\ncontact administrator.") 
                         self.show_alert.show() 
                 else:
+                    self.application_logs("Authenticating user failed with bad credentials")
                     self.ui_login.btn_login.setText('Login')
                     self.show_alert.content("Oops! Bad user credentials.") 
                     self.show_alert.show()
             else:
                 self.ui_login.btn_login.setText('Login')
+                self.application_logs("Authenticating user failed with credentials -> no details found")
                 self.show_alert.content("Oops! no details found.") 
                 self.show_alert.show() 
         else:
@@ -2991,11 +3017,25 @@ class Splash_screen(QMainWindow):
         self.ui_splash.progressBar.setValue(counter)
         if counter > 100:
             self.timer.stop()
+            self.application_logs("Application bootstrapping process completed")
             # self.main = MainWindow()
             self.main = Authentication()
+            self.application_logs("Application boostrapped to authentication page")
             self.main.show()
             self.close()
-        counter +=1    
+        counter +=1
+
+    def application_logs(self,message):
+        time =current.now().time().strftime('%I:%M:%S %p')
+        date=current.now().date().strftime('%a %b %d %Y')
+        filename=current.now().date().strftime('%a_%b_%d_%Y')
+        path =Path(f'C:\\ProgramData\\iAttend\\data\\application_logs\\{filename}.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n[{date}] [{time}]: {message}')
+            file.close()
 
     def create_program_directory(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
@@ -3270,7 +3310,23 @@ class Splash_screen(QMainWindow):
                 db_data.append(data)
         return db_data
 
+    def application_logs(self,message):
+        time =current.now().time().strftime('%I:%M:%S %p')
+        date=current.now().date().strftime('%a %b %d %Y')
+        filename=current.now().date().strftime('%a_%b_%d_%Y')
+        path =Path(f'C:\\ProgramData\\iAttend\\data\\application_logs\\{filename}.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n[{date}] [{time}]: {message}')
+            file.close()
+
 if __name__ == '__main__':
-    application = QApplication(sys.argv)
-    window = Splash_screen()  
-    sys.exit(application.exec_()) 
+    try:
+        application = QApplication(sys.argv)
+        window = Splash_screen()
+        window.application_logs("Application bootstrapping process in progress")  
+        sys.exit(application.exec_())
+    except Exception as e:
+        window.application_logs(str(e))
