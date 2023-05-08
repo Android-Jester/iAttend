@@ -67,7 +67,7 @@ class MainWindow(QMainWindow):
         self.line_graph = Line_plot()
         ########################################################################################################
         self.set_sender_details()
-        self.admin_panel()
+        self.show_pages_based_role()
         #########################################################################################
         self.open_exit_camera = ExitCameraFeed()
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
@@ -232,6 +232,24 @@ class MainWindow(QMainWindow):
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
+    def show_pages_based_role(self):
+        if account_role == analyst:
+            self.ui.stackedWidget.setCurrentWidget(self.ui.merge_report)
+            self.ui.btn_camera.hide()
+            self.ui.btn_admin.hide()
+            self.ui.btn_home.hide()
+            self.ui.btn_search.hide()
+            self.ui.btn_database.hide()
+            self.ui.btn_report.hide()
+            self.ui.btn_batch.hide()
+            self.ui.btn_sink_data.hide()
+            self.ui.btn_consolidation_report.hide()
+        elif account_role == user:
+            self.ui.frame.setMinimumHeight(580)
+            self.ui.frame.setMaximumHeight(580)
+            self.ui.btn_admin.hide()
+            self.ui.btn_consolidation_report.hide()
+        
     def application_logs(self,message):
         time =current.now().time().strftime('%I:%M:%S %p')
         date=current.now().date().strftime('%a %b %d %Y')
@@ -772,11 +790,6 @@ class MainWindow(QMainWindow):
         self.close()
         self.set_log_out_session()
         self.login.show()
-
-    def admin_panel(self):
-        if account_role == user:
-            self.ui.btn_admin.hide()
-            self.ui.btn_consolidation_report.hide()
         
     def camera_config(self):
         if account_role == admin:
