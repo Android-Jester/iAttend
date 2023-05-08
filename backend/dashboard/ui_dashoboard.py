@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardsavSgT.ui'
+## Form generated from reading UI file 'dashoboardlsEiRK.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1337,8 +1337,8 @@ class Ui_dashboard(object):
         self.label_18.setAlignment(Qt.AlignCenter)
         self.scan_range_label = QLabel(self.frame_5)
         self.scan_range_label.setObjectName(u"scan_range_label")
-        self.scan_range_label.setGeometry(QRect(20, 160, 425, 51))
-        self.scan_range_label.setMinimumSize(QSize(425, 0))
+        self.scan_range_label.setGeometry(QRect(20, 160, 430, 51))
+        self.scan_range_label.setMinimumSize(QSize(430, 0))
         self.scan_range_label.setMaximumSize(QSize(420, 16777215))
         self.scan_range_label.setFont(font4)
         self.scan_range_label.setStyleSheet(u"QLabel{\n"
@@ -1356,8 +1356,8 @@ class Ui_dashboard(object):
         self.label_42.setPixmap(QPixmap(u":/icons/asset/camera.svg"))
         self.btn_scan_range = QPushButton(self.frame_5)
         self.btn_scan_range.setObjectName(u"btn_scan_range")
-        self.btn_scan_range.setGeometry(QRect(310, 80, 135, 51))
-        self.btn_scan_range.setMinimumSize(QSize(135, 0))
+        self.btn_scan_range.setGeometry(QRect(310, 80, 140, 51))
+        self.btn_scan_range.setMinimumSize(QSize(140, 0))
         self.btn_scan_range.setMaximumSize(QSize(135, 16777215))
         self.btn_scan_range.setFont(font2)
         self.btn_scan_range.setStyleSheet(u"QPushButton{\n"
@@ -2997,6 +2997,7 @@ class Ui_dashboard(object):
 "}")
         self.user_contact.setClearButtonEnabled(True)
         self.user_role = QComboBox(self.left_child)
+        self.user_role.addItem("")
         self.user_role.addItem("")
         self.user_role.addItem("")
         self.user_role.setObjectName(u"user_role")
@@ -5953,7 +5954,8 @@ class Ui_dashboard(object):
         self.user_reference.setPlaceholderText(QCoreApplication.translate("dashboard", u"Reference", None))
         self.user_contact.setPlaceholderText(QCoreApplication.translate("dashboard", u"Contact", None))
         self.user_role.setItemText(0, QCoreApplication.translate("dashboard", u"ADMIN", None))
-        self.user_role.setItemText(1, QCoreApplication.translate("dashboard", u"USER", None))
+        self.user_role.setItemText(1, QCoreApplication.translate("dashboard", u"ANALYST", None))
+        self.user_role.setItemText(2, QCoreApplication.translate("dashboard", u"USER", None))
 
         self.user_email.setPlaceholderText(QCoreApplication.translate("dashboard", u"example@example.com", None))
         self.firstname_27.setText("")
