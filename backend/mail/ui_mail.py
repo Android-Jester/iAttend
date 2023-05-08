@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mailFOcImF.ui'
+## Form generated from reading UI file 'mailWfBkiS.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -134,6 +134,11 @@ class Ui_Mail(object):
 
         self.frame_4 = QFrame(self.frame_2)
         self.frame_4.setObjectName(u"frame_4")
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy)
         self.frame_4.setMaximumSize(QSize(482, 636))
         self.frame_4.setFrameShape(QFrame.NoFrame)
         self.frame_4.setFrameShadow(QFrame.Raised)
@@ -141,12 +146,15 @@ class Ui_Mail(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.frame_5 = QFrame(self.frame_4)
         self.frame_5.setObjectName(u"frame_5")
+        sizePolicy.setHeightForWidth(self.frame_5.sizePolicy().hasHeightForWidth())
+        self.frame_5.setSizePolicy(sizePolicy)
         self.frame_5.setMaximumSize(QSize(464, 618))
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.label_44 = QLabel(self.frame_5)
         self.label_44.setObjectName(u"label_44")
         self.label_44.setGeometry(QRect(20, 40, 31, 31))
+        self.label_44.setStyleSheet(u"background-color: rgb(45, 45, 45);")
         self.label_44.setPixmap(QPixmap(u":/icons/asset/mail.svg"))
         self.label_36 = QLabel(self.frame_5)
         self.label_36.setObjectName(u"label_36")
@@ -155,9 +163,9 @@ class Ui_Mail(object):
         self.label_36.setPixmap(QPixmap(u":/icons/asset/user.svg"))
         self.email_subject = QLineEdit(self.frame_5)
         self.email_subject.setObjectName(u"email_subject")
-        self.email_subject.setGeometry(QRect(10, 170, 443, 55))
-        self.email_subject.setMinimumSize(QSize(443, 55))
-        self.email_subject.setMaximumSize(QSize(443, 55))
+        self.email_subject.setGeometry(QRect(10, 170, 443, 50))
+        self.email_subject.setMinimumSize(QSize(443, 50))
+        self.email_subject.setMaximumSize(QSize(443, 45))
         font1 = QFont()
         font1.setPointSize(10)
         self.email_subject.setFont(font1)
@@ -178,9 +186,9 @@ class Ui_Mail(object):
         self.email_subject.setClearButtonEnabled(True)
         self.sender_password = QLineEdit(self.frame_5)
         self.sender_password.setObjectName(u"sender_password")
-        self.sender_password.setGeometry(QRect(7, 310, 443, 55))
-        self.sender_password.setMinimumSize(QSize(443, 55))
-        self.sender_password.setMaximumSize(QSize(443, 55))
+        self.sender_password.setGeometry(QRect(7, 310, 443, 50))
+        self.sender_password.setMinimumSize(QSize(443, 50))
+        self.sender_password.setMaximumSize(QSize(443, 50))
         self.sender_password.setFont(font1)
         self.sender_password.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -200,9 +208,9 @@ class Ui_Mail(object):
         self.sender_password.setClearButtonEnabled(True)
         self.rep_name = QLineEdit(self.frame_5)
         self.rep_name.setObjectName(u"rep_name")
-        self.rep_name.setGeometry(QRect(270, 380, 181, 55))
-        self.rep_name.setMinimumSize(QSize(0, 55))
-        self.rep_name.setMaximumSize(QSize(181, 55))
+        self.rep_name.setGeometry(QRect(270, 380, 181, 50))
+        self.rep_name.setMinimumSize(QSize(0, 50))
+        self.rep_name.setMaximumSize(QSize(181, 45))
         self.rep_name.setFont(font1)
         self.rep_name.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -243,8 +251,9 @@ class Ui_Mail(object):
         self.label_38.setPixmap(QPixmap(u":/icons/asset/edit-3.svg"))
         self.btn_send_mail = QPushButton(self.frame_5)
         self.btn_send_mail.setObjectName(u"btn_send_mail")
-        self.btn_send_mail.setGeometry(QRect(170, 450, 131, 51))
-        self.btn_send_mail.setMaximumSize(QSize(131, 51))
+        self.btn_send_mail.setGeometry(QRect(170, 450, 131, 45))
+        self.btn_send_mail.setMinimumSize(QSize(0, 45))
+        self.btn_send_mail.setMaximumSize(QSize(131, 45))
         self.btn_send_mail.setFont(font1)
         self.btn_send_mail.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -267,8 +276,9 @@ class Ui_Mail(object):
         self.btn_send_mail.setFlat(True)
         self.btn_browse_reg = QPushButton(self.frame_5)
         self.btn_browse_reg.setObjectName(u"btn_browse_reg")
-        self.btn_browse_reg.setGeometry(QRect(10, 450, 141, 51))
-        self.btn_browse_reg.setMaximumSize(QSize(141, 51))
+        self.btn_browse_reg.setGeometry(QRect(10, 450, 141, 45))
+        self.btn_browse_reg.setMinimumSize(QSize(0, 45))
+        self.btn_browse_reg.setMaximumSize(QSize(141, 45))
         self.btn_browse_reg.setFont(font1)
         self.btn_browse_reg.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -291,8 +301,9 @@ class Ui_Mail(object):
         self.btn_browse_reg.setFlat(True)
         self.btn_update_mail_details = QPushButton(self.frame_5)
         self.btn_update_mail_details.setObjectName(u"btn_update_mail_details")
-        self.btn_update_mail_details.setGeometry(QRect(320, 450, 131, 51))
-        self.btn_update_mail_details.setMaximumSize(QSize(131, 51))
+        self.btn_update_mail_details.setGeometry(QRect(320, 450, 131, 45))
+        self.btn_update_mail_details.setMinimumSize(QSize(0, 45))
+        self.btn_update_mail_details.setMaximumSize(QSize(131, 45))
         self.btn_update_mail_details.setFont(font1)
         self.btn_update_mail_details.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -315,9 +326,9 @@ class Ui_Mail(object):
         self.btn_update_mail_details.setFlat(True)
         self.email_sender = QLineEdit(self.frame_5)
         self.email_sender.setObjectName(u"email_sender")
-        self.email_sender.setGeometry(QRect(7, 240, 443, 55))
-        self.email_sender.setMinimumSize(QSize(443, 55))
-        self.email_sender.setMaximumSize(QSize(443, 55))
+        self.email_sender.setGeometry(QRect(7, 240, 443, 50))
+        self.email_sender.setMinimumSize(QSize(443, 50))
+        self.email_sender.setMaximumSize(QSize(443, 50))
         self.email_sender.setFont(font1)
         self.email_sender.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -336,9 +347,9 @@ class Ui_Mail(object):
         self.email_sender.setClearButtonEnabled(True)
         self.image_file_reg = QLineEdit(self.frame_5)
         self.image_file_reg.setObjectName(u"image_file_reg")
-        self.image_file_reg.setGeometry(QRect(10, 380, 241, 55))
-        self.image_file_reg.setMinimumSize(QSize(0, 55))
-        self.image_file_reg.setMaximumSize(QSize(241, 55))
+        self.image_file_reg.setGeometry(QRect(10, 380, 241, 50))
+        self.image_file_reg.setMinimumSize(QSize(0, 50))
+        self.image_file_reg.setMaximumSize(QSize(241, 50))
         self.image_file_reg.setFont(font1)
         self.image_file_reg.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -367,14 +378,14 @@ class Ui_Mail(object):
         self.label_37.setPixmap(QPixmap(u":/icons/asset/lock.svg"))
         self.email_from = QLineEdit(self.frame_5)
         self.email_from.setObjectName(u"email_from")
-        self.email_from.setGeometry(QRect(10, 100, 443, 55))
-        sizePolicy = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.email_from.sizePolicy().hasHeightForWidth())
-        self.email_from.setSizePolicy(sizePolicy)
-        self.email_from.setMinimumSize(QSize(443, 55))
-        self.email_from.setMaximumSize(QSize(443, 55))
+        self.email_from.setGeometry(QRect(10, 100, 443, 50))
+        sizePolicy1 = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.email_from.sizePolicy().hasHeightForWidth())
+        self.email_from.setSizePolicy(sizePolicy1)
+        self.email_from.setMinimumSize(QSize(443, 50))
+        self.email_from.setMaximumSize(QSize(443, 45))
         self.email_from.setFont(font1)
         self.email_from.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -393,11 +404,11 @@ class Ui_Mail(object):
         self.email_from.setClearButtonEnabled(True)
         self.reg_email = QLineEdit(self.frame_5)
         self.reg_email.setObjectName(u"reg_email")
-        self.reg_email.setGeometry(QRect(10, 30, 443, 55))
-        sizePolicy.setHeightForWidth(self.reg_email.sizePolicy().hasHeightForWidth())
-        self.reg_email.setSizePolicy(sizePolicy)
-        self.reg_email.setMinimumSize(QSize(443, 55))
-        self.reg_email.setMaximumSize(QSize(443, 55))
+        self.reg_email.setGeometry(QRect(10, 30, 443, 50))
+        sizePolicy1.setHeightForWidth(self.reg_email.sizePolicy().hasHeightForWidth())
+        self.reg_email.setSizePolicy(sizePolicy1)
+        self.reg_email.setMinimumSize(QSize(443, 50))
+        self.reg_email.setMaximumSize(QSize(443, 45))
         self.reg_email.setFont(font1)
         self.reg_email.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
