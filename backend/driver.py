@@ -196,6 +196,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_generate_code.clicked.connect(self.generate_code_print)
         self.ui.btn_find_filesearch.clicked.connect(self.search_for_code)
         self.ui.btn_print_code.clicked.connect(self.print_code)
+        self.ui.btn_add_category.clicked.connect(self.add_category)
+        self.ui.btn_refresh_category.clicked.connect(self.refresh_category)
 
         load_data(self.resource_path('structure.json'))
         load_colleges(self.resource_path('structure.json'))
@@ -2438,6 +2440,33 @@ class MainWindow(QMainWindow):
 
         except:
             self.alert_builder("Oops! internal server error!")
+
+    def add_category(self):
+        self.alert = AlertDialog()
+        category = self.ui.category_field.text()
+        path = self.resource_path("categories.txt")
+        if category:
+            if os.path.exists(path):
+                with open(path,'r+') as file:
+                    data=file.readlines()
+                    categorylist = []
+                    for line in data:
+                        categorylist.append(line)
+                    if category not in categorylist:
+                        file.writelines(f'\n{category}')
+                        self.alert.content("Category added successfully...")
+                        self.alert.show()
+                    else:
+                        self.alert.content("Oops! category already exist...")
+                        self.alert.show()
+                file.close()
+        else:
+            self.alert.content("Oops! invalid category provided...")
+            self.alert.show()
+    
+    def refresh_category(self):
+        self.ui.reg_type.clear()
+        self.ui.reg_type.addItems(self.read_category(self.resource_path('categories.txt')))
 
     def resets_fileds(self):
         self.ui.reg_firstname.setText("")
