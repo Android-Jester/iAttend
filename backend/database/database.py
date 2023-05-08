@@ -1,5 +1,3 @@
-
-
 from packages.pyqt import *
 from utils.structure import *
 from packages.computing import *
