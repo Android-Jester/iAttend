@@ -69,6 +69,8 @@ class MainWindow(QMainWindow):
         self.set_sender_details()
         self.show_pages_based_role()
         #########################################################################################
+        self.config = Configuration()
+
         self.open_exit_camera = ExitCameraFeed()
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
     
@@ -791,11 +793,22 @@ class MainWindow(QMainWindow):
     def application_exit(self):
         self.close()
         self.set_log_out_session()
+        self.database.close()
+        self.camera_1.close()
+        self.camera_2.close()
+        self.camera_3.close()
+        self.camera_4.close()
+        self.directory.close()
+        self.data_view.close()
+        self.merge.close()
+        self.mail.close()
+        self.user.close()
+        self.config.close()
+        self.open_exit_camera.close()
         self.login.show()
         
     def camera_config(self):
         if account_role == admin:
-            self.config = Configuration()
             self.config.show()
      
     def user_last_seen(self,reference:str):
@@ -1177,6 +1190,18 @@ class MainWindow(QMainWindow):
         try:
             self.set_log_out_session()
             self.close()
+            self.config.close()
+            self.database.close()
+            self.camera_1.close()
+            self.camera_2.close()
+            self.camera_3.close()
+            self.camera_4.close()
+            self.directory.close()
+            self.data_view.close()
+            self.merge.close()
+            self.mail.close()
+            self.user.close()
+            self.open_exit_camera.close()
             self.application_logs("Authentication page shown.....")
             self.login.show()
         except Exception as e:
