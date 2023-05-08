@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'user_detailsukloUk.ui'
+## Form generated from reading UI file 'user_detailsFPfYpP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -181,7 +181,6 @@ class Ui_Profile(object):
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
-"	padding-left:10px;\n"
 "\n"
 "}")
         self.role.setAlignment(Qt.AlignCenter)
