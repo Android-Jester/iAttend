@@ -3052,8 +3052,8 @@ class Splash_screen(QMainWindow):
 
     def create_program_directory(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
-        list =('batch_logs','programs','properties','qr_code',
-        'backup','email_details','reports','exports','cache',
+        list =('batch_logs','properties','qr_code',
+        'email_details','reports','exports','cache',
         'images','partition','application_logs')
 
         pictures = 'C:\\Pictures\\iAttend\\'
@@ -3142,12 +3142,6 @@ class Splash_screen(QMainWindow):
         path =os.path.join(root,'properties\\database_properties.json')
         self.write_to_file(path,data,'json')
         
-        path =os.path.join(root,'programs\\college_programs.txt')
-        path =Path(path)
-        path.touch(exist_ok=True)
-        if os.path.exists(path):
-            pass
-
         path =os.path.join(root,'email_details\\details.json')
         self.write_to_file(path,mail_properties,'json')
 
