@@ -1,3 +1,7 @@
 test_code/
 .idea/
 exit_db/
+backend/exit_db/database_exit.py
+backend/exit_db/ui_exit_database.py
+backend/exit_db/__pycache__/database_exit.cpython-36.pyc
+backend/exit_db/__pycache__/ui_exit_database.cpython-36.pyc
