@@ -231,8 +231,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_merge_load.pressed.connect(self.change_merge_load_text)
         self.ui.btn_merge_save.clicked.connect(self.merge_report)
 
-        # self.ui.btn_csv.setEnabled(False)
-        # self.ui.btn_json.setEnabled(False) 
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
@@ -1830,7 +1828,7 @@ class MainWindow(QMainWindow):
                 self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))
                 self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])}]",
                 colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
-                pctdistance=properties[5],labeldistance=properties[6])
+                pctdistance=properties[5],labeldistance=properties[6],xlabel=f"Total records: {self.calculate_records_total(data[1])}")
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -2903,10 +2901,9 @@ class MainWindow(QMainWindow):
         self.ui.contrast_value.setText(str(value))
         return value      
     
-    #To be implemented
     def help_url(self):
         try:
-            url = "https://www.google.com"
+            url = "https://github.com/redolf250/releases"
             webbrowser.open(url)
         except Exception as e:
             print(str(e))
