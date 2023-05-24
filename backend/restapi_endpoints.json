@@ -1,0 +1,38 @@
+[
+    {
+      "CoS": {
+        "details": "http://localhost/api/v1/CoS/students/details/reference",
+        "images": "http://localhost/api/v1/CoS/students/images/reference"
+      }
+    },
+    {
+      "CoE": {
+      "details": "http://localhost/api/v1/CoE/students/details/reference",
+      "images": "http://localhost/api/v1/CoE/students/images/reference"
+      }
+    },
+    {
+      "CABE": {
+        "details": "http://localhost/api/v1/CABE/students/details/reference",
+        "images": "http://localhost/api/v1/CABE/students/images/reference"
+      }
+    },
+    {
+      "CANR": {
+        "details": "http://localhost/api/v1/CANR/students/details/reference",
+        "images": "http://localhost/api/v1/CANR/students/images/reference"
+      }
+    },
+    {
+      "CoHS": {
+        "details": "http://localhost/api/v1/CoHS/students/details/reference",
+        "images": "http://localhost/api/v1/CoHS/students/images/reference"
+      }
+    },  
+    {
+      "CoHSS": {
+        "details": "http://localhost/api/v1/CoHSS/students/details/reference",
+        "images": "http://localhost/api/v1/CoHSS/students/images/reference"
+      }
+    }
+  ]
