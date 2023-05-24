@@ -13,8 +13,6 @@ login_username = ''
 GLOBAL_STATE
 login_reference = ''
 
-
-
 GLOBAL_STATE
 last_login = ''
 
@@ -44,6 +42,3 @@ student_disability= ''
 
 GLOBAL_STATE
 batch_file_path= ''
-
-
-
