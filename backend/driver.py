@@ -59,6 +59,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_batch.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.batch))
         self.ui.btn_sink_data.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
         self.ui.btn_help_link.clicked.connect(self.help_url)
+
+        self.ui.btn_database.hide()
+        self.ui.btn_batch.hide()
         ##########################################################################################################
 
         #########################################################################################################
@@ -76,6 +79,9 @@ class MainWindow(QMainWindow):
     
         self.database = Database()
         self.ui.btn_open_database.clicked.connect(lambda: self.database.show())
+
+        self.restapi = RESTAPI()
+        self.ui.btn_open_database.clicked.connect(lambda: self.restapi.show())
 
         self.merge = CentralDatabase()
         self.ui.btn_merge_connection.clicked.connect(lambda: self.merge.show())
@@ -209,6 +215,7 @@ class MainWindow(QMainWindow):
         self.load_colleges()
         self.set_curent_dates()
         self.set_database_colleges()
+        self.set_endpoints_colleges()
         self.get_central_database_properties()
         self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
         self.ui.btn_consolidation_load.clicked.connect(self.load_merge_data)
@@ -230,7 +237,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_merge_load.clicked.connect(self.merge_report_generate)
         self.ui.btn_merge_load.pressed.connect(self.change_merge_load_text)
         self.ui.btn_merge_save.clicked.connect(self.merge_report)
-
+        
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
@@ -705,6 +712,10 @@ class MainWindow(QMainWindow):
     def set_database_colleges(self):
         results=load_colleges(self.resource_path('database_properties.json'))
         self.database.set_colleges(results)
+
+    def set_endpoints_colleges(self):
+        results=load_colleges(self.resource_path('restapi_endpoints.json'))
+        self.restapi.set_colleges(results)
 
     def load_properties_path(self):
         self.resource_path('database_properties.json')       
@@ -2341,15 +2352,15 @@ class MainWindow(QMainWindow):
                         self.alert_builder("Oops! no database configured...")
                     else:
                         if self.ui.image_file_reg.text() and self.ui.file_system.isChecked():
-                            my_cursor.execute("INSERT INTO tb_students(student_reference,student_index,student_firstname,student_lastname,student_nationality,student_gender,student_disability,card_issued_date,card_expiry_date) VALUES (?,?,?,?,?,?,?,?,?)",
+                            my_cursor.execute("INSERT INTO tb_students(student_reference,student_index,student_firstname,student_lastname,student_nationality,student_gender,student_disability,card_issued_date,card_expiry_date) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                             (student.student_reference,student.student_index,student.student_firstname,student.student_lastname,student.student_nationality,student.student_gender,student.student_disability,student.card_issued_date,student.card_expiry_date))   
                             db.commit()
-                            my_cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
+                            my_cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (%s,%s,%s,%s,%s)",
                             (student.student_reference,college.student_college,college.student_faculty,college.student_program,college.student_category))   
                             db.commit()
                             with open(self.ui.image_file_reg.text(),'rb') as image:
                                 data = image.read()
-                                my_cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(?,?)",(student.student_reference,data))
+                                my_cursor.execute("INSERT INTO tb_student_images(student_reference,student_image) VALUES(%s,%s)",(student.student_reference,data))
                             db.commit()
                             my_cursor.close() 
                             self.alert_builder("Student registered successfully")    
@@ -2608,29 +2619,7 @@ class MainWindow(QMainWindow):
             db.commit()
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
             (data[11],data[12],data[13],data[14],data[15]))   
-            db.commit()
-            
-    def fetch_data_from_db(self,reference):
-        try:
-            student_reference=self.value_formater(reference)
-            db_cache=self.query_cache_database("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
-            if len(db_cache) > 0:
-                self.server_logs('[CACHED]',db_cache[:2])
-                return db_cache
-            else:
-                (db,my_cursor,connection_status) = self.database.my_cursor()
-                detail =my_cursor.execute("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
-                detail= my_cursor.fetchone()
-                db.commit()
-                my_cursor.close()
-                db_data = []
-                if detail:
-                    for data in detail:
-                        db_data.append(data)
-                    self.server_logs('[SERVER]',db_data[:2])
-                return db_data
-        except Exception as e:
-            self.alert_builder(str(e))          
+            db.commit()       
 
     def fetch_data_from_server(self,query):
         try:
@@ -2681,8 +2670,31 @@ class MainWindow(QMainWindow):
             label.setScaledContents(True)
         else:
             label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
-            label.setScaledContents(True)
+            label.setScaledContents(True)        
 
+    #improvements to be done or change code here      
+    def fetch_data_from_db(self,reference):
+        try:
+            student_reference=self.value_formater(reference)
+            db_cache=self.query_cache_database("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
+            if len(db_cache) > 0:
+                self.server_logs('[CACHED]',db_cache[:2])
+                return db_cache
+            else:
+                (db,my_cursor,connection_status) = self.database.my_cursor()
+                detail =my_cursor.execute("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
+                detail= my_cursor.fetchone()
+                db.commit()
+                my_cursor.close()
+                db_data = []
+                if detail:
+                    for data in detail:
+                        db_data.append(data)
+                    self.server_logs('[SERVER]',db_data[:2])
+                return db_data
+        except Exception as e:
+            self.alert_builder(str(e))   
+   
     def retreive_student_details(self,data):
         data_json = json.loads(data)
         if isinstance(data, str):
@@ -2726,6 +2738,62 @@ class MainWindow(QMainWindow):
                 else:
                     self.loadUi_file()
                     self.show_info("Oops! student not found. Please register!")                
+
+
+    def read_student_information_json(self):
+        with open('C:\\ProgramData\\iAttend\\data\\student\\information.json','r') as content:
+            data = content.read()
+            try:
+                return json.loads(data)
+            except Exception as e:
+                pass
+            
+    def update_interface(self, request_body_json: json):
+        if request_body_json:
+            start_date = (str(request_body_json['validity'])).split('-')[0]
+            start_date = start_date.split(' ')[1]
+            student_year=(int(current.now().date().strftime('%Y'))-int(start_date))
+
+            if student_year <= 1:
+                level = "1st year"
+            elif student_year > 1 and student_year <= 2:
+                level = "2nd year"
+            elif student_year > 2 and student_year <= 3:
+                level = "3rd year"
+            elif student_year > 3 and student_year <= 4:
+                level = "4th year"
+            elif student_year > 4 and student_year <= 5:
+                level = "5th year"
+            elif student_year > 5 and student_year <= 6:
+                level = "6th year"
+            self.ui.firstname.setText(request_body_json['firstname'])
+            self.ui.othername.setText(request_body_json['othername'])
+            self.ui.lastname.setText(request_body_json['lastname'])
+            self.ui.reference.setText(request_body_json['reference'])
+            self.ui.index.setText(request_body_json['index'])
+            self.ui.nationality.setText(request_body_json['nationality'])
+            self.ui.gender.setText(request_body_json['gender'])
+            self.ui.validity.setText(request_body_json['validity'])
+            self.ui.year.setText(level)
+            self.ui.college.setText(request_body_json['college'])
+            self.ui.faculty.setText(request_body_json['faculty'])
+            self.ui.program.setText(str(request_body_json['department']))
+            self.ui.type.setText(request_body_json['type'])
+        else:
+            self.loadUi_file()
+            self.show_info("Oops! student not found. Please register!") 
+        pass
+
+    def retreive_student_details_api_thread(self,data):
+        data_json = json.loads(data)
+        details_url,images_url=self.restapi.get_field_text()
+        if isinstance(data, str):
+            details_request=details_url.replace('reference',data_json['reference'])
+            self.data= RequestThread(url=details_request)
+            if not self.data.isRunning()==True:
+                self.data.start()
+            pass
+
 
     def attendance_data(self):
         attendance = Attendance(
@@ -2812,6 +2880,7 @@ class MainWindow(QMainWindow):
             self.show_alert.show()
 
     def update_frame(self):
+        print(self.restapi.get_field_text())
         thickness = 2
         rect_thickness = 1
         color = (255,255,0)
@@ -2855,8 +2924,12 @@ class MainWindow(QMainWindow):
                 self.ui.label_notification.setText("Oops! no database configured...")
                 winsound.Beep(1000,100)
             else:
-                self.retreive_student_details(qr_code_data)
-                self.mark_attendance_db()
+                data_json = json.loads(qr_code_data)
+                self.retreive_student_details_api_thread(qr_code_data)
+                self.update_interface(self.read_student_information_json())
+                self.last_seen(data_json['reference'])
+                winsound.Beep(1000,100)
+                # self.mark_attendance_db()
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
@@ -3105,7 +3178,7 @@ class Splash_screen(QMainWindow):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','properties','qr_code',
         'email_details','reports','exports','cache',
-        'images','partition','application_logs')
+        'images','partition','application_logs','student')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
@@ -3187,11 +3260,47 @@ class Splash_screen(QMainWindow):
             "servername":"servername@connection"
         }
         self.write_to_file(path,json_data,'json')
+        
+        path =os.path.join(root,'student\\information.json')
+        student_json={
+            'firstname': 'firstname', 
+            'othername': 'othername', 
+            'lastname': 'lastname', 
+            'reference': 'reference', 
+            'index': 'index', 
+            'nationality': 'nationality', 
+            'college': 'college', 
+            'type': 'type', 
+            'gender': 'gender', 
+            'disabled': 'disabled', 
+            'department': 'department', 
+            'faculty': 'faculty', 
+            'validity': 'validity'
+        }
+        self.write_to_file(path,student_json,'json')
+
+        path =os.path.join(root,'properties\\students_restapi_endpoints.json')
+        json_data = {
+            "details":"http://localhost/api/v1/students/details/reference",
+            "images":"http://localhost/api/v1/students/images/reference",
+            "endpoint":"RESTAPI"
+        }
+        self.write_to_file(path,json_data,'json')
        
         with open(self.resource_path('database_properties.json'),'r') as data:
             json_data = json.load(data)
         path =os.path.join(root,'properties\\database_properties.json')
         self.write_to_file(path,data,'json')
+        
+        with open(self.resource_path('restapi_endpoints.json'),'r') as data:
+            json_data = json.load(data)
+        path =os.path.join(root,'properties\\restapi_endpoints.json')
+        self.write_to_file(path,json_data,'json')
+
+        with open(self.resource_path('database_properties.json'),'r') as data:
+            json_data = json.load(data)
+        path =os.path.join(root,'properties\\database_properties.json')
+        self.write_to_file(path,json_data,'json')
         
         path =os.path.join(root,'email_details\\details.json')
         self.write_to_file(path,mail_properties,'json')
