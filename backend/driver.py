@@ -60,7 +60,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_sink_data.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
         self.ui.btn_help_link.clicked.connect(self.help_url)
 
-        self.ui.btn_database.hide()
+        # self.ui.btn_database.hide()
         self.ui.btn_batch.hide()
         ##########################################################################################################
 
@@ -83,6 +83,9 @@ class MainWindow(QMainWindow):
         self.restapi = RESTAPI()
         self.ui.btn_open_database.clicked.connect(lambda: self.restapi.show())
 
+        self.settings = Settings()
+        self.ui.btn_settings.clicked.connect(lambda: self.settings.show())
+
         self.merge = CentralDatabase()
         self.ui.btn_merge_connection.clicked.connect(lambda: self.merge.show())
 
@@ -98,6 +101,9 @@ class MainWindow(QMainWindow):
         self.user = User()
         self.ui.btn_login_user.clicked.connect(lambda: self.user.show())
         details=self.user_last_seen(login_reference)
+
+        self.profile = Profile()
+        self.ui.btn_login_user.clicked.connect(lambda: self.profile.show())
 
         self.user.setProfile(
             account_firstname,
@@ -716,6 +722,7 @@ class MainWindow(QMainWindow):
     def set_endpoints_colleges(self):
         results=load_colleges(self.resource_path('restapi_endpoints.json'))
         self.restapi.set_colleges(results)
+        self.settings.set_colleges_settings(results)
 
     def load_properties_path(self):
         self.resource_path('database_properties.json')       
@@ -802,6 +809,7 @@ class MainWindow(QMainWindow):
     def application_exit(self):
         self.close()
         self.set_log_out_session()
+        update_information_file()
         self.database.close()
         self.camera_1.close()
         self.camera_2.close()
@@ -1199,6 +1207,7 @@ class MainWindow(QMainWindow):
         try:
             self.set_log_out_session()
             self.close()
+            update_information_file()
             self.config.close()
             self.database.close()
             self.camera_1.close()
@@ -2789,11 +2798,12 @@ class MainWindow(QMainWindow):
         details_url,images_url=self.restapi.get_field_text()
         if isinstance(data, str):
             details_request=details_url.replace('reference',data_json['reference'])
-            self.data= RequestThread(url=details_request)
-            if not self.data.isRunning()==True:
+            self.data= RequestThread(url_details=details_request)
+            if self.data.isRunning()==True:
+                pass
+            else:
                 self.data.start()
-            pass
-
+           
 
     def attendance_data(self):
         attendance = Attendance(
@@ -2879,8 +2889,30 @@ class MainWindow(QMainWindow):
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
 
+    def retrieve_information(self,qr_code_data):
+        path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
+        data_json = json.loads(qr_code_data)
+        with open(path,'r') as content:
+            results = json.load(content)
+        content.close()
+        if  results['reference'] != self.ui.reference.text():
+            self.retreive_student_details_api_thread(qr_code_data)
+            winsound.Beep(1000,100)
+            self.show_info("Waiting for response from server...") 
+            print(results['reference'],self.ui.reference.text())
+        else:
+            print(results['reference'],self.ui.reference.text())
+            print('Equal')
+            self.show_info("Response from server updated on interface...") 
+
+        with open(path,'r') as content:
+            update = json.load(content)
+            if update['firstname'] != 'firstname':
+                self.update_interface(self.read_student_information_json())
+                self.last_seen(data_json['reference'])
+                # self.mark_attendance_db()
+
     def update_frame(self):
-        print(self.restapi.get_field_text())
         thickness = 2
         rect_thickness = 1
         color = (255,255,0)
@@ -2924,12 +2956,7 @@ class MainWindow(QMainWindow):
                 self.ui.label_notification.setText("Oops! no database configured...")
                 winsound.Beep(1000,100)
             else:
-                data_json = json.loads(qr_code_data)
-                self.retreive_student_details_api_thread(qr_code_data)
-                self.update_interface(self.read_student_information_json())
-                self.last_seen(data_json['reference'])
-                winsound.Beep(1000,100)
-                # self.mark_attendance_db()
+                self.retrieve_information(qr_code_data)
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
@@ -2954,6 +2981,7 @@ class MainWindow(QMainWindow):
             self.ui.camera_view.setPixmap(u":/icons/asset/camera-off.svg")
             self.ui.camera_view.setScaledContents(False)
             self.timer.stop()
+            update_information_file()
             self.show_info("Disconnected from device\nsuccessfully...") 
         else:
             self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
@@ -3178,7 +3206,8 @@ class Splash_screen(QMainWindow):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','properties','qr_code',
         'email_details','reports','exports','cache',
-        'images','partition','application_logs','student')
+        'images','partition','application_logs','student',
+        'httpErrors','user')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
@@ -3250,7 +3279,14 @@ class Splash_screen(QMainWindow):
         }
         self.write_to_file(path,json_data,'json')
 
-        path =os.path.join(root,'properties\\connection_properties.json')
+        json_data = {
+            "details": "http://localhost/api/v1/user/details/reference",
+            "images": "http://localhost/api/v1/user/images/reference"
+        }
+        path =os.path.join(root,'user\\api_routes.json')
+        self.write_to_file(path,json_data,'json')
+        
+        path =os.path.join(root,'properties\\central_database_connection_propeties.json')
         json_data = {
             "username":"username@connection",
             "password":"passsword@connection",
