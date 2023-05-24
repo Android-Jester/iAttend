@@ -5,5 +5,7 @@ from merge.database import CentralDatabase
 from upload.images_insert import Images
 from data.generated_data import DataView
 from scan_devices.camera import ActiveCameras
+from settings.settings import Settings
 from configuration.configuration import Configuration
 from restapi.connections.restapi_endpoints import RESTAPI
+from restapi.user_profile.user_profile import Profile
