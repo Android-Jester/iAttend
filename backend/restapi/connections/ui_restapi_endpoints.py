@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'restapi_endpointsorzvxr.ui'
+## Form generated from reading UI file 'restapi_endpointscQCTNm.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -137,7 +137,7 @@ class Ui_RESTAPI(object):
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.details_url = QLineEdit(self.frame_4)
         self.details_url.setObjectName(u"details_url")
-        self.details_url.setGeometry(QRect(20, 100, 475, 51))
+        self.details_url.setGeometry(QRect(20, 100, 470, 51))
         sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -198,33 +198,6 @@ class Ui_RESTAPI(object):
         self.label_38.setGeometry(QRect(30, 190, 31, 31))
         self.label_38.setStyleSheet(u"background-color: rgb(45, 45, 45);")
         self.label_38.setPixmap(QPixmap(u":/icons/asset/image.svg"))
-        self.btn_update_properties_2 = QPushButton(self.frame_4)
-        self.btn_update_properties_2.setObjectName(u"btn_update_properties_2")
-        self.btn_update_properties_2.setGeometry(QRect(290, 250, 201, 51))
-        sizePolicy.setHeightForWidth(self.btn_update_properties_2.sizePolicy().hasHeightForWidth())
-        self.btn_update_properties_2.setSizePolicy(sizePolicy)
-        self.btn_update_properties_2.setMinimumSize(QSize(0, 51))
-        self.btn_update_properties_2.setMaximumSize(QSize(201, 45))
-        self.btn_update_properties_2.setFont(font1)
-        self.btn_update_properties_2.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        icon = QIcon()
-        icon.addFile(u":/icons/asset/repeat.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_update_properties_2.setIcon(icon)
-        self.btn_update_properties_2.setIconSize(QSize(30, 30))
-        self.btn_update_properties_2.setFlat(True)
         self.label_notification = QLabel(self.frame_4)
         self.label_notification.setObjectName(u"label_notification")
         self.label_notification.setGeometry(QRect(20, 320, 470, 101))
@@ -250,10 +223,10 @@ class Ui_RESTAPI(object):
         self.label_notification.setWordWrap(True)
         self.sqlite = QRadioButton(self.frame_4)
         self.sqlite.setObjectName(u"sqlite")
-        self.sqlite.setGeometry(QRect(20, 40, 71, 20))
+        self.sqlite.setGeometry(QRect(20, 40, 91, 20))
         sizePolicy.setHeightForWidth(self.sqlite.sizePolicy().hasHeightForWidth())
         self.sqlite.setSizePolicy(sizePolicy)
-        self.sqlite.setMaximumSize(QSize(71, 20))
+        self.sqlite.setMaximumSize(QSize(100, 20))
         self.sqlite.setFont(font1)
         self.sqlite.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -262,10 +235,10 @@ class Ui_RESTAPI(object):
         self.sqlite.setChecked(True)
         self.API = QRadioButton(self.frame_4)
         self.API.setObjectName(u"API")
-        self.API.setGeometry(QRect(110, 40, 81, 20))
+        self.API.setGeometry(QRect(150, 40, 100, 20))
         sizePolicy.setHeightForWidth(self.API.sizePolicy().hasHeightForWidth())
         self.API.setSizePolicy(sizePolicy)
-        self.API.setMaximumSize(QSize(81, 20))
+        self.API.setMaximumSize(QSize(100, 20))
         self.API.setFont(font1)
         self.API.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -273,10 +246,10 @@ class Ui_RESTAPI(object):
 "}")
         self.comboBox = QComboBox(self.frame_4)
         self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setGeometry(QRect(180, 30, 145, 41))
+        self.comboBox.setGeometry(QRect(310, 30, 180, 41))
         sizePolicy.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
         self.comboBox.setSizePolicy(sizePolicy)
-        self.comboBox.setMinimumSize(QSize(145, 41))
+        self.comboBox.setMinimumSize(QSize(180, 41))
         self.comboBox.setMaximumSize(QSize(145, 41))
         self.comboBox.setFont(font1)
         self.comboBox.setStyleSheet(u"QComboBox{\n"
@@ -286,38 +259,13 @@ class Ui_RESTAPI(object):
 "	border-radius: 5px;\n"
 "}")
         self.comboBox.setFrame(False)
-        self.btn_update_properties = QPushButton(self.frame_4)
-        self.btn_update_properties.setObjectName(u"btn_update_properties")
-        self.btn_update_properties.setGeometry(QRect(350, 30, 145, 41))
-        sizePolicy.setHeightForWidth(self.btn_update_properties.sizePolicy().hasHeightForWidth())
-        self.btn_update_properties.setSizePolicy(sizePolicy)
-        self.btn_update_properties.setMinimumSize(QSize(145, 0))
-        self.btn_update_properties.setMaximumSize(QSize(145, 41))
-        self.btn_update_properties.setFont(font1)
-        self.btn_update_properties.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        self.btn_update_properties.setIcon(icon)
-        self.btn_update_properties.setIconSize(QSize(30, 30))
-        self.btn_update_properties.setFlat(True)
         self.type = QLineEdit(self.frame_4)
         self.type.setObjectName(u"type")
-        self.type.setGeometry(QRect(20, 250, 221, 51))
+        self.type.setGeometry(QRect(20, 250, 470, 51))
         sizePolicy.setHeightForWidth(self.type.sizePolicy().hasHeightForWidth())
         self.type.setSizePolicy(sizePolicy)
         self.type.setMinimumSize(QSize(0, 51))
-        self.type.setMaximumSize(QSize(441, 51))
+        self.type.setMaximumSize(QSize(470, 51))
         self.type.setFont(font1)
         self.type.setTabletTracking(True)
         self.type.setStyleSheet(u"QLineEdit{\n"
@@ -366,11 +314,9 @@ class Ui_RESTAPI(object):
         self.label_36.setText("")
         self.image_url.setPlaceholderText(QCoreApplication.translate("RESTAPI", u"Images url", None))
         self.label_38.setText("")
-        self.btn_update_properties_2.setText(QCoreApplication.translate("RESTAPI", u"Update properties", None))
         self.label_notification.setText(QCoreApplication.translate("RESTAPI", u"Notification", None))
         self.sqlite.setText(QCoreApplication.translate("RESTAPI", u"SQLite", None))
-        self.API.setText(QCoreApplication.translate("RESTAPI", u"API", None))
-        self.btn_update_properties.setText(QCoreApplication.translate("RESTAPI", u"Update", None))
+        self.API.setText(QCoreApplication.translate("RESTAPI", u"Rest API", None))
         self.type.setPlaceholderText(QCoreApplication.translate("RESTAPI", u"Type", None))
         self.label_39.setText("")
     # retranslateUi
