@@ -202,7 +202,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_user_clear.clicked.connect(self.clear_user_details)
         self.ui.btn_user_search.clicked.connect(self.search_user)
         self.ui.btn_export_data.clicked.connect(self.export_user_data)
-        self.ui.user_start_date.dateTimeChanged.connect(self.date_changed)
+        self.ui.user_start_date_widget.dateTimeChanged.connect(self.user_page_stard_date)
+        self.ui.user_end_date_widget.dateTimeChanged.connect(self.user_page_end_date)
         self.ui.btn_mail_user_details.clicked.connect(self.send_account_detail)
         self.ui.btn_generate_code.clicked.connect(self.generate_code_print)
         self.ui.btn_find_filesearch.clicked.connect(self.search_for_code)
@@ -747,10 +748,12 @@ class MainWindow(QMainWindow):
         self.now = current.now().date()
         curent_date=QDate(self.now.year,self.now.month,self.now.day)
         self.ui.search_page_date.setDate(curent_date)
-        self.ui.user_start_date.setDate(curent_date)
+        self.ui.user_start_date_widget.setDate(curent_date)
+        self.ui.user_end_date_widget.setDate(curent_date)
         self.ui.db_consolidation_date.setDate(curent_date)
         self.ui.report_date.setDate(curent_date)
-        self.ui.user_end_date.clear()
+        self.ui.user_end_date_field.clear()
+        self.ui.user_start_date_field.clear()
         self.ui.db_start_date.clear()
         self.ui.report_start_date.clear()
         self.ui.db_consolidation_date.clear()
@@ -926,12 +929,13 @@ class MainWindow(QMainWindow):
             self.alert.content("Oops! you have no data to export...")
             self.alert.show()
 
-    def date_changed(self):
-        date_ = self.ui.user_start_date.date().toPython()
-        if self.ui.user_range.isChecked():
-             self.ui.user_date.setText(str(date_))
-        else:
-            self.ui.user_end_date.setText(str(date_))
+    def user_page_stard_date(self):
+        date_ = self.ui.user_start_date_widget.date().toPython()
+        self.ui.user_start_date_field.setText(str(date_))
+
+    def user_page_end_date(self):
+        date_ = self.ui.user_end_date_widget.date().toPython()
+        self.ui.user_end_date_field.setText(str(date_))
 
     def read_user_endpoints(self):
         with open('C:\\ProgramData\\iAttend\\data\\user\\api_routes.json','r') as content:
