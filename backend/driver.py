@@ -954,7 +954,7 @@ class MainWindow(QMainWindow):
         self.ui.user_middlename.setText(details['othername'])
         self.ui.user_lastname.setText(details['lastname'])
         self.ui.user_reference.setText(details['reference'])
-
+        
     def load_user_from_api(self):
         self.alert = AlertDialog()
         user=self.read_user_endpoints()
@@ -964,9 +964,15 @@ class MainWindow(QMainWindow):
             try:
                 request_body = requests.get(url)
                 student_data=request_body.json()
-                self.render_user_interface(student_data)
-                self.ui.btn_user_fetch.setText("Load")
-                self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+                if request_body.status_code == 200:
+                    self.render_user_interface(student_data)
+                    self.ui.btn_user_fetch.setText("Load")
+                    self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+                else:
+                    self.ui.btn_user_fetch.setText("Load")
+                    self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+                    self.alert.content(str(student_data))
+                    self.alert.show()
             except Exception as e:
                 self.ui.btn_user_fetch.setText("Load")
                 self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
@@ -975,8 +981,7 @@ class MainWindow(QMainWindow):
         else:
             self.alert.content("Oops! invalid reference number...")
             self.alert.show()
-
-        
+       
     def search_user(self):
         self.alert = AlertDialog()
         reference = self.ui.user_search.text()
@@ -1599,19 +1604,6 @@ class MainWindow(QMainWindow):
         self.ui.pctdist.clear()
         self.ui.file_name.clear()
         self.ui. plot_area.setText('Graph')
-        
-    def data_visualization_thread(self):
-        self.alert = AlertDialog()
-        if self.database.check_state():
-            self.alert.content("Oops! no database configured...")
-            self.alert.show()
-        else:
-            self.pool = QThreadPool.globalInstance()
-            if self.pool.activeThreadCount()==0:
-                self.work = SendThread(self.data_visualization)
-                self.pool.start(self.work)
-            else:
-                self.pool.clear()
                   
     def save_report(self):
         filename = self.ui.file_name.text()
