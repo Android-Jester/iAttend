@@ -4,7 +4,8 @@ from dataclasses import dataclass
 class LoginUser():
     reference: str
     username: str
-    password: str
+    role: str
     status: str
+    password: str  
 
    
