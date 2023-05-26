@@ -714,6 +714,7 @@ class MainWindow(QMainWindow):
         else:
             self.ui.db_consolidation_start.setText(str(date))
     
+
     def set_database_colleges(self):
         results=load_colleges(self.resource_path('database_properties.json'))
         self.database.set_colleges(results)
@@ -1015,7 +1016,7 @@ class MainWindow(QMainWindow):
                 self.render_user_data(details)
                 return details
             else:
-                self.alert.content(f"Oops! invalid dates format,\nstart date must be less than stop date")
+                self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
                 self.alert.show()  
         elif self.ui.user_start_date_field.text() and not reference:
             date=self.ui.user_start_date_field.text()
@@ -2071,54 +2072,62 @@ class MainWindow(QMainWindow):
     #search page creterias ###################################################
     def query_database_for_data(self):
         self.alert = AlertDialog()
-        if not self.database.check_state():
-            if self.ui.db_current_session.isChecked():
-                details=self.query_cache_data_list("SELECT * FROM tb_attendance_temp")
-                self.ui_table(details)
-                return details 
-            else:
-                if self.ui.checkBox.isChecked():
-                    if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                        start = self.ui.db_start_date.text()
-                        start_date="\'{}\'".format(start)
-                        end = self.ui.db_end_date.text()
-                        end_date="\'{}\'".format(end)
-                        prog = self.ui.search_box.text()
-                        program="\'{}\'".format(prog)
-                        results_ = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp BETWEEN "+start_date+" and "+end_date+" and program="+program)
+        if self.ui.db_current_session.isChecked():
+            details=self.query_cache_data_list("SELECT * FROM tb_attendance_temp")
+            self.ui_table(details)
+            return details 
+        else:
+            if self.ui.checkBox.isChecked():
+                if self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    start = self.ui.db_start_date.text()
+                    start_date= self.date_formater(start)
+                    end = self.ui.db_end_date.text()
+                    end_date=self.date_formater(end)
+                    prog = self.ui.search_box.text()
+                    program=self.date_formater(prog)
+                    if self.ui.db_start_date.text() <= self.ui.db_end_date.text():
+                        results_ = self.query_cache_data_list(f"SELECT * FROM tb_attendance WHERE date_stamp BETWEEN {start_date} AND {end_date} AND program={program}")
                         self.ui_table(results_)
                         return results_
-                    elif self.ui.search_box.text() and self.ui.db_start_date.text():
-                        self.fetch_data_by_program_and_date()
                     else:
-                        program = self.ui.search_box.text()
-                        program = "Dept. of "+program
-                        program = "\'{}\'".format(program)
-                        program=program.replace('\n','')
-                        details = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE student_program="+program)
-                        self.ui_table(details)
-                        return details
+                        self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
+                        self.alert.show()      
+                elif self.ui.search_box.text() and self.ui.db_start_date.text():
+                    self.fetch_data_by_program_and_date()
                 else:
-                    if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    program = self.ui.search_box.text()
+                    program = "Dept. of "+program
+                    program = "\'{}\'".format(program)
+                    program=program.replace('\n','')
+                    details = self.query_cache_data_list(f"SELECT * FROM tb_attendance WHERE student_program={program}")
+                    self.ui_table(details)
+                    return details
+            else:
+                if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    if self.ui.db_start_date.text() <= self.ui.db_end_date.text():
                         self.query_for_data_by_date_range()
-                    elif self.ui.db_start_date.text():
-                        current_date = self.ui.db_start_date.text()
-                        current_date = "\'{}\'".format(current_date)
-                        results = self.query_cache_data_list("SELECT * FROM tb_attendance WHERE date_stamp ="+current_date)
-                        self.ui_table(results)
-                        return results
-                    elif self.ui.search_box.text():
-                        self.fetch_details_for_card_view()
-                    elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
-                        self.fetch_details_for_card_view()
-                        return self.query_for_data_by_date_range() 
                     else:
-                        details=self.query_cache_data_list("SELECT * FROM tb_attendance")
-                        self.ui_table(details)
-                        return details 
-        else:
-            self.alert.content("Oops! no database configured...")
-            self.alert.show()
+                        self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
+                        self.alert.show()
+                elif self.ui.db_start_date.text():
+                    current_date = self.ui.db_start_date.text()
+                    current_date = self.date_formater(current_date)
+                    results = self.query_cache_data_list(f"SELECT * FROM tb_attendance WHERE date_stamp ={current_date}")
+                    self.ui_table(results)
+                    return results
+                elif self.ui.search_box.text():
+                    self.fetch_details_for_card_view()
+                elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
+                    if self.ui.db_start_date.text() <= self.ui.db_end_date.text():
+                        self.fetch_details_for_card_view()
+                        return self.query_for_data_by_date_range()
+                    else:
+                        self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
+                        self.alert.show() 
+                else:
+                    details=self.query_cache_data_list("SELECT * FROM tb_attendance")
+                    self.ui_table(details)
+                    return details 
                         
     def start_date_on_search_page(self):
         date = self.ui.search_page_date.date().toPython()
