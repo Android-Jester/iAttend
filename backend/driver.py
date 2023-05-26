@@ -141,7 +141,8 @@ class MainWindow(QMainWindow):
 
         #############################################################################################
         self.ui.btn_search_page.clicked.connect(self.query_database_for_data)
-        self.ui.search_page_date.dateTimeChanged.connect(self.get_date_on_search_page)
+        self.ui.search_page_date.dateTimeChanged.connect(self.start_date_on_search_page)
+        self.ui.search_page_date_2.dateTimeChanged.connect(self.end_date_on_search_page)
         self.ui.report_date.dateTimeChanged.connect(self.get_report_date)
         self.ui.btn_reload.clicked.connect(self.clear_fields_on_search_page)
         self.ui.btn_csv.clicked.connect(self.export_data_to_csv)
@@ -748,10 +749,12 @@ class MainWindow(QMainWindow):
         self.now = current.now().date()
         curent_date=QDate(self.now.year,self.now.month,self.now.day)
         self.ui.search_page_date.setDate(curent_date)
+        self.ui.search_page_date_2.setDate(curent_date)
         self.ui.user_start_date_widget.setDate(curent_date)
         self.ui.user_end_date_widget.setDate(curent_date)
         self.ui.db_consolidation_date.setDate(curent_date)
         self.ui.report_date.setDate(curent_date)
+        self.ui.db_end_date.clear()
         self.ui.user_end_date_field.clear()
         self.ui.user_start_date_field.clear()
         self.ui.db_start_date.clear()
@@ -1216,7 +1219,7 @@ class MainWindow(QMainWindow):
         )
         return credentials
     
-        
+    
     def logout(self):
         self.alert = AlertDialog()
         try:
@@ -2117,12 +2120,13 @@ class MainWindow(QMainWindow):
             self.alert.content("Oops! no database configured...")
             self.alert.show()
                         
-    def get_date_on_search_page(self):
+    def start_date_on_search_page(self):
         date = self.ui.search_page_date.date().toPython()
-        if self.ui.start_date.isChecked():
-            self.ui.db_end_date.setText(str(date))
-        else:
-            self.ui.db_start_date.setText(str(date))
+        self.ui.db_start_date.setText(str(date))
+
+    def end_date_on_search_page(self):
+        date = self.ui.search_page_date_2.date().toPython()
+        self.ui.db_end_date.setText(str(date))
          
     def clear_fields_on_search_page(self):
         self.ui.db_firstname.setText("Firstname")
