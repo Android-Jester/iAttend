@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardiDeGNZ.ui'
+## Form generated from reading UI file 'dashoboardGObWvJ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -2856,7 +2856,7 @@ class Ui_dashboard(object):
         self.firstname_25.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.firstname_26 = QLabel(self.left_child)
         self.firstname_26.setObjectName(u"firstname_26")
-        self.firstname_26.setGeometry(QRect(10, 190, 531, 441))
+        self.firstname_26.setGeometry(QRect(10, 180, 531, 441))
         self.firstname_26.setFont(font5)
         self.firstname_26.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2911,7 +2911,7 @@ class Ui_dashboard(object):
         self.btn_user_search.setFlat(True)
         self.user_image = QLabel(self.left_child)
         self.user_image.setObjectName(u"user_image")
-        self.user_image.setGeometry(QRect(30, 210, 241, 261))
+        self.user_image.setGeometry(QRect(30, 200, 241, 261))
         font10 = QFont()
         font10.setFamily(u"Arial")
         font10.setPointSize(14)
@@ -2927,7 +2927,7 @@ class Ui_dashboard(object):
         self.user_image.setAlignment(Qt.AlignCenter)
         self.user_middlename = QLineEdit(self.left_child)
         self.user_middlename.setObjectName(u"user_middlename")
-        self.user_middlename.setGeometry(QRect(290, 280, 231, 53))
+        self.user_middlename.setGeometry(QRect(290, 270, 231, 53))
         self.user_middlename.setMinimumSize(QSize(0, 53))
         self.user_middlename.setMaximumSize(QSize(16777215, 53))
         self.user_middlename.setFont(font2)
@@ -2948,7 +2948,7 @@ class Ui_dashboard(object):
         self.user_middlename.setClearButtonEnabled(True)
         self.user_lastname = QLineEdit(self.left_child)
         self.user_lastname.setObjectName(u"user_lastname")
-        self.user_lastname.setGeometry(QRect(290, 350, 231, 53))
+        self.user_lastname.setGeometry(QRect(290, 340, 231, 53))
         self.user_lastname.setMinimumSize(QSize(0, 53))
         self.user_lastname.setMaximumSize(QSize(16777215, 53))
         self.user_lastname.setFont(font2)
@@ -2969,7 +2969,7 @@ class Ui_dashboard(object):
         self.user_lastname.setClearButtonEnabled(True)
         self.user_firstname = QLineEdit(self.left_child)
         self.user_firstname.setObjectName(u"user_firstname")
-        self.user_firstname.setGeometry(QRect(290, 210, 231, 53))
+        self.user_firstname.setGeometry(QRect(290, 200, 231, 53))
         self.user_firstname.setMinimumSize(QSize(0, 53))
         self.user_firstname.setMaximumSize(QSize(16777215, 53))
         self.user_firstname.setFont(font2)
@@ -2991,7 +2991,7 @@ class Ui_dashboard(object):
         self.user_firstname.setClearButtonEnabled(True)
         self.user_reference = QLineEdit(self.left_child)
         self.user_reference.setObjectName(u"user_reference")
-        self.user_reference.setGeometry(QRect(290, 420, 231, 53))
+        self.user_reference.setGeometry(QRect(290, 410, 231, 53))
         self.user_reference.setMinimumSize(QSize(0, 53))
         self.user_reference.setMaximumSize(QSize(16777215, 53))
         self.user_reference.setFont(font2)
@@ -3012,7 +3012,7 @@ class Ui_dashboard(object):
         self.user_reference.setClearButtonEnabled(True)
         self.user_contact = QLineEdit(self.left_child)
         self.user_contact.setObjectName(u"user_contact")
-        self.user_contact.setGeometry(QRect(290, 490, 231, 53))
+        self.user_contact.setGeometry(QRect(290, 480, 231, 53))
         self.user_contact.setMinimumSize(QSize(0, 53))
         self.user_contact.setMaximumSize(QSize(16777215, 53))
         self.user_contact.setFont(font2)
@@ -3036,7 +3036,7 @@ class Ui_dashboard(object):
         self.user_role.addItem("")
         self.user_role.addItem("")
         self.user_role.setObjectName(u"user_role")
-        self.user_role.setGeometry(QRect(30, 490, 241, 53))
+        self.user_role.setGeometry(QRect(30, 480, 241, 53))
         self.user_role.setMinimumSize(QSize(0, 53))
         self.user_role.setMaximumSize(QSize(16777215, 53))
         self.user_role.setFont(font2)
@@ -3050,7 +3050,7 @@ class Ui_dashboard(object):
         self.user_role.setFrame(False)
         self.user_email = QLineEdit(self.left_child)
         self.user_email.setObjectName(u"user_email")
-        self.user_email.setGeometry(QRect(30, 560, 291, 53))
+        self.user_email.setGeometry(QRect(30, 550, 291, 53))
         self.user_email.setMinimumSize(QSize(0, 53))
         self.user_email.setMaximumSize(QSize(16777215, 53))
         self.user_email.setFont(font2)
@@ -3071,7 +3071,7 @@ class Ui_dashboard(object):
         self.user_email.setClearButtonEnabled(True)
         self.firstname_27 = QLabel(self.left_child)
         self.firstname_27.setObjectName(u"firstname_27")
-        self.firstname_27.setGeometry(QRect(10, 660, 531, 85))
+        self.firstname_27.setGeometry(QRect(10, 640, 531, 85))
         self.firstname_27.setMinimumSize(QSize(0, 85))
         self.firstname_27.setFont(font5)
         self.firstname_27.setStyleSheet(u"QLabel{\n"
@@ -3084,7 +3084,7 @@ class Ui_dashboard(object):
         self.firstname_27.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_user_register = QPushButton(self.left_child)
         self.btn_user_register.setObjectName(u"btn_user_register")
-        self.btn_user_register.setGeometry(QRect(30, 680, 141, 45))
+        self.btn_user_register.setGeometry(QRect(30, 660, 141, 45))
         self.btn_user_register.setMinimumSize(QSize(0, 45))
         self.btn_user_register.setMaximumSize(QSize(16777215, 45))
         self.btn_user_register.setFont(font2)
@@ -3107,7 +3107,7 @@ class Ui_dashboard(object):
         self.btn_user_register.setFlat(True)
         self.btn_user_update = QPushButton(self.left_child)
         self.btn_user_update.setObjectName(u"btn_user_update")
-        self.btn_user_update.setGeometry(QRect(200, 680, 141, 45))
+        self.btn_user_update.setGeometry(QRect(200, 660, 141, 45))
         self.btn_user_update.setMinimumSize(QSize(0, 45))
         self.btn_user_update.setFont(font2)
         self.btn_user_update.setStyleSheet(u"QPushButton{\n"
@@ -3129,7 +3129,7 @@ class Ui_dashboard(object):
         self.btn_user_update.setFlat(True)
         self.btn_user_status = QPushButton(self.left_child)
         self.btn_user_status.setObjectName(u"btn_user_status")
-        self.btn_user_status.setGeometry(QRect(370, 680, 151, 45))
+        self.btn_user_status.setGeometry(QRect(370, 660, 151, 45))
         self.btn_user_status.setMinimumSize(QSize(0, 45))
         self.btn_user_status.setFont(font2)
         self.btn_user_status.setStyleSheet(u"QPushButton{\n"
@@ -3153,7 +3153,7 @@ class Ui_dashboard(object):
         self.btn_user_status.setFlat(True)
         self.firstname_29 = QLabel(self.left_child)
         self.firstname_29.setObjectName(u"firstname_29")
-        self.firstname_29.setGeometry(QRect(10, 770, 531, 85))
+        self.firstname_29.setGeometry(QRect(10, 740, 531, 121))
         self.firstname_29.setMinimumSize(QSize(0, 85))
         self.firstname_29.setFont(font5)
         self.firstname_29.setStyleSheet(u"QLabel{\n"
@@ -3211,12 +3211,13 @@ class Ui_dashboard(object):
         self.btn_user_clear.setIcon(icon15)
         self.btn_user_clear.setIconSize(QSize(30, 30))
         self.btn_user_clear.setFlat(True)
-        self.user_start_date = QDateEdit(self.left_child)
-        self.user_start_date.setObjectName(u"user_start_date")
-        self.user_start_date.setGeometry(QRect(80, 790, 141, 45))
-        self.user_start_date.setMinimumSize(QSize(0, 45))
-        self.user_start_date.setFont(font8)
-        self.user_start_date.setStyleSheet(u"QDateEdit{\n"
+        self.user_start_date_widget = QDateEdit(self.left_child)
+        self.user_start_date_widget.setObjectName(u"user_start_date_widget")
+        self.user_start_date_widget.setGeometry(QRect(30, 805, 231, 35))
+        self.user_start_date_widget.setMinimumSize(QSize(0, 35))
+        self.user_start_date_widget.setMaximumSize(QSize(16777215, 35))
+        self.user_start_date_widget.setFont(font8)
+        self.user_start_date_widget.setStyleSheet(u"QDateEdit{\n"
 "	color: rgb(255, 255, 255);\n"
 "background-color: rgb(45, 45, 45);\n"
 "border: 2px solid rgb(45, 45, 45);\n"
@@ -3225,22 +3226,22 @@ class Ui_dashboard(object):
 "}\n"
 "\n"
 "")
-        self.user_start_date.setFrame(False)
-        self.user_start_date.setReadOnly(False)
-        self.user_start_date.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
-        self.user_start_date.setAccelerated(True)
-        self.user_start_date.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
-        self.user_start_date.setProperty("showGroupSeparator", False)
-        self.user_start_date.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
-        self.user_start_date.setMinimumDate(QDate(2023, 1, 1))
-        self.user_start_date.setCalendarPopup(True)
-        self.user_start_date.setTimeSpec(Qt.LocalTime)
-        self.user_start_date.setDate(QDate(2023, 1, 1))
+        self.user_start_date_widget.setFrame(False)
+        self.user_start_date_widget.setReadOnly(False)
+        self.user_start_date_widget.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.user_start_date_widget.setAccelerated(True)
+        self.user_start_date_widget.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
+        self.user_start_date_widget.setProperty("showGroupSeparator", False)
+        self.user_start_date_widget.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.user_start_date_widget.setMinimumDate(QDate(2023, 1, 1))
+        self.user_start_date_widget.setCalendarPopup(True)
+        self.user_start_date_widget.setTimeSpec(Qt.LocalTime)
+        self.user_start_date_widget.setDate(QDate(2023, 1, 1))
         self.user_status = QComboBox(self.left_child)
         self.user_status.addItem("")
         self.user_status.addItem("")
         self.user_status.setObjectName(u"user_status")
-        self.user_status.setGeometry(QRect(340, 560, 181, 53))
+        self.user_status.setGeometry(QRect(340, 550, 181, 53))
         self.user_status.setMinimumSize(QSize(0, 53))
         self.user_status.setMaximumSize(QSize(16777215, 53))
         self.user_status.setFont(font2)
@@ -3252,15 +3253,6 @@ class Ui_dashboard(object):
 "	border-radius: 10px;\n"
 "}")
         self.user_status.setFrame(False)
-        self.user_range = QRadioButton(self.left_child)
-        self.user_range.setObjectName(u"user_range")
-        self.user_range.setGeometry(QRect(30, 790, 41, 45))
-        self.user_range.setMinimumSize(QSize(0, 45))
-        self.user_range.setFont(font2)
-        self.user_range.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(45, 45, 45);\n"
-"border-radius:5px;")
-        self.user_range.setAutoExclusive(False)
         self.firstname_30 = QLabel(self.left_child)
         self.firstname_30.setObjectName(u"firstname_30")
         self.firstname_30.setGeometry(QRect(10, 880, 531, 85))
@@ -3297,50 +3289,6 @@ class Ui_dashboard(object):
         self.btn_export_data.setIcon(icon17)
         self.btn_export_data.setIconSize(QSize(30, 30))
         self.btn_export_data.setFlat(True)
-        self.user_end_date = QLineEdit(self.left_child)
-        self.user_end_date.setObjectName(u"user_end_date")
-        self.user_end_date.setGeometry(QRect(230, 790, 141, 45))
-        self.user_end_date.setMinimumSize(QSize(0, 45))
-        self.user_end_date.setMaximumSize(QSize(16777215, 45))
-        self.user_end_date.setFont(font2)
-        self.user_end_date.setTabletTracking(True)
-        self.user_end_date.setStyleSheet(u"QLineEdit{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:10px;\n"
-"	padding-left: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"	border:2px solid rgb(255, 255, 255);\n"
-"}")
-        self.user_end_date.setClearButtonEnabled(True)
-        self.user_date = QLineEdit(self.left_child)
-        self.user_date.setObjectName(u"user_date")
-        self.user_date.setGeometry(QRect(380, 790, 141, 45))
-        self.user_date.setMinimumSize(QSize(0, 45))
-        self.user_date.setMaximumSize(QSize(16777215, 45))
-        self.user_date.setFont(font2)
-        self.user_date.setTabletTracking(True)
-        self.user_date.setStyleSheet(u"QLineEdit{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:10px;\n"
-"	padding-left: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"	border:2px solid rgb(255, 255, 255);\n"
-"}")
-        self.user_date.setClearButtonEnabled(True)
         self.btn_user_fetch = QPushButton(self.left_child)
         self.btn_user_fetch.setObjectName(u"btn_user_fetch")
         self.btn_user_fetch.setGeometry(QRect(290, 100, 231, 45))
@@ -3364,6 +3312,74 @@ class Ui_dashboard(object):
         self.btn_user_fetch.setIcon(icon22)
         self.btn_user_fetch.setIconSize(QSize(30, 30))
         self.btn_user_fetch.setFlat(True)
+        self.user_end_date_widget = QDateEdit(self.left_child)
+        self.user_end_date_widget.setObjectName(u"user_end_date_widget")
+        self.user_end_date_widget.setGeometry(QRect(290, 805, 231, 35))
+        self.user_end_date_widget.setMinimumSize(QSize(0, 35))
+        self.user_end_date_widget.setMaximumSize(QSize(16777215, 35))
+        self.user_end_date_widget.setFont(font8)
+        self.user_end_date_widget.setStyleSheet(u"QDateEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"background-color: rgb(45, 45, 45);\n"
+"border: 2px solid rgb(45, 45, 45);\n"
+"padding-left:10px;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"")
+        self.user_end_date_widget.setFrame(False)
+        self.user_end_date_widget.setReadOnly(False)
+        self.user_end_date_widget.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.user_end_date_widget.setAccelerated(True)
+        self.user_end_date_widget.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
+        self.user_end_date_widget.setProperty("showGroupSeparator", False)
+        self.user_end_date_widget.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.user_end_date_widget.setMinimumDate(QDate(2023, 1, 1))
+        self.user_end_date_widget.setCalendarPopup(True)
+        self.user_end_date_widget.setTimeSpec(Qt.LocalTime)
+        self.user_end_date_widget.setDate(QDate(2023, 1, 1))
+        self.user_start_date_field = QLineEdit(self.left_child)
+        self.user_start_date_field.setObjectName(u"user_start_date_field")
+        self.user_start_date_field.setGeometry(QRect(30, 760, 231, 35))
+        self.user_start_date_field.setMaximumSize(QSize(16777215, 35))
+        self.user_start_date_field.setFont(font2)
+        self.user_start_date_field.setTabletTracking(True)
+        self.user_start_date_field.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.user_start_date_field.setClearButtonEnabled(True)
+        self.user_end_date_field = QLineEdit(self.left_child)
+        self.user_end_date_field.setObjectName(u"user_end_date_field")
+        self.user_end_date_field.setGeometry(QRect(290, 760, 231, 35))
+        self.user_end_date_field.setMaximumSize(QSize(16777215, 35))
+        self.user_end_date_field.setFont(font2)
+        self.user_end_date_field.setTabletTracking(True)
+        self.user_end_date_field.setStyleSheet(u"QLineEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"	border: 2px solid  rgb(45, 45, 45);\n"
+"	border-radius:10px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit:hover{\n"
+"	border:2px solid rgb(35, 35, 35);\n"
+"}\n"
+"\n"
+"QLineEdit:focus{\n"
+"	border:2px solid rgb(255, 255, 255);\n"
+"}")
+        self.user_end_date_field.setClearButtonEnabled(True)
         self.firstname_30.raise_()
         self.firstname_26.raise_()
         self.firstname_25.raise_()
@@ -3384,13 +3400,13 @@ class Ui_dashboard(object):
         self.firstname_29.raise_()
         self.btn_mail_user_details.raise_()
         self.btn_user_clear.raise_()
-        self.user_start_date.raise_()
+        self.user_start_date_widget.raise_()
         self.user_status.raise_()
-        self.user_range.raise_()
         self.btn_export_data.raise_()
-        self.user_end_date.raise_()
-        self.user_date.raise_()
         self.btn_user_fetch.raise_()
+        self.user_end_date_widget.raise_()
+        self.user_start_date_field.raise_()
+        self.user_end_date_field.raise_()
 
         self.horizontalLayout_6.addWidget(self.left_child)
 
@@ -6048,16 +6064,16 @@ class Ui_dashboard(object):
         self.firstname_29.setText("")
         self.btn_mail_user_details.setText(QCoreApplication.translate("dashboard", u"Mail", None))
         self.btn_user_clear.setText(QCoreApplication.translate("dashboard", u"Clear", None))
-        self.user_start_date.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
+        self.user_start_date_widget.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
         self.user_status.setItemText(0, QCoreApplication.translate("dashboard", u"ACTIVATED", None))
         self.user_status.setItemText(1, QCoreApplication.translate("dashboard", u"DEACTIVATED", None))
 
-        self.user_range.setText(QCoreApplication.translate("dashboard", u"R", None))
         self.firstname_30.setText("")
         self.btn_export_data.setText(QCoreApplication.translate("dashboard", u"Export", None))
-        self.user_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
-        self.user_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
         self.btn_user_fetch.setText(QCoreApplication.translate("dashboard", u"Load", None))
+        self.user_end_date_widget.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
+        self.user_start_date_field.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start Date", None))
+        self.user_end_date_field.setPlaceholderText(QCoreApplication.translate("dashboard", u"End Date", None))
         ___qtablewidgetitem31 = self.admin_table.horizontalHeaderItem(0)
         ___qtablewidgetitem31.setText(QCoreApplication.translate("dashboard", u"Username", None));
         ___qtablewidgetitem32 = self.admin_table.horizontalHeaderItem(1)
