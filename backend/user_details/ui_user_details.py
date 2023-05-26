@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'user_detailsFPfYpP.ui'
+## Form generated from reading UI file 'user_detailsJBFzXU.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,8 @@ class Ui_Profile(object):
     def setupUi(self, Profile):
         if Profile.objectName():
             Profile.setObjectName(u"Profile")
-        Profile.resize(499, 733)
+        Profile.resize(499, 780)
+        Profile.setMinimumSize(QSize(0, 740))
         self.verticalLayout = QVBoxLayout(Profile)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(9, -1, -1, -1)
@@ -427,13 +428,13 @@ class Ui_Profile(object):
         self.btn_browse.setFlat(True)
         self.notification = QLabel(self.frame_4)
         self.notification.setObjectName(u"notification")
-        self.notification.setGeometry(QRect(20, 650, 441, 41))
+        self.notification.setGeometry(QRect(20, 660, 441, 81))
         self.notification.setFont(font)
         self.notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(45, 45, 45);\n"
 "	border-radius: 10px;\n"
-"	padding-left:10px;\n"
+"	padding:10px;\n"
 "}")
         self.notification.setAlignment(Qt.AlignCenter)
 
