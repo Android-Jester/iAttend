@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardGObWvJ.ui'
+## Form generated from reading UI file 'dashoboardnLOpoK.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -22,7 +22,7 @@ class Ui_dashboard(object):
     def setupUi(self, dashboard):
         if dashboard.objectName():
             dashboard.setObjectName(u"dashboard")
-        dashboard.resize(1520, 1029)
+        dashboard.resize(1520, 1020)
         dashboard.setMinimumSize(QSize(1500, 1000))
         dashboard.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(dashboard)
@@ -1465,7 +1465,7 @@ class Ui_dashboard(object):
         self.top.setFrameShadow(QFrame.Raised)
         self.db_validity = QLabel(self.top)
         self.db_validity.setObjectName(u"db_validity")
-        self.db_validity.setGeometry(QRect(20, 440, 271, 41))
+        self.db_validity.setGeometry(QRect(20, 440, 261, 41))
         self.db_validity.setFont(font4)
         self.db_validity.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1476,7 +1476,7 @@ class Ui_dashboard(object):
         self.db_validity.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_refrence = QLabel(self.top)
         self.db_refrence.setObjectName(u"db_refrence")
-        self.db_refrence.setGeometry(QRect(300, 290, 191, 41))
+        self.db_refrence.setGeometry(QRect(290, 290, 201, 41))
         self.db_refrence.setFont(font4)
         self.db_refrence.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1509,7 +1509,7 @@ class Ui_dashboard(object):
         self.db_nationality.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_image_data = QLabel(self.top)
         self.db_image_data.setObjectName(u"db_image_data")
-        self.db_image_data.setGeometry(QRect(20, 140, 271, 291))
+        self.db_image_data.setGeometry(QRect(20, 140, 261, 291))
         self.db_image_data.setFont(font3)
         self.db_image_data.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1520,7 +1520,7 @@ class Ui_dashboard(object):
         self.db_image_data.setAlignment(Qt.AlignCenter)
         self.db_lastname = QLabel(self.top)
         self.db_lastname.setObjectName(u"db_lastname")
-        self.db_lastname.setGeometry(QRect(300, 240, 191, 41))
+        self.db_lastname.setGeometry(QRect(290, 240, 201, 41))
         self.db_lastname.setFont(font4)
         self.db_lastname.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1531,7 +1531,7 @@ class Ui_dashboard(object):
         self.db_lastname.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_middlename = QLabel(self.top)
         self.db_middlename.setObjectName(u"db_middlename")
-        self.db_middlename.setGeometry(QRect(300, 190, 191, 41))
+        self.db_middlename.setGeometry(QRect(290, 190, 201, 41))
         self.db_middlename.setFont(font4)
         self.db_middlename.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1542,7 +1542,7 @@ class Ui_dashboard(object):
         self.db_middlename.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_firstname = QLabel(self.top)
         self.db_firstname.setObjectName(u"db_firstname")
-        self.db_firstname.setGeometry(QRect(300, 140, 191, 41))
+        self.db_firstname.setGeometry(QRect(290, 140, 201, 41))
         self.db_firstname.setFont(font4)
         self.db_firstname.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1553,7 +1553,7 @@ class Ui_dashboard(object):
         self.db_firstname.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_index = QLabel(self.top)
         self.db_index.setObjectName(u"db_index")
-        self.db_index.setGeometry(QRect(300, 340, 191, 41))
+        self.db_index.setGeometry(QRect(290, 340, 201, 41))
         self.db_index.setFont(font4)
         self.db_index.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1564,7 +1564,7 @@ class Ui_dashboard(object):
         self.db_index.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.db_college = QLabel(self.top)
         self.db_college.setObjectName(u"db_college")
-        self.db_college.setGeometry(QRect(300, 390, 91, 41))
+        self.db_college.setGeometry(QRect(290, 390, 101, 41))
         self.db_college.setFont(font4)
         self.db_college.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1576,6 +1576,8 @@ class Ui_dashboard(object):
         self.search_box = QLineEdit(self.top)
         self.search_box.setObjectName(u"search_box")
         self.search_box.setGeometry(QRect(20, 30, 321, 51))
+        self.search_box.setMinimumSize(QSize(0, 51))
+        self.search_box.setMaximumSize(QSize(16777215, 51))
         self.search_box.setFont(font2)
         self.search_box.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1594,7 +1596,7 @@ class Ui_dashboard(object):
         self.search_box.setClearButtonEnabled(True)
         self.btn_search_page = QPushButton(self.top)
         self.btn_search_page.setObjectName(u"btn_search_page")
-        self.btn_search_page.setGeometry(QRect(360, 30, 131, 51))
+        self.btn_search_page.setGeometry(QRect(360, 30, 131, 48))
         self.btn_search_page.setFont(font2)
         self.btn_search_page.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1642,7 +1644,7 @@ class Ui_dashboard(object):
         self.image_3.setAlignment(Qt.AlignCenter)
         self.db_type = QLabel(self.top)
         self.db_type.setObjectName(u"db_type")
-        self.db_type.setGeometry(QRect(300, 440, 191, 41))
+        self.db_type.setGeometry(QRect(290, 440, 201, 41))
         self.db_type.setFont(font4)
         self.db_type.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1711,17 +1713,6 @@ class Ui_dashboard(object):
         self.bottom.setMinimumSize(QSize(0, 200))
         self.bottom.setMaximumSize(QSize(16777215, 350))
         self.bottom.setFrameShape(QFrame.NoFrame)
-        self.start_date = QRadioButton(self.bottom)
-        self.start_date.setObjectName(u"start_date")
-        self.start_date.setGeometry(QRect(20, 180, 261, 20))
-        self.start_date.setFont(font6)
-        self.start_date.setStyleSheet(u"QRadioButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"}")
-        self.start_date.setIcon(icon6)
-        self.start_date.setChecked(False)
-        self.start_date.setAutoExclusive(False)
         self.db_start_date = QLineEdit(self.bottom)
         self.db_start_date.setObjectName(u"db_start_date")
         self.db_start_date.setGeometry(QRect(20, 220, 221, 51))
@@ -1838,7 +1829,8 @@ class Ui_dashboard(object):
         self.label_40.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.checkBox = QCheckBox(self.bottom)
         self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setGeometry(QRect(300, 180, 181, 20))
+        self.checkBox.setGeometry(QRect(290, 180, 191, 31))
+        self.checkBox.setMinimumSize(QSize(0, 31))
         self.checkBox.setFont(font2)
         self.checkBox.setStyleSheet(u"QCheckBox{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -1872,7 +1864,7 @@ class Ui_dashboard(object):
         self.btn_json.setFlat(True)
         self.search_page_date = QDateEdit(self.bottom)
         self.search_page_date.setObjectName(u"search_page_date")
-        self.search_page_date.setGeometry(QRect(20, 280, 151, 41))
+        self.search_page_date.setGeometry(QRect(20, 280, 221, 41))
         font8 = QFont()
         font8.setPointSize(12)
         font8.setBold(False)
@@ -1900,11 +1892,11 @@ class Ui_dashboard(object):
         self.search_page_date.setDate(QDate(2023, 1, 1))
         self.db_current_session = QRadioButton(self.bottom)
         self.db_current_session.setObjectName(u"db_current_session")
-        self.db_current_session.setGeometry(QRect(200, 280, 291, 41))
+        self.db_current_session.setGeometry(QRect(20, 180, 261, 31))
         self.db_current_session.setFont(font6)
         self.db_current_session.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
+"	background-color: rgb(35, 35, 35);\n"
 "border-radius: 10px;\n"
 "}")
         self.db_current_session.setIcon(icon9)
@@ -1931,9 +1923,32 @@ class Ui_dashboard(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.search_page_filename.setClearButtonEnabled(True)
+        self.search_page_date_2 = QDateEdit(self.bottom)
+        self.search_page_date_2.setObjectName(u"search_page_date_2")
+        self.search_page_date_2.setGeometry(QRect(260, 280, 231, 41))
+        self.search_page_date_2.setFont(font8)
+        self.search_page_date_2.setStyleSheet(u"QDateEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"background-color: rgb(45, 45, 45);\n"
+"border: 2px solid rgb(45, 45, 45);\n"
+"padding-left:10px;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"")
+        self.search_page_date_2.setFrame(False)
+        self.search_page_date_2.setReadOnly(False)
+        self.search_page_date_2.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.search_page_date_2.setAccelerated(True)
+        self.search_page_date_2.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
+        self.search_page_date_2.setProperty("showGroupSeparator", False)
+        self.search_page_date_2.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.search_page_date_2.setMinimumDate(QDate(2023, 1, 1))
+        self.search_page_date_2.setCalendarPopup(True)
+        self.search_page_date_2.setTimeSpec(Qt.LocalTime)
+        self.search_page_date_2.setDate(QDate(2023, 1, 1))
         self.label_40.raise_()
         self.label_30.raise_()
-        self.start_date.raise_()
         self.db_start_date.raise_()
         self.label_25.raise_()
         self.db_end_date.raise_()
@@ -1945,6 +1960,7 @@ class Ui_dashboard(object):
         self.search_page_date.raise_()
         self.db_current_session.raise_()
         self.search_page_filename.raise_()
+        self.search_page_date_2.raise_()
 
         self.verticalLayout_9.addWidget(self.bottom)
 
@@ -2305,17 +2321,9 @@ class Ui_dashboard(object):
 "	padding-top:5px;\n"
 "}")
         self.design_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.db_consolidation_range = QRadioButton(self.frame_6)
-        self.db_consolidation_range.setObjectName(u"db_consolidation_range")
-        self.db_consolidation_range.setGeometry(QRect(170, 210, 161, 41))
-        self.db_consolidation_range.setFont(font2)
-        self.db_consolidation_range.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(45, 45, 45);\n"
-"border-radius:5px;")
-        self.db_consolidation_range.setAutoExclusive(False)
         self.db_consolidation_date = QDateEdit(self.frame_6)
         self.db_consolidation_date.setObjectName(u"db_consolidation_date")
-        self.db_consolidation_date.setGeometry(QRect(20, 210, 141, 41))
+        self.db_consolidation_date.setGeometry(QRect(20, 210, 151, 41))
         self.db_consolidation_date.setFont(font8)
         self.db_consolidation_date.setStyleSheet(u"QDateEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2357,7 +2365,7 @@ class Ui_dashboard(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.db_consolidation_start.setFrame(True)
-        self.db_consolidation_start.setReadOnly(True)
+        self.db_consolidation_start.setReadOnly(False)
         self.db_consolidation_start.setClearButtonEnabled(False)
         self.db_consolidation_stop = QLineEdit(self.frame_6)
         self.db_consolidation_stop.setObjectName(u"db_consolidation_stop")
@@ -2378,7 +2386,7 @@ class Ui_dashboard(object):
 "QLineEdit:focus{\n"
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
-        self.db_consolidation_stop.setReadOnly(True)
+        self.db_consolidation_stop.setReadOnly(False)
         self.db_consolidation_stop.setClearButtonEnabled(False)
         self.db_consolidation_notification = QLabel(self.frame_6)
         self.db_consolidation_notification.setObjectName(u"db_consolidation_notification")
@@ -2747,11 +2755,34 @@ class Ui_dashboard(object):
         self.btn_consolidation_update.setIcon(icon6)
         self.btn_consolidation_update.setIconSize(QSize(30, 30))
         self.btn_consolidation_update.setFlat(True)
+        self.db_consolidation_date_2 = QDateEdit(self.frame_6)
+        self.db_consolidation_date_2.setObjectName(u"db_consolidation_date_2")
+        self.db_consolidation_date_2.setGeometry(QRect(180, 210, 151, 41))
+        self.db_consolidation_date_2.setFont(font8)
+        self.db_consolidation_date_2.setStyleSheet(u"QDateEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"background-color: rgb(45, 45, 45);\n"
+"border: 2px solid rgb(45, 45, 45);\n"
+"padding-left:10px;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"")
+        self.db_consolidation_date_2.setFrame(False)
+        self.db_consolidation_date_2.setReadOnly(False)
+        self.db_consolidation_date_2.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.db_consolidation_date_2.setAccelerated(True)
+        self.db_consolidation_date_2.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
+        self.db_consolidation_date_2.setProperty("showGroupSeparator", False)
+        self.db_consolidation_date_2.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.db_consolidation_date_2.setMinimumDate(QDate(2023, 1, 1))
+        self.db_consolidation_date_2.setCalendarPopup(True)
+        self.db_consolidation_date_2.setTimeSpec(Qt.LocalTime)
+        self.db_consolidation_date_2.setDate(QDate(2023, 1, 1))
         self.design_5.raise_()
         self.design_4.raise_()
         self.design.raise_()
         self.design_2.raise_()
-        self.db_consolidation_range.raise_()
         self.db_consolidation_date.raise_()
         self.db_consolidation_start.raise_()
         self.db_consolidation_stop.raise_()
@@ -2773,6 +2804,7 @@ class Ui_dashboard(object):
         self.database_tables.raise_()
         self.btn_load_tables.raise_()
         self.btn_consolidation_update.raise_()
+        self.db_consolidation_date_2.raise_()
 
         self.horizontalLayout_7.addWidget(self.frame_6)
 
@@ -4585,7 +4617,7 @@ class Ui_dashboard(object):
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.report_date = QDateEdit(self.frame_8)
         self.report_date.setObjectName(u"report_date")
-        self.report_date.setGeometry(QRect(10, 180, 141, 38))
+        self.report_date.setGeometry(QRect(10, 180, 151, 38))
         self.report_date.setMinimumSize(QSize(0, 38))
         self.report_date.setMaximumSize(QSize(16777215, 38))
         self.report_date.setFont(font8)
@@ -4630,7 +4662,7 @@ class Ui_dashboard(object):
 "QLineEdit:focus{\n"
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
-        self.report_end_date.setReadOnly(True)
+        self.report_end_date.setReadOnly(False)
         self.report_end_date.setClearButtonEnabled(True)
         self.design_7 = QLabel(self.frame_8)
         self.design_7.setObjectName(u"design_7")
@@ -4666,18 +4698,8 @@ class Ui_dashboard(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.report_start_date.setFrame(True)
-        self.report_start_date.setReadOnly(True)
+        self.report_start_date.setReadOnly(False)
         self.report_start_date.setClearButtonEnabled(True)
-        self.report_date_range = QRadioButton(self.frame_8)
-        self.report_date_range.setObjectName(u"report_date_range")
-        self.report_date_range.setGeometry(QRect(160, 180, 161, 38))
-        self.report_date_range.setMinimumSize(QSize(0, 38))
-        self.report_date_range.setMaximumSize(QSize(16777215, 38))
-        self.report_date_range.setFont(font2)
-        self.report_date_range.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: rgb(45, 45, 45);\n"
-"border-radius:5px;")
-        self.report_date_range.setAutoExclusive(False)
         self.design_8 = QLabel(self.frame_8)
         self.design_8.setObjectName(u"design_8")
         self.design_8.setGeometry(QRect(0, 0, 331, 81))
@@ -5167,12 +5189,37 @@ class Ui_dashboard(object):
 "	padding-top:5px;\n"
 "}")
         self.design_11.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.report_date_2 = QDateEdit(self.frame_8)
+        self.report_date_2.setObjectName(u"report_date_2")
+        self.report_date_2.setGeometry(QRect(170, 180, 151, 38))
+        self.report_date_2.setMinimumSize(QSize(0, 38))
+        self.report_date_2.setMaximumSize(QSize(16777215, 38))
+        self.report_date_2.setFont(font8)
+        self.report_date_2.setStyleSheet(u"QDateEdit{\n"
+"	color: rgb(255, 255, 255);\n"
+"background-color: rgb(45, 45, 45);\n"
+"border: 2px solid rgb(45, 45, 45);\n"
+"padding-left:10px;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"")
+        self.report_date_2.setFrame(False)
+        self.report_date_2.setReadOnly(False)
+        self.report_date_2.setButtonSymbols(QAbstractSpinBox.UpDownArrows)
+        self.report_date_2.setAccelerated(True)
+        self.report_date_2.setCorrectionMode(QAbstractSpinBox.CorrectToNearestValue)
+        self.report_date_2.setProperty("showGroupSeparator", False)
+        self.report_date_2.setDateTime(QDateTime(QDate(2023, 1, 1), QTime(0, 0, 0)))
+        self.report_date_2.setMinimumDate(QDate(2023, 1, 1))
+        self.report_date_2.setCalendarPopup(True)
+        self.report_date_2.setTimeSpec(Qt.LocalTime)
+        self.report_date_2.setDate(QDate(2023, 1, 1))
         self.design_11.raise_()
         self.design_7.raise_()
         self.report_date.raise_()
         self.report_end_date.raise_()
         self.report_start_date.raise_()
-        self.report_date_range.raise_()
         self.design_8.raise_()
         self.chart_title.raise_()
         self.design_9.raise_()
@@ -5199,6 +5246,7 @@ class Ui_dashboard(object):
         self.report_departments.raise_()
         self.btn_remove_combox_item.raise_()
         self.date_range_comboBox.raise_()
+        self.report_date_2.raise_()
 
         self.horizontalLayout_16.addWidget(self.frame_8)
 
@@ -5932,9 +5980,8 @@ class Ui_dashboard(object):
         self.db_faculty.setText(QCoreApplication.translate("dashboard", u"Faculty", None))
         self.dbgender.setText(QCoreApplication.translate("dashboard", u"Gender", None))
         self.db_programe.setText(QCoreApplication.translate("dashboard", u"Department", None))
-        self.start_date.setText(QCoreApplication.translate("dashboard", u"Switch  Between Date Fields", None))
-        self.db_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start date?", None))
-        self.db_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"End date?", None))
+        self.db_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start Date", None))
+        self.db_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Stop Date", None))
         self.label_25.setText("")
         self.label_30.setText("")
         self.btn_reload.setText(QCoreApplication.translate("dashboard", u"Reset", None))
@@ -5946,6 +5993,7 @@ class Ui_dashboard(object):
         self.search_page_date.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
         self.db_current_session.setText(QCoreApplication.translate("dashboard", u"Students in current session", None))
         self.search_page_filename.setPlaceholderText(QCoreApplication.translate("dashboard", u"Filename here?", None))
+        self.search_page_date_2.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("dashboard", u"Reference", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
@@ -6005,10 +6053,9 @@ class Ui_dashboard(object):
         ___qtablewidgetitem23.setText(QCoreApplication.translate("dashboard", u"E-mail", None));
         self.design.setText(QCoreApplication.translate("dashboard", u"Facility", None))
         self.design_2.setText(QCoreApplication.translate("dashboard", u"Datasource", None))
-        self.db_consolidation_range.setText(QCoreApplication.translate("dashboard", u"Switch date fields", None))
         self.db_consolidation_date.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
-        self.db_consolidation_start.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
-        self.db_consolidation_stop.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.db_consolidation_start.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start Date", None))
+        self.db_consolidation_stop.setPlaceholderText(QCoreApplication.translate("dashboard", u"Stop Date", None))
         self.db_consolidation_notification.setText(QCoreApplication.translate("dashboard", u"Notification", None))
         self.db_consolidation_partition.setPlaceholderText(QCoreApplication.translate("dashboard", u"Partition", None))
         self.btn_consolidation_load.setText(QCoreApplication.translate("dashboard", u"Load", None))
@@ -6028,6 +6075,7 @@ class Ui_dashboard(object):
         self.db_fetch_all.setText(QCoreApplication.translate("dashboard", u"Fetch all records", None))
         self.btn_load_tables.setText(QCoreApplication.translate("dashboard", u"Load", None))
         self.btn_consolidation_update.setText(QCoreApplication.translate("dashboard", u"Update", None))
+        self.db_consolidation_date_2.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
         ___qtablewidgetitem24 = self.merge_table.horizontalHeaderItem(0)
         ___qtablewidgetitem24.setText(QCoreApplication.translate("dashboard", u"College", None));
         ___qtablewidgetitem25 = self.merge_table.horizontalHeaderItem(1)
@@ -6141,10 +6189,9 @@ class Ui_dashboard(object):
         self.email_subject.setPlaceholderText(QCoreApplication.translate("dashboard", u"Subject", None))
         self.change_date_box.setText(QCoreApplication.translate("dashboard", u"Switch  Between Date Fields", None))
         self.report_date.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
-        self.report_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.report_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Stop Date", None))
         self.design_7.setText(QCoreApplication.translate("dashboard", u"Date", None))
-        self.report_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
-        self.report_date_range.setText(QCoreApplication.translate("dashboard", u"Switch date fields", None))
+        self.report_start_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start Date", None))
         self.design_8.setText(QCoreApplication.translate("dashboard", u"Plot title", None))
         self.chart_title.setPlaceholderText(QCoreApplication.translate("dashboard", u"Title", None))
         self.design_9.setText(QCoreApplication.translate("dashboard", u"Plot types", None))
@@ -6167,6 +6214,7 @@ class Ui_dashboard(object):
         self.pctdist.setPlaceholderText(QCoreApplication.translate("dashboard", u"pctdist", None))
         self.btn_remove_combox_item.setText(QCoreApplication.translate("dashboard", u"Date", None))
         self.design_11.setText(QCoreApplication.translate("dashboard", u"Plot values", None))
+        self.report_date_2.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
         self.plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
         self.design_23.setText(QCoreApplication.translate("dashboard", u"Plot title", None))
         self.merge_chart_title.setPlaceholderText(QCoreApplication.translate("dashboard", u"Title", None))
