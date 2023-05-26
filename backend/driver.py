@@ -60,7 +60,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_sink_data.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))
         self.ui.btn_help_link.clicked.connect(self.help_url)
 
-        # self.ui.btn_database.hide()
+        self.ui.btn_database.hide()
         self.ui.btn_batch.hide()
         ##########################################################################################################
 
@@ -102,9 +102,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_login_user.clicked.connect(lambda: self.user.show())
         details=self.user_last_seen(login_reference)
 
-        self.profile = Profile()
-        self.ui.btn_login_user.clicked.connect(lambda: self.profile.show())
-
         self.user.setProfile(
             account_firstname,
             account_lastname,
@@ -121,7 +118,6 @@ class MainWindow(QMainWindow):
         self.user.profileImage('C:\\ProgramData\\iAttend\\data\\images\\user_image.jpg')
         self.insert_thread()
         
-    
         self.camera_4 = Camera_Four()
         self.ui.btn_camera.clicked.connect(lambda: self.camera_4.show())
         self.camera_3 = Camera_Three()
@@ -198,7 +194,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_batch_images.clicked.connect(self.insert_images_thread)
         self.ui.btn_batch_mail.clicked.connect(self.send_code_thread)
 
-        self.ui.user_image_browse.clicked.connect(self.user_profile_image)
+        self.ui.btn_user_fetch.pressed.connect(self.set_load_user_text)
+        self.ui.btn_user_fetch.clicked.connect(self.load_user_from_api)
         self.ui.btn_user_register.clicked.connect(self.register_user)
         self.ui.btn_user_status.clicked.connect(self.update_user_status)
         self.ui.btn_user_update.clicked.connect(self.update_user_details)
@@ -935,46 +932,76 @@ class MainWindow(QMainWindow):
              self.ui.user_date.setText(str(date_))
         else:
             self.ui.user_end_date.setText(str(date_))
-             
+
+    def read_user_endpoints(self):
+        with open('C:\\ProgramData\\iAttend\\data\\user\\api_routes.json','r') as content:
+            data = content.read()
+            try:
+                return json.loads(data)
+            except Exception as e:
+                pass
+    
+    def set_load_user_text(self):
+        self.ui.btn_user_fetch.setText("Loading...")
+        self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/loader.svg"))
+
+    def render_user_interface(self, details:json):
+        self.ui.user_firstname.setText(details['firstname'])
+        self.ui.user_middlename.setText(details['othername'])
+        self.ui.user_lastname.setText(details['lastname'])
+        self.ui.user_reference.setText(details['reference'])
+
+    def load_user_from_api(self):
+        self.alert = AlertDialog()
+        user=self.read_user_endpoints()
+        reference=self.ui.user_search.text()
+        url = str(user['details']).replace('reference',reference)
+        if self.validate_field('^[0-9]+$',reference):
+            request_body = requests.get(url)
+            student_data=request_body.json()
+            self.render_user_interface(student_data)
+            self.ui.btn_user_fetch.setText("Load")
+            self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+        else:
+            self.alert.content("Oops! invalid reference number...")
+            self.alert.show()
+
+        
     def search_user(self):
         self.alert = AlertDialog()
         reference = self.ui.user_search.text()
-        if not self.database.check_state():
-            if reference:
-                details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_reference="+reference)
-                user = self.query_database("SELECT * FROM tb_user_details WHERE user_reference="+reference)
-                status = self.query_database("SELECT user_status FROM tb_user_credentials WHERE user_reference="+reference)
-                if len(details) > 0:
-                    self.render_user_data(details)
-                else:  
-                    self.alert.content(f"Oops! user with {reference} has no sessions.")
-                    self.alert.show() 
-                self.render_user_details(user,status)
-                self.load_user_image(reference,self.ui.user_image)
-                return details
-            elif self.ui.user_date.text() and self.ui.user_range.isChecked():
-                start_date = self.ui.user_date.text()
-                start_date="\'{}\'".format(start_date)
-                stop_date = self.ui.user_end_date.text()
-                stop_date="\'{}\'".format(stop_date)
-                details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date BETWEEN "+start_date+" AND "+stop_date)
+        if reference:
+            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_reference="+reference)
+            user = self.query_cache_data_list("SELECT * FROM tb_user_details WHERE user_reference="+reference)
+            status = self.query_cache_data_list("SELECT user_status, user_role FROM tb_user_credentials WHERE user_reference="+reference)
+            if len(details) > 0:
                 self.render_user_data(details)
-                return details  
-            elif self.ui.user_end_date.text() and not reference:
-                date=self.ui.user_end_date.text()
-                date_stamp="\'{}\'".format(date)
-                details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date="+date_stamp)
-                self.render_user_data(details) 
-                return details   
-            else:
-                details = self.query_cache_data_list("SELECT * FROM tb_user_session")
-                self.render_user_data(details)
-                return details
+            else:  
+                self.alert.content(f"Oops! user with {reference} has no sessions.")
+                self.alert.show() 
+            self.render_user_details(user,status[0][0],status[0][1])
+            self.load_user_image(reference,self.ui.user_image)
+            return details
+        elif self.ui.user_date.text() and self.ui.user_range.isChecked():
+            start_date = self.ui.user_date.text()
+            start_date="\'{}\'".format(start_date)
+            stop_date = self.ui.user_end_date.text()
+            stop_date="\'{}\'".format(stop_date)
+            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date BETWEEN "+start_date+" AND "+stop_date)
+            self.render_user_data(details)
+            return details  
+        elif self.ui.user_end_date.text() and not reference:
+            date=self.ui.user_end_date.text()
+            date_stamp="\'{}\'".format(date)
+            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date="+date_stamp)
+            self.render_user_data(details) 
+            return details   
         else:
-            self.alert.content("Oops! no database configured...")
-            self.alert.show()
+            details = self.query_cache_data_list("SELECT * FROM tb_user_session")
+            self.render_user_data(details)
+            return details
             
-    def render_user_details(self,details:list,status:str):
+    def render_user_details(self,details:list,status:str,role:str):
         if len(details) > 0:
             name = str(details[0][2]).split(' ')
             self.ui.user_firstname.setText(name[0])
@@ -982,8 +1009,8 @@ class MainWindow(QMainWindow):
             self.ui.user_lastname.setText(details[0][3])
             self.ui.user_reference.setText(details[0][1])
             self.ui.user_contact.setText(details[0][4])
-            self.ui.user_email.setText(details[0][6])
-            self.ui.user_role.setCurrentText(str(details[0][5]))
+            self.ui.user_email.setText(details[0][5])
+            self.ui.user_role.setCurrentText(role)
             self.ui.user_status.setCurrentText(str(status))
         else:
             pass
@@ -1045,60 +1072,43 @@ class MainWindow(QMainWindow):
         return db_data
 
     def update_user_status(self):
-        check_state = self.database.check_state()
-        (db,my_cursor,connection_status) = self.database.my_cursor()
+        db = sqlite3.connect(self.get_cache_path())
+        cursor = db.cursor()
         self.alert = AlertDialog()
         try:
             if self.ui.user_reference.text():
-                if check_state == True:
-                    my_cursor.execute("UPDATE tb_user_credentials SET user_status=? WHERE user_reference=?",
-                    (self.ui.user_status.currentText(),self.ui.user_reference.text()))
-                    db.commit()
-                    my_cursor.close()
-                    self.alert.content(f"User with {self.ui.user_reference.text()} status updated\nto {self.ui.user_status.currentText()}")
-                    self.alert.show()
-                else:
-                    my_cursor.execute("UPDATE tb_user_credentials SET user_status=%s WHERE user_reference=%s",
-                    (self.ui.user_status.currentText(),self.ui.user_reference.text()))
-                    db.commit()
-                    my_cursor.close()
-                    self.alert.content(f"User with {self.ui.user_reference.text()} status updated\nto {self.ui.user_status.currentText()}")
-                    self.alert.show()
+                cursor.execute("UPDATE tb_user_credentials SET user_status=? WHERE user_reference=?",
+                (self.ui.user_status.currentText(),self.ui.user_reference.text()))
+                db.commit()
+                cursor.close()
+                self.alert.content(f"User with {self.ui.user_reference.text()} status updated\nto {self.ui.user_status.currentText()}")
+                self.alert.show()
+            else:
+                self.alert.content(f"Oops! some fields are missing...\nreference")
+                self.alert.show()            
         except Exception as e:
             self.alert.content(str(e))
-            self.alert.show()
-
-        else: 
-            self.alert.content("Oops! can't change status for\nundefined user.")
             self.alert.show()
 
     def update_user_details(self):
-        check_state = self.database.check_state()
         user = self.set_user_details()
-        (db,my_cursor,connection_status) = self.database.my_cursor()
+        db = sqlite3.connect(self.get_cache_path())
+        cursor = db.cursor()
         self.alert = AlertDialog()
         try:
             if self.ui.user_reference.text() and self.ui.user_contact.text() and self.ui.user_email.text():
-                if check_state == True:
-                    my_cursor.execute("UPDATE tb_user_details SET user_contact =?, user_role =?, user_mail =? WHERE user_reference=?",
-                    (user.contact,user.role,user.mail,user.reference))
-                    db.commit()
-                    my_cursor.close()
-                    self.alert.content(f"User with {self.ui.user_reference.text()} this details\nupdated")
-                    self.alert.show()
-                else:
-                    my_cursor.execute("UPDATE tb_user_details SET user_contact =%s, user_role =%s, user_mail =%s WHERE user_reference=%s",
-                    (user.contact,user.role,user.mail,user.reference))
-                    db.commit()
-                    my_cursor.close()
-                    self.alert.content(f"User with {self.ui.user_reference.text()} this details\nupdated")
-                    self.alert.show()
+                cursor.execute("UPDATE tb_user_details SET user_contact =?, user_role =?, user_mail =? WHERE user_reference=?",
+                (user.contact,user.role,user.mail,user.reference))
+                db.commit()
+                cursor.close()
+                self.alert.content(f"User with {self.ui.user_reference.text()} this details\nupdated")
+                self.alert.show()
+            else:
+                self.alert.content(f"Oops! some fields are missing...\nreference")
+                self.alert.show()
         except Exception as e:
             self.alert.content(str(e))
             self.alert.show() 
-        else: 
-            self.alert.content("Oops! can't change status for\nundefined user.")
-            self.alert.show()
 
     def get_mail_content_new_account(self,lastname,username,reference,password):
         path = 'C:\\ProgramData\\iAttend\\data\\email_details\\new_account_mail.txt'
@@ -1117,7 +1127,7 @@ class MainWindow(QMainWindow):
         self.alert = AlertDialog()
         credentials=self.set_user_credentials()
         user = self.set_user_details()
-        content = self.get_mail_content_new_account(str(user.lastname),str(credentials.username),str(credentials.reference),str(user.contact))
+        content = self.get_mail_content_new_account(str(user.lastname),str(credentials.username),str(credentials.reference),str(user.mail))
         if self.ui.user_reference.text() and self.ui.user_firstname.text() and self.ui.user_contact.text() and self.ui.user_email.text():
             receiver = self.ui.user_email.text() 
             if self.connected_to_internet()==True:
@@ -1136,36 +1146,23 @@ class MainWindow(QMainWindow):
         self.alert = AlertDialog()
         user = self.set_user_details()
         credentials = self.set_user_credentials()
-        check_state=self.database.check_state()
-        (db,my_cursor,connection_status) = self.database.my_cursor()
-        root_path = self.resource_path('image.jpg')
+        db = sqlite3.connect(self.get_cache_path())
+        cursor = db.cursor()
         if self.ui.user_reference.text() and self.ui.user_contact.text() and self.ui.user_firstname.text():
-            details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+"\'{}\'".format(user.reference)+" AND user_contact="+"\'{}\'".format(user.contact))
+            details=self.query_cache_database("SELECT * FROM tb_user_details WHERE user_reference="+"\'{}\'".format(user.reference)+" AND user_contact="+"\'{}\'".format(user.contact))
             if not details:
-                if check_state == True:
-                    self.alert.content("Oops! no database configured...")
-                    self.alert.show()          
-                else: 
-                    try:  
-                        my_cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (%s,%s,%s,%s,%s,%s)",
-                        (user.reference,user.firstname,user.lastname,user.contact,user.role,user.mail))   
-                        my_cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (%s,%s,%s,%s)",
-                        (credentials.reference,credentials.username,credentials.password,credentials.status))
-                        if self.ui.user_image_file.text():
-                            with open(self.ui.user_image_file.text(), 'rb') as image_data:
-                                data = image_data.read()
-                            my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(%s,%s)",(user.reference,data))
-                        else:
-                            with open(root_path, 'rb') as image_data:
-                                data = image_data.read()
-                            my_cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(%s,%s)",(user.reference,data))
-                        db.commit()
-                        my_cursor.close()
-                        self.alert.content(f"User with {user.reference} registered successfully.")
-                        self.alert.show()
-                    except Exception as e:
-                        self.alert.content(str(e))
-                        self.alert.show()
+                try: 
+                    cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_mail) VALUES (?,?,?,?,?)",
+                    (user.reference,user.firstname,user.lastname,user.contact,user.mail))   
+                    cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_role,user_status,user_password) VALUES (?,?,?,?,?)",
+                    (credentials.reference,credentials.username,credentials.role,credentials.status,credentials.password))
+                    db.commit()
+                    cursor.close()
+                    self.alert.content(f"User with {user.reference} registered successfully.")
+                    self.alert.show()
+                except Exception as e:
+                    self.alert.content(str(e))
+                    self.alert.show()
             else:
                 self.alert.content(f"User with {user.reference} already exist.")
                 self.alert.show() 
@@ -1179,28 +1176,22 @@ class MainWindow(QMainWindow):
             self.ui.user_lastname.text(),
             self.ui.user_reference.text(),
             self.ui.user_contact.text(),
-            self.ui.user_role.currentText(),
-            self.ui.user_email.text()
+            self.ui.user_email.text(),
         )
         return user
 
     def set_user_credentials(self):
         user = self.set_user_details()
-        password_hash = hash_password(user.contact)
+        password_hash = hash_password(user.mail)
         credentials = LoginUser(
             user.reference,
             user.lastname+str(math.floor(np.random.random(1)*1000)),
-            password_hash,
-            self.ui.user_status.currentText()
+            self.ui.user_role.currentText(),
+            self.ui.user_status.currentText(),
+            password_hash
         )
         return credentials
     
-    def user_profile_image(self):
-        path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
-        if path:
-            self.ui.user_image_file.setText(path[0])
-            self.ui.user_image.setPixmap(QPixmap.fromImage(path[0]))
-            self.ui.user_image.setScaledContents(True)
         
     def logout(self):
         self.alert = AlertDialog()
@@ -1562,16 +1553,6 @@ class MainWindow(QMainWindow):
             with open(path,'a+') as file:
                 file.writelines(f'\n{source} {time} {save_logs}')
             file.close()     
-
-    def backup_database(self):
-        self.alert = AlertDialog()
-        path='C:\\ProgramData\\iAttend\\data\\backup'
-        db_path=self.get_cache_path()
-        if os.path.exists(path):
-            shutil.copy2(db_path,path)
-            self.backup_history()
-            self.alert.content("Database successfully backed up...")
-            self.alert.show()
 
     def country_names(self,path:str):
         with open(path,'r') as data:
@@ -2644,21 +2625,6 @@ class MainWindow(QMainWindow):
                 return db_data
         except Exception as e:
             self.alert_builder(str(e)) 
-
-    def load_image_from_cache(self,student_reference,label):
-        cache_path='C:\\ProgramData\\iAttend\\data\\images\\cached_image.jpg'
-        db = sqlite3.connect(self.get_cache_path())
-        cursor = db.cursor()
-        data=cursor.execute("SELECT student_image from tb_student_images WHERE student_reference="+student_reference) 
-        data=cursor.fetchone()
-        try:
-            with open(cache_path, 'wb') as image:
-                image.write(data[0])     
-            db.commit()
-            label.setPixmap(QPixmap.fromImage(cache_path))
-            label.setScaledContents(True)
-        except Exception as e:
-            pass
         
     def load_image_from_db(self,query,label):
         db = sqlite3.connect(self.get_cache_path())
@@ -2680,30 +2646,76 @@ class MainWindow(QMainWindow):
         else:
             label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
             label.setScaledContents(True)        
-
+                
     #improvements to be done or change code here      
     def fetch_data_from_db(self,reference):
+        data_json = json.loads(reference)
         try:
-            student_reference=self.value_formater(reference)
+            student_reference=self.value_formater(data_json['reference'])
             db_cache=self.query_cache_database("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
             if len(db_cache) > 0:
                 self.server_logs('[CACHED]',db_cache[:2])
-                return db_cache
+                self.update_interface_cache(db_cache)
+                self.last_seen(data_json['reference'])
+                print('Data from cache>>>>>>>>>>')
             else:
-                (db,my_cursor,connection_status) = self.database.my_cursor()
-                detail =my_cursor.execute("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
-                detail= my_cursor.fetchone()
-                db.commit()
-                my_cursor.close()
-                db_data = []
-                if detail:
-                    for data in detail:
-                        db_data.append(data)
-                    self.server_logs('[SERVER]',db_data[:2])
-                return db_data
+                path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
+                with open(path,'r') as content:
+                    results = json.load(content)
+                content.close()
+                if  results['reference'] != self.ui.reference.text():
+                    self.retreive_student_details_api_thread(reference)
+                    winsound.Beep(1000,100)
+                    self.show_info("Waiting for response from server...") 
+                    print(results['reference'],self.ui.reference.text())
+                else:
+                    print(results['reference'],self.ui.reference.text())
+                    print('Equal')
+                    self.show_info("Response from server updated on interface...") 
+
+                with open(path,'r') as content:
+                    update = json.load(content)
+                    if update['firstname'] != 'firstname':
+                        self.update_interface(self.read_student_information_json())
+                        self.last_seen(data_json['reference'])
+                        print('Data from server>>>>>>>>>>')
         except Exception as e:
             self.alert_builder(str(e))   
    
+    def update_interface_cache(self, db_data):
+        if db_data:
+            start_date = (str(db_data[8])).split(' ')
+            student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))
+            validity = str(db_data[8])+' - '+str(db_data[9])  
+            if student_year <= 1:
+                level = "1st year"
+            elif student_year > 1 and student_year <= 2:
+                level = "2nd year"
+            elif student_year > 2 and student_year <= 3:
+                level = "3rd year"
+            elif student_year > 3 and student_year <= 4:
+                level = "4th year"
+            elif student_year > 4 and student_year <= 5:
+                level = "5th year"
+            elif student_year > 5 and student_year <= 6:
+                level = "6th year"
+            global student_disability
+            student_disability=str(db_data[7])
+            firstname_othername = str(db_data[3]).split(" ")
+            self.ui.firstname.setText(firstname_othername[0])
+            self.ui.othername.setText(firstname_othername[1])
+            self.ui.lastname.setText(db_data[4])
+            self.ui.reference.setText(str(db_data[1]))
+            self.ui.index.setText(str(db_data[2]))
+            self.ui.nationality.setText(db_data[5])
+            self.ui.gender.setText(str(db_data[6]))
+            self.ui.validity.setText(validity)
+            self.ui.year.setText(level)
+            self.ui.college.setText(str(db_data[12]))
+            self.ui.faculty.setText(str(db_data[13]))
+            self.ui.program.setText(str(db_data[14]))
+            self.ui.type.setText(str(db_data[15]))
+
     def retreive_student_details(self,data):
         data_json = json.loads(data)
         if isinstance(data, str):
@@ -2762,7 +2774,6 @@ class MainWindow(QMainWindow):
             start_date = (str(request_body_json['validity'])).split('-')[0]
             start_date = start_date.split(' ')[1]
             student_year=(int(current.now().date().strftime('%Y'))-int(start_date))
-
             if student_year <= 1:
                 level = "1st year"
             elif student_year > 1 and student_year <= 2:
@@ -2791,7 +2802,6 @@ class MainWindow(QMainWindow):
         else:
             self.loadUi_file()
             self.show_info("Oops! student not found. Please register!") 
-        pass
 
     def retreive_student_details_api_thread(self,data):
         data_json = json.loads(data)
@@ -2956,7 +2966,9 @@ class MainWindow(QMainWindow):
                 self.ui.label_notification.setText("Oops! no database configured...")
                 winsound.Beep(1000,100)
             else:
-                self.retrieve_information(qr_code_data)
+                self.fetch_data_from_db(qr_code_data)
+                # self.retreive_student_details(qr_code_data)
+                # self.retrieve_information(qr_code_data)
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
@@ -3070,6 +3082,7 @@ class Authentication(QMainWindow):
 
     def change_text(self):
         self.ui_login.btn_login.setText('Loading...')
+        self.ui_login.btn_login.setIcon(QIcon(u":/icons/asset/loader.svg"))
 
     def user(self):
         if self.database.check_state():
@@ -3079,13 +3092,13 @@ class Authentication(QMainWindow):
         else:
             self.ui_login.username.setText("redolf250")
             self.ui_login.student_id.setText("20661163")
-            self.ui_login.password.setText("0552588647")
+            self.ui_login.password.setText("redolfkendrick@gmail.com")
 
     def login(self):
         username = self.ui_login.username.text()
         reference = self.ui_login.student_id.text()
         password = self.ui_login.password.text()
-        check_state=self.database.check_state()
+
         global login_username
         global login_reference
         global account_firstname
@@ -3094,17 +3107,13 @@ class Authentication(QMainWindow):
         global account_mail
         global account_role 
         global account_status
+
         if username and reference and password:
             details = self.query_database_login("SELECT * FROM tb_user_details where user_reference="+str(reference))
             credentials = self.query_database_login("SELECT * FROM tb_user_credentials where user_reference="+str(reference))
             password = bytes(password,encoding='utf-8')
             if len(credentials) > 0:
-                if check_state:
-                    confirm = bcrypt.checkpw(password,credentials[0][3])
-                    self.application_logs("Authenticating user with embedded database")
-                else:
-                    confirm = bcrypt.checkpw(password,bytes(str(credentials[0][3]),encoding='utf-8'))
-                    self.application_logs("Authenticating user with server based database")   
+                confirm = bcrypt.checkpw(password,credentials[0][5])
                 if reference==str(credentials[0][1]) and username==str(credentials[0][2]) and confirm:
                     if str(credentials[0][4])=="ACTIVATED":
                         login_username = str(credentials[0][2])
@@ -3113,40 +3122,48 @@ class Authentication(QMainWindow):
                         account_firstname = str(details[0][2])
                         account_lastname = str(details[0][3])
                         account_contact = str(details[0][4])
-                        account_role = str(details[0][5]) 
-                        account_mail = str(details[0][6])
+                        account_role = str(credentials[0][3]) 
+                        account_mail = str(details[0][5])
                         self.main = MainWindow()
-                        self.main.show()
-                        self.application_logs("Authenticated user with credentials successfully")
                         self.close()
+                        self.main.show()
+                        self.application_logs("Authenticated user with credentials successfully")   
                     else:
                         self.application_logs("Authenticating user failed with credentials -> DEATIVATED")
+                        self.ui_login.btn_login.setIcon(QIcon(u":/icons/asset/download.svg"))
                         self.ui_login.btn_login.setText('Login')
                         self.show_alert.content(f"Oops! user account DEACTIVATED\ncontact administrator.") 
                         self.show_alert.show() 
                 else:
                     self.application_logs("Authenticating user failed with bad credentials")
                     self.ui_login.btn_login.setText('Login')
+                    self.ui_login.btn_login.setIcon(QIcon(u":/icons/asset/download.svg"))
                     self.show_alert.content("Oops! Bad user credentials.") 
                     self.show_alert.show()
             else:
                 self.ui_login.btn_login.setText('Login')
+                self.ui_login.btn_login.setIcon(QIcon(u":/icons/asset/download.svg"))
                 self.application_logs("Authenticating user failed with credentials -> no details found")
                 self.show_alert.content("Oops! no details found.") 
-                self.show_alert.show() 
+                self.show_alert.show()
         else:
             self.ui_login.btn_login.setText('Login')
+            self.ui_login.btn_login.setIcon(QIcon(u":/icons/asset/download.svg"))
             self.show_alert.content("Oops! invalid login details.") 
             self.show_alert.show()
 
+    def get_cache_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
+
     def query_database_login(self, query: str):
         try:
-            (db,my_cursor,connection_status) = self.database.my_cursor()
+            db = sqlite3.connect(self.get_cache_path())
+            cursor = db.cursor()
             details = []
-            cursor = my_cursor.execute(query)
-            cursor = my_cursor.fetchall()
+            cursor = cursor.execute(query)
+            cursor = cursor.fetchall()
             db.commit()
-            my_cursor.close()
+            db.close()
             if cursor:
                 for item in cursor:
                     details.append(item)
@@ -3176,7 +3193,7 @@ class Splash_screen(QMainWindow):
         self.populate_root_user_data()
         self.create_cache_database()
         self.show()       
-       
+        
     def progress(self):
         global counter
         self.ui_splash.progressBar.setValue(counter)
@@ -3207,7 +3224,7 @@ class Splash_screen(QMainWindow):
         list =('batch_logs','properties','qr_code',
         'email_details','reports','exports','cache',
         'images','partition','application_logs','student',
-        'httpErrors','user')
+        'httpErrors','user','student_images')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
@@ -3314,6 +3331,15 @@ class Splash_screen(QMainWindow):
             'validity': 'validity'
         }
         self.write_to_file(path,student_json,'json')
+
+        path =os.path.join(root,'user\\user.json')
+        user_json={
+            'firstname': 'firstname', 
+            'othername': 'othername', 
+            'lastname': 'lastname',
+            'reference': 'reference', 
+            }
+        self.write_to_file(path,user_json,'json')
 
         path =os.path.join(root,'properties\\students_restapi_endpoints.json')
         json_data = {
@@ -3469,6 +3495,8 @@ class Splash_screen(QMainWindow):
         cursor.execute(create_tb_attendance_temp_sqlite())
         cursor.execute(create_tb_attendance_last_seen_sqlite())
         cursor.execute(create_tb_student_study_details_sqlite())
+        cursor.execute(create_tb_user_details_cache())
+        cursor.execute(create_tb_user_credentials_cache())
         db.commit()
 
     def get_cache_path(self):
