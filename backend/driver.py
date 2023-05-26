@@ -961,11 +961,17 @@ class MainWindow(QMainWindow):
         reference=self.ui.user_search.text()
         url = str(user['details']).replace('reference',reference)
         if self.validate_field('^[0-9]+$',reference):
-            request_body = requests.get(url)
-            student_data=request_body.json()
-            self.render_user_interface(student_data)
-            self.ui.btn_user_fetch.setText("Load")
-            self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+            try:
+                request_body = requests.get(url)
+                student_data=request_body.json()
+                self.render_user_interface(student_data)
+                self.ui.btn_user_fetch.setText("Load")
+                self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+            except Exception as e:
+                self.ui.btn_user_fetch.setText("Load")
+                self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+                self.alert.content(str(e))
+                self.alert.show()
         else:
             self.alert.content("Oops! invalid reference number...")
             self.alert.show()
