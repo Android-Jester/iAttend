@@ -295,6 +295,8 @@ class MainWindow(QMainWindow):
         elif self.ui.merge_line_graph.isChecked():
             print("Line graph generation......")
             self.ui.btn_merge_load.setText('Load')
+        else:
+            self.ui.btn_merge_load.setText('Load')
 
     def get_merge_plot_properties(self,hearder:str):
         title = f"{hearder} {self.ui.merge_query_parameter.currentText()}"
@@ -1945,6 +1947,7 @@ class MainWindow(QMainWindow):
             self.ui.btn_load.setText('Load')
         else:
             self.ui.btn_load.setText('Load')
+            self.ui.btn_load.setIcon(QIcon(u":/icons/asset/download.svg"))
 
     def export_data_to_csv(self):
         self.alert = AlertDialog()
