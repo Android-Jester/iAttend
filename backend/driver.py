@@ -975,29 +975,38 @@ class MainWindow(QMainWindow):
         self.alert = AlertDialog()
         reference = self.ui.user_search.text()
         if reference:
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_reference="+reference)
-            user = self.query_cache_data_list("SELECT * FROM tb_user_details WHERE user_reference="+reference)
-            status = self.query_cache_data_list("SELECT user_status, user_role FROM tb_user_credentials WHERE user_reference="+reference)
-            if len(details) > 0:
-                self.render_user_data(details)
-            else:  
-                self.alert.content(f"Oops! user with {reference} has no sessions.")
-                self.alert.show() 
-            self.render_user_details(user,status[0][0],status[0][1])
-            self.load_user_image(reference,self.ui.user_image)
-            return details
-        elif self.ui.user_date.text() and self.ui.user_range.isChecked():
-            start_date = self.ui.user_date.text()
+            if self.validate_field('^[0-9]+$',reference):
+                details = self.query_cache_data_list(f"SELECT * FROM tb_user_session WHERE user_reference={reference}")
+                user = self.query_cache_data_list(f"SELECT * FROM tb_user_details WHERE user_reference={reference}")
+                status = self.query_cache_data_list(f"SELECT user_status, user_role FROM tb_user_credentials WHERE user_reference={reference}")
+                if len(details) > 0:
+                    self.render_user_data(details)
+                else:  
+                    self.alert.content(f"Oops! user with {reference} has no sessions.")
+                    self.alert.show()
+                if len(user) > 0: 
+                    self.render_user_details(user,status[0][0],status[0][1])
+                    self.load_user_image(reference,self.ui.user_image)
+                return details
+            else:
+                self.alert.content("Oops! invalid reference provided.")
+                self.alert.show()
+        elif self.ui.user_start_date_field.text() and self.ui.user_end_date_field.text():
+            start_date = self.ui.user_start_date_field.text()
             start_date="\'{}\'".format(start_date)
-            stop_date = self.ui.user_end_date.text()
+            stop_date = self.ui.user_end_date_field.text()
             stop_date="\'{}\'".format(stop_date)
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date BETWEEN "+start_date+" AND "+stop_date)
-            self.render_user_data(details)
-            return details  
-        elif self.ui.user_end_date.text() and not reference:
-            date=self.ui.user_end_date.text()
+            if start_date <= stop_date:
+                details = self.query_cache_data_list(f"SELECT * FROM tb_user_session WHERE user_date BETWEEN {start_date} AND {stop_date}")
+                self.render_user_data(details)
+                return details
+            else:
+                self.alert.content(f"Oops! invalid dates format,\nstart date must be less than stop date")
+                self.alert.show()  
+        elif self.ui.user_start_date_field.text() and not reference:
+            date=self.ui.user_start_date_field.text()
             date_stamp="\'{}\'".format(date)
-            details = self.query_cache_data_list("SELECT * FROM tb_user_session WHERE user_date="+date_stamp)
+            details = self.query_cache_data_list(f"SELECT * FROM tb_user_session WHERE user_date={date_stamp}")
             self.render_user_data(details) 
             return details   
         else:
