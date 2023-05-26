@@ -174,9 +174,9 @@ def create_tb_user_details_sqlite():
             user_reference varchar(25) NOT NULL UNIQUE,
             user_firstname varchar(70) NOT NULL, 
             user_lastname varchar(35) NOT NULL, 
-            user_contact varchar(25) NOT NULL UNIQUE,
+            user_contact varchar(25) UNIQUE,
             user_role varchar(10) NOT NULL,
-            user_mail varchar(40) NOT NULL UNIQUE
+            user_mail varchar(40) UNIQUE
         )
     """
     return sql
@@ -191,6 +191,33 @@ def create_tb_user_credentials_sqlite():
             user_status varchar(12) NOT NULL,
             FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
             )
+        """
+    return sql
+
+def create_tb_user_details_cache():
+    sql= """
+        CREATE TABLE IF NOT EXISTS tb_user_details(
+            generated_id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            user_reference varchar(25) NOT NULL UNIQUE,
+            user_firstname varchar(70) NOT NULL, 
+            user_lastname varchar(35) NOT NULL, 
+            user_contact varchar(25) UNIQUE,
+            user_mail varchar(40) UNIQUE
+        );
+        """
+    return sql
+
+def create_tb_user_credentials_cache():
+    sql = """
+        CREATE TABLE IF NOT EXISTS tb_user_credentials(
+            generated_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_reference varchar(25) NOT NULL,
+            user_username varchar(40) NOT NULL UNIQUE,
+            user_role varchar(20),
+            user_status varchar(20),
+            user_password varchar(255) NOT NULL,
+            FOREIGN KEY(user_reference) REFERENCES tb_user_details(user_reference)
+            );
         """
     return sql
 
