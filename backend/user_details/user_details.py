@@ -1,7 +1,7 @@
-from database.database import Database
 from packages.hasher import *
 from packages.pyqt import *
 from packages.globals import *
+from packages.connection import sqlite3
 from user_details.ui_user_details import Ui_Profile
 
 class User(QDialog):
@@ -21,7 +21,6 @@ class User(QDialog):
         self.shadow.setColor(QColor(230, 230, 230, 50))
         self.move(1200, 100)
         self.ui_profile.frame.setGraphicsEffect(self.shadow)
-        self.database = Database()
         self.ui_profile.btn_update_profile.clicked.connect(self.update_profile_picture)
         self.ui_profile.btn_browse.clicked.connect(self.browse_image_files)
         self.ui_profile.btn_update_user.clicked.connect(self.update_username_password)
@@ -67,36 +66,27 @@ class User(QDialog):
         else:
              self.ui_profile.notification.setText("Oops! invalid image path.")
 
+    def get_cache_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
+       
     def update_username_password(self):
         user_id = self.ui_profile.reference.text()
-        check_state = self.database.check_state()
-        (db,my_cursor,connection_status) = self.database.my_cursor()
+        db = sqlite3.connect(self.get_cache_path())
+        cursor = db.cursor()
         name = self.ui_profile.update_username.text()
         if self.ui_profile.update_username.text():
-            if check_state:
-                my_cursor.execute("UPDATE tb_user_credentials SET user_username=? WHERE user_reference=?",(name,user_id))
-                db.commit()
-                my_cursor.close()
-                self.ui_profile.notification.setText("Username updated successfully")
-            else:
-                my_cursor.execute("UPDATE tb_user_credentials SET user_username=%s WHERE user_reference=%s",(name,user_id))
-                db.commit()
-                my_cursor.close()
-                self.ui_profile.notification.setText("Password updated successfully")
+            cursor.execute("UPDATE tb_user_credentials SET user_username=? WHERE user_reference=?",(name,user_id))
+            db.commit()
+            cursor.close()
+            self.ui_profile.notification.setText("Username updated successfully")
         elif self.ui_profile.update_password.text():
             hash=hash_password(self.ui_profile.update_password.text())
-            if check_state:
-                my_cursor.execute("UPDATE tb_user_credentials SET user_password=? WHERE user_reference=?",(hash,user_id))
-                db.commit()
-                my_cursor.close()
-                self.ui_profile.notification.setText("Password updated successfully")
-            else:
-                my_cursor.execute("UPDATE tb_user_credentials SET user_password=%s WHERE user_reference=%s",(hash,user_id))
-                db.commit()
-                my_cursor.close()
-                self.ui_profile.notification.setText("Password updated successfully")
+            cursor.execute("UPDATE tb_user_credentials SET user_password=? WHERE user_reference=?",(hash,user_id))
+            db.commit()
+            cursor.close()
+            self.ui_profile.notification.setText("Password updated successfully")
         else:
-            self.ui_profile.notification.setText("Oops! invalid field(s) to update")
+            self.ui_profile.notification.setText("Oops! empty field not allowed,you can either update\nyour username or password but not both at the\nsame time.")
     
     def browse_image_files(self):  
         path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
