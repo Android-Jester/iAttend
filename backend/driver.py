@@ -143,7 +143,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_search_page.clicked.connect(self.query_database_for_data)
         self.ui.search_page_date.dateTimeChanged.connect(self.start_date_on_search_page)
         self.ui.search_page_date_2.dateTimeChanged.connect(self.end_date_on_search_page)
-        self.ui.report_date.dateTimeChanged.connect(self.get_report_date)
+        self.ui.report_date.dateTimeChanged.connect(self.start_report_date)
+        self.ui.report_date_2.dateTimeChanged.connect(self.stop_report_date)
         self.ui.btn_reload.clicked.connect(self.clear_fields_on_search_page)
         self.ui.btn_csv.clicked.connect(self.export_data_to_csv)
         self.ui.btn_json.clicked.connect(self.export_data_to_json)
@@ -281,6 +282,7 @@ class MainWindow(QMainWindow):
         table_name=self.merge.get_table_name()
         if table_name:
             self.ui.btn_merge_load.setText('Loading...')
+            self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/loader.svg"))    
         pass
     
     def merge_report_generate(self):
@@ -762,11 +764,13 @@ class MainWindow(QMainWindow):
         self.ui.db_consolidation_date.setDate(curent_date)
         self.ui.db_consolidation_date_2.setDate(curent_date)
         self.ui.report_date.setDate(curent_date)
+        self.ui.report_date_2.setDate(curent_date)
         self.ui.db_end_date.clear()
         self.ui.user_end_date_field.clear()
         self.ui.user_start_date_field.clear()
         self.ui.db_start_date.clear()
         self.ui.report_start_date.clear()
+        self.ui.report_end_date.clear()
         self.ui.db_consolidation_date.clear()
         self.ui.db_consolidation_stop.clear()
 
@@ -1789,6 +1793,23 @@ class MainWindow(QMainWindow):
             else:
                 self.alert.content("Oops! your data is not enough to\ngenerate charts..")
                 self.alert.show()
+        elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
+            if self.ui.report_start_date.text() <= self.ui.report_end_date.text():
+                data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
+                if len(data[0])>=1: 
+                    self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))     
+                    self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
+                    bar_width=properties[2],y_label=y_label,x_label=f"values",colors=colors[:len(data[0])],
+                    title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
+                    area=properties[1],dpi=properties[3])
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
+            else:
+                self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
+                self.alert.show()
         elif self.ui.report_start_date.text() and not self.ui.report_end_date.text():
                 data = self.query_database_with_parameter(date=report_date[0],range='',type='date')
                 if len(data[0])>=1:
@@ -1796,19 +1817,6 @@ class MainWindow(QMainWindow):
                     self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
                     bar_width=properties[2],y_label=y_label,x_label=f"values",
                     colors=colors[:len(data[0])],title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])}]",
-                    area=properties[1],dpi=properties[3])
-                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
-                    self.ui.plot_area.setScaledContents(True)
-                else:
-                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
-                    self.alert.show()
-        elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
-                data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
-                if len(data[0])>=1: 
-                    self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))     
-                    self.barchart.bar_plot_single_view(y_values=data[1],x_labels=data[0],
-                    bar_width=properties[2],y_label=y_label,x_label=f"values",colors=colors[:len(data[0])],
-                    title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
                     area=properties[1],dpi=properties[3])
                     self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'barchart.png'))
                     self.ui.plot_area.setScaledContents(True)
@@ -1835,16 +1843,20 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! your data is not enough to\ngenerate charts..")
                 self.alert.show()
         elif self.ui.report_start_date.text() and self.ui.report_end_date.text():
-            data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
-            if len(data[0])>=1:
-                self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))      
-                self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
-                colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
-                pctdistance=properties[5],labeldistance=properties[6])
-                self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
-                self.ui.plot_area.setScaledContents(True)
+            if self.ui.report_start_date.text() <= self.ui.report_end_date.text():
+                data = self.query_database_with_parameter(date=report_date[0],range=report_date[1],type='range')
+                if len(data[0])>=1:
+                    self.data_view.set_data(json.dumps(dict(zip(data[0],data[1])),indent=4))      
+                    self.piechart.piechart(data=data,title=f"{properties[0]} [{self.reconstruct_date_report(report_date[0])} - {self.reconstruct_date_report(report_date[1])}]",
+                    colors=colors[:len(data[0])],startangle=properties[4],area=properties[1],dpi=properties[3],
+                    pctdistance=properties[5],labeldistance=properties[6])
+                    self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'piechart.png'))
+                    self.ui.plot_area.setScaledContents(True)
+                else:
+                    self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                    self.alert.show()
             else:
-                self.alert.content("Oops! your data is not enough to\ngenerate charts..")
+                self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
                 self.alert.show() 
         elif  self.ui.report_start_date.text() and not self.ui.report_end_date.text():
             data = self.query_database_with_parameter(date=report_date[0],range='',type='date')
@@ -1919,6 +1931,7 @@ class MainWindow(QMainWindow):
 
     def change_load_text(self):
         self.ui.btn_load.setText('Loading...')
+        self.ui.btn_load.setIcon(QIcon(u":/icons/asset/loader.svg"))
 
     def data_visualization(self):
         if self.ui.pie_chart.isChecked():
@@ -1929,6 +1942,8 @@ class MainWindow(QMainWindow):
             self.ui.btn_load.setText('Load')
         elif self.ui.line_graph.isChecked():
             self.line_plot()
+            self.ui.btn_load.setText('Load')
+        else:
             self.ui.btn_load.setText('Load')
 
     def export_data_to_csv(self):
@@ -2161,12 +2176,13 @@ class MainWindow(QMainWindow):
         self.ui.db_start_date.setText("")
         self.ui.db_end_date.setText("")
         
-    def get_report_date(self):
+    def start_report_date(self):
         date_ = self.ui.report_date.date().toPython()
-        if self.ui.report_date_range.isChecked():
-             self.ui.report_end_date.setText(str(date_))
-        else:
-            self.ui.report_start_date.setText(str(date_))
+        self.ui.report_start_date.setText(str(date_))
+
+    def stop_report_date(self):
+        date_ = self.ui.report_date_2.date().toPython()
+        self.ui.report_end_date.setText(str(date_))
   
     def get_registration_start_date(self):
         date = self.ui.calendarWidget_reg.selectedDate()
