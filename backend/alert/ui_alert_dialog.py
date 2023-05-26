@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'alert_dialogrvEoEZ.ui'
+## Form generated from reading UI file 'alert_dialogasqmtH.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,7 +21,7 @@ class Ui_AlertDialog(object):
     def setupUi(self, AlertDialog):
         if AlertDialog.objectName():
             AlertDialog.setObjectName(u"AlertDialog")
-        AlertDialog.resize(512, 233)
+        AlertDialog.resize(512, 234)
         self.verticalLayout = QVBoxLayout(AlertDialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame = QFrame(AlertDialog)
@@ -148,10 +148,21 @@ class Ui_AlertDialog(object):
         self.btn_frame.setMinimumSize(QSize(0, 60))
         self.btn_frame.setMaximumSize(QSize(16777215, 60))
         self.btn_frame.setFrameShape(QFrame.NoFrame)
-        self.btn_frame.setFrameShadow(QFrame.Raised)
+        self.btn_frame.setFrameShadow(QFrame.Plain)
+        self.horizontalLayout_3 = QHBoxLayout(self.btn_frame)
+        self.horizontalLayout_3.setSpacing(9)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(12, 12, 12, 12)
+        self.frame_2 = QFrame(self.btn_frame)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_3.addWidget(self.frame_2)
+
         self.btn_close_alert = QPushButton(self.btn_frame)
         self.btn_close_alert.setObjectName(u"btn_close_alert")
-        self.btn_close_alert.setGeometry(QRect(330, 20, 131, 41))
+        self.btn_close_alert.setMaximumSize(QSize(150, 40))
         font1 = QFont()
         font1.setPointSize(10)
         self.btn_close_alert.setFont(font1)
@@ -163,7 +174,7 @@ class Ui_AlertDialog(object):
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"	border-radius: 20px;\n"
+"	border-radius: 15px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
@@ -171,6 +182,9 @@ class Ui_AlertDialog(object):
 "}")
         self.btn_close_alert.setIconSize(QSize(30, 30))
         self.btn_close_alert.setFlat(True)
+
+        self.horizontalLayout_3.addWidget(self.btn_close_alert)
+
 
         self.verticalLayout_2.addWidget(self.btn_frame)
 
