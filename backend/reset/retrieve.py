@@ -75,44 +75,45 @@ class ForgotPassword(QDialog):
             pass
 
     def reset(self):
-        check_state = self.database.check_state()
         username = self.ui_reset.username.text()
         reference = self.ui_reset.reference.text()
         password = self.ui_reset.password.text()
         if reference and username and password:
-                (db,my_cursor,connection_status) = self.database.my_cursor()
-                if check_state == True:
-                    self.content("Oops! not connected to database..") 
+            try:
+                db = sqlite3.connect(self.get_cache_path())
+                cursor = db.cursor()
+                details=self.query_database("SELECT * FROM tb_user_credentials WHERE user_reference="+"\'{}\'".format(reference))
+                if details:
+                    if username==str(details[0][2]) and reference==str(details[0][1]):
+                        hash = hash_password(password)
+                        cursor.execute("UPDATE tb_user_credentials SET user_password=? WHERE user_reference=?",(hash,reference))
+                        db.commit()
+                        cursor.close()
+                        self.clear_fields()
+                        self.send_mail(reference,username)
+                        self.content("User password updated successfully")
+                    else:
+                        self.content(f"{username}, {reference} not found")
                 else:
-                    try:
-                        details=self.query_database("SELECT * FROM tb_user_credentials WHERE user_reference="+"\'{}\'".format(reference))
-                        if details:
-                            if username==str(details[0][2]) and reference==str(details[0][1]):
-                                hash = hash_password(password)
-                                my_cursor.execute("UPDATE tb_user_credentials SET user_password=%s WHERE user_reference=%s",(hash,reference))
-                                db.commit()
-                                my_cursor.close()
-                                self.clear_fields()
-                                self.send_mail(reference,username)
-                                self.content("User password updated successfully")
-                            else:
-                                self.content(f"{username}, {reference} not found")
-                        else:
-                            self.content("User not found for such combination")
-                    except:
-                        self.content("Oops! Something went wrong")  
+                    self.content("User not found for such combination")
+            except:
+                self.content("Oops! Something went wrong")  
         else: 
             self.content("Empty fields not permitted!")
-            
+
+    def get_cache_path(self):
+        return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
+
     def query_database(self, query: str):
-        db,my_cursor,connection_status = self.database.my_cursor()
+        db = sqlite3.connect(self.get_cache_path())
+        cursor = db.cursor()
         details = []
-        cursor = my_cursor.execute(query)
-        cursor = my_cursor.fetchall()
+        cursor_ = cursor.execute(query)
+        cursor_ = cursor.fetchall()
         db.commit()
-        my_cursor.close()
+        cursor.close()
         if cursor:
-            for item in cursor:
+            for item in cursor_:
                 details.append(item)
         return details    
     
