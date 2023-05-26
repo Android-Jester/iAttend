@@ -1108,7 +1108,7 @@ class MainWindow(QMainWindow):
                 self.alert.content(f"User with {self.ui.user_reference.text()} status updated\nto {self.ui.user_status.currentText()}")
                 self.alert.show()
             else:
-                self.alert.content(f"Oops! some fields are missing...\nreference")
+                self.alert.content(f"Oops! no reference number\nprovided...")
                 self.alert.show()            
         except Exception as e:
             self.alert.content(str(e))
@@ -1128,7 +1128,7 @@ class MainWindow(QMainWindow):
                 self.alert.content(f"User with {self.ui.user_reference.text()} this details\nupdated")
                 self.alert.show()
             else:
-                self.alert.content(f"Oops! some fields are missing...\nreference")
+                self.alert.content(f"Oops! provide all details in other\nto perform the update...")
                 self.alert.show()
         except Exception as e:
             self.alert.content(str(e))
