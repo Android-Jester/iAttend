@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardhbZxHY.ui'
+## Form generated from reading UI file 'dashoboardiDeGNZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -619,7 +619,7 @@ class Ui_dashboard(object):
         self.btn_settings.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	border: 0px solid;\n"
-"padding-left:5px;\n"
+"background-color: rgb(35, 35, 35);\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -2842,7 +2842,9 @@ class Ui_dashboard(object):
         self.left_child.setFrameShadow(QFrame.Plain)
         self.firstname_25 = QLabel(self.left_child)
         self.firstname_25.setObjectName(u"firstname_25")
-        self.firstname_25.setGeometry(QRect(10, 10, 531, 91))
+        self.firstname_25.setGeometry(QRect(10, 10, 531, 157))
+        self.firstname_25.setMinimumSize(QSize(0, 157))
+        self.firstname_25.setMaximumSize(QSize(16777215, 157))
         self.firstname_25.setFont(font5)
         self.firstname_25.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2854,7 +2856,7 @@ class Ui_dashboard(object):
         self.firstname_25.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.firstname_26 = QLabel(self.left_child)
         self.firstname_26.setObjectName(u"firstname_26")
-        self.firstname_26.setGeometry(QRect(10, 120, 531, 441))
+        self.firstname_26.setGeometry(QRect(10, 190, 531, 441))
         self.firstname_26.setFont(font5)
         self.firstname_26.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2866,7 +2868,7 @@ class Ui_dashboard(object):
         self.firstname_26.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.user_search = QLineEdit(self.left_child)
         self.user_search.setObjectName(u"user_search")
-        self.user_search.setGeometry(QRect(30, 30, 331, 51))
+        self.user_search.setGeometry(QRect(30, 30, 491, 51))
         self.user_search.setMinimumSize(QSize(0, 47))
         self.user_search.setFont(font2)
         self.user_search.setStyleSheet(u"QLineEdit{\n"
@@ -2886,8 +2888,9 @@ class Ui_dashboard(object):
         self.user_search.setClearButtonEnabled(True)
         self.btn_user_search = QPushButton(self.left_child)
         self.btn_user_search.setObjectName(u"btn_user_search")
-        self.btn_user_search.setGeometry(QRect(370, 30, 151, 51))
-        self.btn_user_search.setMinimumSize(QSize(0, 47))
+        self.btn_user_search.setGeometry(QRect(30, 100, 231, 45))
+        self.btn_user_search.setMinimumSize(QSize(0, 45))
+        self.btn_user_search.setMaximumSize(QSize(16777215, 45))
         self.btn_user_search.setFont(font2)
         self.btn_user_search.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2908,7 +2911,7 @@ class Ui_dashboard(object):
         self.btn_user_search.setFlat(True)
         self.user_image = QLabel(self.left_child)
         self.user_image.setObjectName(u"user_image")
-        self.user_image.setGeometry(QRect(30, 140, 241, 261))
+        self.user_image.setGeometry(QRect(30, 210, 241, 261))
         font10 = QFont()
         font10.setFamily(u"Arial")
         font10.setPointSize(14)
@@ -2924,7 +2927,7 @@ class Ui_dashboard(object):
         self.user_image.setAlignment(Qt.AlignCenter)
         self.user_middlename = QLineEdit(self.left_child)
         self.user_middlename.setObjectName(u"user_middlename")
-        self.user_middlename.setGeometry(QRect(290, 210, 231, 53))
+        self.user_middlename.setGeometry(QRect(290, 280, 231, 53))
         self.user_middlename.setMinimumSize(QSize(0, 53))
         self.user_middlename.setMaximumSize(QSize(16777215, 53))
         self.user_middlename.setFont(font2)
@@ -2945,7 +2948,7 @@ class Ui_dashboard(object):
         self.user_middlename.setClearButtonEnabled(True)
         self.user_lastname = QLineEdit(self.left_child)
         self.user_lastname.setObjectName(u"user_lastname")
-        self.user_lastname.setGeometry(QRect(290, 280, 231, 53))
+        self.user_lastname.setGeometry(QRect(290, 350, 231, 53))
         self.user_lastname.setMinimumSize(QSize(0, 53))
         self.user_lastname.setMaximumSize(QSize(16777215, 53))
         self.user_lastname.setFont(font2)
@@ -2966,7 +2969,7 @@ class Ui_dashboard(object):
         self.user_lastname.setClearButtonEnabled(True)
         self.user_firstname = QLineEdit(self.left_child)
         self.user_firstname.setObjectName(u"user_firstname")
-        self.user_firstname.setGeometry(QRect(290, 140, 231, 53))
+        self.user_firstname.setGeometry(QRect(290, 210, 231, 53))
         self.user_firstname.setMinimumSize(QSize(0, 53))
         self.user_firstname.setMaximumSize(QSize(16777215, 53))
         self.user_firstname.setFont(font2)
@@ -2988,7 +2991,7 @@ class Ui_dashboard(object):
         self.user_firstname.setClearButtonEnabled(True)
         self.user_reference = QLineEdit(self.left_child)
         self.user_reference.setObjectName(u"user_reference")
-        self.user_reference.setGeometry(QRect(290, 350, 231, 53))
+        self.user_reference.setGeometry(QRect(290, 420, 231, 53))
         self.user_reference.setMinimumSize(QSize(0, 53))
         self.user_reference.setMaximumSize(QSize(16777215, 53))
         self.user_reference.setFont(font2)
@@ -3009,7 +3012,7 @@ class Ui_dashboard(object):
         self.user_reference.setClearButtonEnabled(True)
         self.user_contact = QLineEdit(self.left_child)
         self.user_contact.setObjectName(u"user_contact")
-        self.user_contact.setGeometry(QRect(290, 420, 231, 53))
+        self.user_contact.setGeometry(QRect(290, 490, 231, 53))
         self.user_contact.setMinimumSize(QSize(0, 53))
         self.user_contact.setMaximumSize(QSize(16777215, 53))
         self.user_contact.setFont(font2)
@@ -3033,7 +3036,7 @@ class Ui_dashboard(object):
         self.user_role.addItem("")
         self.user_role.addItem("")
         self.user_role.setObjectName(u"user_role")
-        self.user_role.setGeometry(QRect(30, 420, 241, 53))
+        self.user_role.setGeometry(QRect(30, 490, 241, 53))
         self.user_role.setMinimumSize(QSize(0, 53))
         self.user_role.setMaximumSize(QSize(16777215, 53))
         self.user_role.setFont(font2)
@@ -3047,7 +3050,7 @@ class Ui_dashboard(object):
         self.user_role.setFrame(False)
         self.user_email = QLineEdit(self.left_child)
         self.user_email.setObjectName(u"user_email")
-        self.user_email.setGeometry(QRect(30, 490, 301, 53))
+        self.user_email.setGeometry(QRect(30, 560, 291, 53))
         self.user_email.setMinimumSize(QSize(0, 53))
         self.user_email.setMaximumSize(QSize(16777215, 53))
         self.user_email.setFont(font2)
@@ -3068,7 +3071,8 @@ class Ui_dashboard(object):
         self.user_email.setClearButtonEnabled(True)
         self.firstname_27 = QLabel(self.left_child)
         self.firstname_27.setObjectName(u"firstname_27")
-        self.firstname_27.setGeometry(QRect(10, 580, 531, 81))
+        self.firstname_27.setGeometry(QRect(10, 660, 531, 85))
+        self.firstname_27.setMinimumSize(QSize(0, 85))
         self.firstname_27.setFont(font5)
         self.firstname_27.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3080,7 +3084,9 @@ class Ui_dashboard(object):
         self.firstname_27.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_user_register = QPushButton(self.left_child)
         self.btn_user_register.setObjectName(u"btn_user_register")
-        self.btn_user_register.setGeometry(QRect(30, 600, 141, 41))
+        self.btn_user_register.setGeometry(QRect(30, 680, 141, 45))
+        self.btn_user_register.setMinimumSize(QSize(0, 45))
+        self.btn_user_register.setMaximumSize(QSize(16777215, 45))
         self.btn_user_register.setFont(font2)
         self.btn_user_register.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3101,7 +3107,8 @@ class Ui_dashboard(object):
         self.btn_user_register.setFlat(True)
         self.btn_user_update = QPushButton(self.left_child)
         self.btn_user_update.setObjectName(u"btn_user_update")
-        self.btn_user_update.setGeometry(QRect(200, 600, 141, 41))
+        self.btn_user_update.setGeometry(QRect(200, 680, 141, 45))
+        self.btn_user_update.setMinimumSize(QSize(0, 45))
         self.btn_user_update.setFont(font2)
         self.btn_user_update.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3122,7 +3129,8 @@ class Ui_dashboard(object):
         self.btn_user_update.setFlat(True)
         self.btn_user_status = QPushButton(self.left_child)
         self.btn_user_status.setObjectName(u"btn_user_status")
-        self.btn_user_status.setGeometry(QRect(370, 600, 151, 41))
+        self.btn_user_status.setGeometry(QRect(370, 680, 151, 45))
+        self.btn_user_status.setMinimumSize(QSize(0, 45))
         self.btn_user_status.setFont(font2)
         self.btn_user_status.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3143,65 +3151,10 @@ class Ui_dashboard(object):
         self.btn_user_status.setIcon(icon25)
         self.btn_user_status.setIconSize(QSize(30, 30))
         self.btn_user_status.setFlat(True)
-        self.firstname_28 = QLabel(self.left_child)
-        self.firstname_28.setObjectName(u"firstname_28")
-        self.firstname_28.setGeometry(QRect(10, 880, 531, 91))
-        self.firstname_28.setFont(font5)
-        self.firstname_28.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	border-radius: 10px;\n"
-"	padding-left:10px;\n"
-"	padding-top:5px;\n"
-"}")
-        self.firstname_28.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.user_image_file = QLineEdit(self.left_child)
-        self.user_image_file.setObjectName(u"user_image_file")
-        self.user_image_file.setGeometry(QRect(30, 900, 351, 50))
-        self.user_image_file.setMinimumSize(QSize(0, 50))
-        self.user_image_file.setMaximumSize(QSize(16777215, 50))
-        self.user_image_file.setFont(font2)
-        self.user_image_file.setStyleSheet(u"QLineEdit{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:10px;\n"
-"	padding-left: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"	border:2px solid rgb(255, 255, 255);\n"
-"}")
-        self.user_image_file.setClearButtonEnabled(True)
-        self.user_image_browse = QPushButton(self.left_child)
-        self.user_image_browse.setObjectName(u"user_image_browse")
-        self.user_image_browse.setGeometry(QRect(400, 900, 121, 50))
-        self.user_image_browse.setMinimumSize(QSize(0, 50))
-        self.user_image_browse.setMaximumSize(QSize(16777215, 50))
-        self.user_image_browse.setFont(font2)
-        self.user_image_browse.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 20px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        self.user_image_browse.setIcon(icon5)
-        self.user_image_browse.setIconSize(QSize(30, 30))
-        self.user_image_browse.setFlat(True)
         self.firstname_29 = QLabel(self.left_child)
         self.firstname_29.setObjectName(u"firstname_29")
-        self.firstname_29.setGeometry(QRect(10, 680, 531, 81))
+        self.firstname_29.setGeometry(QRect(10, 770, 531, 85))
+        self.firstname_29.setMinimumSize(QSize(0, 85))
         self.firstname_29.setFont(font5)
         self.firstname_29.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3213,8 +3166,8 @@ class Ui_dashboard(object):
         self.firstname_29.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_mail_user_details = QPushButton(self.left_child)
         self.btn_mail_user_details.setObjectName(u"btn_mail_user_details")
-        self.btn_mail_user_details.setGeometry(QRect(30, 800, 151, 41))
-        self.btn_mail_user_details.setMinimumSize(QSize(0, 41))
+        self.btn_mail_user_details.setGeometry(QRect(30, 900, 151, 45))
+        self.btn_mail_user_details.setMinimumSize(QSize(0, 45))
         self.btn_mail_user_details.setMaximumSize(QSize(16777215, 41))
         self.btn_mail_user_details.setFont(font2)
         self.btn_mail_user_details.setStyleSheet(u"QPushButton{\n"
@@ -3238,7 +3191,8 @@ class Ui_dashboard(object):
         self.btn_mail_user_details.setFlat(True)
         self.btn_user_clear = QPushButton(self.left_child)
         self.btn_user_clear.setObjectName(u"btn_user_clear")
-        self.btn_user_clear.setGeometry(QRect(370, 800, 151, 41))
+        self.btn_user_clear.setGeometry(QRect(370, 900, 151, 45))
+        self.btn_user_clear.setMinimumSize(QSize(45, 45))
         self.btn_user_clear.setFont(font2)
         self.btn_user_clear.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3259,7 +3213,8 @@ class Ui_dashboard(object):
         self.btn_user_clear.setFlat(True)
         self.user_start_date = QDateEdit(self.left_child)
         self.user_start_date.setObjectName(u"user_start_date")
-        self.user_start_date.setGeometry(QRect(80, 700, 141, 41))
+        self.user_start_date.setGeometry(QRect(80, 790, 141, 45))
+        self.user_start_date.setMinimumSize(QSize(0, 45))
         self.user_start_date.setFont(font8)
         self.user_start_date.setStyleSheet(u"QDateEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3285,7 +3240,7 @@ class Ui_dashboard(object):
         self.user_status.addItem("")
         self.user_status.addItem("")
         self.user_status.setObjectName(u"user_status")
-        self.user_status.setGeometry(QRect(340, 490, 181, 53))
+        self.user_status.setGeometry(QRect(340, 560, 181, 53))
         self.user_status.setMinimumSize(QSize(0, 53))
         self.user_status.setMaximumSize(QSize(16777215, 53))
         self.user_status.setFont(font2)
@@ -3299,7 +3254,8 @@ class Ui_dashboard(object):
         self.user_status.setFrame(False)
         self.user_range = QRadioButton(self.left_child)
         self.user_range.setObjectName(u"user_range")
-        self.user_range.setGeometry(QRect(30, 700, 41, 41))
+        self.user_range.setGeometry(QRect(30, 790, 41, 45))
+        self.user_range.setMinimumSize(QSize(0, 45))
         self.user_range.setFont(font2)
         self.user_range.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "background-color: rgb(45, 45, 45);\n"
@@ -3307,7 +3263,8 @@ class Ui_dashboard(object):
         self.user_range.setAutoExclusive(False)
         self.firstname_30 = QLabel(self.left_child)
         self.firstname_30.setObjectName(u"firstname_30")
-        self.firstname_30.setGeometry(QRect(10, 780, 531, 81))
+        self.firstname_30.setGeometry(QRect(10, 880, 531, 85))
+        self.firstname_30.setMinimumSize(QSize(0, 85))
         self.firstname_30.setFont(font5)
         self.firstname_30.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3319,8 +3276,8 @@ class Ui_dashboard(object):
         self.firstname_30.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_export_data = QPushButton(self.left_child)
         self.btn_export_data.setObjectName(u"btn_export_data")
-        self.btn_export_data.setGeometry(QRect(200, 800, 151, 41))
-        self.btn_export_data.setMinimumSize(QSize(0, 41))
+        self.btn_export_data.setGeometry(QRect(200, 900, 151, 45))
+        self.btn_export_data.setMinimumSize(QSize(0, 45))
         self.btn_export_data.setMaximumSize(QSize(16777215, 41))
         self.btn_export_data.setFont(font2)
         self.btn_export_data.setStyleSheet(u"QPushButton{\n"
@@ -3342,7 +3299,9 @@ class Ui_dashboard(object):
         self.btn_export_data.setFlat(True)
         self.user_end_date = QLineEdit(self.left_child)
         self.user_end_date.setObjectName(u"user_end_date")
-        self.user_end_date.setGeometry(QRect(230, 700, 141, 41))
+        self.user_end_date.setGeometry(QRect(230, 790, 141, 45))
+        self.user_end_date.setMinimumSize(QSize(0, 45))
+        self.user_end_date.setMaximumSize(QSize(16777215, 45))
         self.user_end_date.setFont(font2)
         self.user_end_date.setTabletTracking(True)
         self.user_end_date.setStyleSheet(u"QLineEdit{\n"
@@ -3362,7 +3321,9 @@ class Ui_dashboard(object):
         self.user_end_date.setClearButtonEnabled(True)
         self.user_date = QLineEdit(self.left_child)
         self.user_date.setObjectName(u"user_date")
-        self.user_date.setGeometry(QRect(380, 700, 141, 41))
+        self.user_date.setGeometry(QRect(380, 790, 141, 45))
+        self.user_date.setMinimumSize(QSize(0, 45))
+        self.user_date.setMaximumSize(QSize(16777215, 45))
         self.user_date.setFont(font2)
         self.user_date.setTabletTracking(True)
         self.user_date.setStyleSheet(u"QLineEdit{\n"
@@ -3380,6 +3341,29 @@ class Ui_dashboard(object):
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
         self.user_date.setClearButtonEnabled(True)
+        self.btn_user_fetch = QPushButton(self.left_child)
+        self.btn_user_fetch.setObjectName(u"btn_user_fetch")
+        self.btn_user_fetch.setGeometry(QRect(290, 100, 231, 45))
+        self.btn_user_fetch.setMinimumSize(QSize(0, 45))
+        self.btn_user_fetch.setMaximumSize(QSize(16777215, 45))
+        self.btn_user_fetch.setFont(font2)
+        self.btn_user_fetch.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 20px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        self.btn_user_fetch.setIcon(icon22)
+        self.btn_user_fetch.setIconSize(QSize(30, 30))
+        self.btn_user_fetch.setFlat(True)
         self.firstname_30.raise_()
         self.firstname_26.raise_()
         self.firstname_25.raise_()
@@ -3397,9 +3381,6 @@ class Ui_dashboard(object):
         self.btn_user_register.raise_()
         self.btn_user_update.raise_()
         self.btn_user_status.raise_()
-        self.firstname_28.raise_()
-        self.user_image_file.raise_()
-        self.user_image_browse.raise_()
         self.firstname_29.raise_()
         self.btn_mail_user_details.raise_()
         self.btn_user_clear.raise_()
@@ -3409,6 +3390,7 @@ class Ui_dashboard(object):
         self.btn_export_data.raise_()
         self.user_end_date.raise_()
         self.user_date.raise_()
+        self.btn_user_fetch.raise_()
 
         self.horizontalLayout_6.addWidget(self.left_child)
 
@@ -6063,9 +6045,6 @@ class Ui_dashboard(object):
         self.btn_user_register.setText(QCoreApplication.translate("dashboard", u"Register", None))
         self.btn_user_update.setText(QCoreApplication.translate("dashboard", u"Update", None))
         self.btn_user_status.setText(QCoreApplication.translate("dashboard", u"Access", None))
-        self.firstname_28.setText("")
-        self.user_image_file.setPlaceholderText(QCoreApplication.translate("dashboard", u"File path", None))
-        self.user_image_browse.setText(QCoreApplication.translate("dashboard", u"Browse", None))
         self.firstname_29.setText("")
         self.btn_mail_user_details.setText(QCoreApplication.translate("dashboard", u"Mail", None))
         self.btn_user_clear.setText(QCoreApplication.translate("dashboard", u"Clear", None))
@@ -6078,6 +6057,7 @@ class Ui_dashboard(object):
         self.btn_export_data.setText(QCoreApplication.translate("dashboard", u"Export", None))
         self.user_end_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
         self.user_date.setPlaceholderText(QCoreApplication.translate("dashboard", u"Date", None))
+        self.btn_user_fetch.setText(QCoreApplication.translate("dashboard", u"Load", None))
         ___qtablewidgetitem31 = self.admin_table.horizontalHeaderItem(0)
         ___qtablewidgetitem31.setText(QCoreApplication.translate("dashboard", u"Username", None));
         ___qtablewidgetitem32 = self.admin_table.horizontalHeaderItem(1)
