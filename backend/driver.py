@@ -222,7 +222,8 @@ class MainWindow(QMainWindow):
         self.set_database_colleges()
         self.set_endpoints_colleges()
         self.get_central_database_properties()
-        self.ui.db_consolidation_date.dateTimeChanged.connect(self.set_date_for_consolidation)
+        self.ui.db_consolidation_date.dateTimeChanged.connect(self.start_date_for_consolidation)
+        self.ui.db_consolidation_date_2.dateTimeChanged.connect(self.end_date_for_consolidation)
         self.ui.btn_consolidation_load.clicked.connect(self.load_merge_data)
         self.ui.btn_consolidation_partition.clicked.connect(self.partition_strategy)
         self.ui.btn_consolidation_test.clicked.connect(self.database_test)
@@ -689,31 +690,36 @@ class MainWindow(QMainWindow):
     def load_merge_data(self):
         self.alert = AlertDialog()
         start=self.date_formater(self.ui.db_consolidation_start.text())
-        state = self.ui.db_consolidation_range.isChecked()
         stop=self.date_formater(self.ui.db_consolidation_stop.text())
         if self.ui.db_fetch_all.isChecked():
             results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance")
             self.consolidation_table(results)
             self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
             return results
-        elif start and not state:
-            results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp="+start)
-            self.consolidation_table(results)
-            self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
-            return results
-        elif start and stop and state:
-            results=self.query_cache_data_list("SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp BETWEEN "+start+" AND "+stop)
+        elif self.ui.db_consolidation_start.text() and self.ui.db_consolidation_stop.text():
+            print("in start and stop")
+            if self.ui.db_consolidation_start.text() <= self.ui.db_consolidation_stop.text():
+                results=self.query_cache_data_list(f"SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp BETWEEN {start} AND {stop}")
+                self.consolidation_table(results)
+                self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
+                return results
+            else:
+                self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
+                self.alert.show()
+        elif self.ui.db_consolidation_start.text():
+            print("in start")
+            results=self.query_cache_data_list(f"SELECT student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability FROM tb_attendance WHERE date_stamp={start}")
             self.consolidation_table(results)
             self.ui.db_consolidation_notification.setText("Total records fetched: "+str(len(results)))
             return results
         
-    def set_date_for_consolidation(self):
+    def start_date_for_consolidation(self):
         date = self.ui.db_consolidation_date.date().toPython()
-        if self.ui.db_consolidation_range.isChecked():
-            self.ui.db_consolidation_stop.setText(str(date))
-        else:
-            self.ui.db_consolidation_start.setText(str(date))
-    
+        self.ui.db_consolidation_start.setText(str(date))
+
+    def end_date_for_consolidation(self):
+        date = self.ui.db_consolidation_date_2.date().toPython()
+        self.ui.db_consolidation_stop.setText(str(date))   
 
     def set_database_colleges(self):
         results=load_colleges(self.resource_path('database_properties.json'))
@@ -754,6 +760,7 @@ class MainWindow(QMainWindow):
         self.ui.user_start_date_widget.setDate(curent_date)
         self.ui.user_end_date_widget.setDate(curent_date)
         self.ui.db_consolidation_date.setDate(curent_date)
+        self.ui.db_consolidation_date_2.setDate(curent_date)
         self.ui.report_date.setDate(curent_date)
         self.ui.db_end_date.clear()
         self.ui.user_end_date_field.clear()
@@ -761,6 +768,7 @@ class MainWindow(QMainWindow):
         self.ui.db_start_date.clear()
         self.ui.report_start_date.clear()
         self.ui.db_consolidation_date.clear()
+        self.ui.db_consolidation_stop.clear()
 
     def value_formater(self,value):
         return "\'{}\'".format(value)
