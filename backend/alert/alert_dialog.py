@@ -1,5 +1,4 @@
 from packages.pyqt import *
-
 from alert.ui_alert_dialog import Ui_AlertDialog
 
 class AlertDialog(QDialog):
