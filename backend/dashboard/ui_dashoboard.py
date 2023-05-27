@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardnLOpoK.ui'
+## Form generated from reading UI file 'dashoboardtqZeCy.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -22,7 +22,7 @@ class Ui_dashboard(object):
     def setupUi(self, dashboard):
         if dashboard.objectName():
             dashboard.setObjectName(u"dashboard")
-        dashboard.resize(1520, 1020)
+        dashboard.resize(1520, 1030)
         dashboard.setMinimumSize(QSize(1500, 1000))
         dashboard.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(dashboard)
