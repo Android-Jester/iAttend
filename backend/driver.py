@@ -1021,6 +1021,7 @@ class MainWindow(QMainWindow):
     
     ############################## User Session methods  #############################
     
+    
     ############################## User Account #############################
 
     def export_user_data(self):
