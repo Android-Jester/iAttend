@@ -278,6 +278,7 @@ class MainWindow(QMainWindow):
                 file.writelines(f'\n[{date}] [{time}]: {message}')
             file.close()
 
+    ############################## Central Reporting #############################
     def change_merge_load_text(self):
         table_name=self.merge.get_table_name()
         if table_name:
@@ -357,7 +358,6 @@ class MainWindow(QMainWindow):
             self.alert.content("Oops! test database connection\nto load tables...")
             self.alert.show()
     
-
     def merge_linegraph_generate(self):
         pass
     
@@ -441,6 +441,10 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! please provide file name")
                 self.alert.show() 
 
+    ############################## Central Reporting END #############################
+
+
+    ############################## Data consolidation #############################
 
     def load_colleges_report(self):
         report_departments = get_dept(self.resource_path('structure.json'),self.ui.report_colleges.currentText(),self.ui.report_faculties.currentText())
@@ -725,6 +729,9 @@ class MainWindow(QMainWindow):
         date = self.ui.db_consolidation_date_2.date().toPython()
         self.ui.db_consolidation_stop.setText(str(date))   
 
+    ############################## Data consolidation END #############################
+
+
     def set_database_colleges(self):
         results=load_colleges(self.resource_path('database_properties.json'))
         self.database.set_colleges(results)
@@ -823,7 +830,14 @@ class MainWindow(QMainWindow):
             for item in cursor:
                 details.append(item)
         return details 
+        
+    def camera_config(self):
+        if account_role == admin:
+            self.config.show()
 
+
+    ############################## User Session methods  #############################
+    
     def application_exit(self):
         self.close()
         self.set_log_out_session()
@@ -841,24 +855,92 @@ class MainWindow(QMainWindow):
         self.config.close()
         self.open_exit_camera.close()
         self.login.show()
-        
-    def camera_config(self):
-        if account_role == admin:
-            self.config.show()
-     
-    def user_last_seen(self,reference:str):
-        (db,my_cursor,connection_status) = self.database.my_cursor()
-        check_state=self.database.check_state()
-        if check_state == True:
-            cursor=my_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session_last_seen WHERE user_reference = "+(reference))
-            cursor= my_cursor.fetchall()
-            db.commit()       
-        else:
+
+    def logout(self):
+        self.alert = AlertDialog()
+        try:
+            self.set_log_out_session()
+            self.close()
+            update_information_file()
+            self.config.close()
+            self.database.close()
+            self.camera_1.close()
+            self.camera_2.close()
+            self.camera_3.close()
+            self.camera_4.close()
+            self.directory.close()
+            self.data_view.close()
+            self.merge.close()
+            self.mail.close()
+            self.user.close()
+            self.open_exit_camera.close()
+            self.application_logs("Authentication page shown.....")
+            self.login.show()
+        except Exception as e:
+            self.alert.content(str(e))
+            self.alert.show()
+
+    def compute_duration(self,time_in: str, time_out: str):
+        from datetime import date,time
+        time_in = time_in.split(':')
+        seconds = str(time_in[2]).split(' ')[0]
+        time_in = time(hour=int(time_in[0]),minute=int(time_in[1]),second=int(seconds))
+        time_out =time_out.split(':')
+        seconds = str(time_out[2]).split(' ')[0]
+        time_out = time(int(time_out[0]),int(time_out[1]),int(seconds))
+        date_ = date(1,1,1)
+        duration=current.combine(date_,time_out)-current.combine(date_,time_in)
+        return str(duration)
+
+    def set_log_out_session(self):
+        date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
+        _date=current.now().date().strftime("%Y-%m-%d")
+        duration="\'{}\'".format("00:00:00")
+        reference = "\'{}\'".format(login_reference)
+        self.alert = AlertDialog()
+        try:
             db = sqlite3.connect(self.get_cache_path())
-            _cursor = db.cursor()
-            cursor=_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session_last_seen WHERE user_reference = "+(reference))
-            cursor= _cursor.fetchall()
+            my_cursor = db.cursor() 
+            my_cursor.execute(f"SELECT user_login,user_duration FROM tb_user_session WHERE user_reference={reference} AND user_date={date} AND user_duration={duration}") 
+            cursor=my_cursor.fetchall()
             db.commit()
+
+            details=[]
+            if cursor is not None:
+                for data in cursor:
+                    details.append(data)
+            time_out =current.now().time().strftime('%H:%M:%S %p')
+            new_time_out =current.now().time().strftime('%H:%M:%S %p')
+            _time_out =current.now().time().strftime('%H:%M:%S %p')
+            
+            new_duration = self.compute_duration(time_in=str(details[0][0]),time_out=time_out)
+            _duration = new_duration
+            new_duration="\'{}\'".format(new_duration)
+            new_time_out="\'{}\'".format(new_time_out)
+            if str(details[0][1]) == "00:00:00":
+                my_cursor.execute(f"UPDATE tb_user_session SET user_logout={new_time_out} , user_duration={new_duration} WHERE user_reference={reference} AND user_date={date} AND user_duration={duration}")
+                db.commit()
+                my_cursor.execute(f"DELETE FROM tb_user_session_last_seen WHERE user_reference={reference}")
+                db.commit()
+                my_cursor.execute("INSERT INTO tb_user_session_last_seen (user_reference,user_username,user_date,user_login,user_logout,user_duration) VALUES (?,?,?,?,?,?)",
+                (login_reference,login_username,_date,str(details[0][0]),_time_out,_duration))
+                db.commit()
+                my_cursor.close()
+                db.close()
+            pass
+        except Exception as e:
+            self.alert.content(str(e))
+            self.application_logs("Current login user logged out unsuccessfully")
+            self.application_logs("Current login user logged with unupdated session details")
+            self.application_logs(str(e))
+            self.alert.show()
+
+    def user_last_seen(self,reference:str):
+        db = sqlite3.connect(self.get_cache_path())
+        _cursor = db.cursor()
+        cursor=_cursor.execute(f"SELECT user_date,user_logout,user_duration FROM tb_user_session_last_seen WHERE user_reference ={reference}")
+        cursor= _cursor.fetchall()
+        db.commit()
         last_seen_info = []
         if cursor:
             for data in cursor:
@@ -930,6 +1012,10 @@ class MainWindow(QMainWindow):
 
     def set_session(self):
         self.ui.label_6.setText("session@"+login_username+" "+current.now().time().strftime("%I:%M:%S %p"))
+    
+    ############################## User Session methods  #############################
+    
+    ############################## User Account #############################
 
     def export_user_data(self):
         self.alert = AlertDialog()
@@ -1234,94 +1320,11 @@ class MainWindow(QMainWindow):
         )
         return credentials
     
+    ############################## User Account Registration END #############################
+
+
+    ############################## Batch Insert Data #############################
     
-    def logout(self):
-        self.alert = AlertDialog()
-        try:
-            self.set_log_out_session()
-            self.close()
-            update_information_file()
-            self.config.close()
-            self.database.close()
-            self.camera_1.close()
-            self.camera_2.close()
-            self.camera_3.close()
-            self.camera_4.close()
-            self.directory.close()
-            self.data_view.close()
-            self.merge.close()
-            self.mail.close()
-            self.user.close()
-            self.open_exit_camera.close()
-            self.application_logs("Authentication page shown.....")
-            self.login.show()
-        except Exception as e:
-            self.alert.content(str(e))
-            self.alert.show()
-
-    def compute_duration(self,time_in: str, time_out: str):
-        from datetime import date,time
-        time_in = time_in.split(':')
-        seconds = str(time_in[2]).split(' ')[0]
-        time_in = time(hour=int(time_in[0]),minute=int(time_in[1]),second=int(seconds))
-        time_out =time_out.split(':')
-        seconds = str(time_out[2]).split(' ')[0]
-        time_out = time(int(time_out[0]),int(time_out[1]),int(seconds))
-        date_ = date(1,1,1)
-        duration=current.combine(date_,time_out)-current.combine(date_,time_in)
-        return str(duration)
-
-    def set_log_out_session(self):
-        date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
-        _date=current.now().date().strftime("%Y-%m-%d")
-        duration="\'{}\'".format("00:00:00")
-        reference = "\'{}\'".format(login_reference)
-        self.alert = AlertDialog()
-        try:
-            check_state = self.database.check_state()
-            (db,my_cursor,connection_status) = self.database.my_cursor()
-            if check_state == True:
-                my_cursor.execute("SELECT user_login,user_duration FROM tb_user_session WHERE user_reference="+reference+" AND user_date="+date+" AND user_duration="+duration)
-                cursor=my_cursor.fetchall()
-                db.commit()
-            else:
-                db = sqlite3.connect(self.get_cache_path())
-                my_cursor = db.cursor() 
-                my_cursor.execute("SELECT user_login,user_duration FROM tb_user_session WHERE user_reference="+reference+" AND user_date="+date+" AND user_duration="+duration) 
-                cursor=my_cursor.fetchall()
-                db.commit()
-
-            details=[]
-            if cursor is not None:
-                for data in cursor:
-                    details.append(data)
-            time_out =current.now().time().strftime('%H:%M:%S %p')
-            new_time_out =current.now().time().strftime('%H:%M:%S %p')
-            _time_out =current.now().time().strftime('%H:%M:%S %p')
-            
-            new_duration = self.compute_duration(time_in=str(details[0][0]),time_out=time_out)
-            _duration = new_duration
-            new_duration="\'{}\'".format(new_duration)
-            new_time_out="\'{}\'".format(new_time_out)
-            if str(details[0][1]) == "00:00:00":
-                my_cursor.execute("UPDATE tb_user_session SET user_logout="+new_time_out+", user_duration="+new_duration+" WHERE user_reference="+reference+" AND user_date="+date+" AND user_duration="+duration)
-                db.commit()
-                my_cursor.execute("DELETE FROM tb_user_session_last_seen WHERE user_reference="+reference)
-                db.commit()
-                my_cursor.execute("INSERT INTO tb_user_session_last_seen (user_reference,user_username,user_date,user_login,user_logout,user_duration) VALUES (?,?,?,?,?,?)",
-                (login_reference,login_username,_date,str(details[0][0]),_time_out,_duration))
-                db.commit()
-                my_cursor.close()
-                db.close()
-            pass
-        except Exception as e:
-            self.alert.content(str(e))
-            self.application_logs("Current login user logged out unsuccessfully")
-            self.application_logs("Current login user logged with unupdated session details")
-            self.application_logs(str(e))
-            self.alert.show()
-
-
     def send_code_thread(self):
         student_data_path = self.ui.batch_browse.text()
         self.alert = AlertDialog()
@@ -1560,6 +1563,7 @@ class MainWindow(QMainWindow):
                 self.alert.content(str("Oops! invalid file format\n"+str(e)))
                 self.alert.show()
 
+    ############################## Batch Insert Data END #############################
 
     def clear_camera_comboBoxes(self):
         self.ui.comboBox.clear()
@@ -1609,6 +1613,8 @@ class MainWindow(QMainWindow):
         self.alert.content(content)
         self.alert.show()
 
+    
+    ############################## Reporting Page Local #######################
 
     def refresh_report_page(self):
         self.ui.chart_title.clear()
@@ -1949,6 +1955,10 @@ class MainWindow(QMainWindow):
             self.ui.btn_load.setText('Load')
             self.ui.btn_load.setIcon(QIcon(u":/icons/asset/download.svg"))
 
+    ############################## Reporting Page Local END #######################
+
+    ##################seach page####################################################
+
     def export_data_to_csv(self):
         self.alert = AlertDialog()
         table=self.ui.tableWidget.item(0,0)
@@ -2034,10 +2044,10 @@ class MainWindow(QMainWindow):
     def fetch_details_for_card_view(self):
         try:
             student_reference=self.value_formater(self.ui.search_box.text())
-            results=self.query_cache_data_list("SELECT * FROM tb_attendance WHERE student_reference="+student_reference)
+            results=self.query_cache_data_list(f"SELECT * FROM tb_attendance WHERE student_reference={student_reference}")
             self.ui_table(results)
             if self.ui.search_box.text():
-                db_data=self.fetch_data_from_db(self.ui.search_box.text())
+                db_data=self.query_cache_database(f"SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference={student_reference}") 
                 if len(db_data) > 0:
                     start_date = (str(db_data[8])).split(' ')
                     student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))    
@@ -2178,7 +2188,9 @@ class MainWindow(QMainWindow):
         self.ui.db_image_data.setScaledContents(False)
         self.ui.db_start_date.setText("")
         self.ui.db_end_date.setText("")
-        
+
+    ##########################################################################################
+
     def start_report_date(self):
         date_ = self.ui.report_date.date().toPython()
         self.ui.report_start_date.setText(str(date_))
@@ -2186,7 +2198,9 @@ class MainWindow(QMainWindow):
     def stop_report_date(self):
         date_ = self.ui.report_date_2.date().toPython()
         self.ui.report_end_date.setText(str(date_))
-  
+
+
+    #############################################Registration################################
     def get_registration_start_date(self):
         date = self.ui.calendarWidget_reg.selectedDate()
         if self.ui.change_date_box.isChecked():
@@ -2199,7 +2213,6 @@ class MainWindow(QMainWindow):
             start_date = start_date.split('-')
             issued_date_transformed = datetime.date(int(start_date[0]),int(start_date[1]),int(start_date[2])).strftime("%b %Y")
             self.ui.reg_start_date.setText(issued_date_transformed)
-    
 
     def get_email_details(self):
         from_ = self.ui.email_from.text()
@@ -2600,6 +2613,30 @@ class MainWindow(QMainWindow):
         except Exception as e:
             self.alert_builder("Oops! check your image url!")       
 
+    ############################################# Registration End ################################
+        
+    def load_image_from_db(self,query,label):
+        db = sqlite3.connect(self.get_cache_path())
+        my_cursor = db.cursor()
+        cursor=my_cursor.execute(query)
+        cursor= my_cursor.fetchone()
+        db.commit()
+        my_cursor.close()
+        image_data = []
+        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\database_image.jpg'
+        if cursor:
+            for data in cursor:
+                image_data.append(data)
+            if len(image_data)>0:
+                with open(root_path,'wb') as image_file:
+                        image_file.write(image_data[1])
+            label.setPixmap(QPixmap.fromImage(root_path))
+            label.setScaledContents(True)
+        else:
+            label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
+            label.setScaledContents(True)        
+
+    ############################## Home page ######################################### 
     def loadUi_file(self):
         self.ui.firstname.setText("Firstname")
         self.ui.othername.setText("Othername")
@@ -2621,19 +2658,12 @@ class MainWindow(QMainWindow):
         self.ui.label_notification.setText("Notification")
 
     def last_seen(self,reference:str):  
-        (db,my_cursor,connection_status) = self.database.my_cursor()
-        check_state=self.database.check_state()
         student_reference=self.value_formater(reference)
-        if check_state == True:
-            cursor=my_cursor.execute("SELECT user_date,user_logout,user_duration FROM tb_user_session WHERE user_reference = "+student_reference)
-            cursor= my_cursor.fetchall()
-            db.commit()       
-        else:
-            db = sqlite3.connect(self.get_cache_path())
-            _cursor = db.cursor()
-            cursor=_cursor.execute("SELECT date_stamp,time_out,duration FROM tb_attendance_last_seen WHERE student_reference = "+student_reference)
-            cursor= _cursor.fetchall()
-            db.commit()
+        db = sqlite3.connect(self.get_cache_path())
+        _cursor = db.cursor()
+        cursor=_cursor.execute(f"SELECT date_stamp,time_out,duration FROM tb_attendance_last_seen WHERE student_reference ={student_reference}")
+        cursor= _cursor.fetchall()
+        db.commit()
         last_seen_info = []
         if cursor:
             for data in cursor:
@@ -2676,28 +2706,7 @@ class MainWindow(QMainWindow):
                 return db_data
         except Exception as e:
             self.alert_builder(str(e)) 
-        
-    def load_image_from_db(self,query,label):
-        db = sqlite3.connect(self.get_cache_path())
-        my_cursor = db.cursor()
-        cursor=my_cursor.execute(query)
-        cursor= my_cursor.fetchone()
-        db.commit()
-        my_cursor.close()
-        image_data = []
-        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\database_image.jpg'
-        if cursor:
-            for data in cursor:
-                image_data.append(data)
-            if len(image_data)>0:
-                with open(root_path,'wb') as image_file:
-                        image_file.write(image_data[1])
-            label.setPixmap(QPixmap.fromImage(root_path))
-            label.setScaledContents(True)
-        else:
-            label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
-            label.setScaledContents(True)        
-                
+         
     #improvements to be done or change code here      
     def fetch_data_from_db(self,reference):
         data_json = json.loads(reference)
@@ -2730,6 +2739,7 @@ class MainWindow(QMainWindow):
                         self.update_interface(self.read_student_information_json())
                         self.last_seen(data_json['reference'])
                         print('Data from server>>>>>>>>>>')
+                        # self.insert_into_cache_db(db_data)
         except Exception as e:
             self.alert_builder(str(e))   
    
@@ -2766,6 +2776,9 @@ class MainWindow(QMainWindow):
             self.ui.faculty.setText(str(db_data[13]))
             self.ui.program.setText(str(db_data[14]))
             self.ui.type.setText(str(db_data[15]))
+        else:
+            self.loadUi_file()
+            self.show_info("Oops! student not found. Please register!") 
 
     def retreive_student_details(self,data):
         data_json = json.loads(data)
@@ -2810,7 +2823,6 @@ class MainWindow(QMainWindow):
                 else:
                     self.loadUi_file()
                     self.show_info("Oops! student not found. Please register!")                
-
 
     def read_student_information_json(self):
         with open('C:\\ProgramData\\iAttend\\data\\student\\information.json','r') as content:
@@ -2865,7 +2877,6 @@ class MainWindow(QMainWindow):
             else:
                 self.data.start()
            
-
     def attendance_data(self):
         attendance = Attendance(
             self.ui.reference.text(),
@@ -2966,8 +2977,7 @@ class MainWindow(QMainWindow):
             if update['firstname'] != 'firstname':
                 self.update_interface(self.read_student_information_json())
                 self.last_seen(data_json['reference'])
-                # self.mark_attendance_db()
-
+            
     def update_frame(self):
         thickness = 2
         rect_thickness = 1
@@ -3007,12 +3017,8 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-            check_state = self.database.check_state()
-            if check_state == True:
-                self.ui.label_notification.setText("Oops! no database configured...")
-                winsound.Beep(1000,100)
-            else:
                 self.fetch_data_from_db(qr_code_data)
+                self.mark_attendance_db()
                 # self.retreive_student_details(qr_code_data)
                 # self.retrieve_information(qr_code_data)
         self.display_feed(self.result,1)         
