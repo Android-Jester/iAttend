@@ -83,7 +83,7 @@ class ExitCameraFeed(QDialog):
     def query_cache_database(self,qr_code_data):
         db = sqlite3.connect(self.get_cache_path())
         my_cursor = db.cursor()
-        my_cursor.execute("SELECT generated_id,student_reference FROM tb_students WHERE student_reference= " +self.value_formater(qr_code_data))
+        my_cursor.execute(f"SELECT generated_id,student_reference FROM tb_students WHERE student_reference={self.value_formater(qr_code_data)}")
         cursor= my_cursor.fetchone()
         db.commit()
         results = []
@@ -91,7 +91,7 @@ class ExitCameraFeed(QDialog):
         if cursor is not None:
             for data in cursor:
                 results.append(data)
-            cursor=my_cursor.execute("SELECT time_in,duration FROM tb_attendance_temp WHERE student_reference="+self.value_formater(results[1])+" and date_stamp="+date)
+            cursor=my_cursor.execute(f"SELECT time_in,duration FROM tb_attendance_temp WHERE student_reference={self.value_formater(results[1])} AND date_stamp={date}")
             cursor=my_cursor.fetchall()
             db.commit()
             details = []
@@ -131,15 +131,11 @@ class ExitCameraFeed(QDialog):
              return "Oops! student details not found."
 
     def log_student_out(self,qr_code_data:str):
-        if self.database.check_state():
-            winsound.Beep(1000,100)
-            return 'Oops! no database configured...'
-        else:
-            return self.query_cache_database(qr_code_data)
+        return self.query_cache_database(qr_code_data)
 
     def connect_to_camera(self):
         if self.ui_exit_camera.exit_comboBox.currentText():
-            self.show_info("Connecting to selected device\nthis may take some few seconds...")
+            self.show_info("Connecting to selected device this may\ntake some few seconds...")
         pass
     
     def show_info(self, content:str):
