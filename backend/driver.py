@@ -248,36 +248,7 @@ class MainWindow(QMainWindow):
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
-    def show_pages_based_role(self):
-        if account_role == analyst:
-            self.ui.stackedWidget.setCurrentWidget(self.ui.merge_report)
-            self.ui.btn_camera.hide()
-            self.ui.btn_admin.hide()
-            self.ui.btn_home.hide()
-            self.ui.btn_search.hide()
-            self.ui.btn_database.hide()
-            self.ui.btn_report.hide()
-            self.ui.btn_batch.hide()
-            self.ui.btn_sink_data.hide()
-            self.ui.btn_consolidation_report.hide()
-        elif account_role == user:
-            self.ui.frame.setMinimumHeight(580)
-            self.ui.frame.setMaximumHeight(580)
-            self.ui.btn_admin.hide()
-            self.ui.btn_consolidation_report.hide()
-        
-    def application_logs(self,message):
-        time =current.now().time().strftime('%I:%M:%S %p')
-        date=current.now().date().strftime('%a %b %d %Y')
-        filename=current.now().date().strftime('%a_%b_%d_%Y')
-        path =Path(f'C:\\ProgramData\\iAttend\\data\\application_logs\\{filename}.txt')
-        path.touch(exist_ok=True)
-        file = open(path)
-        if os.path.exists(path):
-            with open(path,'a+') as file:
-                file.writelines(f'\n[{date}] [{time}]: {message}')
-            file.close()
-
+    
     ############################## Central Reporting #############################
     def change_merge_load_text(self):
         table_name=self.merge.get_table_name()
@@ -763,6 +734,39 @@ class MainWindow(QMainWindow):
             file.close()
             return category_list
         
+    def load_colleges(self):
+        program = get_dept(self.resource_path('structure.json'),self.ui.reg_college.currentText(),self.ui.reg_faculty.currentText())
+        self.ui.reg_programs.clear()
+        self.ui.reg_programs.addItems(program)
+        self.ui.reg_college.activated.connect(self.load_college_faculties)
+
+    def load_college_faculties(self):
+        faculties=load_faculties(self.resource_path('structure.json'),self.ui.reg_college.currentText())
+        self.ui.reg_faculty.clear()
+        self.ui.reg_faculty.addItems(faculties)
+        program = get_dept(self.resource_path('structure.json'),self.ui.reg_college.currentText(),self.ui.reg_faculty.currentText())
+        self.ui.reg_programs.clear()
+        self.ui.reg_programs.addItems(program)
+
+
+    ############################## Helper methods #############################
+   
+    def application_logs(self,message):
+        time =current.now().time().strftime('%I:%M:%S %p')
+        date=current.now().date().strftime('%a %b %d %Y')
+        filename=current.now().date().strftime('%a_%b_%d_%Y')
+        path =Path(f'C:\\ProgramData\\iAttend\\data\\application_logs\\{filename}.txt')
+        path.touch(exist_ok=True)
+        file = open(path)
+        if os.path.exists(path):
+            with open(path,'a+') as file:
+                file.writelines(f'\n[{date}] [{time}]: {message}')
+            file.close()
+
+    def resource_path(self,relative_path):
+        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
+        return path
+    
     def set_curent_dates(self):
         self.now = current.now().date()
         curent_date=QDate(self.now.year,self.now.month,self.now.day)
@@ -786,24 +790,6 @@ class MainWindow(QMainWindow):
     def value_formater(self,value):
         return "\'{}\'".format(value)
 
-    def load_colleges(self):
-        program = get_dept(self.resource_path('structure.json'),self.ui.reg_college.currentText(),self.ui.reg_faculty.currentText())
-        self.ui.reg_programs.clear()
-        self.ui.reg_programs.addItems(program)
-        self.ui.reg_college.activated.connect(self.load_college_faculties)
-
-    def load_college_faculties(self):
-        faculties=load_faculties(self.resource_path('structure.json'),self.ui.reg_college.currentText())
-        self.ui.reg_faculty.clear()
-        self.ui.reg_faculty.addItems(faculties)
-        program = get_dept(self.resource_path('structure.json'),self.ui.reg_college.currentText(),self.ui.reg_faculty.currentText())
-        self.ui.reg_programs.clear()
-        self.ui.reg_programs.addItems(program)
-        
-    def resource_path(self,relative_path):
-        path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
-        return path
-    
     def get_cache_path(self):
         return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
 
@@ -835,9 +821,29 @@ class MainWindow(QMainWindow):
         if account_role == admin:
             self.config.show()
 
+    ############################## Helper methods END  #############################
+
 
     ############################## User Session methods  #############################
-    
+
+    def show_pages_based_role(self):
+        if account_role == analyst:
+            self.ui.stackedWidget.setCurrentWidget(self.ui.merge_report)
+            self.ui.btn_camera.hide()
+            self.ui.btn_admin.hide()
+            self.ui.btn_home.hide()
+            self.ui.btn_search.hide()
+            self.ui.btn_database.hide()
+            self.ui.btn_report.hide()
+            self.ui.btn_batch.hide()
+            self.ui.btn_sink_data.hide()
+            self.ui.btn_consolidation_report.hide()
+        elif account_role == user:
+            self.ui.frame.setMinimumHeight(580)
+            self.ui.frame.setMaximumHeight(580)
+            self.ui.btn_admin.hide()
+            self.ui.btn_consolidation_report.hide()
+        
     def application_exit(self):
         self.close()
         self.set_log_out_session()
