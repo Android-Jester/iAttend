@@ -2883,34 +2883,29 @@ class MainWindow(QMainWindow):
         return attendance
 
     def mark_attendance_db(self):
-        (db,my_cursor,connection_status) = self.database.my_cursor()
         cache_db = sqlite3.connect(self.get_cache_path())
         cursor = cache_db.cursor()
         attendance=self.attendance_data()
-        check_state = self.database.check_state()
         details = []
         date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
         student_reference=self.value_formater(self.ui.reference.text())
         if self.ui.reference.text() != "Reference" and self.ui.reference.text() !="" :
-            data=cursor.execute("SELECT student_reference,date_stamp FROM tb_attendance_temp WHERE student_reference="+student_reference+" and date_stamp="+date)
+            data=cursor.execute(f"SELECT student_reference,date_stamp FROM tb_attendance_temp WHERE student_reference={student_reference} AND date_stamp={date}")
             data=cursor.fetchone()
             if data:
                 for item in data:
                     details.append(item)
-                db.commit()
+                cache_db.commit()
             if not details:
-                if check_state==True:
-                    self.ui.label_notification.setText("Oops! no database configured...")
-                else: 
-                    cursor.execute("INSERT INTO tb_attendance_temp(student_reference,student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
-                    (attendance.student_reference,attendance.student_college,attendance.student_faculty,attendance.student_program,attendance.student_category,attendance.student_nationality,attendance.student_gender,attendance.student_disability,attendance.date_stamp,attendance.time_in,attendance.time_out,attendance.duration))
-                    cache_db.commit()
+                cursor.execute("INSERT INTO tb_attendance_temp(student_reference,student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                (attendance.student_reference,attendance.student_college,attendance.student_faculty,attendance.student_program,attendance.student_category,attendance.student_nationality,attendance.student_gender,attendance.student_disability,attendance.date_stamp,attendance.time_in,attendance.time_out,attendance.duration))
+                cache_db.commit()
             elif details:
                 winsound.Beep(1000,100)
                 self.show_info("Attendance taken, you can proceed!\nNext person please...")
             else:
                  self.show_info("Oops! something went wrong...")
-        db.close()
+        cache_db.close()
 
     def connect_to_camera(self):
         if self.ui.comboBox.currentText():
