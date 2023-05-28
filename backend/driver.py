@@ -94,6 +94,7 @@ class MainWindow(QMainWindow):
         self.data_view = DataView()
         self.application_icon(self.data_view,'Values')
         self.ui.btn_generated_data.clicked.connect(lambda: self.data_view.show())
+        self.ui.btn_generated_data_local.clicked.connect(lambda: self.data_view.show())
         
         self.user = User()
         self.application_icon(self.user,'Profile')
@@ -246,14 +247,18 @@ class MainWindow(QMainWindow):
         if self.ui.merge_pie_chart.isChecked():
             self.merge_piechart_generate()
             self.ui.btn_merge_load.setText('Load')
+            self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         elif self.ui.merge_bar_chart.isChecked():
             self.merge_barchart_generate()
             self.ui.btn_merge_load.setText('Load')
+            self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         elif self.ui.merge_line_graph.isChecked():
             print("Line graph generation......")
             self.ui.btn_merge_load.setText('Load')
+            self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         else:
             self.ui.btn_merge_load.setText('Load')
+            self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
 
     def get_merge_plot_properties(self,hearder:str):
         title = f"{hearder} {self.ui.merge_query_parameter.currentText()}"
@@ -1676,9 +1681,11 @@ class MainWindow(QMainWindow):
         report_departments=self.date_formater(self.ui.report_departments.currentText())
         report_college=self.date_formater(self.ui.report_colleges.currentText())
         query_value = self.ui.query_parameter.currentText()
+        dates = sorted(self.get_dates_for_line_plot())
         if query_value == "Faculty":
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_faculties,'Faculty'))
             if len(data)>=1:
+                self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
                 x_label=f"Total records: {self.calculate_records_total(data[1])}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
@@ -1728,12 +1735,15 @@ class MainWindow(QMainWindow):
         if self.ui.pie_chart.isChecked():
             self.report_piechart()
             self.ui.btn_load.setText('Load')
+            self.ui.btn_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         elif self.ui.bar_chart.isChecked():
             self.barchart_plots()
             self.ui.btn_load.setText('Load')
+            self.ui.btn_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         elif self.ui.line_graph.isChecked():
             self.line_plot()
             self.ui.btn_load.setText('Load')
+            self.ui.btn_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         else:
             self.ui.btn_load.setText('Load')
             self.ui.btn_load.setIcon(QIcon(u":/icons/asset/download.svg"))
