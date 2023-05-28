@@ -2672,12 +2672,18 @@ class Splash_screen(QMainWindow):
                 file.writelines(f'\n[{date}] [{time}]: {message}')
             file.close()
 
+    def create_sub_folders(self,directory: str,folder: tuple):   
+        for item in folder:
+            path = os.path.join(directory,item)
+            if not os.path.exists(path):
+                os.mkdir(path)
+
     def create_program_directory(self):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','properties','qr_code',
         'email_details','reports','exports','cache',
         'images','partition','application_logs','student',
-        'httpErrors','user','student_images')
+        'httpErrors','user')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
@@ -2692,32 +2698,21 @@ class Splash_screen(QMainWindow):
         self.create_files()
 
         cache_dir = 'C:\\ProgramData\\iAttend\\data\\cache'
-        cache = ('database','logs','images')    
-        for item in cache:
-            path = os.path.join(cache_dir,item)
-            if not os.path.exists(path):
-                os.mkdir(path)
+        cache_sub_dirs = ('database','logs','images')    
+        self.create_sub_folders(cache_dir,cache_sub_dirs)
 
         report_dir = 'C:\\ProgramData\\iAttend\\data\\reports'
-        report = ('piechart','barchart','linegraph','visualize')    
-        for item in report:
-            path = os.path.join(report_dir,item)
-            if not os.path.exists(path):
-                os.mkdir(path)
+        report_sub_dirs = ('piechart','barchart','linegraph','visualize') 
+        self.create_sub_folders(report_dir,cache_sub_dirs)
+   
 
-        report_dir = 'C:\\ProgramData\\iAttend\\data\\cache\\images'
-        report = ('students','administrators')    
-        for item in report:
-            path = os.path.join(report_dir,item)
-            if not os.path.exists(path):
-                os.mkdir(path)
+        cache_images_dir = 'C:\\ProgramData\\iAttend\\data\\cache\\images'
+        images_sub_dirs = ('students','administrators')    
+        self.create_sub_folders(cache_images_dir,images_sub_dirs)
         
         export_dir = 'C:\\ProgramData\\iAttend\\data\\exports'
-        export = ('csv','json')
-        for item in export:
-            path = os.path.join(export_dir,item)
-            if not os.path.exists(path):
-                os.mkdir(path)
+        export_sub_dir = ('csv','json')
+        self.create_sub_folders(export_dir,export_sub_dir)
 
     def resource_path(self,relative_path):
         path= os.path.abspath(os.path.join(os.path.dirname(__file__),relative_path)) 
