@@ -1,4 +1,3 @@
-
 import time
 import requests
 from time import strptime
@@ -7,10 +6,11 @@ from mail.thread import *
 from packages.date import *
 from mail.user_mail import *
 from packages.hasher import *
-from database.database import  *
 from packages.pyqt import *
 from packages.globals import *
+from utils.structure import load_data
 from reset.ui_password import Ui_Forgot
+from packages.connection import  sqlite3
 
 class ForgotPassword(QDialog):
     def __init__(self):
@@ -25,7 +25,6 @@ class ForgotPassword(QDialog):
         self.setWindowModality(Qt.ApplicationModal)
         self.ui_reset.frame.mouseMoveEvent = self.MoveWindow
 
-        self.database = Database()
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
