@@ -1667,6 +1667,7 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! your data is not enough to\ngenerate charts..")
                 self.alert.show()
     
+    ######## Refactor #########
     def line_plot(self):
         colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
         colors=colors[:1]
@@ -1683,8 +1684,9 @@ class MainWindow(QMainWindow):
         query_value = self.ui.query_parameter.currentText()
         dates = sorted(self.get_dates_for_line_plot())
         if query_value == "Faculty":
-            data=self.get_actual_plot_values(self.line_plot_values(query_param,report_faculties,'Faculty'))
+            data=self.line_plot_values(query_param,report_faculties,'Faculty')
             if len(data)>=1:
+                print(data)
                 self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
                 x_label=f"Total records: {self.calculate_records_total(data[1])}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
@@ -1696,6 +1698,8 @@ class MainWindow(QMainWindow):
         elif query_value == "Department":
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,'Department'))
             if len(data)>=1:
+                print(data)
+                self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
                 x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
@@ -2152,57 +2156,47 @@ class MainWindow(QMainWindow):
             self.ui.last_out.setText("Oops! first timer")
             self.ui.last_in.setText("00:00:00") 
 
-    def insert_into_cache_db(self,data: list):
+    def insert_into_cache_db(self,data: json):
         db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
-        student_reference=self.value_formater(data[1])
+        student_reference=self.value_formater(data['reference'])
         db_cache=self.query_cache_database("SELECT * FROM tb_students WHERE student_reference="+student_reference)
         if not db_cache:
+            validity = str(data['validity']).split('-')
             cursor.execute("INSERT INTO tb_students(student_reference,student_index,student_firstname,student_lastname,student_nationality,student_gender,student_disability,card_issued_date,card_expiry_date) VALUES (?,?,?,?,?,?,?,?,?)",
-            (data[1],data[2],data[3],data[4],data[5],data[6],data[7],data[8],data[9]))   
+            (data['reference'],data['index'],str(data['firstname']+' '+data['othername']),data['lastname'],data['nationality'],data['gender'],data['disabled'],validity[0],validity[1]))   
             db.commit()
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
-            (data[11],data[12],data[13],data[14],data[15]))   
+            (data['reference'],data['college'],data['faculty'],data['department'],data['type']))   
             db.commit()       
          
     #improvements to be done or change code here      
     def fetch_data_from_db(self,reference):
-        self.show_alert = AlertDialog()
-        try:
-            data_json = json.loads(reference)
-            student_reference=self.value_formater(data_json['reference'])
-            db_cache=self.query_cache_database("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
-            if len(db_cache) > 0:
-                self.server_logs('[CACHED]',db_cache[:2])
-                self.update_interface_cache(db_cache)
-                self.last_seen(data_json['reference'])
-                self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
-                print('Data from cache>>>>>>>>>>')
+        data_json = json.loads(reference)
+        student_reference=self.value_formater(data_json['reference'])
+        db_cache=self.query_cache_database("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
+        if len(db_cache) > 0:
+            self.server_logs('[CACHED]',db_cache[:2])
+            self.update_interface_cache(db_cache)
+            self.last_seen(data_json['reference'])
+            self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
+        else:
+            path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
+            with open(path,'r') as content:
+                results = json.load(content)
+            content.close()
+            if  results['reference'] != self.ui.reference.text():
+                self.retreive_student_details_api_thread(reference)
+                self.show_info("Waiting for response from server...") 
             else:
-                path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
-                with open(path,'r') as content:
-                    results = json.load(content)
-                content.close()
-                if  results['reference'] != self.ui.reference.text():
-                    self.retreive_student_details_api_thread(reference)
-                    winsound.Beep(1000,100)
-                    self.show_info("Waiting for response from server...") 
-                    print(results['reference'],self.ui.reference.text())
-                else:
-                    print(results['reference'],self.ui.reference.text())
-                    print('Equal')
-                    self.show_info("Response from server updated on interface...") 
-
-                with open(path,'r') as content:
-                    update = json.load(content)
-                    if update['firstname'] != 'firstname':
-                        self.update_interface(self.read_student_information_json())
-                        self.last_seen(data_json['reference'])
-                        print('Data from server>>>>>>>>>>')
-                        # self.insert_into_cache_db(db_data)
-        except Exception as e:
-            self.show_alert.content(str(e)) 
-            self.show_alert.show()  
+                pass 
+            with open(path,'r') as content:
+                update = json.load(content)
+                if update['firstname'] != 'firstname':
+                    self.update_interface(self.read_student_information_json())
+                    self.last_seen(data_json['reference'])
+                    self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
+                    self.insert_into_cache_db(self.read_student_information_json())
    
     def update_interface_cache(self, db_data):
         if db_data:
@@ -2435,7 +2429,6 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
                 self.fetch_data_from_db(qr_code_data)
                 self.mark_attendance_db()
-                # self.retrieve_information(qr_code_data)
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
@@ -2958,7 +2951,6 @@ class Splash_screen(QMainWindow):
         cursor = db.cursor()
         cursor.execute(create_tb_students_sqlite())
         cursor.execute(create_tb_attendance_sqlite())
-        cursor.execute(create_tb_images_sqlite())
         cursor.execute(create_tb_cameras_sqlite())
         cursor.execute(create_tb_user_sessions_sqlite())
         cursor.execute(create_tb_attendance_temp_sqlite())
