@@ -69,27 +69,34 @@ class MainWindow(QMainWindow):
         self.show_pages_based_role()
         #########################################################################################
         self.config = Configuration()
-
+        self.application_icon(self.config,'Configuration')
+        
         self.open_exit_camera = ExitCameraFeed()
+        self.application_icon(self.open_exit_camera,'Logout camera')
         self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
     
         self.restapi = RESTAPI()
+        self.application_icon(self.restapi,'API')
         self.ui.btn_open_database.clicked.connect(lambda: self.restapi.show())
 
         self.settings = Settings()
+        self.application_icon(self.settings,'Settings')
         self.ui.btn_settings.clicked.connect(lambda: self.settings.show())
 
         self.merge = CentralDatabase()
         self.ui.btn_merge_connection.clicked.connect(lambda: self.merge.show())
+        self.application_icon(self.merge,'Consolidation')
 
         self.mail = Mail()
+        self.application_icon(self.mail,'Mail')
         self.ui.btn_mail_report_or_data.clicked.connect(lambda: self.mail.show())
 
-
         self.data_view = DataView()
+        self.application_icon(self.data_view,'Values')
         self.ui.btn_generated_data.clicked.connect(lambda: self.data_view.show())
         
         self.user = User()
+        self.application_icon(self.user,'Profile')
         self.ui.btn_login_user.clicked.connect(lambda: self.user.show())
         details=self.user_last_seen(login_reference)
 
@@ -105,21 +112,27 @@ class MainWindow(QMainWindow):
             details[1],
             login_reference)
         self.set_session()
-        self.load_user_profile(login_reference)
         self.user.profileImage(f'C:\\ProgramData\\iAttend\\data\\cache\\images\\administrators\\{login_reference}.png',self.resource_path('image.jpg'))
         self.insert_thread()
         
         self.camera_4 = Camera_Four()
+        self.application_icon(self.camera_4,'Camera 4')
         self.ui.btn_camera.clicked.connect(lambda: self.camera_4.show())
+
         self.camera_3 = Camera_Three()
+        self.application_icon(self.camera_3,'Camera 3')
         self.ui.btn_camera.clicked.connect(lambda: self.camera_3.show())
+
         self.camera_2 = Camera_Two()
+        self.application_icon(self.camera_2,'Camera 2')
         self.ui.btn_camera.clicked.connect(lambda: self.camera_2.show())
+
         self.camera_1 = Camera_One()
         self.ui.btn_camera.clicked.connect(lambda: self.camera_1.show())
         self.ui.btn_camera.clicked.connect(self.camera_config)
 
         self.login = Authentication()
+        self.application_icon(self.camera_1,'Camera 1')
         self.ui.btn_logout.clicked.connect(self.logout)
         ############################################################################################
 
@@ -141,9 +154,6 @@ class MainWindow(QMainWindow):
         self.ui.btn_json.clicked.connect(self.export_data_to_json)
         ##############################################################################################
 
-        ##############################################################################################
-        
-        ##############################################################################################
 
         ###############################################################################################
         self.ui.brigthness.valueChanged.connect(self.update_brigthness)
@@ -219,7 +229,11 @@ class MainWindow(QMainWindow):
         # ,QDateTime,QDate,QTime
         ##################################################################################################
 
-    
+    def application_icon(self,widget,title):
+        self.icon =QIcon(self.resource_path('icon.ico'))
+        widget.setWindowIcon(self.icon)
+        widget.setWindowTitle(title)
+         
     ############################## Central Reporting #############################
     def change_merge_load_text(self):
         table_name=self.merge.get_table_name()
@@ -924,10 +938,6 @@ class MainWindow(QMainWindow):
             str(current.now().time().strftime("%H:%M:%S %p")),
             "00:00:00")
         return session
- 
-    ####################### Must implement this ###################
-    def load_user_profile(self,reference):
-        pass
 
     def visits_count(self):
         results=self.query_cache_data_list("select count(user_reference) from tb_user_session where user_reference="+login_reference+" and user_duration NOT LIKE '%00:00:00%'")
@@ -2511,6 +2521,9 @@ class Authentication(QMainWindow):
         self.ui_login.avater.setDisabled(True)
         self.ui_login.btn_login.clicked.connect(self.login)
         self.retrieve = ForgotPassword()
+        self.icon =QIcon(window.resource_path('icon.ico'))
+        self.retrieve.setWindowIcon(icon)
+        self.retrieve.setWindowTitle('Reset')
         self.ui_login.btn_forgot_pass.clicked.connect(lambda: self.retrieve.show())
         self.ui_login.btn_login.pressed.connect(self.change_text)
         self.user()                 
@@ -2653,8 +2666,10 @@ class Splash_screen(QMainWindow):
         if counter > 100:
             self.timer.stop()
             self.application_logs("Application bootstrapping process completed")
-            # self.main = MainWindow()
             self.main = Authentication()
+            self.icon =QIcon(self.resource_path('icon.ico'))
+            self.main.setWindowIcon(self.icon)
+            self.main.setWindowTitle('Login')
             self.application_logs("Application boostrapped to authentication page")
             self.main.show()
             self.close()
@@ -2989,6 +3004,9 @@ if __name__ == '__main__':
     try:
         application = QApplication(sys.argv)
         window = Splash_screen()
+        icon =QIcon(window.resource_path('icon.ico'))
+        window.setWindowIcon(icon)
+        window.setWindowTitle('Preloader')
         window.application_logs("Application bootstrapping process in progress")  
         sys.exit(application.exec_())
     except Exception as e:
