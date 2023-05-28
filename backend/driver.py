@@ -6,7 +6,6 @@
 ##
 ################################################################################
 
-
 from packages.root import *
 from packages.date import *
 from packages.misc import *
@@ -107,7 +106,7 @@ class MainWindow(QMainWindow):
             login_reference)
         self.set_session()
         self.load_user_profile(login_reference)
-        self.user.load_image_from_storage(login_reference,'administrators',self.resource_path('image.jpg'))
+        self.user.profileImage(f'C:\\ProgramData\\iAttend\\data\\cache\\images\\administrators\\{login_reference}.png',self.resource_path('image.jpg'))
         self.insert_thread()
         
         self.camera_4 = Camera_Four()
@@ -2090,27 +2089,6 @@ class MainWindow(QMainWindow):
  
     ############################################# Registration End ################################
         
-    def load_image_from_db(self,query,label):
-        db = sqlite3.connect(self.get_cache_path())
-        my_cursor = db.cursor()
-        cursor=my_cursor.execute(query)
-        cursor= my_cursor.fetchone()
-        db.commit()
-        my_cursor.close()
-        image_data = []
-        root_path = 'C:\\ProgramData\\iAttend\\data\\images\\database_image.jpg'
-        if cursor:
-            for data in cursor:
-                image_data.append(data)
-            if len(image_data)>0:
-                with open(root_path,'wb') as image_file:
-                        image_file.write(image_data[1])
-            label.setPixmap(QPixmap.fromImage(root_path))
-            label.setScaledContents(True)
-        else:
-            label.setPixmap(QPixmap.fromImage(self.resource_path('image.jpg')))
-            label.setScaledContents(True)        
-
     ############################## Home page ######################################### 
     def loadUi_file(self):
         self.ui.firstname.setText("Firstname")
@@ -2960,7 +2938,6 @@ class Splash_screen(QMainWindow):
     def create_database_tables(self):
         db = sqlite3.connect(self.get_path())
         cursor = db.cursor()
-        cursor.execute(create_tb_cameras_sqlite())
         cursor.execute(create_tb_user_details_sqlite())
         cursor.execute(create_tb_user_credentials_sqlite())
         cursor.execute(create_tb_user_profile_sqlite())
