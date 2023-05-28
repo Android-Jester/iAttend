@@ -2313,7 +2313,6 @@ class MainWindow(QMainWindow):
                 self.show_info("Attendance taken, you can proceed!\nNext person please...")
             else:
                  self.show_info("Oops! something went wrong...")
-        cache_db.close()
 
     def connect_to_camera(self):
         if self.ui.comboBox.currentText():
@@ -2644,7 +2643,6 @@ class Splash_screen(QMainWindow):
         self.timer.timeout.connect(self.progress)
         self.timer.start(40)
         self.create_program_directory()
-        self.create_database_tables()
         self.populate_root_user_data()
         self.create_cache_database()
         self.show()       
@@ -2935,16 +2933,6 @@ class Splash_screen(QMainWindow):
         """
         self.write_to_file(path,merge_content,'text/plain')
 
-    def create_database_tables(self):
-        db = sqlite3.connect(self.get_path())
-        cursor = db.cursor()
-        cursor.execute(create_tb_user_details_sqlite())
-        cursor.execute(create_tb_user_credentials_sqlite())
-        cursor.execute(create_tb_user_profile_sqlite())
-        cursor.execute(create_tb_user_sessions_sqlite())
-        cursor.execute(create_tb_user_sessions_last_seen_sqlite())
-        db.commit()
-
     def create_cache_database(self):
         db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
@@ -2964,33 +2952,21 @@ class Splash_screen(QMainWindow):
         return 'C:\\ProgramData\\iAttend\\data\\cache\\database\\attendance_database_cache.db'
 
     def populate_root_user_data(self):
-        db = sqlite3.connect(self.get_path())
+        db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
         details=self.query_user_data("SELECT * FROM tb_user_details WHERE user_reference="+root_reference)
         self.query_user_data("SELECT * FROM tb_user_credentials WHERE user_reference="+root_reference)
         if not details:
             password_hash = hash_password(root_password)
-            cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_role,user_mail) VALUES (?,?,?,?,?,?)",
-            (root_reference,root_firstname,root_lastname,root_contact,root_role,root_mail)) 
-            cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_password,user_status) VALUES (?,?,?,?)",
-            (root_reference,root_username,password_hash,root_status))    
+            cursor.execute("INSERT INTO tb_user_details (user_reference,user_firstname,user_lastname,user_contact,user_mail) VALUES (?,?,?,?,?)",
+            (root_reference,root_firstname,root_lastname,root_contact,root_mail)) 
+            cursor.execute("INSERT INTO tb_user_credentials (user_reference,user_username,user_role,user_status,user_password) VALUES (?,?,?,?,?)",
+            (root_reference,root_username,root_role,root_status,password_hash))    
             db.commit()
-            self.insert_profile_image(root_reference,self.resource_path('image.jpg'))
         pass 
-
-    def insert_profile_image(self,reference,path):
-        db = sqlite3.connect(self.get_path())
-        cursor = db.cursor()
-        with open(path,'rb') as image_data:
-            data = image_data.read()
-        cursor.execute("INSERT INTO tb_user_profile(user_reference,user_image) VALUES(?,?)",(reference,data))
-        db.commit()    
-
-    def get_path(self):
-        return 'C:\\ProgramData\\iAttend\\data\\database\\attendance.db' 
-
+     
     def query_user_data(self,query):
-        db = sqlite3.connect(self.get_path())
+        db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
         details=cursor.execute(query)
         details= cursor.fetchone()
