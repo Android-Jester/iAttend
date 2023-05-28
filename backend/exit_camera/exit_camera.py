@@ -6,7 +6,6 @@ from packages.computing import *
 from alert.alert_dialog import *
 from packages.processing import *
 from packages.connection import *
-from database.database import Database
 from exit_camera.ui_exit_camera import Ui_Dialog
 
 class ExitCameraFeed(QDialog):
@@ -39,7 +38,6 @@ class ExitCameraFeed(QDialog):
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor(144, 144, 144, 40))
         self.ui_exit_camera.frame.setGraphicsEffect(self.shadow)
-        self.database = Database()
 
     def set_combo_items(self,active_cameras:list):
         self.ui_exit_camera.exit_comboBox.addItems(active_cameras)
