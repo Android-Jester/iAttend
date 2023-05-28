@@ -105,11 +105,10 @@ class MainWindow(QMainWindow):
             details[0],
             details[1],
             login_reference)
-        self.load_user_profile(login_reference)
         self.set_session()
-        self.user.profileImage(f'C:\\ProgramData\\iAttend\\data\\cache\\images\\administrators\\{login_reference}.png')
+        self.load_user_profile(login_reference)
+        self.user.load_image_from_storage(login_reference,'administrators',self.resource_path('image.jpg'))
         self.insert_thread()
-        # self.load_image_from_storage(self.ui.search_box.text(),self.ui.db_image_data,'students')
         
         self.camera_4 = Camera_Four()
         self.ui.btn_camera.clicked.connect(lambda: self.camera_4.show())
