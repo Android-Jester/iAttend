@@ -1,5 +1,6 @@
 from packages.hasher import *
 from packages.pyqt import *
+from packages.system import os
 from packages.globals import *
 from packages.connection import sqlite3
 from user_details.ui_user_details import Ui_Profile
@@ -99,6 +100,21 @@ class User(QDialog):
         imgdata = open(imgpath, 'rb').read()
         pixmap =self. mask_image(imgdata)
         self.ui_profile.profile.setPixmap(pixmap)
+
+    def load_image_from_storage(self,reference,folder,path):
+        directory = f'C:\\ProgramData\\iAttend\\data\\cache\\images\\{folder}'
+        filename = f'{reference}.png'
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if file == filename:
+                    image_path=os.path.join(root, filename)
+                    self.profileImage(image_path)
+                    break
+                else:
+                    self.profileImage(path)      
+            else:
+                continue
+            break
 
     def setProfile(self,firstname,lastname,contact,mail,status,role,visit,last_seen,duration,reference):
         name = str(firstname).split(" ")
