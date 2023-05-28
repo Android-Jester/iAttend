@@ -48,22 +48,11 @@ class User(QDialog):
         return pm
     
     def update_profile_picture(self):
-        user_id=self.ui_profile.reference.text()
-        check_state = self.database.check_state()
-        (db,my_cursor,connection_status) = self.database.my_cursor()
         if self.ui_profile.update_profile.text():
-            if check_state == True:
-                with open(self.ui_profile.update_profile.text(), 'rb') as image_data:
-                    data = image_data.read()
-                my_cursor.execute("UPDATE tb_user_profile SET user_image =? WHERE user_reference=?",(data,user_id))
-                db.commit()
-                self.ui_profile.notification.setText("Profile picture updated successfully")
-            else:
-                with open(self.ui_profile.update_profile.text(), 'rb') as image_data:
-                    data = image_data.read()
-                my_cursor.execute("UPDATE tb_user_profile SET user_image =%s WHERE user_reference=%s",(data,user_id))
-                db.commit()
-                self.ui_profile.notification.setText("Profile picture updated successfully")
+            with open('','r') as file:
+                file.write()
+            file.close()
+            self.ui_profile.notification.setText("Profile picture updated successfully...")
         else:
              self.ui_profile.notification.setText("Oops! invalid image path.")
 
@@ -96,25 +85,14 @@ class User(QDialog):
             self.profileImage(str(self.ui_profile.update_profile.text()))
         pass     
 
-    def profileImage(self, imgpath):
-        imgdata = open(imgpath, 'rb').read()
-        pixmap =self. mask_image(imgdata)
+    def profileImage(self,filePath,path):
+        if os.path.exists(filePath):
+            imagePath = filePath
+        else:
+            imagePath = path
+        imgdata = open(imagePath,'rb').read()
+        pixmap =self.mask_image(imgdata)
         self.ui_profile.profile.setPixmap(pixmap)
-
-    def load_image_from_storage(self,reference,folder,path):
-        directory = f'C:\\ProgramData\\iAttend\\data\\cache\\images\\{folder}'
-        filename = f'{reference}.png'
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                if file == filename:
-                    image_path=os.path.join(root, filename)
-                    self.profileImage(image_path)
-                    break
-                else:
-                    self.profileImage(path)      
-            else:
-                continue
-            break
 
     def setProfile(self,firstname,lastname,contact,mail,status,role,visit,last_seen,duration,reference):
         name = str(firstname).split(" ")
