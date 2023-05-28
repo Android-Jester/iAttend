@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>499</width>
-    <height>733</height>
+    <height>759</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>740</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -1055,9 +1061,9 @@ QPushButton:pressed{
             <property name="geometry">
              <rect>
               <x>20</x>
-              <y>650</y>
+              <y>660</y>
               <width>441</width>
-              <height>41</height>
+              <height>61</height>
              </rect>
             </property>
             <property name="font">
