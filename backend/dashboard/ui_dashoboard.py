@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardGOexKN.ui'
+## Form generated from reading UI file 'dashoboardGVISEO.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -817,7 +817,7 @@ class Ui_dashboard(object):
         self.year.setAlignment(Qt.AlignCenter)
         self.last_out = QLabel(self.info_frame)
         self.last_out.setObjectName(u"last_out")
-        self.last_out.setGeometry(QRect(110, 430, 261, 41))
+        self.last_out.setGeometry(QRect(110, 430, 271, 41))
         self.last_out.setFont(font4)
         self.last_out.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -837,7 +837,7 @@ class Ui_dashboard(object):
         self.image_2.setAlignment(Qt.AlignCenter)
         self.last_in = QLabel(self.info_frame)
         self.last_in.setObjectName(u"last_in")
-        self.last_in.setGeometry(QRect(380, 430, 101, 41))
+        self.last_in.setGeometry(QRect(390, 430, 91, 41))
         self.last_in.setFont(font4)
         self.last_in.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4103,7 +4103,7 @@ class Ui_dashboard(object):
         self.start_angle.setClearButtonEnabled(True)
         self.query_parameter = QComboBox(self.frame_8)
         self.query_parameter.setObjectName(u"query_parameter")
-        self.query_parameter.setGeometry(QRect(10, 380, 311, 37))
+        self.query_parameter.setGeometry(QRect(10, 380, 191, 37))
         self.query_parameter.setMinimumSize(QSize(0, 37))
         self.query_parameter.setMaximumSize(QSize(16777215, 35))
         self.query_parameter.setFont(font2)
@@ -4346,6 +4346,31 @@ class Ui_dashboard(object):
         self.report_date_2.setCalendarPopup(True)
         self.report_date_2.setTimeSpec(Qt.LocalTime)
         self.report_date_2.setDate(QDate(2023, 1, 1))
+        self.btn_generated_data_local = QPushButton(self.frame_8)
+        self.btn_generated_data_local.setObjectName(u"btn_generated_data_local")
+        self.btn_generated_data_local.setGeometry(QRect(210, 380, 105, 40))
+        self.btn_generated_data_local.setMinimumSize(QSize(105, 40))
+        self.btn_generated_data_local.setMaximumSize(QSize(45, 38))
+        self.btn_generated_data_local.setFont(font2)
+        self.btn_generated_data_local.setStyleSheet(u"QPushButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"	border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	border-radius: 15px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border: 2px solid rgb(255,255,255);	\n"
+"}")
+        icon29 = QIcon()
+        icon29.addFile(u":/icons/asset/maximize.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_generated_data_local.setIcon(icon29)
+        self.btn_generated_data_local.setIconSize(QSize(30, 30))
+        self.btn_generated_data_local.setFlat(True)
         self.design_11.raise_()
         self.design_7.raise_()
         self.report_date.raise_()
@@ -4378,6 +4403,7 @@ class Ui_dashboard(object):
         self.btn_remove_combox_item.raise_()
         self.date_range_comboBox.raise_()
         self.report_date_2.raise_()
+        self.btn_generated_data_local.raise_()
 
         self.horizontalLayout_16.addWidget(self.frame_8)
 
@@ -4940,8 +4966,6 @@ class Ui_dashboard(object):
 "QPushButton:pressed{\n"
 "	border: 2px solid rgb(255,255,255);	\n"
 "}")
-        icon29 = QIcon()
-        icon29.addFile(u":/icons/asset/maximize.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_generated_data.setIcon(icon29)
         self.btn_generated_data.setIconSize(QSize(30, 30))
         self.btn_generated_data.setFlat(True)
@@ -5284,6 +5308,7 @@ class Ui_dashboard(object):
         self.btn_remove_combox_item.setText(QCoreApplication.translate("dashboard", u"Date", None))
         self.design_11.setText(QCoreApplication.translate("dashboard", u"Plot values", None))
         self.report_date_2.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
+        self.btn_generated_data_local.setText(QCoreApplication.translate("dashboard", u"View", None))
         self.plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
         self.design_23.setText(QCoreApplication.translate("dashboard", u"Title", None))
         self.merge_chart_title.setPlaceholderText(QCoreApplication.translate("dashboard", u"Title", None))
