@@ -810,6 +810,7 @@ class MainWindow(QMainWindow):
     def application_exit(self):
         self.close()
         self.set_log_out_session()
+        self.http_response.close()
         update_information_file()
         self.camera_1.close()
         self.camera_2.close()
@@ -828,6 +829,7 @@ class MainWindow(QMainWindow):
         try:
             self.set_log_out_session()
             self.close()
+            self.http_response.close()
             update_information_file()
             self.config.close()
             self.camera_1.close()
