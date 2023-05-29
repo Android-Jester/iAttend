@@ -94,7 +94,10 @@ class MainWindow(QMainWindow):
         self.data_view = DataView()
         self.application_icon(self.data_view,'Values')
         self.ui.btn_generated_data.clicked.connect(lambda: self.data_view.show())
-        self.ui.btn_generated_data_local.clicked.connect(lambda: self.data_view.show())
+
+        self.http_response = HTTPResponse()
+        self.application_icon(self.http_response,'Response')
+        self.ui.btn_http_error_view.clicked.connect(lambda: self.http_response.show())
         
         self.user = User()
         self.application_icon(self.user,'Profile')
@@ -320,7 +323,7 @@ class MainWindow(QMainWindow):
             self.alert.show()
     
     def merge_linegraph_generate(self):
-        pass
+        print("Merging line graph")
     
     def query_distinct_merge_parameter(self,database_column):
         table_name=self.merge.get_table_name()
@@ -1701,7 +1704,7 @@ class MainWindow(QMainWindow):
                 print(data)
                 self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"Total records: {self.calculate_records_total(data[1])}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -2188,7 +2191,7 @@ class MainWindow(QMainWindow):
                 self.retreive_student_details_api_thread(reference)
                 self.show_info("Waiting for response from server...") 
             else:
-                pass 
+                self.show_info("Server returned no response...") 
             with open(path,'r') as content:
                 update = json.load(content)
                 if update['firstname'] != 'firstname':
@@ -2288,12 +2291,9 @@ class MainWindow(QMainWindow):
                 self.data.httpSignal.connect(self.httpError)
                 self.data.start()
 
-    def httpError(self,result):
-        # self.alert = AlertDialog()
-
-        print(result)
+    def httpError(self,response):
+        self.http_response.set_response(response)
         
-
     def attendance_data(self):
         attendance = Attendance(
             self.ui.reference.text(),
@@ -2329,7 +2329,7 @@ class MainWindow(QMainWindow):
                 (attendance.student_reference,attendance.student_college,attendance.student_faculty,attendance.student_program,attendance.student_category,attendance.student_nationality,attendance.student_gender,attendance.student_disability,attendance.date_stamp,attendance.time_in,attendance.time_out,attendance.duration))
                 cache_db.commit()
             elif details:
-                winsound.Beep(1000,100)
+                winsound.Beep(self.ui.frequency.value(),self.ui.duration.value())
                 self.show_info("Attendance taken, you can proceed!\nNext person please...")
             else:
                  self.show_info("Oops! something went wrong...")
