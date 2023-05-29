@@ -2169,8 +2169,7 @@ class MainWindow(QMainWindow):
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
             (data['reference'],data['college'],data['faculty'],data['department'],data['type']))   
             db.commit()       
-         
-    #improvements to be done or change code here      
+              
     def fetch_data_from_db(self,reference):
         data_json = json.loads(reference)
         student_reference=self.value_formater(data_json['reference'])
@@ -2286,8 +2285,15 @@ class MainWindow(QMainWindow):
             if self.data.isRunning()==True:
                 pass
             else:
+                self.data.httpSignal.connect(self.httpError)
                 self.data.start()
-           
+
+    def httpError(self,result):
+        # self.alert = AlertDialog()
+
+        print(result)
+        
+
     def attendance_data(self):
         attendance = Attendance(
             self.ui.reference.text(),
