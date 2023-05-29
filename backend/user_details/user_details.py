@@ -2,7 +2,6 @@ from packages.pyqt import *
 from packages.hasher import *
 from packages.system import os
 from packages.globals import *
-from packages.processing import Image
 from packages.connection import sqlite3
 from user_details.ui_user_details import Ui_Profile
 
