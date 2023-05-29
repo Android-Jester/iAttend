@@ -6,6 +6,7 @@ from packages.pyqt import *
 from packages.date import current
 
 class RequestThread(QThread):
+    httpSignal = Signal(str)
     def __init__(self,url_details):
         super(RequestThread,self).__init__()
         self.url_details = url_details
@@ -36,7 +37,7 @@ class RequestThread(QThread):
             content.close()
         except Exception as e:
             self.httpError_logs(str(e))
-            print(str(e))
+            self.httpSignal.emit(str(e))
            
     def httpError_logs(self,message):
         time =current.now().time().strftime('%I:%M:%S %p')
