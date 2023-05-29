@@ -1695,7 +1695,7 @@ QPushButton:pressed{
                       <rect>
                        <x>110</x>
                        <y>430</y>
-                       <width>261</width>
+                       <width>271</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -1755,9 +1755,9 @@ QPushButton:pressed{
                     <widget class="QLabel" name="last_in">
                      <property name="geometry">
                       <rect>
-                       <x>380</x>
+                       <x>390</x>
                        <y>430</y>
-                       <width>101</width>
+                       <width>91</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -9682,7 +9682,7 @@ QLineEdit:focus{
                       <rect>
                        <x>10</x>
                        <y>380</y>
-                       <width>311</width>
+                       <width>191</width>
                        <height>37</height>
                       </rect>
                      </property>
@@ -10305,6 +10305,65 @@ border-radius: 10px;
                       </date>
                      </property>
                     </widget>
+                    <widget class="QPushButton" name="btn_generated_data_local">
+                     <property name="geometry">
+                      <rect>
+                       <x>210</x>
+                       <y>380</y>
+                       <width>105</width>
+                       <height>40</height>
+                      </rect>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>105</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>45</width>
+                       <height>38</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>View</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../resource/asset.qrc">
+                       <normaloff>:/icons/asset/maximize.svg</normaloff>:/icons/asset/maximize.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
                     <zorder>design_11</zorder>
                     <zorder>design_7</zorder>
                     <zorder>report_date</zorder>
@@ -10337,6 +10396,7 @@ border-radius: 10px;
                     <zorder>btn_remove_combox_item</zorder>
                     <zorder>date_range_comboBox</zorder>
                     <zorder>report_date_2</zorder>
+                    <zorder>btn_generated_data_local</zorder>
                    </widget>
                   </item>
                   <item>
