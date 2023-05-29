@@ -1,7 +1,8 @@
-from packages.hasher import *
 from packages.pyqt import *
+from packages.hasher import *
 from packages.system import os
 from packages.globals import *
+from packages.processing import Image
 from packages.connection import sqlite3
 from user_details.ui_user_details import Ui_Profile
 
@@ -48,11 +49,15 @@ class User(QDialog):
         return pm
     
     def update_profile_picture(self):
+        path=f'C:\\ProgramData\\iAttend\\data\\cache\\images\\administrators\\{self.ui_profile.reference.text()}.png'
         if self.ui_profile.update_profile.text():
-            with open('','r') as file:
-                file.write()
+            with open(self.ui_profile.update_profile.text(),'rb') as file:
+                img_data=file.read()
+                with open(path,'wb') as out_put:
+                    out_put.write(img_data)
+                out_put.close()
             file.close()
-            self.ui_profile.notification.setText("Profile picture updated successfully...")
+            self.ui_profile.notification.setText(f"Profile picture updated successfully,\nImage: {os.path.basename(self.ui_profile.update_profile.text())}")
         else:
              self.ui_profile.notification.setText("Oops! invalid image path.")
 
@@ -82,7 +87,7 @@ class User(QDialog):
         path= QFileDialog.getOpenFileName(self, "Select File","","JPEG Files(*.jpeg);;JPG Files(*.jpg);;PNG Files(*.png)")
         if path:
             self.ui_profile.update_profile.setText(path[0])
-            self.profileImage(str(self.ui_profile.update_profile.text()))
+            self.profileImage(str(self.ui_profile.update_profile.text()),'')
         pass     
 
     def profileImage(self,filePath,path):
