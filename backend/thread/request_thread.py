@@ -1,7 +1,7 @@
 import json
 import os
-from pathlib import Path
 import requests
+from pathlib import Path
 from packages.pyqt import *
 from packages.date import current
 
@@ -15,6 +15,7 @@ class RequestThread(QThread):
         try:
             request_body = requests.get(self.url_details)
             student_data=request_body.json()
+            self.httpSignal.emit(f'Status code: {request_body.status_code}')
             path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
             with open(path,'r') as content:
                 update = json.load(content) 
