@@ -2932,7 +2932,7 @@ QPushButton:pressed{
                            <property name="geometry">
                             <rect>
                              <x>20</x>
-                             <y>160</y>
+                             <y>130</y>
                              <width>430</width>
                              <height>51</height>
                             </rect>
@@ -2977,7 +2977,7 @@ QPushButton:pressed{
                            <property name="geometry">
                             <rect>
                              <x>30</x>
-                             <y>170</y>
+                             <y>140</y>
                              <width>31</width>
                              <height>31</height>
                             </rect>
@@ -2996,7 +2996,7 @@ QPushButton:pressed{
                            <property name="geometry">
                             <rect>
                              <x>310</x>
-                             <y>80</y>
+                             <y>60</y>
                              <width>140</width>
                              <height>51</height>
                             </rect>
@@ -3055,7 +3055,7 @@ QPushButton:pressed{
                            <property name="geometry">
                             <rect>
                              <x>20</x>
-                             <y>80</y>
+                             <y>60</y>
                              <width>271</width>
                              <height>51</height>
                             </rect>
@@ -3085,6 +3085,218 @@ QLineEdit:focus{
                             <string>Scan range ?</string>
                            </property>
                            <property name="clearButtonEnabled">
+                            <bool>true</bool>
+                           </property>
+                          </widget>
+                          <widget class="QSpinBox" name="duration">
+                           <property name="geometry">
+                            <rect>
+                             <x>220</x>
+                             <y>200</y>
+                             <width>71</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>10</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);</string>
+                           </property>
+                           <property name="frame">
+                            <bool>false</bool>
+                           </property>
+                           <property name="minimum">
+                            <number>50</number>
+                           </property>
+                           <property name="maximum">
+                            <number>60000</number>
+                           </property>
+                           <property name="displayIntegerBase">
+                            <number>10</number>
+                           </property>
+                          </widget>
+                          <widget class="QSpinBox" name="frequency">
+                           <property name="geometry">
+                            <rect>
+                             <x>70</x>
+                             <y>200</y>
+                             <width>81</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>10</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">color: rgb(255, 255, 255);
+</string>
+                           </property>
+                           <property name="wrapping">
+                            <bool>false</bool>
+                           </property>
+                           <property name="frame">
+                            <bool>false</bool>
+                           </property>
+                           <property name="readOnly">
+                            <bool>false</bool>
+                           </property>
+                           <property name="minimum">
+                            <number>100</number>
+                           </property>
+                           <property name="maximum">
+                            <number>32767</number>
+                           </property>
+                           <property name="value">
+                            <number>1000</number>
+                           </property>
+                          </widget>
+                          <widget class="QLabel" name="brightness_value_2">
+                           <property name="geometry">
+                            <rect>
+                             <x>20</x>
+                             <y>201</y>
+                             <width>40</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>40</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>40</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Arial</family>
+                             <pointsize>10</pointsize>
+                             <weight>50</weight>
+                             <bold>false</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 5px;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>F</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                          <widget class="QLabel" name="brightness_value_3">
+                           <property name="geometry">
+                            <rect>
+                             <x>170</x>
+                             <y>200</y>
+                             <width>40</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>40</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>40</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Arial</family>
+                             <pointsize>10</pointsize>
+                             <weight>50</weight>
+                             <bold>false</bold>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 5px;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>D</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                           </property>
+                          </widget>
+                          <widget class="QPushButton" name="btn_http_error_view">
+                           <property name="geometry">
+                            <rect>
+                             <x>310</x>
+                             <y>200</y>
+                             <width>140</width>
+                             <height>41</height>
+                            </rect>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>140</width>
+                             <height>0</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>16777215</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <pointsize>10</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+}
+
+QPushButton:hover{
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>HttpError</string>
+                           </property>
+                           <property name="icon">
+                            <iconset resource="../resource/asset.qrc">
+                             <normaloff>:/icons/asset/info.svg</normaloff>:/icons/asset/info.svg</iconset>
+                           </property>
+                           <property name="iconSize">
+                            <size>
+                             <width>30</width>
+                             <height>30</height>
+                            </size>
+                           </property>
+                           <property name="flat">
                             <bool>true</bool>
                            </property>
                           </widget>
