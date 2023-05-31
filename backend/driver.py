@@ -31,6 +31,8 @@ class MainWindow(QMainWindow):
         self.saveTimer = QTimer()
         self.timer = QTimer()
         self.ui.setupUi(self)
+        self.ui.label.setPixmap(QPixmap.fromImage(self.resource_path('icon.ico')))
+        self.ui.label.setScaledContents(True)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.oldPosition = self.pos()
@@ -137,7 +139,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_camera.clicked.connect(self.camera_config)
 
         self.login = Authentication()
-        self.application_icon(self.camera_1,'Camera 1')
+        self.application_icon(self.login,'Login')
         self.ui.btn_logout.clicked.connect(self.logout)
         ############################################################################################
 
