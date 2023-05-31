@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardqZRDpf.ui'
+## Form generated from reading UI file 'dashoboardbiJKhY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -4518,7 +4518,7 @@ class Ui_dashboard(object):
         self.frame_12.setFrameShadow(QFrame.Raised)
         self.design_23 = QLabel(self.frame_12)
         self.design_23.setObjectName(u"design_23")
-        self.design_23.setGeometry(QRect(10, 10, 331, 101))
+        self.design_23.setGeometry(QRect(10, 10, 331, 111))
         self.design_23.setFont(font5)
         self.design_23.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4531,8 +4531,8 @@ class Ui_dashboard(object):
         self.design_23.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.merge_chart_title = QLineEdit(self.frame_12)
         self.merge_chart_title.setObjectName(u"merge_chart_title")
-        self.merge_chart_title.setGeometry(QRect(20, 50, 311, 41))
-        self.merge_chart_title.setMinimumSize(QSize(0, 37))
+        self.merge_chart_title.setGeometry(QRect(20, 50, 311, 45))
+        self.merge_chart_title.setMinimumSize(QSize(0, 45))
         self.merge_chart_title.setMaximumSize(QSize(16777215, 16777215))
         self.merge_chart_title.setFont(font2)
         self.merge_chart_title.setTabletTracking(True)
@@ -4553,27 +4553,9 @@ class Ui_dashboard(object):
         self.merge_chart_title.setFrame(True)
         self.merge_chart_title.setReadOnly(False)
         self.merge_chart_title.setClearButtonEnabled(True)
-        self.report_colleges_3 = QComboBox(self.frame_12)
-        self.report_colleges_3.setObjectName(u"report_colleges_3")
-        self.report_colleges_3.setGeometry(QRect(20, 230, 141, 37))
-        self.report_colleges_3.setMinimumSize(QSize(0, 37))
-        self.report_colleges_3.setMaximumSize(QSize(16777215, 30))
-        self.report_colleges_3.setFont(font2)
-        self.report_colleges_3.setStyleSheet(u"QComboBox{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}")
-        self.report_colleges_3.setEditable(False)
-        self.report_colleges_3.setFrame(False)
         self.design_24 = QLabel(self.frame_12)
         self.design_24.setObjectName(u"design_24")
-        self.design_24.setGeometry(QRect(10, 470, 331, 81))
+        self.design_24.setGeometry(QRect(10, 300, 331, 81))
         self.design_24.setFont(font5)
         self.design_24.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4585,7 +4567,7 @@ class Ui_dashboard(object):
         self.design_24.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.merge_bar_chart = QRadioButton(self.frame_12)
         self.merge_bar_chart.setObjectName(u"merge_bar_chart")
-        self.merge_bar_chart.setGeometry(QRect(120, 510, 101, 23))
+        self.merge_bar_chart.setGeometry(QRect(240, 340, 101, 23))
         self.merge_bar_chart.setFont(font6)
         self.merge_bar_chart.setStyleSheet(u"QRadioButton{\n"
 "	background-color: rgb(35, 35, 35);\n"
@@ -4593,18 +4575,9 @@ class Ui_dashboard(object):
 "}")
         self.merge_bar_chart.setChecked(False)
         self.merge_bar_chart.setAutoExclusive(True)
-        self.merge_line_graph = QRadioButton(self.frame_12)
-        self.merge_line_graph.setObjectName(u"merge_line_graph")
-        self.merge_line_graph.setGeometry(QRect(220, 510, 111, 23))
-        self.merge_line_graph.setFont(font6)
-        self.merge_line_graph.setStyleSheet(u"QRadioButton{\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	color: rgb(255, 255, 255);\n"
-"}")
-        self.merge_line_graph.setAutoExclusive(True)
         self.design_25 = QLabel(self.frame_12)
         self.design_25.setObjectName(u"design_25")
-        self.design_25.setGeometry(QRect(10, 130, 331, 201))
+        self.design_25.setGeometry(QRect(10, 150, 331, 111))
         self.design_25.setFont(font5)
         self.design_25.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4614,27 +4587,9 @@ class Ui_dashboard(object):
 "	padding-top:5px;\n"
 "}")
         self.design_25.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.report_faculties_3 = QComboBox(self.frame_12)
-        self.report_faculties_3.setObjectName(u"report_faculties_3")
-        self.report_faculties_3.setGeometry(QRect(170, 220, 161, 40))
-        self.report_faculties_3.setMinimumSize(QSize(0, 40))
-        self.report_faculties_3.setMaximumSize(QSize(16777215, 40))
-        self.report_faculties_3.setFont(font2)
-        self.report_faculties_3.setStyleSheet(u"QComboBox{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}")
-        self.report_faculties_3.setEditable(False)
-        self.report_faculties_3.setFrame(False)
         self.merge_pie_chart = QRadioButton(self.frame_12)
         self.merge_pie_chart.setObjectName(u"merge_pie_chart")
-        self.merge_pie_chart.setGeometry(QRect(20, 510, 101, 23))
+        self.merge_pie_chart.setGeometry(QRect(20, 340, 101, 23))
         self.merge_pie_chart.setFont(font6)
         self.merge_pie_chart.setStyleSheet(u"QRadioButton{\n"
 "	background-color: rgb(35, 35, 35);\n"
@@ -4642,28 +4597,10 @@ class Ui_dashboard(object):
 "}")
         self.merge_pie_chart.setChecked(False)
         self.merge_pie_chart.setAutoExclusive(True)
-        self.report_departments_3 = QComboBox(self.frame_12)
-        self.report_departments_3.setObjectName(u"report_departments_3")
-        self.report_departments_3.setGeometry(QRect(20, 270, 311, 40))
-        self.report_departments_3.setMinimumSize(QSize(0, 40))
-        self.report_departments_3.setMaximumSize(QSize(16777215, 40))
-        self.report_departments_3.setFont(font2)
-        self.report_departments_3.setStyleSheet(u"QComboBox{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}")
-        self.report_departments_3.setEditable(False)
-        self.report_departments_3.setFrame(False)
         self.merge_query_parameter = QComboBox(self.frame_12)
         self.merge_query_parameter.setObjectName(u"merge_query_parameter")
-        self.merge_query_parameter.setGeometry(QRect(20, 170, 191, 40))
-        self.merge_query_parameter.setMinimumSize(QSize(0, 40))
+        self.merge_query_parameter.setGeometry(QRect(20, 190, 191, 45))
+        self.merge_query_parameter.setMinimumSize(QSize(0, 45))
         self.merge_query_parameter.setMaximumSize(QSize(16777215, 40))
         self.merge_query_parameter.setFont(font2)
         self.merge_query_parameter.setStyleSheet(u"QComboBox{\n"
@@ -4678,28 +4615,10 @@ class Ui_dashboard(object):
 "}")
         self.merge_query_parameter.setEditable(False)
         self.merge_query_parameter.setFrame(False)
-        self.report_colleges_4 = QComboBox(self.frame_12)
-        self.report_colleges_4.setObjectName(u"report_colleges_4")
-        self.report_colleges_4.setGeometry(QRect(20, 220, 141, 40))
-        self.report_colleges_4.setMinimumSize(QSize(0, 40))
-        self.report_colleges_4.setMaximumSize(QSize(16777215, 40))
-        self.report_colleges_4.setFont(font2)
-        self.report_colleges_4.setStyleSheet(u"QComboBox{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}")
-        self.report_colleges_4.setEditable(False)
-        self.report_colleges_4.setFrame(False)
         self.merge_bar_width = QLineEdit(self.frame_12)
         self.merge_bar_width.setObjectName(u"merge_bar_width")
-        self.merge_bar_width.setGeometry(QRect(130, 610, 91, 40))
-        self.merge_bar_width.setMinimumSize(QSize(0, 40))
+        self.merge_bar_width.setGeometry(QRect(190, 460, 141, 45))
+        self.merge_bar_width.setMinimumSize(QSize(0, 45))
         self.merge_bar_width.setMaximumSize(QSize(16777215, 35))
         self.merge_bar_width.setFont(font2)
         self.merge_bar_width.setTabletTracking(True)
@@ -4721,9 +4640,9 @@ class Ui_dashboard(object):
         self.merge_bar_width.setClearButtonEnabled(True)
         self.merge_start_angle = QLineEdit(self.frame_12)
         self.merge_start_angle.setObjectName(u"merge_start_angle")
-        self.merge_start_angle.setGeometry(QRect(20, 670, 91, 40))
-        self.merge_start_angle.setMinimumSize(QSize(0, 40))
-        self.merge_start_angle.setMaximumSize(QSize(16777215, 30))
+        self.merge_start_angle.setGeometry(QRect(20, 530, 141, 45))
+        self.merge_start_angle.setMinimumSize(QSize(0, 45))
+        self.merge_start_angle.setMaximumSize(QSize(16777215, 45))
         self.merge_start_angle.setFont(font2)
         self.merge_start_angle.setTabletTracking(True)
         self.merge_start_angle.setStyleSheet(u"QLineEdit{\n"
@@ -4744,7 +4663,7 @@ class Ui_dashboard(object):
         self.merge_start_angle.setClearButtonEnabled(True)
         self.design_26 = QLabel(self.frame_12)
         self.design_26.setObjectName(u"design_26")
-        self.design_26.setGeometry(QRect(10, 750, 331, 101))
+        self.design_26.setGeometry(QRect(10, 710, 331, 111))
         self.design_26.setFont(font5)
         self.design_26.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4756,7 +4675,7 @@ class Ui_dashboard(object):
         self.design_26.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.design_27 = QLabel(self.frame_12)
         self.design_27.setObjectName(u"design_27")
-        self.design_27.setGeometry(QRect(10, 870, 331, 101))
+        self.design_27.setGeometry(QRect(10, 860, 331, 111))
         self.design_27.setFont(font5)
         self.design_27.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4768,8 +4687,8 @@ class Ui_dashboard(object):
         self.design_27.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.merge_dpi = QLineEdit(self.frame_12)
         self.merge_dpi.setObjectName(u"merge_dpi")
-        self.merge_dpi.setGeometry(QRect(240, 610, 91, 40))
-        self.merge_dpi.setMinimumSize(QSize(0, 40))
+        self.merge_dpi.setGeometry(QRect(190, 530, 141, 45))
+        self.merge_dpi.setMinimumSize(QSize(0, 45))
         self.merge_dpi.setMaximumSize(QSize(16777215, 30))
         self.merge_dpi.setFont(font2)
         self.merge_dpi.setTabletTracking(True)
@@ -4791,8 +4710,8 @@ class Ui_dashboard(object):
         self.merge_dpi.setClearButtonEnabled(True)
         self.btn_merge_load = QPushButton(self.frame_12)
         self.btn_merge_load.setObjectName(u"btn_merge_load")
-        self.btn_merge_load.setGeometry(QRect(20, 790, 151, 40))
-        self.btn_merge_load.setMinimumSize(QSize(0, 40))
+        self.btn_merge_load.setGeometry(QRect(20, 750, 151, 45))
+        self.btn_merge_load.setMinimumSize(QSize(0, 45))
         self.btn_merge_load.setMaximumSize(QSize(16777215, 38))
         self.btn_merge_load.setFont(font2)
         self.btn_merge_load.setStyleSheet(u"QPushButton{\n"
@@ -4814,8 +4733,8 @@ class Ui_dashboard(object):
         self.btn_merge_load.setFlat(True)
         self.btn_merge_connection = QPushButton(self.frame_12)
         self.btn_merge_connection.setObjectName(u"btn_merge_connection")
-        self.btn_merge_connection.setGeometry(QRect(180, 790, 151, 40))
-        self.btn_merge_connection.setMinimumSize(QSize(0, 40))
+        self.btn_merge_connection.setGeometry(QRect(180, 750, 151, 45))
+        self.btn_merge_connection.setMinimumSize(QSize(0, 45))
         self.btn_merge_connection.setMaximumSize(QSize(16777215, 38))
         self.btn_merge_connection.setFont(font2)
         self.btn_merge_connection.setStyleSheet(u"QPushButton{\n"
@@ -4837,8 +4756,8 @@ class Ui_dashboard(object):
         self.btn_merge_connection.setFlat(True)
         self.btn_merge_save = QPushButton(self.frame_12)
         self.btn_merge_save.setObjectName(u"btn_merge_save")
-        self.btn_merge_save.setGeometry(QRect(210, 910, 121, 40))
-        self.btn_merge_save.setMinimumSize(QSize(0, 40))
+        self.btn_merge_save.setGeometry(QRect(210, 900, 121, 45))
+        self.btn_merge_save.setMinimumSize(QSize(0, 45))
         self.btn_merge_save.setMaximumSize(QSize(16777215, 40))
         self.btn_merge_save.setFont(font2)
         self.btn_merge_save.setStyleSheet(u"QPushButton{\n"
@@ -4860,7 +4779,7 @@ class Ui_dashboard(object):
         self.btn_merge_save.setFlat(True)
         self.design_28 = QLabel(self.frame_12)
         self.design_28.setObjectName(u"design_28")
-        self.design_28.setGeometry(QRect(10, 570, 331, 161))
+        self.design_28.setGeometry(QRect(10, 420, 331, 251))
         self.design_28.setFont(font5)
         self.design_28.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -4872,8 +4791,8 @@ class Ui_dashboard(object):
         self.design_28.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.merge_pie_ldist = QLineEdit(self.frame_12)
         self.merge_pie_ldist.setObjectName(u"merge_pie_ldist")
-        self.merge_pie_ldist.setGeometry(QRect(130, 670, 91, 40))
-        self.merge_pie_ldist.setMinimumSize(QSize(0, 40))
+        self.merge_pie_ldist.setGeometry(QRect(20, 600, 141, 45))
+        self.merge_pie_ldist.setMinimumSize(QSize(0, 45))
         self.merge_pie_ldist.setMaximumSize(QSize(16777215, 30))
         self.merge_pie_ldist.setFont(font2)
         self.merge_pie_ldist.setTabletTracking(True)
@@ -4895,10 +4814,10 @@ class Ui_dashboard(object):
         self.merge_pie_ldist.setClearButtonEnabled(True)
         self.merge_file_name = QLineEdit(self.frame_12)
         self.merge_file_name.setObjectName(u"merge_file_name")
-        self.merge_file_name.setGeometry(QRect(20, 910, 181, 40))
+        self.merge_file_name.setGeometry(QRect(20, 900, 181, 45))
         sizePolicy.setHeightForWidth(self.merge_file_name.sizePolicy().hasHeightForWidth())
         self.merge_file_name.setSizePolicy(sizePolicy)
-        self.merge_file_name.setMinimumSize(QSize(0, 40))
+        self.merge_file_name.setMinimumSize(QSize(0, 45))
         self.merge_file_name.setMaximumSize(QSize(16777215, 40))
         self.merge_file_name.setFont(font2)
         self.merge_file_name.setStyleSheet(u"QLineEdit{\n"
@@ -4918,8 +4837,8 @@ class Ui_dashboard(object):
         self.merge_file_name.setClearButtonEnabled(True)
         self.merge_pctdist = QLineEdit(self.frame_12)
         self.merge_pctdist.setObjectName(u"merge_pctdist")
-        self.merge_pctdist.setGeometry(QRect(240, 670, 91, 40))
-        self.merge_pctdist.setMinimumSize(QSize(0, 40))
+        self.merge_pctdist.setGeometry(QRect(190, 600, 141, 45))
+        self.merge_pctdist.setMinimumSize(QSize(0, 45))
         self.merge_pctdist.setMaximumSize(QSize(16777215, 30))
         self.merge_pctdist.setFont(font2)
         self.merge_pctdist.setTabletTracking(True)
@@ -4941,8 +4860,8 @@ class Ui_dashboard(object):
         self.merge_pctdist.setClearButtonEnabled(True)
         self.merge_figure_area = QLineEdit(self.frame_12)
         self.merge_figure_area.setObjectName(u"merge_figure_area")
-        self.merge_figure_area.setGeometry(QRect(20, 610, 91, 40))
-        self.merge_figure_area.setMinimumSize(QSize(0, 40))
+        self.merge_figure_area.setGeometry(QRect(20, 460, 141, 45))
+        self.merge_figure_area.setMinimumSize(QSize(0, 45))
         self.merge_figure_area.setMaximumSize(QSize(16777215, 30))
         self.merge_figure_area.setFont(font2)
         self.merge_figure_area.setTabletTracking(True)
@@ -4963,63 +4882,10 @@ class Ui_dashboard(object):
         self.merge_figure_area.setFrame(True)
         self.merge_figure_area.setReadOnly(False)
         self.merge_figure_area.setClearButtonEnabled(True)
-        self.date_range_comboBox_3 = QComboBox(self.frame_12)
-        self.date_range_comboBox_3.setObjectName(u"date_range_comboBox_3")
-        self.date_range_comboBox_3.setGeometry(QRect(20, 390, 171, 37))
-        self.date_range_comboBox_3.setMinimumSize(QSize(0, 37))
-        self.date_range_comboBox_3.setMaximumSize(QSize(16777215, 40))
-        self.date_range_comboBox_3.setFont(font2)
-        self.date_range_comboBox_3.setStyleSheet(u"QComboBox{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid rgb(45, 45, 45);\n"
-"	padding-left:10px;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}")
-        self.date_range_comboBox_3.setEditable(False)
-        self.date_range_comboBox_3.setFrame(False)
-        self.btn_remove_combox_item_3 = QPushButton(self.frame_12)
-        self.btn_remove_combox_item_3.setObjectName(u"btn_remove_combox_item_3")
-        self.btn_remove_combox_item_3.setGeometry(QRect(200, 390, 131, 37))
-        self.btn_remove_combox_item_3.setMinimumSize(QSize(0, 37))
-        self.btn_remove_combox_item_3.setMaximumSize(QSize(16777215, 40))
-        self.btn_remove_combox_item_3.setFont(font2)
-        self.btn_remove_combox_item_3.setStyleSheet(u"QPushButton{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(45, 45, 45);\n"
-"	border:none;\n"
-"	border-radius: 10px;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"	border-radius: 15px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border: 2px solid rgb(255,255,255);	\n"
-"}")
-        self.btn_remove_combox_item_3.setIcon(icon29)
-        self.btn_remove_combox_item_3.setIconSize(QSize(30, 30))
-        self.btn_remove_combox_item_3.setFlat(True)
-        self.design_29 = QLabel(self.frame_12)
-        self.design_29.setObjectName(u"design_29")
-        self.design_29.setGeometry(QRect(10, 350, 331, 101))
-        self.design_29.setFont(font5)
-        self.design_29.setStyleSheet(u"QLabel{\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: rgb(35, 35, 35);\n"
-"	border-radius: 10px;\n"
-"	padding-left:10px;\n"
-"	padding-top:5px;\n"
-"}")
-        self.design_29.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.btn_generated_data = QPushButton(self.frame_12)
         self.btn_generated_data.setObjectName(u"btn_generated_data")
-        self.btn_generated_data.setGeometry(QRect(220, 170, 111, 40))
-        self.btn_generated_data.setMinimumSize(QSize(0, 40))
+        self.btn_generated_data.setGeometry(QRect(220, 190, 111, 45))
+        self.btn_generated_data.setMinimumSize(QSize(0, 45))
         self.btn_generated_data.setMaximumSize(QSize(16777215, 38))
         self.btn_generated_data.setFont(font2)
         self.btn_generated_data.setStyleSheet(u"QPushButton{\n"
@@ -5039,20 +4905,14 @@ class Ui_dashboard(object):
         self.btn_generated_data.setIcon(icon30)
         self.btn_generated_data.setIconSize(QSize(30, 30))
         self.btn_generated_data.setFlat(True)
-        self.design_29.raise_()
         self.design_28.raise_()
         self.design_23.raise_()
         self.merge_chart_title.raise_()
-        self.report_colleges_3.raise_()
         self.design_24.raise_()
         self.merge_bar_chart.raise_()
-        self.merge_line_graph.raise_()
         self.design_25.raise_()
-        self.report_faculties_3.raise_()
         self.merge_pie_chart.raise_()
-        self.report_departments_3.raise_()
         self.merge_query_parameter.raise_()
-        self.report_colleges_4.raise_()
         self.merge_bar_width.raise_()
         self.merge_start_angle.raise_()
         self.design_26.raise_()
@@ -5065,8 +4925,6 @@ class Ui_dashboard(object):
         self.merge_file_name.raise_()
         self.merge_pctdist.raise_()
         self.merge_figure_area.raise_()
-        self.date_range_comboBox_3.raise_()
-        self.btn_remove_combox_item_3.raise_()
         self.btn_generated_data.raise_()
 
         self.horizontalLayout_12.addWidget(self.frame_12)
@@ -5387,7 +5245,6 @@ class Ui_dashboard(object):
         self.merge_chart_title.setPlaceholderText(QCoreApplication.translate("dashboard", u"Title", None))
         self.design_24.setText(QCoreApplication.translate("dashboard", u"Categories", None))
         self.merge_bar_chart.setText(QCoreApplication.translate("dashboard", u"Barchart", None))
-        self.merge_line_graph.setText(QCoreApplication.translate("dashboard", u"Line Graph", None))
         self.design_25.setText(QCoreApplication.translate("dashboard", u"Partition", None))
         self.merge_pie_chart.setText(QCoreApplication.translate("dashboard", u"Piechart", None))
         self.merge_bar_width.setPlaceholderText(QCoreApplication.translate("dashboard", u"width", None))
@@ -5403,8 +5260,6 @@ class Ui_dashboard(object):
         self.merge_file_name.setPlaceholderText(QCoreApplication.translate("dashboard", u"File name?", None))
         self.merge_pctdist.setPlaceholderText(QCoreApplication.translate("dashboard", u"pctdist", None))
         self.merge_figure_area.setPlaceholderText(QCoreApplication.translate("dashboard", u"size", None))
-        self.btn_remove_combox_item_3.setText(QCoreApplication.translate("dashboard", u"Date", None))
-        self.design_29.setText(QCoreApplication.translate("dashboard", u"Plot values", None))
         self.btn_generated_data.setText(QCoreApplication.translate("dashboard", u"View", None))
         self.merge_plot_area.setText(QCoreApplication.translate("dashboard", u"Graph", None))
     # retranslateUi
