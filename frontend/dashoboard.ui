@@ -10712,7 +10712,7 @@ QPushButton:pressed{
                     <x>10</x>
                     <y>10</y>
                     <width>331</width>
-                    <height>101</height>
+                    <height>111</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -10746,13 +10746,13 @@ QPushButton:pressed{
                     <x>20</x>
                     <y>50</y>
                     <width>311</width>
-                    <height>41</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>37</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -10798,56 +10798,11 @@ QLineEdit:focus{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="report_colleges_3">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>230</y>
-                    <width>141</width>
-                    <height>37</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>37</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}</string>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
                  <widget class="QLabel" name="design_24">
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>470</y>
+                    <y>300</y>
                     <width>331</width>
                     <height>81</height>
                    </rect>
@@ -10879,8 +10834,8 @@ QLineEdit:hover{
                  <widget class="QRadioButton" name="merge_bar_chart">
                   <property name="geometry">
                    <rect>
-                    <x>120</x>
-                    <y>510</y>
+                    <x>240</x>
+                    <y>340</y>
                     <width>101</width>
                     <height>23</height>
                    </rect>
@@ -10907,41 +10862,13 @@ QLineEdit:hover{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QRadioButton" name="merge_line_graph">
-                  <property name="geometry">
-                   <rect>
-                    <x>220</x>
-                    <y>510</y>
-                    <width>111</width>
-                    <height>23</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QRadioButton{
-	background-color: rgb(35, 35, 35);
-	color: rgb(255, 255, 255);
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Line Graph</string>
-                  </property>
-                  <property name="autoExclusive">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
                  <widget class="QLabel" name="design_25">
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>130</y>
+                    <y>150</y>
                     <width>331</width>
-                    <height>201</height>
+                    <height>111</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -10968,56 +10895,11 @@ QLineEdit:hover{
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="report_faculties_3">
-                  <property name="geometry">
-                   <rect>
-                    <x>170</x>
-                    <y>220</y>
-                    <width>161</width>
-                    <height>40</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}</string>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
                  <widget class="QRadioButton" name="merge_pie_chart">
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>510</y>
+                    <y>340</y>
                     <width>101</width>
                     <height>23</height>
                    </rect>
@@ -11044,109 +10926,19 @@ QLineEdit:hover{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="report_departments_3">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>270</y>
-                    <width>311</width>
-                    <height>40</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}</string>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
                  <widget class="QComboBox" name="merge_query_parameter">
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>170</y>
+                    <y>190</y>
                     <width>191</width>
-                    <height>40</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}</string>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                 <widget class="QComboBox" name="report_colleges_4">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>220</y>
-                    <width>141</width>
-                    <height>40</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11182,16 +10974,16 @@ QLineEdit:hover{
                  <widget class="QLineEdit" name="merge_bar_width">
                   <property name="geometry">
                    <rect>
-                    <x>130</x>
-                    <y>610</y>
-                    <width>91</width>
-                    <height>40</height>
+                    <x>190</x>
+                    <y>460</y>
+                    <width>141</width>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11238,21 +11030,21 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>670</y>
-                    <width>91</width>
-                    <height>40</height>
+                    <y>530</y>
+                    <width>141</width>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>30</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="font">
@@ -11293,9 +11085,9 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>750</y>
+                    <y>710</y>
                     <width>331</width>
-                    <height>101</height>
+                    <height>111</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -11326,9 +11118,9 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>870</y>
+                    <y>860</y>
                     <width>331</width>
-                    <height>101</height>
+                    <height>111</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -11358,16 +11150,16 @@ QLineEdit:focus{
                  <widget class="QLineEdit" name="merge_dpi">
                   <property name="geometry">
                    <rect>
-                    <x>240</x>
-                    <y>610</y>
-                    <width>91</width>
-                    <height>40</height>
+                    <x>190</x>
+                    <y>530</y>
+                    <width>141</width>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11414,15 +11206,15 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>790</y>
+                    <y>750</y>
                     <width>151</width>
-                    <height>40</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11473,15 +11265,15 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>180</x>
-                    <y>790</y>
+                    <y>750</y>
                     <width>151</width>
-                    <height>40</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11532,15 +11324,15 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>210</x>
-                    <y>910</y>
+                    <y>900</y>
                     <width>121</width>
-                    <height>40</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11591,9 +11383,9 @@ QPushButton:pressed{
                   <property name="geometry">
                    <rect>
                     <x>10</x>
-                    <y>570</y>
+                    <y>420</y>
                     <width>331</width>
-                    <height>161</height>
+                    <height>251</height>
                    </rect>
                   </property>
                   <property name="font">
@@ -11623,16 +11415,16 @@ QPushButton:pressed{
                  <widget class="QLineEdit" name="merge_pie_ldist">
                   <property name="geometry">
                    <rect>
-                    <x>130</x>
-                    <y>670</y>
-                    <width>91</width>
-                    <height>40</height>
+                    <x>20</x>
+                    <y>600</y>
+                    <width>141</width>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11679,9 +11471,9 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>910</y>
+                    <y>900</y>
                     <width>181</width>
-                    <height>40</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="sizePolicy">
@@ -11693,7 +11485,7 @@ QLineEdit:focus{
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11733,16 +11525,16 @@ QLineEdit:focus{
                  <widget class="QLineEdit" name="merge_pctdist">
                   <property name="geometry">
                    <rect>
-                    <x>240</x>
-                    <y>670</y>
-                    <width>91</width>
-                    <height>40</height>
+                    <x>190</x>
+                    <y>600</y>
+                    <width>141</width>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11789,15 +11581,15 @@ QLineEdit:focus{
                   <property name="geometry">
                    <rect>
                     <x>20</x>
-                    <y>610</y>
-                    <width>91</width>
-                    <height>40</height>
+                    <y>460</y>
+                    <width>141</width>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -11843,156 +11635,19 @@ QLineEdit:focus{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <widget class="QComboBox" name="date_range_comboBox_3">
-                  <property name="geometry">
-                   <rect>
-                    <x>20</x>
-                    <y>390</y>
-                    <width>171</width>
-                    <height>37</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>37</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	color: rgb(255, 255, 255);
-	border: 2px solid rgb(45, 45, 45);
-	padding-left:10px;
-	border-radius: 10px;
-}
-
-QLineEdit:hover{
-	border:2px solid rgb(35, 35, 35);
-}</string>
-                  </property>
-                  <property name="editable">
-                   <bool>false</bool>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                 <widget class="QPushButton" name="btn_remove_combox_item_3">
-                  <property name="geometry">
-                   <rect>
-                    <x>200</x>
-                    <y>390</y>
-                    <width>131</width>
-                    <height>37</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>37</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 15px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Date</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resource/asset.qrc">
-                    <normaloff>:/icons/asset/minus.svg</normaloff>:/icons/asset/minus.svg</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>30</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="flat">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                 <widget class="QLabel" name="design_29">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>350</y>
-                    <width>331</width>
-                    <height>101</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel{
-	color: rgb(255, 255, 255);
-	background-color: rgb(35, 35, 35);
-	border-radius: 10px;
-	padding-left:10px;
-	padding-top:5px;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>Plot values</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                  </property>
-                 </widget>
                  <widget class="QPushButton" name="btn_generated_data">
                   <property name="geometry">
                    <rect>
                     <x>220</x>
-                    <y>170</y>
+                    <y>190</y>
                     <width>111</width>
-                    <height>40</height>
+                    <height>45</height>
                    </rect>
                   </property>
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>40</height>
+                    <height>45</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -12039,20 +11694,14 @@ QPushButton:pressed{
                    <bool>true</bool>
                   </property>
                  </widget>
-                 <zorder>design_29</zorder>
                  <zorder>design_28</zorder>
                  <zorder>design_23</zorder>
                  <zorder>merge_chart_title</zorder>
-                 <zorder>report_colleges_3</zorder>
                  <zorder>design_24</zorder>
                  <zorder>merge_bar_chart</zorder>
-                 <zorder>merge_line_graph</zorder>
                  <zorder>design_25</zorder>
-                 <zorder>report_faculties_3</zorder>
                  <zorder>merge_pie_chart</zorder>
-                 <zorder>report_departments_3</zorder>
                  <zorder>merge_query_parameter</zorder>
-                 <zorder>report_colleges_4</zorder>
                  <zorder>merge_bar_width</zorder>
                  <zorder>merge_start_angle</zorder>
                  <zorder>design_26</zorder>
@@ -12065,8 +11714,6 @@ QPushButton:pressed{
                  <zorder>merge_file_name</zorder>
                  <zorder>merge_pctdist</zorder>
                  <zorder>merge_figure_area</zorder>
-                 <zorder>date_range_comboBox_3</zorder>
-                 <zorder>btn_remove_combox_item_3</zorder>
                  <zorder>btn_generated_data</zorder>
                 </widget>
                </item>
