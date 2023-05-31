@@ -94,6 +94,7 @@ class MainWindow(QMainWindow):
         self.data_view = DataView()
         self.application_icon(self.data_view,'Values')
         self.ui.btn_generated_data.clicked.connect(lambda: self.data_view.show())
+        self.ui.btn_generated_data_local.clicked.connect(lambda: self.data_view.show())
 
         self.http_response = HTTPResponse()
         self.application_icon(self.http_response,'Response')
@@ -255,10 +256,6 @@ class MainWindow(QMainWindow):
             self.merge_barchart_generate()
             self.ui.btn_merge_load.setText('Load')
             self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
-        elif self.ui.merge_line_graph.isChecked():
-            print("Line graph generation......")
-            self.ui.btn_merge_load.setText('Load')
-            self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
         else:
             self.ui.btn_merge_load.setText('Load')
             self.ui.btn_merge_load.setIcon(QIcon(u":/icons/asset/download.svg"))
@@ -321,9 +318,6 @@ class MainWindow(QMainWindow):
         else:
             self.alert.content("Oops! test database connection\nto load tables...")
             self.alert.show()
-    
-    def merge_linegraph_generate(self):
-        print("Merging line graph")
     
     def query_distinct_merge_parameter(self,database_column):
         table_name=self.merge.get_table_name()
@@ -388,14 +382,6 @@ class MainWindow(QMainWindow):
             else:
                 self.alert.content("Oops! please provide file name")
                 self.alert.show()         
-        elif self.ui.merge_line_graph.isChecked():
-            if filename:
-                self.line_graph.save_chart(transformed_name)
-                self.alert.content("Document saved successfully")
-                self.alert.show()
-            else:
-                self.alert.content("Oops! please provide file name")
-                self.alert.show() 
         elif self.ui.merge_pie_chart.isChecked():
             if filename:
                 self.piechart.save_chart(transformed_name)
@@ -1672,7 +1658,6 @@ class MainWindow(QMainWindow):
                 self.alert.content("Oops! your data is not enough to\ngenerate charts..")
                 self.alert.show()
     
-    ######## Refactor #########
     def line_plot(self):
         colors=self.shuffle_list(self.get_read_colors_file(self.resource_path('colors.txt')))
         colors=colors[:1]
@@ -1689,12 +1674,11 @@ class MainWindow(QMainWindow):
         query_value = self.ui.query_parameter.currentText()
         dates = sorted(self.get_dates_for_line_plot())
         if query_value == "Faculty":
-            data=self.line_plot_values(query_param,report_faculties,'Faculty')
+            data=self.get_actual_plot_values(self.line_plot_values(query_param,report_faculties,'Faculty'))
             if len(data)>=1:
-                print(data)
                 self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"Total records: {self.calculate_records_total(data[1])}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"Total records: {self.calculate_records_total(data)}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1703,10 +1687,9 @@ class MainWindow(QMainWindow):
         elif query_value == "Department":
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,'Department'))
             if len(data)>=1:
-                print(data)
                 self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"Total records: {self.calculate_records_total(data[1])}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"Total records: {self.calculate_records_total(data)}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1715,8 +1698,9 @@ class MainWindow(QMainWindow):
         elif query_value == "College":
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_college,'College'))
             if len(data)>=1:
+                self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"Total records: {self.calculate_records_total(data)}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -1725,8 +1709,9 @@ class MainWindow(QMainWindow):
         else:
             data=self.get_actual_plot_values(self.line_plot_values(query_param,report_departments,''))
             if len(data)>=1:
+                self.data_view.set_data(json.dumps(dict(zip(dates,data)),indent=4))
                 self.line_graph.plot_graph(data,title=f"{properties[0]}",label_="Trends",y_label=y_label,
-                x_label=f"values",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
+                x_label=f"Total records: {self.calculate_records_total(data)}",area=properties[1],dpi=properties[3],color=colors[0],marker=marker[0])
                 self.ui.plot_area.setPixmap(QPixmap.fromImage(path+'linegraph.png'))
                 self.ui.plot_area.setScaledContents(True)
             else:
@@ -2373,28 +2358,6 @@ class MainWindow(QMainWindow):
         else:
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
-
-    def retrieve_information(self,qr_code_data):
-        path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
-        data_json = json.loads(qr_code_data)
-        with open(path,'r') as content:
-            results = json.load(content)
-        content.close()
-        if  results['reference'] != self.ui.reference.text():
-            self.retreive_student_details_api_thread(qr_code_data)
-            winsound.Beep(1000,100)
-            self.show_info("Waiting for response from server...") 
-            print(results['reference'],self.ui.reference.text())
-        else:
-            print(results['reference'],self.ui.reference.text())
-            print('Equal')
-            self.show_info("Response from server updated on interface...") 
-
-        with open(path,'r') as content:
-            update = json.load(content)
-            if update['firstname'] != 'firstname':
-                self.update_interface(self.read_student_information_json())
-                self.last_seen(data_json['reference'])
             
     def update_frame(self):
         thickness = 2
