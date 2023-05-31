@@ -2671,7 +2671,7 @@ class Splash_screen(QMainWindow):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','properties','qr_code',
         'email_details','reports','exports','cache',
-        'images','partition','application_logs','student',
+        'partition','application_logs','student',
         'httpErrors','user')
 
         pictures = 'C:\\Pictures\\iAttend\\'
