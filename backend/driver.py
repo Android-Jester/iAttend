@@ -783,6 +783,7 @@ class MainWindow(QMainWindow):
             self.ui.btn_camera.hide()
             self.ui.btn_admin.hide()
             self.ui.btn_home.hide()
+            self.ui.btn_settings.hide()
             self.ui.btn_search.hide()
             self.ui.btn_database.hide()
             self.ui.btn_report.hide()
@@ -793,6 +794,7 @@ class MainWindow(QMainWindow):
             self.ui.frame.setMinimumHeight(580)
             self.ui.frame.setMaximumHeight(580)
             self.ui.btn_admin.hide()
+            self.ui.btn_settings.hide()
             self.ui.btn_consolidation_report.hide()
         
     def application_exit(self):
