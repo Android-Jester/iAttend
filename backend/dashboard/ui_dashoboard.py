@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardbiJKhY.ui'
+## Form generated from reading UI file 'dashoboardUVoURP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -5170,7 +5170,7 @@ class Ui_dashboard(object):
 
         self.firstname_30.setText("")
         self.btn_export_data.setText(QCoreApplication.translate("dashboard", u"Export", None))
-        self.btn_user_fetch.setText(QCoreApplication.translate("dashboard", u"Load", None))
+        self.btn_user_fetch.setText(QCoreApplication.translate("dashboard", u"Load User", None))
         self.user_end_date_widget.setDisplayFormat(QCoreApplication.translate("dashboard", u"yyyy-MM-dd", None))
         self.user_start_date_field.setPlaceholderText(QCoreApplication.translate("dashboard", u"Start Date", None))
         self.user_end_date_field.setPlaceholderText(QCoreApplication.translate("dashboard", u"End Date", None))
