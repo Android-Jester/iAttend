@@ -7397,7 +7397,7 @@ QPushButton:pressed{
 }</string>
                   </property>
                   <property name="text">
-                   <string>Load</string>
+                   <string>Load User</string>
                   </property>
                   <property name="icon">
                    <iconset resource="../resource/asset.qrc">
