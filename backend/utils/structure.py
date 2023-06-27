@@ -1,4 +1,3 @@
-
 import json
 
 def load_data(resource_path):
