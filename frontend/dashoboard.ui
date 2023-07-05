@@ -219,19 +219,19 @@ padding-left:5px;</string>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_19">
               <property name="spacing">
-               <number>9</number>
+               <number>15</number>
               </property>
               <item>
                <widget class="QLabel" name="label_4">
                 <property name="minimumSize">
                  <size>
-                  <width>820</width>
+                  <width>370</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>820</width>
+                  <width>370</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -248,6 +248,113 @@ padding-left:5px;</string>
                 </property>
                 <property name="text">
                  <string>iAttend</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="checkin">
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QRadioButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+border-radius: 10px;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Check In</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resource/asset.qrc">
+                  <normaloff>:/icons/asset/user-check.svg</normaloff>:/icons/asset/user-check.svg</iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoRepeat">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="checkout">
+                <property name="font">
+                 <font>
+                  <family>Arial</family>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QRadioButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+border-radius: 10px;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Check Out</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resource/asset.qrc">
+                  <normaloff>:/icons/asset/user-minus.svg</normaloff>:/icons/asset/user-minus.svg</iconset>
+                </property>
+                <property name="checkable">
+                 <bool>true</bool>
+                </property>
+                <property name="checked">
+                 <bool>false</bool>
+                </property>
+                <property name="autoRepeat">
+                 <bool>false</bool>
+                </property>
+                <property name="autoExclusive">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="scan_status">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>34</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border-radius: 15px;
+	padding-bottom:-5px;
+}</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -2256,59 +2363,12 @@ QPushButton:pressed{
                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                      </property>
                     </widget>
-                    <widget class="QPushButton" name="btn_open_exit_camera_ui">
-                     <property name="geometry">
-                      <rect>
-                       <x>180</x>
-                       <y>220</y>
-                       <width>141</width>
-                       <height>41</height>
-                      </rect>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	color: rgb(255, 255, 255);
-	background-color: rgb(45, 45, 45);
-	border:none;
-	border-radius: 10px;
-}
-
-QPushButton:hover{
-	border-radius: 20px;
-}
-
-QPushButton:pressed{
-	border: 2px solid rgb(255,255,255);	
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>Logout</string>
-                     </property>
-                     <property name="icon">
-                      <iconset resource="../resource/asset.qrc">
-                       <normaloff>:/icons/asset/video.svg</normaloff>:/icons/asset/video.svg</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>30</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="flat">
-                      <bool>true</bool>
-                     </property>
-                    </widget>
                     <widget class="QPushButton" name="btn_clear_label">
                      <property name="geometry">
                       <rect>
-                       <x>340</x>
+                       <x>260</x>
                        <y>220</y>
-                       <width>141</width>
+                       <width>221</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -2355,7 +2415,7 @@ QPushButton:pressed{
                       <rect>
                        <x>20</x>
                        <y>220</y>
-                       <width>141</width>
+                       <width>211</width>
                        <height>41</height>
                       </rect>
                      </property>
@@ -2405,7 +2465,6 @@ QPushButton:pressed{
                     <zorder>btn_disconnect</zorder>
                     <zorder>comboBox</zorder>
                     <zorder>firstname_24</zorder>
-                    <zorder>btn_open_exit_camera_ui</zorder>
                     <zorder>btn_clear_label</zorder>
                     <zorder>btn_open_database</zorder>
                    </widget>
