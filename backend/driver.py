@@ -73,10 +73,6 @@ class MainWindow(QMainWindow):
         self.config = Configuration()
         self.application_icon(self.config,'Configuration')
         
-        self.open_exit_camera = ExitCameraFeed()
-        self.application_icon(self.open_exit_camera,'Logout camera')
-        self.ui.btn_open_exit_camera_ui.clicked.connect(lambda: self.open_exit_camera.show())
-    
         self.restapi = RESTAPI()
         self.application_icon(self.restapi,'API')
         self.ui.btn_open_database.clicked.connect(lambda: self.restapi.show())
@@ -811,7 +807,6 @@ class MainWindow(QMainWindow):
         self.mail.close()
         self.user.close()
         self.config.close()
-        self.open_exit_camera.close()
         self.login.show()
 
     def logout(self):
@@ -830,7 +825,6 @@ class MainWindow(QMainWindow):
             self.merge.close()
             self.mail.close()
             self.user.close()
-            self.open_exit_camera.close()
             self.application_logs("Authentication page shown.....")
             self.login.show()
         except Exception as e:
@@ -1358,11 +1352,9 @@ class MainWindow(QMainWindow):
 
     def clear_camera_comboBoxes(self):
         self.ui.comboBox.clear()
-        self.open_exit_camera.set_combo_items('')
         
     def get_active_cameras(self,camera:list):
         self.ui.comboBox.addItems(camera)
-        self.open_exit_camera.set_combo_items(camera)
         count = [self.ui.comboBox.itemText(i) for i in range(self.ui.comboBox.count())]
         self.ui.scan_range_label.setText("Active camera(s): "+str(len(count)))
         self.ui.label_notification.setText("Done scanning for available cameras...")           
@@ -2111,7 +2103,79 @@ class MainWindow(QMainWindow):
  
     ############################################# Registration End ################################
         
+
     ############################## Home page ######################################### 
+
+    ############################## Logout session start #########################################
+
+    def compute_logout_duration(self,time_in: str, time_out: str):
+        from datetime import date,time
+        time_in = time_in.split(':')
+        seconds = str(time_in[2]).split(' ')[0]
+        time_in = time(hour=int(time_in[0]),minute=int(time_in[1]),second=int(seconds))
+        time_out =time_out.split(':')
+        seconds = str(time_out[2]).split(' ')[0]
+        time_out = time(int(time_out[0]),int(time_out[1]),int(seconds))
+        date_ = date(1,1,1)
+        duration=current.combine(date_,time_out)-current.combine(date_,time_in)
+        return str(duration)
+
+    def query_cache_database_logout(self,qr_code_data):
+        data_json = json.loads(qr_code_data)
+        student_reference=self.value_formater(data_json['reference'])
+        db = sqlite3.connect(self.get_cache_path())
+        my_cursor = db.cursor()
+        my_cursor.execute(f"SELECT generated_id,student_reference FROM tb_students WHERE student_reference={student_reference}")
+        cursor= my_cursor.fetchone()
+        db.commit()
+        results = []
+        date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
+        if cursor is not None:
+            for data in cursor:
+                results.append(data)
+            cursor=my_cursor.execute(f"SELECT time_in,duration FROM tb_attendance_temp WHERE student_reference={self.value_formater(results[1])} AND date_stamp={date}")
+            cursor=my_cursor.fetchall()
+            db.commit()
+            details = []
+            if cursor is not None:
+                for data in cursor:
+                    details.append(data)
+                db.commit()
+                if len(details)>0:
+                    time_out =current.now().time().strftime('%H:%M:%S %p')
+                    date_stamp=current.now().date().strftime('%Y-%m-%d')
+                    new_duration = self.compute_logout_duration(time_in=str(details[0][0]),time_out=time_out)
+                    if str(details[0][1]) == "00:00:00":
+                        my_cursor.execute("UPDATE tb_attendance_temp SET time_out= ?, duration= ?  WHERE student_reference=? and date_stamp= ? ",(time_out,new_duration,student_reference,date_stamp))
+                        db.commit()
+                        winsound.Beep(1000,100)
+                        details = my_cursor.execute("SELECT * FROM tb_attendance_temp where student_reference="+student_reference)
+                        details=my_cursor.fetchone()
+                        my_cursor.execute("INSERT INTO tb_attendance (student_reference,student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,date_stamp,time_in,time_out,duration) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                        (details[1],details[2],details[3],details[4],details[5],details[6],details[7],details[8],details[9],details[10],time_out,new_duration))
+                        db.commit()
+                        my_cursor.execute("DELETE FROM tb_attendance_temp where student_reference="+student_reference)
+                        my_cursor.execute("DELETE FROM tb_attendance_last_seen WHERE student_reference="+student_reference)
+                        db.commit()
+                        winsound.Beep(1000,100)
+                        my_cursor.execute("INSERT INTO tb_attendance_last_seen (student_reference,date_stamp,time_in,time_out,duration) VALUES (?,?,?,?,?)",
+                        (details[1],details[9],details[10],time_out,new_duration))
+                        db.commit()
+                        winsound.Beep(1000,100)
+                        self.show_info("Hey! your have successfully logged out...")
+                    else:
+                        winsound.Beep(1000,100)
+                        self.show_info("Hey! your have successfully logged out...")
+                else:
+                    self.show_info(f"Oops! you are already logged out!\nStudent Id: {student_reference}")
+        else:
+            self.show_info("Oops! attendance details for student\nnot found...")
+       
+    def log_student_out(self,qr_code_data:str):
+        self.query_cache_database_logout(qr_code_data)
+
+    ############################## Logout session end #########################################
+
     def loadUi_file(self):
         self.ui.firstname.setText("Firstname")
         self.ui.othername.setText("Othername")
@@ -2331,7 +2395,7 @@ class MainWindow(QMainWindow):
 
     def connect_to_camera(self):
         if self.ui.comboBox.currentText():
-            self.show_info("Connecting to selected device\nthis may take some few seconds...")
+            self.show_info("Connecting to selected device this may\ntake some few seconds...")
         pass
 
     def start_webcam(self):
@@ -2377,7 +2441,14 @@ class MainWindow(QMainWindow):
         self.beta = int(self.ui.brightness_value.text())
         self.apha = int(self.ui.contrast_value.text())*0.01
         self.kernel = (int(self.ui.sharp_value.text())*0.01, int(self.ui.sharp_value.text())*0.01)
-       
+
+        if self.ui.checkin.isChecked():
+            self.ui.scan_status.setText("Check-in activated")
+        elif self.ui.checkout.isChecked():
+            self.ui.scan_status.setText("Check-out activated")
+        else:
+            self.ui.scan_status.setText("Default")
+
         self.frame = cv2.filter2D(self.frame,-1, self.kernel)
         self.result = cv2.addWeighted(self.frame,self.apha, np.ones(self.frame.shape, self.frame.dtype), 0, self.beta)
 
@@ -2406,8 +2477,17 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-                self.fetch_data_from_db(qr_code_data)
-                self.mark_attendance_db()
+                if self.ui.checkin.isChecked():
+                    self.ui.scan_status.setText("Check-in activated")
+                    self.fetch_data_from_db(qr_code_data)
+                    self.mark_attendance_db()
+                elif self.ui.checkout.isChecked():
+                    self.ui.scan_status.setText("Check-out activated")
+                    self.fetch_data_from_db(qr_code_data)
+                    self.log_student_out(qr_code_data)
+                else:
+                    self.ui.scan_status.setText("Default")
+
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
