@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardptOqmA.ui'
+## Form generated from reading UI file 'dashoboardwouiEQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -98,8 +98,8 @@ class Ui_dashboard(object):
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.label_4 = QLabel(self.options)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setMinimumSize(QSize(370, 0))
-        self.label_4.setMaximumSize(QSize(370, 16777215))
+        self.label_4.setMinimumSize(QSize(100, 0))
+        self.label_4.setMaximumSize(QSize(100, 16777215))
         font1 = QFont()
         font1.setPointSize(10)
         font1.setBold(False)
@@ -110,19 +110,63 @@ class Ui_dashboard(object):
 
         self.horizontalLayout_19.addWidget(self.label_4)
 
-        self.checkin = QRadioButton(self.options)
-        self.checkin.setObjectName(u"checkin")
+        self.auto_check_in_check_out = QRadioButton(self.options)
+        self.auto_check_in_check_out.setObjectName(u"auto_check_in_check_out")
         font2 = QFont()
         font2.setFamily(u"Arial")
         font2.setPointSize(10)
-        self.checkin.setFont(font2)
-        self.checkin.setStyleSheet(u"QRadioButton{\n"
+        self.auto_check_in_check_out.setFont(font2)
+        self.auto_check_in_check_out.setStyleSheet(u"QRadioButton{\n"
 "	color: rgb(255, 255, 255);\n"
 "	background-color: rgb(35, 35, 35);\n"
 "border-radius: 10px;\n"
 "}")
         icon = QIcon()
         icon.addFile(u":/icons/asset/user-check.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.auto_check_in_check_out.setIcon(icon)
+        self.auto_check_in_check_out.setCheckable(True)
+        self.auto_check_in_check_out.setChecked(False)
+        self.auto_check_in_check_out.setAutoRepeat(False)
+        self.auto_check_in_check_out.setAutoExclusive(True)
+
+        self.horizontalLayout_19.addWidget(self.auto_check_in_check_out)
+
+        self.spinBox = QSpinBox(self.options)
+        self.spinBox.setObjectName(u"spinBox")
+        self.spinBox.setMinimumSize(QSize(50, 30))
+        font3 = QFont()
+        font3.setPointSize(10)
+        self.spinBox.setFont(font3)
+        self.spinBox.setStyleSheet(u"QSpinBox{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(45, 45, 45);\n"
+"	border:none;\n"
+"}")
+        self.spinBox.setAlignment(Qt.AlignCenter)
+        self.spinBox.setMinimum(5)
+        self.spinBox.setMaximum(50)
+        self.spinBox.setDisplayIntegerBase(10)
+
+        self.horizontalLayout_19.addWidget(self.spinBox)
+
+        self.label_5 = QLabel(self.options)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setMinimumSize(QSize(40, 0))
+        self.label_5.setMaximumSize(QSize(40, 16777215))
+        self.label_5.setFont(font1)
+        self.label_5.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"padding-left:5px;")
+
+        self.horizontalLayout_19.addWidget(self.label_5)
+
+        self.checkin = QRadioButton(self.options)
+        self.checkin.setObjectName(u"checkin")
+        self.checkin.setFont(font2)
+        self.checkin.setStyleSheet(u"QRadioButton{\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(35, 35, 35);\n"
+"border-radius: 10px;\n"
+"}")
         self.checkin.setIcon(icon)
         self.checkin.setCheckable(True)
         self.checkin.setChecked(False)
@@ -153,8 +197,6 @@ class Ui_dashboard(object):
         self.scan_status.setObjectName(u"scan_status")
         self.scan_status.setMinimumSize(QSize(200, 34))
         self.scan_status.setMaximumSize(QSize(100, 16777215))
-        font3 = QFont()
-        font3.setPointSize(10)
         self.scan_status.setFont(font3)
         self.scan_status.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -5009,7 +5051,9 @@ class Ui_dashboard(object):
     def retranslateUi(self, dashboard):
         dashboard.setWindowTitle(QCoreApplication.translate("dashboard", u"MainWindow", None))
         self.label.setText("")
-        self.label_4.setText(QCoreApplication.translate("dashboard", u"iAttend", None))
+        self.label_4.setText("")
+        self.auto_check_in_check_out.setText(QCoreApplication.translate("dashboard", u"Automate", None))
+        self.label_5.setText("")
         self.checkin.setText(QCoreApplication.translate("dashboard", u"Check In", None))
         self.checkout.setText(QCoreApplication.translate("dashboard", u"Check Out", None))
         self.scan_status.setText("")
