@@ -228,6 +228,9 @@ class MainWindow(QMainWindow):
         self.ui.btn_merge_load.clicked.connect(self.merge_report_generate)
         self.ui.btn_merge_load.pressed.connect(self.change_merge_load_text)
         self.ui.btn_merge_save.clicked.connect(self.merge_report)
+
+        self.check_in_mode = True
+        self.start_time = current.now()
         
         # ,QDateTime,QDate,QTime
         ##################################################################################################
@@ -783,7 +786,6 @@ class MainWindow(QMainWindow):
             self.ui.btn_search.hide()
             self.ui.btn_database.hide()
             self.ui.btn_report.hide()
-            self.ui.btn_batch.hide()
             self.ui.btn_sink_data.hide()
             self.ui.btn_consolidation_report.hide()
         elif account_role == user:
@@ -2167,7 +2169,7 @@ class MainWindow(QMainWindow):
                         winsound.Beep(1000,100)
                         self.show_info("Hey! your have successfully logged out...")
                 else:
-                    self.show_info(f"Oops! you are already logged out!\nStudent Id: {student_reference}")
+                    self.show_info(f"Oops! you are already logged out!\nStudent Id: {data_json['reference']}")
         else:
             self.show_info("Oops! attendance details for student\nnot found...")
        
@@ -2442,19 +2444,48 @@ class MainWindow(QMainWindow):
         self.apha = int(self.ui.contrast_value.text())*0.01
         self.kernel = (int(self.ui.sharp_value.text())*0.01, int(self.ui.sharp_value.text())*0.01)
 
-        if self.ui.checkin.isChecked():
-            self.ui.scan_status.setText("Check-in activated")
-        elif self.ui.checkout.isChecked():
-            self.ui.scan_status.setText("Check-out activated")
-        else:
-            self.ui.scan_status.setText("Default")
-
         self.frame = cv2.filter2D(self.frame,-1, self.kernel)
         self.result = cv2.addWeighted(self.frame,self.apha, np.ones(self.frame.shape, self.frame.dtype), 0, self.beta)
+
+        ps.putBText(self.result,self.ui.scan_status.text(),text_offset_x=10,text_offset_y=457,vspace=5,hspace=5, font_scale=0.5,
+        background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX) 
+    
+        self.elapsed_time = current.now() - self.start_time
+        if self.ui.auto_check_in_check_out.isChecked():
+            if self.elapsed_time >= timedelta(seconds=self.ui.spinBox.value()):
+                self.check_in_mode = not self.check_in_mode
+                if self.check_in_mode:
+                    winsound.Beep(500,900)
+                    self.ui.scan_status.setText("Check-in activated")
+                else:
+                    winsound.Beep(500,900)
+                    self.ui.scan_status.setText("Check-out activated") 
+                self.start_time = current.now()       
+        else:
+            if self.ui.checkin.isChecked():
+                self.ui.scan_status.setText("Check-in activated")
+            elif self.ui.checkout.isChecked():
+                self.ui.scan_status.setText("Check-out activated") 
+            else:
+                self.ui.scan_status.setText("No tracking")
 
         self.text = str(time.strftime("%I:%M:%S %p"))
         ps.putBText(self.result,self.text,text_offset_x=self.result.shape[1]-110,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
             background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
+
+        ps.putBText(self.result,f'FPS: {self.capture.get(cv2.CAP_PROP_FPS)}',text_offset_x=self.result.shape[1]-90,text_offset_y=457,vspace=5,hspace=5, font_scale=0.5,
+            background_RGB=(228,20,222),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
+
+        
+        if self.ui.auto_check_in_check_out.isChecked():
+            self.text = "Automation Mode"
+            ps.putBText(self.result,self.text,text_offset_x=270,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
+                background_RGB=(0,255,0),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
+        else:
+            self.text = "Manual Mode"
+            ps.putBText(self.result,self.text,text_offset_x=280,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
+                background_RGB=(0,255,0),text_RGB=(255,255,255),font=cv2.FONT_HERSHEY_SIMPLEX)
+
         self.now = current.now()
         self.now = self.now.strftime("%a, %b %d, %Y")
         ps.putBText(self.result,self.now,text_offset_x=10,text_offset_y=10,vspace=5,hspace=5, font_scale=0.5,
@@ -2477,17 +2508,28 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-                if self.ui.checkin.isChecked():
-                    self.ui.scan_status.setText("Check-in activated")
-                    self.fetch_data_from_db(qr_code_data)
-                    self.mark_attendance_db()
-                elif self.ui.checkout.isChecked():
-                    self.ui.scan_status.setText("Check-out activated")
-                    self.fetch_data_from_db(qr_code_data)
-                    self.log_student_out(qr_code_data)
-                else:
-                    self.ui.scan_status.setText("Default")
 
+                if self.ui.auto_check_in_check_out.isChecked():
+                    if self.check_in_mode:
+                        self.ui.scan_status.setText("Check-in activated")
+                        self.fetch_data_from_db(qr_code_data)
+                        self.mark_attendance_db()
+                    else:
+                        self.ui.scan_status.setText("Check-out activated")
+                        self.fetch_data_from_db(qr_code_data)
+                        self.log_student_out(qr_code_data)
+                else:
+                    if self.ui.checkin.isChecked():
+                        self.ui.scan_status.setText("Check-in activated")
+                        self.fetch_data_from_db(qr_code_data)
+                        self.mark_attendance_db()
+                    elif self.ui.checkout.isChecked():
+                        self.ui.scan_status.setText("Check-out activated")
+                        self.fetch_data_from_db(qr_code_data)
+                        self.log_student_out(qr_code_data)
+                    else:
+                        self.ui.scan_status.setText("No tracking")
+     
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
