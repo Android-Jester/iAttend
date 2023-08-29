@@ -1036,7 +1036,7 @@ class MainWindow(QMainWindow):
                     self.alert.show()
                 if len(user) > 0: 
                     self.render_user_details(user,status[0][0],status[0][1])
-                    # self.load_image_from_storage(reference,self.ui.user_image)
+                    self.load_image_from_storage(reference,self.ui.user_image,'administrators')
                 return details
             else:
                 self.alert.content("Oops! no details found for\nthe reference provided.")
@@ -1085,6 +1085,7 @@ class MainWindow(QMainWindow):
             for file in files:
                 if file == filename:
                     image_path=os.path.join(root, filename)
+                    print(image_path)
                     label.setPixmap(QPixmap.fromImage(image_path))
                     label.setScaledContents(True)
                     break
@@ -2001,7 +2002,7 @@ class MainWindow(QMainWindow):
         if os.path.exists(path):
             with open(path,'r') as f:
                 details = f.read()
-            return details.replace('name',self.ui.reg_firstname.text())
+            return details.replace('name',' ')
 
     def convert_to_json(self, code:Code):
         to_json = json.dumps(code)
