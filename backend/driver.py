@@ -1,6 +1,6 @@
 ################################################################################
 ##
-## BY: Asamani Redolf
+## BY: Asamaning REDOLF
 ## PROJECT MADE WITH: Qt Designer and PySide2
 ## V: 1.0.0
 ##
@@ -477,6 +477,7 @@ class MainWindow(QMainWindow):
                 cursor = db.cursor()
                 cursor.execute(user_database(properties[4]))
                 for record in range(0,len(results),batch_size):
+                    self.ui.db_consolidation_notification.setText("Pushing records to server\nin progress....")
                     cursor.executemany(f"INSERT INTO {tablename}(student_college,student_faculty,student_program,student_category,student_nationality,student_gender,student_disability,facility_used) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
                     results[record:record+batch_size])
                     db.commit()
@@ -484,12 +485,12 @@ class MainWindow(QMainWindow):
                 receiver = self.ui.db_consolidation_mail.text() 
                 records_date=self.load_merge_dates()
                 content = self.consolidation_mail_content(facility,str(len(results)),records_date,current_account)
-                if self.connected_to_internet()==True and receiver:
+                if self.connected_to_internet()==True and receiver !="":
                     self.mail=UserMailThread(details=self.consolidation_mail_details(),mail_content=content,receiver=receiver)
                     self.mail.start()
-                self.application_logs(f'Push records to central database -> successfully')
                 self.alert.content("Pushed "+str(len(results))+" records to server\nMail sent to administrator..")
                 self.alert.show()
+                self.application_logs(f'Push records to central database -> successfully')  
             else:
                 self.alert.content("Oops! records or partition strategy\nfacility/table name not set!")
                 self.alert.show()
@@ -637,13 +638,12 @@ class MainWindow(QMainWindow):
 
     def load_merge_dates(self):
         start=self.date_formater(self.ui.db_consolidation_start.text())
-        state = self.ui.db_consolidation_range.isChecked()
         stop=self.date_formater(self.ui.db_consolidation_stop.text())
         if self.ui.db_fetch_all.isChecked(): 
             return 'All records fetched from database'
-        elif start and not state:
+        elif start and not stop:
             return self.reconstruct_date(start)
-        elif start and stop and state:
+        elif start and stop:
             return f'{self.reconstruct_date(start)}-{self.reconstruct_date(stop)}'
 
     def load_merge_data(self):
@@ -1085,7 +1085,6 @@ class MainWindow(QMainWindow):
             for file in files:
                 if file == filename:
                     image_path=os.path.join(root, filename)
-                    print(image_path)
                     label.setPixmap(QPixmap.fromImage(image_path))
                     label.setScaledContents(True)
                     break
@@ -1820,48 +1819,49 @@ class MainWindow(QMainWindow):
             row_count = row_count+1
 
     def fetch_details_for_card_view(self):
-            self.alert = AlertDialog()
-            student_reference=self.value_formater(self.ui.search_box.text())
-            results=self.query_cache_data_list(f"SELECT * FROM tb_attendance WHERE student_reference={student_reference}")
-            self.ui_table(results)
-            if self.ui.search_box.text():
-                db_data=self.query_cache_database(f"SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference={student_reference}") 
-                if len(db_data) > 0:
-                    start_date = (str(db_data[8])).split(' ')
-                    student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))    
-                    if student_year <= 1:
-                        level = "1st year"
-                    elif student_year > 1 and student_year <= 2:
-                        level = "2nd year"
-                    elif student_year > 2 and student_year <= 3:
-                        level = "3rd year"
-                    elif student_year > 3 and student_year <= 4:
-                        level = "4th year"
-                    elif student_year > 4 and student_year <= 5:
-                        level = "5th year"
-                    elif student_year > 5 and student_year <= 6:
-                        level = "6th year"
-                    helper = str(db_data[3]).split(" ")
-                    self.ui.db_firstname.setText(helper[0])
-                    self.ui.db_middlename.setText(helper[1])
-                    self.ui.db_lastname.setText(db_data[4])
-                    self.ui.db_refrence.setText(str(db_data[1]))
-                    self.ui.db_index.setText(str(db_data[2]))
-                    self.ui.db_nationality.setText(db_data[5])
-                    self.ui.dbgender.setText(db_data[6])
-                    self.ui.db_year.setText(level)
-                    self.ui.db_validity.setText(db_data[8]+" - "+db_data[9])
-                    self.ui.db_college.setText(db_data[12])
-                    self.ui.db_faculty.setText(db_data[13])
-                    self.ui.db_programe.setText(db_data[14])
-                    self.ui.db_type.setText(db_data[15])
-                    self.load_image_from_storage(self.ui.search_box.text(),self.ui.db_image_data,'students')
-                else:
-                    self.alert.content("Student details not found. Please enter\nyour details to register!")
-                    self.alert.show()
+        self.alert = AlertDialog()
+        student_reference=self.value_formater(self.ui.search_box.text())
+        results=self.query_cache_data_list(f"SELECT * FROM tb_attendance WHERE student_reference={student_reference}")
+        self.ui_table(results)
+        if self.ui.search_box.text():
+            db_data=self.query_cache_database(f"SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference={student_reference}") 
+            if len(db_data) > 0:
+                start_date = (str(db_data[8])).split(' ')
+                student_year=(int(current.now().date().strftime('%Y'))-int(start_date[1]))    
+                if student_year <= 1:
+                    level = "1st year"
+                elif student_year > 1 and student_year <= 2:
+                    level = "2nd year"
+                elif student_year > 2 and student_year <= 3:
+                    level = "3rd year"
+                elif student_year > 3 and student_year <= 4:
+                    level = "4th year"
+                elif student_year > 4 and student_year <= 5:
+                    level = "5th year"
+                elif student_year > 5 and student_year <= 6:
+                    level = "6th year"
+                helper = str(db_data[3]).split(" ")
+                self.ui.db_firstname.setText(helper[0])
+                self.ui.db_middlename.setText(helper[1])
+                self.ui.db_lastname.setText(db_data[4])
+                self.ui.db_refrence.setText(str(db_data[1]))
+                self.ui.db_index.setText(str(db_data[2]))
+                self.ui.db_nationality.setText(db_data[5])
+                self.ui.dbgender.setText(db_data[6])
+                self.ui.db_year.setText(level)
+                self.ui.db_validity.setText(db_data[8]+" - "+db_data[9])
+                self.ui.db_college.setText(db_data[12])
+                self.ui.db_faculty.setText(db_data[13])
+                self.ui.db_programe.setText(db_data[14])
+                self.ui.db_type.setText(db_data[15])
+                self.load_image_from_storage(self.ui.search_box.text(),self.ui.db_image_data,'students')
+                return results
             else:
-                self.alert.content("Oops! search field can't be empty.")
+                self.alert.content("Student details not found. Please enter\nyour details to register!")
                 self.alert.show()
+        else:
+            self.alert.content("Oops! search field can't be empty.")
+            self.alert.show()
 
     def query_for_data_by_date_range(self):
         start = self.ui.db_start_date.text()
@@ -1905,7 +1905,7 @@ class MainWindow(QMainWindow):
                         self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
                         self.alert.show()      
                 elif self.ui.search_box.text() and self.ui.db_start_date.text():
-                    self.fetch_data_by_program_and_date()
+                    return self.fetch_data_by_program_and_date()
                 else:
                     program = self.ui.search_box.text()
                     program = "Dept. of "+program
@@ -1917,7 +1917,7 @@ class MainWindow(QMainWindow):
             else:
                 if self.ui.db_start_date.text() and  self.ui.db_end_date.text():
                     if self.ui.db_start_date.text() <= self.ui.db_end_date.text():
-                        self.query_for_data_by_date_range()
+                        return self.query_for_data_by_date_range()
                     else:
                         self.alert.content(f"Oops! invalid date range,\nstart date must be less than stop date")
                         self.alert.show()
@@ -1928,7 +1928,7 @@ class MainWindow(QMainWindow):
                     self.ui_table(results)
                     return results
                 elif self.ui.search_box.text():
-                    self.fetch_details_for_card_view()
+                    return self.fetch_details_for_card_view()
                 elif self.ui.search_box.text() and self.ui.db_start_date.text() and  self.ui.db_end_date.text():
                     if self.ui.db_start_date.text() <= self.ui.db_end_date.text():
                         self.fetch_details_for_card_view()
@@ -2128,7 +2128,7 @@ class MainWindow(QMainWindow):
         student_reference=self.value_formater(data_json['reference'])
         db = sqlite3.connect(self.get_cache_path())
         my_cursor = db.cursor()
-        my_cursor.execute(f"SELECT generated_id,student_reference FROM tb_students WHERE student_reference={student_reference}")
+        my_cursor.execute(f"SELECT generated_id,student_reference FROM tb_attendance_temp WHERE student_reference={student_reference}")
         cursor= my_cursor.fetchone()
         db.commit()
         results = []
@@ -2148,6 +2148,7 @@ class MainWindow(QMainWindow):
                     time_out =current.now().time().strftime('%H:%M:%S %p')
                     date_stamp=current.now().date().strftime('%Y-%m-%d')
                     new_duration = self.compute_logout_duration(time_in=str(details[0][0]),time_out=time_out)
+                    self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
                     if str(details[0][1]) == "00:00:00":
                         my_cursor.execute("UPDATE tb_attendance_temp SET time_out= ?, duration= ?  WHERE student_reference=? and date_stamp= ? ",(time_out,new_duration,student_reference,date_stamp))
                         db.commit()
@@ -2233,8 +2234,10 @@ class MainWindow(QMainWindow):
             db.commit()
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
             (data['reference'],data['college'],data['faculty'],data['department'],data['type']))   
-            db.commit()       
-              
+            db.commit() 
+            db.close()      
+
+    ######------Refactoring here------###################################       
     def fetch_data_from_db(self,reference):
         data_json = json.loads(reference)
         student_reference=self.value_formater(data_json['reference'])
@@ -2260,7 +2263,10 @@ class MainWindow(QMainWindow):
                     self.update_interface(self.read_student_information_json())
                     self.last_seen(data_json['reference'])
                     self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
-                    self.insert_into_cache_db(self.read_student_information_json())
+                    self.server_logs('[SERVER]',db_cache[:2])
+            if update['firstname'] != 'firstname':
+                print(update['reference'])
+                # self.insert_into_cache_db(self.read_student_information_json())
    
     def update_interface_cache(self, db_data):
         if db_data:
@@ -2341,9 +2347,10 @@ class MainWindow(QMainWindow):
             self.loadUi_file()
             self.show_info("Oops! student not found. Please register!") 
 
+    ######------Refactoring here------################################### 
     def retreive_student_details_api_thread(self,data):
         data_json = json.loads(data)
-        details_url,images_url=self.restapi.get_field_text()
+        details_url,images_url= self.restapi.get_field_text()
         if isinstance(data, str):
             details_request=details_url.replace('reference',data_json['reference'])
             self.data= RequestThread(url_details=details_request)
