@@ -1304,7 +1304,6 @@ class MainWindow(QMainWindow):
     def validate_field(self,pattern,value):
         return bool(re.match(pattern,value))
 
-
     def load_batch_data(self):
         results_list = []
         path = batch_file_path
@@ -2200,6 +2199,24 @@ class MainWindow(QMainWindow):
         self.ui.image.setScaledContents(False)
         self.ui.label_notification.setText("Notification")
 
+    def get_student_details_from_UI(self):
+        firstname = self.ui.firstname.text()
+        othername =  self.ui.othername.text()
+        lastname =  self.ui.lastname.text()
+        reference = self.ui.reference.text()
+        index = self.ui.index.text()
+        nationality = self.ui.nationality.text()
+        college = self.ui.college.text()
+        type =  self.ui.type.text()
+        gender = self.ui.gender.text()
+        disabled = student_disability
+        department = self.ui.program.text()
+        faculty = self.ui.faculty.text()
+        validity = self.ui.validity.text()
+        return (firstname, othername, lastname, reference, 
+        index, nationality,college, type, gender,disabled
+        ,department,faculty,validity)
+        
     def last_seen(self,reference:str):  
         student_reference=self.value_formater(reference)
         db = sqlite3.connect(self.get_cache_path())
@@ -2222,22 +2239,22 @@ class MainWindow(QMainWindow):
             self.ui.last_out.setText("Oops! first timer")
             self.ui.last_in.setText("00:00:00") 
 
-    def insert_into_cache_db(self,data: json):
+    def insert_into_cache_db(self,data):
         db = sqlite3.connect(self.get_cache_path())
         cursor = db.cursor()
-        student_reference=self.value_formater(data['reference'])
-        db_cache=self.query_cache_database("SELECT * FROM tb_students WHERE student_reference="+student_reference)
-        if not db_cache:
-            validity = str(data['validity']).split('-')
+        student_reference=self.value_formater(data[3])
+        db_cache=self.query_cache_database("SELECT student_reference FROM tb_students WHERE student_reference="+student_reference)
+        if len(db_cache)<=0:
+            validity = str(data[12]).split('-')
             cursor.execute("INSERT INTO tb_students(student_reference,student_index,student_firstname,student_lastname,student_nationality,student_gender,student_disability,card_issued_date,card_expiry_date) VALUES (?,?,?,?,?,?,?,?,?)",
-            (data['reference'],data['index'],str(data['firstname']+' '+data['othername']),data['lastname'],data['nationality'],data['gender'],data['disabled'],validity[0],validity[1]))   
+            (data[3],data[4],str(data[0]+' '+data[1]),data[2],data[5],data[8],data[9],validity[0],validity[1]))   
             db.commit()
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
-            (data['reference'],data['college'],data['faculty'],data['department'],data['type']))   
-            db.commit() 
-            db.close()      
-
-    ######------Refactoring here------###################################       
+            (data[3],data[6],data[11],data[10],data[7]))   
+            db.commit()      
+        else:
+            pass
+                   
     def fetch_data_from_db(self,reference):
         data_json = json.loads(reference)
         student_reference=self.value_formater(data_json['reference'])
@@ -2258,15 +2275,12 @@ class MainWindow(QMainWindow):
             else:
                 self.show_info("Server returned no response...") 
             with open(path,'r') as content:
-                update = json.load(content)
-                if update['firstname'] != 'firstname':
+                self.update = json.load(content)
+                if  self.update['firstname'] != 'firstname':
                     self.update_interface(self.read_student_information_json())
                     self.last_seen(data_json['reference'])
                     self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
                     self.server_logs('[SERVER]',db_cache[:2])
-            if update['firstname'] != 'firstname':
-                print(update['reference'])
-                # self.insert_into_cache_db(self.read_student_information_json())
    
     def update_interface_cache(self, db_data):
         if db_data:
@@ -2347,7 +2361,6 @@ class MainWindow(QMainWindow):
             self.loadUi_file()
             self.show_info("Oops! student not found. Please register!") 
 
-    ######------Refactoring here------################################### 
     def retreive_student_details_api_thread(self,data):
         data_json = json.loads(data)
         details_url,images_url= self.restapi.get_field_text()
@@ -2387,6 +2400,7 @@ class MainWindow(QMainWindow):
         date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
         student_reference=self.value_formater(self.ui.reference.text())
         if self.ui.reference.text() != "Reference" and self.ui.reference.text() !="" :
+            
             data=cursor.execute(f"SELECT student_reference,date_stamp FROM tb_attendance_temp WHERE student_reference={student_reference} AND date_stamp={date}")
             data=cursor.fetchone()
             if data:
@@ -2537,7 +2551,11 @@ class MainWindow(QMainWindow):
                         self.log_student_out(qr_code_data)
                     else:
                         self.ui.scan_status.setText("No tracking")
-     
+
+        if self.ui.reference.text()!="Reference":
+            self.insert_into_cache_db(self.get_student_details_from_UI())
+        else:
+            pass
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
