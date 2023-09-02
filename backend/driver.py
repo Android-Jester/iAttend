@@ -788,6 +788,11 @@ class MainWindow(QMainWindow):
             self.ui.btn_report.hide()
             self.ui.btn_sink_data.hide()
             self.ui.btn_consolidation_report.hide()
+            self.ui.auto_check_in_check_out.hide()
+            self.ui.spinBox.hide()
+            self.ui.checkin.hide()
+            self.ui.checkout.hide()
+            self.ui.scan_status.hide()
         elif account_role == user:
             self.ui.frame.setMinimumHeight(580)
             self.ui.frame.setMaximumHeight(580)
