@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'dashoboardwouiEQ.ui'
+## Form generated from reading UI file 'dashoboarduYvALp.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -3380,7 +3380,7 @@ class Ui_dashboard(object):
         self.left_fram_reg.setFrameShadow(QFrame.Raised)
         self.reg_image_2 = QLabel(self.left_fram_reg)
         self.reg_image_2.setObjectName(u"reg_image_2")
-        self.reg_image_2.setGeometry(QRect(10, 120, 641, 371))
+        self.reg_image_2.setGeometry(QRect(10, 120, 641, 391))
         self.reg_image_2.setFont(font9)
         self.reg_image_2.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3401,7 +3401,7 @@ class Ui_dashboard(object):
         self.label_37.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         self.label_38 = QLabel(self.left_fram_reg)
         self.label_38.setObjectName(u"label_38")
-        self.label_38.setGeometry(QRect(10, 520, 641, 301))
+        self.label_38.setGeometry(QRect(10, 550, 641, 261))
         self.label_38.setFont(font7)
         self.label_38.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3452,8 +3452,8 @@ class Ui_dashboard(object):
         self.btn_find_filesearch.setFlat(True)
         self.generate_code_label = QLabel(self.left_fram_reg)
         self.generate_code_label.setObjectName(u"generate_code_label")
-        self.generate_code_label.setGeometry(QRect(30, 140, 285, 260))
-        self.generate_code_label.setMinimumSize(QSize(285, 260))
+        self.generate_code_label.setGeometry(QRect(30, 150, 285, 263))
+        self.generate_code_label.setMinimumSize(QSize(285, 263))
         self.generate_code_label.setMaximumSize(QSize(285, 260))
         self.generate_code_label.setFont(font9)
         self.generate_code_label.setStyleSheet(u"QLabel{\n"
@@ -3465,7 +3465,8 @@ class Ui_dashboard(object):
         self.generate_code_label.setAlignment(Qt.AlignCenter)
         self.find_filename = QLineEdit(self.left_fram_reg)
         self.find_filename.setObjectName(u"find_filename")
-        self.find_filename.setGeometry(QRect(330, 140, 301, 51))
+        self.find_filename.setGeometry(QRect(330, 150, 301, 55))
+        self.find_filename.setMinimumSize(QSize(0, 55))
         self.find_filename.setFont(font3)
         self.find_filename.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3484,7 +3485,8 @@ class Ui_dashboard(object):
         self.find_filename.setClearButtonEnabled(True)
         self.find_filepath = QLineEdit(self.left_fram_reg)
         self.find_filepath.setObjectName(u"find_filepath")
-        self.find_filepath.setGeometry(QRect(330, 210, 301, 51))
+        self.find_filepath.setGeometry(QRect(330, 220, 301, 55))
+        self.find_filepath.setMinimumSize(QSize(0, 55))
         self.find_filepath.setFont(font3)
         self.find_filepath.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3503,7 +3505,8 @@ class Ui_dashboard(object):
         self.find_filepath.setClearButtonEnabled(True)
         self.image_size = QLineEdit(self.left_fram_reg)
         self.image_size.setObjectName(u"image_size")
-        self.image_size.setGeometry(QRect(330, 280, 301, 51))
+        self.image_size.setGeometry(QRect(330, 290, 301, 55))
+        self.image_size.setMinimumSize(QSize(0, 55))
         self.image_size.setFont(font3)
         self.image_size.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3522,8 +3525,9 @@ class Ui_dashboard(object):
         self.image_size.setClearButtonEnabled(True)
         self.btn_generate_code = QPushButton(self.left_fram_reg)
         self.btn_generate_code.setObjectName(u"btn_generate_code")
-        self.btn_generate_code.setGeometry(QRect(330, 350, 141, 48))
-        self.btn_generate_code.setMaximumSize(QSize(16777215, 48))
+        self.btn_generate_code.setGeometry(QRect(330, 360, 141, 55))
+        self.btn_generate_code.setMinimumSize(QSize(0, 55))
+        self.btn_generate_code.setMaximumSize(QSize(16777215, 55))
         self.btn_generate_code.setFont(font3)
         self.btn_generate_code.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3544,9 +3548,9 @@ class Ui_dashboard(object):
         self.btn_generate_code.setFlat(True)
         self.btn_print_code = QPushButton(self.left_fram_reg)
         self.btn_print_code.setObjectName(u"btn_print_code")
-        self.btn_print_code.setGeometry(QRect(490, 350, 141, 48))
-        self.btn_print_code.setMinimumSize(QSize(0, 48))
-        self.btn_print_code.setMaximumSize(QSize(16777215, 48))
+        self.btn_print_code.setGeometry(QRect(490, 360, 141, 55))
+        self.btn_print_code.setMinimumSize(QSize(0, 55))
+        self.btn_print_code.setMaximumSize(QSize(16777215, 55))
         self.btn_print_code.setFont(font3)
         self.btn_print_code.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3569,11 +3573,12 @@ class Ui_dashboard(object):
         self.btn_print_code.setFlat(True)
         self.label_44 = QLabel(self.left_fram_reg)
         self.label_44.setObjectName(u"label_44")
-        self.label_44.setGeometry(QRect(40, 430, 31, 31))
+        self.label_44.setGeometry(QRect(40, 440, 31, 31))
         self.label_44.setPixmap(QPixmap(u":/icons/asset/mail.svg"))
         self.reg_email = QLineEdit(self.left_fram_reg)
         self.reg_email.setObjectName(u"reg_email")
-        self.reg_email.setGeometry(QRect(30, 420, 401, 51))
+        self.reg_email.setGeometry(QRect(30, 430, 401, 55))
+        self.reg_email.setMinimumSize(QSize(0, 55))
         self.reg_email.setFont(font3)
         self.reg_email.setStyleSheet(u"QLineEdit{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3592,7 +3597,8 @@ class Ui_dashboard(object):
         self.reg_email.setClearButtonEnabled(True)
         self.btn_send_mail = QPushButton(self.left_fram_reg)
         self.btn_send_mail.setObjectName(u"btn_send_mail")
-        self.btn_send_mail.setGeometry(QRect(450, 420, 181, 51))
+        self.btn_send_mail.setGeometry(QRect(450, 430, 181, 55))
+        self.btn_send_mail.setMinimumSize(QSize(0, 55))
         self.btn_send_mail.setFont(font3)
         self.btn_send_mail.setStyleSheet(u"QPushButton{\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3613,8 +3619,8 @@ class Ui_dashboard(object):
         self.btn_send_mail.setFlat(True)
         self.email_from = QLineEdit(self.left_fram_reg)
         self.email_from.setObjectName(u"email_from")
-        self.email_from.setGeometry(QRect(30, 540, 601, 51))
-        self.email_from.setMinimumSize(QSize(332, 51))
+        self.email_from.setGeometry(QRect(30, 570, 290, 55))
+        self.email_from.setMinimumSize(QSize(290, 55))
         self.email_from.setMaximumSize(QSize(16777215, 16777215))
         self.email_from.setFont(font3)
         self.email_from.setStyleSheet(u"QLineEdit{\n"
@@ -3634,8 +3640,8 @@ class Ui_dashboard(object):
         self.email_from.setClearButtonEnabled(False)
         self.email_subject = QLineEdit(self.left_fram_reg)
         self.email_subject.setObjectName(u"email_subject")
-        self.email_subject.setGeometry(QRect(30, 610, 601, 51))
-        self.email_subject.setMinimumSize(QSize(332, 51))
+        self.email_subject.setGeometry(QRect(340, 570, 290, 55))
+        self.email_subject.setMinimumSize(QSize(290, 55))
         self.email_subject.setMaximumSize(QSize(16777215, 16777215))
         self.email_subject.setFont(font3)
         self.email_subject.setStyleSheet(u"QLineEdit{\n"
@@ -3655,8 +3661,8 @@ class Ui_dashboard(object):
         self.email_subject.setClearButtonEnabled(False)
         self.email_sender = QLineEdit(self.left_fram_reg)
         self.email_sender.setObjectName(u"email_sender")
-        self.email_sender.setGeometry(QRect(30, 680, 601, 51))
-        self.email_sender.setMinimumSize(QSize(332, 51))
+        self.email_sender.setGeometry(QRect(30, 650, 601, 55))
+        self.email_sender.setMinimumSize(QSize(332, 55))
         self.email_sender.setMaximumSize(QSize(16777215, 16777215))
         self.email_sender.setFont(font3)
         self.email_sender.setStyleSheet(u"QLineEdit{\n"
@@ -3676,8 +3682,8 @@ class Ui_dashboard(object):
         self.email_sender.setClearButtonEnabled(False)
         self.sender_password = QLineEdit(self.left_fram_reg)
         self.sender_password.setObjectName(u"sender_password")
-        self.sender_password.setGeometry(QRect(30, 750, 601, 51))
-        self.sender_password.setMinimumSize(QSize(332, 51))
+        self.sender_password.setGeometry(QRect(30, 730, 601, 55))
+        self.sender_password.setMinimumSize(QSize(332, 55))
         self.sender_password.setMaximumSize(QSize(16777215, 16777215))
         self.sender_password.setFont(font3)
         self.sender_password.setStyleSheet(u"QLineEdit{\n"
@@ -3699,7 +3705,7 @@ class Ui_dashboard(object):
         self.sender_password.setClearButtonEnabled(False)
         self.batch_notification = QLabel(self.left_fram_reg)
         self.batch_notification.setObjectName(u"batch_notification")
-        self.batch_notification.setGeometry(QRect(10, 840, 641, 131))
+        self.batch_notification.setGeometry(QRect(10, 850, 641, 121))
         self.batch_notification.setFont(font3)
         self.batch_notification.setStyleSheet(u"QLabel{\n"
 "	color: rgb(255, 255, 255);\n"
