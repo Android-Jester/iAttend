@@ -1405,6 +1405,12 @@ class MainWindow(QMainWindow):
 
     ############################## Reporting Page Local #######################
 
+    def get_combo_items(self):
+        combo_items = []
+        for index in range(self.ui.report_faculties.count()):
+            combo_items.append(self.ui.report_faculties.itemText(index))
+        return combo_items
+
     def refresh_report_page(self):
         self.ui.chart_title.clear()
         self.ui.report_start_date.clear()
@@ -1485,7 +1491,7 @@ class MainWindow(QMainWindow):
     
     def query_database_with_parameter(self,date,range,type):
         query_param=self.get_database_field()
-        query_result = self.query_cache_data_list(self.query_distinct_parameter(query_param,date,range,type))
+        query_result = [(item,) for item in self.get_combo_items()]
         result_list= []
         for item in query_result: 
             result_list.append(item[0])
@@ -1495,7 +1501,7 @@ class MainWindow(QMainWindow):
             sub_count = self.query_cache_data_list(self.count_distinct_parameter(query_param,date,range,type,parameter))
             total.append(sub_count[0][0])
         department:list = []
-        if query_param=='student_program':
+        if query_param =='student_program':
             for item in query_result:
                 item = str(item[0]).split(' ')
                 department.append(item[2][0:4].upper()) 
