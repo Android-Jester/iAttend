@@ -1491,7 +1491,10 @@ class MainWindow(QMainWindow):
     
     def query_database_with_parameter(self,date,range,type):
         query_param=self.get_database_field()
-        query_result = [(item,) for item in self.get_combo_items()]
+        if self.ui.query_parameter.currentText() == "Faculty":
+            query_result = [(item,) for item in self.get_combo_items()]
+        else:
+            query_result = self.query_cache_data_list(self.query_distinct_parameter(query_param,date,range,type))
         result_list= []
         for item in query_result: 
             result_list.append(item[0])
