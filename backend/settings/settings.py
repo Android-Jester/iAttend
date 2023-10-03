@@ -31,7 +31,6 @@ class Settings(QDialog):
     def get_database_properties(self):
         properties=load_database_properties(self.get_properties(),self.ui_rest.comboBox.currentText())
         self.ui_rest.details_url.setText(properties[0])
-        self.ui_rest.image_url.setText(properties[1])
 
     def validate_database_fields(self):
         properties_list =  self.get_field_text()
