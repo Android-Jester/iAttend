@@ -1477,7 +1477,7 @@ QPushButton:pressed{
               <string notr="true">background-color: rgb(45, 45, 45);</string>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>3</number>
              </property>
              <widget class="QWidget" name="home">
               <property name="minimumSize">
@@ -2084,7 +2084,7 @@ QPushButton:pressed{
 }</string>
                      </property>
                      <property name="text">
-                      <string>Type</string>
+                      <string>Category</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2164,21 +2164,21 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>300</y>
+                       <y>320</y>
                        <width>481</width>
-                       <height>100</height>
+                       <height>80</height>
                       </rect>
                      </property>
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>100</height>
+                       <height>80</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>100</height>
+                       <height>80</height>
                       </size>
                      </property>
                      <property name="font">
@@ -2206,12 +2206,12 @@ QPushButton:pressed{
                       <bool>true</bool>
                      </property>
                     </widget>
-                    <widget class="QLineEdit" name="camera_ip">
+                    <widget class="QLineEdit" name="student_reference_field">
                      <property name="geometry">
                       <rect>
                        <x>20</x>
-                       <y>50</y>
-                       <width>461</width>
+                       <y>20</y>
+                       <width>191</width>
                        <height>51</height>
                       </rect>
                      </property>
@@ -2225,7 +2225,7 @@ QPushButton:pressed{
 	color: rgb(255, 255, 255);
 	border: 2px solid  rgb(45, 45, 45);
 	border-radius:10px;
-	padding-left: 50px;
+	padding-left: 10px;
 }
 
 QLineEdit:hover{
@@ -2237,7 +2237,7 @@ QLineEdit:focus{
 }</string>
                      </property>
                      <property name="placeholderText">
-                      <string>Camera Id/IP ?</string>
+                      <string>Student reference</string>
                      </property>
                      <property name="clearButtonEnabled">
                       <bool>true</bool>
@@ -2247,7 +2247,7 @@ QLineEdit:focus{
                      <property name="geometry">
                       <rect>
                        <x>20</x>
-                       <y>120</y>
+                       <y>140</y>
                        <width>171</width>
                        <height>41</height>
                       </rect>
@@ -2294,27 +2294,11 @@ QPushButton:pressed{
                       <bool>true</bool>
                      </property>
                     </widget>
-                    <widget class="QLabel" name="label_27">
-                     <property name="geometry">
-                      <rect>
-                       <x>30</x>
-                       <y>60</y>
-                       <width>41</width>
-                       <height>31</height>
-                      </rect>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap resource="../resource/asset.qrc">:/icons/asset/video.svg</pixmap>
-                     </property>
-                    </widget>
                     <widget class="QPushButton" name="btn_disconnect">
                      <property name="geometry">
                       <rect>
                        <x>210</x>
-                       <y>120</y>
+                       <y>140</y>
                        <width>171</width>
                        <height>41</height>
                       </rect>
@@ -2364,7 +2348,7 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>400</x>
-                       <y>120</y>
+                       <y>140</y>
                        <width>81</width>
                        <height>38</height>
                       </rect>
@@ -2402,9 +2386,9 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>10</y>
+                       <y>110</y>
                        <width>481</width>
-                       <height>171</height>
+                       <height>91</height>
                       </rect>
                      </property>
                      <property name="font">
@@ -2435,7 +2419,7 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>10</x>
-                       <y>200</y>
+                       <y>220</y>
                        <width>481</width>
                        <height>81</height>
                       </rect>
@@ -2467,7 +2451,7 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>260</x>
-                       <y>220</y>
+                       <y>240</y>
                        <width>221</width>
                        <height>41</height>
                       </rect>
@@ -2514,7 +2498,7 @@ QPushButton:pressed{
                      <property name="geometry">
                       <rect>
                        <x>20</x>
-                       <y>220</y>
+                       <y>240</y>
                        <width>211</width>
                        <height>41</height>
                       </rect>
@@ -2557,16 +2541,153 @@ QPushButton:pressed{
                       <bool>true</bool>
                      </property>
                     </widget>
+                    <widget class="QLabel" name="firstname_28">
+                     <property name="geometry">
+                      <rect>
+                       <x>10</x>
+                       <y>0</y>
+                       <width>481</width>
+                       <height>91</height>
+                      </rect>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Arial</family>
+                       <pointsize>10</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel{
+	color: rgb(255, 255, 255);
+	background-color: rgb(35, 35, 35);
+	border-radius: 10px;
+	padding-left:10px;
+	padding-top:5px;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="btn_search_student">
+                     <property name="geometry">
+                      <rect>
+                       <x>220</x>
+                       <y>20</y>
+                       <width>121</width>
+                       <height>51</height>
+                      </rect>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Search</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../resource/asset.qrc">
+                       <normaloff>:/icons/asset/search.svg</normaloff>:/icons/asset/search.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Shift+C</string>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                    <widget class="QPushButton" name="btn_insert_new_student_record">
+                     <property name="geometry">
+                      <rect>
+                       <x>360</x>
+                       <y>20</y>
+                       <width>121</width>
+                       <height>51</height>
+                      </rect>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	color: rgb(255, 255, 255);
+	background-color: rgb(45, 45, 45);
+	border:none;
+	border-radius: 10px;
+
+}
+
+QPushButton:hover{
+	border-radius: 20px;
+}
+
+QPushButton:pressed{
+	border: 2px solid rgb(255,255,255);	
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Save</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="../resource/asset.qrc">
+                       <normaloff>:/icons/asset/upload.svg</normaloff>:/icons/asset/upload.svg</iconset>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="shortcut">
+                      <string>Shift+C</string>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                    <zorder>firstname_28</zorder>
                     <zorder>firstname_23</zorder>
                     <zorder>label_notification</zorder>
-                    <zorder>camera_ip</zorder>
+                    <zorder>student_reference_field</zorder>
                     <zorder>btn_connect_detect</zorder>
-                    <zorder>label_27</zorder>
                     <zorder>btn_disconnect</zorder>
                     <zorder>comboBox</zorder>
                     <zorder>firstname_24</zorder>
                     <zorder>btn_clear_label</zorder>
                     <zorder>btn_open_database</zorder>
+                    <zorder>btn_search_student</zorder>
+                    <zorder>btn_insert_new_student_record</zorder>
                    </widget>
                   </item>
                  </layout>
