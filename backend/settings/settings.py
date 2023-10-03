@@ -25,7 +25,6 @@ class Settings(QDialog):
 
         self.ui_rest.comboBox.activated.connect(self.get_database_properties)  
         self.ui_rest.btn_update_properties.clicked.connect(self.update_endpoints_urls)
-        self.ui_rest.users.toggled.connect(self.users_toggled)
         self.ui_rest.current.toggled.connect(self.current_toggled)
         self.ui_rest.colleges.toggled.connect(self.colleges_toggled)
 
@@ -48,24 +47,12 @@ class Settings(QDialog):
     def get_properties(self):
         return 'C:\\ProgramData\\iAttend\\data\\properties\\restapi_endpoints.json'
 
-    def users_toggled(self):
-        with open('C:\\ProgramData\\iAttend\\data\\user\\api_routes.json','r') as file:
-            data = file.read()
-            try:
-                details=json.loads(data)
-                self.ui_rest.details_url.setText(details['details'])
-                self.ui_rest.image_url.setText(details['images'])
-            except Exception as e:
-                pass
-        file.close()
-
     def current_toggled(self):
         with open('C:\\ProgramData\\iAttend\\data\\properties\\students_restapi_endpoints.json','r') as file:
             data = file.read()
             try:
                 details=json.loads(data)
                 self.ui_rest.details_url.setText(details['details'])
-                self.ui_rest.image_url.setText(details['images'])
             except Exception as e:
                 pass
         file.close()
@@ -73,9 +60,7 @@ class Settings(QDialog):
     def colleges_toggled(self): 
         details=load_database_properties(self.get_properties(),self.ui_rest.comboBox.currentText())
         self.ui_rest.details_url.setText(details[0])
-        self.ui_rest.image_url.setText(details[1])
            
-
     def connection_properties_colleges(self,path,Key_name,properties):
         with open(path,'r') as content:
             data = json.load(content) 
@@ -86,7 +71,6 @@ class Settings(QDialog):
                     break
             update=data[index][Key_name]
             update['details'] = properties[0]
-            update['images'] = properties[1]
             with open(path,'w') as content:
                 json.dump(data, content, indent=4)
             content.close()
@@ -95,7 +79,6 @@ class Settings(QDialog):
         with open(path,'r') as content:
             update = json.load(content) 
             update['details'] = properties[0]
-            update['images'] = properties[1]
             update['endpoint'] = self.ui_rest.type.text()
             with open(path,'w') as content:
                 json.dump(update, content, indent=4)
@@ -123,15 +106,6 @@ class Settings(QDialog):
                 self.ui_rest.label_notification.setText("Hey! current endpoints properties updated...")
             else:
                 self.ui_rest.label_notification.setText("Oops! empty  values not allowed...") 
-        elif self.ui_rest.users.isChecked():
-            path = 'C:\\ProgramData\\iAttend\\data\\user\\api_routes.json'
-            key_name=self.ui_rest.comboBox.currentText()
-            data_list,empty_list=self.validate_database_fields()
-            if len(empty_list) == 0:
-                self.connection_properties_colleges(path,key_name,data_list)
-                self.ui_rest.label_notification.setText("Hey! users endpoints properties updated...")
-            else:
-                self.ui_rest.label_notification.setText("Oops! empty  values not allowed...")
 
     def set_colleges_settings(self, colleges: list):
         self.ui_rest.comboBox.addItems(colleges)
@@ -148,13 +122,11 @@ class Settings(QDialog):
     def set_database_properties(self):
         details = self.get_details()
         self.ui_rest.details_url.setText(details['details'])
-        self.ui_rest.image_url.setText(details['images'])
         self.ui_rest.type.setText(details['endpoint'])
         
     def get_field_text(self):
         details=self.ui_rest.details_url.text()
-        images=self.ui_rest.image_url.text()
-        return details,images    
+        return details    
               
     def MoveWindow(self, event):
         if self.isMaximized() == False:
