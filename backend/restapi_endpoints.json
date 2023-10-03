@@ -1,38 +1,32 @@
 [
     {
       "CoS": {
-        "details": "http://localhost/api/v1/CoS/students/details/reference",
-        "images": "http://localhost/api/v1/CoS/students/images/reference"
+        "details": "http://localhost/api/v1/CoS/students/details/reference"
       }
     },
     {
       "CoE": {
-      "details": "http://localhost/api/v1/CoE/students/details/reference",
-      "images": "http://localhost/api/v1/CoE/students/images/reference"
+      "details": "http://localhost/api/v1/CoE/students/details/reference"
       }
     },
     {
       "CABE": {
-        "details": "http://localhost/api/v1/CABE/students/details/reference",
-        "images": "http://localhost/api/v1/CABE/students/images/reference"
+        "details": "http://localhost/api/v1/CABE/students/details/reference"
       }
     },
     {
       "CANR": {
-        "details": "http://localhost/api/v1/CANR/students/details/reference",
-        "images": "http://localhost/api/v1/CANR/students/images/reference"
+        "details": "http://localhost/api/v1/CANR/students/details/reference"
       }
     },
     {
       "CoHS": {
-        "details": "http://localhost/api/v1/CoHS/students/details/reference",
-        "images": "http://localhost/api/v1/CoHS/students/images/reference"
+        "details": "http://localhost/api/v1/CoHS/students/details/reference"
       }
     },  
     {
       "CoHSS": {
-        "details": "http://localhost/api/v1/CoHSS/students/details/reference",
-        "images": "http://localhost/api/v1/CoHSS/students/images/reference"
+        "details": "http://localhost/api/v1/CoHSS/students/details/reference"
       }
     }
   ]
