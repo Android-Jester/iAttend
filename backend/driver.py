@@ -229,6 +229,10 @@ class MainWindow(QMainWindow):
         self.ui.btn_merge_load.pressed.connect(self.change_merge_load_text)
         self.ui.btn_merge_save.clicked.connect(self.merge_report)
 
+        self.ui.btn_search_student.clicked.connect(self.get_student_record_from_api)
+        self.ui.btn_search_student.pressed.connect(self.search_student_text)
+        self.ui.btn_insert_new_student_record.clicked.connect(self.insert_new_student_record)
+
         self.check_in_mode = True
         self.start_time = current.now()
         
@@ -804,7 +808,6 @@ class MainWindow(QMainWindow):
         self.close()
         self.set_log_out_session()
         self.http_response.close()
-        update_information_file()
         self.camera_1.close()
         self.camera_2.close()
         self.camera_3.close()
@@ -822,7 +825,6 @@ class MainWindow(QMainWindow):
             self.set_log_out_session()
             self.close()
             self.http_response.close()
-            update_information_file()
             self.config.close()
             self.camera_1.close()
             self.camera_2.close()
@@ -832,6 +834,7 @@ class MainWindow(QMainWindow):
             self.merge.close()
             self.mail.close()
             self.user.close()
+            self.restapi.close()
             self.application_logs("Authentication page shown.....")
             self.login.show()
         except Exception as e:
@@ -976,14 +979,6 @@ class MainWindow(QMainWindow):
         date_ = self.ui.user_end_date_widget.date().toPython()
         self.ui.user_end_date_field.setText(str(date_))
 
-    def read_user_endpoints(self):
-        with open('C:\\ProgramData\\iAttend\\data\\user\\api_routes.json','r') as content:
-            data = content.read()
-            try:
-                return json.loads(data)
-            except Exception as e:
-                pass
-    
     def set_load_user_text(self):
         if self.ui.user_search.text():
             self.ui.btn_user_fetch.setText("Loading...")
@@ -999,18 +994,21 @@ class MainWindow(QMainWindow):
         self.ui.user_reference.setText(details['reference'])
         
     def load_user_from_api(self):
+        self.loadUi_file()
         self.alert = AlertDialog()
-        user=self.read_user_endpoints()
         reference=self.ui.user_search.text()
-        url = str(user['details']).replace('reference',reference)
+        url= self.restapi.get_field_text()
+        url = str(url).replace('reference',reference)
         if reference and self.validate_field('^[0-9]+$',reference):
             try:
                 request_body = requests.get(url)
                 student_data=request_body.json()
-                if request_body.status_code == 200:
+                if request_body.status_code == 302:
                     self.render_user_interface(student_data)
                     self.ui.btn_user_fetch.setText("Load User")
                     self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
+                    self.save_student_image(reference,request_body,'administrators')
+                    self.load_image_from_storage(reference,self.ui.user_image,'administrators')
                 else:
                     self.ui.btn_user_fetch.setText("Load User")
                     self.ui.btn_user_fetch.setIcon(QIcon(u":/icons/asset/download.svg"))
@@ -2265,9 +2263,10 @@ class MainWindow(QMainWindow):
             db.commit()
             cursor.execute("INSERT INTO tb_student_study_details(student_reference,student_college,student_faculty,student_program,student_category) VALUES (?,?,?,?,?)",
             (data[3],data[6],data[11],data[10],data[7]))   
-            db.commit()      
+            db.commit() 
+            return "Added student record to database"     
         else:
-            pass
+             return "Oops! student record to already exist."
                    
     def fetch_data_from_db(self,reference):
         data_json = json.loads(reference)
@@ -2279,23 +2278,72 @@ class MainWindow(QMainWindow):
             self.last_seen(data_json['reference'])
             self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
         else:
-            path = 'C:\\ProgramData\\iAttend\\data\\student\\information.json'
-            with open(path,'r') as content:
-                results = json.load(content)
-            content.close()
-            if  results['reference'] != self.ui.reference.text():
-                self.retreive_student_details_api_thread(reference)
-                self.show_info("Waiting for response from server...") 
+            pass
+
+    def search_student_text(self):
+        if self.ui.student_reference_field.text():
+            self.ui.btn_search_student.setText("Loading...")
+            self.ui.btn_search_student.setIcon(QIcon(u":/icons/asset/loader.svg"))
+        else:
+            self.ui.btn_search_student.setText("Search")
+            self.ui.btn_search_student.setIcon(QIcon(u":/icons/asset/search.svg"))      
+
+    def save_student_image(self, reference, response: json, folder: str):
+        with open(f"C:\\ProgramData\\iAttend\\data\\cache\\images\\{folder}\\{reference}.png", 'wb') as file:
+            file.write(bytes(response.json()["image"]["data"]["data"]))
+        file.close()
+
+    def get_student_record_from_api(self):
+        self.loadUi_file()
+        reference_ = self.ui.student_reference_field.text()
+        self.alert = AlertDialog()
+        student_reference=self.value_formater(reference_)
+        db_cache=self.query_cache_database("SELECT * FROM tb_students INNER JOIN tb_student_study_details ON tb_students.student_reference=tb_student_study_details.student_reference WHERE tb_students.student_reference="+student_reference)
+        if len(db_cache) > 0:
+            self.server_logs('[CACHED]',db_cache[:2])
+            self.update_interface_cache(db_cache)
+            self.last_seen(reference_)
+            self.load_image_from_storage(reference_,self.ui.image,'students')
+            self.ui.btn_search_student.setText("Search")
+            self.ui.btn_search_student.setIcon(QIcon(u":/icons/asset/search.svg"))
+        else:
+            details_url= self.restapi.get_field_text()
+            url = str(details_url).replace('reference',reference_)
+            if reference_:
+                try:
+                    request_body = requests.get(url)
+                    student_data=request_body.json()
+                    if request_body.status_code == 302:
+                        self.update_interface(student_data)
+                        self.save_student_image(reference_,request_body,'students')
+                        self.ui.btn_search_student.setText("Search")
+                        self.ui.btn_search_student.setIcon(QIcon(u":/icons/asset/search.svg"))
+                        self.load_image_from_storage(reference_,self.ui.image,'students')
+                        self.httpError(f"Status code {request_body.status_code}\n{request_body.headers}")
+                    else:
+                        self.ui.btn_search_student.setText("Search")
+                        self.ui.btn_search_student.setIcon(QIcon(u":/icons/asset/search.svg"))
+                        self.alert.content(str(student_data['message']))
+                        self.alert.show()
+                except Exception as e:
+                    self.ui.btn_search_student.setText("Search")
+                    self.ui.btn_search_student.setIcon(QIcon(u":/icons/asset/search.svg"))
+                    self.httpError(str(e))
             else:
-                self.show_info("Server returned no response...") 
-            with open(path,'r') as content:
-                self.update = json.load(content)
-                if  self.update['firstname'] != 'firstname':
-                    self.update_interface(self.read_student_information_json())
-                    self.last_seen(data_json['reference'])
-                    self.load_image_from_storage(data_json['reference'],self.ui.image,'students')
-                    self.server_logs('[SERVER]',db_cache[:2])
+                self.alert.content("Oops! invalid reference number...")
+                self.alert.show()
    
+    def insert_new_student_record(self):
+        self.alert = AlertDialog()
+        if self.ui.reference.text() != 'Reference' and self.ui.firstname.text() != 'Firstname':
+            record = self.get_student_details_from_UI()
+            response=self.insert_into_cache_db(data=record)
+            self.alert.content(response)
+            self.alert.show()
+        else:
+            self.alert.content(response)
+            self.alert.show()
+        
     def update_interface_cache(self, db_data):
         if db_data:
             start_date = (str(db_data[8])).split(' ')
@@ -2333,14 +2381,6 @@ class MainWindow(QMainWindow):
             self.loadUi_file()
             self.show_info("Oops! student not found. Please register!") 
                     
-    def read_student_information_json(self):
-        with open('C:\\ProgramData\\iAttend\\data\\student\\information.json','r') as content:
-            data = content.read()
-            try:
-                return json.loads(data)
-            except Exception as e:
-                pass
-            
     def update_interface(self, request_body_json: json):
         if request_body_json:
             start_date = (str(request_body_json['validity'])).split('-')[0]
@@ -2370,22 +2410,10 @@ class MainWindow(QMainWindow):
             self.ui.college.setText(request_body_json['college'])
             self.ui.faculty.setText(request_body_json['faculty'])
             self.ui.program.setText(str(request_body_json['department']))
-            self.ui.type.setText(request_body_json['type'])
+            self.ui.type.setText(request_body_json['category'])
         else:
             self.loadUi_file()
             self.show_info("Oops! student not found. Please register!") 
-
-    def retreive_student_details_api_thread(self,data):
-        data_json = json.loads(data)
-        details_url,images_url= self.restapi.get_field_text()
-        if isinstance(data, str):
-            details_request=details_url.replace('reference',data_json['reference'])
-            self.data= RequestThread(url_details=details_request)
-            if self.data.isRunning()==True:
-                pass
-            else:
-                self.data.httpSignal.connect(self.httpError)
-                self.data.start()
 
     def httpError(self,response):
         self.http_response.set_response(response)
@@ -2414,7 +2442,6 @@ class MainWindow(QMainWindow):
         date="\'{}\'".format(current.now().date().strftime("%Y-%m-%d"))
         student_reference=self.value_formater(self.ui.reference.text())
         if self.ui.reference.text() != "Reference" and self.ui.reference.text() !="" :
-            
             data=cursor.execute(f"SELECT student_reference,date_stamp FROM tb_attendance_temp WHERE student_reference={student_reference} AND date_stamp={date}")
             data=cursor.fetchone()
             if data:
@@ -2438,33 +2465,22 @@ class MainWindow(QMainWindow):
 
     def start_webcam(self):
         self.show_alert = AlertDialog()
-        if self.ui.camera_ip.text() or self.ui.comboBox.currentText():
-            ip_address = self.ui.camera_ip.text()
+        if self.ui.comboBox.currentText():
             system_attached_camera = self.ui.comboBox.currentText()
-            self.network_capture = VideoCapture(ip_address)
-            if ip_address:  
-                if self.network_capture is None or not self.network_capture.isOpened():    
-                    self.stop_webcam
-                    self.show_alert.content("Oops! check the camera ip address\nconnetion or is already in use.") 
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(ip_address)    
-            elif system_attached_camera:
-                camera_id = int(system_attached_camera)
-                self.system_capture = VideoCapture(camera_id)       
-                if self.system_capture is None or not self.system_capture.isOpened():    
-                    self.stop_webcam
-                    self.show_alert.content("Oops! check the camera for\nconnetion or is already in use.")  
-                    self.show_alert.show()
-                else:
-                    self.capture = VideoCapture(camera_id)                  
-            elif self.system_capture.isOpened() and self.network_capture.isOpened():
-                    self.capture = VideoCapture(camera_id)
-            self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
-            self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
-            self.timer.timeout.connect(self.update_frame)
-            self.show_info("Connected to selected device\nsuccessfully...") 
-            self.timer.start(3)
+            camera_id = int(system_attached_camera)
+            self.system_capture = VideoCapture(camera_id)       
+            if self.system_capture:    
+                self.capture = VideoCapture(camera_id)                  
+                self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT,480)
+                self.capture.set(cv2.CAP_PROP_FRAME_WIDTH,640)
+                self.timer.timeout.connect(self.update_frame)
+                self.show_info("Connected to selected device\nsuccessfully...") 
+                self.timer.start(3)
+            else:
+                self.stop_webcam
+                self.show_alert.content("Oops! check the camera for\nconnetion or is already in use.")  
+                self.show_alert.show()
+            
         else:
             self.show_alert.content("Oops! your have no active cameras available")  
             self.show_alert.show()
@@ -2544,7 +2560,6 @@ class MainWindow(QMainWindow):
                 cv2.line(self.result,(x,h),(x,h-15),color,thickness)
                 cv2.line(self.result,(w,h),(w-15,h),color,thickness)
                 cv2.line(self.result,(w,h),(w,h-15),color,thickness)
-
                 if self.ui.auto_check_in_check_out.isChecked():
                     if self.check_in_mode:
                         self.ui.scan_status.setText("Check-in activated")
@@ -2594,7 +2609,6 @@ class MainWindow(QMainWindow):
             self.ui.camera_view.setPixmap(u":/icons/asset/camera-off.svg")
             self.ui.camera_view.setScaledContents(False)
             self.timer.stop()
-            update_information_file()
             self.show_info("Disconnected from device\nsuccessfully...") 
         else:
             self.show_alert.content("Oops! you have no active camera\nto disconnect from.") 
@@ -2649,7 +2663,7 @@ class MainWindow(QMainWindow):
         delta = QPoint(event.globalPos() - self.oldPosition)
         self.move(self.x() + delta.x(), self.y() + delta.y())
         self.oldPosition = event.globalPos()     
- 
+
 class Authentication(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -2781,8 +2795,8 @@ class Authentication(QMainWindow):
             return details
         except Exception as e:
             self.show_alert.content(str(e)) 
-            self.show_alert.show()
-   
+            self.show_alert.show()  
+
 class Splash_screen(QMainWindow):
     def __init__(self, **kwargs):
         QMainWindow.__init__(self, **kwargs)
@@ -2841,8 +2855,7 @@ class Splash_screen(QMainWindow):
         root_dir = 'C:\\ProgramData\\iAttend\\data'
         list =('batch_logs','properties','qr_code',
         'email_details','reports','exports','cache',
-        'partition','application_logs','student',
-        'httpErrors','user')
+        'partition','application_logs','httpErrors')
 
         pictures = 'C:\\Pictures\\iAttend\\'
         if not os.path.exists(pictures):
@@ -2909,13 +2922,6 @@ class Splash_screen(QMainWindow):
             "database":"database@CoS"
         }
         self.write_to_file(path,json_data,'json')
-
-        json_data = {
-            "details": "http://localhost/api/v1/user/details/reference",
-            "images": "http://localhost/api/v1/user/images/reference"
-        }
-        path =os.path.join(root,'user\\api_routes.json')
-        self.write_to_file(path,json_data,'json')
         
         path =os.path.join(root,'properties\\central_database_connection_propeties.json')
         json_data = {
@@ -2928,37 +2934,9 @@ class Splash_screen(QMainWindow):
         }
         self.write_to_file(path,json_data,'json')
         
-        path =os.path.join(root,'student\\information.json')
-        student_json={
-            'firstname': 'firstname', 
-            'othername': 'othername', 
-            'lastname': 'lastname', 
-            'reference': 'reference', 
-            'index': 'index', 
-            'nationality': 'nationality', 
-            'college': 'college', 
-            'type': 'type', 
-            'gender': 'gender', 
-            'disabled': 'disabled', 
-            'department': 'department', 
-            'faculty': 'faculty', 
-            'validity': 'validity'
-        }
-        self.write_to_file(path,student_json,'json')
-
-        path =os.path.join(root,'user\\user.json')
-        user_json={
-            'firstname': 'firstname', 
-            'othername': 'othername', 
-            'lastname': 'lastname',
-            'reference': 'reference', 
-            }
-        self.write_to_file(path,user_json,'json')
-
         path =os.path.join(root,'properties\\students_restapi_endpoints.json')
         json_data = {
             "details":"http://localhost/api/v1/students/details/reference",
-            "images":"http://localhost/api/v1/students/images/reference",
             "endpoint":"RESTAPI"
         }
         self.write_to_file(path,json_data,'json')
