@@ -27,7 +27,6 @@ class RESTAPI(QDialog):
     def get_database_properties(self):
         properties=load_database_properties(self.get_properties(),self.ui_rest.comboBox.currentText())
         self.ui_rest.details_url.setText(properties[0])
-        self.ui_rest.image_url.setText(properties[1])
 
     def get_properties(self):
         return 'C:\\ProgramData\\iAttend\\data\\properties\\restapi_endpoints.json'
@@ -46,7 +45,6 @@ class RESTAPI(QDialog):
     def set_database_properties(self):
         details = self.get_details()
         self.ui_rest.details_url.setText(details['details'])
-        self.ui_rest.image_url.setText(details['images'])
         self.ui_rest.type.setText(details['endpoint'])
         if str(details['endpoint'])=='RESTAPI':
             self.ui_rest.API.setChecked(True)
@@ -58,8 +56,7 @@ class RESTAPI(QDialog):
 
     def get_field_text(self):
         details=self.ui_rest.details_url.text()
-        images=self.ui_rest.image_url.text()
-        return details,images    
+        return details   
               
     def MoveWindow(self, event):
         if self.isMaximized() == False:

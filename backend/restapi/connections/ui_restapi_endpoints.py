@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'restapi_endpointscQCTNm.ui'
+## Form generated from reading UI file 'restapi_endpointsYYQUuX.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -21,9 +21,9 @@ class Ui_RESTAPI(object):
     def setupUi(self, RESTAPI):
         if RESTAPI.objectName():
             RESTAPI.setObjectName(u"RESTAPI")
-        RESTAPI.resize(530, 510)
-        RESTAPI.setMinimumSize(QSize(530, 510))
-        RESTAPI.setMaximumSize(QSize(530, 520))
+        RESTAPI.resize(530, 430)
+        RESTAPI.setMinimumSize(QSize(530, 430))
+        RESTAPI.setMaximumSize(QSize(530, 430))
         self.verticalLayout = QVBoxLayout(RESTAPI)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame = QFrame(RESTAPI)
@@ -163,44 +163,16 @@ class Ui_RESTAPI(object):
 "QLineEdit:focus{\n"
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
+        self.details_url.setReadOnly(True)
         self.details_url.setClearButtonEnabled(True)
         self.label_36 = QLabel(self.frame_4)
         self.label_36.setObjectName(u"label_36")
         self.label_36.setGeometry(QRect(30, 110, 31, 31))
         self.label_36.setStyleSheet(u"background-color: rgb(45, 45, 45);")
         self.label_36.setPixmap(QPixmap(u":/icons/asset/user.svg"))
-        self.image_url = QLineEdit(self.frame_4)
-        self.image_url.setObjectName(u"image_url")
-        self.image_url.setGeometry(QRect(20, 180, 470, 51))
-        sizePolicy.setHeightForWidth(self.image_url.sizePolicy().hasHeightForWidth())
-        self.image_url.setSizePolicy(sizePolicy)
-        self.image_url.setMinimumSize(QSize(470, 0))
-        self.image_url.setMaximumSize(QSize(470, 51))
-        self.image_url.setFont(font1)
-        self.image_url.setTabletTracking(True)
-        self.image_url.setStyleSheet(u"QLineEdit{\n"
-"	color: rgb(255, 255, 255);\n"
-"	border: 2px solid  rgb(45, 45, 45);\n"
-"	border-radius:10px;\n"
-"	padding-left: 45px;\n"
-"}\n"
-"\n"
-"QLineEdit:hover{\n"
-"	border:2px solid rgb(35, 35, 35);\n"
-"}\n"
-"\n"
-"QLineEdit:focus{\n"
-"	border:2px solid rgb(255, 255, 255);\n"
-"}")
-        self.image_url.setClearButtonEnabled(True)
-        self.label_38 = QLabel(self.frame_4)
-        self.label_38.setObjectName(u"label_38")
-        self.label_38.setGeometry(QRect(30, 190, 31, 31))
-        self.label_38.setStyleSheet(u"background-color: rgb(45, 45, 45);")
-        self.label_38.setPixmap(QPixmap(u":/icons/asset/image.svg"))
         self.label_notification = QLabel(self.frame_4)
         self.label_notification.setObjectName(u"label_notification")
-        self.label_notification.setGeometry(QRect(20, 320, 470, 101))
+        self.label_notification.setGeometry(QRect(20, 250, 470, 101))
         sizePolicy1 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
@@ -261,7 +233,7 @@ class Ui_RESTAPI(object):
         self.comboBox.setFrame(False)
         self.type = QLineEdit(self.frame_4)
         self.type.setObjectName(u"type")
-        self.type.setGeometry(QRect(20, 250, 470, 51))
+        self.type.setGeometry(QRect(20, 170, 470, 51))
         sizePolicy.setHeightForWidth(self.type.sizePolicy().hasHeightForWidth())
         self.type.setSizePolicy(sizePolicy)
         self.type.setMinimumSize(QSize(0, 51))
@@ -282,10 +254,11 @@ class Ui_RESTAPI(object):
 "QLineEdit:focus{\n"
 "	border:2px solid rgb(255, 255, 255);\n"
 "}")
+        self.type.setReadOnly(True)
         self.type.setClearButtonEnabled(True)
         self.label_39 = QLabel(self.frame_4)
         self.label_39.setObjectName(u"label_39")
-        self.label_39.setGeometry(QRect(30, 260, 31, 31))
+        self.label_39.setGeometry(QRect(30, 180, 31, 31))
         self.label_39.setStyleSheet(u"background-color: rgb(45, 45, 45);")
         self.label_39.setPixmap(QPixmap(u":/icons/asset/external-link.svg"))
 
@@ -312,8 +285,6 @@ class Ui_RESTAPI(object):
         self.btn_close.setText("")
         self.details_url.setPlaceholderText(QCoreApplication.translate("RESTAPI", u"Details url", None))
         self.label_36.setText("")
-        self.image_url.setPlaceholderText(QCoreApplication.translate("RESTAPI", u"Images url", None))
-        self.label_38.setText("")
         self.label_notification.setText(QCoreApplication.translate("RESTAPI", u"Notification", None))
         self.sqlite.setText(QCoreApplication.translate("RESTAPI", u"SQLite", None))
         self.API.setText(QCoreApplication.translate("RESTAPI", u"Rest API", None))
