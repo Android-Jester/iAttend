@@ -10,7 +10,7 @@ An innovative attendance tracking system can provide a comprehensive and accurat
 ![Report](https://github.com/redolf250/iAttend/blob/master/images/c.png)
 
 ### Report generation at the facility level
-![Report](https://github.com/redolf250/iAttend/blob/master/images/c.png)
+![Report](https://github.com/redolf250/iAttend/blob/master/images/facility_level_report.png)
 
 ### Database schema
 ![Database](https://github.com/redolf250/iAttend/blob/master/images/databasa_schema.png)
