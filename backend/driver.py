@@ -2580,11 +2580,6 @@ class MainWindow(QMainWindow):
                         self.log_student_out(qr_code_data)
                     else:
                         self.ui.scan_status.setText("No tracking")
-
-        if self.ui.reference.text()!="Reference":
-            self.insert_into_cache_db(self.get_student_details_from_UI())
-        else:
-            pass
         self.display_feed(self.result,1)         
         
     def display_feed(self, image, window=1):
