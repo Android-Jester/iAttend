@@ -6,6 +6,14 @@ An innovative attendance tracking system can provide a comprehensive and accurat
 ### Application home screen
 ![Dashboard](https://github.com/redolf250/iAttend/blob/master/images/dashboard.png)
 
+### Report generation
+![Dashboard](https://github.com/redolf250/iAttend/blob/master/images/c.png)
+
+### Database schema
+![Dashboard](https://github.com/redolf250/iAttend/blob/master/images/databasa_schema.png)
+
+### Coponent design
+![Dashboard](https://github.com/redolf250/iAttend/blob/master/images/Component.drawio.png)
 
 
 
