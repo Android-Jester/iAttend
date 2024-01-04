@@ -3,6 +3,9 @@ The university is a hub of learning where students and faculty come together to 
 Traditionally, they have relied on manual methods of tracking attendance, such as sign-in sheets. While these methods can provide some basic information about facility usage, they are often inaccurate, time-consuming, and inefficient. Manual tracking methods can also make it challenging to identify patterns in facility usage and make informed decisions about resource allocation. As such, there is a need for a more efficient and accurate system for tracking attendance in facilities.
 An innovative attendance tracking system can provide a comprehensive and accurate picture of facility usage, allowing university administrators to make data-driven decisions about the facility. Such a system can help identify peak usage times and patterns in facility usage, enabling administrators to make more effective and informed decisions using data. 
 
+### Application home screen
+![Dashboard](https://github.com/redolf250/iAttend/blob/master/images/dashboard.png)
+
 
 
 
